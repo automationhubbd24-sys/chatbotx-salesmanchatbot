@@ -1,0 +1,224 @@
+import { zodBigintAsString } from "@chatbotx.io/utils"
+import { z } from "zod"
+import { uploadModes } from "./shared"
+
+export const minigameImageSchema = z.object({
+  mode: uploadModes.default("file"),
+  url: z.string().default(""),
+})
+export type MinigameImage = z.infer<typeof minigameImageSchema>
+
+export const minigameTypes = z.enum([
+  "luckyWheel",
+  "jackpot",
+  "gashapon",
+  "drawLots",
+  "scratchOff",
+])
+export type MinigameType = z.infer<typeof minigameTypes>
+
+/**
+ * All six settings groups below are stored as free-form jsonb (no DB-level
+ * shape constraint); each schema is the single source of truth for
+ * validating its column at the service boundary and for the builder edit
+ * form — mirrors `appointmentScheduleWindowConfigSchema`.
+ */
+export const minigameGeneralSettingsSchema = z
+  .object({
+    name: z.string().trim().min(1).max(150),
+    showName: z.boolean().default(false),
+    playedAtFrom: z.iso.datetime(),
+    playedAtTo: z.iso.datetime(),
+    rulesDescription: z.string().max(5000).default(""),
+    openerTagIds: z.array(zodBigintAsString()).default([]),
+    playerTagIds: z.array(zodBigintAsString()).default([]),
+    newFriendTagIds: z.array(zodBigintAsString()).default([]),
+  })
+  .refine((data) => data.playedAtTo >= data.playedAtFrom, {
+    message: "playedAtTo must be on or after playedAtFrom",
+    path: ["playedAtTo"],
+  })
+export type MinigameGeneralSettings = z.infer<
+  typeof minigameGeneralSettingsSchema
+>
+
+export const minigameAppearanceSchema = z.object({
+  backgroundColor: z.string().max(50).default("#F5A623"),
+  machineColor: z.string().max(50).default("#4A90D9"),
+  decorativeColor: z.string().max(50).default("#FFFFFF"),
+  ruleTextColor: z.string().max(50).default("#000000"),
+  backgroundImage: minigameImageSchema,
+  prizeDescriptionImage: minigameImageSchema,
+  startButtonImage: minigameImageSchema,
+})
+export type MinigameAppearance = z.infer<typeof minigameAppearanceSchema>
+
+/**
+ * Shared across both reset policies. Extended (not intersected) into each
+ * branch because `z.discriminatedUnion` requires every option to be a
+ * `ZodObject`, and `.and()` produces a `ZodIntersection`.
+ */
+const minigamePlayerSettingsBase = z.object({
+  drawsPerPerson: z.number().int().min(1).default(1),
+  /**
+   * Cap on bonus draws one player can earn by referring friends to this
+   * minigame (see `MinigameContact.sharesCount`). `0` disables referral
+   * bonuses. Lifetime, not per reset cycle: under `everyNDays` the cap keeps
+   * counting across cycles while unused bonus draws expire with the cycle.
+   *
+   * `playerSettings` is stored as unvalidated jsonb and is never parsed on
+   * read, so rows written before this field existed have no key at all —
+   * every consumer must read it as `maxSharesPerPerson ?? 0`, which also
+   * keeps referral bonuses off for minigames created before the feature.
+   */
+  maxSharesPerPerson: z.number().int().min(0).max(100).default(0),
+  /**
+   * The flow step run for a friend who arrives through a player's share link
+   * (the `minigame-share` `RefConfig` variant, handled in
+   * `apps/worker/src/integration/handlers/ref.ts`). `sharingNodeId === null`
+   * is the ONLY switch that hides the play screen's Share button.
+   *
+   * Resolved at click time rather than baked into the link, so changing the
+   * node here repairs every already-shared link instead of stranding them.
+   *
+   * Same unvalidated-jsonb caveat as `maxSharesPerPerson`: rows written
+   * before these fields existed have no key at all, so every server-side
+   * consumer must read them as `?? null` — the `$type<MinigamePlayerSettings>()`
+   * on the column will claim `string | null` for a value that is `undefined`.
+   */
+  sharingFlowId: zodBigintAsString().nullable().default(null),
+  sharingNodeId: zodBigintAsString().nullable().default(null),
+})
+
+export const minigamePlayerSettingsSchema = z.discriminatedUnion(
+  "resetPolicy",
+  [
+    minigamePlayerSettingsBase.extend({
+      resetPolicy: z.literal("never"),
+    }),
+    minigamePlayerSettingsBase.extend({
+      resetPolicy: z.literal("everyNDays"),
+      resetIntervalDays: z.number().int().min(1).default(1),
+    }),
+  ],
+)
+export type MinigamePlayerSettings = z.infer<
+  typeof minigamePlayerSettingsSchema
+>
+
+export const minigameOutcomeMessageSchema = z.discriminatedUnion("mode", [
+  z.object({
+    enabled: z.boolean().default(false),
+    mode: z.literal("text"),
+    text: z.string().max(1000).default(""),
+  }),
+  z.object({
+    enabled: z.boolean().default(false),
+    mode: z.literal("flow"),
+    flowId: zodBigintAsString().nullable().default(null),
+  }),
+  z.object({
+    enabled: z.boolean().default(false),
+    mode: z.literal("node"),
+    flowId: zodBigintAsString().nullable().default(null),
+    nodeId: zodBigintAsString().nullable().default(null),
+  }),
+])
+export type MinigameOutcomeMessage = z.infer<
+  typeof minigameOutcomeMessageSchema
+>
+
+export const minigamePrizeItemSchema = z.object({
+  id: z.string(),
+  name: z.string().trim().min(1).max(100),
+  icon: minigameImageSchema,
+  winRate: z.number().min(0).max(100),
+  /**
+   * Remaining stock for this prize; decremented by 1 each time it's won.
+   * Omitted means unlimited (no stock is tracked or decremented).
+   */
+  quantity: z.number().int().min(0).optional(),
+})
+export type MinigamePrizeItem = z.infer<typeof minigamePrizeItemSchema>
+
+export const minigameNonWinningSettingSchema = z.object({
+  title: z.string().trim().min(1).max(150),
+  loseRate: z.number().min(0).max(100),
+  loseImage: minigameImageSchema,
+})
+export type MinigameNonWinningSetting = z.infer<
+  typeof minigameNonWinningSettingSchema
+>
+
+/**
+ * Whether a set of prize win-rates plus the non-winning lose-rate sum to
+ * exactly 100%, tolerant of float drift via integer-cents rounding. Shared
+ * between this schema's `.refine()` and the builder's prize-list editor so
+ * the tolerance rule can't drift between client and server.
+ */
+export function isMinigameProbabilityTotalValid(total: number): boolean {
+  return Math.round(total * 100) === 10_000
+}
+
+export const minigamePrizeSettingsSchema = z
+  .object({
+    prizes: z.array(minigamePrizeItemSchema).default([]),
+    nonWinning: minigameNonWinningSettingSchema,
+    prizeNameCustomFieldId: zodBigintAsString().nullable().default(null),
+  })
+  .refine(
+    (data) => {
+      const total =
+        data.prizes.reduce((sum, prize) => sum + prize.winRate, 0) +
+        data.nonWinning.loseRate
+      return isMinigameProbabilityTotalValid(total)
+    },
+    {
+      message: "Total probability of all prizes must equal 100%",
+      path: ["nonWinning", "loseRate"],
+    },
+  )
+export type MinigamePrizeSettings = z.infer<typeof minigamePrizeSettingsSchema>
+
+const DEFAULT_MINIGAME_OUTCOME_MESSAGE: z.infer<
+  typeof minigameOutcomeMessageSchema
+> = { enabled: false, mode: "text", text: "" }
+
+/**
+ * Minigame-local placeholder for the drawn prize's name, usable in the result
+ * dialog's `title`/`description` and in `outcomeMessage.text`.
+ *
+ * It lives here rather than beside either renderer because the two cannot
+ * import each other: the dialog is a client component and the outcome-message
+ * renderer sits in `@chatbotx.io/business`, which would drag the whole package
+ * into the browser bundle. This schema module is the one place both already
+ * depend on.
+ */
+export const MINIGAME_PRIZE_NAME_TOKEN = "{{prize_name}}"
+
+export const minigameWinningMessageSettingsSchema = z.object({
+  title: z.string().max(150).default(""),
+  description: z.string().max(1000).default(""),
+  acceptButtonText: z.string().max(50).default(""),
+  shareButtonText: z.string().max(50).default(""),
+  shareButtonDescription: z.string().max(300).default(""),
+  outcomeMessage: minigameOutcomeMessageSchema.default(
+    DEFAULT_MINIGAME_OUTCOME_MESSAGE,
+  ),
+})
+export type MinigameWinningMessageSettings = z.infer<
+  typeof minigameWinningMessageSettingsSchema
+>
+
+export const minigameNonWinningMessageSettingsSchema = z.object({
+  title: z.string().max(150).default(""),
+  description: z.string().max(1000).default(""),
+  shareButtonText: z.string().max(50).default(""),
+  shareButtonDescription: z.string().max(300).default(""),
+  outcomeMessage: minigameOutcomeMessageSchema.default(
+    DEFAULT_MINIGAME_OUTCOME_MESSAGE,
+  ),
+})
+export type MinigameNonWinningMessageSettings = z.infer<
+  typeof minigameNonWinningMessageSettingsSchema
+>
