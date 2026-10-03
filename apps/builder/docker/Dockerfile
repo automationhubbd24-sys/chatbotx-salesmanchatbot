@@ -89,6 +89,7 @@ WORKDIR /app
 FROM base AS release
 
 COPY apps/builder/docker/rootfs/ /
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
