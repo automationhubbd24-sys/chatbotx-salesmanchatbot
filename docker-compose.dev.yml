@@ -104,6 +104,8 @@ services:
       - "1999:1999"
 
 networks:
+  chatbotx-network:
+    driver: bridge
   javascript-executor-network:
     driver: bridge
     internal: true
