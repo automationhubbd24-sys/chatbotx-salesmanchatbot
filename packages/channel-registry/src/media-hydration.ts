@@ -27,7 +27,7 @@ import {
   getWhatsappClient,
   type WhatsappAuthValue,
 } from "@chatbotx.io/integration-whatsapp"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { getChildLogger, toLogSafeError } from "@chatbotx.io/logger"
 import { distributedLock } from "@chatbotx.io/redis"
 import { IntegrationException, SdkException } from "@chatbotx.io/sdk"
 import { createId } from "@chatbotx.io/utils"
@@ -263,14 +263,20 @@ const downloadGraphMedia = (
   state: HydrationContext,
 ): Promise<DownloadedMedia> => {
   const auth = state.ctx.auth
-  if (!("tokens" in auth && "accessToken" in auth.tokens)) {
+  const tokens = "tokens" in auth ? auth.tokens : undefined
+  if (
+    typeof tokens !== "object" ||
+    tokens === null ||
+    !("accessToken" in tokens) ||
+    typeof tokens.accessToken !== "string"
+  ) {
     throw new SdkException(
       `[media-hydration] Missing access token for ${state.contactInbox.channel}`,
     )
   }
   return downloadBearerUrlMedia({
     url: media.url,
-    accessToken: auth.tokens.accessToken,
+    accessToken: tokens.accessToken,
     fallbackMime: media.mimeType ?? attachment.mimeType,
     label: state.contactInbox.channel,
   })
@@ -699,7 +705,9 @@ const storeNoAvatarSentinel = async (
 ): Promise<{ avatar: string }> => {
   log.warn(
     {
-      err,
+      // An auth-refresh failure carries the refresh request URL (with its token)
+      // on nested error fields; toLogSafeError strips them before logging.
+      err: toLogSafeError(err),
       contactInboxId: input.contactInboxId,
       workspaceId: input.workspaceId,
     },

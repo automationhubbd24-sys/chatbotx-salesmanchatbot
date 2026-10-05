@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "Spor om en bruger tagger andre brugere",
       "descriptionText": "Tæller de konti, der tagges i hver kommentar, og lægger dem til kontaktens samlede antal på tværs af alle kommentarer. Brug '{{total_tagged}}' for alle taggede konti og '{{total_new_tagged}}' for konti, der aldrig har skrevet til din side eller været kontakt."
+    },
+    "card": {
+      "reply": "Svar"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Vælg opslagstype"
     }
   },
   "condition": {
@@ -583,6 +590,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Indtast en dato som YYYY-MM-DD HH:mm eller en variabel",
+    "openPost": "Åbn {post}",
+    "openPostLink": "Åbn",
+    "postWithoutCaption": "Opslag uden tekst",
     "operator": {
       "and": "Alle betingelser",
       "or": "En vilkårlig betingelse"
@@ -2237,12 +2247,13 @@
       "broadcasts": "Udsendelser",
       "analytics": "Analyse",
       "ecommerce": "E-handel",
-      "integrations": "Integrationer",
       "channels": "Kanaler",
+      "integrations": "Integrationer",
       "minigames": "Minispil",
       "appointments": "Aftaler",
       "media": "Medier",
-      "ads": "Annoncer"
+      "ads": "Annoncer",
+      "settings": "Indstillinger"
     },
     "adReferral": {
       "label": "Ads",
@@ -2275,6 +2286,28 @@
     "title": "Flows",
     "quickReplies": {
       "limitReached": "Quick svar limit reached ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Indstillinger for Quick Svar",
+      "title": "Konfigurer Quick Svar",
+      "chooseNextStep": "Vælg næste trin",
+      "followUp": {
+        "label": "Følg op, hvis kontakten ikke har reageret",
+        "waitFor": "Vent i",
+        "divider": "Hvis kontakten ikke har reageret, følg op med",
+        "windowHint": "Messenger og Instagram tillader kun afsendelse inden for 24 timer efter kontaktens seneste besked; senere opfølgninger springes over der.",
+        "handle": "Ingen reaktion"
+      },
+      "retry": {
+        "label": "Prøv igen, hvis svaret ikke er et Quick Svar",
+        "message": "Besked ved nyt forsøg",
+        "messageDefault": "Tryk venligst på en af mulighederne nedenfor 👇",
+        "count": "Antal forsøg",
+        "countOption": "{count, plural, =0 {Ingen forsøg} one {# gang} other {# gange}}",
+        "divider": "Når antallet af forsøg er overskredet",
+        "handle": "Forsøg overskredet",
+        "getUserDataConflict": "Nyt forsøg er ikke tilgængeligt, når denne besked indeholder et Get Bruger Data-trin."
+      }
     },
     "buttons": {
       "limitReached": "Knap limit reached ({max})."
@@ -3282,6 +3315,7 @@
         "channelLimit": "Kanalgrænsen er nået.",
         "workspaceLimit": "Workspace-grænsen er nået.",
         "providerRejected": "Udbyderen afviste denne anmodning.",
+        "inProgress": "Forbindelse er allerede i gang.",
         "unknown": "Noget gik galt.",
         "followUpFailed": "Opsætning ufuldstændig – afslut den fra kanalindstillingerne."
       },
@@ -3336,7 +3370,9 @@
       "bannerDescription": "Denne arbejdsområde er planlagt for deletion. Fortryd den deletion below til fortsæt using it.",
       "pendingBlockedToast": "Denne arbejdsområde er planlagt for deletion. Kontakt a arbejdsområde administrator til gendan access.",
       "navDisabledTooltip": "Unavailable while arbejdsområde deletion er planlagt",
-      "badge": "Deletion planlagt"
+      "badge": "Deletion planlagt",
+      "purging": "Sletning af arbejdsområdet er i gang.",
+      "alreadyStarted": "Sletning af arbejdsområdet er allerede startet."
     },
     "supportAccess": {
       "bannerTitle": "Platformssupportsession",
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "Ingen published versions found",
     "publishVersionSuccess": "A ny version har been published",
     "flowConfigIncomplete": "Some configurations er incomplete",
+    "quickReplyNextStepRequired": "Vælg et næste trin for hver aktiveret Quick Svar-indstilling",
+    "quickReplyRetryMessageRequired": "Indtast en besked til nyt forsøg",
+    "quickReplyRetryWithGetUserData": "Nyt forsøg kan ikke kombineres med et Get Bruger Data-trin",
     "whatsappCarouselButtonsMismatch": "På WhatsApp skal en karrusel have de samme knapper på hvert kort: enten en enkelt linkknap på hvert kort eller det samme antal svarknapper på hvert kort",
     "whatsappCarouselLinkButtonNotAlone": "På WhatsApp kan et karruselkort med en linkknap ikke have andre knapper. Fjern de andre knapper på kortet, eller skift linkknappen til en anden handling.",
     "duplicateNodeError": "Could ikke dupliker den blokér. Prøv igen.",
@@ -4965,7 +5004,13 @@
     "chooseSpecificPosts": "Choose opslag...",
     "postIdTab": "Opslag ID",
     "postIdPlaceholder": "Indtast opslag IDs, one per line...",
-    "noPostsFound": "Ingen opslag found"
+    "noPostsFound": "Ingen opslag found",
+    "postTypeDialog": {
+      "liveTitle": "Livestream",
+      "liveDescription": "Automatiser kommentarer på livestreams. Understøtter offentlige svar, private svar, skjulning og likes af kommentarer.",
+      "postsTitle": "Sideopslag",
+      "postsDescription": "Automatiser kommentarer på sideopslag og reels. Understøtter offentlige svar, private svar, skjulning og likes af kommentarer."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Instagram Kommentar Automatisering",
@@ -5072,7 +5117,14 @@
       "instagramDescription": "Instagram Login connection. Supports public svar, private svar, og hiding kommentarer. Liking kommentarer er ikke supported.",
       "instagramFacebookTitle": "Instagram Login med Facebook",
       "instagramFacebookDescription": "Instagram connected via a Facebook Side. Supports public svar, private svar, hiding kommentarer, og liking kommentarer."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatiser kommentarer på Instagram Live. Sender et privat svar til hver kommentator, mens du er live.",
+      "postsTitle": "Opslag og reels",
+      "postsDescription": "Automatiser kommentarer på opslag og reels. Understøtter offentlige svar, private svar og skjulning af kommentarer."
+    },
+    "liveReplyNote": "Instagram tillader kun et privat svar på en Live-kommentar, og kun mens du er live. Offentlige svar, skjulning og likes er ikke tilgængelige."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -5579,6 +5631,21 @@
     "invalidDescription": "Denne link er ugyldig eller har udløbet.",
     "unavailableTitle": "Afmeld unavailable.",
     "unavailableDescription": "Denne arbejdsområde er ingen longer tilgængelig."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Dette link er ikke længere tilgængeligt.",

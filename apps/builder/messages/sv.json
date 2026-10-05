@@ -725,6 +725,13 @@
     "trackUserTags": {
       "label": "Spåra om en användare taggar andra användare",
       "descriptionText": "Räknar kontona som taggas i varje kommentar och lägger till dem i kontaktens totaler över alla kommentarer. Använd '{{total_tagged}}' för alla taggade konton och '{{total_new_tagged}}' för konton som aldrig har skrivit till din sida eller varit kontakter."
+    },
+    "card": {
+      "reply": "Svar"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Välj inläggstyp"
     }
   },
   "channels": {
@@ -790,6 +797,7 @@
         "channelLimit": "Kanalgränsen har nåtts.",
         "workspaceLimit": "Arbetsytans gräns har nåtts.",
         "providerRejected": "Leverantören avvisade den här begäran.",
+        "inProgress": "Anslutningen pågår redan.",
         "unknown": "Något gick fel.",
         "followUpFailed": "Konfigurationen är inte klar – slutför den i kanalinställningarna."
       },
@@ -857,6 +865,9 @@
     "unknownValue": "Okänd",
     "datePlaceholder": "YYYY-MM-DD",
     "datetimeInvalid": "Ange ett datum som YYYY-MM-DD HH:mm eller en variabel",
+    "openPost": "Öppna {post}",
+    "openPostLink": "Öppna",
+    "postWithoutCaption": "Inlägg utan bildtext",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "fieldGroups": {
       "analytics": "Analys",
@@ -1630,7 +1641,13 @@
     },
     "title": "Automatisering av Facebook-kommentarer",
     "trackCommentsOn": "Spåra kommentarer på",
-    "trackCommentsOnDescription": "Använd denna automatisering för alla inlägg på din sida eller begränsa den till specifika inlägg som du väljer."
+    "trackCommentsOnDescription": "Använd denna automatisering för alla inlägg på din sida eller begränsa den till specifika inlägg som du väljer.",
+    "postTypeDialog": {
+      "liveTitle": "Livesändning",
+      "liveDescription": "Automatisera kommentarer i livesändningar. Stöder offentliga svar, privata svar samt att dölja och gilla kommentarer.",
+      "postsTitle": "Sidinlägg",
+      "postsDescription": "Automatisera kommentarer på sidans inlägg och reels. Stöder offentliga svar, privata svar samt att dölja och gilla kommentarer."
+    }
   },
   "facebookLeadAdsAutomation": {
     "addNewPage": "Lägg till ny",
@@ -3132,12 +3149,13 @@
       "broadcasts": "Utskick",
       "analytics": "Analys",
       "ecommerce": "E-handel",
-      "integrations": "Integrationer",
       "channels": "Kanaler",
+      "integrations": "Integrationer",
       "minigames": "Minispel",
       "appointments": "Bokningar",
       "media": "Media",
-      "ads": "Annonser"
+      "ads": "Annonser",
+      "settings": "Inställningar"
     },
     "adReferral": {
       "label": "Ads",
@@ -3367,6 +3385,28 @@
     },
     "quickReplies": {
       "limitReached": "Gränsen för snabbsvar har nåtts ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Inställningar för snabbsvar",
+      "title": "Konfigurera snabbsvar",
+      "chooseNextStep": "Välj nästa steg",
+      "followUp": {
+        "label": "Följ upp om kontakten inte har reagerat",
+        "waitFor": "Vänta i",
+        "divider": "Om kontakten inte har reagerat, följ upp med",
+        "windowHint": "Messenger och Instagram tillåter bara utskick inom 24 timmar efter kontaktens senaste meddelande; senare uppföljningar hoppas över där.",
+        "handle": "Ingen reaktion"
+      },
+      "retry": {
+        "label": "Försök igen om svaret inte är ett snabbsvar",
+        "message": "Meddelande vid nytt försök",
+        "messageDefault": "Tryck på ett av alternativen nedan 👇",
+        "count": "Antal försök",
+        "countOption": "{count, plural, =0 {Inga försök} one {# gång} other {# gånger}}",
+        "divider": "När antalet försök har överskridits",
+        "handle": "Försök överskridna",
+        "getUserDataConflict": "Nytt försök är inte tillgängligt när det här meddelandet innehåller steget Hämta användardata."
+      }
     },
     "setCustomField": {
       "temporalHint": "Lämna tomt för att spara aktuellt datum och tid."
@@ -3673,7 +3713,14 @@
     },
     "title": "Automatisering av Instagram-kommentarer",
     "trackCommentsOn": "Spåra kommentarer på",
-    "trackCommentsOnDescription": "Använd denna automatisering för alla inlägg på ditt anslutna konto eller begränsa den till specifika inlägg som du väljer."
+    "trackCommentsOnDescription": "Använd denna automatisering för alla inlägg på ditt anslutna konto eller begränsa den till specifika inlägg som du väljer.",
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatisera kommentarer i Instagram Live. Skickar ett privat svar till varje kommentator medan du sänder live.",
+      "postsTitle": "Inlägg och reels",
+      "postsDescription": "Automatisera kommentarer på inlägg och reels. Stöder offentliga svar, privata svar och att dölja kommentarer."
+    },
+    "liveReplyNote": "Instagram tillåter bara ett privat svar på en Live-kommentar, och bara medan du sänder live. Offentliga svar, döljning och gilla-markeringar är inte tillgängliga."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -4251,6 +4298,9 @@
     "failedToPreviewImage": "Det gick inte att förhandsgranska bilden",
     "featureNotFound": "{feature} hittades inte",
     "flowConfigIncomplete": "Vissa konfigurationer är ofullständiga",
+    "quickReplyNextStepRequired": "Välj ett nästa steg för varje aktiverad snabbsvarsinställning",
+    "quickReplyRetryMessageRequired": "Ange ett meddelande för nytt försök",
+    "quickReplyRetryWithGetUserData": "Nytt försök kan inte kombineras med steget Hämta användardata",
     "whatsappCarouselButtonsMismatch": "På WhatsApp måste ett karusellkort ha samma knappar på varje kort: antingen en enda länkknapp på varje kort, eller samma antal svarsknappar på varje kort",
     "whatsappCarouselLinkButtonNotAlone": "På WhatsApp kan ett karusellkort med en länkknapp inte ha några andra knappar. Ta bort de andra knapparna på det kortet, eller ändra länkknappen till en annan åtgärd.",
     "historyDepth": "({count})",
@@ -5362,6 +5412,21 @@
     "unavailableDescription": "Den här arbetsytan är inte längre tillgänglig.",
     "unavailableTitle": "Avregistrering är inte tillgänglig."
   },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
+  },
   "templatesPublicPage": {
     "invalidTitle": "Den här länken är inte längre tillgänglig.",
     "invalidDescription": "Den här mallens dellänk är ogiltig, inaktiverad eller har gått ut.",
@@ -5967,6 +6032,8 @@
   "workspace": {
     "deletion": {
       "badge": "Borttagning schemalagd",
+      "purging": "Borttagning av arbetsytan pågår.",
+      "alreadyStarted": "Borttagning av arbetsytan har redan startat.",
       "bannerDescription": "Den här arbetsytan är schemalagd för borttagning. Ångra borttagningen nedan för att fortsätta använda den.",
       "bannerTitle": "Borttagning av arbetsyta har schemalagts",
       "confirmDescription": "Alla kontakter, inställningar och data raderas permanent 24 timmar efter att du har bekräftat. Du kan ångra borttagningen när som helst fram till dess.",

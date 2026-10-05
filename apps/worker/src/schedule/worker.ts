@@ -18,6 +18,7 @@ import {
   scanDateTimeWebhooks,
 } from "../webhook/datetime-webhook-scanner"
 import { clearExpiredSupportAccess } from "./handlers/clear-expired-support-access"
+import { dispatchProfileSnapshots } from "./handlers/dispatch-profile-snapshots"
 import { enqueueBroadcast } from "./handlers/enqueue-broadcast"
 import { finalizeBroadcasts } from "./handlers/finalize-broadcasts"
 import { maintainMacPartitions } from "./handlers/maintain-mac-partitions"
@@ -29,6 +30,7 @@ import { purgeCoexistStaging } from "./handlers/purge-coexist-staging"
 import { purgeCommentAutomationEvents } from "./handlers/purge-comment-automation-events"
 import { purgeErrorLogs } from "./handlers/purge-error-logs"
 import { purgeExpiredCallRecordings } from "./handlers/purge-expired-call-recordings"
+import { purgeExpiredConnectSessions } from "./handlers/purge-expired-connect-sessions"
 import { purgeWhatsappSignupSessions } from "./handlers/purge-whatsapp-signup-sessions"
 import { purgeWorkspaces } from "./handlers/purge-workspaces"
 import { reconcileBroadcasts } from "./handlers/reconcile-broadcasts"
@@ -152,12 +154,20 @@ async function startScheduleWorker() {
               await purgeWhatsappSignupSessions()
               return
 
+            case ScheduleJobData.purgeExpiredConnectSessions:
+              await purgeExpiredConnectSessions()
+              return
+
             case ScheduleJobData.purgeWorkspaces:
               await purgeWorkspaces()
               return
 
             case ScheduleJobData.clearExpiredSupportAccess:
               await clearExpiredSupportAccess()
+              return
+
+            case ScheduleJobData.dispatchProfileSnapshots:
+              await dispatchProfileSnapshots()
               return
 
             case ScheduleJobData.purgeBroadcasts:

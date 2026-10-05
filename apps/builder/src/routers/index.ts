@@ -60,6 +60,16 @@ export const router = {
       default: m.dynamicImagesAPI,
     })),
   ),
+  connectionsAPI: lazy(() =>
+    import("@/features/connections/api").then((m) => ({
+      default: m.connectionsAPI,
+    })),
+  ),
+  connectSessionsAPI: lazy(() =>
+    import("@/features/connections/api").then((m) => ({
+      default: m.connectSessionsAPI,
+    })),
+  ),
   emailTopicsAPI: lazy(() =>
     import("@/features/email-topics/api").then((m) => ({
       default: m.emailTopicsAPI,
@@ -104,6 +114,11 @@ export const router = {
   aiHandoverAPIs: lazy(() =>
     import("@/features/integration-ai-handover/api").then((m) => ({
       default: m.aiHandoverAPIs,
+    })),
+  ),
+  channelPostAPIs: lazy(() =>
+    import("@/features/channel-posts/api").then((m) => ({
+      default: m.channelPostAPIs,
     })),
   ),
   botFieldAPIs: lazy(() =>

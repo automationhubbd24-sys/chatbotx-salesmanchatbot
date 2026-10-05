@@ -615,6 +615,13 @@
     "trackUserTags": {
       "label": "Track if a user tags other users",
       "descriptionText": "Counts the accounts tagged in each comment and adds them to the contact's running totals across all comments. Use '{{total_tagged}}' for every tagged account and '{{total_new_tagged}}' for accounts that have never messaged your page or been a contact."
+    },
+    "card": {
+      "reply": "Reply"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Select post type"
     }
   },
   "condition": {
@@ -625,6 +632,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Enter a date as YYYY-MM-DD HH:mm or a variable",
+    "openPost": "Open {post}",
+    "openPostLink": "Open",
+    "postWithoutCaption": "Post without caption",
     "operator": {
       "and": "All conditions",
       "or": "Any condition"
@@ -868,6 +878,7 @@
         "channelLimit": "Channel limit reached.",
         "workspaceLimit": "Workspace limit reached.",
         "providerRejected": "The provider rejected this request.",
+        "inProgress": "Connection already in progress.",
         "unknown": "Something went wrong.",
         "followUpFailed": "Setup incomplete — finish from the channel settings."
       },
@@ -922,7 +933,9 @@
       "bannerDescription": "This workspace is scheduled for deletion. Undo the deletion below to continue using it.",
       "pendingBlockedToast": "This workspace is scheduled for deletion. Contact a workspace admin to restore access.",
       "navDisabledTooltip": "Unavailable while workspace deletion is scheduled",
-      "badge": "Deletion scheduled"
+      "badge": "Deletion scheduled",
+      "purging": "Workspace deletion is in progress.",
+      "alreadyStarted": "Workspace deletion has already started."
     },
     "supportAccess": {
       "bannerTitle": "Platform support session",
@@ -2421,12 +2434,13 @@
       "broadcasts": "Broadcasts",
       "analytics": "Analytics",
       "ecommerce": "Ecommerce",
-      "integrations": "Integrations",
       "channels": "Channels",
+      "integrations": "Integrations",
       "minigames": "Minigames",
       "appointments": "Appointments",
       "media": "Media",
-      "ads": "Ads"
+      "ads": "Ads",
+      "settings": "Settings"
     },
     "adReferral": {
       "label": "Ads",
@@ -2659,6 +2673,28 @@
     },
     "quickReplies": {
       "limitReached": "Quick reply limit reached ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Quick reply settings",
+      "title": "Configure quick replies",
+      "chooseNextStep": "Choose next step",
+      "followUp": {
+        "label": "Follow up if contact hasn’t engaged",
+        "waitFor": "Wait for",
+        "divider": "If contact hasn’t engaged, follow up with",
+        "windowHint": "Messenger and Instagram only allow sending within 24 hours of the contact’s last message; later follow-ups are skipped there.",
+        "handle": "No engagement"
+      },
+      "retry": {
+        "label": "Retry if reply isn’t a Quick reply",
+        "message": "Retry message",
+        "messageDefault": "Please, tap one of the options below 👇",
+        "count": "Number of retries",
+        "countOption": "{count, plural, =0 {No retries} one {# time} other {# times}}",
+        "divider": "When number of retries is exceeded",
+        "handle": "Retries exceeded",
+        "getUserDataConflict": "Retry isn’t available when this message contains a Get User Data step."
+      }
     },
     "buttons": {
       "limitReached": "Button limit reached ({max})."
@@ -3720,6 +3756,9 @@
     "noVersionsFound": "No published versions found",
     "publishVersionSuccess": "A new version has been published",
     "flowConfigIncomplete": "Some configurations are incomplete",
+    "quickReplyNextStepRequired": "Choose a next step for each enabled quick reply setting",
+    "quickReplyRetryMessageRequired": "Enter a retry message",
+    "quickReplyRetryWithGetUserData": "Retry can’t be combined with a Get User Data step",
     "whatsappCarouselButtonsMismatch": "On WhatsApp, a carousel needs the same buttons on every card: either a single link button on each card, or the same number of reply buttons on each card",
     "whatsappCarouselLinkButtonNotAlone": "On WhatsApp, a carousel card with a link button cannot have any other buttons. Remove the other buttons on that card, or change the link button to another action.",
     "duplicateNodeError": "Could not duplicate the block. Please try again.",
@@ -5250,7 +5289,13 @@
     "chooseSpecificPosts": "Choose posts...",
     "postIdTab": "Post ID",
     "postIdPlaceholder": "Enter post IDs, one per line...",
-    "noPostsFound": "No posts found"
+    "noPostsFound": "No posts found",
+    "postTypeDialog": {
+      "liveTitle": "Live Stream",
+      "liveDescription": "Automate comments on Live streams. Supports public replies, private replies, hiding, and liking comments.",
+      "postsTitle": "Page Posts",
+      "postsDescription": "Automate comments on Page posts and reels. Supports public replies, private replies, hiding, and liking comments."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Instagram Comment Automation",
@@ -5357,7 +5402,14 @@
       "instagramDescription": "Instagram Login connection. Supports public reply, private reply, and hiding comments. Liking comments is not supported.",
       "instagramFacebookTitle": "Instagram Login with Facebook",
       "instagramFacebookDescription": "Instagram connected via a Facebook Page. Supports public reply, private reply, hiding comments, and liking comments."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automate comments on Instagram Live streams. Sends a private reply to each commenter while you are live.",
+      "postsTitle": "Posts & Reels",
+      "postsDescription": "Automate comments on posts and reels. Supports public replies, private replies, and hiding comments."
+    },
+    "liveReplyNote": "Instagram only allows a private reply to a Live comment, and only while you are live. Public replies, hiding, and liking are not available."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -6008,6 +6060,21 @@
     "invalidDescription": "This link is invalid or has expired.",
     "unavailableTitle": "Unsubscribe unavailable.",
     "unavailableDescription": "This workspace is no longer available."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "This link is no longer available.",

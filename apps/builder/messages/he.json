@@ -300,6 +300,28 @@
     "quickReplies": {
       "limitReached": "הגעתם למגבלת התשובות המהירות ({max})."
     },
+    "quickReplySettings": {
+      "open": "הגדרות תשובות מהירות",
+      "title": "הגדרת תשובות מהירות",
+      "chooseNextStep": "בחירת השלב הבא",
+      "followUp": {
+        "label": "מעקב אם איש הקשר לא הגיב",
+        "waitFor": "המתנה של",
+        "divider": "אם איש הקשר לא הגיב, מעקב באמצעות",
+        "windowHint": "Messenger ו-Instagram מאפשרים שליחה רק בתוך 24 שעות מההודעה האחרונה של איש הקשר; הודעות מעקב מאוחרות יותר מדולגות שם.",
+        "handle": "אין תגובה"
+      },
+      "retry": {
+        "label": "ניסיון חוזר אם התשובה אינה תשובה מהירה",
+        "message": "הודעת ניסיון חוזר",
+        "messageDefault": "יש להקיש על אחת מהאפשרויות למטה 👇",
+        "count": "מספר ניסיונות חוזרים",
+        "countOption": "{count, plural, =0 {ללא ניסיונות חוזרים} one {# פעם} other {# פעמים}}",
+        "divider": "כאשר מספר הניסיונות החוזרים חורג",
+        "handle": "חריגה ממספר הניסיונות",
+        "getUserDataConflict": "ניסיון חוזר אינו זמין כאשר הודעה זו מכילה שלב קבלת נתוני משתמש."
+      }
+    },
     "buttons": {
       "limitReached": "הגעתם למגבלת הכפתורים ({max})."
     },
@@ -1306,6 +1328,7 @@
         "channelLimit": "המגבלה של הערוצים הושגה.",
         "workspaceLimit": "המגבלה של סביבת העבודה הושגה.",
         "providerRejected": "הספק דחה את הבקשה הזו.",
+        "inProgress": "חיבור כבר מתבצע.",
         "unknown": "משהו השתבש.",
         "followUpFailed": "ההגדרה לא הושלמה — סיים אותה מהגדרות הערוץ."
       },
@@ -1360,7 +1383,9 @@
       "bannerDescription": "סביבת עבודה זו מתוזמנת למחיקה. בטלו את המחיקה למטה כדי להמשיך להשתמש בה.",
       "pendingBlockedToast": "סביבת עבודה זו מתוזמנת למחיקה. פנו למנהל סביבת העבודה כדי לשחזר את הגישה.",
       "navDisabledTooltip": "לא זמין כאשר מחיקת סביבת העבודה מתוזמנת",
-      "badge": "מחיקה מתוזמנת"
+      "badge": "מחיקה מתוזמנת",
+      "purging": "מחיקת סביבת העבודה מתבצעת.",
+      "alreadyStarted": "מחיקת סביבת העבודה כבר החלה."
     },
     "supportAccess": {
       "bannerTitle": "הפעלת תמיכה של הפלטפורמה",
@@ -1502,6 +1527,9 @@
     "noVersionsFound": "לא נמצאו גרסאות שפורסמו",
     "publishVersionSuccess": "גרסה חדשה פורסמה",
     "flowConfigIncomplete": "חלק מההגדרות אינן שלמות",
+    "quickReplyNextStepRequired": "יש לבחור שלב הבא לכל הגדרת תשובה מהירה מופעלת",
+    "quickReplyRetryMessageRequired": "יש להזין הודעת ניסיון חוזר",
+    "quickReplyRetryWithGetUserData": "לא ניתן לשלב ניסיון חוזר עם שלב קבלת נתוני משתמש",
     "whatsappCarouselButtonsMismatch": "בוואטסאפ, קרוסלה חייבת לכלול את אותם כפתורים בכל כרטיס: או כפתור קישור יחיד בכל כרטיס, או אותו מספר כפתורי תשובה בכל כרטיס",
     "whatsappCarouselLinkButtonNotAlone": "בוואטסאפ, כרטיס קרוסלה עם כפתור קישור לא יכול לכלול כפתורים נוספים. הסר את הכפתורים הנוספים בכרטיס הזה, או שנה את כפתור הקישור לפעולה אחרת.",
     "duplicateNodeError": "לא ניתן היה לשכפל את הבלוק. נסו שוב.",
@@ -2989,7 +3017,13 @@
     "chooseSpecificPosts": "בחירת פוסטים...",
     "postIdTab": "מזהה פוסט",
     "postIdPlaceholder": "הזנת מזהי פוסטים, אחד בכל שורה...",
-    "noPostsFound": "לא נמצאו פוסטים"
+    "noPostsFound": "לא נמצאו פוסטים",
+    "postTypeDialog": {
+      "liveTitle": "שידור חי",
+      "liveDescription": "אוטומציה לתגובות בשידורים חיים. תומך בתשובות ציבוריות, תשובות פרטיות, הסתרת תגובות וסימון לייק.",
+      "postsTitle": "פוסטים בדף",
+      "postsDescription": "אוטומציה לתגובות בפוסטים ובסרטוני Reels של הדף. תומך בתשובות ציבוריות, תשובות פרטיות, הסתרת תגובות וסימון לייק."
+    }
   },
   "instagramCommentAutomation": {
     "title": "אוטומציית תגובות ב-Instagram",
@@ -3096,7 +3130,14 @@
       "instagramDescription": "חיבור באמצעות כניסה ל-Instagram. תומך בתשובה ציבורית, תשובה פרטית והסתרת תגובות. סימון לייק לתגובות אינו נתמך.",
       "instagramFacebookTitle": "כניסה ל-Instagram באמצעות Facebook",
       "instagramFacebookDescription": "Instagram מחובר באמצעות דף Facebook. תומך בתשובה ציבורית, תשובה פרטית, הסתרת תגובות וסימון לייק לתגובות."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "אוטומציה לתגובות ב-Instagram Live. שולח תשובה פרטית לכל מגיב בזמן שאתם בשידור.",
+      "postsTitle": "פוסטים ו-Reels",
+      "postsDescription": "אוטומציה לתגובות בפוסטים וב-Reels. תומך בתשובות ציבוריות, תשובות פרטיות והסתרת תגובות."
+    },
+    "liveReplyNote": "Instagram מאפשר רק תשובה פרטית לתגובה בשידור חי, ורק בזמן השידור. תשובות ציבוריות, הסתרה ולייקים אינם זמינים."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -3603,6 +3644,21 @@
     "invalidDescription": "קישור זה אינו תקין או שפג תוקפו.",
     "unavailableTitle": "ביטול ההרשמה אינו זמין.",
     "unavailableDescription": "סביבת עבודה זו אינה זמינה עוד."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "קישור זה אינו זמין עוד.",
@@ -5543,12 +5599,13 @@
       "broadcasts": "שידורים",
       "analytics": "אנליטיקה",
       "ecommerce": "מסחר אלקטרוני",
-      "integrations": "אינטגרציות",
       "channels": "ערוצים",
+      "integrations": "אינטגרציות",
       "minigames": "משחונים",
       "appointments": "פגישות",
       "media": "מדיה",
-      "ads": "מודעות"
+      "ads": "מודעות",
+      "settings": "הגדרות"
     },
     "adReferral": {
       "label": "Ads",
@@ -5837,6 +5894,13 @@
     "trackUserTags": {
       "label": "עקוב אם משתמש מתייג משתמשים אחרים",
       "descriptionText": "סופר את החשבונות שתויגו בכל תגובה ומוסיף אותם לסכומים המצטברים של איש הקשר בכל התגובות. השתמשו ב-'{{total_tagged}}' לכל החשבונות שתויגו וב-'{{total_new_tagged}}' לחשבונות שמעולם לא שלחו הודעה לדף שלכם או היו אנשי קשר."
+    },
+    "card": {
+      "reply": "תגובה"
+    },
+    "liveBadge": "שידור חי",
+    "postTypeDialog": {
+      "title": "בחירת סוג פוסט"
     }
   },
   "condition": {
@@ -5847,6 +5911,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "יש להזין תאריך בתבנית YYYY-MM-DD HH:mm או משתנה",
+    "openPost": "פתיחת {post}",
+    "openPostLink": "פתיחה",
+    "postWithoutCaption": "פוסט ללא כיתוב",
     "operator": {
       "and": "כל התנאים",
       "or": "תנאי כלשהו"

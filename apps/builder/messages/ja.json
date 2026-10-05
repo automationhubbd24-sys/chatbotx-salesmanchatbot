@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "ユーザーが他のユーザーをタグ付けしたかを記録する",
       "descriptionText": "各コメントでタグ付けされたアカウント数を数え、すべてのコメントを通じてコンタクトの累計に加算します。タグ付けされたすべてのアカウントには'{{total_tagged}}'を、ページにメッセージを送ったこともコンタクトになったこともないアカウントには'{{total_new_tagged}}'を使用します。"
+    },
+    "card": {
+      "reply": "返信"
+    },
+    "liveBadge": "ライブ",
+    "postTypeDialog": {
+      "title": "投稿タイプを選択"
     }
   },
   "condition": {
@@ -583,6 +590,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "日付をYYYY-MM-DD HH:mm形式または変数で入力してください",
+    "openPost": "{post}を開く",
+    "openPostLink": "開く",
+    "postWithoutCaption": "キャプションなしの投稿",
     "operator": {
       "and": "すべての条件",
       "or": "いずれかの条件"
@@ -2237,12 +2247,13 @@
       "broadcasts": "配信",
       "analytics": "アナリティクス",
       "ecommerce": "eコマース",
-      "integrations": "連携",
       "channels": "チャネル",
+      "integrations": "統合",
       "minigames": "ミニゲーム",
       "appointments": "予約",
       "media": "メディア",
-      "ads": "広告"
+      "ads": "広告",
+      "settings": "設定"
     },
     "adReferral": {
       "label": "Ads",
@@ -2275,6 +2286,28 @@
     "title": "フロー",
     "quickReplies": {
       "limitReached": "クイック返信の上限（{max}件）に達しました。"
+    },
+    "quickReplySettings": {
+      "open": "クイック返信の設定",
+      "title": "クイック返信を設定",
+      "chooseNextStep": "次のステップを選択",
+      "followUp": {
+        "label": "連絡先の反応がない場合にフォローアップする",
+        "waitFor": "待機時間",
+        "divider": "連絡先の反応がない場合のフォローアップ",
+        "windowHint": "Messenger と Instagram では、連絡先の最後のメッセージから 24 時間以内のみ送信できます。それ以降のフォローアップはスキップされます。",
+        "handle": "反応なし"
+      },
+      "retry": {
+        "label": "返信がクイック返信でない場合に再試行する",
+        "message": "再試行メッセージ",
+        "messageDefault": "下の選択肢のいずれかをタップしてください 👇",
+        "count": "再試行回数",
+        "countOption": "{count, plural, =0 {再試行なし} one {#回} other {#回}}",
+        "divider": "再試行回数を超えた場合",
+        "handle": "再試行回数超過",
+        "getUserDataConflict": "このメッセージに「ユーザーデータを取得」ステップが含まれている場合、再試行は利用できません。"
+      }
     },
     "buttons": {
       "limitReached": "ボタンの上限（{max}個）に達しました。"
@@ -3261,6 +3294,7 @@
         "channelLimit": "チャネルの上限に達しました。",
         "workspaceLimit": "ワークスペースの上限に達しました。",
         "providerRejected": "プロバイダーがこのリクエストを拒否しました。",
+        "inProgress": "接続は既に進行中です。",
         "unknown": "問題が発生しました。",
         "followUpFailed": "設定が未完了です。チャネル設定から完了してください。"
       },
@@ -3315,7 +3349,9 @@
       "bannerDescription": "このワークスペースは削除予定です。引き続き使用するには、以下で削除を取り消してください。",
       "pendingBlockedToast": "このワークスペースは削除予定です。アクセスを復元するには、ワークスペース管理者にお問い合わせください。",
       "navDisabledTooltip": "ワークスペースの削除が予定されている間は利用できません",
-      "badge": "削除予定"
+      "badge": "削除予定",
+      "purging": "ワークスペースを削除しています。",
+      "alreadyStarted": "ワークスペースの削除はすでに開始されています。"
     },
     "supportAccess": {
       "bannerTitle": "プラットフォームサポートセッション",
@@ -3457,6 +3493,9 @@
     "noVersionsFound": "公開済みバージョンが見つかりません",
     "publishVersionSuccess": "新しいバージョンを公開しました",
     "flowConfigIncomplete": "一部の設定が未完了です",
+    "quickReplyNextStepRequired": "有効なクイック返信設定ごとに次のステップを選択してください",
+    "quickReplyRetryMessageRequired": "再試行メッセージを入力してください",
+    "quickReplyRetryWithGetUserData": "再試行は「ユーザーデータを取得」ステップと併用できません",
     "whatsappCarouselButtonsMismatch": "WhatsAppでは、カルーセルのすべてのカードに同じボタンが必要です。各カードに1つのリンクボタンを設定するか、各カードに同じ数の返信ボタンを設定してください",
     "whatsappCarouselLinkButtonNotAlone": "WhatsAppでは、リンクボタンを含むカルーセルカードに他のボタンを設定できません。そのカードの他のボタンを削除するか、リンクボタンを別のアクションに変更してください。",
     "duplicateNodeError": "ブロックを複製できませんでした。もう一度お試しください。",
@@ -4944,7 +4983,13 @@
     "chooseSpecificPosts": "投稿を選択...",
     "postIdTab": "投稿ID",
     "postIdPlaceholder": "投稿IDを1行に1件ずつ入力...",
-    "noPostsFound": "投稿が見つかりません"
+    "noPostsFound": "投稿が見つかりません",
+    "postTypeDialog": {
+      "liveTitle": "ライブ配信",
+      "liveDescription": "ライブ配信のコメントを自動化します。公開返信、非公開返信、コメントの非表示といいねに対応しています。",
+      "postsTitle": "ページの投稿",
+      "postsDescription": "ページの投稿とリールのコメントを自動化します。公開返信、非公開返信、コメントの非表示といいねに対応しています。"
+    }
   },
   "instagramCommentAutomation": {
     "title": "Instagramコメント自動化",
@@ -5051,7 +5096,14 @@
       "instagramDescription": "Instagramログインによる接続です。公開返信、非公開返信、コメントの非表示に対応しています。コメントへの「いいね！」には対応していません。",
       "instagramFacebookTitle": "FacebookでInstagramにログイン",
       "instagramFacebookDescription": "Facebookページ経由で接続されたInstagramです。公開返信、非公開返信、コメントの非表示、コメントへの「いいね！」に対応しています。"
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagramライブ",
+      "liveDescription": "Instagramライブのコメントを自動化します。配信中、コメントした人それぞれに非公開返信を送信します。",
+      "postsTitle": "投稿とリール",
+      "postsDescription": "投稿とリールのコメントを自動化します。公開返信、非公開返信、コメントの非表示に対応しています。"
+    },
+    "liveReplyNote": "Instagramでは、ライブのコメントには非公開返信のみ、かつ配信中のみ送信できます。公開返信、非表示、いいねは利用できません。"
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -5579,6 +5631,21 @@
     "invalidDescription": "このリンクは無効か、有効期限が切れています。",
     "unavailableTitle": "配信を停止できません。",
     "unavailableDescription": "このワークスペースは利用できなくなりました。"
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "このリンクはご利用いただけません。",

@@ -1,5 +1,7 @@
 import type * as schema from "./schema"
 
+export type ConnectionModel = typeof schema.connectionModel.$inferSelect
+export type ConnectSessionModel = typeof schema.connectSessionModel.$inferSelect
 export type IntegrationWebchatModel =
   typeof schema.integrationWebchatModel.$inferSelect
 export type IntegrationApiModel = typeof schema.integrationApiModel.$inferSelect
@@ -169,6 +171,9 @@ export type WebhookExecutionModel =
 export type ExternalWebhookModel =
   typeof schema.externalWebhookModel.$inferSelect
 export type ContactInboxModel = typeof schema.contactInboxModel.$inferSelect
+export type ContactInboxPostModel =
+  typeof schema.contactInboxPostModel.$inferSelect
+export type ChannelPostModel = typeof schema.channelPostModel.$inferSelect
 export type ContactInboxOperationalModel = Omit<
   ContactInboxModel,
   "sourceIdentityHistory"

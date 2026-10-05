@@ -8,6 +8,28 @@
     "quickReplies": {
       "limitReached": "A fost atinsă limita de răspunsuri rapide ({max})."
     },
+    "quickReplySettings": {
+      "open": "Setări pentru răspunsuri rapide",
+      "title": "Configurează răspunsurile rapide",
+      "chooseNextStep": "Alege pasul următor",
+      "followUp": {
+        "label": "Revino dacă contactul nu a interacționat",
+        "waitFor": "Așteaptă",
+        "divider": "Dacă contactul nu a interacționat, revino cu",
+        "windowHint": "Messenger și Instagram permit trimiterea doar în 24 de ore de la ultimul mesaj al contactului; mesajele de revenire ulterioare sunt omise acolo.",
+        "handle": "Nicio interacțiune"
+      },
+      "retry": {
+        "label": "Reîncearcă dacă răspunsul nu este un răspuns rapid",
+        "message": "Mesaj de reîncercare",
+        "messageDefault": "Te rugăm să atingi una dintre opțiunile de mai jos 👇",
+        "count": "Număr de reîncercări",
+        "countOption": "{count, plural, =0 {Fără reîncercări} one {# dată} other {# ori}}",
+        "divider": "Când numărul de reîncercări este depășit",
+        "handle": "Reîncercări depășite",
+        "getUserDataConflict": "Reîncercarea nu este disponibilă când acest mesaj conține un pas Obține datele utilizatorului."
+      }
+    },
     "buttons": {
       "limitReached": "A fost atinsă limita de butoane ({max})."
     },
@@ -1525,6 +1547,13 @@
     "trackUserTags": {
       "label": "Urmărește dacă un utilizator etichetează alți utilizatori",
       "descriptionText": "Numără conturile etichetate în fiecare comentariu și le adaugă la totalurile contactului pentru toate comentariile. Folosește '{{total_tagged}}' pentru toate conturile etichetate și '{{total_new_tagged}}' pentru conturile care nu au trimis niciodată mesaj paginii tale și nu au fost contacte."
+    },
+    "card": {
+      "reply": "Răspuns"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Selectează tipul postării"
     }
   },
   "condition": {
@@ -1535,6 +1564,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Introdu o dată ca YYYY-MM-DD HH:mm sau o variabilă",
+    "openPost": "Deschide {post}",
+    "openPostLink": "Deschide",
+    "postWithoutCaption": "Postare fără descriere",
     "operator": {
       "and": "Toate condițiile",
       "or": "Orice condiție"
@@ -3189,12 +3221,13 @@
       "broadcasts": "Difuzări",
       "analytics": "Analitice",
       "ecommerce": "Comerț electronic",
-      "integrations": "Integrări",
       "channels": "Canale",
+      "integrations": "Integrări",
       "minigames": "Minijocuri",
       "appointments": "Programări",
       "media": "Media",
-      "ads": "Reclame"
+      "ads": "Reclame",
+      "settings": "Setări"
     },
     "adReferral": {
       "label": "Ads",
@@ -3282,6 +3315,7 @@
         "channelLimit": "Limita de canale a fost atinsă.",
         "workspaceLimit": "Limita spațiului de lucru a fost atinsă.",
         "providerRejected": "Furnizorul a respins această solicitare.",
+        "inProgress": "Conexiunea este deja în curs.",
         "unknown": "Ceva nu a funcționat corect.",
         "followUpFailed": "Configurare incompletă — finalizeaz-o din setările canalului."
       },
@@ -3336,7 +3370,9 @@
       "bannerDescription": "Acest spațiu de lucru este programat pentru ștergere. Anulează ștergerea de mai jos pentru a continua să-l folosești.",
       "pendingBlockedToast": "Acest spațiu de lucru este programat pentru ștergere. Contactează un administrator al spațiului de lucru pentru a restaura accesul.",
       "navDisabledTooltip": "Indisponibil cât timp ștergerea spațiului de lucru este programată",
-      "badge": "Ștergere programată"
+      "badge": "Ștergere programată",
+      "purging": "Ștergerea spațiului de lucru este în curs.",
+      "alreadyStarted": "Ștergerea spațiului de lucru a început deja."
     },
     "supportAccess": {
       "bannerTitle": "Sesiune de suport a platformei",
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "Nicio versiune publicată găsită",
     "publishVersionSuccess": "A fost publicată o versiune nouă",
     "flowConfigIncomplete": "Unele configurări sunt incomplete",
+    "quickReplyNextStepRequired": "Alege un pas următor pentru fiecare setare de răspuns rapid activată",
+    "quickReplyRetryMessageRequired": "Introdu un mesaj de reîncercare",
+    "quickReplyRetryWithGetUserData": "Reîncercarea nu poate fi combinată cu un pas Obține datele utilizatorului",
     "whatsappCarouselButtonsMismatch": "Pe WhatsApp, un carusel are nevoie de aceleași butoane pe fiecare card: fie un singur buton de link pe fiecare card, fie același număr de butoane de răspuns pe fiecare card",
     "whatsappCarouselLinkButtonNotAlone": "Pe WhatsApp, un card de carusel cu un buton de link nu poate avea alte butoane. Elimină celelalte butoane de pe acel card sau schimbă butonul de link cu o altă acțiune.",
     "duplicateNodeError": "Blocul nu a putut fi duplicat. Te rugăm să încerci din nou.",
@@ -5084,7 +5123,13 @@
     },
     "title": "Automatizare comentarii Facebook",
     "trackCommentsOn": "Urmărește comentariile la",
-    "trackCommentsOnDescription": "Aplică această automatizare tuturor postărilor de pe pagina ta sau restrânge-o la postările specifice pe care le selectezi."
+    "trackCommentsOnDescription": "Aplică această automatizare tuturor postărilor de pe pagina ta sau restrânge-o la postările specifice pe care le selectezi.",
+    "postTypeDialog": {
+      "liveTitle": "Transmisiune live",
+      "liveDescription": "Automatizează comentariile din transmisiunile live. Acceptă răspunsuri publice, răspunsuri private, ascunderea și aprecierea comentariilor.",
+      "postsTitle": "Postările paginii",
+      "postsDescription": "Automatizează comentariile la postările și reels-urile paginii. Acceptă răspunsuri publice, răspunsuri private, ascunderea și aprecierea comentariilor."
+    }
   },
   "facebookLeadAdsAutomation": {
     "addNewPage": "Adaugă nouă",
@@ -5238,7 +5283,14 @@
     },
     "title": "Automatizare comentarii Instagram",
     "trackCommentsOn": "Urmărește comentariile la",
-    "trackCommentsOnDescription": "Aplică această automatizare tuturor postărilor de pe contul tău conectat sau restrânge-o la postările specifice pe care le selectezi."
+    "trackCommentsOnDescription": "Aplică această automatizare tuturor postărilor de pe contul tău conectat sau restrânge-o la postările specifice pe care le selectezi.",
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatizează comentariile din Instagram Live. Trimite un răspuns privat fiecărei persoane care comentează cât timp ești live.",
+      "postsTitle": "Postări și reels",
+      "postsDescription": "Automatizează comentariile la postări și reels. Acceptă răspunsuri publice, răspunsuri private și ascunderea comentariilor."
+    },
+    "liveReplyNote": "Instagram permite doar un răspuns privat la un comentariu live și doar cât timp ești live. Răspunsurile publice, ascunderea și aprecierile nu sunt disponibile."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -6013,6 +6065,21 @@
     "title": "Ai fost dezabonat.",
     "unavailableDescription": "Acest spațiu de lucru nu mai este disponibil.",
     "unavailableTitle": "Dezabonare indisponibilă."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Acest link nu mai este disponibil.",

@@ -615,6 +615,13 @@
     "trackUserTags": {
       "label": "İstifadəçinin digər istifadəçiləri etiketləməsini izlə",
       "descriptionText": "Hər şərhdə etiketlənən hesabları sayır və kontaktın bütün şərhlər üzrə ümumi sayına əlavə edir. Etiketlənən bütün hesablar üçün '{{total_tagged}}' dəyişənindən, səhifənizə heç vaxt mesaj göndərməmiş və ya kontakt olmamış hesablar üçün '{{total_new_tagged}}' dəyişənindən istifadə edin."
+    },
+    "card": {
+      "reply": "Cavab"
+    },
+    "liveBadge": "Canlı",
+    "postTypeDialog": {
+      "title": "Paylaşım növünü seçin"
     }
   },
   "condition": {
@@ -625,6 +632,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "YYYY-MM-DD HH:mm formatında tarix və ya dəyişən daxil edin",
+    "openPost": "{post} aç",
+    "openPostLink": "Aç",
+    "postWithoutCaption": "Başlıqsız paylaşım",
     "operator": {
       "and": "Bütün şərtlər",
       "or": "İstənilən şərt"
@@ -868,6 +878,7 @@
         "channelLimit": "Kanal həddinə çatılıb.",
         "workspaceLimit": "İş sahəsi həddinə çatılıb.",
         "providerRejected": "Provayder bu sorğunu rədd etdi.",
+        "inProgress": "Qoşulma artıq davam edir.",
         "unknown": "Xəta baş verdi.",
         "followUpFailed": "Quraşdırma tamamlanmayıb. Kanal parametrlərində quraşdırmanı tamamlayın."
       },
@@ -922,7 +933,9 @@
       "bannerDescription": "Bu iş sahəsinin silinməsi planlaşdırılıb. Ondan istifadəyə davam etmək üçün aşağıda silinməni geri alın.",
       "pendingBlockedToast": "Bu iş sahəsinin silinməsi planlaşdırılıb. Girişi bərpa etmək üçün iş sahəsinin administratoru ilə əlaqə saxlayın.",
       "navDisabledTooltip": "İş sahəsinin silinməsi planlaşdırıldığı müddətdə əlçatan deyil",
-      "badge": "Silinmə planlaşdırılıb"
+      "badge": "Silinmə planlaşdırılıb",
+      "purging": "İş sahəsinin silinməsi davam edir.",
+      "alreadyStarted": "İş sahəsinin silinməsi artıq başlayıb."
     },
     "supportAccess": {
       "bannerTitle": "Platforma dəstək sessiyası",
@@ -2421,12 +2434,13 @@
       "broadcasts": "Kütləvi göndərişlər",
       "analytics": "Analitika",
       "ecommerce": "Elektron ticarət",
-      "integrations": "İnteqrasiyalar",
       "channels": "Kanallar",
+      "integrations": "İnteqrasiyalar",
       "minigames": "Mini oyunlar",
       "appointments": "Görüşlər",
       "media": "Media",
-      "ads": "Reklamlar"
+      "ads": "Reklamlar",
+      "settings": "Parametrlər"
     },
     "adReferral": {
       "label": "Reklamlar",
@@ -2659,6 +2673,28 @@
     },
     "quickReplies": {
       "limitReached": "Sürətli cavab həddinə çatılıb ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Sürətli cavab parametrləri",
+      "title": "Sürətli cavabları konfiqurasiya et",
+      "chooseNextStep": "Növbəti addımı seçin",
+      "followUp": {
+        "label": "Kontakt reaksiya verməyibsə, xatırlatma göndər",
+        "waitFor": "Gözləmə müddəti",
+        "divider": "Kontakt reaksiya verməyibsə, bununla xatırlat",
+        "windowHint": "Messenger və Instagram yalnız kontaktın son mesajından sonrakı 24 saat ərzində göndərməyə icazə verir; sonrakı xatırlatmalar orada ötürülür.",
+        "handle": "Reaksiya yoxdur"
+      },
+      "retry": {
+        "label": "Cavab Sürətli cavab deyilsə, yenidən cəhd et",
+        "message": "Təkrar cəhd mesajı",
+        "messageDefault": "Zəhmət olmasa, aşağıdakı seçimlərdən birinə toxunun 👇",
+        "count": "Təkrar cəhdlərin sayı",
+        "countOption": "{count, plural, =0 {Təkrar cəhd yoxdur} one {# dəfə} other {# dəfə}}",
+        "divider": "Təkrar cəhdlərin sayı aşıldıqda",
+        "handle": "Təkrar cəhdlər aşıldı",
+        "getUserDataConflict": "Bu mesajda İstifadəçi məlumatlarını al addımı olduqda təkrar cəhd mümkün deyil."
+      }
     },
     "buttons": {
       "limitReached": "Düymə həddinə çatılıb ({max})."
@@ -3720,6 +3756,9 @@
     "noVersionsFound": "Dərc edilmiş versiya tapılmadı",
     "publishVersionSuccess": "Yeni versiya dərc edilib",
     "flowConfigIncomplete": "Bəzi konfiqurasiyalar tamamlanmayıb",
+    "quickReplyNextStepRequired": "Aktiv olan hər sürətli cavab parametri üçün növbəti addımı seçin",
+    "quickReplyRetryMessageRequired": "Təkrar cəhd mesajını daxil edin",
+    "quickReplyRetryWithGetUserData": "Təkrar cəhd İstifadəçi məlumatlarını al addımı ilə birlikdə istifadə edilə bilməz",
     "whatsappCarouselButtonsMismatch": "WhatsApp-da karuselin bütün kartlarında eyni düymələr olmalıdır: hər kartda ya tək keçid düyməsi, ya da eyni sayda cavab düyməsi olmalıdır",
     "whatsappCarouselLinkButtonNotAlone": "WhatsApp-da keçid düyməsi olan karusel kartında başqa düymə ola bilməz. Həmin kartdakı digər düymələri çıxarın və ya keçid düyməsini başqa əməliyyata dəyişin.",
     "duplicateNodeError": "Blokun surətini yaratmaq mümkün olmadı. Yenidən cəhd edin.",
@@ -5250,7 +5289,13 @@
     "chooseSpecificPosts": "Paylaşımları seçin...",
     "postIdTab": "Paylaşım ID-si",
     "postIdPlaceholder": "Hər sətirdə bir paylaşım ID-si daxil edin...",
-    "noPostsFound": "Paylaşım tapılmadı"
+    "noPostsFound": "Paylaşım tapılmadı",
+    "postTypeDialog": {
+      "liveTitle": "Canlı yayım",
+      "liveDescription": "Canlı yayımlardakı şərhləri avtomatlaşdırın. İctimai cavablar, şəxsi cavablar, şərhlərin gizlədilməsi və bəyənilməsi dəstəklənir.",
+      "postsTitle": "Səhifə paylaşımları",
+      "postsDescription": "Səhifə paylaşımları və reels-lərdəki şərhləri avtomatlaşdırın. İctimai cavablar, şəxsi cavablar, şərhlərin gizlədilməsi və bəyənilməsi dəstəklənir."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Instagram şərhlərinin avtomatlaşdırılması",
@@ -5357,7 +5402,14 @@
       "instagramDescription": "Instagram Login əlaqəsi. İctimai cavab, şəxsi cavab və şərhlərin gizlədilməsi dəstəklənir. Şərhlərin bəyənilməsi dəstəklənmir.",
       "instagramFacebookTitle": "Facebook-la Instagram-a giriş",
       "instagramFacebookDescription": "Facebook səhifəsi vasitəsilə qoşulmuş Instagram. İctimai cavab, şəxsi cavab, şərhlərin gizlədilməsi və bəyənilməsi dəstəklənir."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Instagram Live yayımlarındakı şərhləri avtomatlaşdırın. Yayım zamanı hər şərh yazana şəxsi cavab göndərir.",
+      "postsTitle": "Paylaşımlar və Reels",
+      "postsDescription": "Paylaşımlar və reels-lərdəki şərhləri avtomatlaşdırın. İctimai cavablar, şəxsi cavablar və şərhlərin gizlədilməsi dəstəklənir."
+    },
+    "liveReplyNote": "Instagram canlı yayım şərhlərinə yalnız şəxsi cavaba və yalnız yayım zamanı icazə verir. İctimai cavab, gizlətmə və bəyənmə mövcud deyil."
   },
   "threadsCommentAutomation": {
     "title": "Threads şərhlərinin avtomatlaşdırılması",
@@ -6008,6 +6060,21 @@
     "invalidDescription": "Bu keçid etibarsızdır və ya vaxtı bitib.",
     "unavailableTitle": "Abunəlikdən çıxmaq mümkün deyil.",
     "unavailableDescription": "Bu iş sahəsi artıq mövcud deyil."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Bu keçid artıq əlçatan deyil.",

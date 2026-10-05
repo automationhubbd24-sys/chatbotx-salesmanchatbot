@@ -1,4 +1,8 @@
-import type { CommentReply } from "@chatbotx.io/database/partials"
+import type {
+  CommentReply,
+  ConversationQuickReplyChallenge,
+  ConversationStepChallenge,
+} from "@chatbotx.io/database/partials"
 import type { AdsConversionChannel } from "@chatbotx.io/database/schema"
 import type {
   ContactInboxModel,
@@ -45,6 +49,7 @@ export const IntegrationJobAction = {
   runChallenge: "runChallenge",
   resumeWait: "resumeWait",
   resumeFollowUp: "resumeFollowUp",
+  resumeQuickReplyFollowUp: "resumeQuickReplyFollowUp",
   blockContact: "blockContact",
   unblockContact: "unblockContact",
   assignConversation: "assignConversation",
@@ -153,6 +158,14 @@ export type IntegrationJobReceiveComment = {
       message?: string
       tags?: CommentTag[]
       createdTime: number
+      /**
+       * The channel itself said this is a comment on a live broadcast —
+       * Instagram's `live_comments` webhook field. Facebook has no such
+       * field on `feed`, so its comments arrive without this and
+       * `receiveComment` resolves live-ness from the comment's
+       * `live_broadcast_timestamp`.
+       */
+      isLive?: boolean
     }
     /**
      * Set by "process missed comments": the comment is replayed from the
@@ -358,23 +371,17 @@ export type IntegrationJobRunChallenge = {
     contactInboxId: string | ContactInboxModel
     messageId?: string
     messageCreatedAt?: Date
-    challenge: {
-      type: "step"
-      data: {
-        flowId: string
-        flowVersionId?: string
-        nodeId: string
-        stepId: string
-        attempts: number
-        lastAttemptAt: Date
-        appointmentId?: string
-      }
-    }
+    challenge: ConversationStepChallenge | ConversationQuickReplyChallenge
   }
 }
 
 export type IntegrationJobResumeFollowUp = {
   type: typeof IntegrationJobAction.resumeFollowUp
+  data: { smartDelayId: string }
+}
+
+export type IntegrationJobResumeQuickReplyFollowUp = {
+  type: typeof IntegrationJobAction.resumeQuickReplyFollowUp
   data: { smartDelayId: string }
 }
 
@@ -844,6 +851,11 @@ export type IntegrationJobProcessCommentAutomation = {
     tags?: CommentTag[]
     createdTime: number
     /**
+     * The comment was made on a live broadcast. Only `post.type: "live"`
+     * automations answer it; an `all` automation skips it (`matchPost`).
+     */
+    isLive?: boolean
+    /**
      * Run this one automation only — a replayed missed comment must not fire
      * every other active automation on the channel. Absent on webhook comments.
      */
@@ -1100,6 +1112,7 @@ export type IntegrationJobData =
   | IntegrationJobRunChallenge
   | IntegrationJobResumeWait
   | IntegrationJobResumeFollowUp
+  | IntegrationJobResumeQuickReplyFollowUp
   | IntegrationJobCreateMessage
   | IntegrationJobProcessAutomatedResponse
   | IntegrationJobSendSequenceFlow

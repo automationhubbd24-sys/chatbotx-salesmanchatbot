@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "تتبع ما إذا كان المستخدم يشير إلى مستخدمين آخرين",
       "descriptionText": "يحسب الحسابات المشار إليها في كل تعليق ويضيفها إلى إجماليات جهة الاتصال عبر جميع التعليقات. استخدم '{{total_tagged}}' لكل الحسابات المشار إليها و'{{total_new_tagged}}' للحسابات التي لم تراسل صفحتك أو لم تكن جهة اتصال من قبل."
+    },
+    "card": {
+      "reply": "الرد"
+    },
+    "liveBadge": "مباشر",
+    "postTypeDialog": {
+      "title": "اختر نوع المنشور"
     }
   },
   "condition": {
@@ -583,6 +590,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "أدخل تاريخًا بصيغة YYYY-MM-DD HH:mm أو متغيرًا",
+    "openPost": "فتح {post}",
+    "openPostLink": "فتح",
+    "postWithoutCaption": "منشور بلا وصف",
     "operator": {
       "and": "جميع الشروط",
       "or": "أي شرط"
@@ -826,6 +836,7 @@
         "channelLimit": "تم بلوغ حد القنوات.",
         "workspaceLimit": "تم بلوغ حد مساحة العمل.",
         "providerRejected": "رفض المزوّد هذا الطلب.",
+        "inProgress": "الاتصال قيد التقدم بالفعل.",
         "unknown": "حدث خطأ ما.",
         "followUpFailed": "الإعداد غير مكتمل — أكمله من إعدادات القناة."
       },
@@ -880,7 +891,9 @@
       "bannerDescription": "من المقرر حذف مساحة العمل هذه. تراجع عن الحذف أدناه لمواصلة استخدامها.",
       "pendingBlockedToast": "من المقرر حذف مساحة العمل هذه. تواصل مع مشرف مساحة العمل لاستعادة الوصول.",
       "navDisabledTooltip": "غير متاح أثناء جدولة حذف مساحة العمل",
-      "badge": "تمت جدولة الحذف"
+      "badge": "تمت جدولة الحذف",
+      "purging": "جارٍ حذف مساحة العمل.",
+      "alreadyStarted": "بدأ حذف مساحة العمل بالفعل."
     },
     "supportAccess": {
       "bannerTitle": "جلسة دعم المنصة",
@@ -2379,12 +2392,13 @@
       "broadcasts": "البث",
       "analytics": "التحليلات",
       "ecommerce": "التجارة الإلكترونية",
-      "integrations": "التكاملات",
       "channels": "القنوات",
+      "integrations": "عمليات التكامل",
       "minigames": "الألعاب المصغرة",
       "appointments": "المواعيد",
       "media": "الوسائط",
-      "ads": "الإعلانات"
+      "ads": "الإعلانات",
+      "settings": "الإعدادات"
     },
     "adReferral": {
       "label": "Ads",
@@ -2417,6 +2431,28 @@
     "title": "المسارات",
     "quickReplies": {
       "limitReached": "تم الوصول إلى الحد الأقصى للردود السريعة ({max})."
+    },
+    "quickReplySettings": {
+      "open": "إعدادات الردود السريعة",
+      "title": "تهيئة الردود السريعة",
+      "chooseNextStep": "اختر الخطوة التالية",
+      "followUp": {
+        "label": "المتابعة إذا لم يتفاعل جهة الاتصال",
+        "waitFor": "الانتظار لمدة",
+        "divider": "إذا لم يتفاعل جهة الاتصال، تابع باستخدام",
+        "windowHint": "يسمح Messenger وInstagram بالإرسال فقط خلال 24 ساعة من آخر رسالة لجهة الاتصال؛ ويتم تخطي المتابعات اللاحقة هناك.",
+        "handle": "لا يوجد تفاعل"
+      },
+      "retry": {
+        "label": "إعادة المحاولة إذا لم يكن الرد ردًا سريعًا",
+        "message": "رسالة إعادة المحاولة",
+        "messageDefault": "يُرجى النقر على أحد الخيارات أدناه 👇",
+        "count": "عدد مرات إعادة المحاولة",
+        "countOption": "{count, plural, =0 {بدون إعادة محاولة} one {# مرة} other {# مرات}}",
+        "divider": "عند تجاوز عدد مرات إعادة المحاولة",
+        "handle": "تم تجاوز عدد المحاولات",
+        "getUserDataConflict": "إعادة المحاولة غير متاحة عندما تحتوي هذه الرسالة على خطوة الحصول على بيانات المستخدم."
+      }
     },
     "buttons": {
       "limitReached": "تم الوصول إلى الحد الأقصى للأزرار ({max})."
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "لم يتم العثور على إصدارات منشورة",
     "publishVersionSuccess": "تم نشر إصدار جديد",
     "flowConfigIncomplete": "بعض الإعدادات غير مكتملة",
+    "quickReplyNextStepRequired": "اختر خطوة تالية لكل إعداد رد سريع مفعّل",
+    "quickReplyRetryMessageRequired": "أدخل رسالة إعادة المحاولة",
+    "quickReplyRetryWithGetUserData": "لا يمكن الجمع بين إعادة المحاولة وخطوة الحصول على بيانات المستخدم",
     "whatsappCarouselButtonsMismatch": "في واتساب، يجب أن يحتوي العرض الدوّار على الأزرار نفسها في كل بطاقة: إما زر رابط واحد في كل بطاقة، أو العدد نفسه من أزرار الرد في كل بطاقة",
     "whatsappCarouselLinkButtonNotAlone": "في واتساب، لا يمكن أن تحتوي بطاقة العرض الدوّار التي تتضمن زر رابط على أي أزرار أخرى. أزل الأزرار الأخرى من تلك البطاقة، أو غيّر زر الرابط إلى إجراء آخر.",
     "duplicateNodeError": "تعذّر تكرار الكتلة. يُرجى المحاولة مرة أخرى.",
@@ -4965,7 +5004,13 @@
     "postIdTab": "معرّف المنشور",
     "postIdPlaceholder": "أدخل معرّفات المنشورات، معرّفًا واحدًا في كل سطر...",
     "noPostsFound": "لم يتم العثور على منشورات",
-    "selectPageAll": "جميع الصفحات"
+    "selectPageAll": "جميع الصفحات",
+    "postTypeDialog": {
+      "liveTitle": "البث المباشر",
+      "liveDescription": "أتمتة التعليقات على البث المباشر. يدعم الردود العامة والردود الخاصة وإخفاء التعليقات والإعجاب بها.",
+      "postsTitle": "منشورات الصفحة",
+      "postsDescription": "أتمتة التعليقات على منشورات الصفحة ومقاطع الريلز. يدعم الردود العامة والردود الخاصة وإخفاء التعليقات والإعجاب بها."
+    }
   },
   "facebookLeadAdsAutomation": {
     "title": "أتمتة إعلانات العملاء المحتملين على Facebook",
@@ -5203,6 +5248,21 @@
     "invalidDescription": "هذا الرابط غير صالح أو انتهت صلاحيته.",
     "unavailableTitle": "إلغاء الاشتراك غير متاح.",
     "unavailableDescription": "مساحة العمل هذه لم تعد متاحة."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "هذا الرابط لم يعد متاحًا.",
@@ -5555,7 +5615,14 @@
       "instagramDescription": "اتصال تسجيل الدخول عبر إنستغرام. يدعم الرد العلني، والرد الخاص، وإخفاء التعليقات. الإعجاب بالتعليقات غير مدعوم.",
       "instagramFacebookTitle": "تسجيل الدخول إلى إنستغرام عبر فيسبوك",
       "instagramFacebookDescription": "إنستغرام متصل عبر صفحة فيسبوك. يدعم الرد العلني، والرد الخاص، وإخفاء التعليقات، والإعجاب بالتعليقات."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "أتمتة التعليقات على بث Instagram المباشر. يرسل ردًا خاصًا لكل معلّق أثناء البث.",
+      "postsTitle": "المنشورات والريلز",
+      "postsDescription": "أتمتة التعليقات على المنشورات ومقاطع الريلز. يدعم الردود العامة والردود الخاصة وإخفاء التعليقات."
+    },
+    "liveReplyNote": "يسمح Instagram فقط بالرد الخاص على تعليقات البث المباشر، وأثناء البث فقط. الردود العامة والإخفاء والإعجاب غير متاحة."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",

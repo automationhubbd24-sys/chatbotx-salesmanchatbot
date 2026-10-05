@@ -912,6 +912,13 @@
     "trackUserTags": {
       "label": "追踪用户是否标记了其他用户",
       "descriptionText": "统计每条评论中被标记的账号数,并在所有评论中累加到联系人的总数。使用 '{{total_tagged}}' 表示所有被标记的账号,使用 '{{total_new_tagged}}' 表示从未给您的主页发过消息或从未成为联系人的账号。"
+    },
+    "card": {
+      "reply": "回复"
+    },
+    "liveBadge": "直播",
+    "postTypeDialog": {
+      "title": "选择帖子类型"
     }
   },
   "channels": {
@@ -977,6 +984,7 @@
         "channelLimit": "已达渠道上限。",
         "workspaceLimit": "已达工作区上限。",
         "providerRejected": "服务提供方拒绝了此请求。",
+        "inProgress": "连接正在进行中。",
         "unknown": "出现问题。",
         "followUpFailed": "设置未完成——请在渠道设置中完成。"
       },
@@ -1053,6 +1061,9 @@
     },
     "datePlaceholder": "年-月-日",
     "datetimeInvalid": "输入 YYYY-MM-DD HH:mm 格式的日期或变量",
+    "openPost": "打开 {post}",
+    "openPostLink": "打开",
+    "postWithoutCaption": "没有说明文字的帖子",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "fieldGroups": {
       "analytics": "分析",
@@ -1633,7 +1644,13 @@
     },
     "title": "Facebook 留言自动化",
     "trackCommentsOn": "追踪留言的对象",
-    "trackCommentsOnDescription": "可套用到粉丝专页上的所有贴文，或缩小范围到您指定的特定贴文。"
+    "trackCommentsOnDescription": "可套用到粉丝专页上的所有贴文，或缩小范围到您指定的特定贴文。",
+    "postTypeDialog": {
+      "liveTitle": "直播",
+      "liveDescription": "自动处理直播评论。支持公开回复、私信回复、隐藏和点赞评论。",
+      "postsTitle": "主页帖子",
+      "postsDescription": "自动处理主页帖子和 Reels 的评论。支持公开回复、私信回复、隐藏和点赞评论。"
+    }
   },
   "facebookLeadAdsAutomation": {
     "addNewPage": "添加新",
@@ -3135,12 +3152,13 @@
       "broadcasts": "群发",
       "analytics": "分析",
       "ecommerce": "电子商务",
-      "integrations": "集成",
       "channels": "渠道",
+      "integrations": "集成",
       "minigames": "小游戏",
       "appointments": "预约",
       "media": "媒体",
-      "ads": "广告"
+      "ads": "广告",
+      "settings": "设置"
     },
     "adReferral": {
       "label": "Ads",
@@ -3361,6 +3379,28 @@
     },
     "quickReplies": {
       "limitReached": "已达到快速回复限制 ({max})。"
+    },
+    "quickReplySettings": {
+      "open": "快速回复设置",
+      "title": "配置快速回复",
+      "chooseNextStep": "选择下一步",
+      "followUp": {
+        "label": "联系人未互动时跟进",
+        "waitFor": "等待",
+        "divider": "如果联系人未互动，则跟进",
+        "windowHint": "Messenger 和 Instagram 仅允许在联系人最后一条消息后的 24 小时内发送消息；之后的跟进将在这些渠道上跳过。",
+        "handle": "无互动"
+      },
+      "retry": {
+        "label": "回复不是快速回复时重试",
+        "message": "重试消息",
+        "messageDefault": "请点击下方的一个选项 👇",
+        "count": "重试次数",
+        "countOption": "{count, plural, =0 {不重试} one {# 次} other {# 次}}",
+        "divider": "超过重试次数时",
+        "handle": "超过重试次数",
+        "getUserDataConflict": "当此消息包含“取得用户数据”步骤时，无法使用重试。"
+      }
     },
     "sendCarousel": {
       "addSlide": "添加幻灯片",
@@ -3673,7 +3713,14 @@
     },
     "title": "Instagram 留言自动化",
     "trackCommentsOn": "追踪留言的对象",
-    "trackCommentsOnDescription": "可套用到已连接帐号上的所有贴文，或缩小范围到您指定的特定贴文。"
+    "trackCommentsOnDescription": "可套用到已连接帐号上的所有贴文，或缩小范围到您指定的特定贴文。",
+    "postTypeDialog": {
+      "liveTitle": "Instagram 直播",
+      "liveDescription": "自动处理 Instagram 直播评论。在您直播期间向每位评论者发送私信回复。",
+      "postsTitle": "帖子和 Reels",
+      "postsDescription": "自动处理帖子和 Reels 的评论。支持公开回复、私信回复和隐藏评论。"
+    },
+    "liveReplyNote": "Instagram 仅允许对直播评论发送私信回复，且仅限直播期间。不支持公开回复、隐藏和点赞。"
   },
   "threadsCommentAutomation": {
     "title": "Threads 评论自动化",
@@ -4251,6 +4298,9 @@
     "failedToPreviewImage": "预览影像失败",
     "featureNotFound": "{feature} 找不到",
     "flowConfigIncomplete": "部分设置不完整",
+    "quickReplyNextStepRequired": "请为每个已启用的快速回复设置选择下一步",
+    "quickReplyRetryMessageRequired": "请输入重试消息",
+    "quickReplyRetryWithGetUserData": "重试不能与“取得用户数据”步骤同时使用",
     "historyDepth": "({count})",
     "humanAgentWindowExpired": "消息传递窗口已过期。联系人必须先发送消息才能重新开始对话。",
     "leaveEmptyToKeepSecret": "留空以保留目前秘密",
@@ -5362,6 +5412,21 @@
     "unavailableDescription": "此工作区不再可用。",
     "unavailableTitle": "无法取消订阅。"
   },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
+  },
   "templatesPublicPage": {
     "invalidTitle": "此链接已不再可用。",
     "invalidDescription": "此范本分享链接无效、已禁用或已过期。",
@@ -5967,6 +6032,8 @@
   "workspace": {
     "deletion": {
       "badge": "排定删除",
+      "purging": "正在删除工作区。",
+      "alreadyStarted": "工作区删除已开始。",
       "bannerDescription": "此工作区已排定删除。撤销下方的删除即可继续使用。",
       "bannerTitle": "工作区已排定删除",
       "confirmDescription": "所有联系人、设置和数据将在您确认后 24 小时内永久删除。您可以在此之前随时撤销删除。",

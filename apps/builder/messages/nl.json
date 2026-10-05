@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "Bijhouden of een gebruiker andere gebruikers tagt",
       "descriptionText": "Telt de accounts die in elke reactie worden getagd en telt ze op bij de totalen van het contact over alle reacties. Gebruik '{{total_tagged}}' voor alle getagde accounts en '{{total_new_tagged}}' voor accounts die je pagina nooit een bericht hebben gestuurd of nooit contact zijn geweest."
+    },
+    "card": {
+      "reply": "Antwoord"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Berichttype selecteren"
     }
   },
   "fields": {
@@ -2049,12 +2056,13 @@
       "broadcasts": "Uitzendingen",
       "analytics": "Analyse",
       "ecommerce": "E-commerce",
-      "integrations": "Integraties",
       "channels": "Kanalen",
+      "integrations": "Integraties",
       "minigames": "Minigames",
       "appointments": "Afspraken",
       "media": "Media",
-      "ads": "Advertenties"
+      "ads": "Advertenties",
+      "settings": "Instellingen"
     },
     "adReferral": {
       "label": "Ads",
@@ -2087,6 +2095,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Voer een datum in als YYYY-MM-DD HH:mm of als variabele",
+    "openPost": "{post} openen",
+    "openPostLink": "Openen",
+    "postWithoutCaption": "Bericht zonder bijschrift",
     "operator": {
       "and": "Alle voorwaarden",
       "or": "Een of meer voorwaarden"
@@ -2275,6 +2286,28 @@
     "title": "Flows",
     "quickReplies": {
       "limitReached": "Limiet voor snelle antwoorden bereikt ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Instellingen voor snelle antwoorden",
+      "title": "Snelle antwoorden configureren",
+      "chooseNextStep": "Volgende stap kiezen",
+      "followUp": {
+        "label": "Opvolgen als het contact niet heeft gereageerd",
+        "waitFor": "Wacht",
+        "divider": "Als het contact niet heeft gereageerd, opvolgen met",
+        "windowHint": "Messenger en Instagram staan verzenden alleen toe binnen 24 uur na het laatste bericht van het contact; latere opvolgingen worden daar overgeslagen.",
+        "handle": "Geen reactie"
+      },
+      "retry": {
+        "label": "Opnieuw vragen als het antwoord geen snel antwoord is",
+        "message": "Bericht voor opnieuw vragen",
+        "messageDefault": "Tik op een van de opties hieronder 👇",
+        "count": "Aantal pogingen",
+        "countOption": "{count, plural, =0 {Geen pogingen} one {# keer} other {# keer}}",
+        "divider": "Wanneer het aantal pogingen is overschreden",
+        "handle": "Pogingen overschreden",
+        "getUserDataConflict": "Opnieuw vragen is niet beschikbaar als dit bericht een stap Gebruikersgegevens ophalen bevat."
+      }
     },
     "buttons": {
       "limitReached": "Knoppenlimiet bereikt ({max})."
@@ -3282,6 +3315,7 @@
         "channelLimit": "Kanaallimiet bereikt.",
         "workspaceLimit": "Werkruimtelimiet bereikt.",
         "providerRejected": "De provider heeft dit verzoek geweigerd.",
+        "inProgress": "Verbinding is al bezig.",
         "unknown": "Er is iets misgegaan.",
         "followUpFailed": "Instellen niet voltooid — rond dit af via de kanaalinstellingen."
       },
@@ -3336,7 +3370,9 @@
       "bannerDescription": "Deze workspace staat gepland voor verwijdering. Maak de verwijdering hieronder ongedaan om de workspace te blijven gebruiken.",
       "pendingBlockedToast": "Deze workspace staat gepland voor verwijdering. Neem contact op met een workspacebeheerder om de toegang te herstellen.",
       "navDisabledTooltip": "Niet beschikbaar zolang de verwijdering van de workspace gepland staat",
-      "badge": "Verwijdering gepland"
+      "badge": "Verwijdering gepland",
+      "purging": "Het verwijderen van de werkruimte is bezig.",
+      "alreadyStarted": "Het verwijderen van de werkruimte is al gestart."
     },
     "supportAccess": {
       "bannerTitle": "Platformondersteuningssessie",
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "Geen gepubliceerde versies gevonden",
     "publishVersionSuccess": "Er is een nieuwe versie gepubliceerd",
     "flowConfigIncomplete": "Sommige configuraties zijn onvolledig",
+    "quickReplyNextStepRequired": "Kies een volgende stap voor elke ingeschakelde instelling voor snelle antwoorden",
+    "quickReplyRetryMessageRequired": "Voer een bericht voor opnieuw vragen in",
+    "quickReplyRetryWithGetUserData": "Opnieuw vragen kan niet worden gecombineerd met een stap Gebruikersgegevens ophalen",
     "whatsappCarouselButtonsMismatch": "Op WhatsApp moet een carrousel op elke kaart dezelfde knoppen hebben: één linkknop op elke kaart, of hetzelfde aantal antwoordknoppen op elke kaart",
     "whatsappCarouselLinkButtonNotAlone": "Op WhatsApp mag een carrouselkaart met een linkknop geen andere knoppen hebben. Verwijder de andere knoppen op die kaart, of wijzig de linkknop in een andere actie.",
     "duplicateNodeError": "Het blok kon niet worden gedupliceerd. Probeer het opnieuw.",
@@ -4965,7 +5004,13 @@
     "chooseSpecificPosts": "Berichten kiezen...",
     "postIdTab": "Bericht-ID",
     "postIdPlaceholder": "Voer bericht-ID's in, één per regel...",
-    "noPostsFound": "Geen berichten gevonden"
+    "noPostsFound": "Geen berichten gevonden",
+    "postTypeDialog": {
+      "liveTitle": "Livestream",
+      "liveDescription": "Automatiseer reacties op livestreams. Ondersteunt openbare antwoorden, privéantwoorden en het verbergen en liken van reacties.",
+      "postsTitle": "Paginaberichten",
+      "postsDescription": "Automatiseer reacties op paginaberichten en reels. Ondersteunt openbare antwoorden, privéantwoorden en het verbergen en liken van reacties."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Automatisering van Instagram-opmerkingen",
@@ -5072,7 +5117,14 @@
       "instagramDescription": "Verbinding via Instagram Login. Ondersteunt openbare antwoorden, privéantwoorden en het verbergen van opmerkingen. Opmerkingen leuk vinden wordt niet ondersteund.",
       "instagramFacebookTitle": "Instagram Login met Facebook",
       "instagramFacebookDescription": "Instagram gekoppeld via een Facebook-pagina. Ondersteunt openbare antwoorden, privéantwoorden, het verbergen van opmerkingen en het leuk vinden van opmerkingen."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatiseer reacties op Instagram Live. Stuurt elke reageerder een privéantwoord terwijl je live bent.",
+      "postsTitle": "Berichten en reels",
+      "postsDescription": "Automatiseer reacties op berichten en reels. Ondersteunt openbare antwoorden, privéantwoorden en het verbergen van reacties."
+    },
+    "liveReplyNote": "Instagram staat op een Live-reactie alleen een privéantwoord toe, en alleen terwijl je live bent. Openbare antwoorden, verbergen en liken zijn niet beschikbaar."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -5579,6 +5631,21 @@
     "invalidDescription": "Deze link is ongeldig of verlopen.",
     "unavailableTitle": "Afmelden niet beschikbaar.",
     "unavailableDescription": "Deze werkruimte is niet meer beschikbaar."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Deze link is niet meer beschikbaar.",

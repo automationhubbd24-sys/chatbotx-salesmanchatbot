@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "Registar se um utilizador marca outros utilizadores",
       "descriptionText": "Conta as contas identificadas em cada comentário e soma-as aos totais do contacto em todos os comentários. Utilize '{{total_tagged}}' para todas as contas identificadas e '{{total_new_tagged}}' para contas que nunca enviaram mensagem à sua página nem foram contactos."
+    },
+    "card": {
+      "reply": "Resposta"
+    },
+    "liveBadge": "Em direto",
+    "postTypeDialog": {
+      "title": "Selecione o tipo de publicação"
     }
   },
   "condition": {
@@ -583,6 +590,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Introduza uma data no formato YYYY-MM-DD HH:mm ou uma variável",
+    "openPost": "Abrir {post}",
+    "openPostLink": "Abrir",
+    "postWithoutCaption": "Publicação sem legenda",
     "operator": {
       "and": "Todas as condições",
       "or": "Qualquer condição"
@@ -2237,12 +2247,13 @@
       "broadcasts": "Difusões",
       "analytics": "Análises",
       "ecommerce": "Comércio eletrónico",
-      "integrations": "Integrações",
       "channels": "Canais",
+      "integrations": "Integrações",
       "minigames": "Minijogos",
       "appointments": "Marcações",
       "media": "Multimédia",
-      "ads": "Anúncios"
+      "ads": "Anúncios",
+      "settings": "Definições"
     },
     "adReferral": {
       "label": "Ads",
@@ -2275,6 +2286,28 @@
     "title": "Fluxos",
     "quickReplies": {
       "limitReached": "Foi atingido o limite de respostas rápidas ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Definições de respostas rápidas",
+      "title": "Configurar respostas rápidas",
+      "chooseNextStep": "Escolher o passo seguinte",
+      "followUp": {
+        "label": "Fazer seguimento se o contacto não interagir",
+        "waitFor": "Aguardar",
+        "divider": "Se o contacto não interagir, fazer seguimento com",
+        "windowHint": "O Messenger e o Instagram só permitem enviar mensagens até 24 horas após a última mensagem do contacto; os seguimentos posteriores são ignorados nesses canais.",
+        "handle": "Sem interação"
+      },
+      "retry": {
+        "label": "Tentar novamente se a resposta não for uma resposta rápida",
+        "message": "Mensagem de nova tentativa",
+        "messageDefault": "Por favor, toque numa das opções abaixo 👇",
+        "count": "Número de tentativas",
+        "countOption": "{count, plural, =0 {Sem novas tentativas} one {# vez} other {# vezes}}",
+        "divider": "Quando o número de tentativas for excedido",
+        "handle": "Tentativas excedidas",
+        "getUserDataConflict": "A nova tentativa não está disponível quando esta mensagem contém um passo Obter dados do utilizador."
+      }
     },
     "buttons": {
       "limitReached": "Foi atingido o limite de botões ({max})."
@@ -3282,6 +3315,7 @@
         "channelLimit": "Limite de canais atingido.",
         "workspaceLimit": "Limite do espaço de trabalho atingido.",
         "providerRejected": "O fornecedor rejeitou este pedido.",
+        "inProgress": "A ligação já está em curso.",
         "unknown": "Algo correu mal.",
         "followUpFailed": "Configuração incompleta — conclua nas definições do canal."
       },
@@ -3336,7 +3370,9 @@
       "bannerDescription": "A eliminação deste espaço de trabalho está agendada. Anule a eliminação abaixo para continuar a utilizá-lo.",
       "pendingBlockedToast": "A eliminação deste espaço de trabalho está agendada. Contacte um administrador do espaço de trabalho para restaurar o acesso.",
       "navDisabledTooltip": "Indisponível enquanto a eliminação do espaço de trabalho estiver agendada",
-      "badge": "Eliminação agendada"
+      "badge": "Eliminação agendada",
+      "purging": "A eliminação do espaço de trabalho está em curso.",
+      "alreadyStarted": "A eliminação do espaço de trabalho já começou."
     },
     "supportAccess": {
       "bannerTitle": "Sessão de suporte da plataforma",
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "Não foram encontradas versões publicadas",
     "publishVersionSuccess": "Foi publicada uma nova versão",
     "flowConfigIncomplete": "Algumas configurações estão incompletas",
+    "quickReplyNextStepRequired": "Escolha um passo seguinte para cada definição de resposta rápida ativada",
+    "quickReplyRetryMessageRequired": "Introduza uma mensagem de nova tentativa",
+    "quickReplyRetryWithGetUserData": "A nova tentativa não pode ser combinada com um passo Obter dados do utilizador",
     "whatsappCarouselButtonsMismatch": "No WhatsApp, um carrossel tem de ter os mesmos botões em cada cartão: um único botão de ligação em cada cartão, ou o mesmo número de botões de resposta em cada cartão",
     "whatsappCarouselLinkButtonNotAlone": "No WhatsApp, um cartão de carrossel com um botão de ligação não pode ter outros botões. Remova os outros botões nesse cartão ou altere o botão de ligação para outra ação.",
     "duplicateNodeError": "Não foi possível duplicar o bloco. Tente novamente.",
@@ -4961,7 +5000,13 @@
     "chooseSpecificPosts": "Escolher publicações...",
     "postIdTab": "ID da publicação",
     "postIdPlaceholder": "Introduza os IDs das publicações, um por linha...",
-    "noPostsFound": "Não foram encontradas publicações"
+    "noPostsFound": "Não foram encontradas publicações",
+    "postTypeDialog": {
+      "liveTitle": "Transmissão em direto",
+      "liveDescription": "Automatize comentários em transmissões em direto. Suporta respostas públicas, respostas privadas, ocultar e gostar de comentários.",
+      "postsTitle": "Publicações da Página",
+      "postsDescription": "Automatize comentários em publicações e reels da Página. Suporta respostas públicas, respostas privadas, ocultar e gostar de comentários."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Automatização de comentários do Instagram",
@@ -5068,7 +5113,14 @@
       "instagramDescription": "Ligação através do início de sessão do Instagram. Suporta respostas públicas e privadas e a ocultação de comentários. Não permite colocar Gosto em comentários.",
       "instagramFacebookTitle": "Início de sessão do Instagram com o Facebook",
       "instagramFacebookDescription": "Instagram ligado através de uma Página do Facebook. Suporta respostas públicas e privadas, a ocultação de comentários e a colocação de Gosto em comentários."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatize comentários no Instagram Live. Envia uma resposta privada a cada pessoa que comenta enquanto está em direto.",
+      "postsTitle": "Publicações e reels",
+      "postsDescription": "Automatize comentários em publicações e reels. Suporta respostas públicas, respostas privadas e ocultar comentários."
+    },
+    "liveReplyNote": "O Instagram só permite uma resposta privada a um comentário em direto, e apenas enquanto está em direto. Respostas públicas, ocultar e gostar não estão disponíveis."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -5579,6 +5631,21 @@
     "invalidDescription": "Esta ligação é inválida ou expirou.",
     "unavailableTitle": "Cancelamento de subscrição indisponível.",
     "unavailableDescription": "Este espaço de trabalho já não está disponível."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Esta ligação já não está disponível.",

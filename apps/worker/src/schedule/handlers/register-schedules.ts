@@ -34,6 +34,20 @@ export const registerSchedules = async () => {
   }
 
   await scheduleQueue.upsertJobScheduler(
+    ScheduleJobData.dispatchProfileSnapshots,
+    {
+      pattern: "* * * * *",
+    },
+    {
+      name: ScheduleJobData.dispatchProfileSnapshots,
+      data: {
+        type: ScheduleJobData.dispatchProfileSnapshots,
+        data: {},
+      },
+    },
+  )
+
+  await scheduleQueue.upsertJobScheduler(
     ScheduleJobData.enqueueBroadcast,
     {
       pattern: "* * * * *",
@@ -309,6 +323,19 @@ export const registerSchedules = async () => {
       name: ScheduleJobData.purgeWhatsappSignupSessions,
       data: {
         type: ScheduleJobData.purgeWhatsappSignupSessions,
+        data: {},
+      },
+    },
+  )
+  await scheduleQueue.upsertJobScheduler(
+    ScheduleJobData.purgeExpiredConnectSessions,
+    {
+      pattern: "0 * * * *",
+    },
+    {
+      name: ScheduleJobData.purgeExpiredConnectSessions,
+      data: {
+        type: ScheduleJobData.purgeExpiredConnectSessions,
         data: {},
       },
     },

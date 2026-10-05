@@ -573,6 +573,13 @@
     "trackUserTags": {
       "label": "Registrar si un usuario etiqueta a otros usuarios",
       "descriptionText": "Cuenta las cuentas etiquetadas en cada comentario y las suma a los totales del contacto en todos los comentarios. Usa '{{total_tagged}}' para todas las cuentas etiquetadas y '{{total_new_tagged}}' para las que nunca han escrito a tu página ni han sido contacto."
+    },
+    "card": {
+      "reply": "Respuesta"
+    },
+    "liveBadge": "En vivo",
+    "postTypeDialog": {
+      "title": "Selecciona el tipo de publicación"
     }
   },
   "condition": {
@@ -583,6 +590,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Introduce un fecha as YYYY-MM-DD HH:mm o un variable",
+    "openPost": "Abrir {post}",
+    "openPostLink": "Abrir",
+    "postWithoutCaption": "Publicación sin texto",
     "operator": {
       "and": "Todos condiciones",
       "or": "Cualquier condición"
@@ -826,6 +836,7 @@
         "channelLimit": "Se alcanzó el límite de canales.",
         "workspaceLimit": "Se alcanzó el límite del espacio de trabajo.",
         "providerRejected": "El proveedor rechazó esta solicitud.",
+        "inProgress": "La conexión ya está en curso.",
         "unknown": "Algo salió mal.",
         "followUpFailed": "Configuración incompleta: complétala desde los ajustes del canal."
       },
@@ -880,7 +891,9 @@
       "bannerDescription": "This espacio de trabajo es scheduled para deletion. Undo el deletion below un continue using it.",
       "pendingBlockedToast": "This espacio de trabajo es scheduled para deletion. Contacto un espacio de trabajo admin un restore access.",
       "navDisabledTooltip": "Undisponible while espacio de trabajo deletion es scheduled",
-      "badge": "Eliminación programada"
+      "badge": "Eliminación programada",
+      "purging": "La eliminación del espacio de trabajo está en curso.",
+      "alreadyStarted": "La eliminación del espacio de trabajo ya comenzó."
     },
     "supportAccess": {
       "bannerTitle": "Sesión de soporte de la plataforma",
@@ -2379,12 +2392,13 @@
       "broadcasts": "Difusiones",
       "analytics": "Analítica",
       "ecommerce": "Comercio electrónico",
-      "integrations": "Integraciones",
       "channels": "Canales",
+      "integrations": "Integraciones",
       "minigames": "Minijuegos",
       "appointments": "Citas",
       "media": "Medios",
-      "ads": "Anuncios"
+      "ads": "Anuncios",
+      "settings": "Ajustes"
     },
     "adReferral": {
       "label": "Ads",
@@ -2417,6 +2431,28 @@
     "title": "Flujos",
     "quickReplies": {
       "limitReached": "Quick respuesta limit reached ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Configuración de respuestas rápidas",
+      "title": "Configurar respuestas rápidas",
+      "chooseNextStep": "Elegir el siguiente paso",
+      "followUp": {
+        "label": "Hacer seguimiento si el contacto no ha interactuado",
+        "waitFor": "Esperar",
+        "divider": "Si el contacto no ha interactuado, hacer seguimiento con",
+        "windowHint": "Messenger e Instagram solo permiten enviar mensajes dentro de las 24 horas posteriores al último mensaje del contacto; allí se omiten los seguimientos posteriores.",
+        "handle": "Sin interacción"
+      },
+      "retry": {
+        "label": "Reintentar si la respuesta no es una respuesta rápida",
+        "message": "Mensaje de reintento",
+        "messageDefault": "Por favor, toca una de las opciones de abajo 👇",
+        "count": "Número de reintentos",
+        "countOption": "{count, plural, =0 {Sin reintentos} one {# vez} other {# veces}}",
+        "divider": "Cuando se supere el número de reintentos",
+        "handle": "Reintentos superados",
+        "getUserDataConflict": "El reintento no está disponible cuando este mensaje contiene un paso Obtener datos del usuario."
+      }
     },
     "buttons": {
       "limitReached": "Se alcanzó el límite de botones ({max})."
@@ -3478,6 +3514,9 @@
     "noVersionsFound": "No publicado versions found",
     "publishVersionSuccess": "A nuevo version tiene been publicado",
     "flowConfigIncomplete": "Some configurations son incomplete",
+    "quickReplyNextStepRequired": "Elige un siguiente paso para cada configuración de respuesta rápida activada",
+    "quickReplyRetryMessageRequired": "Introduce un mensaje de reintento",
+    "quickReplyRetryWithGetUserData": "El reintento no se puede combinar con un paso Obtener datos del usuario",
     "whatsappCarouselButtonsMismatch": "En WhatsApp, un carrusel necesita los mismos botones en cada tarjeta: un único botón de enlace en cada tarjeta, o el mismo número de botones de respuesta en cada tarjeta",
     "whatsappCarouselLinkButtonNotAlone": "En WhatsApp, una tarjeta de carrusel con un botón de enlace no puede tener otros botones. Elimina los otros botones de esa tarjeta o cambia el botón de enlace a otra acción.",
     "duplicateNodeError": "Could not duplicate el block. Por favor, try again.",
@@ -4477,62 +4516,62 @@
     "description": "Share este código so people Abrir tu tracking enlace."
   },
   "trigger": {
-    "when": "When este happens",
+    "when": "Cuando pase esto",
     "conditions": {
-      "tagApplied": "Etiqueta Applied",
-      "tagRemoved": "Etiqueta Removed",
-      "dateTimeBasedTrigger": "FechaTiempo Based Desencadenador",
-      "customFieldValueChanged": "Personalizado Campo Changed",
+      "tagApplied": "Etiqueta aplicada",
+      "tagRemoved": "Etiqueta quitada",
+      "dateTimeBasedTrigger": "Desencadenador por fecha y hora",
+      "customFieldValueChanged": "Campo personalizado modificado",
       "contactInfoUpdated": "Teléfono o correo actualizado",
-      "conversationTransferredToHuman": "Conversation transferred un human",
-      "conversationTransferredToBot": "Conversation transferred un bot",
+      "conversationTransferredToHuman": "Conversación transferida a una persona",
+      "conversationTransferredToBot": "Conversación transferida al bot",
       "newContact": "Nuevo Contacto",
-      "contactUnsubscribedFormBroadcast": "Contacto Cancelar suscripciónd desde Broadcast",
+      "contactUnsubscribedFormBroadcast": "Contacto dado de baja de un envío masivo",
       "archived": "Archivado",
       "followUp": "Seguimiento",
       "conversationAssigned": "Conversación asignada",
       "conversationUnassigned": "Conversación sin asignar",
-      "incomingCall": "Incoming Ctodos",
-      "missedAudioCall": "Missed Audio Ctodos",
-      "callEnded": "Ctodos Ended",
+      "incomingCall": "Llamada entrante",
+      "missedAudioCall": "Llamada de voz perdida",
+      "callEnded": "Llamada finalizada",
       "ticketCreated": "Ticket Creado",
-      "ticketMovedToStage": "Ticket Moved un Setiquetae",
-      "ticketValueChanged": "Ticket Valor Changed",
-      "ticketStatusChanged": "Ticket Estado Changed",
+      "ticketMovedToStage": "Ticket movido de etapa",
+      "ticketValueChanged": "Valor del ticket modificado",
+      "ticketStatusChanged": "Estado del ticket modificado",
       "ticketPriorityChanged": "Prioridad del ticket modificada",
-      "subscribedToSequence": "Suscrito un Secuencia",
-      "unsubscribedFromSequence": "Cancelar suscripciónd desde Secuencia",
+      "subscribedToSequence": "Suscrito a una secuencia",
+      "unsubscribedFromSequence": "Baja de una secuencia",
       "WhatsappShoppingCartSent": "Carrito de WhatsApp enviado",
-      "userAskedAboutProduct": "Usuario Asked About Product",
+      "userAskedAboutProduct": "El usuario preguntó por un producto",
       "cartAbandoned": "Carrito abandonado",
-      "newOrder": "Nuevo Order",
+      "newOrder": "Pedido nuevo",
       "orderAccepted": "Pedido aceptado",
       "orderShipped": "Pedido enviado",
       "orderConcluded": "Pedido completado",
       "orderCancelled": "Pedido cancelado",
-      "categoryAddedToCart": "Category Added un Cart",
-      "productAddedToCart": "Product Added un Cart",
-      "productRemovedFromCart": "Product Removed desde Cart",
+      "categoryAddedToCart": "Categoría añadida al carrito",
+      "productAddedToCart": "Producto añadido al carrito",
+      "productRemovedFromCart": "Producto quitado del carrito",
       "productOrdered": "Producto pedido",
-      "contactReferredANewContact": "Contacto Referred un Nuevo Contacto",
-      "contactReferredExistingContact": "Contacto Referred Existing Contacto",
+      "contactReferredANewContact": "El contacto refirió a un contacto nuevo",
+      "contactReferredExistingContact": "El contacto refirió a un contacto existente",
       "callRecorded": "Llamada grabada",
       "callTranscribed": "Llamada transcrita"
     },
     "actions": {
       "addTag": "Añadir Etiqueta",
       "removeTag": "Quitar Etiqueta",
-      "setCustomField": "Establecer Personalizado Campo",
-      "clearCustomField": "Clear Personalizado Campo",
-      "startAnotherFlow": "Start Another Flujo",
+      "setCustomField": "Establecer campo personalizado",
+      "clearCustomField": "Borrar campo personalizado",
+      "startAnotherFlow": "Iniciar otro flujo",
       "notifyAdmins": "Notificar a los administradores",
-      "transferConversationToHuman": "Transfer Conversation un Human",
+      "transferConversationToHuman": "Transferir la conversación a una persona",
       "sendMetaCapiEvent": "Enviar evento Meta CAPI"
     },
-    "triggerGoesOff": "Desencadenador goes off",
+    "triggerGoesOff": "El desencadenador se activa",
     "before": "Antes",
     "after": "Después",
-    "atTheDayOf": "At el día of",
+    "atTheDayOf": "El día de",
     "day": "Día",
     "hour": "Hora",
     "minute": "Minuto",
@@ -4965,7 +5004,13 @@
     "chooseSpecificPosts": "Elegir publicaciones...",
     "postIdTab": "ID de la publicación",
     "postIdPlaceholder": "Ingresa los ID de las publicaciones, uno por línea...",
-    "noPostsFound": "No se encontraron publicaciones"
+    "noPostsFound": "No se encontraron publicaciones",
+    "postTypeDialog": {
+      "liveTitle": "Transmisión en vivo",
+      "liveDescription": "Automatiza los comentarios en transmisiones en vivo. Admite respuestas públicas, respuestas privadas, ocultar comentarios y darles me gusta.",
+      "postsTitle": "Publicaciones de la página",
+      "postsDescription": "Automatiza los comentarios en publicaciones y reels de la página. Admite respuestas públicas, respuestas privadas, ocultar comentarios y darles me gusta."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Automatización de comentarios de Instagram",
@@ -5072,7 +5117,14 @@
       "instagramDescription": "Conexión de Instagram Login. Admite respuesta pública, respuesta privada y ocultar comentarios. No admite dar me gusta a los comentarios.",
       "instagramFacebookTitle": "Instagram Login con Facebook",
       "instagramFacebookDescription": "Instagram conectado a través de una página de Facebook. Admite respuesta pública, respuesta privada, ocultar comentarios y dar me gusta a los comentarios."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Automatiza los comentarios en Instagram Live. Envía una respuesta privada a cada persona que comenta mientras estás en vivo.",
+      "postsTitle": "Publicaciones y reels",
+      "postsDescription": "Automatiza los comentarios en publicaciones y reels. Admite respuestas públicas, respuestas privadas y ocultar comentarios."
+    },
+    "liveReplyNote": "Instagram solo permite una respuesta privada a un comentario en vivo, y solo mientras estás en vivo. No se pueden usar respuestas públicas, ocultar ni dar me gusta."
   },
   "threadsCommentAutomation": {
     "title": "Threads Comment Automation",
@@ -5579,6 +5631,21 @@
     "invalidDescription": "This enlace es no válido o tiene expired.",
     "unavailableTitle": "Unsubscribe undisponible.",
     "unavailableDescription": "This workspace es no longer disponible."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Este enlace ya no está disponible.",

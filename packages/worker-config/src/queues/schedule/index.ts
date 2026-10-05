@@ -31,6 +31,7 @@ export const ScheduleJobData = {
   reconcileMetaCatalogSyncs: "reconcileMetaCatalogSyncs",
   purgeCoexistStaging: "purgeCoexistStaging",
   purgeWhatsappSignupSessions: "purgeWhatsappSignupSessions",
+  purgeExpiredConnectSessions: "purgeExpiredConnectSessions",
   purgeWorkspaces: "purgeWorkspaces",
   clearExpiredSupportAccess: "clearExpiredSupportAccess",
   purgeBroadcasts: "purgeBroadcasts",
@@ -43,6 +44,7 @@ export const ScheduleJobData = {
   // WhatsApp calling.
   purgeExpiredCallRecordings: "purgeExpiredCallRecordings",
   sweepStaleWhatsappCalls: "sweepStaleWhatsappCalls",
+  dispatchProfileSnapshots: "dispatchProfileSnapshots",
 } as const
 
 /**
@@ -193,6 +195,10 @@ export type ScheduleJobPurgeWhatsappSignupSessions = {
   type: typeof ScheduleJobData.purgeWhatsappSignupSessions
   data: Record<string, never>
 }
+export type ScheduleJobPurgeExpiredConnectSessions = {
+  type: typeof ScheduleJobData.purgeExpiredConnectSessions
+  data: Record<string, never>
+}
 
 export type ScheduleJobPurgeWorkspaces = {
   type: typeof ScheduleJobData.purgeWorkspaces
@@ -201,6 +207,11 @@ export type ScheduleJobPurgeWorkspaces = {
 
 export type ScheduleJobClearExpiredSupportAccess = {
   type: typeof ScheduleJobData.clearExpiredSupportAccess
+  data: Record<string, never>
+}
+
+export type ScheduleJobDispatchProfileSnapshots = {
+  type: typeof ScheduleJobData.dispatchProfileSnapshots
   data: Record<string, never>
 }
 
@@ -275,8 +286,10 @@ export type ScheduleJobData =
   | ScheduleJobReconcileMetaCatalogSyncs
   | ScheduleJobPurgeCoexistStaging
   | ScheduleJobPurgeWhatsappSignupSessions
+  | ScheduleJobPurgeExpiredConnectSessions
   | ScheduleJobPurgeWorkspaces
   | ScheduleJobClearExpiredSupportAccess
+  | ScheduleJobDispatchProfileSnapshots
   | ScheduleJobPurgeBroadcasts
   | ScheduleJobPurgeAutomationThrottle
   | ScheduleJobPurgeErrorLogs

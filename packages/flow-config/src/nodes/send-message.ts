@@ -7,6 +7,11 @@ import {
   chooseChannelStepSchema,
 } from "../steps/choose-channel"
 import { getUserDataStepSchema } from "../steps/get-user-data"
+import {
+  quickReplySettingsDefaultFn,
+  quickReplySettingsSchema,
+  refineQuickReplySettings,
+} from "../steps/quick-reply-settings"
 import { sendAudioStepSchema } from "../steps/send-audio"
 import { sendCardStepSchema } from "../steps/send-card"
 import { sendCarouselStepSchema } from "../steps/send-carousel"
@@ -32,33 +37,45 @@ import {
 } from "./base"
 
 export const sendMessageNodeSchema = baseNodeSchema.extend({
-  type: z.literal(nodeTypeSchema.enum.sendMessage),
+  type: z
+    .literal(nodeTypeSchema.enum.sendMessage)
+    .describe(
+      'Node type "sendMessage": sends messages. `data.details.beforeStep` selects the channel, `steps` are the messages/actions in order, `quickReplies` are quick-reply buttons shown after the last message.',
+    ),
   data: baseNodeDataSchema.extend({
-    details: z.object({
-      beforeStep: chooseChannelStepSchema,
-      steps: z.array(
-        z.discriminatedUnion("stepType", [
-          sendAudioStepSchema,
-          sendFileStepSchema,
-          sendImageStepSchema,
-          sendMultipleImagesStepSchema,
-          sendTextStepSchema,
-          sendVideoStepSchema,
-          sendCardStepSchema,
-          sendCarouselStepSchema,
-          getUserDataStepSchema,
-          sendGifStepSchema,
-          typingStepSchema,
-          sendWaTemplateMessageStepSchema,
-          sendMessengerTemplateMessageStepSchema,
-          whatsappOptionListStepSchema,
-          whatsappCallButtonStepSchema,
-          whatsappFlowStepSchema,
-          ...actionSteps,
-        ]),
-      ),
-      quickReplies: z.array(buttonStepSchema).max(MAX_QUICK_REPLIES),
-    }),
+    details: z
+      .object({
+        beforeStep: chooseChannelStepSchema,
+        steps: z.array(
+          z.discriminatedUnion("stepType", [
+            sendAudioStepSchema,
+            sendFileStepSchema,
+            sendImageStepSchema,
+            sendMultipleImagesStepSchema,
+            sendTextStepSchema,
+            sendVideoStepSchema,
+            sendCardStepSchema,
+            sendCarouselStepSchema,
+            getUserDataStepSchema,
+            sendGifStepSchema,
+            typingStepSchema,
+            sendWaTemplateMessageStepSchema,
+            sendMessengerTemplateMessageStepSchema,
+            whatsappOptionListStepSchema,
+            whatsappCallButtonStepSchema,
+            whatsappFlowStepSchema,
+            ...actionSteps,
+          ]),
+        ),
+        quickReplies: z
+          .array(buttonStepSchema)
+          .max(MAX_QUICK_REPLIES)
+          .describe(
+            `Quick-reply buttons shown after the last message (max ${MAX_QUICK_REPLIES}); use [] for none.`,
+          ),
+        quickReplySettings: quickReplySettingsSchema.optional(),
+      })
+      .superRefine(refineQuickReplySettings),
   }),
 })
 export type SendMessageNodeSchema = z.infer<typeof sendMessageNodeSchema>
@@ -88,6 +105,7 @@ export const sendMessageNodeDefaultFn = (
       beforeStep: chooseChannelStepDefaultFn(),
       steps: [],
       quickReplies: [],
+      quickReplySettings: quickReplySettingsDefaultFn(),
       ...props.detailProps,
     },
   },

@@ -615,6 +615,13 @@
     "trackUserTags": {
       "label": "Theo dõi khi người dùng gắn thẻ người khác",
       "descriptionText": "Đếm số tài khoản được tag trong mỗi bình luận và cộng dồn vào tổng của khách hàng qua mọi bình luận. Dùng '{{total_tagged}}' cho tất cả tài khoản được tag và '{{total_new_tagged}}' cho các tài khoản chưa từng nhắn tin với trang hoặc chưa từng là khách hàng."
+    },
+    "card": {
+      "reply": "Trả lời"
+    },
+    "liveBadge": "Live",
+    "postTypeDialog": {
+      "title": "Chọn loại bài viết"
     }
   },
   "condition": {
@@ -625,6 +632,9 @@
     "datePlaceholder": "YYYY-MM-DD",
     "datetimePlaceholder": "YYYY-MM-DD HH:mm",
     "datetimeInvalid": "Nhập ngày dạng YYYY-MM-DD HH:mm hoặc một biến",
+    "openPost": "Mở {post}",
+    "openPostLink": "Mở",
+    "postWithoutCaption": "Bài viết không có chú thích",
     "operator": {
       "and": "Tất cả điều kiện",
       "or": "Bất kỳ điều kiện nào"
@@ -868,6 +878,7 @@
         "channelLimit": "Đã đạt giới hạn kênh.",
         "workspaceLimit": "Đã đạt giới hạn không gian làm việc.",
         "providerRejected": "Nhà cung cấp đã từ chối yêu cầu này.",
+        "inProgress": "Kết nối đang được thực hiện.",
         "unknown": "Đã xảy ra lỗi.",
         "followUpFailed": "Thiết lập chưa hoàn tất — hãy hoàn tất trong cài đặt kênh."
       },
@@ -922,7 +933,9 @@
       "bannerDescription": "Workspace này đã được lên lịch xóa. Hãy hoàn tác lịch xóa bên dưới để tiếp tục sử dụng workspace.",
       "pendingBlockedToast": "Workspace này đã được lên lịch xóa. Hãy liên hệ quản trị viên workspace để khôi phục quyền truy cập.",
       "navDisabledTooltip": "Không khả dụng khi workspace đã được lên lịch xóa",
-      "badge": "Đã lên lịch xóa"
+      "badge": "Đã lên lịch xóa",
+      "purging": "Đang xóa workspace.",
+      "alreadyStarted": "Quá trình xóa workspace đã bắt đầu."
     },
     "supportAccess": {
       "bannerTitle": "Phiên hỗ trợ nền tảng",
@@ -2421,12 +2434,13 @@
       "broadcasts": "Phát sóng",
       "analytics": "Phân tích",
       "ecommerce": "Thương mại điện tử",
-      "integrations": "Tích hợp",
       "channels": "Kênh",
+      "integrations": "Tích hợp",
       "minigames": "Minigame",
       "appointments": "Lịch hẹn",
       "media": "Phương tiện",
-      "ads": "Quảng cáo"
+      "ads": "Quảng cáo",
+      "settings": "Cài đặt"
     },
     "adReferral": {
       "label": "Ads",
@@ -2459,6 +2473,28 @@
     "title": "Luồng",
     "quickReplies": {
       "limitReached": "Đã đạt giới hạn trả lời nhanh ({max})."
+    },
+    "quickReplySettings": {
+      "open": "Cài đặt trả lời nhanh",
+      "title": "Cấu hình trả lời nhanh",
+      "chooseNextStep": "Chọn bước tiếp theo",
+      "followUp": {
+        "label": "Nhắc lại nếu liên hệ chưa tương tác",
+        "waitFor": "Chờ trong",
+        "divider": "Nếu liên hệ chưa tương tác, nhắc lại bằng",
+        "windowHint": "Messenger và Instagram chỉ cho phép gửi trong vòng 24 giờ kể từ tin nhắn cuối của liên hệ; các lần nhắc lại sau đó sẽ bị bỏ qua trên các kênh này.",
+        "handle": "Không tương tác"
+      },
+      "retry": {
+        "label": "Thử lại nếu câu trả lời không phải Trả lời nhanh",
+        "message": "Tin nhắn thử lại",
+        "messageDefault": "Vui lòng chọn một trong các lựa chọn bên dưới 👇",
+        "count": "Số lần thử lại",
+        "countOption": "{count, plural, =0 {Không thử lại} one {# lần} other {# lần}}",
+        "divider": "Khi vượt quá số lần thử lại",
+        "handle": "Vượt quá số lần thử lại",
+        "getUserDataConflict": "Không thể dùng Thử lại khi tin nhắn này có bước Lấy đầu vào người dùng."
+      }
     },
     "buttons": {
       "limitReached": "Đã đạt giới hạn nút ({max})."
@@ -3520,6 +3556,9 @@
     "noVersionsFound": "Không tìm thấy phiên bản đã xuất bản",
     "publishVersionSuccess": "Đã xuất bản phiên bản mới",
     "flowConfigIncomplete": "Một số cấu hình chưa hoàn chỉnh",
+    "quickReplyNextStepRequired": "Chọn bước tiếp theo cho mỗi cài đặt trả lời nhanh đang bật",
+    "quickReplyRetryMessageRequired": "Nhập tin nhắn thử lại",
+    "quickReplyRetryWithGetUserData": "Không thể kết hợp Thử lại với bước Lấy đầu vào người dùng",
     "whatsappCarouselButtonsMismatch": "Với WhatsApp, mọi thẻ trong một carousel phải có nút giống nhau: hoặc mỗi thẻ đúng một nút mở liên kết, hoặc mỗi thẻ cùng số nút trả lời",
     "whatsappCarouselLinkButtonNotAlone": "Với WhatsApp, thẻ carousel có nút mở liên kết thì không được có nút nào khác. Hãy xoá các nút còn lại trên thẻ đó, hoặc đổi nút mở liên kết sang hành động khác.",
     "duplicateNodeError": "Không thể nhân bản khối. Vui lòng thử lại.",
@@ -5046,7 +5085,13 @@
     "chooseSpecificPosts": "Chọn bài viết...",
     "postIdTab": "Post ID",
     "postIdPlaceholder": "Nhập ID bài viết, mỗi dòng một ID...",
-    "noPostsFound": "Không tìm thấy bài viết"
+    "noPostsFound": "Không tìm thấy bài viết",
+    "postTypeDialog": {
+      "liveTitle": "Phát trực tiếp",
+      "liveDescription": "Tự động xử lý bình luận trên buổi phát trực tiếp. Hỗ trợ trả lời công khai, trả lời riêng, ẩn và thích bình luận.",
+      "postsTitle": "Bài viết trên Trang",
+      "postsDescription": "Tự động xử lý bình luận trên bài viết và reels của Trang. Hỗ trợ trả lời công khai, trả lời riêng, ẩn và thích bình luận."
+    }
   },
   "instagramCommentAutomation": {
     "title": "Tự động hóa bình luận Instagram",
@@ -5153,7 +5198,14 @@
       "instagramDescription": "Kết nối bằng Instagram Login. Hỗ trợ trả lời công khai, trả lời riêng tư, và ẩn bình luận. Không hỗ trợ thích bình luận.",
       "instagramFacebookTitle": "Instagram Login qua Facebook",
       "instagramFacebookDescription": "Instagram được kết nối qua một trang Facebook. Hỗ trợ trả lời công khai, trả lời riêng tư, ẩn bình luận, và thích bình luận."
-    }
+    },
+    "postTypeDialog": {
+      "liveTitle": "Instagram Live",
+      "liveDescription": "Tự động xử lý bình luận trên Instagram Live. Gửi tin nhắn riêng cho từng người bình luận trong lúc bạn đang phát.",
+      "postsTitle": "Bài viết & Reels",
+      "postsDescription": "Tự động xử lý bình luận trên bài viết và reels. Hỗ trợ trả lời công khai, trả lời riêng và ẩn bình luận."
+    },
+    "liveReplyNote": "Instagram chỉ cho phép trả lời riêng bình luận Live, và chỉ trong lúc bạn đang phát. Không hỗ trợ trả lời công khai, ẩn hay thích bình luận."
   },
   "threadsCommentAutomation": {
     "title": "Tự động hóa bình luận Threads",
@@ -5808,6 +5860,21 @@
     "invalidDescription": "Liên kết này không hợp lệ hoặc đã hết hạn.",
     "unavailableTitle": "Không thể hủy đăng ký.",
     "unavailableDescription": "Không gian làm việc này không còn khả dụng."
+  },
+  "connectSessionPage": {
+    "metadataTitle": "Connecting…",
+    "processingTitle": "Finishing up…",
+    "processingDescription": "You can close this window. The application that started this connection will finish setting things up shortly.",
+    "completedTitle": "Connected!",
+    "completedDescription": "You can close this window now.",
+    "failedTitle": "Connection failed.",
+    "failedDescription": "Something went wrong while connecting. Please try again from the application that started this.",
+    "cancelledTitle": "Connection cancelled.",
+    "cancelledDescription": "You can close this window.",
+    "expiredTitle": "This link has expired.",
+    "expiredDescription": "Please start the connection again from the application that started this.",
+    "invalidTitle": "This link is no longer valid.",
+    "invalidDescription": "This connection link is invalid or has already been used."
   },
   "templatesPublicPage": {
     "invalidTitle": "Liên kết này không còn khả dụng.",
