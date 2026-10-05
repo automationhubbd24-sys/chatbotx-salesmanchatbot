@@ -121,8 +121,9 @@ export const useConfiguredInboxTypeOptions = (options?: {
 export const useInboxOptionsByChannel = (
   channel?: string,
   excludeChannels: string[] = [channelTypes.enum.smtp],
+  options?: { enabled?: boolean },
 ): SelectOption[] => {
-  const inboxes = useInboxList()
+  const inboxes = useInboxList(options)
 
   return useMemo(
     () =>

@@ -105,6 +105,7 @@ export type ConversationFilters = {
   botCategory?: ConversationBotCategory
   assignedId?: string
   channel?: ChannelType
+  inboxId?: string
   status?: ConversationStatus[]
   keyword?: string
   tags?: ("noAdminReply" | "unread" | "followUp" | "archived" | "blocked")[]

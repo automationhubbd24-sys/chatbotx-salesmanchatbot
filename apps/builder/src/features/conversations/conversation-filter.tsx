@@ -23,12 +23,15 @@ import {
   UserLockIcon,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useFormContext, useWatch } from "react-hook-form"
 import { useChatStore } from "../chat/store/chat-store-provider"
 import { ContactFilterDialog } from "../contact-filter"
 import { EMAIL_PHONE_RESTRICTED_FILTER_FIELDS } from "../contact-filter/lib/restricted-fields"
-import { useConfiguredInboxTypeOptions } from "../inboxes/provider/inbox-hook"
+import {
+  useConfiguredInboxTypeOptions,
+  useInboxOptionsByChannel,
+} from "../inboxes/provider/inbox-hook"
 import { useContactAssigneeOptions } from "../users/provider/user-hook"
 
 // Channel is picked in the top-level filter above, so the contact filter's own
@@ -44,12 +47,37 @@ export function ConversationFilter({
   const t = useTranslations()
   const [open, setOpen] = useState(false)
   const { filters } = useChatStore((state) => state)
-  const { control } = useFormContext()
+  const { control, setValue } = useFormContext()
   const watchedChannel = useWatch({ control, name: "channel" }) as
+    | string
+    | undefined
+  const watchedInboxId = useWatch({ control, name: "inboxId" }) as
     | string
     | undefined
 
   const inboxOptions = useConfiguredInboxTypeOptions({ enabled: open })
+  const channelInboxOptions = useInboxOptionsByChannel(
+    watchedChannel,
+    undefined,
+    { enabled: open },
+  )
+  const selectedInboxOptions = useMemo(
+    () => [
+      { label: t("features.calls.page.allInboxes"), value: "all" },
+      ...channelInboxOptions,
+    ],
+    [channelInboxOptions, t],
+  )
+
+  useEffect(() => {
+    if (!(watchedInboxId && watchedInboxId !== "all")) {
+      return
+    }
+    if (selectedInboxOptions.some((option) => option.value === watchedInboxId)) {
+      return
+    }
+    setValue("inboxId", "all", { shouldDirty: true, shouldValidate: true })
+  }, [selectedInboxOptions, setValue, watchedInboxId])
 
   const filterCount = filters.contactFilter?.conditions.length ?? 0
   const hasFilter = filterCount > 0
@@ -115,6 +143,15 @@ export function ConversationFilter({
             label={t("fields.channel.label")}
             name="channel"
             options={inboxOptions}
+            required
+          />
+
+          <ComboboxField
+            emptyText={t("actions.noRecordFound")}
+            label={t("fields.inbox.label")}
+            name="inboxId"
+            options={selectedInboxOptions}
+            placeholder={t("fields.inbox.placeholder")}
             required
           />
 
