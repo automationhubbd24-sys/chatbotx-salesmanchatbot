@@ -199,6 +199,8 @@ export type OutgoingMessage = {
   attachments?: OutgoingAttachment[]
   clientId?: string | null
   messageType: MessageType
+  /** Provider-native identifier of the message this outgoing message quotes. */
+  parentSourceId?: string
 }
 
 export const messageTypes = z.enum(["outgoing", "incoming", "activity"])

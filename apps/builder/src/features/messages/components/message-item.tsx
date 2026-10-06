@@ -44,7 +44,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type { AttachmentResource } from "@/features/attachments/schema/resource"
 import { useAttachmentUrl } from "@/features/attachments/utils"
 import {
@@ -62,6 +62,7 @@ import { WhatsappCallCard } from "./whatsapp-call-card"
 
 type MessageItemProps = {
   message: MessageResourceWithRelations
+  contactName?: string | null
   guestDisplay?: boolean
   /**
    * Workspace logo shown beside agent/bot bubbles in the guest widget when
@@ -86,6 +87,7 @@ type MessageItemProps = {
   }) => void
   onPostback?: (button: MessageButtonTemplate) => void
   onReply?: (comment: { commentId: string; text: string }) => void
+  onDirectReply?: (message: MessageResourceWithRelations) => void
   onPrivateReply?: (comment: { commentId: string; text: string }) => void
   /**
    * Whether THIS comment may be answered with a DM. A predicate rather than a
@@ -99,11 +101,13 @@ type MessageItemProps = {
 export const MessageItem = (props: MessageItemProps) => {
   const {
     message,
+    contactName,
     guestDisplay = false,
     avatarUrl,
     onChangeLike,
     onChangeHide,
     onReply,
+    onDirectReply,
     onPrivateReply,
     canPrivateReply,
     onDelete,
@@ -163,6 +167,15 @@ export const MessageItem = (props: MessageItemProps) => {
       threadControlActivity ||
       threadControlContext,
   )
+  const swipeStart = useRef<{ x: number; y: number } | null>(null)
+  const canDirectReply = Boolean(
+    onDirectReply &&
+      !isComment &&
+      !isDeleted &&
+      message.messageType !== "activity" &&
+      message.sourceId,
+  )
+  const triggerDirectReply = () => onDirectReply?.(message)
 
   // A call card defaults to the centered `full` variant, but a call still has
   // a direction: business-initiated sits right, customer-initiated sits left
@@ -179,6 +192,25 @@ export const MessageItem = (props: MessageItemProps) => {
   return (
     <MessageBubble
       className="group"
+      onPointerDown={(event) => {
+        if (canDirectReply && event.pointerType === "touch") {
+          swipeStart.current = { x: event.clientX, y: event.clientY }
+        }
+      }}
+      onPointerUp={(event) => {
+        const start = swipeStart.current
+        swipeStart.current = null
+        if (
+          canDirectReply &&
+          start &&
+          event.pointerType === "touch" &&
+          Math.abs(event.clientX - start.x) >= 72 &&
+          Math.abs(event.clientX - start.x) > Math.abs(event.clientY - start.y)
+        ) {
+          triggerDirectReply()
+        }
+      }}
+      style={canDirectReply ? { touchAction: "pan-y" } : undefined}
       title={format(new Date(message.createdAt), "yyyy/MM/dd HH:mm:ss")}
       variant={variant}
     >
@@ -197,6 +229,9 @@ export const MessageItem = (props: MessageItemProps) => {
         )}
       >
         {storyReply && <StoryReplyContext story={storyReply.story} />}
+        {!isComment && message.parentId && (
+          <ReplyParentPreview contactName={contactName} message={message} />
+        )}
         {isPartnerEcho && (
           <span className="flex items-center gap-1 self-end text-muted-foreground text-xs">
             <BotIcon aria-hidden className="size-3" />
@@ -349,6 +384,19 @@ export const MessageItem = (props: MessageItemProps) => {
             </Tooltip>
           )}
 
+        {canDirectReply && !isEditing && (
+          <Button
+            aria-label={t("reply")}
+            className="self-center opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100"
+            onClick={triggerDirectReply}
+            size="icon"
+            type="button"
+            variant="ghost"
+          >
+            <ReplyIcon className="size-4" />
+          </Button>
+        )}
+
         {isComment && !isEditing && (
           <MessageActions
             message={message}
@@ -360,6 +408,36 @@ export const MessageItem = (props: MessageItemProps) => {
         )}
       </div>
     </MessageBubble>
+  )
+}
+
+export const ReplyParentPreview = (props: {
+  contactName?: string | null
+  message: MessageResourceWithRelations
+}) => {
+  const { contactName, message } = props
+  const t = useTranslations("messages")
+  const parent = message.parent
+  const contactLabel = contactName ?? t("unknownContact")
+  const senderLabel = message.senderType === "contact" ? contactLabel : t("you")
+  const parentSenderLabel =
+    parent?.senderType === "contact" ? contactLabel : t("you")
+  const fallback = parent?.deletedAt
+    ? t("messageDeleted")
+    : parent?.attachments?.length
+      ? t("sentAttachments", { count: parent.attachments.length })
+      : t("messageDeleted")
+
+  return (
+    <div className="border-s-2 border-primary/60 ps-2 text-muted-foreground text-xs">
+      <p className="font-medium text-foreground">
+        {t("replyPreview", {
+          sender: senderLabel,
+          recipient: parentSenderLabel,
+        })}
+      </p>
+      <p className="truncate">{parent?.text || fallback}</p>
+    </div>
   )
 }
 

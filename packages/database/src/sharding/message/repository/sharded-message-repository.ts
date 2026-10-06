@@ -13,6 +13,7 @@ import {
   isNotNull,
   isNull,
   lt,
+  lte,
   or,
   type SQL,
   sql,
@@ -37,6 +38,7 @@ import type {
   FindManyByConversationOptions,
   FindManyBySourceIdsParams,
   FindMessageByIdParams,
+  FindReplyParentsParams,
   FindRichResponseByButtonParams,
   FindTriggerMessageOptions,
   HardDeleteAllByContactInboxParams,
@@ -2463,6 +2465,67 @@ export class ShardedMessageRepository implements IMessageRepository {
     )
 
     return shardResults.flat().sort(compareMessageDesc).slice(0, options.limit)
+  }
+
+  async findReplyParents(
+    params: FindReplyParentsParams,
+  ): Promise<MessageWithAttachments[]> {
+    if (params.ids.length === 0) {
+      return []
+    }
+
+    const timeRangeShards = await this.getShardsForRange(
+      params.sinceTime,
+      params.endTime,
+    )
+    const writeShard = await this.shardManager.getWriteShardInfo(
+      params.workspaceId,
+    )
+    const shards = this.mergeWriteShard(timeRangeShards, writeShard)
+    const rows = await Promise.all(
+      shards.map(async (shardInfo) => {
+        try {
+          return await this.shardManager.withShardClientForRead(
+            shardInfo.shard,
+            async (shardClient) => {
+              const messages = (await shardClient
+                .select()
+                .from(messageModel)
+                .where(
+                  and(
+                    inArray(messageModel.id, params.ids),
+                    eq(messageModel.conversationId, params.conversationId),
+                    eq(messageModel.workspaceId, params.workspaceId),
+                    gte(messageModel.createdAt, params.sinceTime),
+                    lte(messageModel.createdAt, params.endTime),
+                  ),
+                )) as MessageModel[]
+              const attachmentsByMessageId =
+                await this.fetchAndGroupAttachments(shardClient, messages)
+              return this.mapMessagesToWithAttachments(
+                messages,
+                attachmentsByMessageId,
+              )
+            },
+          )
+        } catch (error) {
+          logger.warn(
+            { err: error, shardId: shardInfo.shard.id },
+            "Shard query failed in findReplyParents",
+          )
+          return []
+        }
+      }),
+    )
+
+    const parentsById = new Map<string, MessageWithAttachments>()
+    for (const parent of rows.flat()) {
+      parentsById.set(parent.id, parent)
+    }
+    return params.ids.flatMap((id) => {
+      const parent = parentsById.get(id)
+      return parent ? [parent] : []
+    })
   }
 
   async findManyByIds(

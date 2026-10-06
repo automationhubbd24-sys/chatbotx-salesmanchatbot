@@ -54,6 +54,36 @@ describe("messenger outgoing handlers return provider message ids", () => {
     expect(result).toEqual({ messageIds: ["m_provider-1"], sentCount: 1 })
   })
 
+  test("adds reply_to.mid only to the first payload of a normal reply", async () => {
+    await sendMessage({
+      ctx,
+      data: {
+        contact,
+        message: {
+          id: "msg-1",
+          contentType: "text",
+          messageType: "outgoing",
+          parentSourceId: "mid-parent",
+          text: "hello",
+          attachments: [
+            { fileType: "file", url: "https://example.com/file.pdf" },
+          ],
+        },
+      },
+    } as never)
+
+    expect(mockSendPageMessage).toHaveBeenNthCalledWith(
+      1,
+      ctx.auth,
+      expect.objectContaining({ reply_to: { mid: "mid-parent" } }),
+    )
+    expect(mockSendPageMessage).toHaveBeenNthCalledWith(
+      2,
+      ctx.auth,
+      expect.not.objectContaining({ reply_to: expect.anything() }),
+    )
+  })
+
   test("sendFlowStep (sendText) returns the Send API message_id", async () => {
     const result = await sendFlowStep({
       ctx,

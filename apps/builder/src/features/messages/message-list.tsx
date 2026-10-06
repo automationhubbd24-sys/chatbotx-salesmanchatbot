@@ -40,9 +40,11 @@ export function MessageList() {
 
   // Which channel this conversation belongs to, for the private-reply gate
   // below. The same `contactInboxes[0].channel` the store reads elsewhere.
-  const activeChannel = conversations.find(
+  const activeConversation = conversations.find(
     (conversation) => conversation.id === activeConversationId,
-  )?.contactInboxes?.[0]?.channel
+  )
+  const activeChannel = activeConversation?.contactInboxes?.[0]?.channel
+  const isMessengerDirectMessage = activeChannel === "messenger"
 
   const { execute: deleteMessage } = useAction(
     deleteMessageAction.bind(null, workspaceId, activeConversationId ?? ""),
@@ -117,6 +119,10 @@ export function MessageList() {
     if (message) {
       setReplyToMessage(message)
     }
+  }
+
+  const handleDirectReply = (message: MessageResourceWithRelations) => {
+    setReplyToMessage(message)
   }
 
   const handlePrivateReplyComment = (comment: {
@@ -267,10 +273,14 @@ export function MessageList() {
                 message: comment,
               })
             }
+            contactName={activeConversation?.contact?.fullName}
             key={message.id}
             message={message}
             onChangeHide={() => handleChangeHideState(message)}
             onChangeLike={() => handleChangeLikeState(message)}
+            onDirectReply={
+              isMessengerDirectMessage ? handleDirectReply : undefined
+            }
             onDelete={() => {
               handleDeleteComment({
                 id: message.id,

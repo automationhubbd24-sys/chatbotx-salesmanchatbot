@@ -98,6 +98,7 @@ describe("messageService.createOutgoing", () => {
     mockCreateMessageRepository.mockResolvedValue({
       create: mockRepositoryCreate,
       createWithAttachments: vi.fn(),
+      findById: vi.fn().mockResolvedValue({ id: "parent-1", type: "comment" }),
     })
     mockChatQueueAdd.mockResolvedValue(undefined)
     mockBroadcastToWorkspaceParty.mockResolvedValue(undefined)
@@ -155,6 +156,29 @@ describe("messageService.createOutgoing", () => {
         eventType: "messageCreated",
         data: expect.objectContaining({ clientId: "client-1", id: "msg-1" }),
       }),
+    )
+  })
+
+  test("keeps normal reply rows as messages after validating a normal parent", async () => {
+    mockCreateMessageRepository.mockResolvedValue({
+      create: mockRepositoryCreate,
+      createWithAttachments: vi.fn(),
+      findById: vi.fn().mockResolvedValue({ id: "parent-1", type: "message" }),
+    })
+
+    await createOutgoing({
+      conversation: conversation as never,
+      contactInbox: { ...contactInbox, channel: "messenger" } as never,
+      input: {
+        text: "hello",
+        replyToMessageId: "parent-1",
+        replyToMessageCreatedAt: new Date("2026-08-12T00:00:00Z"),
+      },
+      user: { id: "user-1" } as never,
+    })
+
+    expect(mockRepositoryCreate).toHaveBeenCalledWith(
+      expect.objectContaining({ parentId: "parent-1", type: "message" }),
     )
   })
 

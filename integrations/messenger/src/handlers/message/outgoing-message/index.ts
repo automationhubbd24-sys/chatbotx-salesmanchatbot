@@ -215,11 +215,14 @@ export const sendMessage: MessageHandlers<MessengerAuthValue>["sendMessage"] =
         lastMessage.quick_replies =
           convertCanonicalQuickReplies(nativeQuickReplies)
       }
-      for (const facebookMessage of facebookMessages) {
+      for (const [index, facebookMessage] of facebookMessages.entries()) {
         const payload = buildMessagePayload({
           contact,
           message: facebookMessage,
           ...policy,
+          ...(index === 0 && message.parentSourceId
+            ? { replyToMid: message.parentSourceId }
+            : {}),
           personaId: resolveMessengerPersonaId(
             ctx.integrationDetail as MessengerIntegrationDetail,
             contact,
@@ -236,7 +239,10 @@ export const sendMessage: MessageHandlers<MessengerAuthValue>["sendMessage"] =
         logger.info(`Message sent for PSID: ${contact.sourceId}`)
       }
     } catch (error) {
-      logger.error(error, "An error occurred while sending the message")
+      logger.error(
+        { err: error },
+        "An error occurred while sending the message",
+      )
       throw mapToChannelError(error)
     }
 
@@ -345,7 +351,10 @@ export const sendFlowStep: MessageHandlers<MessengerAuthValue>["sendFlowStep"] =
         logger.info(`Message sent for PSID: ${contact.sourceId}`)
       }
     } catch (error) {
-      logger.error(error, "An error occurred while sending the message")
+      logger.error(
+        { err: error },
+        "An error occurred while sending the message",
+      )
       throw mapToChannelError(error)
     }
 
@@ -524,8 +533,16 @@ export const buildMessagePayload = (props: {
   messagingType?: "MESSAGE_TAG" | "RESPONSE"
   tag?: FacebookSendMessageRequest["tag"]
   personaId?: string
+  replyToMid?: string
 }): FacebookSendMessageRequest => {
-  const { contact, message, messagingType = "RESPONSE", personaId, tag } = props
+  const {
+    contact,
+    message,
+    messagingType = "RESPONSE",
+    personaId,
+    replyToMid,
+    tag,
+  } = props
 
   return {
     recipient: { id: contact.sourceId },
@@ -536,6 +553,7 @@ export const buildMessagePayload = (props: {
     messaging_type: messagingType,
     tag,
     persona_id: personaId,
+    ...(replyToMid ? { reply_to: { mid: replyToMid } } : {}),
   }
 }
 
