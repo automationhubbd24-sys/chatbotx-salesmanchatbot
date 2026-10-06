@@ -221,7 +221,20 @@ export const createOutgoing = async (props: {
 
   const repository = await createMessageRepository()
 
-  const parentId = parsedInput.replyToMessageId ?? null
+  const parentMessage =
+    parsedInput.replyToMessageId && parsedInput.replyToMessageCreatedAt
+      ? await repository.findById({
+          id: parsedInput.replyToMessageId,
+          createdAt: parsedInput.replyToMessageCreatedAt,
+          conversationId: targetConversation.id,
+          workspaceId: conversation.workspaceId,
+        })
+      : null
+  if (parsedInput.replyToMessageId && !parentMessage) {
+    throw new ChatbotXException("Reply target message was not found")
+  }
+
+  const parentId = parentMessage?.id ?? null
 
   const now = new Date()
   const messageInput = {
@@ -234,9 +247,7 @@ export const createOutgoing = async (props: {
     contactInboxId: contactInbox.id,
     contentType: "text" as const,
     createdAt: now,
-    type: parsedInput.replyToMessageId
-      ? ("comment" as const)
-      : ("message" as const),
+    type: parentMessage?.type === "comment" ? ("comment" as const) : ("message" as const),
     parentId,
     contentAttributes: withBypassThreadControlLock(
       parsedInput.contentAttributes ??

@@ -559,6 +559,7 @@ export const facebookSendMessageRequestSchema = z.object({
     .optional(),
   notification_type: z.enum(["REGULAR", "SILENT_PUSH", "NO_PUSH"]).optional(),
   persona_id: z.string().optional(),
+  reply_to: z.object({ mid: z.string() }).optional(),
 })
 export type FacebookSendMessageRequest = z.infer<
   typeof facebookSendMessageRequestSchema

@@ -17,6 +17,19 @@ export const messageResource = createSelectSchema(messageModel, {
 )
 export type MessageResource = z.infer<typeof messageResource>
 
+export const parentPreviewResource = messageResource
+  .pick({
+    id: true,
+    sourceId: true,
+    text: true,
+    contentType: true,
+    messageType: true,
+    senderType: true,
+    deletedAt: true,
+    type: true,
+  })
+  .and(z.object({ attachments: z.array(attachmentResource).optional() }))
+
 export const messageResourceWithRelations = messageResource.and(
   z.object({
     attachmentCount: z.number().optional(),
@@ -24,6 +37,7 @@ export const messageResourceWithRelations = messageResource.and(
     user: userResource.optional(),
     contact: contactResource.optional(),
     clientId: zodBigintAsString().optional(),
+    parent: parentPreviewResource.nullable().optional(),
   }),
 )
 export type MessageResourceWithRelations = z.infer<

@@ -141,19 +141,79 @@ export async function listForConversation(
     return { data: [], nextCursor: null }
   }
 
+  const pageMessageIds = new Set(result.data.map((message) => message.id))
+  const parentIds = [
+    ...new Set(
+      result.data.flatMap((message) =>
+        message.parentId && !pageMessageIds.has(message.parentId)
+          ? [message.parentId]
+          : [],
+      ),
+    ),
+  ]
+  const parentsOutsidePage =
+    input.conversationId && parentIds.length > 0
+      ? await repository.findReplyParents({
+          ids: parentIds,
+          workspaceId: input.workspaceId,
+          conversationId: input.conversationId,
+          sinceTime:
+            getSafeSinceTime(conversation?.createdAt) ??
+            conversation?.createdAt ??
+            new Date(0),
+          endTime: endOfHour(
+            result.data.reduce(
+              (latest, message) =>
+                message.createdAt > latest ? message.createdAt : latest,
+              result.data[0].createdAt,
+            ),
+          ),
+        })
+      : []
   const channelByContactInboxId = await loadContactInboxChannels(
-    result.data,
+    [...result.data, ...parentsOutsidePage],
     input.workspaceId,
   )
+  const messagesById = new Map(
+    [...result.data, ...parentsOutsidePage].map((message) => [
+      message.id,
+      message,
+    ]),
+  )
   const data = await Promise.all(
-    result.data.map(async (message) => ({
-      ...message,
-      attachments: await presignAttachments(message.attachments, {
-        workspaceId: input.workspaceId,
-        channel: channelByContactInboxId.get(message.contactInboxId) ?? "",
-        messageCreatedAt: message.createdAt,
-      }),
-    })),
+    result.data.map(async (message) => {
+      const parent = message.parentId
+        ? (messagesById.get(message.parentId) ?? null)
+        : null
+      const parentAttachments = parent
+        ? await presignAttachments(parent.attachments, {
+            workspaceId: input.workspaceId,
+            channel: channelByContactInboxId.get(parent.contactInboxId) ?? "",
+            messageCreatedAt: parent.createdAt,
+          })
+        : []
+      return {
+        ...message,
+        parent: parent
+          ? {
+              id: parent.id,
+              sourceId: parent.sourceId,
+              text: parent.text,
+              contentType: parent.contentType,
+              messageType: parent.messageType,
+              senderType: parent.senderType,
+              deletedAt: parent.deletedAt,
+              type: parent.type,
+              attachments: parentAttachments,
+            }
+          : null,
+        attachments: await presignAttachments(message.attachments, {
+          workspaceId: input.workspaceId,
+          channel: channelByContactInboxId.get(message.contactInboxId) ?? "",
+          messageCreatedAt: message.createdAt,
+        }),
+      }
+    }),
   )
 
   return { data, nextCursor: result.nextCursor }

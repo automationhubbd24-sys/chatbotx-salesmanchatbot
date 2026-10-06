@@ -5,6 +5,7 @@ const mocks = vi.hoisted(() => {
   const repo = {
     findById: vi.fn(),
     findTriggerMessage: vi.fn(),
+    findReplyParents: vi.fn().mockResolvedValue([]),
     listByConversation: vi.fn(),
   }
   return {
@@ -190,6 +191,60 @@ describe("message list-for-conversation", () => {
       expect(call.pagination.cursor.id).toBe("")
       // endOfHour: minutes/seconds pinned to the hour boundary (:59:59.999).
       expect(call.pagination.cursor.createdAt.getMinutes()).toBe(59)
+    })
+
+    test("loads and presigns a reply parent outside the current page", async () => {
+      const parentCreatedAt = new Date("2026-06-01T12:00:00Z")
+      const replyCreatedAt = new Date("2026-06-03T12:00:00Z")
+      mocks.repo.listByConversation.mockResolvedValue({
+        data: [
+          {
+            id: "reply-1",
+            parentId: "parent-1",
+            createdAt: replyCreatedAt,
+            contactInboxId: "ci-1",
+            attachments: [],
+          },
+        ],
+        nextCursor: null,
+      })
+      mocks.repo.findReplyParents.mockResolvedValue([
+        {
+          id: "parent-1",
+          createdAt: parentCreatedAt,
+          contactInboxId: "ci-1",
+          text: "Earlier message",
+          attachments: [{ id: "parent-att-1", originPath: "ws-1/files/a.png" }],
+        },
+      ])
+      mocks.contactInboxService.findManyByIds.mockResolvedValue([
+        { id: "ci-1", channel: "messenger" },
+      ])
+      mocks.uploader.getPresignedDownload.mockResolvedValue(
+        "https://signed.example.com/parent",
+      )
+
+      const result = await listForConversation({
+        workspaceId: "ws-1",
+        conversationId: "conv-1",
+        limit: 20,
+      })
+
+      expect(mocks.repo.findReplyParents).toHaveBeenCalledWith(
+        expect.objectContaining({
+          ids: ["parent-1"],
+          workspaceId: "ws-1",
+          conversationId: "conv-1",
+          endTime: expect.any(Date),
+        }),
+      )
+      expect(result.data[0].parent).toMatchObject({
+        id: "parent-1",
+        text: "Earlier message",
+        attachments: [
+          { id: "parent-att-1", url: "https://signed.example.com/parent" },
+        ],
+      })
     })
 
     test.each([

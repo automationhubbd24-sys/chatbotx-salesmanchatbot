@@ -111,12 +111,16 @@ export const MessageInput = () => {
   }, [messages])
 
   // Memoize active conversation to prevent unnecessary re-renders
-  const conversation = useMemo(
-    () => conversations.find((c) => c.id === activeConversationId) ?? null,
-    [conversations, activeConversationId],
-  )
+  const conversation = useMemo(() => {
+    if (!activeConversationId) {
+      return null
+    }
+    return conversations.find((c) => c.id === activeConversationId) ?? null
+  }, [conversations, activeConversationId])
 
   const channel = conversation?.contactInboxes[0]?.channel
+  const isDirectReply =
+    channel === "messenger" && replyToMessage?.type === "message"
   const threadControl = useThreadControl(conversation, channel)
 
   // The agent dismissed the standby lock (stored routing state may be stale):
@@ -125,6 +129,10 @@ export const MessageInput = () => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: reset only on conversation switch
   useEffect(() => {
     setRoutingLockDismissed(false)
+  }, [activeConversationId])
+  // biome-ignore lint/correctness/useExhaustiveDependencies: clear stale reply selection on conversation switch
+  useEffect(() => {
+    setReplyToMessage(null)
   }, [activeConversationId])
   const isThreadLocked = Boolean(threadControl?.isLocked)
   // BizAI (Meta AI) standby on an inline-reply channel (Messenger): once the
@@ -488,12 +496,17 @@ export const MessageInput = () => {
                 <ReplyIcon className="mt-0.5 size-3.5 shrink-0 text-primary" />
               )}
               <span className="flex-1 truncate text-muted-foreground">
-                {isPrivateReply && (
-                  <span className="me-1 font-medium text-foreground">
-                    {t("messages.privateReply")}:
-                  </span>
-                )}
-                {replyToMessage.text || t("messages.facebookComment")}
+                <span className="me-1 font-medium text-foreground">
+                  {isPrivateReply
+                    ? `${t("messages.privateReply")}:`
+                    : isDirectReply
+                      ? `${t("messages.replyingTo")}:`
+                      : `${t("messages.reply")}:`}
+                </span>
+                {replyToMessage.text ||
+                  (isDirectReply
+                    ? t("messages.sentAttachments", { count: 0 })
+                    : t("messages.facebookComment"))}
               </span>
               <Button
                 aria-label="Clear reply"

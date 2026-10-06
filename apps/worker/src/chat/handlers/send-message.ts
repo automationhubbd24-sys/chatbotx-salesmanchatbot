@@ -241,6 +241,19 @@ export async function sendMessageToChannel(
     const isComment = message.type === "comment"
 
     let handlerMessage = message
+    if (!isComment && message.parentId && message.parentCreatedAt) {
+      const repo = await createMessageRepository()
+      const parentMsg = await repo.findById({
+        id: message.parentId,
+        createdAt: new Date(message.parentCreatedAt),
+        conversationId: conversation.id,
+        workspaceId: conversation.workspaceId,
+      })
+      handlerMessage = {
+        ...message,
+        parentSourceId: parentMsg?.sourceId ?? undefined,
+      }
+    }
     if (isComment && message.parentId && message.parentCreatedAt) {
       const repo = await createMessageRepository()
       const parentMsg = await repo.findById({
