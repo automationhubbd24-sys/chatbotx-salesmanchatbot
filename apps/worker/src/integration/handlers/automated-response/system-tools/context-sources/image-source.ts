@@ -16,9 +16,19 @@ export function isSupportedImageMimeType(mimeType: string): boolean {
   return SUPPORTED_IMAGE_MIME_TYPES.has(normalizeMimeType(mimeType))
 }
 
+export type ImageAttachmentResolution =
+  | { attachment: AttachmentModel; status: "selected" }
+  | { attachments: AttachmentModel[]; status: "selected_batch" }
+  | {
+      candidateCount: number
+      context: "conversation"
+      status: "ambiguous"
+    }
+  | { status: "not_found" }
+
 export async function resolveImageAttachment(
   input: ResolveConversationSourceInput,
-): Promise<AttachmentModel | null> {
+): Promise<ImageAttachmentResolution> {
   const allAttachments = await sourceRepo.findAttachmentsByConversation({
     workspaceId: input.workspaceId,
     conversationId: input.conversationId,
@@ -28,14 +38,29 @@ export async function resolveImageAttachment(
   const attachments = allAttachments.filter((attachment) =>
     isSupportedImageMimeType(attachment.mimeType),
   )
+  const triggerAttachments = input.messageId
+    ? attachments.filter((attachment) => attachment.messageId === input.messageId)
+    : []
 
-  if (attachments.length === 0) {
-    return null
+  if (triggerAttachments.length === 1) {
+    return { attachment: triggerAttachments[0], status: "selected" }
   }
 
-  const triggerMessageAttachment = input.messageId
-    ? attachments.find((attachment) => attachment.messageId === input.messageId)
-    : null
+  if (triggerAttachments.length > 1) {
+    return { attachments: triggerAttachments, status: "selected_batch" }
+  }
 
-  return triggerMessageAttachment ?? attachments[0] ?? null
+  if (attachments.length === 1) {
+    return { attachment: attachments[0], status: "selected" }
+  }
+
+  if (attachments.length > 1) {
+    return {
+      candidateCount: attachments.length,
+      context: "conversation",
+      status: "ambiguous",
+    }
+  }
+
+  return { status: "not_found" }
 }
