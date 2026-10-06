@@ -119,7 +119,7 @@ export function UpdateAIAgentDialog({
     control,
     name: "messages",
   })
-  const { fields: modelFields } = useFieldArray({
+  const { fields: modelFields, replace: replaceModels } = useFieldArray({
     control,
     name: "models",
   })
@@ -164,10 +164,10 @@ export function UpdateAIAgentDialog({
 
       setValue("name", agent.name)
       setValue("prompt", agent.prompt ?? "")
-      setValue("models", [
+      replaceModels([
         ...normalizedModels,
         ...openaiCompatibleModels,
-      ] as UpdateAIAgentRequest["models"])
+      ] as NonNullable<UpdateAIAgentRequest["models"]>)
       setValue("temperature", agent.temperature)
       setValue("maxOutputTokens", agent.maxOutputTokens)
       setValue("messages", agent.messages as UpdateAIAgentRequest["messages"])
@@ -185,7 +185,7 @@ export function UpdateAIAgentDialog({
         ),
       )
     }
-  }, [agent, openaiCompatibleIntegrations, setValue])
+  }, [agent, openaiCompatibleIntegrations, replaceModels, setValue])
 
   return (
     <Dialog onOpenChange={onOpenChange} open={open}>
