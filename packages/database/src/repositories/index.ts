@@ -1,5 +1,6 @@
 export * from "./ads-conversion-event"
 export * from "./ads-conversion-rule"
+export * from "./attachment-vision-analysis"
 export * from "./ai-conversation-embedding"
 export * from "./ai-conversation-source"
 export * from "./ai-file-embedding"

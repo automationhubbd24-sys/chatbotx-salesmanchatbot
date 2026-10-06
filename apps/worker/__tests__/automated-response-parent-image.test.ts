@@ -152,7 +152,7 @@ describe("processAutomatedResponse", () => {
     expect(mocks.replyByAI.mock.calls[0]?.[0].messages).toContainEqual(
       expect.objectContaining({
         content:
-          "The customer replied to an earlier image. Inspect that replied-to image to answer the customer's current question.",
+          'The customer replied to an earlier image. Inspect that replied-to image to answer the customer\'s current question: "What color is this?"',
       }),
     )
   })

@@ -344,8 +344,7 @@ export async function processAutomatedResponse(
     if (isParentImageReply) {
       messages.push({
         role: aiMessageRoles.enum.user,
-        content:
-          "The customer replied to an earlier image. Inspect that replied-to image to answer the customer's current question.",
+        content: `The customer replied to an earlier image. Inspect that replied-to image to answer the customer's current question: "${triggerMessage?.text ?? ""}"`,
       })
     }
 

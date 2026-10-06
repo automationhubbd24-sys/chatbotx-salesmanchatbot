@@ -4,6 +4,7 @@ import type {
   ImageReaderInput,
   SystemToolExecutors,
 } from "@chatbotx.io/ai/server"
+import { attachmentVisionAnalysisService } from "@chatbotx.io/business"
 import type { AIAgentModelConfig } from "@chatbotx.io/database/partials"
 import type { AttachmentModel } from "@chatbotx.io/database/types"
 import {
@@ -78,7 +79,9 @@ function buildVisionPrompt(props: {
   ]
 
   if (props.ordinal) {
-    lines.push(`Batch context: Image ${props.ordinal.current} of ${props.ordinal.total}.`)
+    lines.push(
+      `Batch context: Image ${props.ordinal.current} of ${props.ordinal.total}.`,
+    )
   }
 
   lines.push(`User question: ${query}`)
@@ -126,11 +129,16 @@ function formatToolOutput(props: {
 
 async function analyzeAttachment(input: {
   attachment: AttachmentModel
-  context: NonNullable<Parameters<NonNullable<SystemToolExecutors[typeof systemFunctionNames.imageReader]>>[1]>
+  context: NonNullable<
+    Parameters<
+      NonNullable<SystemToolExecutors[typeof systemFunctionNames.imageReader]>
+    >[1]
+  >
   fileOnlyTrigger: boolean
   input: ImageReaderInput
   ordinal?: { current: number; total: number }
   providerInfo: AIAgentModelConfig
+  modelId: string
 }): Promise<string | null> {
   const prompt = buildVisionPrompt({
     attachment: input.attachment,
@@ -138,6 +146,27 @@ async function analyzeAttachment(input: {
     input: input.input,
     ordinal: input.ordinal,
   })
+  const cacheKey = {
+    workspaceId: input.context.workspaceId,
+    conversationId: input.context.conversationId,
+    attachmentId: input.attachment.id,
+    promptHash: hash(prompt),
+    provider: getProviderName(input.providerInfo),
+    modelId: input.modelId,
+  }
+
+  try {
+    const cached = await attachmentVisionAnalysisService.find(cacheKey)
+    if (cached) {
+      return cached.analysis
+    }
+  } catch (err) {
+    logger.warn(
+      { err, ...cacheKey },
+      "[image-reader] vision analysis cache lookup failed",
+    )
+  }
+
   const job = await heavyQueue.add(
     HeavyJobAction.analyzeImage,
     {
@@ -176,7 +205,21 @@ async function analyzeAttachment(input: {
     ),
   )
   const result = heavyAnalyzeImageResultSchema.parse(rawResult)
-  return result.analysis.trim() || null
+  const analysis = result.analysis.trim()
+  if (!analysis) {
+    return null
+  }
+
+  try {
+    await attachmentVisionAnalysisService.save({ ...cacheKey, analysis })
+  } catch (err) {
+    logger.warn(
+      { err, ...cacheKey },
+      "[image-reader] vision analysis cache save failed",
+    )
+  }
+
+  return analysis
 }
 
 export function createImageReaderExecutor(options: {
@@ -236,6 +279,7 @@ export function createImageReaderExecutor(options: {
                     ? { current: index + 1, total: attachments.length }
                     : undefined,
                 providerInfo: options.providerInfo,
+                modelId: options.modelId,
               })
               return analysis
                 ? {

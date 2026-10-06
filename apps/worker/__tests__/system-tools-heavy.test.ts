@@ -4,6 +4,8 @@ const mocks = vi.hoisted(() => ({
   getContextSourceAdapter: vi.fn(),
   heavyQueueAdd: vi.fn(),
   resolveImageAttachment: vi.fn(),
+  findAttachmentVisionAnalysis: vi.fn(),
+  saveAttachmentVisionAnalysis: vi.fn(),
 }))
 
 vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
@@ -15,6 +17,13 @@ vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
     heavyQueue: { add: mocks.heavyQueueAdd },
   }
 })
+
+vi.mock("@chatbotx.io/business", () => ({
+  attachmentVisionAnalysisService: {
+    find: mocks.findAttachmentVisionAnalysis,
+    save: mocks.saveAttachmentVisionAnalysis,
+  },
+}))
 
 vi.mock("../src/env", () => ({
   env: { HEAVY_JOB_WAIT_TIMEOUT_MS: 120_000 },
@@ -80,6 +89,8 @@ function waitableJob(analysis: string) {
 describe("heavy system tools", () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mocks.findAttachmentVisionAnalysis.mockResolvedValue(null)
+    mocks.saveAttachmentVisionAnalysis.mockResolvedValue(null)
   })
 
   test("document_reader fallback waits on heavy and formats returned snippets", async () => {
@@ -126,6 +137,56 @@ describe("heavy system tools", () => {
       }),
     )
     expect(output).toContain("Enterprise pricing is available on request.")
+  })
+
+  test("image_reader returns a cached analysis without queuing heavy work", async () => {
+    mocks.resolveImageAttachment.mockResolvedValue({
+      status: "selected",
+      attachment: imageAttachment("attachment-1", "receipt.png"),
+    })
+    mocks.findAttachmentVisionAnalysis.mockResolvedValue({
+      analysis: "The cached image analysis.",
+    })
+
+    const executor = createImageReaderExecutor({
+      fileOnlyTrigger: false,
+      modelId: providerInfo.model,
+      providerInfo,
+    })
+    const output = await executor({ query: "what is this?" }, toolContext)
+
+    expect(output).toContain("The cached image analysis.")
+    expect(mocks.heavyQueueAdd).not.toHaveBeenCalled()
+    expect(mocks.saveAttachmentVisionAnalysis).not.toHaveBeenCalled()
+  })
+
+  test("image_reader saves a successful heavy analysis for reuse", async () => {
+    mocks.resolveImageAttachment.mockResolvedValue({
+      status: "selected",
+      attachment: imageAttachment("attachment-1", "receipt.png"),
+    })
+    mocks.heavyQueueAdd.mockResolvedValue(
+      waitableJob("The image shows a receipt total."),
+    )
+
+    const executor = createImageReaderExecutor({
+      fileOnlyTrigger: false,
+      modelId: providerInfo.model,
+      providerInfo,
+    })
+    await executor({ query: "what is this?" }, toolContext)
+
+    expect(mocks.saveAttachmentVisionAnalysis).toHaveBeenCalledWith(
+      expect.objectContaining({
+        workspaceId: "workspace-1",
+        conversationId: "conversation-1",
+        attachmentId: "attachment-1",
+        provider: "openaiCompatible",
+        modelId: "vision-model",
+        analysis: "The image shows a receipt total.",
+        promptHash: expect.any(String),
+      }),
+    )
   })
 
   test("image_reader sends full providerInfo to heavy and returns its analysis", async () => {

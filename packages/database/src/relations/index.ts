@@ -21,6 +21,7 @@ import { appointmentRelations } from "./appointment"
 import { appointmentCalendarRelations } from "./appointment-calendar"
 import { appointmentReminderDispatchRelations } from "./appointment-reminder-dispatch"
 import { attachmentRelations } from "./attachment"
+import { attachmentVisionAnalysisRelations } from "./attachment-vision-analysis"
 import { accountRelations } from "./auth-account"
 import { invitationRelations } from "./auth-invitation"
 import { sessionRelations } from "./auth-session"
@@ -181,6 +182,7 @@ export const relations = {
   ...flowRelations,
   ...aiMCPServerRelations,
   ...attachmentRelations,
+  ...attachmentVisionAnalysisRelations,
   ...conversationRelations,
   ...couponRelations,
   ...messageRelations,
