@@ -107,6 +107,15 @@ function OpenaiCompatibleProviderRow({
             onCheckedChange={(enabled) => execute({ enabled })}
           />
         </div>
+        <div className="flex items-center gap-2 text-sm">
+          <span>{t("openaiCompatible.autoReply.label")}</span>
+          <Switch
+            aria-label={t("openaiCompatible.autoReply.label")}
+            checked={integration.autoReply}
+            disabled={isPending}
+            onCheckedChange={(autoReply) => execute({ autoReply })}
+          />
+        </div>
         <div className="flex size-4 shrink-0 items-center justify-center">
           {isPending && <Loader2Icon className="size-4 animate-spin" />}
         </div>
