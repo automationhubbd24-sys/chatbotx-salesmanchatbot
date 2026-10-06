@@ -391,15 +391,38 @@ export const receiveMessage = async (
     suppressAutomation,
   )
   if (incomingMessage?.parentSourceId) {
-    const parentMessage = await (await createMessageRepository()).findBySourceId(
-      incomingMessage.parentSourceId,
-      conversation.id,
-      inbox.workspaceId,
-    )
-    incomingMessage = {
-      ...incomingMessage,
-      parentId: parentMessage?.id ?? null,
+    const { parentSourceId } = incomingMessage
+    let parentId: string | null = null
+    try {
+      const parentMessage = await (await createMessageRepository()).findBySourceId(
+        parentSourceId,
+        conversation.id,
+        inbox.workspaceId,
+        new Date(Date.now() - 90 * 24 * 60 * 60 * 1000),
+      )
+      parentId = parentMessage?.id ?? null
+      if (!parentMessage) {
+        logger.debug(
+          {
+            parentSourceId,
+            conversationId: conversation.id,
+            workspaceId: inbox.workspaceId,
+          },
+          "Inbound message parent was not found",
+        )
+      }
+    } catch (err) {
+      logger.warn(
+        {
+          err,
+          parentSourceId,
+          conversationId: conversation.id,
+          workspaceId: inbox.workspaceId,
+        },
+        "Unable to resolve inbound message parent",
+      )
     }
+    incomingMessage = { ...incomingMessage, parentId }
   }
   const systemFieldUpdates = getReceivedMessageSystemFieldUpdates({
     buttonTitle: parsedMessage.buttonTitle || postbackButtonLabel,

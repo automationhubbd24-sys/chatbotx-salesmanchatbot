@@ -18,6 +18,7 @@ const {
   mockCreateOrUpdate,
   mockCreateOrUpdateWithAttachments,
   mockFindLastByConversation,
+  mockFindBySourceId,
   mockCreateMessageRepository,
   mockFindContactInbox,
   mockRunChannelHandler,
@@ -66,10 +67,12 @@ const {
   const mockCreateOrUpdate = vi.fn()
   const mockCreateOrUpdateWithAttachments = vi.fn()
   const mockFindLastByConversation = vi.fn().mockResolvedValue([])
+  const mockFindBySourceId = vi.fn().mockResolvedValue(null)
   const mockCreateMessageRepository = vi.fn().mockResolvedValue({
     createOrUpdate: mockCreateOrUpdate,
     createOrUpdateWithAttachments: mockCreateOrUpdateWithAttachments,
     findLastByConversation: mockFindLastByConversation,
+    findBySourceId: mockFindBySourceId,
   })
   const mockAdoptPhoneNumberIfSafe = vi.fn().mockResolvedValue(undefined)
   const mockSyncScopedIdentity = vi.fn(
@@ -116,6 +119,7 @@ const {
     mockCreateOrUpdate,
     mockCreateOrUpdateWithAttachments,
     mockFindLastByConversation,
+    mockFindBySourceId,
     mockCreateMessageRepository,
     mockFindContactInbox,
     mockRunChannelHandler,
@@ -731,6 +735,7 @@ describe("receiveMessage — message repository branch", () => {
       createOrUpdate: mockCreateOrUpdate,
       createOrUpdateWithAttachments: mockCreateOrUpdateWithAttachments,
       findLastByConversation: mockFindLastByConversation,
+      findBySourceId: mockFindBySourceId,
     })
     mockCreateOrUpdate.mockResolvedValue({
       message: fakeCreatedMessage,
@@ -773,6 +778,69 @@ describe("receiveMessage — message repository branch", () => {
 
     expect(mockCreateOrUpdate).toHaveBeenCalledTimes(1)
     expect(mockCreateOrUpdateWithAttachments).not.toHaveBeenCalled()
+  })
+
+  test("resolves an inbound swipe-reply parent within the 90-day lookup window", async () => {
+    vi.useFakeTimers({ now: new Date("2026-10-01T00:00:00Z") })
+    try {
+      mockFindBySourceId.mockResolvedValueOnce({ id: "parent-message-1" })
+      mockRunChannelHandler.mockResolvedValue({
+        message: {
+          ...baseIncomingMessage,
+          attachments: [],
+          parentSourceId: "parent-source-1",
+        },
+        contact: { sourceId: "psid-123", firstName: "Test" },
+        postbackAction: null,
+        quickReplyAction: null,
+        ref: null,
+      })
+
+      await receiveMessage(baseProps)
+
+      expect(mockFindBySourceId).toHaveBeenCalledWith(
+        "parent-source-1",
+        "conv-1",
+        "ws-1",
+        new Date("2026-07-03T00:00:00Z"),
+      )
+      expect(mockCreateOrUpdate).toHaveBeenCalledWith(
+        expect.objectContaining({ parentId: "parent-message-1" }),
+      )
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  test("saves an inbound swipe reply without a parent when the parent lookup fails", async () => {
+    const error = new Error("parent lookup unavailable")
+    mockFindBySourceId.mockRejectedValueOnce(error)
+    mockRunChannelHandler.mockResolvedValue({
+      message: {
+        ...baseIncomingMessage,
+        attachments: [],
+        parentSourceId: "parent-source-1",
+      },
+      contact: { sourceId: "psid-123", firstName: "Test" },
+      postbackAction: null,
+      quickReplyAction: null,
+      ref: null,
+    })
+
+    await expect(receiveMessage(baseProps)).resolves.toBeDefined()
+
+    expect(mockCreateOrUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({ parentId: null }),
+    )
+    expect(logger.warn).toHaveBeenCalledWith(
+      {
+        err: error,
+        parentSourceId: "parent-source-1",
+        conversationId: "conv-1",
+        workspaceId: "ws-1",
+      },
+      "Unable to resolve inbound message parent",
+    )
   })
 
   test("auto-unblocks on inbound messages using the loaded contact", async () => {
