@@ -417,8 +417,9 @@ export const ReplyParentPreview = (props: {
 }) => {
   const { contactName, message } = props
   const t = useTranslations("messages")
+  const tAppointmentManagement = useTranslations("appointmentManagement")
   const parent = message.parent
-  const contactLabel = contactName ?? t("unknownContact")
+  const contactLabel = contactName ?? tAppointmentManagement("unknownContact")
   const senderLabel = message.senderType === "contact" ? contactLabel : t("you")
   const parentSenderLabel =
     parent?.senderType === "contact" ? contactLabel : t("you")
