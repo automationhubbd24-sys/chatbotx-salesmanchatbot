@@ -65,6 +65,7 @@ export const enqueueMessage = async (props: {
             conversationId: props.conversationId,
             contactInboxId: props.contactInboxId,
             messageId: props.messageId,
+            triggerMessageIds: [props.messageId],
           },
         },
         {

@@ -185,6 +185,8 @@ export function createImageReaderExecutor(options: {
   modelId: string
   providerInfo: AIAgentModelConfig
   triggerMessageId?: string
+  triggerMessageIds?: string[]
+  parentMessageId?: string | null
 }): NonNullable<SystemToolExecutors[typeof systemFunctionNames.imageReader]> {
   return async (args, context) => {
     if (!context) {
@@ -196,6 +198,8 @@ export function createImageReaderExecutor(options: {
         workspaceId: context.workspaceId,
         conversationId: context.conversationId,
         messageId: options.triggerMessageId,
+        triggerMessageIds: options.triggerMessageIds,
+        parentMessageId: options.parentMessageId,
         query: args.query,
         sourceHint: args.imageContext,
       })

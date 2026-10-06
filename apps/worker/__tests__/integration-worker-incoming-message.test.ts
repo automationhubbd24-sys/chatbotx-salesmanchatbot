@@ -45,6 +45,7 @@ const {
   mockContactProfileRefresh,
   mockResolveIntegrationContextFromContactInbox,
   mockResolveIncomingTextRouting,
+  mockResolveIncomingMessageRouting,
   mockAutomatedResponseEnqueue,
   mockConversationFindOrCreate,
   mockGetWhatsappCallPermissionReply,
@@ -102,6 +103,12 @@ const {
     mockContactProfileRefresh: vi.fn(),
     mockResolveIntegrationContextFromContactInbox: vi.fn(),
     mockResolveIncomingTextRouting: vi.fn(),
+    mockResolveIncomingMessageRouting: vi.fn().mockImplementation(
+      async ({ conversation }: { conversation: unknown }) => ({
+        type: "automatedResponse",
+        conversation,
+      }),
+    ),
     mockAutomatedResponseEnqueue: vi.fn().mockResolvedValue(undefined),
     mockConversationFindOrCreate: vi.fn(),
     mockGetWhatsappCallPermissionReply: vi.fn(),
@@ -159,6 +166,7 @@ vi.mock("../src/integration/job-context", () => ({
 
 vi.mock("../src/integration/routing", () => ({
   resolveIncomingTextRouting: mockResolveIncomingTextRouting,
+  resolveIncomingMessageRouting: mockResolveIncomingMessageRouting,
 }))
 
 vi.mock("../src/integration/utils/message", () => ({
@@ -735,7 +743,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
       mockAutomatedResponseEnqueue.mock.invocationCallOrder[0],
     )
     expect(mockContactProfileRefresh.mock.invocationCallOrder[0]).toBeLessThan(
-      mockResolveIncomingTextRouting.mock.invocationCallOrder[0],
+      mockResolveIncomingMessageRouting.mock.invocationCallOrder[0],
     )
   })
 
@@ -820,7 +828,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
     expect(mockCreateOrUpdate).toHaveBeenCalledWith(
       expect.objectContaining({ text: adText }),
     )
-    expect(mockResolveIncomingTextRouting).toHaveBeenCalled()
+    expect(mockResolveIncomingMessageRouting).toHaveBeenCalled()
     expect(mockAutomatedResponseEnqueue).toHaveBeenCalled()
   })
 
@@ -1109,7 +1117,7 @@ describe("integration worker — conversation routing (thread control)", () => {
 
     await runJob(incomingJob)
 
-    expect(mockResolveIncomingTextRouting).toHaveBeenCalledTimes(1)
+    expect(mockResolveIncomingMessageRouting).toHaveBeenCalledTimes(1)
     expect(mockAutomatedResponseEnqueue).toHaveBeenCalledTimes(1)
   })
 

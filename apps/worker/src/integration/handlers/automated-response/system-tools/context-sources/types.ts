@@ -24,6 +24,8 @@ export type ResolvedConversationSource = {
 export interface ResolveConversationSourceInput {
   conversationId: string
   messageId?: string
+  triggerMessageIds?: string[]
+  parentMessageId?: string | null
   query: string
   sourceHint?: string
   workspaceId: string

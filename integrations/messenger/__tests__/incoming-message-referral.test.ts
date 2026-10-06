@@ -41,6 +41,39 @@ describe("Messenger receiveMessage", () => {
     expect(result.referralSource).toBe("SHORTLINK")
   })
 
+  test("carries a Messenger reply_to MID as the parent source reference", async () => {
+    const result = await receiveMessage({
+      ctx: { auth: { metadata: { pageId: "page-1" } } } as never,
+      data: {
+        integrationType: "messenger",
+        integrationIdentifier: "inbox-1",
+        payload: {
+          object: "page",
+          entry: [
+            {
+              id: "page-1",
+              time: 1,
+              messaging: [
+                {
+                  sender: { id: "psid-1" },
+                  recipient: { id: "page-1" },
+                  timestamp: 1,
+                  message: {
+                    mid: "mid-2",
+                    text: "Eta ki bola jeno?",
+                    reply_to: { mid: "mid-1" },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    })
+
+    expect(result.message?.parentSourceId).toBe("mid-1")
+  })
+
   test("derives the ad platform from source_url when source_platform is absent", async () => {
     const result = await receiveMessage({
       ctx: {

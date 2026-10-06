@@ -384,12 +384,23 @@ export const receiveMessage = async (
     rawIncomingMessage,
     isNewContact,
   )
-  const incomingMessage = markStandbyDelivery(
+  let incomingMessage = markStandbyDelivery(
     postbackButtonLabel && directedIncomingMessage
       ? { ...directedIncomingMessage, text: postbackButtonLabel }
       : directedIncomingMessage,
     suppressAutomation,
   )
+  if (incomingMessage?.parentSourceId) {
+    const parentMessage = await (await createMessageRepository()).findBySourceId(
+      incomingMessage.parentSourceId,
+      conversation.id,
+      inbox.workspaceId,
+    )
+    incomingMessage = {
+      ...incomingMessage,
+      parentId: parentMessage?.id ?? null,
+    }
+  }
   const systemFieldUpdates = getReceivedMessageSystemFieldUpdates({
     buttonTitle: parsedMessage.buttonTitle || postbackButtonLabel,
     message: incomingMessage,

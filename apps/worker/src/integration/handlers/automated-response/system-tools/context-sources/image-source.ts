@@ -38,9 +38,14 @@ export async function resolveImageAttachment(
   const attachments = allAttachments.filter((attachment) =>
     isSupportedImageMimeType(attachment.mimeType),
   )
-  const triggerAttachments = input.messageId
-    ? attachments.filter((attachment) => attachment.messageId === input.messageId)
-    : []
+  const triggerMessageIds = input.triggerMessageIds?.length
+    ? input.triggerMessageIds
+    : input.messageId
+      ? [input.messageId]
+      : []
+  const triggerAttachments = triggerMessageIds.flatMap((messageId) =>
+    attachments.filter((attachment) => attachment.messageId === messageId),
+  )
 
   if (triggerAttachments.length === 1) {
     return { attachment: triggerAttachments[0], status: "selected" }
@@ -48,6 +53,16 @@ export async function resolveImageAttachment(
 
   if (triggerAttachments.length > 1) {
     return { attachments: triggerAttachments, status: "selected_batch" }
+  }
+
+  const parentAttachments = input.parentMessageId
+    ? attachments.filter((attachment) => attachment.messageId === input.parentMessageId)
+    : []
+  if (parentAttachments.length === 1) {
+    return { attachment: parentAttachments[0], status: "selected" }
+  }
+  if (parentAttachments.length > 1) {
+    return { attachments: parentAttachments, status: "selected_batch" }
   }
 
   if (attachments.length === 1) {

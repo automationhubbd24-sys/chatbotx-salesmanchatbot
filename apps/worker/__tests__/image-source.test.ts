@@ -83,6 +83,46 @@ describe("resolveImageAttachment", () => {
     })
   })
 
+  test("selects ordered images across explicit trigger message ids", async () => {
+    const first = attachment({ id: "attachment-1", messageId: "message-1" })
+    const second = attachment({ id: "attachment-2", messageId: "message-2" })
+    mocks.findAttachmentsByConversation.mockResolvedValue([second, first])
+
+    await expect(
+      resolveImageAttachment({
+        ...input,
+        triggerMessageIds: ["message-1", "message-2"],
+      }),
+    ).resolves.toEqual({
+      status: "selected_batch",
+      attachments: [first, second],
+    })
+  })
+
+  test("selects parent images before a historical fallback", async () => {
+    const parent = attachment({ id: "parent-image", messageId: "parent-message" })
+    mocks.findAttachmentsByConversation.mockResolvedValue([
+      attachment({ id: "historical-image", messageId: "historical-message" }),
+      parent,
+    ])
+
+    await expect(
+      resolveImageAttachment({ ...input, parentMessageId: "parent-message" }),
+    ).resolves.toEqual({ status: "selected", attachment: parent })
+  })
+
+  test("selects current trigger images before replied-to parent images", async () => {
+    const current = attachment({ id: "current-image", messageId: "message-1" })
+    mocks.findAttachmentsByConversation.mockResolvedValue([
+      attachment({ id: "parent-image", messageId: "parent-message" }),
+      current,
+    ])
+
+    await expect(
+      resolveImageAttachment({ ...input, parentMessageId: "parent-message" }),
+    ).resolves.toEqual({ status: "selected", attachment: current })
+  })
+
   test("selects the only conversation image for a text-only trigger", async () => {
     const conversationAttachment = attachment({
       id: "attachment-1",

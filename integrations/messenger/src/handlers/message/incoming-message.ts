@@ -288,6 +288,7 @@ const getMessageEntity = async (
     const location = getMessageLocation(messaging.message)
     message = {
       sourceId: messaging.message.mid,
+      parentSourceId: messaging.message.reply_to?.mid ?? null,
       messageType:
         messaging.sender.id === ctx.auth.metadata.pageId
           ? messageTypes.enum.outgoing

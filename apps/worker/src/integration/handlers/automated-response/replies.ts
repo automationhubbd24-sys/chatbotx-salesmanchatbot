@@ -76,6 +76,8 @@ export type ReplyByAIProps = {
   messages: ModelMessage[]
   aiAgent: AIAgentModel
   triggerMessageId?: string
+  triggerMessageIds?: string[]
+  parentMessageId?: string | null
   fileOnlyTrigger: boolean
   allowedSystemFunctionIds?: string[]
   summary?: string
@@ -428,6 +430,8 @@ function createReplyToolset(options: {
         modelId: options.modelId,
         providerInfo: options.providerInfo,
         triggerMessageId: options.props.triggerMessageId,
+        triggerMessageIds: options.props.triggerMessageIds,
+        parentMessageId: options.props.parentMessageId,
       }),
       [systemFunctionNames.urlContext]: createUrlReaderExecutor({
         fileOnlyTrigger: options.props.fileOnlyTrigger,

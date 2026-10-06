@@ -97,6 +97,7 @@ describe("enqueueMessage", () => {
           conversationId: "conversation-1",
           contactInboxId: "contact-inbox-1",
           messageId: "message-1",
+          triggerMessageIds: ["message-1"],
         },
       },
       {

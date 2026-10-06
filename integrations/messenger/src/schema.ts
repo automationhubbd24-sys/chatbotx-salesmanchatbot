@@ -217,6 +217,12 @@ export const messengerMessageSchema = z.object({
   // a previously-sent DM.
   is_deleted: z.boolean().optional(),
   attachments: z.array(messengerAttachmentSchema).optional(),
+  // Messenger's reply/swipe webhook payload nests the parent native MID here.
+  // Keep it tolerant so a malformed optional reply target never drops the DM.
+  reply_to: z
+    .object({ mid: z.string().optional().catch(undefined) })
+    .optional()
+    .catch(undefined),
   metadata: z.string().optional(),
   quick_reply: z
     .object({

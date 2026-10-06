@@ -458,6 +458,8 @@ export type MessageType = z.infer<typeof messageTypes>
 
 export type IncomingMessage = {
   sourceId: string
+  /** Channel-native id of the message this message explicitly replies to. */
+  parentSourceId?: string | null
   messageType: MessageType
   contentType: ContentType
   text?: string
