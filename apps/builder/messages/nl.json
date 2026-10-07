@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Opnieuw proberen",
     "copy": "Kopiëren",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standaardmodel",
+      "embeddingModel": "Text embedding model",
       "enabled": "Ingeschakeld"
     },
     "provider": "AI-provider",

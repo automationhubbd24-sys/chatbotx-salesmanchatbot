@@ -15,10 +15,13 @@ export type OpenaiCompatibleProviderPreset = z.infer<
 
 export type OpenaiCompatiblePresetConfig = {
   allowCustomModelId?: boolean
+  allowCustomEmbeddingModelId?: boolean
   label: string
   defaultBaseURL: string
   defaultModel: string
+  defaultEmbeddingModel?: string
   modelOptions: Array<{ label: string; value: string }>
+  embeddingModelOptions?: Array<{ label: string; value: string }>
   analyzeImageModelOptions?: Array<{ label: string; value: string }>
 }
 
@@ -30,13 +33,23 @@ export const openaiCompatiblePresetConfigs: Record<
     label: "Custom",
     defaultBaseURL: "",
     defaultModel: "gpt-4o-mini",
+    defaultEmbeddingModel: "text-embedding-3-small",
     modelOptions: [],
+    embeddingModelOptions: [],
     allowCustomModelId: true,
+    allowCustomEmbeddingModelId: true,
   },
   nim: {
     label: "NVIDIA NIM",
     defaultBaseURL: "https://integrate.api.nvidia.com/v1",
     defaultModel: "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+    defaultEmbeddingModel: "nvidia/llama-3.2-nv-embedqa-1b-v2",
+    embeddingModelOptions: [
+      {
+        label: "Llama 3.2 NV EmbedQA 1B v2",
+        value: "nvidia/llama-3.2-nv-embedqa-1b-v2",
+      },
+    ],
     analyzeImageModelOptions: [
       {
         label: "Llama 3.2 11B Vision Instruct",
@@ -94,8 +107,11 @@ export const openaiCompatiblePresetConfigs: Record<
     label: "LM Studio",
     defaultBaseURL: "http://127.0.0.1:1234/v1",
     defaultModel: "local-model",
+    defaultEmbeddingModel: "local-embedding-model",
     modelOptions: [],
+    embeddingModelOptions: [],
     allowCustomModelId: true,
+    allowCustomEmbeddingModelId: true,
   },
   heroku: {
     label: "Heroku",
@@ -108,6 +124,15 @@ export const openaiCompatiblePresetConfigs: Record<
     defaultBaseURL: "https://api.clarifai.com/v2/ext/openai/v1",
     defaultModel:
       "https://clarifai.com/openai/chat-completion/models/gpt-oss-120b",
+    defaultEmbeddingModel:
+      "https://clarifai.com/openai/embed/models/text-embedding-3-small",
+    embeddingModelOptions: [
+      {
+        label: "Text Embedding 3 Small",
+        value: "https://clarifai.com/openai/embed/models/text-embedding-3-small",
+      },
+    ],
+    allowCustomEmbeddingModelId: true,
     analyzeImageModelOptions: [
       {
         label: "Claude Sonnet 4",
@@ -277,6 +302,10 @@ export const openaiCompatiblePresetConfigs: Record<
     label: "NEAR AI Cloud",
     defaultBaseURL: "https://cloud-api.near.ai/v1",
     defaultModel: "zai-org/GLM-5.1-FP8",
+    defaultEmbeddingModel: "openai/text-embedding-3-small",
+    embeddingModelOptions: [
+      { label: "OpenAI Text Embedding 3 Small", value: "openai/text-embedding-3-small" },
+    ],
     analyzeImageModelOptions: [
       { label: "Claude Haiku 4.5", value: "anthropic/claude-haiku-4-5" },
       { label: "Claude Opus 4.7", value: "anthropic/claude-opus-4-7" },

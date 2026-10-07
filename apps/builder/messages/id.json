@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Coba lagi",
     "copy": "Salin",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "URL Dasar",
       "defaultModel": "Model default",
+      "embeddingModel": "Text embedding model",
       "enabled": "Diaktifkan"
     },
     "provider": "Penyedia AI",

@@ -31,7 +31,6 @@ export type ProductListInput = {
 export type ProductAgentSearchInput = {
   workspaceId: string
   categoryId?: string | null
-  candidateLimit: number
 }
 
 export type ProductImportInsert = {
@@ -92,7 +91,6 @@ export const productRepository = {
         addons: true,
       },
       orderBy: { rank: "asc", id: "desc" },
-      limit: input.candidateLimit,
     })
 
     return rows.map(({ category, subcategory, ...product }) => ({

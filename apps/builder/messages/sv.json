@@ -1,4 +1,4 @@
-{
+﻿{
   "QRCode": {
     "description": "Dela den här koden så att personer öppnar din spårningslänk.",
     "title": "QR-kod"
@@ -4641,6 +4641,7 @@
     "fields": {
       "baseURL": "Bas-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Text embedding model",
       "enabled": "Aktiverad"
     },
     "provider": "AI-leverantör",

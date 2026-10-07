@@ -1,4 +1,4 @@
-{
+﻿{
   "QRCode": {
     "description": "分享此代码，以便人们打开您的追踪链接。",
     "title": "QR Code"
@@ -4641,6 +4641,7 @@
     "fields": {
       "baseURL": "基础URL",
       "defaultModel": "缺省模型",
+      "embeddingModel": "Text embedding model",
       "enabled": "已激活"
     },
     "provider": "人工智能供应商",

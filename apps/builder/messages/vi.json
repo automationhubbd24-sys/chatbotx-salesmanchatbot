@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Thử lại",
     "copy": "Sao chép",
@@ -3782,6 +3782,7 @@
     "fields": {
       "baseURL": "Base URL",
       "defaultModel": "Model mặc định",
+      "embeddingModel": "Text embedding model",
       "enabled": "Đang bật"
     },
     "provider": "AI Provider",

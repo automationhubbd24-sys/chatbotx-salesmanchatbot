@@ -37,6 +37,7 @@ export type ConnectOpenaiCompatibleInput = {
   preset: string
   baseURL: string
   defaultModel: string
+  embeddingModel?: string | null
   apiKey: string
   autoReply?: boolean
   enabled?: boolean
@@ -114,6 +115,7 @@ class IntegrationOpenaiCompatibleService extends BaseService {
           autoReply: props.autoReply ?? false,
           baseURL,
           defaultModel: props.defaultModel,
+          embeddingModel: props.embeddingModel ?? null,
           enabled: props.enabled ?? true,
           integrationId: integration.id,
           name: props.name,

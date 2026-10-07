@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Erneut versuchen",
     "copy": "Kopieren",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Text embedding model",
       "enabled": "Aktiviert"
     },
     "provider": "KI-Anbieter",

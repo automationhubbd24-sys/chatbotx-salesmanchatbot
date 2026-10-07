@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Yritä uudelleen",
     "copy": "Kopioi",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "Perus-URL",
       "defaultModel": "Oletusmalli",
+      "embeddingModel": "Text embedding model",
       "enabled": "Käytössä"
     },
     "provider": "AI-palveluntarjoaja",

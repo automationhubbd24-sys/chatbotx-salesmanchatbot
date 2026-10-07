@@ -4,8 +4,9 @@ import { db } from "@chatbotx.io/database/client"
 import { secretTextAuthSchema } from "@chatbotx.io/sdk"
 import type { EmbeddingModel } from "ai"
 import { geminiEmbeddingModels, openaiEmbeddingModels } from "../models"
+import { createOpenaiCompatibleEmbeddingModelInstance } from "./openai-compatible"
 
-export type EmbeddingProvider = "openai" | "gemini"
+export type EmbeddingProvider = "openai" | "openaiCompatible" | "gemini"
 
 export type ResolvedEmbeddingModel = {
   model: EmbeddingModel
@@ -33,6 +34,25 @@ export async function resolveEmbeddingModel(
     }
   }
 
+  const integrationOpenaiCompatible =
+    await db.query.integrationOpenaiCompatibleModel.findFirst({
+      where: {
+        workspaceId,
+        enabled: true,
+        embeddingModel: { isNotNull: true },
+      },
+    })
+
+  if (integrationOpenaiCompatible?.embeddingModel?.trim()) {
+    return {
+      model: createOpenaiCompatibleEmbeddingModelInstance({
+        integration: integrationOpenaiCompatible,
+        modelId: integrationOpenaiCompatible.embeddingModel.trim(),
+      }),
+      provider: "openaiCompatible",
+    }
+  }
+
   const integrationGemini = await db.query.integrationGeminiModel.findFirst({
     where: { workspaceId },
   })
@@ -52,6 +72,6 @@ export async function resolveEmbeddingModel(
   }
 
   throw new Error(
-    "No embedding provider configured. AI file embeddings require OpenAI or Gemini integration. DeepSeek and Claude do not support embedding models.",
+    "No embedding provider configured. AI file embeddings require OpenAI, OpenAI-compatible, or Gemini integration. DeepSeek and Claude do not support embedding models.",
   )
 }

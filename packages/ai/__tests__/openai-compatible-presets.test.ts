@@ -13,8 +13,11 @@ describe("OpenAI-compatible provider presets", () => {
       label: "Custom",
       defaultBaseURL: "",
       defaultModel: "gpt-4o-mini",
+      defaultEmbeddingModel: "text-embedding-3-small",
       modelOptions: [],
+      embeddingModelOptions: [],
       allowCustomModelId: true,
+      allowCustomEmbeddingModelId: true,
     })
   })
 
@@ -24,6 +27,13 @@ describe("OpenAI-compatible provider presets", () => {
       label: "NVIDIA NIM",
       defaultBaseURL: "https://integrate.api.nvidia.com/v1",
       defaultModel: "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+      defaultEmbeddingModel: "nvidia/llama-3.2-nv-embedqa-1b-v2",
+      embeddingModelOptions: [
+        {
+          label: "Llama 3.2 NV EmbedQA 1B v2",
+          value: "nvidia/llama-3.2-nv-embedqa-1b-v2",
+        },
+      ],
       analyzeImageModelOptions: [
         {
           label: "Llama 3.2 11B Vision Instruct",
@@ -85,8 +95,11 @@ describe("OpenAI-compatible provider presets", () => {
       label: "LM Studio",
       defaultBaseURL: "http://127.0.0.1:1234/v1",
       defaultModel: "local-model",
+      defaultEmbeddingModel: "local-embedding-model",
       modelOptions: [],
+      embeddingModelOptions: [],
       allowCustomModelId: true,
+      allowCustomEmbeddingModelId: true,
     })
   })
 

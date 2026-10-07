@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "إعادة المحاولة",
     "copy": "نسخ",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "عنوان URL الأساسي",
       "defaultModel": "النموذج الافتراضي",
+      "embeddingModel": "Text embedding model",
       "enabled": "مفعّل"
     },
     "provider": "مزوّد الذكاء الاصطناعي",

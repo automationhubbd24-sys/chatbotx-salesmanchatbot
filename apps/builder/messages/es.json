@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Reintentar",
     "copy": "Copiar",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "URL base",
       "defaultModel": "Predeterminado modelo",
+      "embeddingModel": "Text embedding model",
       "enabled": "Activado"
     },
     "provider": "Proveedor de IA",

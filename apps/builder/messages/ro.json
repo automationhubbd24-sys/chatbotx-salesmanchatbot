@@ -1,4 +1,4 @@
-{
+﻿{
   "flows": {
     "export": {
       "notPublished": "Acest flux nu a fost niciodată publicat. Publicați-l înainte de a-l exporta.",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "URL de bază",
       "defaultModel": "Model implicit",
+      "embeddingModel": "Text embedding model",
       "enabled": "Activat"
     },
     "provider": "Furnizor IA",

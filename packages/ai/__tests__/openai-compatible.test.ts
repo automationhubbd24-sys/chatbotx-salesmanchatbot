@@ -1,18 +1,24 @@
 import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
 import { describe, expect, test, vi } from "vitest"
 
+const providerEmbeddingMock = vi.hoisted(() =>
+  vi.fn((modelId: string) => `embedding:${modelId}`),
+)
 const providerModelMock = vi.hoisted(() => vi.fn((modelId: string) => modelId))
 const createOpenAICompatibleMock = vi.hoisted(() =>
-  vi.fn(() => providerModelMock),
+  vi.fn(() =>
+    Object.assign(providerModelMock, { embeddingModel: providerEmbeddingMock }),
+  ),
 )
 
 vi.mock("@ai-sdk/openai-compatible", () => ({
   createOpenAICompatible: createOpenAICompatibleMock,
 }))
 
-const { createOpenaiCompatibleModelInstance } = await import(
-  "../src/server/openai-compatible"
-)
+const {
+  createOpenaiCompatibleEmbeddingModelInstance,
+  createOpenaiCompatibleModelInstance,
+} = await import("../src/server/openai-compatible")
 
 function createIntegration(
   overrides: Partial<IntegrationOpenaiCompatibleModel> = {},
@@ -24,6 +30,7 @@ function createIntegration(
     baseURL: "http://localhost:1234/v1",
     createdAt: new Date("2026-01-01T00:00:00Z"),
     defaultModel: "llama-3.2-1b",
+    embeddingModel: null,
     enabled: true,
     integrationId: "10",
     name: "Local",
@@ -48,6 +55,16 @@ describe("OpenAI-compatible model helper", () => {
       apiKey: undefined,
     })
     expect(providerModelMock).toHaveBeenCalledWith("local-model")
+  })
+
+  test("creates an embedding model", () => {
+    const result = createOpenaiCompatibleEmbeddingModelInstance({
+      integration: createIntegration(),
+      modelId: "local-embedding-model",
+    })
+
+    expect(result).toBe("embedding:local-embedding-model")
+    expect(providerEmbeddingMock).toHaveBeenCalledWith("local-embedding-model")
   })
 
   test("passes secret text api key", () => {

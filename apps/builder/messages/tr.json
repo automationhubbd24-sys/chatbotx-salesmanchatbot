@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Yeniden dene",
     "copy": "Kopyala",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "Temel URL",
       "defaultModel": "Varsayılan model",
+      "embeddingModel": "Text embedding model",
       "enabled": "Etkin"
     },
     "provider": "AI Sağlayıcısı",

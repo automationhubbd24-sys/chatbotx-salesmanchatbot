@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "copy": "Copy",
     "copyUrl": "Copy URL",
@@ -3982,6 +3982,7 @@
     "fields": {
       "baseURL": "Base URL",
       "defaultModel": "Default model",
+      "embeddingModel": "Text embedding model",
       "enabled": "Enabled"
     },
     "provider": "AI Provider",

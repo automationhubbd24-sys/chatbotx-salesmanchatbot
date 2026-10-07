@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Prøv igen",
     "copy": "Kopiér",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "Base URL",
       "defaultModel": "Standard model",
+      "embeddingModel": "Text embedding model",
       "enabled": "Aktiveret"
     },
     "provider": "AI-udbyder",

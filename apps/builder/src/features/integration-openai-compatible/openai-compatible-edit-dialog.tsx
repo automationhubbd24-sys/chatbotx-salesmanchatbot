@@ -22,7 +22,7 @@ import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hoo
 import { Loader2Icon, PencilIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useWatch } from "react-hook-form"
 import { toast } from "sonner"
 import { useWorkspaceId } from "@/hooks/routing"
@@ -84,6 +84,7 @@ export function OpenaiCompatibleEditDialog({
           autoReply: integration.autoReply,
           baseURL: integration.baseURL,
           defaultModel: integration.defaultModel,
+          embeddingModel: integration.embeddingModel ?? "",
           enabled: integration.enabled,
           name: integration.name,
           preset: integration.preset,
@@ -97,6 +98,24 @@ export function OpenaiCompatibleEditDialog({
     openaiCompatiblePresetConfigs[preset ?? integration.preset]
   const useCustomModelInput =
     shouldUseCustomOpenaiCompatibleModelInput(presetConfig)
+  const useCustomEmbeddingModelInput = shouldUseCustomOpenaiCompatibleModelInput(
+    presetConfig,
+    "embedding",
+  )
+  const previousPresetRef = useRef(preset ?? integration.preset)
+
+  useEffect(() => {
+    if (!preset || previousPresetRef.current === preset) {
+      return
+    }
+
+    previousPresetRef.current = preset
+    const config = openaiCompatiblePresetConfigs[preset]
+    form.setValue("defaultModel", config.defaultModel, { shouldValidate: true })
+    form.setValue("embeddingModel", config.defaultEmbeddingModel ?? "", {
+      shouldValidate: true,
+    })
+  }, [form, preset])
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>
@@ -139,6 +158,21 @@ export function OpenaiCompatibleEditDialog({
                 name="defaultModel"
                 options={buildOpenaiCompatibleModelOptions(presetConfig)}
                 required
+              />
+            )}
+            {useCustomEmbeddingModelInput ? (
+              <InputField
+                label={t("openaiCompatible.fields.embeddingModel")}
+                name="embeddingModel"
+              />
+            ) : (
+              <ComboboxField
+                label={t("openaiCompatible.fields.embeddingModel")}
+                name="embeddingModel"
+                options={buildOpenaiCompatibleModelOptions(
+                  presetConfig,
+                  "embedding",
+                )}
               />
             )}
             <InputField

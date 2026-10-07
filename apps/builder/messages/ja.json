@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "再試行",
     "copy": "コピー",
@@ -3719,6 +3719,7 @@
     "fields": {
       "baseURL": "ベースURL",
       "defaultModel": "デフォルトモデル",
+      "embeddingModel": "Text embedding model",
       "enabled": "有効"
     },
     "provider": "AIプロバイダー",

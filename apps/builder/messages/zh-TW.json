@@ -1,4 +1,4 @@
-{
+﻿{
   "fields": {
     "optionalHint": "(可選)",
     "marketingMessagesConfigId": {
@@ -3773,6 +3773,7 @@
     "fields": {
       "baseURL": "基礎URL",
       "defaultModel": "預設模型",
+      "embeddingModel": "Text embedding model",
       "enabled": "已啟用"
     },
     "provider": "人工智慧供應商",

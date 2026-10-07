@@ -1,4 +1,4 @@
-{
+﻿{
   "fields": {
     "optionalHint": "(facoltativo)",
     "marketingMessagesConfigId": {
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "URL di base",
       "defaultModel": "Modello predefinito",
+      "embeddingModel": "Text embedding model",
       "enabled": "Attivo"
     },
     "provider": "Provider IA",

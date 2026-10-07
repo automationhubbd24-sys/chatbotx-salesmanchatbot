@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "copy": "Kopyala",
     "copyUrl": "URL-i kopyala",
@@ -3982,6 +3982,7 @@
     "fields": {
       "baseURL": "Əsas URL",
       "defaultModel": "Standart model",
+      "embeddingModel": "Text embedding model",
       "enabled": "Aktivdir"
     },
     "provider": "AI provayderi",

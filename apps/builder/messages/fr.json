@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "Réessayer",
     "copy": "Copier",
@@ -3740,6 +3740,7 @@
     "fields": {
       "baseURL": "URL de base",
       "defaultModel": "Modèle par défaut",
+      "embeddingModel": "Text embedding model",
       "enabled": "Activé"
     },
     "provider": "Fournisseur d’IA",

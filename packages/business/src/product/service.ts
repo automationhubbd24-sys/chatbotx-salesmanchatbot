@@ -84,7 +84,6 @@ export type ProductAgentSearchInput = {
   limit?: number
 }
 
-const PRODUCT_AGENT_CANDIDATE_LIMIT = 250
 const PRODUCT_AGENT_DEFAULT_LIMIT = 5
 const MIN_PRODUCT_AGENT_SCORE = 8
 const TOKEN_SPLIT_PATTERN = /[^\p{L}\p{N}]+/u
@@ -512,7 +511,6 @@ class ProductService extends BaseService {
     const products = await productRepository.listForAgentSearch({
       workspaceId: input.workspaceId,
       categoryId: input.categoryId,
-      candidateLimit: PRODUCT_AGENT_CANDIDATE_LIMIT,
     })
 
     return products

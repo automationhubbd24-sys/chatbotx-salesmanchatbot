@@ -8,6 +8,7 @@ export type IntegrationOpenaiCompatibleResource = Pick<
   | "name"
   | "baseURL"
   | "defaultModel"
+  | "embeddingModel"
   | "enabled"
   | "autoReply"
   | "createdAt"
@@ -26,6 +27,7 @@ export function mapIntegrationOpenaiCompatibleResource(
     preset: integration.preset as OpenaiCompatibleProviderPreset,
     baseURL: integration.baseURL,
     defaultModel: integration.defaultModel,
+    embeddingModel: integration.embeddingModel,
     enabled: integration.enabled,
     autoReply: integration.autoReply,
     createdAt: integration.createdAt,

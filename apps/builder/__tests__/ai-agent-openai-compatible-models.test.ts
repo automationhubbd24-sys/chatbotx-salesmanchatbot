@@ -12,6 +12,7 @@ function createIntegration(
     baseURL: "https://llm.wokushop.com/v1",
     createdAt: new Date("2026-01-01T00:00:00Z"),
     defaultModel: "custom-default-model",
+    embeddingModel: null,
     enabled: true,
     name: "Custom",
     preset: "custom",

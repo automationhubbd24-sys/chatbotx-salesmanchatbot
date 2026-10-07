@@ -1,4 +1,4 @@
-{
+﻿{
   "actions": {
     "retry": "נסה שוב",
     "copy": "העתקה",
@@ -1751,6 +1751,7 @@
     "fields": {
       "baseURL": "כתובת URL בסיסית",
       "defaultModel": "מודל ברירת מחדל",
+      "embeddingModel": "Text embedding model",
       "enabled": "מופעל"
     },
     "provider": "ספק AI",

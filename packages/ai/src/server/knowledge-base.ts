@@ -46,6 +46,7 @@ export type FileSearchConfig = {
 
 export const embeddingSimilarityThresholds = {
   openai: 0.7,
+  openaiCompatible: 0.7,
   gemini: 0.55,
 } as const satisfies Record<EmbeddingProvider, number>
 

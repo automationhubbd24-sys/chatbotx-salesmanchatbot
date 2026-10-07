@@ -9,11 +9,9 @@ class InvalidOpenaiCompatibleAuthError extends Error {
   }
 }
 
-export function createOpenaiCompatibleModelInstance(props: {
-  integration: IntegrationOpenaiCompatibleModel
-  modelId: string
-}) {
-  const { integration, modelId } = props
+function createOpenaiCompatibleProvider(
+  integration: IntegrationOpenaiCompatibleModel,
+) {
   const authParsed = secretTextAuthSchema.safeParse(integration.auth)
   if (integration.auth !== null && !authParsed.success) {
     throw new InvalidOpenaiCompatibleAuthError()
@@ -27,12 +25,26 @@ export function createOpenaiCompatibleModelInstance(props: {
         }
       : undefined
 
-  const provider = createOpenAICompatible({
+  return createOpenAICompatible({
     name: integration.preset || "openai-compatible",
     baseURL: integration.baseURL,
     apiKey,
     ...(transformRequestBody ? { transformRequestBody } : {}),
   })
+}
 
-  return provider(modelId)
+export function createOpenaiCompatibleModelInstance(props: {
+  integration: IntegrationOpenaiCompatibleModel
+  modelId: string
+}) {
+  const { integration, modelId } = props
+  return createOpenaiCompatibleProvider(integration)(modelId)
+}
+
+export function createOpenaiCompatibleEmbeddingModelInstance(props: {
+  integration: IntegrationOpenaiCompatibleModel
+  modelId: string
+}) {
+  const { integration, modelId } = props
+  return createOpenaiCompatibleProvider(integration).embeddingModel(modelId)
 }
