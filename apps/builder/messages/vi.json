@@ -1509,7 +1509,9 @@
         "documentReader": "Trình đọc tài liệu",
         "imageReader": "Trình đọc hình ảnh",
         "urlContext": "Trình đọc URL",
-        "webSearch": "Tìm kiếm web"
+        "webSearch": "Tìm kiếm web",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

@@ -2864,7 +2864,9 @@
         "documentReader": "文档阅读器",
         "imageReader": "影像读取器",
         "urlContext": "网址阅读器",
-        "webSearch": "Web 搜索"
+        "webSearch": "Web 搜索",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "systemUserId": {

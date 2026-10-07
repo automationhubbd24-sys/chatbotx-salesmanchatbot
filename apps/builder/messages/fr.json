@@ -1349,7 +1349,9 @@
         "documentReader": "Lecteur de documents",
         "imageReader": "Lecteur d’images",
         "urlContext": "Lecteur d’URL",
-        "webSearch": "Recherche Web"
+        "webSearch": "Recherche Web",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

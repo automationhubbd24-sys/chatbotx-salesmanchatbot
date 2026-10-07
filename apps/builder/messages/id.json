@@ -1349,7 +1349,9 @@
         "documentReader": "Pembaca Dokumen",
         "imageReader": "Pembaca Gambar",
         "urlContext": "Pembaca URL",
-        "webSearch": "Pencarian web"
+        "webSearch": "Pencarian web",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

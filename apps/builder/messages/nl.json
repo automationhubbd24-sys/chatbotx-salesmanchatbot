@@ -1158,7 +1158,9 @@
         "documentReader": "Documentlezer",
         "imageReader": "Afbeeldingslezer",
         "urlContext": "URL-lezer",
-        "webSearch": "Zoeken op internet"
+        "webSearch": "Zoeken op internet",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

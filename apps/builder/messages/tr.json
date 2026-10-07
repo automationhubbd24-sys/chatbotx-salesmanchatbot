@@ -1494,7 +1494,9 @@
         "documentReader": "Belge Okuyucu",
         "imageReader": "Görsel Okuyucu",
         "urlContext": "URL Okuyucu",
-        "webSearch": "Web araması"
+        "webSearch": "Web araması",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

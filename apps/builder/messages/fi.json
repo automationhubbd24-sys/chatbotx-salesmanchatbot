@@ -1349,7 +1349,9 @@
         "documentReader": "Asiakirjanlukija",
         "imageReader": "Kuvanlukija",
         "urlContext": "URL-lukija",
-        "webSearch": "Verkkohaku"
+        "webSearch": "Verkkohaku",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

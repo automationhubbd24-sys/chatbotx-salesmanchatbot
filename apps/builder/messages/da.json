@@ -1349,7 +1349,9 @@
         "documentReader": "Document Reader",
         "imageReader": "Billede Reader",
         "urlContext": "URL Reader",
-        "webSearch": "Web søg"
+        "webSearch": "Web søg",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

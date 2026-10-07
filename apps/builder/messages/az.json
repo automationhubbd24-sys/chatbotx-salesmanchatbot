@@ -1545,7 +1545,9 @@
         "documentReader": "Sənəd oxuyucusu",
         "imageReader": "Şəkil oxuyucusu",
         "urlContext": "URL oxuyucusu",
-        "webSearch": "Veb axtarış"
+        "webSearch": "Veb axtarış",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

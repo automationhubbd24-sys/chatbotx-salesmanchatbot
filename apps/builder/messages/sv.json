@@ -2861,7 +2861,9 @@
         "documentReader": "Dokumentläsare",
         "imageReader": "Bildläsare",
         "urlContext": "URL-läsare",
-        "webSearch": "Webbsökning"
+        "webSearch": "Webbsökning",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "systemUserId": {

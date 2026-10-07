@@ -90,27 +90,55 @@ const webSearchSchema = z.object({
   query: z.string().describe("The user query to search on the public web"),
 })
 
+const searchProductsSchema = z.object({
+  query: z
+    .string()
+    .trim()
+    .min(1)
+    .describe("Product name or keywords to search in the live catalog"),
+  categoryId: z
+    .string()
+    .trim()
+    .min(1)
+    .optional()
+    .describe("Optional catalog category id to narrow the search"),
+})
+
+const getProductDetailsSchema = z.object({
+  productId: z
+    .string()
+    .trim()
+    .min(1)
+    .describe("Product id returned by search_products"),
+})
+
 export type ConnectUserToHumanInput = z.infer<typeof connectUserToHumanSchema>
 export type DocumentReaderInput = z.infer<typeof documentReaderSchema>
 export type ImageReaderInput = z.infer<typeof imageReaderSchema>
 export type UrlContextInput = z.infer<typeof urlContextSchema>
 export type WebSearchInput = z.infer<typeof webSearchSchema>
+export type SearchProductsInput = z.infer<typeof searchProductsSchema>
+export type GetProductDetailsInput = z.infer<typeof getProductDetailsSchema>
 
 export const systemFunctionIds = [
   systemFunctionNames.connectUserToHuman,
   systemFunctionNames.documentReader,
   systemFunctionNames.imageReader,
+  systemFunctionNames.searchProducts,
+  systemFunctionNames.getProductDetails,
   systemFunctionNames.urlContext,
   systemFunctionNames.webSearch,
 ] as const
 
 export type SystemFunctionId = (typeof systemFunctionIds)[number]
 
+export type SystemToolOutput = Record<string, unknown> | string
+
 export type SystemToolExecutors = Partial<{
   [systemFunctionNames.connectUserToHuman]: (
     args: ConnectUserToHumanInput,
     context: SystemFunctionContext | null,
-  ) => Promise<string>
+  ) => Promise<SystemToolOutput>
   [systemFunctionNames.documentReader]: (
     args: DocumentReaderInput,
     context: SystemFunctionContext | null,
@@ -119,6 +147,14 @@ export type SystemToolExecutors = Partial<{
     args: ImageReaderInput,
     context: SystemFunctionContext | null,
   ) => Promise<string>
+  [systemFunctionNames.searchProducts]: (
+    args: SearchProductsInput,
+    context: SystemFunctionContext | null,
+  ) => Promise<SystemToolOutput>
+  [systemFunctionNames.getProductDetails]: (
+    args: GetProductDetailsInput,
+    context: SystemFunctionContext | null,
+  ) => Promise<SystemToolOutput>
   [systemFunctionNames.urlContext]: (
     args: UrlContextInput,
     context: SystemFunctionContext | null,
@@ -189,6 +225,42 @@ const buildImageReaderTool = (options: GetAISystemToolsOptions) =>
     },
   })
 
+const buildSearchProductsTool = (options: GetAISystemToolsOptions) =>
+  tool({
+    description:
+      systemFunctionCatalog[systemFunctionNames.searchProducts].description,
+    inputSchema: searchProductsSchema,
+    execute: async (args) => {
+      const context = await options.systemFunctionContextGetter?.()
+      const executor =
+        options.systemToolExecutors?.[systemFunctionNames.searchProducts]
+
+      if (executor) {
+        return executor(args, context ?? null)
+      }
+
+      return { products: [] }
+    },
+  })
+
+const buildGetProductDetailsTool = (options: GetAISystemToolsOptions) =>
+  tool({
+    description:
+      systemFunctionCatalog[systemFunctionNames.getProductDetails].description,
+    inputSchema: getProductDetailsSchema,
+    execute: async (args) => {
+      const context = await options.systemFunctionContextGetter?.()
+      const executor =
+        options.systemToolExecutors?.[systemFunctionNames.getProductDetails]
+
+      if (executor) {
+        return executor(args, context ?? null)
+      }
+
+      return { product: null }
+    },
+  })
+
 const buildUrlContextTool = (options: GetAISystemToolsOptions) =>
   tool({
     description:
@@ -232,6 +304,8 @@ const systemToolBuilders: Record<
   [systemFunctionNames.connectUserToHuman]: buildConnectUserToHumanTool,
   [systemFunctionNames.documentReader]: buildDocumentReaderTool,
   [systemFunctionNames.imageReader]: buildImageReaderTool,
+  [systemFunctionNames.searchProducts]: buildSearchProductsTool,
+  [systemFunctionNames.getProductDetails]: buildGetProductDetailsTool,
   [systemFunctionNames.urlContext]: buildUrlContextTool,
   [systemFunctionNames.webSearch]: buildWebSearchTool,
 }
@@ -259,7 +333,7 @@ export function getAISystemTools(options: GetAISystemToolsOptions): ToolSet {
     const normalizedError = normalizeError(error)
     logger.error(
       {
-        error: normalizedError,
+        err: normalizedError,
         selectedSystemIds,
       },
       "[ai-package] getAISystemTools failed",

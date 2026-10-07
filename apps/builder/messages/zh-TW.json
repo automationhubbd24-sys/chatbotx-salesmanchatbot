@@ -583,7 +583,9 @@
         "documentReader": "文檔閱讀器",
         "imageReader": "影像讀取器",
         "urlContext": "網址閱讀器",
-        "webSearch": "Web 搜尋"
+        "webSearch": "Web 搜尋",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

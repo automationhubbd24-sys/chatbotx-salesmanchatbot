@@ -115,6 +115,12 @@ export const useAIToolMultiSelectGroups = ({
             [systemFunctionNames.imageReader]: t(
               "fields.systemFunction.names.imageReader",
             ),
+            [systemFunctionNames.searchProducts]: t(
+              "fields.systemFunction.names.searchProducts",
+            ),
+            [systemFunctionNames.getProductDetails]: t(
+              "fields.systemFunction.names.getProductDetails",
+            ),
             [systemFunctionNames.urlContext]: t(
               "fields.systemFunction.names.urlContext",
             ),

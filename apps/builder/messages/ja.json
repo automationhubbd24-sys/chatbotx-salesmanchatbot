@@ -1349,7 +1349,9 @@
         "documentReader": "ドキュメントリーダー",
         "imageReader": "画像リーダー",
         "urlContext": "URLリーダー",
-        "webSearch": "Web検索"
+        "webSearch": "Web検索",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

@@ -1545,7 +1545,9 @@
         "documentReader": "Document Reader",
         "imageReader": "Image Reader",
         "urlContext": "Url Reader",
-        "webSearch": "Web search"
+        "webSearch": "Web search",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

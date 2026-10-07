@@ -101,6 +101,8 @@ export const systemFunctionNames = {
   connectUserToHuman: "connect_user_to_human",
   documentReader: "document_reader",
   imageReader: "image_reader",
+  searchProducts: "search_products",
+  getProductDetails: "get_product_details",
   urlContext: "url_context",
   webSearch: "web_search",
 } as const
@@ -123,6 +125,18 @@ export const systemFunctionCatalog = {
     capability: "image_context",
     description:
       "Analyze user-uploaded images in the current conversation and return visual context relevant to the query.",
+  },
+  [systemFunctionNames.searchProducts]: {
+    id: systemFunctionNames.searchProducts,
+    capability: "catalog_search",
+    description:
+      "Search the workspace's live catalog for active, searchable products that match the customer's query.",
+  },
+  [systemFunctionNames.getProductDetails]: {
+    id: systemFunctionNames.getProductDetails,
+    capability: "catalog_details",
+    description:
+      "Retrieve customer-safe details for one active, searchable catalog product by its id.",
   },
   [systemFunctionNames.urlContext]: {
     id: systemFunctionNames.urlContext,

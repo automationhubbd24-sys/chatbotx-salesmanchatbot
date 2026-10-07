@@ -4701,7 +4701,9 @@
         "documentReader": "קורא מסמכים",
         "imageReader": "קורא תמונות",
         "urlContext": "קורא כתובות URL",
-        "webSearch": "חיפוש באינטרנט"
+        "webSearch": "חיפוש באינטרנט",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

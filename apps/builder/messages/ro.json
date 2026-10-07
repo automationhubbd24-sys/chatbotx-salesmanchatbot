@@ -2323,7 +2323,9 @@
         "documentReader": "Cititor de documente",
         "imageReader": "Cititor de imagini",
         "urlContext": "Cititor URL",
-        "webSearch": "Căutare web"
+        "webSearch": "Căutare web",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {

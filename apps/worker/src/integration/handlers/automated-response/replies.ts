@@ -61,6 +61,10 @@ import { createMcpTokenResolver } from "../shared/resolve-mcp-token"
 import { triggerDefaultReplyFlow } from "./default-reply"
 import { handleRichAIReply } from "./rich-reply"
 import { createDocumentReaderExecutor } from "./system-tools/document-reader"
+import {
+  createGetProductDetailsExecutor,
+  createSearchProductsExecutor,
+} from "./system-tools/ecommerce"
 import { createImageReaderExecutor } from "./system-tools/image-reader"
 import { createUrlReaderExecutor } from "./system-tools/url-reader"
 import {
@@ -429,6 +433,9 @@ function createReplyToolset(options: {
         providerInfo: options.providerInfo,
         triggerMessageId: options.props.triggerMessageId,
       }),
+      [systemFunctionNames.searchProducts]: createSearchProductsExecutor(),
+      [systemFunctionNames.getProductDetails]:
+        createGetProductDetailsExecutor(),
       [systemFunctionNames.urlContext]: createUrlReaderExecutor({
         fileOnlyTrigger: options.props.fileOnlyTrigger,
         triggerMessageId: options.props.triggerMessageId,

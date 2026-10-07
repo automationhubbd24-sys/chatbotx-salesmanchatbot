@@ -1494,7 +1494,9 @@
         "documentReader": "قارئ المستندات",
         "imageReader": "قارئ الصور",
         "urlContext": "قارئ الرابط",
-        "webSearch": "بحث الويب"
+        "webSearch": "بحث الويب",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
