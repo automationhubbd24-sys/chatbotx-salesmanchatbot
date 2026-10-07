@@ -47,7 +47,20 @@ export function appendKnowledgeBaseGuard(
   if (!(KNOWLEDGE_BASE_TOOL in tools)) {
     return systemPrompt
   }
+  if (systemFunctionNames.searchProducts in tools) {
+    return `${systemPrompt}\n\nKNOWLEDGE BASE RULES (REQUIRED):\n- Use search_knowledge_base for company-specific information not covered by the live product catalog. For product availability, price, and details, follow the live catalog search policy instead.`.trim()
+  }
   return `${systemPrompt}\n\n${helpTexts.knowledgeBaseGuard}`.trim()
+}
+
+export function appendProductCatalogGuard(
+  systemPrompt: string,
+  tools: ToolSet,
+): string {
+  if (!(systemFunctionNames.searchProducts in tools)) {
+    return systemPrompt
+  }
+  return `${systemPrompt}\n\nLIVE PRODUCT CATALOG RULES (REQUIRED):\n- When asked whether a product exists, is available, or what it costs, you MUST call search_products with the product name before answering.\n- The live catalog is the source of truth for products, prices, and stock; do not infer product absence from the knowledge base or conversation history.\n- Use get_product_details only with a product id returned by search_products when more details are needed.\n- If search_products returns no products, say you could not find a matching product; do not claim that the entire catalog is empty.`.trim()
 }
 
 export function appendHandoffPolicy(

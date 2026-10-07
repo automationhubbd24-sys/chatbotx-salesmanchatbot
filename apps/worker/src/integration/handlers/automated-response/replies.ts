@@ -13,6 +13,7 @@ import {
   appendFabricationGuard,
   appendHandoffPolicy,
   appendKnowledgeBaseGuard,
+  appendProductCatalogGuard,
   appendToolOutputGuard,
   getAIToolset,
   McpClient,
@@ -433,9 +434,14 @@ function createReplyToolset(options: {
         providerInfo: options.providerInfo,
         triggerMessageId: options.props.triggerMessageId,
       }),
-      [systemFunctionNames.searchProducts]: createSearchProductsExecutor(),
-      [systemFunctionNames.getProductDetails]:
-        createGetProductDetailsExecutor(),
+      [systemFunctionNames.searchProducts]: createSearchProductsExecutor({
+        agentId: aiAgent.id,
+        triggerMessageId: options.props.triggerMessageId,
+      }),
+      [systemFunctionNames.getProductDetails]: createGetProductDetailsExecutor({
+        agentId: aiAgent.id,
+        triggerMessageId: options.props.triggerMessageId,
+      }),
       [systemFunctionNames.urlContext]: createUrlReaderExecutor({
         fileOnlyTrigger: options.props.fileOnlyTrigger,
         triggerMessageId: options.props.triggerMessageId,
@@ -776,6 +782,20 @@ async function runAIReply(
     })
     const tools = toolset.tools
     cleanup = toolset.cleanup
+    logger.info(
+      {
+        agentId: aiAgent.id,
+        workspaceId: conversation.workspaceId,
+        conversationId: conversation.id,
+        triggerMessageId: props.triggerMessageId,
+        provider,
+        modelId: selectedModelId,
+        selectedToolIds: aiAgent.tools,
+        allowedSystemFunctionIds: props.allowedSystemFunctionIds,
+        availableToolNames: Object.keys(tools),
+      },
+      "[automated-response] available tools",
+    )
 
     const variables = await contactVariableService.getAll({
       contactId: conversation.contactId,
@@ -816,9 +836,12 @@ async function runAIReply(
     )
     const guardedPrompt = appendUnavailableWebSearchPolicy(
       appendHandoffPolicy(
-        appendKnowledgeBaseGuard(
-          appendFabricationGuard(
-            appendToolOutputGuard(promptWithActionProtocol),
+        appendProductCatalogGuard(
+          appendKnowledgeBaseGuard(
+            appendFabricationGuard(
+              appendToolOutputGuard(promptWithActionProtocol),
+              tools,
+            ),
             tools,
           ),
           tools,
@@ -928,11 +951,9 @@ async function runAIReply(
 
     const logActionToolSelection = () => {
       const toolStats = buildToolStats()
-      if (!toolStats.actionToolAvailable) {
-        return toolStats
-      }
       logger.info(
         {
+          agentId: aiAgent.id,
           workspaceId: conversation.workspaceId,
           conversationId: conversation.id,
           contactId: conversation.contactId,
@@ -941,7 +962,9 @@ async function runAIReply(
           modelId: selectedModelId,
           ...toolStats,
         },
-        "[ai-agent-actions] tool selection outcome",
+        toolStats.actionToolAvailable
+          ? "[ai-agent-actions] tool selection outcome"
+          : "[automated-response] tool execution summary",
       )
       return toolStats
     }

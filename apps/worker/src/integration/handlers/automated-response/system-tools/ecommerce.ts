@@ -89,13 +89,32 @@ function toSafeProductDetails(product: ProductDetailSource) {
   }
 }
 
-export function createSearchProductsExecutor(): NonNullable<
-  SystemToolExecutors[typeof systemFunctionNames.searchProducts]
-> {
+interface ProductToolDiagnostics {
+  agentId?: string
+  triggerMessageId?: string
+}
+
+export function createSearchProductsExecutor(
+  correlation: ProductToolDiagnostics = {},
+): NonNullable<SystemToolExecutors[typeof systemFunctionNames.searchProducts]> {
   return async (args: SearchProductsInput, context) => {
     if (!context) {
+      logger.info(
+        { ...correlation, reason: "missing_context" },
+        "[ecommerce] product search skipped",
+      )
       return { products: [] }
     }
+
+    const diagnostics = {
+      ...correlation,
+      workspaceId: context.workspaceId,
+      conversationId: context.conversationId,
+      query: args.query.slice(0, 120),
+      queryTruncated: args.query.length > 120,
+      categoryId: args.categoryId,
+    }
+    logger.info(diagnostics, "[ecommerce] product search started")
 
     try {
       const result = await productService.list({
@@ -106,18 +125,29 @@ export function createSearchProductsExecutor(): NonNullable<
         perPage: PRODUCT_SEARCH_PAGE_SIZE,
       })
 
-      return {
-        products: result.data
-          .filter((product) => product.isActive && product.isSearchable)
-          .slice(0, PRODUCT_SEARCH_RESULT_LIMIT)
-          .map(toSafeProductSummary),
-      }
+      const eligible = result.data.filter(
+        (product) => product.isActive && product.isSearchable,
+      )
+      const products = eligible
+        .slice(0, PRODUCT_SEARCH_RESULT_LIMIT)
+        .map(toSafeProductSummary)
+      logger.info(
+        {
+          ...diagnostics,
+          fetchedCount: result.data.length,
+          eligibleCount: eligible.length,
+          returnedCount: products.length,
+          outcome: products.length > 0 ? "found" : "empty",
+        },
+        "[ecommerce] product search completed",
+      )
+      return { products }
     } catch (error) {
       logger.error(
         {
+          ...diagnostics,
           err: normalizeError(error),
-          workspaceId: context.workspaceId,
-          conversationId: context.conversationId,
+          outcome: "error",
         },
         "[ecommerce] product search tool execution failed",
       )
@@ -126,11 +156,21 @@ export function createSearchProductsExecutor(): NonNullable<
   }
 }
 
-export function createGetProductDetailsExecutor(): NonNullable<
+export function createGetProductDetailsExecutor(
+  correlation: ProductToolDiagnostics = {},
+): NonNullable<
   SystemToolExecutors[typeof systemFunctionNames.getProductDetails]
 > {
   return async (args: GetProductDetailsInput, context) => {
     if (!context) {
+      logger.info(
+        {
+          ...correlation,
+          reason: "missing_context",
+          productId: args.productId,
+        },
+        "[ecommerce] product details skipped",
+      )
       return { product: null }
     }
 
@@ -140,7 +180,21 @@ export function createGetProductDetailsExecutor(): NonNullable<
         context.workspaceId,
       )
 
-      if (!(product.isActive && product.isSearchable)) {
+      const eligible = product.isActive && product.isSearchable
+      logger.info(
+        {
+          ...correlation,
+          workspaceId: context.workspaceId,
+          conversationId: context.conversationId,
+          productId: args.productId,
+          outcome: eligible ? "found" : "ineligible",
+          fetchedCount: 1,
+          eligibleCount: Number(eligible),
+          returnedCount: Number(eligible),
+        },
+        "[ecommerce] product details completed",
+      )
+      if (!eligible) {
         return { product: null }
       }
 
@@ -148,7 +202,9 @@ export function createGetProductDetailsExecutor(): NonNullable<
     } catch (error) {
       logger.error(
         {
+          ...correlation,
           err: normalizeError(error),
+          outcome: "error",
           workspaceId: context.workspaceId,
           conversationId: context.conversationId,
           productId: args.productId,
