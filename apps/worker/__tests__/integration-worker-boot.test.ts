@@ -258,7 +258,7 @@ vi.mock("../src/integration/job-context", () => ({
   ),
 }))
 vi.mock("../src/integration/routing", () => ({
-  resolveIncomingTextRouting: vi.fn(),
+  resolveIncomingMessageRouting: vi.fn(),
 }))
 vi.mock("../src/integration/utils/message", () => ({
   closeChatQueueEvents: vi.fn(async () => undefined),

@@ -12,7 +12,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // `./handlers/received-message` — it boots the REAL `receiveMessage`
 // pipeline (mocking only its DB/Redis/channel-registry dependencies, same
 // convention as received-message.test.ts) so the real post-save
-// `refreshExistingContactProfile` call runs, while `resolveIncomingTextRouting`
+// `refreshExistingContactProfile` call runs, while `resolveIncomingMessageRouting`
 // and `automatedResponseService.enqueue` (the dispatch this bullet cares
 // about) stay mocked and observable.
 // ---------------------------------------------------------------------------
@@ -44,7 +44,7 @@ const {
   mockIsUniqueViolationError,
   mockContactProfileRefresh,
   mockResolveIntegrationContextFromContactInbox,
-  mockResolveIncomingTextRouting,
+  mockResolveIncomingMessageRouting,
   mockAutomatedResponseEnqueue,
   mockConversationFindOrCreate,
   mockGetWhatsappCallPermissionReply,
@@ -101,7 +101,7 @@ const {
     mockIsUniqueViolationError: vi.fn().mockReturnValue(false),
     mockContactProfileRefresh: vi.fn(),
     mockResolveIntegrationContextFromContactInbox: vi.fn(),
-    mockResolveIncomingTextRouting: vi.fn(),
+    mockResolveIncomingMessageRouting: vi.fn(),
     mockAutomatedResponseEnqueue: vi.fn().mockResolvedValue(undefined),
     mockConversationFindOrCreate: vi.fn(),
     mockGetWhatsappCallPermissionReply: vi.fn(),
@@ -158,7 +158,7 @@ vi.mock("../src/integration/job-context", () => ({
 }))
 
 vi.mock("../src/integration/routing", () => ({
-  resolveIncomingTextRouting: mockResolveIncomingTextRouting,
+  resolveIncomingMessageRouting: mockResolveIncomingMessageRouting,
 }))
 
 vi.mock("../src/integration/utils/message", () => ({
@@ -630,7 +630,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
     mockFindContactInbox.mockReset()
     mockContactProfileRefresh.mockReset()
     mockResolveIntegrationContextFromContactInbox.mockReset()
-    mockResolveIncomingTextRouting.mockReset()
+    mockResolveIncomingMessageRouting.mockReset()
     mockAutomatedResponseEnqueue.mockClear()
     mockDbTransaction.mockClear()
     mockContactUpdate.mockClear()
@@ -664,7 +664,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
     })
     // The channel already parsed a plain inbound text message, no
     // postback/quickReply/ref/referral — the simplest path into
-    // `resolveIncomingTextRouting`.
+    // `resolveIncomingMessageRouting`.
     mockRunChannelHandler.mockImplementation(
       (_domain: string, action: string) => {
         if (action === "getProfile") {
@@ -699,7 +699,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
       await mockContactUpdate({ id: input.contactId }, {})
       return { status: "updated", contact: { id: input.contactId } }
     })
-    mockResolveIncomingTextRouting.mockResolvedValue({
+    mockResolveIncomingMessageRouting.mockResolvedValue({
       type: "automatedResponse",
       conversation: fakeConversation,
     })
@@ -728,14 +728,14 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
     // The refresh (and the `contactService.update` write inside it) is
     // awaited to completion inside `receiveMessage`, strictly before
     // `worker.ts`'s `incomingMessage` case goes on to call
-    // `resolveIncomingTextRouting` and `automatedResponseService.enqueue` —
+    // `resolveIncomingMessageRouting` and `automatedResponseService.enqueue` —
     // both invocation order AND resolution order are proven by these two
     // independent mocks only ever being called in this sequence.
     expect(mockContactUpdate.mock.invocationCallOrder[0]).toBeLessThan(
       mockAutomatedResponseEnqueue.mock.invocationCallOrder[0],
     )
     expect(mockContactProfileRefresh.mock.invocationCallOrder[0]).toBeLessThan(
-      mockResolveIncomingTextRouting.mock.invocationCallOrder[0],
+      mockResolveIncomingMessageRouting.mock.invocationCallOrder[0],
     )
   })
 
@@ -820,7 +820,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
     expect(mockCreateOrUpdate).toHaveBeenCalledWith(
       expect.objectContaining({ text: adText }),
     )
-    expect(mockResolveIncomingTextRouting).toHaveBeenCalled()
+    expect(mockResolveIncomingMessageRouting).toHaveBeenCalled()
     expect(mockAutomatedResponseEnqueue).toHaveBeenCalled()
   })
 
@@ -1027,7 +1027,7 @@ describe("integration worker — conversation routing (thread control)", () => {
 
   beforeEach(() => {
     mockRunChannelHandler.mockReset()
-    mockResolveIncomingTextRouting.mockReset()
+    mockResolveIncomingMessageRouting.mockReset()
     mockAutomatedResponseEnqueue.mockClear()
     mockRecordInboundDelivery.mockClear()
     mockReceiveThreadControlEvent.mockClear()
@@ -1042,7 +1042,7 @@ describe("integration worker — conversation routing (thread control)", () => {
       ...fakeContactInbox,
       contact: { ...fakeContact, firstName: "Named" },
     })
-    mockResolveIncomingTextRouting.mockResolvedValue({
+    mockResolveIncomingMessageRouting.mockResolvedValue({
       type: "automatedResponse",
       conversation: fakeConversation,
     })
@@ -1059,7 +1059,7 @@ describe("integration worker — conversation routing (thread control)", () => {
     expect(mockRecordInboundDelivery).toHaveBeenCalledWith(
       expect.objectContaining({ delivery: "standby" }),
     )
-    expect(mockResolveIncomingTextRouting).not.toHaveBeenCalled()
+    expect(mockResolveIncomingMessageRouting).not.toHaveBeenCalled()
     expect(mockAutomatedResponseEnqueue).not.toHaveBeenCalled()
   })
 
@@ -1098,7 +1098,7 @@ describe("integration worker — conversation routing (thread control)", () => {
         isPermanent: true,
       }),
     )
-    expect(mockResolveIncomingTextRouting).not.toHaveBeenCalled()
+    expect(mockResolveIncomingMessageRouting).not.toHaveBeenCalled()
     expect(mockAutomatedResponseEnqueue).not.toHaveBeenCalled()
   })
 
@@ -1109,7 +1109,7 @@ describe("integration worker — conversation routing (thread control)", () => {
 
     await runJob(incomingJob)
 
-    expect(mockResolveIncomingTextRouting).toHaveBeenCalledTimes(1)
+    expect(mockResolveIncomingMessageRouting).toHaveBeenCalledTimes(1)
     expect(mockAutomatedResponseEnqueue).toHaveBeenCalledTimes(1)
   })
 

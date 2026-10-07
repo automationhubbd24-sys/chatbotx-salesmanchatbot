@@ -11,12 +11,14 @@ type IncomingRoutingDecision =
   | { type: "automatedResponse"; conversation: ConversationModel }
   | { type: "handoffReentry"; conversation: ConversationModel }
 
-export async function resolveIncomingTextRouting(props: {
+export async function resolveIncomingMessageRouting(props: {
   conversation: ConversationModel
   // A pending challenge (e.g. Get User Data) accepts any actionable reply —
   // text, an uploaded attachment, or a shared location.
   hasActionableInput: boolean
-  // Automated (AI) responses stay text-driven only.
+  // Automated (AI) responses accept text or AI-readable attachments.
+  hasAutomatedResponseInput: boolean
+  // Inactive conversations only re-enter handoff on text.
   hasText: boolean
   isConversationActive: (conversation: ConversationModel) => Promise<boolean>
 }): Promise<IncomingRoutingDecision> {
@@ -44,7 +46,7 @@ export async function resolveIncomingTextRouting(props: {
     return { type: "challenge", conversation, challenge }
   }
 
-  if (!props.hasText) {
+  if (!props.hasAutomatedResponseInput) {
     return { type: "none" }
   }
 

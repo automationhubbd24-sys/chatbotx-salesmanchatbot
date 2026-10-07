@@ -7,7 +7,12 @@ import {
 } from "@chatbotx.io/business"
 import { channelTypes } from "@chatbotx.io/database/partials"
 import { emit } from "@chatbotx.io/event-bus"
-import { getStoryReply } from "@chatbotx.io/sdk"
+import {
+  DOCX_MIME_TYPES,
+  getStoryReply,
+  IMAGE_MIME_TYPES,
+  PDF_MIME_TYPES,
+} from "@chatbotx.io/sdk"
 import { createId } from "@chatbotx.io/utils"
 import {
   AIJobAction,
@@ -93,8 +98,32 @@ import {
   handleWhatsappVoipSignalingJob,
 } from "./handlers/whatsapp-voip-signaling"
 import { runIntegrationJobWithWebhookContext } from "./job-context"
-import { resolveIncomingTextRouting } from "./routing"
+import { resolveIncomingMessageRouting } from "./routing"
 import { closeChatQueueEvents } from "./utils/message"
+
+const supportedDocumentMimeTypes = new Set<string>([
+  ...PDF_MIME_TYPES,
+  ...DOCX_MIME_TYPES,
+])
+const supportedImageMimeTypes = new Set<string>(IMAGE_MIME_TYPES)
+
+function normalizeMimeType(value: string): string {
+  return value.toLowerCase().split(";")[0]?.trim() ?? ""
+}
+
+function hasAIReadableAttachment(
+  attachments: Array<{ fileType: string; mimeType: string }>,
+): boolean {
+  return attachments.some((attachment) => {
+    const mimeType = normalizeMimeType(attachment.mimeType)
+    return (
+      supportedImageMimeTypes.has(mimeType) ||
+      attachment.fileType === "image" ||
+      attachment.fileType === "gif" ||
+      supportedDocumentMimeTypes.has(mimeType)
+    )
+  })
+}
 
 const integrationWorkerLockDuration = Math.max(
   10 * 60 * 1000,
@@ -223,6 +252,10 @@ async function startIntegrationWorker() {
                 isNotPostbackOrQuickReply && message.senderType === "contact"
               const hasAttachment = message.attachments.length > 0
               const isLocation = message.contentType === "location"
+              const hasAutomatedResponseInput = Boolean(
+                isFromContact &&
+                  (message.text || hasAIReadableAttachment(message.attachments)),
+              )
 
               const storyReply = getStoryReply(message.contentAttributes)
 
@@ -247,12 +280,13 @@ async function startIntegrationWorker() {
                 return
               }
 
-              const routing = await resolveIncomingTextRouting({
+              const routing = await resolveIncomingMessageRouting({
                 conversation,
                 hasActionableInput: Boolean(
                   isFromContact &&
                     (message.text || hasAttachment || isLocation),
                 ),
+                hasAutomatedResponseInput,
                 hasText: Boolean(isFromContact && message.text),
                 isConversationActive: (conversation) =>
                   conversationService.ensureActive(conversation),
