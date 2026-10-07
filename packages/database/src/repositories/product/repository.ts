@@ -28,6 +28,12 @@ export type ProductListInput = {
   sort?: { id: string; desc: boolean }[] | null
 }
 
+export type ProductAgentSearchInput = {
+  workspaceId: string
+  categoryId?: string | null
+  candidateLimit: number
+}
+
 export type ProductImportInsert = {
   name: string
   sku?: string | null
@@ -67,6 +73,36 @@ const inCategory = (categoryId?: string | null) =>
   categoryId ? { OR: [{ categoryId }, { subcategoryId: categoryId }] } : {}
 
 export const productRepository = {
+  async listForAgentSearch(
+    input: ProductAgentSearchInput,
+    tx: DatabaseClient = db,
+  ) {
+    const rows = await tx.query.productModel.findMany({
+      where: {
+        workspaceId: input.workspaceId,
+        isActive: true,
+        isSearchable: true,
+        ...inCategory(input.categoryId),
+      },
+      with: {
+        category: true,
+        subcategory: true,
+        variantOptions: true,
+        variants: true,
+        addons: true,
+      },
+      orderBy: { rank: "asc", id: "desc" },
+      limit: input.candidateLimit,
+    })
+
+    return rows.map(({ category, subcategory, ...product }) => ({
+      ...product,
+      inventoryPolicy: inventoryPolicyTypes.parse(product.inventoryPolicy),
+      category: category?.name ?? null,
+      subcategory: subcategory?.name ?? null,
+    }))
+  },
+
   async list(input: ProductListInput, tx: DatabaseClient = db) {
     const where = {
       workspaceId: input.workspaceId,

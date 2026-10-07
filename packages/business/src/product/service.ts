@@ -77,6 +77,172 @@ export type ProductFullWriteData = ProductWriteData & {
 const toImageRows = (images: ProductImageInput[]) =>
   images.map(({ mode, url }) => ({ type: mode, url }))
 
+export type ProductAgentSearchInput = {
+  workspaceId: string
+  query: string
+  categoryId?: string | null
+  limit?: number
+}
+
+const PRODUCT_AGENT_CANDIDATE_LIMIT = 250
+const PRODUCT_AGENT_DEFAULT_LIMIT = 5
+const MIN_PRODUCT_AGENT_SCORE = 8
+const TOKEN_SPLIT_PATTERN = /[^\p{L}\p{N}]+/u
+const COMPACT_ALPHANUMERIC_PATTERN = /[^\p{L}\p{N}]+/gu
+
+function compactSearchText(value: string) {
+  return value.toLowerCase().replaceAll(COMPACT_ALPHANUMERIC_PATTERN, "")
+}
+
+function tokenizeSearchText(value: string) {
+  return value
+    .toLowerCase()
+    .split(TOKEN_SPLIT_PATTERN)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 2)
+}
+
+function pushSearchPart(parts: string[], value: unknown) {
+  if (typeof value === "string" && value.trim()) {
+    parts.push(value.trim())
+  }
+}
+
+type ProductAgentSearchResult = Awaited<
+  ReturnType<typeof productRepository.listForAgentSearch>
+>[number]
+
+function buildProductAgentSearchText(product: ProductAgentSearchResult) {
+  const parts: string[] = []
+  pushSearchPart(parts, product.name)
+  pushSearchPart(parts, product.sku)
+  pushSearchPart(parts, product.shortDescription)
+  pushSearchPart(parts, product.longDescription)
+  pushSearchPart(parts, product.vendor)
+  pushSearchPart(parts, product.category)
+  pushSearchPart(parts, product.subcategory)
+  for (const tag of product.tags) {
+    pushSearchPart(parts, tag)
+  }
+  for (const option of product.variantOptions) {
+    pushSearchPart(parts, option.name)
+    for (const value of option.values) {
+      pushSearchPart(parts, value)
+    }
+  }
+  for (const variant of product.variants) {
+    for (const [name, value] of Object.entries(variant.combination)) {
+      pushSearchPart(parts, name)
+      pushSearchPart(parts, value)
+    }
+  }
+  for (const addon of product.addons) {
+    pushSearchPart(parts, addon.name)
+  }
+  return parts.join(" ")
+}
+
+function boundedEditDistance(left: string, right: string, maxDistance: number) {
+  if (Math.abs(left.length - right.length) > maxDistance) {
+    return maxDistance + 1
+  }
+
+  let previous = Array.from({ length: right.length + 1 }, (_, index) => index)
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    const current = [leftIndex]
+    let rowMinimum = current[0]
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      const cost = left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1
+      const value = Math.min(
+        previous[rightIndex] + 1,
+        current[rightIndex - 1] + 1,
+        previous[rightIndex - 1] + cost,
+      )
+      current[rightIndex] = value
+      rowMinimum = Math.min(rowMinimum, value)
+    }
+    if (rowMinimum > maxDistance) {
+      return maxDistance + 1
+    }
+    previous = current
+  }
+  return previous[right.length] ?? maxDistance + 1
+}
+
+function fuzzyTextScore(query: string, candidate: string) {
+  if (query.length < 4 || candidate.length < 4) {
+    return 0
+  }
+  const maxDistance = query.length <= 6 ? 1 : 2
+  const distance = boundedEditDistance(query, candidate, maxDistance)
+  if (distance === 0 || distance > maxDistance) {
+    return 0
+  }
+  return maxDistance - distance + 18
+}
+
+function scoreProductForAgentSearch(
+  query: string,
+  product: ProductAgentSearchResult,
+) {
+  const normalizedQuery = query.toLowerCase().trim()
+  const compactQuery = compactSearchText(query)
+  const queryTokens = tokenizeSearchText(query)
+  const searchText = buildProductAgentSearchText(product).toLowerCase()
+  const compactProductName = compactSearchText(product.name)
+  const compactSku = product.sku ? compactSearchText(product.sku) : ""
+  const compactSearchTextValue = compactSearchText(searchText)
+  const productTokens = tokenizeSearchText(searchText).map(compactSearchText)
+
+  let score = 0
+  if (product.name.toLowerCase() === normalizedQuery) {
+    score += 100
+  }
+  if (compactProductName === compactQuery) {
+    score += 95
+  }
+  if (product.name.toLowerCase().includes(normalizedQuery)) {
+    score += 70
+  }
+  if (compactProductName.includes(compactQuery)) {
+    score += 65
+  }
+  if (compactSku && compactSku === compactQuery) {
+    score += 90
+  }
+  if (compactSku && compactSku.includes(compactQuery)) {
+    score += 55
+  }
+  if (compactQuery && compactSearchTextValue.includes(compactQuery)) {
+    score += 35
+  }
+  score += fuzzyTextScore(compactQuery, compactProductName)
+
+  for (const token of queryTokens) {
+    const compactToken = compactSearchText(token)
+    if (!compactToken) {
+      continue
+    }
+    if (compactProductName === compactToken) {
+      score += 35
+    } else if (compactProductName.includes(compactToken)) {
+      score += 25
+    } else if (compactSearchTextValue.includes(compactToken)) {
+      score += 10
+    } else {
+      score += Math.max(
+        0,
+        ...productTokens.map((productToken) =>
+          fuzzyTextScore(compactToken, productToken),
+        ),
+      )
+    }
+  }
+
+  const rankBoost = Math.max(0, 10 - Math.min(product.rank, 10))
+  return score + rankBoost
+}
+
 class ProductService extends BaseService {
   private async assertReferencesBelongToWorkspace(input: {
     workspaceId: string
@@ -340,6 +506,24 @@ class ProductService extends BaseService {
 
   async list(input: Parameters<typeof productRepository.list>[0]) {
     return await productRepository.list(input)
+  }
+
+  async searchForAgent(input: ProductAgentSearchInput) {
+    const products = await productRepository.listForAgentSearch({
+      workspaceId: input.workspaceId,
+      categoryId: input.categoryId,
+      candidateLimit: PRODUCT_AGENT_CANDIDATE_LIMIT,
+    })
+
+    return products
+      .map((product) => ({
+        product,
+        score: scoreProductForAgentSearch(input.query, product),
+      }))
+      .filter(({ score }) => score >= MIN_PRODUCT_AGENT_SCORE)
+      .sort((left, right) => right.score - left.score)
+      .slice(0, input.limit ?? PRODUCT_AGENT_DEFAULT_LIMIT)
+      .map(({ product }) => product)
   }
 
   async findById(id: string, workspaceId: string) {

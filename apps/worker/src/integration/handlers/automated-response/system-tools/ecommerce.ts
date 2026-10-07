@@ -8,12 +8,11 @@ import { productService } from "@chatbotx.io/business"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../../lib/logger"
 
-const PRODUCT_SEARCH_PAGE_SIZE = 20
 const PRODUCT_SEARCH_RESULT_LIMIT = 5
 
 type ProductSummarySource = Awaited<
-  ReturnType<typeof productService.list>
->["data"][number]
+  ReturnType<typeof productService.searchForAgent>
+>[number]
 type ProductDetailSource = Awaited<ReturnType<typeof productService.findById>>
 
 type SafeProductSummary = Pick<
@@ -117,31 +116,25 @@ export function createSearchProductsExecutor(
     logger.info(diagnostics, "[ecommerce] product search started")
 
     try {
-      const result = await productService.list({
+      const products = await productService.searchForAgent({
         workspaceId: context.workspaceId,
-        name: args.query,
+        query: args.query,
         categoryId: args.categoryId,
-        page: 1,
-        perPage: PRODUCT_SEARCH_PAGE_SIZE,
+        limit: PRODUCT_SEARCH_RESULT_LIMIT,
       })
 
-      const eligible = result.data.filter(
-        (product) => product.isActive && product.isSearchable,
-      )
-      const products = eligible
-        .slice(0, PRODUCT_SEARCH_RESULT_LIMIT)
-        .map(toSafeProductSummary)
+      const summaries = products.map(toSafeProductSummary)
       logger.info(
         {
           ...diagnostics,
-          fetchedCount: result.data.length,
-          eligibleCount: eligible.length,
-          returnedCount: products.length,
-          outcome: products.length > 0 ? "found" : "empty",
+          fetchedCount: products.length,
+          eligibleCount: products.length,
+          returnedCount: summaries.length,
+          outcome: summaries.length > 0 ? "found" : "empty",
         },
         "[ecommerce] product search completed",
       )
-      return { products }
+      return { products: summaries }
     } catch (error) {
       logger.error(
         {

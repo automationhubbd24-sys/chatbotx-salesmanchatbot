@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
   findById: vi.fn(),
-  list: vi.fn(),
+  searchForAgent: vi.fn(),
   info: vi.fn(),
   error: vi.fn(),
 }))
@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
 vi.mock("@chatbotx.io/business", () => ({
   productService: {
     findById: (...args: unknown[]) => mocks.findById(...args),
-    list: (...args: unknown[]) => mocks.list(...args),
+    searchForAgent: (...args: unknown[]) => mocks.searchForAgent(...args),
   },
 }))
 
@@ -84,28 +84,23 @@ describe("e-commerce system tools", () => {
     expect(summary).not.toContain("if (!toolStats.actionToolAvailable)")
   })
 
-  test("search scopes to the workspace, filters unsafe products, and caps results", async () => {
-    mocks.list.mockResolvedValue({
-      data: [
-        product({ id: "inactive", isActive: false }),
-        product({ id: "hidden", isSearchable: false }),
-        ...Array.from({ length: 6 }, (_, index) =>
-          product({ id: `product-${index + 1}` }),
-        ),
-      ],
-    })
+  test("search scopes to the workspace and returns ranked products", async () => {
+    mocks.searchForAgent.mockResolvedValue(
+      Array.from({ length: 5 }, (_, index) =>
+        product({ id: `product-${index + 1}` }),
+      ),
+    )
 
     const result = await createSearchProductsExecutor()(
       { query: "shoes", categoryId: "category-1" },
       context,
     )
 
-    expect(mocks.list).toHaveBeenCalledWith({
+    expect(mocks.searchForAgent).toHaveBeenCalledWith({
       workspaceId: "workspace-1",
-      name: "shoes",
+      query: "shoes",
       categoryId: "category-1",
-      page: 1,
-      perPage: 20,
+      limit: 5,
     })
     expect(mocks.info).toHaveBeenLastCalledWith(
       {
@@ -114,8 +109,8 @@ describe("e-commerce system tools", () => {
         query: "shoes",
         queryTruncated: false,
         categoryId: "category-1",
-        fetchedCount: 8,
-        eligibleCount: 6,
+        fetchedCount: 5,
+        eligibleCount: 5,
         returnedCount: 5,
         outcome: "found",
       },
@@ -130,7 +125,7 @@ describe("e-commerce system tools", () => {
   })
 
   test("correlates concurrent product tools without logging product payloads", async () => {
-    mocks.list.mockResolvedValue({ data: [product()] })
+    mocks.searchForAgent.mockResolvedValue([product()])
     mocks.findById.mockResolvedValue(product())
     const correlation = { agentId: "agent-1", triggerMessageId: "message-1" }
     const otherCorrelation = {
@@ -169,11 +164,11 @@ describe("e-commerce system tools", () => {
   })
 
   test("bounds diagnostic queries without changing the search input", async () => {
-    mocks.list.mockResolvedValue({ data: [] })
+    mocks.searchForAgent.mockResolvedValue([])
     const query = "s".repeat(150)
     await createSearchProductsExecutor()({ query }, context)
-    expect(mocks.list).toHaveBeenCalledWith(
-      expect.objectContaining({ name: query }),
+    expect(mocks.searchForAgent).toHaveBeenCalledWith(
+      expect.objectContaining({ query }),
     )
     expect(mocks.info).toHaveBeenLastCalledWith(
       {
@@ -198,7 +193,7 @@ describe("e-commerce system tools", () => {
     await expect(
       createGetProductDetailsExecutor()({ productId: "product-1" }),
     ).resolves.toEqual({ product: null })
-    expect(mocks.list).not.toHaveBeenCalled()
+    expect(mocks.searchForAgent).not.toHaveBeenCalled()
     expect(mocks.findById).not.toHaveBeenCalled()
     expect(mocks.info).toHaveBeenCalledWith(
       { reason: "missing_context" },
@@ -211,7 +206,7 @@ describe("e-commerce system tools", () => {
   })
 
   test("logs scoped search errors under err without product results", async () => {
-    mocks.list.mockRejectedValueOnce(new Error("unavailable"))
+    mocks.searchForAgent.mockRejectedValueOnce(new Error("unavailable"))
     await expect(
       createSearchProductsExecutor()({ query: "shoes" }, context),
     ).resolves.toEqual({ products: [] })
