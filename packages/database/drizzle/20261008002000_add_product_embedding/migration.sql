@@ -27,5 +27,3 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "ProductEmbedding_workspaceId_idx" ON "ProductEmbedding" USING btree ("workspaceId" ASC NULLS LAST);
---> statement-breakpoint
-CREATE INDEX IF NOT EXISTS "ProductEmbedding_embedding_hnsw_idx" ON "ProductEmbedding" USING hnsw ("embedding" vector_cosine_ops);
