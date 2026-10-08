@@ -1,14 +1,17 @@
 "use client"
 
 import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Button } from "@chatbotx.io/ui/components/ui/button"
 import { Switch } from "@chatbotx.io/ui/components/ui/switch"
 import { Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"
 import { use } from "react"
+import { toast } from "sonner"
 import { SettingRow } from "@/components/setting-row"
 import { useWorkspaceId } from "@/hooks/routing"
+import { testIntegrationEmbeddingAction } from "./actions/test.action"
 import { updateIntegrationEmbeddingAction } from "./actions/update.action"
 import { EmbeddingConnectDialog } from "./embedding-connect-dialog"
 import { EmbeddingDisconnectDialog } from "./embedding-disconnect-dialog"
@@ -30,6 +33,27 @@ export function EmbeddingConnect({
     {
       onSuccess: () => {
         router.refresh()
+      },
+    },
+  )
+  const { execute: testEmbedding, isPending: isTesting } = useAction(
+    testIntegrationEmbeddingAction.bind(null, workspaceId),
+    {
+      onSuccess: ({ data }) => {
+        if (!data) {
+          return
+        }
+        toast.success(
+          t("embedding.test.success", {
+            dimensions: data.dimensions,
+            durationMs: data.durationMs,
+          }),
+        )
+      },
+      onError: ({ error }) => {
+        if (error.serverError) {
+          toast.error(error.serverError)
+        }
       },
     },
   )
@@ -66,6 +90,16 @@ export function EmbeddingConnect({
             <div className="flex size-4 shrink-0 items-center justify-center">
               {isPending && <Loader2Icon className="size-4 animate-spin" />}
             </div>
+            <Button
+              disabled={isTesting || !integration.enabled}
+              onClick={() => testEmbedding()}
+              size="sm"
+              type="button"
+              variant="outline"
+            >
+              {isTesting && <Loader2Icon className="size-4 animate-spin" />}
+              {t("embedding.test.action")}
+            </Button>
             <EmbeddingEditDialog integration={integration} />
           </div>
         </SettingRow>

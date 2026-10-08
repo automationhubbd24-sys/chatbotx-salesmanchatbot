@@ -2325,7 +2325,8 @@
         "urlContext": "Cititor URL",
         "webSearch": "Căutare web",
         "searchProducts": "Search products",
-        "getProductDetails": "Get product details"
+        "getProductDetails": "Get product details",
+        "ecommerce": "Ecommerce"
       }
     },
     "min": {
@@ -3742,9 +3743,16 @@
     },
     "title": "Embedding",
     "validation": {
-      "invalidBaseURL": "Base URL is invalid or not allowed."
+      "invalidBaseURL": "Base URL is invalid or not allowed.",
+      "dimensionMismatch": "Embedding model returned {actual} dimensions, but this workspace requires {expected}."
     },
-    "dimensions": "Dimensions: 3072"
+    "dimensions": "Dimensions: 3072",
+    "test": {
+      "action": "Test embedding",
+      "success": "Embedding works. Returned {dimensions} dimensions in {durationMs} ms.",
+      "notConfigured": "No enabled embedding provider is configured.",
+      "failed": "Embedding test failed. Check the base URL, API key, and model."
+    }
   },
   "openaiCompatible": {
     "addProvider": "Adaugă furnizor IA",

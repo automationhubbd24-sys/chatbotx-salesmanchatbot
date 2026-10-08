@@ -1,6 +1,7 @@
 "use server"
 
 import {
+  EMBEDDING_DIMENSIONS,
   integrationEmbeddingService,
   validateOpenaiCompatibleBaseUrlForEnvironment,
 } from "@chatbotx.io/business"
@@ -18,6 +19,7 @@ import {
   type UpdateIntegrationEmbeddingSchema,
   updateIntegrationEmbeddingSchema,
 } from "../schema/request"
+import { validateEmbeddingProvider } from "./validate"
 
 export const updateIntegrationEmbeddingAction = workspaceActionClient
   .bindArgsSchemas(workspaceIdrequestParams)
@@ -33,11 +35,14 @@ export const updateIntegrationEmbeddingAction = workspaceActionClient
       const t = await getTranslations()
       const apiKey = parsedInput.apiKey?.trim()
       let baseURL = parsedInput.baseURL
+      const shouldValidateProvider = Boolean(
+        apiKey || parsedInput.baseURL || parsedInput.model,
+      )
+      const existing = shouldValidateProvider
+        ? await integrationEmbeddingService.findByWorkspaceId(workspaceId)
+        : undefined
 
-      if (apiKey || parsedInput.baseURL) {
-        const existing = await integrationEmbeddingService.findByWorkspaceId(
-          workspaceId,
-        )
+      if (shouldValidateProvider) {
         try {
           baseURL = await validateOpenaiCompatibleBaseUrlForEnvironment(
             baseURL ?? existing?.baseURL ?? "",
@@ -71,6 +76,33 @@ export const updateIntegrationEmbeddingAction = workspaceActionClient
           return returnValidationErrors(updateIntegrationEmbeddingSchema, {
             apiKey: {
               _errors: [t("validation.invalidApiKey")],
+            },
+          })
+        }
+
+        try {
+          const embeddingResult = await validateEmbeddingProvider({
+            apiKey,
+            auth: existing?.auth,
+            baseURL: baseURL ?? existing?.baseURL ?? "",
+            model: parsedInput.model ?? existing?.model ?? "",
+          })
+          if (!embeddingResult.validDimensions) {
+            return returnValidationErrors(updateIntegrationEmbeddingSchema, {
+              model: {
+                _errors: [
+                  t("embedding.validation.dimensionMismatch", {
+                    actual: embeddingResult.dimensions,
+                    expected: EMBEDDING_DIMENSIONS,
+                  }),
+                ],
+              },
+            })
+          }
+        } catch {
+          return returnValidationErrors(updateIntegrationEmbeddingSchema, {
+            model: {
+              _errors: [t("embedding.test.failed")],
             },
           })
         }

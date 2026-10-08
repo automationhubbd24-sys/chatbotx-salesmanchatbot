@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl"
 import { type ComponentPropsWithoutRef, useEffect } from "react"
 import { useFormContext } from "react-hook-form"
 import { useAIToolMultiSelectGroups } from "../hooks/use-ai-tool-multi-select-groups"
+import { collapseEcommerceToolsForForm } from "../lib/ecommerce-tool"
 import { useAIToolsStore } from "../provider/ai-tools-store-context"
 
 type AIToolMultiSelectProps = Omit<
@@ -45,9 +46,14 @@ export const AIToolMultiSelect = ({
       toolOptions.flatMap((group) => group.options.map((o) => o.value)),
     )
     const currentTools = (getValues(name) as string[]) ?? []
-    const validTools = currentTools.filter((tool) => allOptionValues.has(tool))
+    const collapsedTools = collapseEcommerceToolsForForm(currentTools)
+    const validTools = collapsedTools.filter((tool) => allOptionValues.has(tool))
 
-    if (validTools.length < currentTools.length) {
+    const hasChanged =
+      validTools.length !== currentTools.length ||
+      validTools.some((tool, index) => tool !== currentTools[index])
+
+    if (hasChanged) {
       setValue(name, validTools, { shouldValidate: true, shouldDirty: true })
     }
   }, [initialized, toolOptions, name, getValues, setValue])

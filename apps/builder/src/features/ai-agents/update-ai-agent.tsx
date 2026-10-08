@@ -47,6 +47,7 @@ import {
   updateAIAgentRequest,
 } from "@/features/ai-agents/schema/action"
 import { AIToolMultiSelect } from "@/features/ai-tools/components/ai-tool-multi-select"
+import { collapseEcommerceToolsForForm } from "@/features/ai-tools/lib/ecommerce-tool"
 import type { IntegrationOpenaiCompatibleResource } from "@/features/integration-openai-compatible/schema/resource"
 import {
   AIActionsField,
@@ -171,7 +172,7 @@ export function UpdateAIAgentDialog({
       setValue("temperature", agent.temperature)
       setValue("maxOutputTokens", agent.maxOutputTokens)
       setValue("messages", agent.messages as UpdateAIAgentRequest["messages"])
-      setValue("tools", agent.tools)
+      setValue("tools", collapseEcommerceToolsForForm(agent.tools))
       setValue("isRichResponse", agent.isRichResponse)
       setValue(
         "webSearchAuthorizedDomains",

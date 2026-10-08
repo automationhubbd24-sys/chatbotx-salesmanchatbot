@@ -2,6 +2,7 @@
 
 import { aiAgentService } from "@chatbotx.io/business"
 import { createAIAgentRequest } from "@/features/ai-agents/schema/action"
+import { expandEcommerceToolsForSave } from "@/features/ai-tools/lib/ecommerce-tool"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 
@@ -14,5 +15,8 @@ export const createAIAgentAction = workspaceActionClient
       bindArgsParsedInputs: [workspaceId],
     } = props
 
-    await aiAgentService.create(workspaceId, parsedInput)
+    await aiAgentService.create(workspaceId, {
+      ...parsedInput,
+      tools: expandEcommerceToolsForSave(parsedInput.tools),
+    })
   })

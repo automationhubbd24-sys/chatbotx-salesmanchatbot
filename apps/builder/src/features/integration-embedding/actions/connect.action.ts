@@ -1,6 +1,7 @@
 "use server"
 
 import {
+  EMBEDDING_DIMENSIONS,
   integrationEmbeddingService,
   validateOpenaiCompatibleBaseUrlForEnvironment,
 } from "@chatbotx.io/business"
@@ -17,6 +18,7 @@ import {
   type ConnectIntegrationEmbeddingSchema,
   connectIntegrationEmbeddingSchema,
 } from "../schema/request"
+import { validateEmbeddingProvider } from "./validate"
 
 export const connectIntegrationEmbeddingAction = workspaceActionClient
   .bindArgsSchemas(workspaceIdrequestParams)
@@ -62,6 +64,32 @@ export const connectIntegrationEmbeddingAction = workspaceActionClient
         return returnValidationErrors(connectIntegrationEmbeddingSchema, {
           apiKey: {
             _errors: [t("validation.invalidApiKey")],
+          },
+        })
+      }
+
+      try {
+        const embeddingResult = await validateEmbeddingProvider({
+          apiKey: parsedInput.apiKey,
+          baseURL,
+          model: parsedInput.model,
+        })
+        if (!embeddingResult.validDimensions) {
+          return returnValidationErrors(connectIntegrationEmbeddingSchema, {
+            model: {
+              _errors: [
+                t("embedding.validation.dimensionMismatch", {
+                  actual: embeddingResult.dimensions,
+                  expected: EMBEDDING_DIMENSIONS,
+                }),
+              ],
+            },
+          })
+        }
+      } catch {
+        return returnValidationErrors(connectIntegrationEmbeddingSchema, {
+          model: {
+            _errors: [t("embedding.test.failed")],
           },
         })
       }

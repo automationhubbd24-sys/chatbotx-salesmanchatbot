@@ -12,9 +12,11 @@ import {
   FunctionSquareIcon,
   ServerIcon,
   SettingsIcon,
+  ShoppingCartIcon,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
+import { ecommerceToolValue, isProductSystemTool } from "../lib/ecommerce-tool"
 
 export type AIToolMultiSelectGroupOption = {
   label: string
@@ -75,13 +77,31 @@ export const buildAIToolMultiSelectGroups = (
 
   // System functions always at the end
   if (systemFunctions.length > 0) {
+    const visibleSystemFunctions = systemFunctions.filter(
+      (sysFn) => !isProductSystemTool(sysFn.id),
+    )
+    const ecommerceEnabled = systemFunctions.some((sysFn) =>
+      isProductSystemTool(sysFn.id),
+    )
+
     groups.push({
       heading: labels.sys,
-      options: systemFunctions.map((sysFn) => ({
-        label: labels.systemFunctions[sysFn.id] ?? sysFn.name,
-        value: `sys:${sysFn.id}`,
-        icon: SettingsIcon,
-      })),
+      options: [
+        ...visibleSystemFunctions.map((sysFn) => ({
+          label: labels.systemFunctions[sysFn.id] ?? sysFn.name,
+          value: `sys:${sysFn.id}`,
+          icon: SettingsIcon,
+        })),
+        ...(ecommerceEnabled
+          ? [
+              {
+                label: labels.systemFunctions.ecommerce,
+                value: ecommerceToolValue,
+                icon: ShoppingCartIcon,
+              },
+            ]
+          : []),
+      ],
     })
   }
 
@@ -115,6 +135,7 @@ export const useAIToolMultiSelectGroups = ({
             [systemFunctionNames.imageReader]: t(
               "fields.systemFunction.names.imageReader",
             ),
+            ecommerce: t("fields.systemFunction.names.ecommerce"),
             [systemFunctionNames.searchProducts]: t(
               "fields.systemFunction.names.searchProducts",
             ),

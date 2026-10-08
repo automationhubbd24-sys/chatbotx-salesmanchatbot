@@ -2,7 +2,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import { createOpenAI } from "@ai-sdk/openai"
 import { db } from "@chatbotx.io/database/client"
 import { secretTextAuthSchema } from "@chatbotx.io/sdk"
-import type { EmbeddingModel } from "ai"
+import { embed, type EmbeddingModel } from "ai"
 import { geminiEmbeddingModels, openaiEmbeddingModels } from "../models"
 import { createOpenaiCompatibleEmbeddingModelInstance } from "./openai-compatible"
 
@@ -15,6 +15,44 @@ export type EmbeddingProvider =
 export type ResolvedEmbeddingModel = {
   model: EmbeddingModel
   provider: EmbeddingProvider
+}
+
+export type EmbeddingTestResult = {
+  dimensions: number
+  durationMs: number
+}
+
+export async function testEmbeddingModel(props: {
+  model: EmbeddingModel
+  value?: string
+}): Promise<EmbeddingTestResult> {
+  const startedAt = Date.now()
+  const result = await embed({
+    model: props.model,
+    value:
+      props.value ??
+      "ChatbotX embedding test for product search, semantic matching, and vector retrieval.",
+  })
+
+  return {
+    dimensions: result.embedding.length,
+    durationMs: Date.now() - startedAt,
+  }
+}
+
+export function createEmbeddingIntegrationModel(props: {
+  auth: unknown
+  baseURL: string
+  model: string
+}): EmbeddingModel {
+  return createOpenaiCompatibleEmbeddingModelInstance({
+    integration: {
+      auth: props.auth,
+      baseURL: props.baseURL,
+      preset: "custom",
+    },
+    modelId: props.model,
+  })
 }
 
 export async function resolveEmbeddingModel(
