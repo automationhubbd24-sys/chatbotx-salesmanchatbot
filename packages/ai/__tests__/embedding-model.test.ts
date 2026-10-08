@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
+  findFirstEmbedding: vi.fn(),
   findFirstGemini: vi.fn(),
   findFirstOpenai: vi.fn(),
   findFirstOpenaiCompatible: vi.fn(),
@@ -12,6 +13,7 @@ const mocks = vi.hoisted(() => ({
 vi.mock("@chatbotx.io/database/client", () => ({
   db: {
     query: {
+      integrationEmbeddingModel: { findFirst: mocks.findFirstEmbedding },
       integrationGeminiModel: { findFirst: mocks.findFirstGemini },
       integrationOpenaiCompatibleModel: {
         findFirst: mocks.findFirstOpenaiCompatible,
@@ -40,6 +42,7 @@ const { resolveEmbeddingModel } = await import("../src/server/embedding-model")
 describe("resolveEmbeddingModel", () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mocks.findFirstEmbedding.mockResolvedValue(undefined)
     mocks.findFirstOpenai.mockResolvedValue(undefined)
     mocks.findFirstOpenaiCompatible.mockResolvedValue(undefined)
     mocks.findFirstGemini.mockResolvedValue({
@@ -49,6 +52,31 @@ describe("resolveEmbeddingModel", () => {
     mocks.openaiCompatibleEmbedding.mockReturnValue(
       "openai-compatible-embedding-model",
     )
+  })
+
+  test("resolves the dedicated embedding integration before chat providers", async () => {
+    mocks.findFirstEmbedding.mockResolvedValue({
+      auth: { authType: "secretText", secretText: "embedding-key" },
+      baseURL: "https://embedding.example.com/v1",
+      enabled: true,
+      model: "embedding-model",
+      preset: "custom",
+    })
+    mocks.findFirstOpenai.mockResolvedValue({
+      auth: { authType: "secretText", secretText: "openai-key" },
+    })
+
+    await expect(resolveEmbeddingModel("workspace-1")).resolves.toEqual({
+      model: "openai-compatible-embedding-model",
+      provider: "embedding",
+    })
+
+    expect(mocks.openaiCompatibleEmbedding).toHaveBeenCalledWith(
+      "embedding-model",
+    )
+    expect(mocks.findFirstOpenai).not.toHaveBeenCalled()
+    expect(mocks.geminiEmbedding).not.toHaveBeenCalled()
+    expect(mocks.openaiEmbedding).not.toHaveBeenCalled()
   })
 
   test("resolves OpenAI-compatible when no first-party OpenAI exists and embedding model is configured", async () => {

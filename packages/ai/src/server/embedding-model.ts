@@ -6,7 +6,11 @@ import type { EmbeddingModel } from "ai"
 import { geminiEmbeddingModels, openaiEmbeddingModels } from "../models"
 import { createOpenaiCompatibleEmbeddingModelInstance } from "./openai-compatible"
 
-export type EmbeddingProvider = "openai" | "openaiCompatible" | "gemini"
+export type EmbeddingProvider =
+  | "embedding"
+  | "openai"
+  | "openaiCompatible"
+  | "gemini"
 
 export type ResolvedEmbeddingModel = {
   model: EmbeddingModel
@@ -16,6 +20,27 @@ export type ResolvedEmbeddingModel = {
 export async function resolveEmbeddingModel(
   workspaceId: string,
 ): Promise<ResolvedEmbeddingModel> {
+  const integrationEmbedding = await db.query.integrationEmbeddingModel.findFirst({
+    where: {
+      workspaceId,
+      enabled: true,
+    },
+  })
+
+  if (integrationEmbedding) {
+    return {
+      model: createOpenaiCompatibleEmbeddingModelInstance({
+        integration: {
+          auth: integrationEmbedding.auth,
+          baseURL: integrationEmbedding.baseURL,
+          preset: "custom",
+        },
+        modelId: integrationEmbedding.model,
+      }),
+      provider: "embedding",
+    }
+  }
+
   const integrationOpenai = await db.query.integrationOpenaiModel.findFirst({
     where: { workspaceId },
   })
@@ -72,6 +97,6 @@ export async function resolveEmbeddingModel(
   }
 
   throw new Error(
-    "No embedding provider configured. AI file embeddings require OpenAI, OpenAI-compatible, or Gemini integration. DeepSeek and Claude do not support embedding models.",
+    "No embedding provider configured. Configure the Embedding integration, or connect OpenAI, OpenAI-compatible, or Gemini. DeepSeek and Claude do not support embedding models.",
   )
 }

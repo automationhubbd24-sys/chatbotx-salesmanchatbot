@@ -3966,6 +3966,27 @@
     },
     "title": "OpenRouter"
   },
+  "embedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure a separate OpenAI-compatible endpoint for text embeddings. This can use a different API key and base URL than chat models.",
+      "label": "Text embedding provider"
+    },
+    "empty": "No text embedding provider configured.",
+    "fields": {
+      "baseURL": "Base URL",
+      "enabled": "Enabled",
+      "model": "Text embedding model"
+    },
+    "status": {
+      "disabled": "Disabled",
+      "enabled": "Enabled"
+    },
+    "title": "Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
+    }
+  },
   "openaiCompatible": {
     "addProvider": "Add AI Provider",
     "addProviderModel": "Add {name}",

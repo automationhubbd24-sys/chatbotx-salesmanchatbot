@@ -107,6 +107,7 @@ export const CONNECTION_REGISTRY: StoreBoundConnectionRegistry = {
   claude: fromCredentialProvider(claudeConnectionProvider, "claude"),
   deepseek: fromCredentialProvider(deepseekConnectionProvider, "deepseek"),
   drip: fromIntegration(integrationDrip, "drip"),
+  embedding: null,
   facebookAds: fromIntegration(
     integrationFacebookAds,
     "facebookAds",

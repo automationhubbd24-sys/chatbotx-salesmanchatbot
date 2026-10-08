@@ -64,6 +64,8 @@ export type IntegrationClaudeModel =
   typeof schema.integrationClaudeModel.$inferSelect
 export type IntegrationDeepseekModel =
   typeof schema.integrationDeepseekModel.$inferSelect
+export type IntegrationEmbeddingModel =
+  typeof schema.integrationEmbeddingModel.$inferSelect
 export type IntegrationGeminiModel =
   typeof schema.integrationGeminiModel.$inferSelect
 export type IntegrationOpenrouterModel =

@@ -36,6 +36,7 @@ export const INTEGRATION_SETTINGS_REGISTRY: readonly IntegrationSettingsEntry[] 
     { slug: "claude", titleKey: "claude.title", icon: BotIcon },
     { slug: "deepseek", titleKey: "deepseek.title", icon: BotIcon },
     { slug: "openrouter", titleKey: "openrouter.title", icon: BotIcon },
+    { slug: "embedding", titleKey: "embedding.title", icon: BotIcon },
     {
       slug: "openai-compatible",
       titleKey: "openaiCompatible.title",

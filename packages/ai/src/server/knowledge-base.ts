@@ -45,6 +45,7 @@ export type FileSearchConfig = {
 }
 
 export const embeddingSimilarityThresholds = {
+  embedding: 0.7,
   openai: 0.7,
   openaiCompatible: 0.7,
   gemini: 0.55,

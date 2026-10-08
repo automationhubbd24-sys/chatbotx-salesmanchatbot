@@ -2,6 +2,11 @@ import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
 import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
 import { secretTextAuthSchema } from "@chatbotx.io/sdk"
 
+type OpenaiCompatibleProviderConfig = Pick<
+  IntegrationOpenaiCompatibleModel,
+  "auth" | "baseURL" | "preset"
+>
+
 class InvalidOpenaiCompatibleAuthError extends Error {
   constructor() {
     super("OpenAI-compatible provider auth config is invalid.")
@@ -10,7 +15,7 @@ class InvalidOpenaiCompatibleAuthError extends Error {
 }
 
 function createOpenaiCompatibleProvider(
-  integration: IntegrationOpenaiCompatibleModel,
+  integration: OpenaiCompatibleProviderConfig,
 ) {
   const authParsed = secretTextAuthSchema.safeParse(integration.auth)
   if (integration.auth !== null && !authParsed.success) {
@@ -42,7 +47,7 @@ export function createOpenaiCompatibleModelInstance(props: {
 }
 
 export function createOpenaiCompatibleEmbeddingModelInstance(props: {
-  integration: IntegrationOpenaiCompatibleModel
+  integration: OpenaiCompatibleProviderConfig
   modelId: string
 }) {
   const { integration, modelId } = props
