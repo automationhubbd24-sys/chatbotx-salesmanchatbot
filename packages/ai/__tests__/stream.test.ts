@@ -30,4 +30,14 @@ describe("stream text processing", () => {
 
     expect(parts).toEqual(["1. Áo sơ mi nam\n- Giá: 340.000đ"])
   })
+
+  test("treats product image storage URLs without extensions as image parts", () => {
+    const imageUrl =
+      "https://pub-14221f8ad4874b94b0ef19245417de59.r2.dev/public/space/11722811/products/images/gJXdFfMoTOot55yUbUQFI791172561080"
+    const parts = processTextForImagesAndLinks(
+      ["মূল্য: ৪৪৫০ (USD)", "- ছবি:", imageUrl].join("\n"),
+    )
+
+    expect(parts).toEqual(["মূল্য: ৪৪৫০ (USD)", imageUrl])
+  })
 })

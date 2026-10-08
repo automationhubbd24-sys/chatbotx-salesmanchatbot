@@ -49,6 +49,7 @@ function getMeaningfulParts(parts: string[]): string[] {
 }
 
 const REGEX_TRAILING_LIST_MARKER = /\n\s*[-*]\s*$/
+const REGEX_TRAILING_IMAGE_LABEL = /\n\s*[-*]?\s*(?:ছবি|image|photo|picture)\s*:?\s*$/iu
 
 function cleanText(value: string): string {
   return String(value ?? "")
@@ -56,6 +57,7 @@ function cleanText(value: string): string {
     .replace(REGEX_ITALIC_MARKDOWN, "$2")
     .replace(REGEX_STARS_OR_DASHES, "")
     .trim()
+    .replace(REGEX_TRAILING_IMAGE_LABEL, "")
     .replace(REGEX_TRAILING_LIST_MARKER, "")
     .trim()
 }
@@ -74,10 +76,26 @@ function isMediaUrl(url: string, extensions: string[]): boolean {
   }
 }
 
+function hasImageLikePath(url: string): boolean {
+  try {
+    const pathSegments = new URL(url.trim().toLowerCase()).pathname
+      .split("/")
+      .filter(Boolean)
+
+    return pathSegments.some((segment) =>
+      ["image", "images", "product-images"].includes(segment),
+    )
+  } catch {
+    return false
+  }
+}
+
 export function isImageUrl(url: string): boolean {
-  return isMediaUrl(
-    url,
-    supportedImageExtensions.options.map((ext) => `.${ext}`),
+  return (
+    isMediaUrl(
+      url,
+      supportedImageExtensions.options.map((ext) => `.${ext}`),
+    ) || hasImageLikePath(url)
   )
 }
 
