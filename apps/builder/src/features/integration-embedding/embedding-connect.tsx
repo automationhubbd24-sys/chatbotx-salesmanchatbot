@@ -44,7 +44,10 @@ export function EmbeddingConnect({
       </SettingRow>
 
       {integration ? (
-        <SettingRow description={integration.baseURL} label={integration.model}>
+        <SettingRow
+          description={`${integration.baseURL} · ${t("embedding.dimensions")}`}
+          label={integration.model}
+        >
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <Badge variant={integration.enabled ? "default" : "secondary"}>
               {integration.enabled

@@ -4,6 +4,7 @@ CREATE TABLE "IntegrationEmbedding" (
 	"updatedAt" timestamp (3) DEFAULT now() NOT NULL,
 	"auth" jsonb,
 	"baseURL" text NOT NULL,
+	"dimensions" integer DEFAULT 3072 NOT NULL,
 	"enabled" boolean DEFAULT true NOT NULL,
 	"integrationId" bigint NOT NULL,
 	"model" text NOT NULL,

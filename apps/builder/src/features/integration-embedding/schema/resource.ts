@@ -5,6 +5,7 @@ export type IntegrationEmbeddingResource = Pick<
   | "id"
   | "workspaceId"
   | "baseURL"
+  | "dimensions"
   | "enabled"
   | "model"
   | "createdAt"
@@ -18,6 +19,7 @@ export function mapIntegrationEmbeddingResource(
     id: integration.id,
     workspaceId: integration.workspaceId,
     baseURL: integration.baseURL,
+    dimensions: integration.dimensions,
     enabled: integration.enabled,
     model: integration.model,
     createdAt: integration.createdAt,

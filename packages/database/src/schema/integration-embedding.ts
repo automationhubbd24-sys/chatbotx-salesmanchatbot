@@ -1,4 +1,11 @@
-import { boolean, jsonb, pgTable, text, uniqueIndex } from "drizzle-orm/pg-core"
+import {
+  boolean,
+  integer,
+  jsonb,
+  pgTable,
+  text,
+  uniqueIndex,
+} from "drizzle-orm/pg-core"
 import { bigintAsString, sharedColumns } from "../partials/shared"
 import { integrationModel } from "./integration-base"
 import { workspaceModel } from "./workspace"
@@ -9,6 +16,7 @@ export const integrationEmbeddingModel = pgTable(
     ...sharedColumns,
     auth: jsonb(),
     baseURL: text().notNull(),
+    dimensions: integer().default(3072).notNull(),
     enabled: boolean().default(true).notNull(),
     integrationId: bigintAsString()
       .notNull()

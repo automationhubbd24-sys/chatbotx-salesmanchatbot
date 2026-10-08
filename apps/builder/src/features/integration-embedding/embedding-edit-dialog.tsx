@@ -87,6 +87,7 @@ export function EmbeddingEditDialog({
               required
             />
             <InputField
+              description={t("embedding.dimensions")}
               label={t("embedding.fields.model")}
               name="model"
               required

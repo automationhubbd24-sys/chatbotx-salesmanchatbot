@@ -11,6 +11,8 @@ import {
   validateOpenaiCompatibleBaseUrlForEnvironment,
 } from "../integration-openai-compatible/validate-base-url"
 
+export const EMBEDDING_DIMENSIONS = 3072
+
 export type ConnectIntegrationEmbeddingInput = {
   workspaceId: string
   baseURL: string
@@ -43,6 +45,7 @@ class IntegrationEmbeddingService extends BaseService {
         .set({
           auth,
           baseURL,
+          dimensions: EMBEDDING_DIMENSIONS,
           enabled: props.enabled ?? true,
           model: props.model,
         })
@@ -69,6 +72,7 @@ class IntegrationEmbeddingService extends BaseService {
         id: createId(),
         auth,
         baseURL,
+        dimensions: EMBEDDING_DIMENSIONS,
         enabled: props.enabled ?? true,
         integrationId: integration.id,
         model: props.model,
