@@ -123,8 +123,8 @@ type GetOptions = {
 type PostOptions = {
   headers?: Record<string, string>
   json?: unknown
-  /** Form-encoded body (Graph batch sub-requests carry their own encoding). */
-  body?: URLSearchParams
+  /** Form-encoded or multipart body. */
+  body?: BodyInit
   retry?: number
   /** Overrides the client's timeout for this call (ms). */
   timeout?: number

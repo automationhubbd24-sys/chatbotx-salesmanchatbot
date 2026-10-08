@@ -29,7 +29,10 @@ import {
   type SendFlowStepProps,
 } from "@chatbotx.io/sdk"
 import { sendPrivateReplyMessage } from "../../../apis/comment"
-import { sendMessage as sendMessageApi } from "../../../apis/message"
+import {
+  sendMessage as sendMessageApi,
+  sendMessageWithUploadedAttachment,
+} from "../../../apis/message"
 import { ensureMessengerWhitelistedDomain } from "../../../apis/page"
 import { mapToChannelError } from "../../../lib/error-mapper"
 import { logger } from "../../../lib/logger"
@@ -128,6 +131,34 @@ const sendPageMessageWithMessengerExtensionWhitelistRetry = async (
   }
 }
 
+const sendPageMessageWithBinaryImageFallback = async (
+  ctx: SendFlowStepProps<MessengerAuthValue>["ctx"],
+  payload: FacebookSendMessageRequest,
+) => {
+  const attachment = payload.message?.attachment
+  const attachmentUrl = attachment?.payload.url
+  if (attachment?.type !== "image" || !attachmentUrl || !payload.message) {
+    return await sendPageMessageWithMessengerExtensionWhitelistRetry(ctx, payload)
+  }
+
+  try {
+    return await sendMessageWithUploadedAttachment(
+      ctx.auth,
+      { ...payload, message: payload.message },
+      {
+        type: "image",
+        url: attachmentUrl,
+      },
+    )
+  } catch (error) {
+    logger.warn(
+      { err: error },
+      "Messenger binary image upload failed, retrying by URL",
+    )
+    return await sendPageMessageWithMessengerExtensionWhitelistRetry(ctx, payload)
+  }
+}
+
 export const handledFlowStepTypes = [
   stepTypes.enum.sendText,
   stepTypes.enum.sendImage,
@@ -194,11 +225,10 @@ export const sendMessage: MessageHandlers<MessengerAuthValue>["sendMessage"] =
             contact,
           ),
         })
-        const response =
-          await sendPageMessageWithMessengerExtensionWhitelistRetry(
-            ctx,
-            payload,
-          )
+        const response = await sendPageMessageWithBinaryImageFallback(
+          ctx,
+          payload,
+        )
         sentCount += 1
         if (response.message_id) {
           messageIds.push(response.message_id)
@@ -298,7 +328,7 @@ export const sendFlowStep: MessageHandlers<MessengerAuthValue>["sendFlowStep"] =
               facebookMessage,
               personaId,
             )
-          : await sendPageMessageWithMessengerExtensionWhitelistRetry(
+          : await sendPageMessageWithBinaryImageFallback(
               ctx,
               buildMessagePayload({
                 contact,
