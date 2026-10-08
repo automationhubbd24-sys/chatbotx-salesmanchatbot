@@ -249,6 +249,8 @@ export type AnalyticsSequenceEventModel =
 export type AnalyticsFlowNodeEventModel =
   typeof schema.analyticsFlowNodeEventModel.$inferSelect
 export type ProductModel = typeof schema.productModel.$inferSelect
+export type ProductEmbeddingModel =
+  typeof schema.productEmbeddingModel.$inferSelect
 export type ProductCategoryModel =
   typeof schema.productCategoryModel.$inferSelect
 export type IntegrationMetaCatalogModel =

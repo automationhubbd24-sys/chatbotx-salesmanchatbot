@@ -41,6 +41,7 @@ export const DefaultJobAction = {
   syncExternalCalendarEvent: "syncExternalCalendarEvent",
   sendAppointmentReminder: "sendAppointmentReminder",
   installTemplate: "installTemplate",
+  refreshProductEmbedding: "refreshProductEmbedding",
 } as const
 
 export const syncExternalCalendarEventJobId = (
@@ -265,6 +266,14 @@ export type JobInstallTemplate = {
   }
 }
 
+export type JobRefreshProductEmbedding = {
+  type: typeof DefaultJobAction.refreshProductEmbedding
+  data: {
+    workspaceId: string
+    productIds?: string[]
+  }
+}
+
 export type DefaultJobData =
   | JobExportContacts
   | JobExportCoupons
@@ -279,3 +288,4 @@ export type DefaultJobData =
   | JobSyncExternalCalendarEvent
   | JobSendAppointmentReminder
   | JobInstallTemplate
+  | JobRefreshProductEmbedding

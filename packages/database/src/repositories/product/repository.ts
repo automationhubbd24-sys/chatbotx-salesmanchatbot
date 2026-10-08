@@ -71,6 +71,21 @@ export type ProductUpdateValues = Partial<
 const inCategory = (categoryId?: string | null) =>
   categoryId ? { OR: [{ categoryId }, { subcategoryId: categoryId }] } : {}
 
+function toAgentSearchResult<
+  T extends {
+    category?: { name: string } | null
+    subcategory?: { name: string } | null
+    inventoryPolicy: string
+  },
+>({ category, subcategory, ...product }: T) {
+  return {
+    ...product,
+    inventoryPolicy: inventoryPolicyTypes.parse(product.inventoryPolicy),
+    category: category?.name ?? null,
+    subcategory: subcategory?.name ?? null,
+  }
+}
+
 export const productRepository = {
   async listForAgentSearch(
     input: ProductAgentSearchInput,
@@ -93,12 +108,35 @@ export const productRepository = {
       orderBy: { rank: "asc", id: "desc" },
     })
 
-    return rows.map(({ category, subcategory, ...product }) => ({
-      ...product,
-      inventoryPolicy: inventoryPolicyTypes.parse(product.inventoryPolicy),
-      category: category?.name ?? null,
-      subcategory: subcategory?.name ?? null,
-    }))
+    return rows.map(toAgentSearchResult)
+  },
+
+  async listForAgentSearchByIds(
+    input: { workspaceId: string; productIds: string[] },
+    tx: DatabaseClient = db,
+  ) {
+    if (input.productIds.length === 0) {
+      return []
+    }
+
+    const rows = await tx.query.productModel.findMany({
+      where: {
+        workspaceId: input.workspaceId,
+        id: { in: input.productIds },
+        isActive: true,
+        isSearchable: true,
+      },
+      orderBy: { rank: "asc", id: "desc" },
+      with: {
+        category: true,
+        subcategory: true,
+        variantOptions: true,
+        variants: true,
+        addons: true,
+      },
+    })
+
+    return rows.map(toAgentSearchResult)
   },
 
   async list(input: ProductListInput, tx: DatabaseClient = db) {

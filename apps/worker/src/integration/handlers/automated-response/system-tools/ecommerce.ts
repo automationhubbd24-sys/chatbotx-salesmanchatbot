@@ -4,8 +4,10 @@ import type {
   SearchProductsInput,
   SystemToolExecutors,
 } from "@chatbotx.io/ai/server"
-import { productService } from "@chatbotx.io/business"
+import { PRODUCT_EMBEDDING_DIMENSIONS, productService } from "@chatbotx.io/business"
+import { embed } from "ai"
 import { normalizeError } from "universal-error-normalizer"
+import { resolveEmbeddingModel } from "../../../../ai-agent/lib/embedding-model"
 import { logger } from "../../../../lib/logger"
 
 const PRODUCT_SEARCH_RESULT_LIMIT = 5
@@ -93,6 +95,58 @@ interface ProductToolDiagnostics {
   triggerMessageId?: string
 }
 
+async function createProductQueryEmbedding(input: {
+  workspaceId: string
+  query: string
+  diagnostics: Record<string, unknown>
+}) {
+  try {
+    const { model, provider } = await resolveEmbeddingModel(input.workspaceId)
+    const { embedding } = await embed({
+      model,
+      value: input.query,
+      providerOptions: {
+        google: { outputDimensionality: PRODUCT_EMBEDDING_DIMENSIONS },
+      },
+    })
+
+    if (embedding.length !== PRODUCT_EMBEDDING_DIMENSIONS) {
+      logger.warn(
+        {
+          ...input.diagnostics,
+          provider,
+          returnedDimensions: embedding.length,
+          expectedDimensions: PRODUCT_EMBEDDING_DIMENSIONS,
+          outcome: "embedding_dimension_mismatch",
+        },
+        "[ecommerce] product query embedding skipped",
+      )
+      return
+    }
+
+    logger.info(
+      {
+        ...input.diagnostics,
+        provider,
+        dimensions: embedding.length,
+        outcome: "embedding_ready",
+      },
+      "[ecommerce] product query embedding created",
+    )
+    return embedding
+  } catch (error) {
+    logger.warn(
+      {
+        ...input.diagnostics,
+        err: normalizeError(error),
+        outcome: "embedding_unavailable",
+      },
+      "[ecommerce] product query embedding failed; falling back to lexical search",
+    )
+    return
+  }
+}
+
 export function createSearchProductsExecutor(
   correlation: ProductToolDiagnostics = {},
 ): NonNullable<SystemToolExecutors[typeof systemFunctionNames.searchProducts]> {
@@ -116,11 +170,17 @@ export function createSearchProductsExecutor(
     logger.info(diagnostics, "[ecommerce] product search started")
 
     try {
+      const embedding = await createProductQueryEmbedding({
+        workspaceId: context.workspaceId,
+        query: args.query,
+        diagnostics,
+      })
       const products = await productService.searchForAgent({
         workspaceId: context.workspaceId,
         query: args.query,
         categoryId: args.categoryId,
         limit: PRODUCT_SEARCH_RESULT_LIMIT,
+        embedding,
       })
 
       const summaries = products.map(toSafeProductSummary)

@@ -1,8 +1,15 @@
 import { type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
 import {
   productCategoryRepository,
   productRepository,
 } from "@chatbotx.io/database/repositories"
+import {
+  PRODUCT_VECTOR_LOW_RESULT_COUNT,
+  deleteProductEmbeddings,
+  hashProductEmbeddingContent,
+  searchProductEmbeddings,
+} from "./embedding"
 import {
   productAddonModel,
   productVariantModel,
@@ -82,6 +89,7 @@ export type ProductAgentSearchInput = {
   query: string
   categoryId?: string | null
   limit?: number
+  embedding?: number[]
 }
 
 const PRODUCT_AGENT_DEFAULT_LIMIT = 5
@@ -111,7 +119,7 @@ type ProductAgentSearchResult = Awaited<
   ReturnType<typeof productRepository.listForAgentSearch>
 >[number]
 
-function buildProductAgentSearchText(product: ProductAgentSearchResult) {
+export function buildProductEmbeddingContent(product: ProductAgentSearchResult) {
   const parts: string[] = []
   pushSearchPart(parts, product.name)
   pushSearchPart(parts, product.sku)
@@ -187,7 +195,7 @@ function scoreProductForAgentSearch(
   const normalizedQuery = query.toLowerCase().trim()
   const compactQuery = compactSearchText(query)
   const queryTokens = tokenizeSearchText(query)
-  const searchText = buildProductAgentSearchText(product).toLowerCase()
+  const searchText = buildProductEmbeddingContent(product).toLowerCase()
   const compactProductName = compactSearchText(product.name)
   const compactSku = product.sku ? compactSearchText(product.sku) : ""
   const compactSearchTextValue = compactSearchText(searchText)
@@ -243,6 +251,16 @@ function scoreProductForAgentSearch(
 }
 
 class ProductService extends BaseService {
+  private async enqueueEmbeddingRefresh(input: {
+    workspaceId: string
+    productIds?: string[]
+  }) {
+    await defaultQueue.add(DefaultJobAction.refreshProductEmbedding, {
+      type: DefaultJobAction.refreshProductEmbedding,
+      data: input,
+    })
+  }
+
   private async assertReferencesBelongToWorkspace(input: {
     workspaceId: string
     categoryId?: string | null
@@ -384,7 +402,12 @@ class ProductService extends BaseService {
       subcategoryId: data.subcategoryId,
       tx,
     })
-    return await this.insert(data, tx)
+    const product = await this.insert(data, tx)
+    await this.enqueueEmbeddingRefresh({
+      workspaceId: data.workspaceId,
+      productIds: [product.id],
+    })
+    return product
   }
 
   async createFull(data: ProductFullWriteData): Promise<ProductModel> {
@@ -418,6 +441,12 @@ class ProductService extends BaseService {
         }),
       ])
       return product
+    }).then(async (product) => {
+      await this.enqueueEmbeddingRefresh({
+        workspaceId: data.workspaceId,
+        productIds: [product.id],
+      })
+      return product
     })
   }
 
@@ -441,6 +470,7 @@ class ProductService extends BaseService {
       tx,
     })
     await this.applyPatch({ productId, workspaceId, data, tx })
+    await this.enqueueEmbeddingRefresh({ workspaceId, productIds: [productId] })
   }
 
   async updateFull(
@@ -487,6 +517,7 @@ class ProductService extends BaseService {
         productAddonService.createBulk({ productId, addons, tx }),
       ])
     })
+    await this.enqueueEmbeddingRefresh({ workspaceId, productIds: [productId] })
   }
 
   async delete(input: {
@@ -500,6 +531,7 @@ class ProductService extends BaseService {
       resourceKind: "product",
       resourceIds: ids,
     })
+    await deleteProductEmbeddings({ workspaceId, productIds: ids }, tx)
     await productRepository.deleteByIds({ workspaceId, productIds: ids }, tx)
   }
 
@@ -507,7 +539,7 @@ class ProductService extends BaseService {
     return await productRepository.list(input)
   }
 
-  async searchForAgent(input: ProductAgentSearchInput) {
+  private async lexicalSearchForAgent(input: ProductAgentSearchInput) {
     const products = await productRepository.listForAgentSearch({
       workspaceId: input.workspaceId,
       categoryId: input.categoryId,
@@ -524,12 +556,74 @@ class ProductService extends BaseService {
       .map(({ product }) => product)
   }
 
+  async searchForAgent(input: ProductAgentSearchInput) {
+    const vectorMatches = await searchProductEmbeddings(input)
+    const vectorProductIds = vectorMatches.map((match) => match.productId)
+
+    if (vectorProductIds.length > 0) {
+      const vectorProducts = await productRepository.listForAgentSearchByIds({
+        workspaceId: input.workspaceId,
+        productIds: vectorProductIds,
+      })
+      const productById = new Map(
+        vectorProducts.map((product) => [product.id, product]),
+      )
+      const orderedVectorProducts = vectorProductIds
+        .map((productId) => productById.get(productId))
+        .filter((product): product is ProductAgentSearchResult => Boolean(product))
+
+      if (orderedVectorProducts.length >= PRODUCT_VECTOR_LOW_RESULT_COUNT) {
+        return orderedVectorProducts.slice(
+          0,
+          input.limit ?? PRODUCT_AGENT_DEFAULT_LIMIT,
+        )
+      }
+
+      const lexicalProducts = await this.lexicalSearchForAgent(input)
+      const merged = [...orderedVectorProducts]
+      const seen = new Set(merged.map((product) => product.id))
+      for (const product of lexicalProducts) {
+        if (!seen.has(product.id)) {
+          merged.push(product)
+          seen.add(product.id)
+        }
+      }
+
+      return merged.slice(0, input.limit ?? PRODUCT_AGENT_DEFAULT_LIMIT)
+    }
+
+    return await this.lexicalSearchForAgent(input)
+  }
+
   async findById(id: string, workspaceId: string) {
     const product = await productRepository.findDetail({ id, workspaceId })
     if (!product) {
       throw notFoundException("Product does not exist.")
     }
     return product
+  }
+
+  async listForEmbeddingRefresh(input: {
+    workspaceId: string
+    productIds?: string[]
+  }) {
+    const products = input.productIds?.length
+      ? await productRepository.listForAgentSearchByIds({
+          workspaceId: input.workspaceId,
+          productIds: input.productIds,
+        })
+      : await productRepository.listForAgentSearch({
+          workspaceId: input.workspaceId,
+        })
+
+    return products.map((product) => {
+      const content = buildProductEmbeddingContent(product)
+      return {
+        product,
+        content,
+        contentHash: hashProductEmbeddingContent(content),
+      }
+    })
   }
 
   async listFormOptions(workspaceId: string) {
@@ -542,7 +636,12 @@ class ProductService extends BaseService {
       typeof productRepository.createFromImport
     >[0]["products"]
   }) {
-    return await productRepository.createFromImport(input)
+    const products = await productRepository.createFromImport(input)
+    await this.enqueueEmbeddingRefresh({
+      workspaceId: input.workspaceId,
+      productIds: products.map((product) => product.id),
+    })
+    return products
   }
 
   async listForCatalogSync(
