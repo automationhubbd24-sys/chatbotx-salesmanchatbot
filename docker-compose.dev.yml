@@ -1,0 +1,180 @@
+name: chatbotx
+
+x-service-common: &service-common
+  platform: linux/amd64
+  restart: unless-stopped
+  env_file:
+    - ./.env
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  networks:
+    - chatbotx-network
+
+x-worker-common: &worker-common
+  <<: *service-common
+  build:
+    context: .
+    dockerfile: apps/worker/docker/Dockerfile
+
+x-rustfs-environment: &rustfs-environment
+  RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-chatbotx}
+  RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:-secretkey}
+  RUSTFS_API_CORS_ALLOW_ORIGIN: ${RUSTFS_API_CORS_ALLOW_ORIGIN:-*}
+
+services:
+  postgres:
+    image: timescale/timescaledb-ha:pg18-all
+    restart: unless-stopped
+    volumes:
+      - db-data:/home/postgres/pgdata
+    command: [ "postgres", "-c", "log_statement=${POSTGRES_LOG_STATEMENT:-none}" ]
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-chatbotx}
+      POSTGRES_USER: ${POSTGRES_USER:-chatbotx}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secretkey}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - chatbotx-network
+
+  mailhog:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    networks:
+      - chatbotx-network
+
+  filesystem:
+    image: rustfs/rustfs:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      <<: *rustfs-environment
+    volumes:
+      - filesystem-data:/data
+    healthcheck:
+      test: [ "CMD", "sh", "-c", "curl -f http://127.0.0.1:9000/health && curl -f http://127.0.0.1:9001/rustfs/console/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - chatbotx-network
+
+  filesystem-init:
+    image: rustfs/rc:latest
+    restart: "no"
+    depends_on:
+      filesystem:
+        condition: service_healthy
+    environment:
+      <<: *rustfs-environment
+    entrypoint: >
+      /bin/sh -c "rc alias set local http://filesystem:9000 $${RUSTFS_ACCESS_KEY} $${RUSTFS_SECRET_KEY}; rc mb local/chatbotx --ignore-existing; touch /tmp/empty && rc cp /tmp/empty local/chatbotx/public/; rc anonymous set public local/chatbotx/public;"
+    networks:
+      - chatbotx-network
+
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    volumes:
+      - cache-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - chatbotx-network
+
+  builder:
+    <<: *service-common
+    build:
+      context: .
+      dockerfile: apps/builder/docker/Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      filesystem:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "node", "-e", "require('http').get('http://127.0.0.1:3000/api/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    environment:
+      RUN_DB_MIGRATE: "true"
+      RUN_DB_SEED: "true"
+      REALTIME_INTERNAL_URL: http://realtime:1999
+
+  worker:
+    <<: *worker-common
+    networks:
+      - chatbotx-network
+      - javascript-executor-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      filesystem:
+        condition: service_healthy
+      javascript-executor:
+        condition: service_healthy
+    environment:
+      JAVASCRIPT_EXECUTOR_URL: http://javascript-executor:3210
+      REALTIME_INTERNAL_URL: http://realtime:1999
+
+  javascript-executor:
+    platform: linux/amd64
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: apps/javascript-executor/docker/Dockerfile
+    environment:
+      JAVASCRIPT_EXECUTOR_TOKEN: ${JAVASCRIPT_EXECUTOR_TOKEN:-change-me-in-production-at-least-32-chars}
+      MAX_CONCURRENCY: ${MAX_CONCURRENCY:-2}
+    networks:
+      - javascript-executor-network
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid,nodev
+    pids_limit: 128
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 512M
+          pids: 128
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3210/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  realtime:
+    <<: *service-common
+    build:
+      context: .
+      dockerfile: apps/realtime/docker/Dockerfile
+
+networks:
+  chatbotx-network:
+    driver: bridge
+  javascript-executor-network:
+    driver: bridge
+    internal: true
+
+volumes:
+  db-data:
+  filesystem-data:
+  cache-data:
