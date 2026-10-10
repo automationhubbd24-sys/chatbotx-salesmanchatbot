@@ -136,7 +136,7 @@ const orderDataSchema = z.object({
   deliveryFee: z.number().nonnegative().optional(),
   discount: z.number().nonnegative().optional(),
   total: z.number().nonnegative().optional(),
-  expiresAt: z.coerce.date().nullable().optional(),
+  expiresAt: z.string().datetime({ offset: true }).nullable().optional(),
 }).passthrough()
 const startOrderDraftSchema = z.object({ type: orderTypeSchema.default("product"), currency: z.string().optional() })
 const updateOrderDraftSchema = z.object({ orderId: z.string().optional(), data: orderDataSchema, expectedVersion: z.number().int().positive().optional() })

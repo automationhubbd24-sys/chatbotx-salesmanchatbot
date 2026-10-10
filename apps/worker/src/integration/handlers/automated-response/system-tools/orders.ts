@@ -39,7 +39,14 @@ export const createOrderExecutors = (): Pick<SystemToolExecutors,
   [systemFunctionNames.updateOrderDraft]: executor(systemFunctionNames.updateOrderDraft, async (args: UpdateOrderDraftInput, context) => {
     const order = args.orderId ? await orderService.getById({ workspaceId: context.workspaceId, orderId: args.orderId }) : await currentDraft(context)
     if (!order) return { order: null, error: "No current order draft exists." }
-    return { order: await orderService.updateDraft({ workspaceId: context.workspaceId, orderId: order.id, data: args.data as never, expectedVersion: args.expectedVersion }) }
+    const data = {
+      ...args.data,
+      expiresAt:
+        args.data.expiresAt === undefined || args.data.expiresAt === null
+          ? args.data.expiresAt
+          : new Date(args.data.expiresAt),
+    }
+    return { order: await orderService.updateDraft({ workspaceId: context.workspaceId, orderId: order.id, data: data as never, expectedVersion: args.expectedVersion }) }
   }),
   [systemFunctionNames.getCurrentOrderDraft]: executor(systemFunctionNames.getCurrentOrderDraft, async (_args: GetCurrentOrderDraftInput, context) => ({ order: await currentDraft(context) })),
   [systemFunctionNames.requestOrderConfirmation]: executor(systemFunctionNames.requestOrderConfirmation, async (args: RequestOrderConfirmationInput, context) => {
