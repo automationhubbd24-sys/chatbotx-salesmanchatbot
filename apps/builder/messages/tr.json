@@ -1020,7 +1020,13 @@
       "anyConditions": "Aşağıdaki koşullardan herhangi biri.",
       "label": "Kişi filtresi",
       "onlyContactsMatch": "Yalnızca şununla eşleşen kişiler",
-      "moreOptions": "Daha Fazla Seçenek"
+      "moreOptions": "Daha Fazla Seçenek",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kişi Notu"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

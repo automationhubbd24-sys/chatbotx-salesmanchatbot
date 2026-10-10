@@ -875,7 +875,13 @@
       "anyConditions": "Mikä tahansa seuraavista ehdoista.",
       "label": "Yhteystietosuodatin",
       "onlyContactsMatch": "Vain yhteystiedot, jotka täsmäävät",
-      "moreOptions": "Lisää vaihtoehtoja"
+      "moreOptions": "Lisää vaihtoehtoja",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Yhteystiedon muistiinpano"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

@@ -304,23 +304,10 @@ export function OrderDetail({ order, workspaceId }: OrderDetailProps) {
         </CardContent>
       </Card>
 
-      {order.confirmationMetadata ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("orders.confirmationMetadata")}</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm">
-            <pre className="overflow-x-auto whitespace-pre-wrap rounded-md bg-muted/40 p-3">
-              {JSON.stringify(order.confirmationMetadata, null, 2)}
-            </pre>
-          </CardContent>
-        </Card>
-      ) : null}
-
       {order.customerSnapshot ? (
         <Card>
           <CardHeader>
-            <CardTitle>{t("conversation.context.customer")}</CardTitle>
+            <CardTitle>{t("orders.customerInformation")}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
             {Object.entries(order.customerSnapshot).map(([key, value]) => {

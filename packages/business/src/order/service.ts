@@ -67,8 +67,21 @@ class OrderService extends BaseService {
       if (!parsed.success || current.type !== "quote") throw validationException("diamondQuoteDetails", "Invalid diamond quote details for this order.")
       data.customerSnapshot = { ...(current.customerSnapshot ?? {}), diamondQuoteDetails: parsed.data }
     }
+    const snapshot = data.customerSnapshot && typeof data.customerSnapshot === "object"
+      ? data.customerSnapshot as Record<string, unknown>
+      : current.customerSnapshot ?? {}
+    const productName = snapshot.product_name ?? snapshot.productName ?? snapshot.product
+    const quantity = Number(snapshot.quantity)
+    const totalPrice = Number(snapshot.total_price ?? snapshot.totalPrice ?? data.total ?? current.total)
+    const unitPrice = quantity > 0 ? totalPrice / quantity : totalPrice
+    if (current.type === "product" && typeof productName === "string" && productName.trim() && Number.isFinite(quantity) && quantity > 0 && Number.isFinite(totalPrice) && totalPrice >= 0) {
+      data.customerSnapshot = { ...snapshot, product_name: productName, quantity, total_price: totalPrice }
+    }
     const updated = await orderRepository.update({ workspaceId: input.workspaceId, orderId: input.orderId, values: data, expectedVersion: input.expectedVersion ?? current.version }, tx)
     if (!updated) throw validationException("version", "Order was modified. Please reload and try again.")
+    if (current.type === "product" && typeof productName === "string" && productName.trim() && Number.isFinite(quantity) && quantity > 0 && Number.isFinite(totalPrice) && totalPrice >= 0) {
+      await orderRepository.replaceItems({ orderId: updated.id, values: [{ productName: productName.trim(), sku: null, productId: null, variantId: null, unitPrice, quantity, lineTotal: totalPrice, snapshot }] }, tx)
+    }
     return updated
   }
 
@@ -231,8 +244,11 @@ class OrderService extends BaseService {
     return await orderRepository.saveCustomFieldValues({ orderId: input.orderId, values: input.values }, tx)
   }
 
-  private assertRequiredCustomFields(definitions: Array<{ id: string; key: string; required: boolean }>, values: Map<string, unknown>) {
-    const missingRequired = definitions.filter((definition) => definition.required && (values.get(definition.id) === undefined || values.get(definition.id) === null || values.get(definition.id) === ""))
+  private assertRequiredCustomFields(definitions: Array<{ id: string; key: string; required: boolean }>, values: Map<string, unknown>, snapshot?: Record<string, unknown> | null) {
+    const missingRequired = definitions.filter((definition) => {
+      const value = values.has(definition.id) ? values.get(definition.id) : snapshot?.[definition.key]
+      return definition.required && (value === undefined || value === null || value === "")
+    })
     if (missingRequired.length > 0) throw validationException("values", `Required order custom fields are missing: ${missingRequired.map((definition) => definition.key).join(", ")}.`)
   }
 
@@ -241,6 +257,17 @@ class OrderService extends BaseService {
     const { tx } = input
     const order = await this.getById({ ...input, tx })
     if (order.status !== "draft") return order
+    if (order.type === "product") {
+      const snapshot = order.customerSnapshot ?? {}
+      const productName = snapshot.product_name ?? snapshot.productName ?? snapshot.product
+      const quantity = Number(snapshot.quantity)
+      const totalPrice = Number(snapshot.total_price ?? snapshot.totalPrice ?? order.total)
+      if (typeof productName === "string" && productName.trim() && Number.isFinite(quantity) && quantity > 0 && Number.isFinite(totalPrice) && totalPrice >= 0) {
+        await orderRepository.replaceItems({ orderId: order.id, values: [{ productName: productName.trim(), sku: null, productId: null, variantId: null, unitPrice: totalPrice / quantity, quantity, lineTotal: totalPrice, snapshot }] }, tx)
+      }
+    }
+    const definitions = await this.listCustomFieldDefinitions({ workspaceId: input.workspaceId, orderType: order.type, tx })
+    this.assertRequiredCustomFields(definitions, new Map(order.customFieldValues.map((field) => [field.definition.id, field.value])), order.customerSnapshot)
     const updated = await orderRepository.update({ workspaceId: input.workspaceId, orderId: input.orderId, expectedVersion: order.version, values: { status: "awaiting_confirmation", confirmationMetadata: { token: input.token, version: order.version + 1 } } }, tx)
     if (!updated) throw validationException("version", "Order was modified. Please reload and try again.")
     await orderRepository.addStatusHistory({ orderId: order.id, fromStatus: order.status, toStatus: "awaiting_confirmation", reason: "confirmation_requested" }, tx)
@@ -268,7 +295,7 @@ class OrderService extends BaseService {
     if (metadata?.token !== input.token || metadata?.version !== input.version) throw validationException("token", "Confirmation token is invalid or expired.")
     const definitions = await this.listCustomFieldDefinitions({ workspaceId: input.workspaceId, orderType: order.type, tx })
     const values = new Map(order.customFieldValues.map((field) => [field.definition.id, field.value]))
-    this.assertRequiredCustomFields(definitions, values)
+    this.assertRequiredCustomFields(definitions, values, order.customerSnapshot)
     const updated = await orderRepository.update({ workspaceId: input.workspaceId, orderId: input.orderId, expectedVersion: order.version, values: { status: "confirmed", confirmedAt: new Date(), confirmationMetadata: { ...metadata, idempotencyKey: input.idempotencyKey ?? null } } }, tx)
     if (!updated) return await this.getById({ ...input, tx })
     await orderRepository.addStatusHistory({ orderId: order.id, fromStatus: order.status, toStatus: "confirmed", reason: "confirmed", metadata: input.idempotencyKey ? { idempotencyKey: input.idempotencyKey } : undefined }, tx)

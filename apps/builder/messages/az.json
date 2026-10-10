@@ -1062,7 +1062,13 @@
       "anyConditions": "Aşağıdakı şərtlərdən hər hansı biri.",
       "label": "Kontakt süzgəci",
       "onlyContactsMatch": "Yalnız uyğun gələn kontaktlar",
-      "moreOptions": "Əlavə seçimlər"
+      "moreOptions": "Əlavə seçimlər",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kontakt qeydi"
@@ -6266,6 +6272,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

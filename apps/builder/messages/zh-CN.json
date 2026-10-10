@@ -4710,6 +4710,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

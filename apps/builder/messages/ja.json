@@ -875,7 +875,13 @@
       "anyConditions": "以下のいずれかの条件",
       "label": "連絡先フィルター",
       "onlyContactsMatch": "次の条件に一致する連絡先のみ",
-      "moreOptions": "その他のオプション"
+      "moreOptions": "その他のオプション",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "連絡先メモ"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

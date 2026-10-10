@@ -1849,7 +1849,13 @@
       "anyConditions": "Oricare dintre condițiile de mai jos.",
       "label": "Filtru de contacte",
       "onlyContactsMatch": "Numai contactele care corespund",
-      "moreOptions": "Mai multe opțiuni"
+      "moreOptions": "Mai multe opțiuni",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Notă de contact"
@@ -5745,6 +5751,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

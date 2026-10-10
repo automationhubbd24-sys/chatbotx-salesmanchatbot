@@ -110,6 +110,11 @@ export const orderRepository = {
     if (values.length === 0) return []
     return await tx.insert(orderItemModel).values(values.map((value) => ({ id: createId(), ...value }))).returning()
   },
+  async replaceItems(input: { orderId: string; values: Array<Omit<typeof orderItemModel.$inferInsert, "id" | "orderId">> }, tx: DatabaseClient = db) {
+    await tx.delete(orderItemModel).where(eq(orderItemModel.orderId, input.orderId))
+    if (input.values.length === 0) return []
+    return await tx.insert(orderItemModel).values(input.values.map((value) => ({ id: createId(), orderId: input.orderId, ...value }))).returning()
+  },
   async update(input: { workspaceId: string; orderId: string; values: OrderUpdateValues; expectedVersion?: number }, tx: DatabaseClient = db) {
     const conditions = [eq(orderModel.workspaceId, input.workspaceId), eq(orderModel.id, input.orderId)]
     if (input.expectedVersion !== undefined) conditions.push(eq(orderModel.version, input.expectedVersion))

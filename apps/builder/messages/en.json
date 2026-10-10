@@ -1062,7 +1062,13 @@
       "anyConditions": "Any of the below conditions.",
       "label": "Contact filter",
       "onlyContactsMatch": "Only contacts, that match to",
-      "moreOptions": "More Options"
+      "moreOptions": "More Options",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Contact Note"
@@ -6266,6 +6272,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

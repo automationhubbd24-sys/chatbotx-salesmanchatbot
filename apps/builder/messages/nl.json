@@ -684,7 +684,13 @@
       "anyConditions": "Een of meer van de onderstaande voorwaarden.",
       "label": "Contactfilter",
       "onlyContactsMatch": "Alleen contacten die voldoen aan",
-      "moreOptions": "Meer opties"
+      "moreOptions": "Meer opties",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Contactnotitie"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

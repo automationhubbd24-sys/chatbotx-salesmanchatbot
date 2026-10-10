@@ -2,10 +2,17 @@
 
 import type { ContactFilterField } from "@chatbotx.io/database/partials"
 import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@chatbotx.io/ui/components/ui/popover"
 import { cn } from "@chatbotx.io/ui/lib/utils"
-import { FilterIcon } from "lucide-react"
+import { CalendarDaysIcon, FilterIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
+import type { DateRange } from "react-day-picker"
 import { pruneExcludedConditions } from "../lib/prune-conditions"
 import { getBrowserTimezone } from "../lib/timezone"
 import type { ContactFilterCondition, ContactFilterCriteria } from "../schema"
@@ -19,6 +26,50 @@ type ContactListFilterButtonProps = {
   active: boolean
   onToggle: () => void
   filter: ContactFilterCriteria
+}
+
+function formatDateKey(date: Date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+}
+
+function CustomDateRangePreset({
+  customLabel,
+  onSelect,
+}: {
+  customLabel: string
+  onSelect: (value: [string, string]) => void
+}) {
+  const t = useTranslations()
+  const [range, setRange] = useState<DateRange>({})
+
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={
+          <Button size="sm" type="button" variant="outline">
+            <CalendarDaysIcon />
+            {customLabel}
+          </Button>
+        }
+      />
+      <PopoverContent className="w-auto p-0" align="start">
+        <Calendar
+          initialFocus
+          mode="range"
+          onSelect={(nextRange) => {
+            setRange(nextRange ?? {})
+            if (nextRange?.from && nextRange.to) {
+              onSelect([formatDateKey(nextRange.from), formatDateKey(nextRange.to)])
+            }
+          }}
+          selected={range}
+        />
+        <p className="px-3 pb-3 text-muted-foreground text-xs">
+          {t("fields.contactFilter.datePresets.selectRange")}
+        </p>
+      </PopoverContent>
+    </Popover>
+  )
 }
 
 export function ContactListFilterButton({
@@ -100,6 +151,28 @@ export function ContactListFilterPanel({
     })
   }
 
+  const replaceCreatedAtCondition = (value: string | [string, string]) => {
+    onFilterChange({
+      ...filter,
+      conditions: [
+        ...filter.conditions.filter(
+          (condition) => condition.field !== "contactCreatedAt",
+        ),
+        {
+          field: "contactCreatedAt",
+          operator: Array.isArray(value) ? ("isBetween" as const) : ("eq" as const),
+          value,
+        },
+      ],
+    })
+  }
+
+  const handleQuickDate = (daysAgo: number) => {
+    const date = new Date()
+    date.setDate(date.getDate() - daysAgo)
+    replaceCreatedAtCondition(formatDateKey(date))
+  }
+
   const handleAddCondition = (condition: ContactFilterCondition) => {
     onFilterChange({
       ...filter,
@@ -156,6 +229,29 @@ export function ContactListFilterPanel({
             ? t("fields.contactFilter.allConditions")
             : t("fields.contactFilter.anyConditions")}
         </button>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <Button
+          onClick={() => handleQuickDate(0)}
+          size="sm"
+          type="button"
+          variant="outline"
+        >
+          {t("fields.contactFilter.datePresets.today")}
+        </Button>
+        <Button
+          onClick={() => handleQuickDate(1)}
+          size="sm"
+          type="button"
+          variant="outline"
+        >
+          {t("fields.contactFilter.datePresets.yesterday")}
+        </Button>
+        <CustomDateRangePreset
+          customLabel={t("fields.contactFilter.datePresets.custom")}
+          onSelect={replaceCreatedAtCondition}
+        />
       </div>
 
       <div className="flex flex-col gap-2">

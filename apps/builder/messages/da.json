@@ -875,7 +875,13 @@
       "anyConditions": "Vilkårlig af den below betingelser.",
       "label": "Kontakt filter",
       "onlyContactsMatch": "Kun kontakter, that match til",
-      "moreOptions": "Mere Options"
+      "moreOptions": "Mere Options",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kontakt Note"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

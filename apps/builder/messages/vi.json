@@ -1053,7 +1053,13 @@
       "anyConditions": "Bất kỳ điều kiện nào bên dưới.",
       "label": "Bộ lọc liên hệ",
       "onlyContactsMatch": "Chỉ các liên hệ khớp với",
-      "moreOptions": "Thêm tùy chọn"
+      "moreOptions": "Thêm tùy chọn",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Ghi chú liên hệ"
@@ -6066,6 +6072,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

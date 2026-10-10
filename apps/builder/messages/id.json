@@ -875,7 +875,13 @@
       "anyConditions": "Salah satu kondisi di bawah.",
       "label": "Filter kontak",
       "onlyContactsMatch": "Hanya kontak yang cocok dengan",
-      "moreOptions": "Opsi Lainnya"
+      "moreOptions": "Opsi Lainnya",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Catatan Kontak"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

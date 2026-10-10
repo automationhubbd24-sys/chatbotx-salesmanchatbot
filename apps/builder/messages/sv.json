@@ -1869,7 +1869,13 @@
       "anyConditions": "Något av villkoren nedan.",
       "label": "Kontaktfilter",
       "moreOptions": "Fler alternativ",
-      "onlyContactsMatch": "Endast kontakter som matchar"
+      "onlyContactsMatch": "Endast kontakter som matchar",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactId": {
       "label": "Kontakt-ID"

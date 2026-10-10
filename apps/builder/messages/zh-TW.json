@@ -128,7 +128,13 @@
       "anyConditions": "以下任何條件。",
       "label": "聯絡人過濾器",
       "onlyContactsMatch": "僅匹配的聯絡人",
-      "moreOptions": "更多選項"
+      "moreOptions": "更多選項",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "聯絡人備註"
@@ -5770,6 +5776,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

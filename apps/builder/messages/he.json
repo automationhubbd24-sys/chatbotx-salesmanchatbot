@@ -3748,6 +3748,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",
@@ -3798,7 +3799,13 @@
       "variants": "וריאציות",
       "addons": "תוספות",
       "tags": "תגיות",
-      "moreOptions": "אפשרויות נוספות"
+      "moreOptions": "אפשרויות נוספות",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "fields": {
       "shortDescription": {

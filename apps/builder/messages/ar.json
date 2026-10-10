@@ -1020,7 +1020,13 @@
       "anyConditions": "أي من الشروط التالية.",
       "label": "تصفية جهات الاتصال",
       "onlyContactsMatch": "جهات الاتصال المطابقة فقط",
-      "moreOptions": "خيارات إضافية"
+      "moreOptions": "خيارات إضافية",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "ملاحظة جهة الاتصال"
@@ -5354,6 +5360,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",

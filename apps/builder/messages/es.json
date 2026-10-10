@@ -1020,7 +1020,13 @@
       "anyConditions": "Cualquiera de las condiciones siguientes.",
       "label": "Filtro de contactos",
       "onlyContactsMatch": "Solo los contactos que coincidan con",
-      "moreOptions": "Más opciones"
+      "moreOptions": "Más opciones",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Nota del contacto"
@@ -5737,6 +5743,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",
