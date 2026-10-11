@@ -167,7 +167,12 @@ export function OrdersTable({
         fields.set(field.definitionId, field)
       }
     }
-    return [...fields.values()].sort((a, b) => a.displayOrder - b.displayOrder)
+    return [...fields.values()]
+      .filter(
+        (field) =>
+          field.key.toLowerCase().replace(/[\s_-]/g, "") !== "totalprice",
+      )
+      .sort((a, b) => a.displayOrder - b.displayOrder)
   }, [customFieldDefinitions, orders])
 
   const formatDateKey = (date: Date) =>
@@ -377,6 +382,9 @@ export function OrdersTable({
               <thead className="border-b bg-muted/40 text-start">
                 <tr>
                   <th className="p-3 text-start font-medium">
+                    {t("orders.fields.createdAt")}
+                  </th>
+                  <th className="p-3 text-start font-medium">
                     {t("orders.fields.order")}
                   </th>
                   <th className="p-3 text-start font-medium">
@@ -387,9 +395,6 @@ export function OrdersTable({
                   </th>
                   <th className="p-3 text-end font-medium">
                     {t("orders.fields.total")}
-                  </th>
-                  <th className="p-3 text-start font-medium">
-                    {t("orders.fields.createdAt")}
                   </th>
                   {customFields.map((field) => (
                     <th
@@ -408,6 +413,9 @@ export function OrdersTable({
                     key={order.id}
                     onClick={() => router.push(`${pathname}/${order.id}`)}
                   >
+                    <td className="p-3 text-muted-foreground">
+                      {order.createdAt.toLocaleDateString()}
+                    </td>
                     <td className="p-3 font-medium">
                       {order.externalOrderId ?? order.id}
                     </td>
@@ -417,9 +425,6 @@ export function OrdersTable({
                     </td>
                     <td className="p-3 text-end">
                       {order.currency} {order.total.toFixed(2)}
-                    </td>
-                    <td className="p-3 text-muted-foreground">
-                      {order.createdAt.toLocaleDateString()}
                     </td>
                     {customFields.map((field) => {
                       const orderField =

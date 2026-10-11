@@ -316,8 +316,10 @@ class OrderService extends BaseService {
       workspaceId: input.workspaceId,
     })
     const columns = definitions
-      .filter((definition) =>
-        orders.some(({ type }) => type === definition.orderType),
+      .filter(
+        (definition) =>
+          definition.key.toLowerCase().replace(/[\s_-]/g, "") !== "totalprice" &&
+          orders.some(({ type }) => type === definition.orderType),
       )
       .sort((a, b) => a.displayOrder - b.displayOrder)
       .map((definition) => ({

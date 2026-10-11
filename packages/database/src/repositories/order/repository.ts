@@ -73,7 +73,7 @@ export const orderRepository = {
   async findActiveDraft(input: { workspaceId: string; conversationId?: string | null; contactId?: string | null }, tx: DatabaseClient = db) {
     const basePredicates = [
       eq(orderModel.workspaceId, input.workspaceId),
-      inArray(orderModel.status, ["draft", "awaiting_confirmation"] as OrderStatus[]),
+      eq(orderModel.status, "draft"),
     ]
 
     if (input.conversationId) {
@@ -86,7 +86,7 @@ export const orderRepository = {
       if (conversationOrder) return conversationOrder
     }
 
-    if (!input.contactId) return
+    if (input.conversationId || !input.contactId) return
 
     const [contactOrder] = await tx
       .select()

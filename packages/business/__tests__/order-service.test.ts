@@ -4,6 +4,7 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
   find: vi.fn(),
   findByExternalId: vi.fn(),
+  findActiveDraft: vi.fn(),
   update: vi.fn(),
   create: vi.fn(),
   createItems: vi.fn(),
@@ -20,6 +21,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   orderRepository: {
     find: mocks.find,
     findByExternalId: mocks.findByExternalId,
+    findActiveDraft: mocks.findActiveDraft,
     update: mocks.update,
     create: mocks.create,
     createItems: mocks.createItems,
@@ -49,6 +51,48 @@ describe("orderService lifecycle", () => {
     )
     mocks.addStatusHistory.mockResolvedValue(undefined)
     mocks.listCustomFieldDefinitions.mockResolvedValue([])
+  })
+
+  test("reuses only a draft returned for the same conversation", async () => {
+    mocks.findActiveDraft.mockResolvedValue(draftOrder)
+
+    const result = await orderService.startDraft({
+      workspaceId: "workspace-1",
+      conversationId: "conversation-1",
+      contactId: "contact-1",
+      type: "product",
+      source: "ai",
+    })
+
+    expect(result).toBe(draftOrder)
+    expect(mocks.create).not.toHaveBeenCalled()
+    expect(mocks.findActiveDraft).toHaveBeenCalledWith(
+      expect.objectContaining({ conversationId: "conversation-1" }),
+      expect.anything(),
+    )
+  })
+
+  test("creates a new order when no active draft exists", async () => {
+    const newOrder = { ...draftOrder, id: "order-2" }
+    mocks.findActiveDraft.mockResolvedValue(undefined)
+    mocks.create.mockResolvedValue(newOrder)
+
+    const result = await orderService.startDraft({
+      workspaceId: "workspace-1",
+      conversationId: "conversation-2",
+      contactId: "contact-1",
+      type: "product",
+      source: "ai",
+    })
+
+    expect(result).toBe(newOrder)
+    expect(mocks.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        conversationId: "conversation-2",
+        contactId: "contact-1",
+      }),
+      expect.anything(),
+    )
   })
 
   test("maps AI custom-field keys to typed definition values", async () => {
