@@ -29,6 +29,7 @@ export interface ToolsetOptions {
     resolveToken?: (token: string) => Promise<McpTokenResolution>
   }
   systemFunctionContextGetter?: () => Promise<SystemFunctionContext | null>
+  orderCustomFieldCatalog?: SystemFunctionContext["orderCustomFieldCatalog"]
   systemToolExecutors?: SystemToolExecutors
   toolPrefixes: {
     file: string
@@ -71,6 +72,7 @@ export async function getAIToolset(
           getAISystemTools({
             selectedSystemIds: systemIds,
             systemFunctionContextGetter: options.systemFunctionContextGetter,
+            orderCustomFieldCatalog: options.orderCustomFieldCatalog,
             systemToolExecutors: options.systemToolExecutors,
           }),
         ),

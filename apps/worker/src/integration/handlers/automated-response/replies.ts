@@ -6,8 +6,9 @@ import {
   systemFunctionNames,
   toolPrefixes,
 } from "@chatbotx.io/ai"
+import type { AIProviderInstance } from "@chatbotx.io/ai/server"
+import { orderService } from "@chatbotx.io/business"
 import {
-  type AIProviderInstance,
   aiContextService,
   appendAIAgentActionToolProtocol,
   appendFabricationGuard,
@@ -328,7 +329,7 @@ export async function generateAIReplyText(
   }
 }
 
-function createReplyToolset(options: {
+async function createReplyToolset(options: {
   abortSignal: AbortSignal
   directSendTracker: { sent: boolean; sentText: string }
   model: LanguageModel
@@ -377,6 +378,7 @@ function createReplyToolset(options: {
       mcp: toolPrefixes.enum.mcp,
       sys: toolPrefixes.enum.sys,
     },
+    orderCustomFieldCatalog: await orderService.listCustomFieldDefinitions({ workspaceId: conversation.workspaceId }).then((definitions) => definitions.filter((definition) => definition.aiVisible).map((definition) => ({ key: definition.key, label: definition.label, type: definition.type, options: definition.options }))),
     systemFunctionContextGetter: async () => ({
       workspaceId: conversation.workspaceId,
       conversationId: conversation.id,

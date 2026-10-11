@@ -1,5 +1,4 @@
 import { orderService } from "@chatbotx.io/business"
-import { externalOrderIntakeSchema, normalizeExternalOrder } from "../lib/normalize-external-order"
 import {
   possibleErrorsOnCreatingResource,
   possibleErrorsOnFindingResource,
@@ -7,6 +6,10 @@ import {
 } from "@/lib/orpc/orpc-error-helper"
 import { publicListResponse } from "@/lib/public-api/list"
 import { workspaceTokenAuthAPIForScope } from "@/orpc"
+import {
+  externalOrderIntakeSchema,
+  normalizeExternalOrder,
+} from "../lib/normalize-external-order"
 import {
   listOrdersPublicRequest,
   orderIdPublicRequest,
@@ -22,7 +25,8 @@ export const ordersPublicRouter = {
       method: "GET",
       path: "/v1/orders",
       summary: "List orders",
-      description: "Lists paginated orders imported or created in this workspace.",
+      description:
+        "Lists paginated orders imported or created in this workspace.",
       tags,
     })
     .input(listOrdersPublicRequest)
@@ -44,7 +48,8 @@ export const ordersPublicRouter = {
       method: "GET",
       path: "/v1/orders/{id}",
       summary: "Get order",
-      description: "Returns one workspace order with its current lifecycle state.",
+      description:
+        "Returns one workspace order with its current lifecycle state.",
       tags,
     })
     .input(orderIdPublicRequest)

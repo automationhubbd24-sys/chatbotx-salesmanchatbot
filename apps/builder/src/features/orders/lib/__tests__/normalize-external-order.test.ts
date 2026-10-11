@@ -2,37 +2,42 @@ import { describe, expect, test } from "vitest"
 import { normalizeExternalOrder } from "../normalize-external-order"
 
 describe("normalizeExternalOrder", () => {
-  test.each(["website", "landing_page", "messenger", "whatsapp", "instagram"] as const)(
-    "normalizes the common order shape for %s",
-    (source) => {
-      const result = normalizeExternalOrder({
-        source,
-        payload: {
-          id: 42,
-          type: "product",
-          currency: "BDT",
-          subtotalAmount: "100",
-          shipping: 20,
-          discountAmount: "5",
-          totalAmount: 115,
-          customer: { name: "Ada" },
-          lineItems: [{ name: "Widget", price: "50", quantity: "2" }],
-        },
-      })
-
-      expect(result).toMatchObject({
-        source,
-        externalOrderId: "42",
+  test.each([
+    "website",
+    "landing_page",
+    "messenger",
+    "whatsapp",
+    "instagram",
+  ] as const)("normalizes the common order shape for %s", (source) => {
+    const result = normalizeExternalOrder({
+      source,
+      payload: {
+        id: 42,
+        type: "product",
         currency: "BDT",
-        subtotal: 100,
-        deliveryFee: 20,
-        discount: 5,
-        total: 115,
-        customerSnapshot: { name: "Ada" },
-        items: [{ productName: "Widget", unitPrice: 50, quantity: 2, lineTotal: 100 }],
-      })
-    },
-  )
+        subtotalAmount: "100",
+        shipping: 20,
+        discountAmount: "5",
+        totalAmount: 115,
+        customer: { name: "Ada" },
+        lineItems: [{ name: "Widget", price: "50", quantity: "2" }],
+      },
+    })
+
+    expect(result).toMatchObject({
+      source,
+      externalOrderId: "42",
+      currency: "BDT",
+      subtotal: 100,
+      deliveryFee: 20,
+      discount: 5,
+      total: 115,
+      customerSnapshot: { name: "Ada" },
+      items: [
+        { productName: "Widget", unitPrice: 50, quantity: 2, lineTotal: 100 },
+      ],
+    })
+  })
 
   test("preserves source and external ID for idempotent import callers", () => {
     const result = normalizeExternalOrder({
@@ -45,9 +50,9 @@ describe("normalizeExternalOrder", () => {
   })
 
   test("rejects payloads without a stable external ID", () => {
-    expect(() => normalizeExternalOrder({ source: "website", payload: {} })).toThrow(
-      "An external order ID is required.",
-    )
+    expect(() =>
+      normalizeExternalOrder({ source: "website", payload: {} }),
+    ).toThrow("An external order ID is required.")
   })
 
   test("normalizes appointment details without changing product imports", () => {
@@ -91,15 +96,35 @@ describe("normalizeExternalOrder", () => {
   })
 
   test("rejects appointment and quote imports without typed details", () => {
-    expect(() => normalizeExternalOrder({ source: "website", payload: { id: "a-1", type: "appointment" } })).toThrow("appointment details")
-    expect(() => normalizeExternalOrder({ source: "website", payload: { id: "q-1", type: "quote" } })).toThrow("quote details")
+    expect(() =>
+      normalizeExternalOrder({
+        source: "website",
+        payload: { id: "a-1", type: "appointment" },
+      }),
+    ).toThrow("appointment details")
+    expect(() =>
+      normalizeExternalOrder({
+        source: "website",
+        payload: { id: "q-1", type: "quote" },
+      }),
+    ).toThrow("quote details")
   })
 
   test("rejects inconsistent line totals", () => {
     expect(() =>
       normalizeExternalOrder({
         source: "whatsapp",
-        payload: { id: "wa-1", items: [{ productName: "Widget", unitPrice: 10, quantity: 2, lineTotal: 25 }] },
+        payload: {
+          id: "wa-1",
+          items: [
+            {
+              productName: "Widget",
+              unitPrice: 10,
+              quantity: 2,
+              lineTotal: 25,
+            },
+          ],
+        },
       }),
     ).toThrow("lineTotal does not match")
   })

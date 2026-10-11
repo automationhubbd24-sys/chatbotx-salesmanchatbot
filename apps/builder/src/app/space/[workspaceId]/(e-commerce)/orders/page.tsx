@@ -59,6 +59,7 @@ export default async function OrdersPage({
 
   return (
     <OrdersTable
+      workspaceId={workspaceId}
       filter={filter}
       orders={orders.data}
       customFieldDefinitions={customFieldDefinitions}

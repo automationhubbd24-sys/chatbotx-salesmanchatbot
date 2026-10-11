@@ -1,5 +1,6 @@
 "use client"
 
+import type { OrderStatus } from "@chatbotx.io/database/partials"
 import type {
   OrderCustomFieldDefinitionModel,
   OrderModel,
@@ -7,31 +8,35 @@ import type {
 import { Button } from "@chatbotx.io/ui/components/ui/button"
 import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@chatbotx.io/ui/components/ui/card"
 import { Input } from "@chatbotx.io/ui/components/ui/input"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@chatbotx.io/ui/components/ui/popover"
 import { Tabs, TabsList, TabsTrigger } from "@chatbotx.io/ui/components/ui/tabs"
 import {
   CalendarDaysIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  EyeIcon,
+  DownloadIcon,
   FilterIcon,
 } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
+import { useAction } from "next-safe-action/hooks"
 import { useEffect, useMemo, useState } from "react"
 import type { DateRange } from "react-day-picker"
+import { toast } from "sonner"
+import { exportOrdersAction } from "./actions/export-orders.action"
 import type { OrderCustomFieldDisplay } from "./custom-field-display"
 import { formatOrderCustomFieldValue } from "./custom-field-display"
+import { SyncOrdersToGoogleSheetsDialog } from "./sync-orders-to-google-sheets-dialog"
 
 type OrderFilter = "all" | "draft" | "active" | "completed" | "cancelled"
 
@@ -40,6 +45,7 @@ type OrderListItem = OrderModel & {
 }
 
 type OrdersTableProps = {
+  workspaceId: string
   filter: OrderFilter
   orders: OrderListItem[]
   customFieldDefinitions: OrderCustomFieldDefinitionModel[]
@@ -52,6 +58,7 @@ type OrdersTableProps = {
 }
 
 export function OrdersTable({
+  workspaceId,
   filter,
   orders,
   customFieldDefinitions,
@@ -67,6 +74,9 @@ export function OrdersTable({
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchValue, setSearchValue] = useState(search)
+  const { executeAsync: executeExport, isPending: isExporting } = useAction(
+    exportOrdersAction.bind(null, workspaceId),
+  )
   const [dateRange, setDateRange] = useState<DateRange>({
     from: dateFrom ? new Date(`${dateFrom}T00:00:00`) : undefined,
     to: dateTo ? new Date(`${dateTo}T00:00:00`) : undefined,
@@ -96,6 +106,49 @@ export function OrdersTable({
   }
 
   const filteredOrders = useMemo(() => orders, [orders])
+  const getExportDateRange = (preset?: string, from?: string, to?: string) => {
+    if (preset === "today" || preset === "yesterday") {
+      const start = new Date()
+      start.setHours(0, 0, 0, 0)
+      if (preset === "yesterday") {
+        start.setDate(start.getDate() - 1)
+      }
+      const end = new Date(start)
+      end.setDate(end.getDate() + 1)
+      return { createdFrom: start, createdTo: end }
+    }
+    return {
+      createdFrom: from ? new Date(`${from}T00:00:00`) : undefined,
+      createdTo: to ? new Date(`${to}T00:00:00`) : undefined,
+    }
+  }
+  const statusFilters: Record<OrderFilter, OrderStatus[] | undefined> = {
+    all: undefined,
+    draft: ["draft"],
+    active: ["awaiting_confirmation", "confirmed", "processing", "shipped"],
+    completed: ["delivered", "returned", "refunded"],
+    cancelled: ["cancelled", "failed", "expired"],
+  }
+  const handleExport = async () => {
+    const result = await executeExport({
+      statuses: statusFilters[filter],
+      search: search || undefined,
+      ...getExportDateRange(datePreset, dateFrom, dateTo),
+    })
+    if (!result?.data) {
+      toast.error(t("messages.error"))
+      return
+    }
+    const blob = new Blob([result.data.content], {
+      type: "text/csv;charset=utf-8",
+    })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = result.data.filename
+    link.click()
+    URL.revokeObjectURL(url)
+  }
   const customFields = useMemo(() => {
     const fields = new Map<string, OrderCustomFieldDisplay>()
     for (const definition of customFieldDefinitions) {
@@ -120,13 +173,14 @@ export function OrdersTable({
   const formatDateKey = (date: Date) =>
     `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
 
-  const dateFilterLabel = datePreset === "today"
-    ? t("orders.dateFilters.today")
-    : datePreset === "yesterday"
-      ? t("orders.dateFilters.yesterday")
-      : dateFrom || dateTo
-        ? `${dateFrom ?? "…"} – ${dateTo ?? "…"}`
-        : t("orders.dateFilters.filter")
+  let dateFilterLabel = t("orders.dateFilters.filter")
+  if (datePreset === "today") {
+    dateFilterLabel = t("orders.dateFilters.today")
+  } else if (datePreset === "yesterday") {
+    dateFilterLabel = t("orders.dateFilters.yesterday")
+  } else if (dateFrom || dateTo) {
+    dateFilterLabel = `${dateFrom ?? "…"} – ${dateTo ?? "…"}`
+  }
 
   const sourceLabel = (source: OrderModel["source"]) => {
     const labels: Record<OrderModel["source"], string> = {
@@ -164,13 +218,32 @@ export function OrdersTable({
       <CardHeader>
         <CardTitle className="font-bold text-xl">{t("orders.title")}</CardTitle>
         <div className="flex flex-wrap items-center gap-2">
+          <Button
+            disabled={isExporting}
+            onClick={handleExport}
+            variant="outline"
+          >
+            <DownloadIcon className="size-4" />
+            {isExporting ? t("actions.loading") : t("actions.export")}
+          </Button>
+          <SyncOrdersToGoogleSheetsDialog
+            filters={{
+              statuses: statusFilters[filter],
+              search: search || undefined,
+              ...getExportDateRange(datePreset, dateFrom, dateTo),
+            }}
+            workspaceId={workspaceId}
+          />
           <div className="max-w-sm">
             <Input
               aria-label={t("orders.search")}
               onChange={(event) => setSearchValue(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  navigate({ search: searchValue.trim() || undefined, page: "1" })
+                  navigate({
+                    search: searchValue.trim() || undefined,
+                    page: "1",
+                  })
                 }
               }}
               placeholder={t("orders.search")}
@@ -180,7 +253,11 @@ export function OrdersTable({
           <Popover>
             <PopoverTrigger
               render={
-                <Button variant={datePreset || dateFrom || dateTo ? "default" : "outline"}>
+                <Button
+                  variant={
+                    datePreset || dateFrom || dateTo ? "default" : "outline"
+                  }
+                >
                   <FilterIcon className="size-4" />
                   {dateFilterLabel}
                 </Button>
@@ -190,14 +267,28 @@ export function OrdersTable({
               <div className="space-y-3">
                 <div className="flex flex-wrap gap-2">
                   <Button
-                    onClick={() => navigate({ date: "today", from: undefined, to: undefined, page: "1" })}
+                    onClick={() =>
+                      navigate({
+                        date: "today",
+                        from: undefined,
+                        to: undefined,
+                        page: "1",
+                      })
+                    }
                     size="sm"
                     variant={datePreset === "today" ? "default" : "outline"}
                   >
                     {t("orders.dateFilters.today")}
                   </Button>
                   <Button
-                    onClick={() => navigate({ date: "yesterday", from: undefined, to: undefined, page: "1" })}
+                    onClick={() =>
+                      navigate({
+                        date: "yesterday",
+                        from: undefined,
+                        to: undefined,
+                        page: "1",
+                      })
+                    }
                     size="sm"
                     variant={datePreset === "yesterday" ? "default" : "outline"}
                   >
@@ -211,26 +302,41 @@ export function OrdersTable({
                 <Calendar
                   mode="range"
                   onSelect={(nextRange) =>
-                    setDateRange(nextRange ?? { from: undefined, to: undefined })
+                    setDateRange(
+                      nextRange ?? { from: undefined, to: undefined },
+                    )
                   }
                   selected={dateRange}
                 />
                 <div className="flex justify-end gap-2">
                   <Button
-                    onClick={() => navigate({ date: undefined, from: undefined, to: undefined, page: "1" })}
+                    onClick={() =>
+                      navigate({
+                        date: undefined,
+                        from: undefined,
+                        to: undefined,
+                        page: "1",
+                      })
+                    }
                     size="sm"
                     variant="ghost"
                   >
                     {t("orders.dateFilters.clear")}
                   </Button>
                   <Button
-                    disabled={!dateRange.from || !dateRange.to}
-                    onClick={() => navigate({
-                      date: undefined,
-                      from: dateRange.from ? formatDateKey(dateRange.from) : undefined,
-                      to: dateRange.to ? formatDateKey(dateRange.to) : undefined,
-                      page: "1",
-                    })}
+                    disabled={!(dateRange.from && dateRange.to)}
+                    onClick={() =>
+                      navigate({
+                        date: undefined,
+                        from: dateRange.from
+                          ? formatDateKey(dateRange.from)
+                          : undefined,
+                        to: dateRange.to
+                          ? formatDateKey(dateRange.to)
+                          : undefined,
+                        page: "1",
+                      })
+                    }
                     size="sm"
                   >
                     {t("orders.dateFilters.apply")}
@@ -286,7 +392,10 @@ export function OrdersTable({
                     {t("orders.fields.createdAt")}
                   </th>
                   {customFields.map((field) => (
-                    <th className="p-3 text-start font-medium" key={field.definitionId}>
+                    <th
+                      className="p-3 text-start font-medium"
+                      key={field.definitionId}
+                    >
                       {field.label}
                     </th>
                   ))}
@@ -313,9 +422,11 @@ export function OrdersTable({
                       {order.createdAt.toLocaleDateString()}
                     </td>
                     {customFields.map((field) => {
-                      const orderField = order.customFields.find(
-                        (candidate) => candidate.definitionId === field.definitionId,
-                      ) ?? field
+                      const orderField =
+                        order.customFields.find(
+                          (candidate) =>
+                            candidate.definitionId === field.definitionId,
+                        ) ?? field
                       const value = formatOrderCustomFieldValue(
                         orderField,
                         order.currency,
@@ -324,7 +435,11 @@ export function OrdersTable({
                         t("orders.customFieldValues.no"),
                       )
                       return (
-                        <td className="max-w-56 truncate p-3" key={field.definitionId} title={value}>
+                        <td
+                          className="max-w-56 truncate p-3"
+                          key={field.definitionId}
+                          title={value}
+                        >
                           {value}
                         </td>
                       )

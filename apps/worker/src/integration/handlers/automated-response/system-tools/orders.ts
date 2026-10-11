@@ -39,14 +39,23 @@ export const createOrderExecutors = (): Pick<SystemToolExecutors,
   [systemFunctionNames.updateOrderDraft]: executor(systemFunctionNames.updateOrderDraft, async (args: UpdateOrderDraftInput, context) => {
     const order = args.orderId ? await orderService.getById({ workspaceId: context.workspaceId, orderId: args.orderId }) : await currentDraft(context)
     if (!order) return { order: null, error: "No current order draft exists." }
+    const { customFields, ...orderData } = args.data
     const data = {
-      ...args.data,
+      ...orderData,
       expiresAt:
-        args.data.expiresAt === undefined || args.data.expiresAt === null
-          ? args.data.expiresAt
-          : new Date(args.data.expiresAt),
+        orderData.expiresAt === undefined || orderData.expiresAt === null
+          ? orderData.expiresAt
+          : new Date(orderData.expiresAt),
     }
-    return { order: await orderService.updateDraft({ workspaceId: context.workspaceId, orderId: order.id, data: data as never, expectedVersion: args.expectedVersion }) }
+    return {
+      order: await orderService.updateDraft({
+        workspaceId: context.workspaceId,
+        orderId: order.id,
+        data: data as never,
+        customFields,
+        expectedVersion: args.expectedVersion,
+      }),
+    }
   }),
   [systemFunctionNames.getCurrentOrderDraft]: executor(systemFunctionNames.getCurrentOrderDraft, async (_args: GetCurrentOrderDraftInput, context) => ({ order: await currentDraft(context) })),
   [systemFunctionNames.requestOrderConfirmation]: executor(systemFunctionNames.requestOrderConfirmation, async (args: RequestOrderConfirmationInput, context) => {

@@ -47,8 +47,9 @@ class OrderService extends BaseService {
     return order
   }
 
-  async updateDraft(input: { workspaceId: string; orderId: string; data: Partial<Omit<OrderModel, "id" | "workspaceId" | "createdAt" | "updatedAt">>; expectedVersion?: number; tx?: DatabaseClient }) {
-    const { tx = db } = input
+  async updateDraft(input: { workspaceId: string; orderId: string; data: Partial<Omit<OrderModel, "id" | "workspaceId" | "createdAt" | "updatedAt">>; customFields?: Record<string, unknown>; expectedVersion?: number; tx?: DatabaseClient }): Promise<OrderModel> {
+    if (!input.tx) return await db.transaction((tx) => this.updateDraft({ ...input, tx }))
+    const { tx } = input
     const current = await orderRepository.find({ workspaceId: input.workspaceId, orderId: input.orderId }, tx)
     if (!current) throw notFoundException("Order does not exist.")
     if (!ACTIVE_STATUSES.includes(current.status)) throw validationException("status", "Only active drafts can be updated.")
@@ -107,6 +108,9 @@ class OrderService extends BaseService {
     if (!updated) throw validationException("version", "Order was modified. Please reload and try again.")
     if (current.type === "product" && typeof productName === "string" && productName.trim() && Number.isFinite(quantity) && quantity > 0 && Number.isFinite(totalPrice) && totalPrice >= 0) {
       await orderRepository.replaceItems({ orderId: updated.id, values: [{ productName: productName.trim(), sku: null, productId: null, variantId: null, unitPrice, quantity, lineTotal: totalPrice, snapshot }] }, tx)
+    }
+    if (input.customFields) {
+      await this.updateDraftCustomFields({ workspaceId: input.workspaceId, orderId: updated.id, values: input.customFields, tx })
     }
     return updated
   }
@@ -227,8 +231,8 @@ class OrderService extends BaseService {
   }
 
   async list(input: Parameters<typeof orderRepository.list>[0], tx?: DatabaseClient) {
-    const result = await orderRepository.list(input, tx ?? db)
     const database = tx ?? db
+    const result = await orderRepository.list(input, database)
     const [definitions, customFieldRows] = await Promise.all([
       orderRepository.listCustomFieldDefinitions({ workspaceId: input.workspaceId }, database),
       orderRepository.listCustomFieldValues(
@@ -285,7 +289,49 @@ class OrderService extends BaseService {
     }
   }
 
-  async listCustomFieldDefinitions(input: { workspaceId: string; orderType?: OrderType; tx?: DatabaseClient }) {
+  async listForExport(input: {
+    workspaceId: string
+    status?: OrderStatus
+    statuses?: OrderStatus[]
+    search?: string
+    createdFrom?: Date
+    createdTo?: Date
+  }) {
+    const orders: Awaited<ReturnType<typeof this.list>>["data"] = []
+    let page = 1
+    let pageCount = 1
+
+    while (page <= pageCount) {
+      const result = await this.list({
+        ...input,
+        page,
+        perPage: 100,
+      })
+      orders.push(...result.data)
+      pageCount = result.pageCount
+      page += 1
+    }
+
+    const definitions = await this.listCustomFieldDefinitions({
+      workspaceId: input.workspaceId,
+    })
+    const columns = definitions
+      .filter((definition) =>
+        orders.some(({ type }) => type === definition.orderType),
+      )
+      .sort((a, b) => a.displayOrder - b.displayOrder)
+      .map((definition) => ({
+        key: definition.key,
+        label: definition.label,
+        definitionId: definition.id,
+        type: definition.type,
+        options: definition.options,
+      }))
+
+    return { orders, columns }
+  }
+
+  async listCustomFieldDefinitions(input: { workspaceId: string; orderType?: OrderType; tx?: DatabaseClient; }) {
     return await orderRepository.listCustomFieldDefinitions(input, input.tx ?? db)
   }
 
@@ -325,6 +371,55 @@ class OrderService extends BaseService {
     const provided = new Map(input.values.map((value) => [value.definitionId, value.value]))
     this.assertRequiredCustomFields(definitions, provided)
     return await orderRepository.saveCustomFieldValues({ orderId: input.orderId, values: input.values }, tx)
+  }
+
+  async updateDraftCustomFields(input: { workspaceId: string; orderId: string; values: Record<string, unknown>; tx?: DatabaseClient }) {
+    const { tx = db } = input
+    const order = await this.getById({ workspaceId: input.workspaceId, orderId: input.orderId, tx })
+    if (!ACTIVE_STATUSES.includes(order.status)) throw validationException("status", "Only active drafts can be updated.")
+    const definitions = await this.listCustomFieldDefinitions({ workspaceId: input.workspaceId, orderType: order.type, tx })
+    const definitionsByKey = new Map(definitions.map((definition) => [definition.key, definition]))
+    const values = Object.entries(input.values).map(([key, value]) => {
+      const definition = definitionsByKey.get(key)
+      if (!definition) throw validationException(`customFields.${key}`, "This order custom field does not exist.")
+      if (!definition.aiVisible) throw validationException(`customFields.${key}`, "This order custom field is not available to the AI.")
+      return { definitionId: definition.id, value: this.normalizeCustomFieldValue(definition.type, value, definition.options, key) }
+    })
+    return await orderRepository.saveCustomFieldValues({ orderId: order.id, values }, tx)
+  }
+
+  private normalizeCustomFieldValue(type: OrderCustomFieldType, value: unknown, options: string[] | null, key: string) {
+    if (value === null || value === undefined || value === "") return null
+    if (type === "text" || type === "textarea" || type === "phone" || type === "email" || type === "address" || type === "product" || type === "variant") {
+      if (typeof value !== "string" || !value.trim()) throw validationException(`customFields.${key}`, "A text value is required.")
+      if (type === "email" && !/^\\S+@\\S+\\.\\S+$/.test(value.trim())) throw validationException(`customFields.${key}`, "A valid email is required.")
+      return value.trim()
+    }
+    if (type === "number" || type === "currency") {
+      const number = typeof value === "number" ? value : Number(value)
+      if (!Number.isFinite(number)) throw validationException(`customFields.${key}`, "A valid number is required.")
+      return number
+    }
+    if (type === "boolean") {
+      if (typeof value === "boolean") return value
+      if (value === "true") return true
+      if (value === "false") return false
+      throw validationException(`customFields.${key}`, "A boolean value is required.")
+    }
+    if (type === "select") {
+      if (typeof value !== "string" || !options?.includes(value)) throw validationException(`customFields.${key}`, "Choose one of the configured options.")
+      return value
+    }
+    if (type === "multiselect") {
+      const selected = Array.isArray(value) ? value : [value]
+      if (selected.some((item) => typeof item !== "string" || !options?.includes(item))) throw validationException(`customFields.${key}`, "Choose only configured options.")
+      return [...new Set(selected)]
+    }
+    if (type === "date" || type === "datetime") {
+      if (typeof value !== "string" || Number.isNaN(Date.parse(value))) throw validationException(`customFields.${key}`, "A valid date is required.")
+      return value
+    }
+    return value
   }
 
   private assertRequiredCustomFields(definitions: Array<{ id: string; key: string; required: boolean }>, values: Map<string, unknown>, snapshot?: Record<string, unknown> | null) {

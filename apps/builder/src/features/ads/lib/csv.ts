@@ -1,9 +1,7 @@
 const CSV_ESCAPE_RE = /[",\n\r]/
 const CSV_FORMULA_PREFIX_RE = /^[=+\-@\t\r]/
 
-export function escapeCsvCell(
-  value: string | number | null | undefined,
-): string {
+export function escapeCsvCell(value: unknown): string {
   const text = value === null || value === undefined ? "" : String(value)
   const sanitized = CSV_FORMULA_PREFIX_RE.test(text) ? `'${text}` : text
   if (!CSV_ESCAPE_RE.test(sanitized)) {
@@ -12,6 +10,8 @@ export function escapeCsvCell(
   return `"${sanitized.replaceAll('"', '""')}"`
 }
 
-export function toCsvRow(values: Array<string | number | null | undefined>) {
+export function toCsvRow(
+  values: Array<string | number | boolean | null | undefined>,
+) {
   return `${values.map(escapeCsvCell).join(",")}\n`
 }

@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
   createItems: vi.fn(),
   addStatusHistory: vi.fn(),
   listCustomFieldDefinitions: vi.fn(),
+  saveCustomFieldValues: vi.fn(),
 }))
 
 vi.mock("@chatbotx.io/database/client", () => ({
@@ -24,6 +25,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
     createItems: mocks.createItems,
     addStatusHistory: mocks.addStatusHistory,
     listCustomFieldDefinitions: mocks.listCustomFieldDefinitions,
+    saveCustomFieldValues: mocks.saveCustomFieldValues,
   },
 }))
 
@@ -47,6 +49,37 @@ describe("orderService lifecycle", () => {
     )
     mocks.addStatusHistory.mockResolvedValue(undefined)
     mocks.listCustomFieldDefinitions.mockResolvedValue([])
+  })
+
+  test("maps AI custom-field keys to typed definition values", async () => {
+    mocks.find.mockResolvedValue(draftOrder)
+    mocks.listCustomFieldDefinitions.mockResolvedValue([
+      { id: "field-1", key: "delivery_zone", type: "select", options: ["Dhaka", "Chattogram"], aiVisible: true, required: false },
+      { id: "field-2", key: "internal_note", type: "text", options: null, aiVisible: false, required: false },
+    ])
+    mocks.saveCustomFieldValues.mockResolvedValue([{ definitionId: "field-1", value: "Dhaka" }])
+
+    await orderService.updateDraftCustomFields({
+      workspaceId: "workspace-1",
+      orderId: "order-1",
+      values: { delivery_zone: "Dhaka" },
+      tx: "tx" as never,
+    })
+
+    expect(mocks.saveCustomFieldValues).toHaveBeenCalledWith(
+      { orderId: "order-1", values: [{ definitionId: "field-1", value: "Dhaka" }] },
+      "tx",
+    )
+  })
+
+  test("rejects AI updates for hidden or unknown custom fields", async () => {
+    mocks.find.mockResolvedValue(draftOrder)
+    mocks.listCustomFieldDefinitions.mockResolvedValue([
+      { id: "field-1", key: "internal_note", type: "text", options: null, aiVisible: false, required: false },
+    ])
+
+    await expect(orderService.updateDraftCustomFields({ workspaceId: "workspace-1", orderId: "order-1", values: { internal_note: "secret" } })).rejects.toThrow("not available to the AI")
+    await expect(orderService.updateDraftCustomFields({ workspaceId: "workspace-1", orderId: "order-1", values: { missing: "value" } })).rejects.toThrow("does not exist")
   })
 
   test("requests confirmation with a new token and optimistic version", async () => {

@@ -11,6 +11,12 @@ export interface SystemFunctionContext {
   sendMessage?: (text: string) => Promise<void>
   triggerFlow?: (flowId: string) => Promise<void>
   workspaceId: string
+  orderCustomFieldCatalog?: Array<{
+    key: string
+    label: string
+    type: string
+    options?: string[] | null
+  }>
 }
 
 export interface SystemFunctionHandoffRequest {
@@ -134,6 +140,7 @@ const orderDataSchema = z.object({
   quantity: z.number().positive().optional(),
   total_price: z.number().nonnegative().optional(),
   customerSnapshot: z.record(z.string(), z.unknown()).optional(),
+  customFields: z.record(z.string(), z.unknown()).optional(),
   appointmentDetails: appointmentOrderDetailsSchema.optional(),
   diamondQuoteDetails: diamondQuoteDetailsSchema.optional(),
   currency: z.string().trim().min(1).max(10).optional(),
@@ -225,6 +232,7 @@ export type SystemToolExecutors = Partial<{
 export interface GetAISystemToolsOptions {
   selectedSystemIds: string[]
   systemFunctionContextGetter?: () => Promise<SystemFunctionContext | null>
+  orderCustomFieldCatalog?: SystemFunctionContext["orderCustomFieldCatalog"]
   systemToolExecutors?: SystemToolExecutors
 }
 
@@ -329,6 +337,17 @@ const buildOrderTool = (options: GetAISystemToolsOptions, id: SystemFunctionId, 
     },
   })
 
+const buildOrderUpdateTool = (options: GetAISystemToolsOptions) =>
+  tool({
+    description: `${systemFunctionCatalog[systemFunctionNames.updateOrderDraft].description} Use the customFields object with the exact field key from the seller's field catalog. Available fields: ${JSON.stringify(options.orderCustomFieldCatalog ?? [])}`,
+    inputSchema: updateOrderDraftSchema,
+    execute: async (args) => {
+      const context = await options.systemFunctionContextGetter?.()
+      const executor = options.systemToolExecutors?.[systemFunctionNames.updateOrderDraft]
+      return executor ? executor(args, context ?? null) : { order: null }
+    },
+  })
+
 const buildUrlContextTool = (options: GetAISystemToolsOptions) =>
   tool({
     description:
@@ -375,7 +394,7 @@ const systemToolBuilders: Record<
   [systemFunctionNames.searchProducts]: buildSearchProductsTool,
   [systemFunctionNames.getProductDetails]: buildGetProductDetailsTool,
   [systemFunctionNames.startOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.startOrderDraft, startOrderDraftSchema),
-  [systemFunctionNames.updateOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.updateOrderDraft, updateOrderDraftSchema),
+  [systemFunctionNames.updateOrderDraft]: buildOrderUpdateTool,
   [systemFunctionNames.getCurrentOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.getCurrentOrderDraft, currentOrderDraftSchema),
   [systemFunctionNames.requestOrderConfirmation]: (o) => buildOrderTool(o, systemFunctionNames.requestOrderConfirmation, requestOrderConfirmationSchema),
   [systemFunctionNames.confirmOrder]: (o) => buildOrderTool(o, systemFunctionNames.confirmOrder, confirmOrderSchema),

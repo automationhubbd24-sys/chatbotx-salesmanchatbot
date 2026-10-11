@@ -354,7 +354,9 @@ export function OrderDetail({ order, workspaceId }: OrderDetailProps) {
           </CardHeader>
           <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
             {[...order.customFieldValues]
-              .sort((a, b) => a.definition.displayOrder - b.definition.displayOrder)
+              .sort(
+                (a, b) => a.definition.displayOrder - b.definition.displayOrder,
+              )
               .map((field) => (
                 <div key={field.id}>
                   <span className="font-medium">
