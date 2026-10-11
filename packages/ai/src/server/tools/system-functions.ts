@@ -128,6 +128,11 @@ const diamondQuoteDetailsSchema = z.object({
 })
 const orderDataSchema = z.object({
   type: orderTypeSchema.optional(),
+  customer_name: z.string().trim().min(1).optional(),
+  delivery_address: z.string().trim().min(1).optional(),
+  product_name: z.string().trim().min(1).optional(),
+  quantity: z.number().positive().optional(),
+  total_price: z.number().nonnegative().optional(),
   customerSnapshot: z.record(z.string(), z.unknown()).optional(),
   appointmentDetails: appointmentOrderDetailsSchema.optional(),
   diamondQuoteDetails: diamondQuoteDetailsSchema.optional(),
