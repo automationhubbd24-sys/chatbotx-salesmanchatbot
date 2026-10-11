@@ -54,25 +54,51 @@ class OrderService extends BaseService {
     if (!ACTIVE_STATUSES.includes(current.status)) throw validationException("status", "Only active drafts can be updated.")
 
     const rawData = input.data as Record<string, unknown>
+    const incomingSnapshot =
+      rawData.customerSnapshot &&
+      typeof rawData.customerSnapshot === "object"
+        ? (rawData.customerSnapshot as Record<string, unknown>)
+        : {}
+    const snapshot = {
+      ...(current.customerSnapshot ?? {}),
+      ...incomingSnapshot,
+    }
+    const canonicalFields = [
+      "customer_name",
+      "delivery_address",
+      "product_name",
+      "quantity",
+      "total_price",
+    ] as const
+
+    for (const field of canonicalFields) {
+      if (rawData[field] !== undefined) {
+        snapshot[field] = rawData[field]
+      }
+    }
+
     const data = Object.fromEntries(
       Object.entries(rawData).filter(([key]) => DRAFT_UPDATE_KEYS.has(key)),
     )
+    if (Object.keys(snapshot).length > 0) {
+      data.customerSnapshot = snapshot
+    }
     if (rawData.appointmentDetails !== undefined) {
       const parsed = appointmentOrderDetailsSchema.safeParse(rawData.appointmentDetails)
       if (!parsed.success || current.type !== "appointment") throw validationException("appointmentDetails", "Invalid appointment details for this order.")
-      data.customerSnapshot = { ...(current.customerSnapshot ?? {}), appointmentDetails: parsed.data }
+      data.customerSnapshot = { ...snapshot, appointmentDetails: parsed.data }
     }
     if (rawData.diamondQuoteDetails !== undefined) {
       const parsed = diamondQuoteDetailsSchema.safeParse(rawData.diamondQuoteDetails)
       if (!parsed.success || current.type !== "quote") throw validationException("diamondQuoteDetails", "Invalid diamond quote details for this order.")
-      data.customerSnapshot = { ...(current.customerSnapshot ?? {}), diamondQuoteDetails: parsed.data }
+      data.customerSnapshot = { ...snapshot, diamondQuoteDetails: parsed.data }
     }
-    const snapshot = data.customerSnapshot && typeof data.customerSnapshot === "object"
+    const persistedSnapshot = data.customerSnapshot && typeof data.customerSnapshot === "object"
       ? data.customerSnapshot as Record<string, unknown>
-      : current.customerSnapshot ?? {}
-    const productName = snapshot.product_name ?? snapshot.productName ?? snapshot.product
-    const quantity = Number(snapshot.quantity)
-    const totalPrice = Number(snapshot.total_price ?? snapshot.totalPrice ?? data.total ?? current.total)
+      : snapshot
+    const productName = persistedSnapshot.product_name ?? persistedSnapshot.productName ?? persistedSnapshot.product
+    const quantity = Number(persistedSnapshot.quantity)
+    const totalPrice = Number(persistedSnapshot.total_price ?? persistedSnapshot.totalPrice ?? data.total ?? current.total)
     const unitPrice = quantity > 0 ? totalPrice / quantity : totalPrice
     if (current.type === "product" && typeof productName === "string" && productName.trim() && Number.isFinite(quantity) && quantity > 0 && Number.isFinite(totalPrice) && totalPrice >= 0) {
       data.customerSnapshot = { ...snapshot, product_name: productName, quantity, total_price: totalPrice }
