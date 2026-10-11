@@ -44,20 +44,24 @@ export default async function OrdersPage({
   const page = Math.max(Number.parseInt(query.page ?? "1", 10) || 1, 1)
   const search = query.search?.trim() || undefined
   const dateRange = getDateRange(query.date, query.from, query.to)
-  const orders = await orderService.list({
-    workspaceId,
-    page,
-    perPage: 25,
-    search,
-    statuses: statusesByFilter[filter],
-    createdFrom: dateRange.createdFrom,
-    createdTo: dateRange.createdTo,
-  })
+  const [orders, customFieldDefinitions] = await Promise.all([
+    orderService.list({
+      workspaceId,
+      page,
+      perPage: 25,
+      search,
+      statuses: statusesByFilter[filter],
+      createdFrom: dateRange.createdFrom,
+      createdTo: dateRange.createdTo,
+    }),
+    orderService.listCustomFieldDefinitions({ workspaceId }),
+  ])
 
   return (
     <OrdersTable
       filter={filter}
       orders={orders.data}
+      customFieldDefinitions={customFieldDefinitions}
       page={page}
       pageCount={orders.pageCount}
       search={search ?? ""}

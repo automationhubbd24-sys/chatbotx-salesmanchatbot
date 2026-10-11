@@ -1872,7 +1872,13 @@
       "anyConditions": "以下任何条件。",
       "label": "联系人过滤器",
       "moreOptions": "更多选项",
-      "onlyContactsMatch": "仅匹配的联系人"
+      "onlyContactsMatch": "仅匹配的联系人",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactId": {
       "label": "联系人 ID"
@@ -4667,7 +4673,10 @@
       "yesterday": "Yesterday",
       "from": "From",
       "to": "To",
-      "clear": "Clear"
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
     },
     "types": {
       "product": "Product",
@@ -4694,6 +4703,11 @@
     },
     "customFields": "Custom fields",
     "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
     "customFieldTypes": {
       "text": "Text",
       "phone": "Phone",

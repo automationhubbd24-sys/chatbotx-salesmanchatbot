@@ -23,6 +23,8 @@ import { useClipboard } from "@/hooks/use-clipboard"
 import { cancelOrderAction } from "./actions/cancel-order.action"
 import { confirmOrderAction } from "./actions/confirm-order.action"
 import { requestOrderConfirmationAction } from "./actions/request-confirmation.action"
+import type { OrderCustomFieldDisplay } from "./custom-field-display"
+import { formatOrderCustomFieldValue } from "./custom-field-display"
 
 type OrderDetail = OrderModel & {
   items: Array<{
@@ -43,9 +45,8 @@ type OrderDetail = OrderModel & {
   customFieldValues: Array<{
     id: string
     value: unknown
-    definition: {
-      label: string
-      key: string
+    definition: Omit<OrderCustomFieldDisplay, "definitionId" | "value"> & {
+      id: string
     }
   }>
 }
@@ -352,16 +353,26 @@ export function OrderDetail({ order, workspaceId }: OrderDetailProps) {
             <CardTitle>{t("orders.customFields")}</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
-            {order.customFieldValues.map((field) => (
-              <div key={field.id}>
-                <span className="font-medium">
-                  {field.definition.label || field.definition.key}:
-                </span>
-                {typeof field.value === "object"
-                  ? JSON.stringify(field.value)
-                  : String(field.value ?? "")}
-              </div>
-            ))}
+            {[...order.customFieldValues]
+              .sort((a, b) => a.definition.displayOrder - b.definition.displayOrder)
+              .map((field) => (
+                <div key={field.id}>
+                  <span className="font-medium">
+                    {field.definition.label || field.definition.key}:
+                  </span>
+                  {formatOrderCustomFieldValue(
+                    {
+                      ...field.definition,
+                      definitionId: field.definition.id,
+                      value: field.value,
+                    },
+                    order.currency,
+                    t("orders.customFieldValues.empty"),
+                    t("orders.customFieldValues.yes"),
+                    t("orders.customFieldValues.no"),
+                  )}
+                </div>
+              ))}
           </CardContent>
         </Card>
       ) : null}

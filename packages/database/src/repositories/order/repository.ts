@@ -141,6 +141,23 @@ export const orderRepository = {
     if (input.orderType) conditions.push(eq(orderCustomFieldDefinitionModel.orderType, input.orderType))
     return await tx.select().from(orderCustomFieldDefinitionModel).where(and(...conditions)).orderBy(asc(orderCustomFieldDefinitionModel.displayOrder), asc(orderCustomFieldDefinitionModel.createdAt))
   },
+  async listCustomFieldValues(input: { workspaceId: string; orderIds: string[] }, tx: DatabaseClient = db) {
+    if (input.orderIds.length === 0) return []
+    return await tx
+      .select({
+        value: orderCustomFieldValueModel,
+        definition: orderCustomFieldDefinitionModel,
+      })
+      .from(orderCustomFieldValueModel)
+      .innerJoin(
+        orderCustomFieldDefinitionModel,
+        and(
+          eq(orderCustomFieldDefinitionModel.id, orderCustomFieldValueModel.definitionId),
+          eq(orderCustomFieldDefinitionModel.workspaceId, input.workspaceId),
+        ),
+      )
+      .where(inArray(orderCustomFieldValueModel.orderId, input.orderIds))
+  },
   async createCustomFieldDefinition(values: Omit<typeof orderCustomFieldDefinitionModel.$inferInsert, "id">, tx: DatabaseClient = db) {
     const [row] = await tx.insert(orderCustomFieldDefinitionModel).values({ id: createId(), ...values }).returning()
     return row

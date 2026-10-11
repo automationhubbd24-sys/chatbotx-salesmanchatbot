@@ -1,7 +1,16 @@
 "use client"
 
-import type { OrderModel } from "@chatbotx.io/database/types"
+import type {
+  OrderCustomFieldDefinitionModel,
+  OrderModel,
+} from "@chatbotx.io/database/types"
 import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@chatbotx.io/ui/components/ui/popover"
 import {
   Card,
   CardContent,
@@ -10,16 +19,30 @@ import {
 } from "@chatbotx.io/ui/components/ui/card"
 import { Input } from "@chatbotx.io/ui/components/ui/input"
 import { Tabs, TabsList, TabsTrigger } from "@chatbotx.io/ui/components/ui/tabs"
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import {
+  CalendarDaysIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EyeIcon,
+  FilterIcon,
+} from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
+import type { DateRange } from "react-day-picker"
+import type { OrderCustomFieldDisplay } from "./custom-field-display"
+import { formatOrderCustomFieldValue } from "./custom-field-display"
 
 type OrderFilter = "all" | "draft" | "active" | "completed" | "cancelled"
 
+type OrderListItem = OrderModel & {
+  customFields: OrderCustomFieldDisplay[]
+}
+
 type OrdersTableProps = {
   filter: OrderFilter
-  orders: OrderModel[]
+  orders: OrderListItem[]
+  customFieldDefinitions: OrderCustomFieldDefinitionModel[]
   page: number
   pageCount: number
   search: string
@@ -31,6 +54,7 @@ type OrdersTableProps = {
 export function OrdersTable({
   filter,
   orders,
+  customFieldDefinitions,
   page,
   pageCount,
   search,
@@ -43,10 +67,21 @@ export function OrdersTable({
   const router = useRouter()
   const searchParams = useSearchParams()
   const [searchValue, setSearchValue] = useState(search)
+  const [dateRange, setDateRange] = useState<DateRange>({
+    from: dateFrom ? new Date(`${dateFrom}T00:00:00`) : undefined,
+    to: dateTo ? new Date(`${dateTo}T00:00:00`) : undefined,
+  })
 
   useEffect(() => {
     setSearchValue(search)
   }, [search])
+
+  useEffect(() => {
+    setDateRange({
+      from: dateFrom ? new Date(`${dateFrom}T00:00:00`) : undefined,
+      to: dateTo ? new Date(`${dateTo}T00:00:00`) : undefined,
+    })
+  }, [dateFrom, dateTo])
 
   const navigate = (changes: Record<string, string | undefined>) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -61,6 +96,37 @@ export function OrdersTable({
   }
 
   const filteredOrders = useMemo(() => orders, [orders])
+  const customFields = useMemo(() => {
+    const fields = new Map<string, OrderCustomFieldDisplay>()
+    for (const definition of customFieldDefinitions) {
+      fields.set(definition.id, {
+        definitionId: definition.id,
+        key: definition.key,
+        label: definition.label,
+        type: definition.type,
+        options: definition.options,
+        displayOrder: definition.displayOrder,
+        value: undefined,
+      })
+    }
+    for (const order of orders) {
+      for (const field of order.customFields) {
+        fields.set(field.definitionId, field)
+      }
+    }
+    return [...fields.values()].sort((a, b) => a.displayOrder - b.displayOrder)
+  }, [customFieldDefinitions, orders])
+
+  const formatDateKey = (date: Date) =>
+    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+
+  const dateFilterLabel = datePreset === "today"
+    ? t("orders.dateFilters.today")
+    : datePreset === "yesterday"
+      ? t("orders.dateFilters.yesterday")
+      : dateFrom || dateTo
+        ? `${dateFrom ?? "…"} – ${dateTo ?? "…"}`
+        : t("orders.dateFilters.filter")
 
   const sourceLabel = (source: OrderModel["source"]) => {
     const labels: Record<OrderModel["source"], string> = {
@@ -111,35 +177,68 @@ export function OrdersTable({
               value={searchValue}
             />
           </div>
-          <Button
-            onClick={() => navigate({ date: "today", from: undefined, to: undefined, page: "1" })}
-            variant={datePreset === "today" ? "default" : "outline"}
-          >
-            {t("orders.dateFilters.today")}
-          </Button>
-          <Button
-            onClick={() => navigate({ date: "yesterday", from: undefined, to: undefined, page: "1" })}
-            variant={datePreset === "yesterday" ? "default" : "outline"}
-          >
-            {t("orders.dateFilters.yesterday")}
-          </Button>
-          <Input
-            aria-label={t("orders.dateFilters.from")}
-            onChange={(event) => navigate({ date: undefined, from: event.target.value || undefined, page: "1" })}
-            type="date"
-            value={dateFrom ?? ""}
-          />
-          <Input
-            aria-label={t("orders.dateFilters.to")}
-            onChange={(event) => navigate({ date: undefined, to: event.target.value || undefined, page: "1" })}
-            type="date"
-            value={dateTo ?? ""}
-          />
-          {(dateFrom || dateTo || datePreset) ? (
-            <Button onClick={() => navigate({ date: undefined, from: undefined, to: undefined, page: "1" })} variant="ghost">
-              {t("orders.dateFilters.clear")}
-            </Button>
-          ) : null}
+          <Popover>
+            <PopoverTrigger
+              render={
+                <Button variant={datePreset || dateFrom || dateTo ? "default" : "outline"}>
+                  <FilterIcon className="size-4" />
+                  {dateFilterLabel}
+                </Button>
+              }
+            />
+            <PopoverContent align="end" className="w-auto p-3">
+              <div className="space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    onClick={() => navigate({ date: "today", from: undefined, to: undefined, page: "1" })}
+                    size="sm"
+                    variant={datePreset === "today" ? "default" : "outline"}
+                  >
+                    {t("orders.dateFilters.today")}
+                  </Button>
+                  <Button
+                    onClick={() => navigate({ date: "yesterday", from: undefined, to: undefined, page: "1" })}
+                    size="sm"
+                    variant={datePreset === "yesterday" ? "default" : "outline"}
+                  >
+                    {t("orders.dateFilters.yesterday")}
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2 text-muted-foreground text-xs">
+                  <CalendarDaysIcon className="size-4" />
+                  {t("orders.dateFilters.custom")}
+                </div>
+                <Calendar
+                  mode="range"
+                  onSelect={(nextRange) =>
+                    setDateRange(nextRange ?? { from: undefined, to: undefined })
+                  }
+                  selected={dateRange}
+                />
+                <div className="flex justify-end gap-2">
+                  <Button
+                    onClick={() => navigate({ date: undefined, from: undefined, to: undefined, page: "1" })}
+                    size="sm"
+                    variant="ghost"
+                  >
+                    {t("orders.dateFilters.clear")}
+                  </Button>
+                  <Button
+                    disabled={!dateRange.from || !dateRange.to}
+                    onClick={() => navigate({
+                      date: undefined,
+                      from: dateRange.from ? formatDateKey(dateRange.from) : undefined,
+                      to: dateRange.to ? formatDateKey(dateRange.to) : undefined,
+                      page: "1",
+                    })}
+                    size="sm"
+                  >
+                    {t("orders.dateFilters.apply")}
+                  </Button>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -186,6 +285,11 @@ export function OrdersTable({
                   <th className="p-3 text-start font-medium">
                     {t("orders.fields.createdAt")}
                   </th>
+                  {customFields.map((field) => (
+                    <th className="p-3 text-start font-medium" key={field.definitionId}>
+                      {field.label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -208,6 +312,23 @@ export function OrdersTable({
                     <td className="p-3 text-muted-foreground">
                       {order.createdAt.toLocaleDateString()}
                     </td>
+                    {customFields.map((field) => {
+                      const orderField = order.customFields.find(
+                        (candidate) => candidate.definitionId === field.definitionId,
+                      ) ?? field
+                      const value = formatOrderCustomFieldValue(
+                        orderField,
+                        order.currency,
+                        t("orders.customFieldValues.empty"),
+                        t("orders.customFieldValues.yes"),
+                        t("orders.customFieldValues.no"),
+                      )
+                      return (
+                        <td className="max-w-56 truncate p-3" key={field.definitionId} title={value}>
+                          {value}
+                        </td>
+                      )
+                    })}
                   </tr>
                 ))}
               </tbody>

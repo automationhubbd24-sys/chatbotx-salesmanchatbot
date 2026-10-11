@@ -200,7 +200,64 @@ class OrderService extends BaseService {
     return order
   }
 
-  async list(input: Parameters<typeof orderRepository.list>[0], tx?: DatabaseClient) { return await orderRepository.list(input, tx ?? db) }
+  async list(input: Parameters<typeof orderRepository.list>[0], tx?: DatabaseClient) {
+    const result = await orderRepository.list(input, tx ?? db)
+    const database = tx ?? db
+    const [definitions, customFieldRows] = await Promise.all([
+      orderRepository.listCustomFieldDefinitions({ workspaceId: input.workspaceId }, database),
+      orderRepository.listCustomFieldValues(
+        { workspaceId: input.workspaceId, orderIds: result.data.map((order) => order.id) },
+        database,
+      ),
+    ])
+    const valuesByOrder = new Map<string, Map<string, unknown>>()
+    for (const row of customFieldRows) {
+      const valuesByDefinition = valuesByOrder.get(row.value.orderId) ?? new Map()
+      valuesByDefinition.set(row.definition.id, row.value.value)
+      valuesByOrder.set(row.value.orderId, valuesByDefinition)
+    }
+
+    const definitionsByType = new Map<OrderType, typeof definitions>()
+    for (const definition of definitions) {
+      const definitionsForType = definitionsByType.get(definition.orderType) ?? []
+      definitionsForType.push(definition)
+      definitionsByType.set(definition.orderType, definitionsForType)
+    }
+
+    const customFieldsByOrder = new Map<string, Array<{
+      definitionId: string
+      key: string
+      label: string
+      type: OrderCustomFieldType
+      options: string[] | null
+      displayOrder: number
+      value: unknown
+    }>>()
+    for (const order of result.data) {
+      const valuesByDefinition = valuesByOrder.get(order.id)
+      customFieldsByOrder.set(
+        order.id,
+        (definitionsByType.get(order.type) ?? []).map((definition) => ({
+          definitionId: definition.id,
+          key: definition.key,
+          label: definition.label,
+          type: definition.type,
+          options: definition.options,
+          displayOrder: definition.displayOrder,
+          value: valuesByDefinition?.get(definition.id),
+        })),
+      )
+    }
+    return {
+      ...result,
+      data: result.data.map((order) => ({
+        ...order,
+        customFields: (customFieldsByOrder.get(order.id) ?? []).sort(
+          (a, b) => a.displayOrder - b.displayOrder,
+        ),
+      })),
+    }
+  }
 
   async listCustomFieldDefinitions(input: { workspaceId: string; orderType?: OrderType; tx?: DatabaseClient }) {
     return await orderRepository.listCustomFieldDefinitions(input, input.tx ?? db)

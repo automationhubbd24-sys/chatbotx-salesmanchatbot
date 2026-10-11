@@ -40,7 +40,10 @@ function CustomDateRangePreset({
   onSelect: (value: [string, string]) => void
 }) {
   const t = useTranslations()
-  const [range, setRange] = useState<DateRange>({})
+  const [range, setRange] = useState<DateRange>({
+    from: undefined,
+    to: undefined,
+  })
 
   return (
     <Popover>
@@ -57,7 +60,7 @@ function CustomDateRangePreset({
           initialFocus
           mode="range"
           onSelect={(nextRange) => {
-            setRange(nextRange ?? {})
+            setRange(nextRange ?? { from: undefined, to: undefined })
             if (nextRange?.from && nextRange.to) {
               onSelect([formatDateKey(nextRange.from), formatDateKey(nextRange.to)])
             }

@@ -4673,7 +4673,10 @@
       "yesterday": "Yesterday",
       "from": "From",
       "to": "To",
-      "clear": "Clear"
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
     },
     "types": {
       "product": "Product",
@@ -4700,6 +4703,11 @@
     },
     "customFields": "Custom fields",
     "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
     "customFieldTypes": {
       "text": "Text",
       "phone": "Phone",
@@ -4723,6 +4731,7 @@
     "customFieldAiVisible": "Visible to AI",
     "customFieldOptions": "Options (one per line)",
     "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
     "lifecycle": {
       "awaitingConfirmation": "Awaiting confirmation",
       "confirmed": "Confirmed",
