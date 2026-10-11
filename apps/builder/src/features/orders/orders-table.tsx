@@ -23,6 +23,9 @@ type OrdersTableProps = {
   page: number
   pageCount: number
   search: string
+  datePreset?: string
+  dateFrom?: string
+  dateTo?: string
 }
 
 export function OrdersTable({
@@ -31,6 +34,9 @@ export function OrdersTable({
   page,
   pageCount,
   search,
+  datePreset,
+  dateFrom,
+  dateTo,
 }: OrdersTableProps) {
   const t = useTranslations()
   const pathname = usePathname()
@@ -91,18 +97,49 @@ export function OrdersTable({
     <Card>
       <CardHeader>
         <CardTitle className="font-bold text-xl">{t("orders.title")}</CardTitle>
-        <div className="max-w-sm">
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="max-w-sm">
+            <Input
+              aria-label={t("orders.search")}
+              onChange={(event) => setSearchValue(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  navigate({ search: searchValue.trim() || undefined, page: "1" })
+                }
+              }}
+              placeholder={t("orders.search")}
+              value={searchValue}
+            />
+          </div>
+          <Button
+            onClick={() => navigate({ date: "today", from: undefined, to: undefined, page: "1" })}
+            variant={datePreset === "today" ? "default" : "outline"}
+          >
+            {t("orders.dateFilters.today")}
+          </Button>
+          <Button
+            onClick={() => navigate({ date: "yesterday", from: undefined, to: undefined, page: "1" })}
+            variant={datePreset === "yesterday" ? "default" : "outline"}
+          >
+            {t("orders.dateFilters.yesterday")}
+          </Button>
           <Input
-            aria-label={t("orders.search")}
-            onChange={(event) => setSearchValue(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                navigate({ search: searchValue.trim() || undefined, page: "1" })
-              }
-            }}
-            placeholder={t("orders.search")}
-            value={searchValue}
+            aria-label={t("orders.dateFilters.from")}
+            onChange={(event) => navigate({ date: undefined, from: event.target.value || undefined, page: "1" })}
+            type="date"
+            value={dateFrom ?? ""}
           />
+          <Input
+            aria-label={t("orders.dateFilters.to")}
+            onChange={(event) => navigate({ date: undefined, to: event.target.value || undefined, page: "1" })}
+            type="date"
+            value={dateTo ?? ""}
+          />
+          {(dateFrom || dateTo || datePreset) ? (
+            <Button onClick={() => navigate({ date: undefined, from: undefined, to: undefined, page: "1" })} variant="ghost">
+              {t("orders.dateFilters.clear")}
+            </Button>
+          ) : null}
         </div>
       </CardHeader>
       <CardContent className="space-y-4">

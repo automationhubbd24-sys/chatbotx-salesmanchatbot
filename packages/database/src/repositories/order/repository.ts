@@ -5,6 +5,8 @@ import {
   desc,
   ilike,
   inArray,
+  gte,
+  lt,
   type DatabaseClient,
   db,
   eq,
@@ -33,6 +35,8 @@ export const orderRepository = {
       contactId?: string
       conversationId?: string
       search?: string
+      createdFrom?: Date
+      createdTo?: Date
       page?: number
       perPage?: number
     },
@@ -47,6 +51,8 @@ export const orderRepository = {
       const search = `%${input.search.trim()}%`
       conditions.push(or(sql`${orderModel.id}::text ILIKE ${search}`, ilike(orderModel.externalOrderId, search))!)
     }
+    if (input.createdFrom) conditions.push(gte(orderModel.createdAt, input.createdFrom))
+    if (input.createdTo) conditions.push(lt(orderModel.createdAt, input.createdTo))
 
     const page = Math.max(input.page ?? 1, 1)
     const perPage = Math.min(Math.max(input.perPage ?? 25, 1), 100)

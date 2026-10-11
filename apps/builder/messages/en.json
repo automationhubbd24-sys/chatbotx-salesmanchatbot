@@ -6224,6 +6224,13 @@
     "unknown": "Unknown"
   },
   "orders": {
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear"
+    },
     "types": {
       "product": "Product",
       "appointment": "Appointment",

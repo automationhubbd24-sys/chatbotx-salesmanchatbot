@@ -2,6 +2,21 @@ import { orderService } from "@chatbotx.io/business"
 import { OrdersTable } from "@/features/orders/orders-table"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 
+function getDateRange(preset: string | undefined, from: string | undefined, to: string | undefined) {
+  const start = from ? new Date(`${from}T00:00:00`) : undefined
+  const end = to ? new Date(`${to}T00:00:00`) : undefined
+  if (end) end.setDate(end.getDate() + 1)
+  if (preset === "today" || preset === "yesterday") {
+    const date = new Date()
+    date.setHours(0, 0, 0, 0)
+    if (preset === "yesterday") date.setDate(date.getDate() - 1)
+    const next = new Date(date)
+    next.setDate(next.getDate() + 1)
+    return { createdFrom: date, createdTo: next, datePreset: preset, dateFrom: undefined, dateTo: undefined }
+  }
+  return { createdFrom: start, createdTo: end, datePreset: undefined, dateFrom: from, dateTo: to }
+}
+
 const filters = ["all", "draft", "active", "completed", "cancelled"] as const
 type OrderFilter = (typeof filters)[number]
 
@@ -17,7 +32,7 @@ export default async function OrdersPage({
   searchParams,
 }: {
   params: Promise<{ workspaceId: string }>
-  searchParams: Promise<{ filter?: string; page?: string; search?: string }>
+  searchParams: Promise<{ filter?: string; page?: string; search?: string; date?: string; from?: string; to?: string }>
 }) {
   const { workspaceId } = await params
   const query = await searchParams
@@ -28,12 +43,15 @@ export default async function OrdersPage({
     : "all"
   const page = Math.max(Number.parseInt(query.page ?? "1", 10) || 1, 1)
   const search = query.search?.trim() || undefined
+  const dateRange = getDateRange(query.date, query.from, query.to)
   const orders = await orderService.list({
     workspaceId,
     page,
     perPage: 25,
     search,
     statuses: statusesByFilter[filter],
+    createdFrom: dateRange.createdFrom,
+    createdTo: dateRange.createdTo,
   })
 
   return (
@@ -43,6 +61,9 @@ export default async function OrdersPage({
       page={page}
       pageCount={orders.pageCount}
       search={search ?? ""}
+      datePreset={dateRange.datePreset}
+      dateFrom={dateRange.dateFrom}
+      dateTo={dateRange.dateTo}
     />
   )
 }
