@@ -8,6 +8,7 @@ import { type ModelMessage, streamText } from "ai"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { triggerDefaultReplyFlow } from "../src/integration/handlers/automated-response/default-reply"
 import {
+  appendCurrentMessagePriorityPolicy,
   buildGenerateOnlyGuardedSystemPrompt,
   createGuardedCommentInputMessage,
   generateAIReplyText,
@@ -631,6 +632,16 @@ describe("replyByAI — default reply flow fallback", () => {
     // the activation window), unlike the `skipped` (no/invalid flow) case
     // above which still sends the canned fallback text.
     expect(sendMessageWithRenderMock).not.toHaveBeenCalled()
+  })
+})
+
+describe("current customer message priority", () => {
+  test("instructs the model to prioritize an explicitly named new product", () => {
+    const prompt = appendCurrentMessagePriorityPolicy("Base prompt")
+
+    expect(prompt).toContain("The latest customer message is the request")
+    expect(prompt).toContain("treat it as a new product request")
+    expect(prompt).toContain("do not reuse a previously discussed product")
   })
 })
 
