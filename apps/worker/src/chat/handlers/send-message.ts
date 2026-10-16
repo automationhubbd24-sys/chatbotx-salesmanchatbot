@@ -240,7 +240,7 @@ export async function sendMessageToChannel(
 
     const isComment = message.type === "comment"
 
-    let handlerMessage = message
+    let handlerMessage: MessageModel & { parentSourceId?: string } = message
     if (!isComment && message.parentId && message.parentCreatedAt) {
       const repo = await createMessageRepository()
       const parentMsg = await repo.findById({
