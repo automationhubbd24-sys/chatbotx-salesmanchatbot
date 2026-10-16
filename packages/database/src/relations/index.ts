@@ -123,6 +123,7 @@ import { minigamePlayRelations } from "./minigame-play"
 import { productRelations } from "./product"
 import { productCategoryRelations } from "./product-category"
 import { orderRelations } from "./order"
+import { orderIntakeSessionRelations } from "./order-intake-session"
 import { questionnaireRelations } from "./questionnaire"
 import { reflinkRelations } from "./reflink"
 import { savedReplyRelations } from "./save-reply"
@@ -300,6 +301,7 @@ export const relations = {
   ...productRelations,
   ...productCategoryRelations,
   ...orderRelations,
+  ...orderIntakeSessionRelations,
   ...metaCatalogRelations,
   ...questionnaireRelations,
   ...coexistSyncRunRelations,

@@ -47,6 +47,21 @@ class OrderService extends BaseService {
     return order
   }
 
+  async createDraft(input: { workspaceId: string; type: OrderType; source: OrderSource; conversationId?: string | null; contactId?: string | null; currency?: string; customerSnapshot?: Record<string, unknown>; tx?: DatabaseClient }): Promise<OrderModel> {
+    const { tx = db } = input
+    const order = await orderRepository.create({
+      workspaceId: input.workspaceId,
+      type: input.type,
+      source: input.source,
+      conversationId: input.conversationId ?? null,
+      contactId: input.contactId ?? null,
+      currency: input.currency ?? "USD",
+      customerSnapshot: input.customerSnapshot,
+    }, tx)
+    if (!order) throw new Error("Failed to create order")
+    return order
+  }
+
   async updateDraft(input: { workspaceId: string; orderId: string; data: Partial<Omit<OrderModel, "id" | "workspaceId" | "createdAt" | "updatedAt">>; customFields?: Record<string, unknown>; expectedVersion?: number; tx?: DatabaseClient }): Promise<OrderModel> {
     if (!input.tx) return await db.transaction((tx) => this.updateDraft({ ...input, tx }))
     const { tx } = input
@@ -65,6 +80,7 @@ class OrderService extends BaseService {
       ...incomingSnapshot,
     }
     const canonicalFields = [
+      "phone",
       "customer_name",
       "delivery_address",
       "product_name",
@@ -432,6 +448,65 @@ class OrderService extends BaseService {
     if (missingRequired.length > 0) throw validationException("values", `Required order custom fields are missing: ${missingRequired.map((definition) => definition.key).join(", ")}.`)
   }
 
+  private assertOrderComplete(
+    order: OrderModel & {
+      customFieldValues: Array<{ definition: { id: string }; value: unknown }>
+    },
+    definitions: Array<{ id: string; key: string; required: boolean }>,
+  ) {
+    const snapshot = order.customerSnapshot ?? {}
+    if (order.type === "product") {
+      const phone = snapshot.phone
+      const customerName = snapshot.customer_name ?? snapshot.customerName
+      const address = snapshot.delivery_address ?? snapshot.deliveryAddress
+      const productName = snapshot.product_name ?? snapshot.productName ?? snapshot.product
+      const quantity = Number(snapshot.quantity)
+      const totalPrice = Number(snapshot.total_price ?? snapshot.totalPrice ?? order.total)
+      if (
+        typeof phone !== "string" ||
+        !/^\+[1-9]\d{6,14}$/.test(phone) ||
+        typeof customerName !== "string" ||
+        !customerName.trim() ||
+        typeof address !== "string" ||
+        !address.trim() ||
+        typeof productName !== "string" ||
+        !productName.trim() ||
+        !Number.isFinite(quantity) ||
+        quantity <= 0 ||
+        !Number.isFinite(totalPrice) ||
+        totalPrice < 0
+      ) {
+        throw validationException(
+          "order",
+          "Product orders require phone, customer name, delivery address, product name, quantity, and total price.",
+        )
+      }
+    }
+    if (
+      order.type === "appointment" &&
+      !appointmentOrderDetailsSchema.safeParse(snapshot.appointmentDetails).success
+    ) {
+      throw validationException(
+        "appointmentDetails",
+        "Appointment orders require valid appointment details.",
+      )
+    }
+    if (
+      order.type === "quote" &&
+      !diamondQuoteDetailsSchema.safeParse(snapshot.diamondQuoteDetails).success
+    ) {
+      throw validationException(
+        "diamondQuoteDetails",
+        "Quote orders require valid diamond quote details.",
+      )
+    }
+    this.assertRequiredCustomFields(
+      definitions,
+      new Map(order.customFieldValues.map((field) => [field.definition.id, field.value])),
+      snapshot,
+    )
+  }
+
   async requestConfirmation(input: { workspaceId: string; orderId: string; token: string; tx?: DatabaseClient }): Promise<OrderModel> {
     if (!input.tx) return await db.transaction((tx) => this.requestConfirmation({ ...input, tx }))
     const { tx } = input
@@ -447,7 +522,7 @@ class OrderService extends BaseService {
       }
     }
     const definitions = await this.listCustomFieldDefinitions({ workspaceId: input.workspaceId, orderType: order.type, tx })
-    this.assertRequiredCustomFields(definitions, new Map(order.customFieldValues.map((field) => [field.definition.id, field.value])), order.customerSnapshot)
+    this.assertOrderComplete(order, definitions)
     const updated = await orderRepository.update({ workspaceId: input.workspaceId, orderId: input.orderId, expectedVersion: order.version, values: { status: "awaiting_confirmation", confirmationMetadata: { token: input.token, version: order.version + 1 } } }, tx)
     if (!updated) throw validationException("version", "Order was modified. Please reload and try again.")
     await orderRepository.addStatusHistory({ orderId: order.id, fromStatus: order.status, toStatus: "awaiting_confirmation", reason: "confirmation_requested" }, tx)
@@ -474,8 +549,7 @@ class OrderService extends BaseService {
     const metadata = order.confirmationMetadata
     if (metadata?.token !== input.token || metadata?.version !== input.version) throw validationException("token", "Confirmation token is invalid or expired.")
     const definitions = await this.listCustomFieldDefinitions({ workspaceId: input.workspaceId, orderType: order.type, tx })
-    const values = new Map(order.customFieldValues.map((field) => [field.definition.id, field.value]))
-    this.assertRequiredCustomFields(definitions, values, order.customerSnapshot)
+    this.assertOrderComplete(order, definitions)
     const updated = await orderRepository.update({ workspaceId: input.workspaceId, orderId: input.orderId, expectedVersion: order.version, values: { status: "confirmed", confirmedAt: new Date(), confirmationMetadata: { ...metadata, idempotencyKey: input.idempotencyKey ?? null } } }, tx)
     if (!updated) return await this.getById({ ...input, tx })
     await orderRepository.addStatusHistory({ orderId: order.id, fromStatus: order.status, toStatus: "confirmed", reason: "confirmed", metadata: input.idempotencyKey ? { idempotencyKey: input.idempotencyKey } : undefined }, tx)

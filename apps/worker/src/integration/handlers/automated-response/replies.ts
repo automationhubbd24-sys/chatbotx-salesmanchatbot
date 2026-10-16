@@ -195,6 +195,13 @@ const CURRENT_MESSAGE_PRIORITY_POLICY = [
   "- Never answer with a product, order, quantity, price, customer detail, or delivery detail from an earlier turn unless the latest customer message explicitly refers to it.",
   "- When the latest message names a product, treat it as a new product request. Use product search/details for that named product; do not reuse a previously discussed product.",
   "- After receiving tool results, answer the latest customer message directly. Do not ask a generic question when the result already contains the requested detail.",
+  "ORDER INTAKE TOOL POLICY (REQUIRED):",
+  "- Do not require the customer to separately say they want to start an order or provide a phone number before continuing a normal order conversation. Ask only for the next detail needed in context.",
+  "- For a new product, new order, another order, or equivalent language, call start_order_intake with that customer message's id. Do not copy or update a previous order's details.",
+  "- Keep and use the sessionId returned by start_order_intake. When a detail is supplied, call update_order_intake for that explicit sessionId; never infer a session or order target.",
+  "- An Order is created only after the server validates a phone number. Do not claim that an order exists before the tool returns an orderId.",
+  "- If multiple order intents exist or the target session or order is unclear, ask for clarification instead of updating anything.",
+  "- When all details are complete, request confirmation for the explicit orderId. Never confirm an order until the customer has confirmed it.",
 ].join("\n")
 
 export function appendCurrentMessagePriorityPolicy(systemPrompt: string): string {
@@ -395,6 +402,7 @@ async function createReplyToolset(options: {
       workspaceId: conversation.workspaceId,
       conversationId: conversation.id,
       contactId: conversation.contactId,
+      triggerMessageId: options.props.triggerMessageId,
       sendMessage: async (text: string) => {
         options.directSendTracker.sent = true
         options.directSendTracker.sentText = text

@@ -7,6 +7,7 @@ import { logger } from "../../logger"
 export interface SystemFunctionContext {
   channel?: string
   contactId: string
+  triggerMessageId?: string
   conversationId: string
   sendMessage?: (text: string) => Promise<void>
   triggerFlow?: (flowId: string) => Promise<void>
@@ -135,6 +136,7 @@ const diamondQuoteDetailsSchema = z.object({
 const orderDataSchema = z.object({
   type: orderTypeSchema.optional(),
   customer_name: z.string().trim().min(1).optional(),
+  phone: z.string().trim().min(1).optional(),
   delivery_address: z.string().trim().min(1).optional(),
   product_name: z.string().trim().min(1).optional(),
   quantity: z.number().positive().optional(),
@@ -150,12 +152,21 @@ const orderDataSchema = z.object({
   total: z.number().nonnegative().optional(),
   expiresAt: z.string().datetime({ offset: true }).nullable().optional(),
 }).passthrough()
-const startOrderDraftSchema = z.object({ type: orderTypeSchema.default("product"), currency: z.string().optional() })
-const updateOrderDraftSchema = z.object({ orderId: z.string().optional(), data: orderDataSchema, expectedVersion: z.number().int().positive().optional() })
-const currentOrderDraftSchema = z.object({})
-const requestOrderConfirmationSchema = z.object({ orderId: z.string().optional(), token: z.string().min(1) })
-const confirmOrderSchema = z.object({ orderId: z.string().optional(), token: z.string().min(1), version: z.number().int().positive(), idempotencyKey: z.string().optional() })
-const cancelOrderDraftSchema = z.object({ orderId: z.string().optional(), reason: z.string().optional() })
+const startOrderIntakeSchema = z.object({
+  intentMessageId: z.string().trim().min(1).optional(),
+  type: orderTypeSchema.default("product"),
+  currency: z.string().trim().min(1).max(10).optional(),
+})
+const updateOrderIntakeSchema = z.object({
+  sessionId: z.string().min(1),
+  data: orderDataSchema,
+  expectedVersion: z.number().int().positive().optional(),
+})
+const currentOrderIntakeSchema = z.object({ sessionId: z.string().min(1) })
+const updateOrderDraftSchema = z.object({ orderId: z.string().min(1), data: orderDataSchema, expectedVersion: z.number().int().positive().optional() })
+const requestOrderConfirmationSchema = z.object({ orderId: z.string().min(1), token: z.string().min(1) })
+const confirmOrderSchema = z.object({ orderId: z.string().min(1), token: z.string().min(1), version: z.number().int().positive(), idempotencyKey: z.string().optional() })
+const cancelOrderDraftSchema = z.object({ orderId: z.string().min(1), reason: z.string().optional() })
 const getOrderDetailsSchema = z.object({ orderId: z.string().min(1) })
 
 export type ConnectUserToHumanInput = z.infer<typeof connectUserToHumanSchema>
@@ -165,9 +176,10 @@ export type UrlContextInput = z.infer<typeof urlContextSchema>
 export type WebSearchInput = z.infer<typeof webSearchSchema>
 export type SearchProductsInput = z.infer<typeof searchProductsSchema>
 export type GetProductDetailsInput = z.infer<typeof getProductDetailsSchema>
-export type StartOrderDraftInput = z.infer<typeof startOrderDraftSchema>
+export type StartOrderIntakeInput = z.infer<typeof startOrderIntakeSchema>
+export type UpdateOrderIntakeInput = z.infer<typeof updateOrderIntakeSchema>
+export type GetOrderIntakeInput = z.infer<typeof currentOrderIntakeSchema>
 export type UpdateOrderDraftInput = z.infer<typeof updateOrderDraftSchema>
-export type GetCurrentOrderDraftInput = z.infer<typeof currentOrderDraftSchema>
 export type RequestOrderConfirmationInput = z.infer<typeof requestOrderConfirmationSchema>
 export type ConfirmOrderInput = z.infer<typeof confirmOrderSchema>
 export type CancelOrderDraftInput = z.infer<typeof cancelOrderDraftSchema>
@@ -179,9 +191,10 @@ export const systemFunctionIds = [
   systemFunctionNames.imageReader,
   systemFunctionNames.searchProducts,
   systemFunctionNames.getProductDetails,
-  systemFunctionNames.startOrderDraft,
+  systemFunctionNames.startOrderIntake,
+  systemFunctionNames.updateOrderIntake,
+  systemFunctionNames.getOrderIntake,
   systemFunctionNames.updateOrderDraft,
-  systemFunctionNames.getCurrentOrderDraft,
   systemFunctionNames.requestOrderConfirmation,
   systemFunctionNames.confirmOrder,
   systemFunctionNames.cancelOrderDraft,
@@ -212,9 +225,10 @@ export type SystemToolExecutors = Partial<{
     context: SystemFunctionContext | null,
   ) => Promise<SystemToolOutput>
   [systemFunctionNames.getProductDetails]: (args: GetProductDetailsInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
-  [systemFunctionNames.startOrderDraft]: (args: StartOrderDraftInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
+  [systemFunctionNames.startOrderIntake]: (args: StartOrderIntakeInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
+  [systemFunctionNames.updateOrderIntake]: (args: UpdateOrderIntakeInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
+  [systemFunctionNames.getOrderIntake]: (args: GetOrderIntakeInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
   [systemFunctionNames.updateOrderDraft]: (args: UpdateOrderDraftInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
-  [systemFunctionNames.getCurrentOrderDraft]: (args: GetCurrentOrderDraftInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
   [systemFunctionNames.requestOrderConfirmation]: (args: RequestOrderConfirmationInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
   [systemFunctionNames.confirmOrder]: (args: ConfirmOrderInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
   [systemFunctionNames.cancelOrderDraft]: (args: CancelOrderDraftInput, context: SystemFunctionContext | null) => Promise<SystemToolOutput>
@@ -393,9 +407,10 @@ const systemToolBuilders: Record<
   [systemFunctionNames.imageReader]: buildImageReaderTool,
   [systemFunctionNames.searchProducts]: buildSearchProductsTool,
   [systemFunctionNames.getProductDetails]: buildGetProductDetailsTool,
-  [systemFunctionNames.startOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.startOrderDraft, startOrderDraftSchema),
+  [systemFunctionNames.startOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.startOrderIntake, startOrderIntakeSchema),
+  [systemFunctionNames.updateOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.updateOrderIntake, updateOrderIntakeSchema),
+  [systemFunctionNames.getOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.getOrderIntake, currentOrderIntakeSchema),
   [systemFunctionNames.updateOrderDraft]: buildOrderUpdateTool,
-  [systemFunctionNames.getCurrentOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.getCurrentOrderDraft, currentOrderDraftSchema),
   [systemFunctionNames.requestOrderConfirmation]: (o) => buildOrderTool(o, systemFunctionNames.requestOrderConfirmation, requestOrderConfirmationSchema),
   [systemFunctionNames.confirmOrder]: (o) => buildOrderTool(o, systemFunctionNames.confirmOrder, confirmOrderSchema),
   [systemFunctionNames.cancelOrderDraft]: (o) => buildOrderTool(o, systemFunctionNames.cancelOrderDraft, cancelOrderDraftSchema),
