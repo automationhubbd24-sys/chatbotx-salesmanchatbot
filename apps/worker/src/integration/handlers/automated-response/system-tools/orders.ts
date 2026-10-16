@@ -181,9 +181,35 @@ export const createOrderExecutors = (): Pick<SystemToolExecutors,
   [systemFunctionNames.requestOrderConfirmation]: executor(systemFunctionNames.requestOrderConfirmation, async (args: RequestOrderConfirmationInput, context) => ({
     order: await orderService.requestConfirmation({ workspaceId: context.workspaceId, orderId: args.orderId, token: args.token }),
   })),
-  [systemFunctionNames.confirmOrder]: executor(systemFunctionNames.confirmOrder, async (args: ConfirmOrderInput, context) => ({
-    order: await orderService.confirm({ workspaceId: context.workspaceId, orderId: args.orderId, token: args.token, version: args.version, idempotencyKey: args.idempotencyKey }),
-  })),
+  [systemFunctionNames.confirmOrder]: executor(systemFunctionNames.confirmOrder, async (args: ConfirmOrderInput, context) => {
+    const current = await orderService.getById({
+      workspaceId: context.workspaceId,
+      orderId: args.orderId,
+    })
+    if (current.status === "confirmed") {
+      return { order: current, alreadyConfirmed: true }
+    }
+
+    const metadata = current.confirmationMetadata
+    const token = args.token ?? (typeof metadata?.token === "string" ? metadata.token : undefined)
+    const version = args.version ?? (typeof metadata?.version === "number" ? metadata.version : undefined)
+    if (!token || !version) {
+      return {
+        order: current,
+        error: "This order is not ready for confirmation. Request confirmation first.",
+      }
+    }
+
+    return {
+      order: await orderService.confirm({
+        workspaceId: context.workspaceId,
+        orderId: args.orderId,
+        token,
+        version,
+        idempotencyKey: args.idempotencyKey ?? context.triggerMessageId,
+      }),
+    }
+  }),
   [systemFunctionNames.cancelOrderDraft]: executor(systemFunctionNames.cancelOrderDraft, async (args: CancelOrderDraftInput, context) => ({
     order: await orderService.cancel({ workspaceId: context.workspaceId, orderId: args.orderId, reason: args.reason }),
   })),

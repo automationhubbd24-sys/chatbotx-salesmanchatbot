@@ -45,18 +45,22 @@ const PUBLIC_USER_FIELDS =
 const PUBLIC_PAGE_FIELDS =
   "name,picture.height(480).width(480){url,is_silhouette}"
 
-const graphError = (code: number, message: string) =>
+const graphError = (
+  code: number,
+  message: string,
+  subcode?: number,
+) =>
   Object.assign(
     new HTTPError(
       new Response(null, { status: 400 }),
       new Request("https://graph.facebook.com/v23.0/user-123"),
       {} as never,
     ),
-    { data: { error: { code, message } } },
+    { data: { error: { code, message, error_subcode: subcode } } },
   )
 
 const noProfileError = () =>
-  graphError(100, "(#100) No profile available for this user.")
+  graphError(100, "(#100) No profile available for this user.", 33)
 
 const calledFields = () =>
   mockGet.mock.calls.map(
@@ -216,8 +220,21 @@ describe("getUserProfile public-profile fallback", () => {
     expect(result?.avatar).toBeDefined()
   })
 
-  test("rethrows the Messenger error when both lookups fail", async () => {
+  test("returns an empty profile when the Messenger user is unavailable", async () => {
     const messengerError = noProfileError()
+    mockGet
+      .mockRejectedValueOnce(messengerError)
+      .mockRejectedValueOnce(graphError(190, "Invalid token"))
+
+    await expect(getUserProfile(createProps())).resolves.toMatchObject({
+      sourceId: "user-123",
+      firstName: undefined,
+      lastName: undefined,
+    })
+  })
+
+  test("rethrows the Messenger error when a non-policy fallback error occurs", async () => {
+    const messengerError = graphError(190, "Invalid token")
     mockGet
       .mockRejectedValueOnce(messengerError)
       .mockRejectedValueOnce(graphError(190, "Invalid token"))

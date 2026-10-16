@@ -145,6 +145,11 @@ const isPageNodeFieldError = (error: unknown): boolean => {
   )
 }
 
+const isUnavailableProfileError = (error: unknown): boolean => {
+  const { code, subCode } = parseOriginError(error)
+  return Number(code) === 100 && Number(subCode) === 33
+}
+
 /**
  * The public profile a page token can read for anyone who interacted with the
  * page — including a commenter who never messaged it, for whom the Messenger
@@ -204,11 +209,16 @@ const fetchProfileWithPublicFallback = async (props: {
   try {
     publicProfile = await fetchPublicUserProfile(props)
   } catch (error) {
-    logger.warn(
-      { err: error, sourceId: props.sourceId },
-      "fetchPublicUserProfile error",
-    )
+    if (!isUnavailableProfileError(error)) {
+      logger.warn(
+        { err: error, sourceId: props.sourceId },
+        "fetchPublicUserProfile error",
+      )
+    }
     if (!messengerProfile) {
+      if (isUnavailableProfileError(messengerError)) {
+        return { profile: { id: props.sourceId } }
+      }
       throw messengerError
     }
     return { profile: messengerProfile }

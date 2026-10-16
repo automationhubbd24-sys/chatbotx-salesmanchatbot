@@ -202,6 +202,10 @@ const CURRENT_MESSAGE_PRIORITY_POLICY = [
   "- An Order is created only after the server validates a phone number. Do not claim that an order exists before the tool returns an orderId.",
   "- If multiple order intents exist or the target session or order is unclear, ask for clarification instead of updating anything.",
   "- When all details are complete, request confirmation for the explicit orderId. Never confirm an order until the customer has confirmed it.",
+  "- A customer confirmation may be Yes, হ্যাঁ, ঠিক আছে, confirm, confirmed, or similar clear agreement. When the customer clearly confirms, call confirm_order exactly once for the current awaiting-confirmation order.",
+  "- Before calling confirm_order, call get_order_intake or get_order_details to obtain the current confirmation token and version if they are not already available. Do not request confirmation again after the customer has already confirmed.",
+  "- After confirm_order returns confirmed or alreadyConfirmed, reply with a short success message. Do not repeat the order summary or ask for confirmation again.",
+  "- Never interpret a tool error as a technical failure message to the customer unless the tool result explicitly contains an error.", 
 ].join("\n")
 
 export function appendCurrentMessagePriorityPolicy(systemPrompt: string): string {

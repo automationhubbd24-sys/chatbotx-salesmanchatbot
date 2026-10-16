@@ -165,7 +165,12 @@ const updateOrderIntakeSchema = z.object({
 const currentOrderIntakeSchema = z.object({ sessionId: z.string().min(1) })
 const updateOrderDraftSchema = z.object({ orderId: z.string().min(1), data: orderDataSchema, expectedVersion: z.number().int().positive().optional() })
 const requestOrderConfirmationSchema = z.object({ orderId: z.string().min(1), token: z.string().min(1) })
-const confirmOrderSchema = z.object({ orderId: z.string().min(1), token: z.string().min(1), version: z.number().int().positive(), idempotencyKey: z.string().optional() })
+const confirmOrderSchema = z.object({
+  orderId: z.string().min(1),
+  token: z.string().min(1).optional(),
+  version: z.number().int().positive().optional(),
+  idempotencyKey: z.string().optional(),
+})
 const cancelOrderDraftSchema = z.object({ orderId: z.string().min(1), reason: z.string().optional() })
 const getOrderDetailsSchema = z.object({ orderId: z.string().min(1) })
 
