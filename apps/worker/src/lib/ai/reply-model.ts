@@ -46,18 +46,32 @@ export async function createReplyModel(props: {
       })
 
     if (!(integration?.enabled && integration.autoReply)) {
-      logger.debug(
+      logger.info(
         {
           workspaceId,
+          provider: "openaiCompatible",
+          modelId: providerInfo.model,
           integrationId: providerInfo.integrationId,
           integrationFound: Boolean(integration),
           enabled: integration?.enabled ?? null,
           autoReply: integration?.autoReply ?? null,
         },
-        "[automated-response] openaiCompatible provider skipped: integration missing, disabled, or auto-reply off",
+        "[automated-response] provider skipped: integration missing, disabled, or auto-reply off",
       )
       return null
     }
+
+    logger.info(
+      {
+        workspaceId,
+        provider: "openaiCompatible",
+        modelId: providerInfo.model,
+        integrationId: integration.id,
+        integrationName: integration.name,
+        preset: integration.preset,
+      },
+      "[automated-response] provider model resolved",
+    )
 
     return {
       model: createOpenaiCompatibleModelInstance({
@@ -74,12 +88,26 @@ export async function createReplyModel(props: {
   })
 
   if (!integration) {
-    logger.debug(
-      { workspaceId, provider: providerInfo.provider },
+    logger.info(
+      {
+        workspaceId,
+        provider: providerInfo.provider,
+        modelId: providerInfo.model,
+      },
       "[automated-response] provider skipped: no auto-reply-enabled integration found",
     )
     return null
   }
+
+  logger.info(
+    {
+      workspaceId,
+      provider: providerInfo.provider,
+      modelId: providerInfo.model,
+      integrationId: integration.id,
+    },
+    "[automated-response] provider model resolved",
+  )
 
   const providerInstance = createAIProviderInstance({
     model: integration,
