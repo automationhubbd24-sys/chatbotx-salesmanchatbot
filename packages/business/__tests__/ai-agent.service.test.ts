@@ -12,6 +12,7 @@ const {
   mockFindCustomFields,
   mockFindFirst,
   mockFindMany,
+  mockFindOpenaiCompatibleIntegrations,
   mockFindMembers,
   mockFindTags,
   mockInsert,
@@ -40,6 +41,9 @@ const {
         findFirst: vi.fn(),
         findMany: vi.fn(async () => []),
       },
+      integrationOpenaiCompatibleModel: {
+        findMany: vi.fn(async () => []),
+      },
       templateInstalledResourceModel: {
         findMany: mockTemplateInstalledResourceFindMany,
       },
@@ -56,6 +60,8 @@ const {
     mockFindCustomFields: vi.fn(async () => []),
     mockFindFirst: dbClient.query.aiAgentModel.findFirst,
     mockFindMany: dbClient.query.aiAgentModel.findMany,
+    mockFindOpenaiCompatibleIntegrations:
+      dbClient.query.integrationOpenaiCompatibleModel.findMany,
     mockFindMembers: vi.fn(),
     mockFindTags: vi.fn(async () => []),
     mockInsert,
@@ -84,6 +90,9 @@ vi.mock("@chatbotx.io/database/client", () => ({
         findFirst: mockFindFirst,
         findMany: mockFindMany,
       },
+      integrationOpenaiCompatibleModel: {
+        findMany: mockFindOpenaiCompatibleIntegrations,
+      },
       templateInstalledResourceModel: {
         findMany: mockTemplateInstalledResourceFindMany,
       },
@@ -101,6 +110,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
     id: "id",
     workspaceId: "workspaceId",
   },
+  integrationOpenaiCompatibleModel: { id: "id" },
 }))
 
 vi.mock("@chatbotx.io/redis", () => ({
@@ -176,6 +186,7 @@ function lastAuditDetail(): string {
 beforeEach(() => {
   vi.clearAllMocks()
   mockFindActiveFlow.mockResolvedValue(undefined)
+  mockFindOpenaiCompatibleIntegrations.mockResolvedValue([])
   mockFindFirst.mockResolvedValue(aiAgent)
   mockFindMany.mockResolvedValue([aiAgent])
 })
@@ -233,6 +244,28 @@ describe("aiAgentService cache invalidation", () => {
 })
 
 describe("aiAgentService AI action validation", () => {
+  test("rejects a missing OpenAI-compatible integration", async () => {
+    await expect(
+      aiAgentService.create(workspaceId, {
+        ...createRequest,
+        models: [
+          {
+            integrationId: "missing-integration",
+            kind: "openaiCompatible",
+            model: "salesmanchatbot-v1",
+          },
+        ],
+      }),
+    ).rejects.toThrow(
+      "A selected OpenAI-compatible integration is unavailable.",
+    )
+
+    expect(mockFindOpenaiCompatibleIntegrations).toHaveBeenCalledWith({
+      columns: { id: true },
+      where: { id: { in: ["missing-integration"] }, workspaceId },
+    })
+  })
+
   test("rejects an inactive or unpublished flow action", async () => {
     await expect(
       aiAgentService.create(workspaceId, {

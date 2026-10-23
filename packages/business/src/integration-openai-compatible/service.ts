@@ -1,5 +1,16 @@
-import { and, db, eq, isDatabaseError } from "@chatbotx.io/database/client"
 import {
+  and,
+  type DatabaseClient,
+  db,
+  eq,
+  isDatabaseError,
+} from "@chatbotx.io/database/client"
+import {
+  type AIAgentProviderModels,
+  aiAgentProviderModels,
+} from "@chatbotx.io/database/partials"
+import {
+  aiAgentModel,
   integrationModel,
   integrationOpenaiCompatibleModel,
 } from "@chatbotx.io/database/schema"
@@ -80,6 +91,47 @@ class IntegrationOpenaiCompatibleService extends BaseService {
     if (existing.some((row) => row.id !== props.excludeId)) {
       throw new OpenaiCompatiblePresetAlreadyConnectedError()
     }
+  }
+
+  private async removeAgentModelBindings(props: {
+    workspaceId: string
+    integrationId: string
+    tx: DatabaseClient
+  }): Promise<boolean> {
+    const agents = await props.tx.query.aiAgentModel.findMany({
+      where: { workspaceId: props.workspaceId },
+      columns: { id: true, models: true },
+    })
+    let changed = false
+
+    for (const agent of agents) {
+      const models = aiAgentProviderModels.parse(agent.models)
+      const nextModels: AIAgentProviderModels = models.filter(
+        (model) =>
+          !(
+            "kind" in model &&
+            model.kind === "openaiCompatible" &&
+            model.integrationId === props.integrationId
+          ),
+      )
+
+      if (JSON.stringify(models) === JSON.stringify(nextModels)) {
+        continue
+      }
+
+      changed = true
+      await props.tx
+        .update(aiAgentModel)
+        .set({ models: nextModels })
+        .where(
+          and(
+            eq(aiAgentModel.id, agent.id),
+            eq(aiAgentModel.workspaceId, props.workspaceId),
+          ),
+        )
+    }
+
+    return changed
   }
 
   async connect(props: ConnectOpenaiCompatibleInput) {
@@ -191,9 +243,24 @@ class IntegrationOpenaiCompatibleService extends BaseService {
     if (!existing) {
       return
     }
-    await db
-      .delete(integrationModel)
-      .where(eq(integrationModel.id, existing.integrationId))
+
+    const removedBindings = await db.transaction(async (tx) => {
+      const changed = await this.removeAgentModelBindings({
+        workspaceId,
+        integrationId: id,
+        tx,
+      })
+
+      await tx
+        .delete(integrationModel)
+        .where(eq(integrationModel.id, existing.integrationId))
+
+      return changed
+    })
+
+    if (removedBindings) {
+      await this.invalidateCacheTags(`ai-agents:workspace:${workspaceId}`)
+    }
 
     await this.audit(
       "disconnect",

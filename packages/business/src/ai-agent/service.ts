@@ -301,6 +301,43 @@ class AiAgentService extends BaseService {
     return rules
   }
 
+  private async validateOpenaiCompatibleModels(
+    workspaceId: string,
+    models: CreateAIAgentRequest["models"],
+  ): Promise<void> {
+    const integrationIds = [
+      ...new Set(
+        models
+          .filter(
+            (
+              model,
+            ): model is Extract<
+              CreateAIAgentRequest["models"][number],
+              { kind: "openaiCompatible" }
+            > => "kind" in model && model.kind === "openaiCompatible",
+          )
+          .map((model) => model.integrationId),
+      ),
+    ]
+
+    if (integrationIds.length === 0) {
+      return
+    }
+
+    const integrations =
+      await db.query.integrationOpenaiCompatibleModel.findMany({
+        where: { workspaceId, id: { in: integrationIds } },
+        columns: { id: true },
+      })
+
+    if (integrations.length !== integrationIds.length) {
+      throw validationException(
+        "models",
+        "A selected OpenAI-compatible integration is unavailable.",
+      )
+    }
+  }
+
   async listAIAgents(
     input: ListAIAgentsRequest,
   ): Promise<PaginatedResult<AIAgentModel>> {
@@ -371,10 +408,10 @@ class AiAgentService extends BaseService {
     tx?: DatabaseClient,
   ): Promise<AIAgentModel> {
     const id = createId()
-    const actionRules = await this.validateActionRules(
-      workspaceId,
-      data.actionRules,
-    )
+    const [actionRules] = await Promise.all([
+      this.validateActionRules(workspaceId, data.actionRules),
+      this.validateOpenaiCompatibleModels(workspaceId, data.models),
+    ])
 
     const execute = async (client: DatabaseClient) => {
       if (data.isDefault) {
@@ -431,10 +468,14 @@ class AiAgentService extends BaseService {
       return aiAgent
     }
 
-    const actionRules =
+    const [actionRules] = await Promise.all([
       data.actionRules === undefined
         ? undefined
-        : await this.validateActionRules(ctx.workspaceId, data.actionRules)
+        : this.validateActionRules(ctx.workspaceId, data.actionRules),
+      data.models === undefined
+        ? undefined
+        : this.validateOpenaiCompatibleModels(ctx.workspaceId, data.models),
+    ])
 
     await db.transaction(async (tx) => {
       if (data.isDefault) {
