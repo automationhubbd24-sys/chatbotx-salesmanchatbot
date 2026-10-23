@@ -186,29 +186,54 @@ export const createOrderExecutors = (): Pick<SystemToolExecutors,
       workspaceId: context.workspaceId,
       orderId: args.orderId,
     })
+    const metadata = current.confirmationMetadata
+    const resolvedToken = args.token ?? (typeof metadata?.token === "string" ? metadata.token : undefined)
+    const resolvedVersion = args.version ?? (typeof metadata?.version === "number" ? metadata.version : undefined)
+    logger.info(
+      {
+        workspaceId: context.workspaceId,
+        conversationId: context.conversationId,
+        triggerMessageId: context.triggerMessageId,
+        orderId: args.orderId,
+        orderStatus: current.status,
+        hasRequestToken: Boolean(args.token),
+        hasStoredToken: Boolean(metadata?.token),
+        requestVersion: args.version,
+        storedVersion: metadata?.version,
+        hasResolvedToken: Boolean(resolvedToken),
+        resolvedVersion,
+      },
+      "[orders] confirm_order state",
+    )
     if (current.status === "confirmed") {
       return { order: current, alreadyConfirmed: true }
     }
 
-    const metadata = current.confirmationMetadata
-    const token = args.token ?? (typeof metadata?.token === "string" ? metadata.token : undefined)
-    const version = args.version ?? (typeof metadata?.version === "number" ? metadata.version : undefined)
-    if (!token || !version) {
+    if (!resolvedToken || !resolvedVersion) {
       return {
         order: current,
         error: "This order is not ready for confirmation. Request confirmation first.",
       }
     }
 
-    return {
-      order: await orderService.confirm({
+    const order = await orderService.confirm({
+      workspaceId: context.workspaceId,
+      orderId: args.orderId,
+      token: resolvedToken,
+      version: resolvedVersion,
+      idempotencyKey: args.idempotencyKey ?? context.triggerMessageId,
+    })
+    logger.info(
+      {
         workspaceId: context.workspaceId,
-        orderId: args.orderId,
-        token,
-        version,
-        idempotencyKey: args.idempotencyKey ?? context.triggerMessageId,
-      }),
-    }
+        conversationId: context.conversationId,
+        triggerMessageId: context.triggerMessageId,
+        orderId: order.id,
+        orderStatus: order.status,
+      },
+      "[orders] confirm_order result",
+    )
+    return { order }
   }),
   [systemFunctionNames.cancelOrderDraft]: executor(systemFunctionNames.cancelOrderDraft, async (args: CancelOrderDraftInput, context) => ({
     order: await orderService.cancel({ workspaceId: context.workspaceId, orderId: args.orderId, reason: args.reason }),

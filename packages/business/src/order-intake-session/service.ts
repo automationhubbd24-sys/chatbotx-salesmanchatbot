@@ -1,13 +1,28 @@
 import { type DatabaseClient, db } from "@chatbotx.io/database/client"
-import { orderIntakeSessionRepository } from "@chatbotx.io/database/repositories"
 import type { OrderSource, OrderType } from "@chatbotx.io/database/partials"
+import { orderIntakeSessionRepository } from "@chatbotx.io/database/repositories"
 import type {
   OrderConversationSessionModel,
   OrderModel,
 } from "@chatbotx.io/database/types"
-import { parsePhoneNumberFromString } from "libphonenumber-js"
-import { orderService } from "../order"
+import { type CountryCode, parsePhoneNumberFromString } from "libphonenumber-js"
 import { notFoundException, validationException } from "../errors"
+import { orderService } from "../order"
+import { workspaceService } from "../workspace/service"
+
+const UNKNOWN_TARGET_COUNTRY = "unknown"
+const BENGALI_DIGITS = "০১২৩৪৫৬৭৮৯"
+const BANGLADESH_LOCAL_PHONE_REGEX = /^01\d{10}$/
+
+const normalizeBengaliDigits = (value: string) =>
+  value.replace(/[০-৯]/g, (digit) => String(BENGALI_DIGITS.indexOf(digit)))
+
+const resolveDefaultRegion = (
+  targetCountry: string | null | undefined,
+): CountryCode | undefined =>
+  targetCountry && targetCountry !== UNKNOWN_TARGET_COUNTRY
+    ? (targetCountry as CountryCode)
+    : undefined
 
 const CANONICAL_FIELD_KEYS = new Set([
   "phone",
@@ -17,6 +32,22 @@ const CANONICAL_FIELD_KEYS = new Set([
   "quantity",
   "total_price",
 ])
+
+const FIELD_ALIASES: Record<string, string> = {
+  customerName: "customer_name",
+  phoneNumber: "phone",
+  phone_number: "phone",
+  mobile: "phone",
+  mobileNumber: "phone",
+  mobile_number: "phone",
+  deliveryAddress: "delivery_address",
+  deliveryLocation: "delivery_address",
+  delivery_location: "delivery_address",
+  location: "delivery_address",
+  address: "delivery_address",
+  productName: "product_name",
+  totalPrice: "total_price",
+}
 
 class OrderIntakeSessionService {
   async startNewIntent(input: {
@@ -28,7 +59,10 @@ class OrderIntakeSessionService {
     tx?: DatabaseClient
   }): Promise<OrderConversationSessionModel> {
     if (!input.intentMessageId.trim()) {
-      throw validationException("intentMessageId", "Intent message ID is required.")
+      throw validationException(
+        "intentMessageId",
+        "Intent message ID is required.",
+      )
     }
     const session = await orderIntakeSessionRepository.createForIntent(
       {
@@ -39,7 +73,9 @@ class OrderIntakeSessionService {
       },
       input.tx ?? db,
     )
-    if (!session) throw new Error("Failed to create order intake session")
+    if (!session) {
+      throw new Error("Failed to create order intake session")
+    }
     return session
   }
 
@@ -52,7 +88,9 @@ class OrderIntakeSessionService {
       input,
       input.tx ?? db,
     )
-    if (!session) throw notFoundException("Order intake session does not exist.")
+    if (!session) {
+      throw notFoundException("Order intake session does not exist.")
+    }
     return session
   }
 
@@ -66,7 +104,11 @@ class OrderIntakeSessionService {
     const { tx = db } = input
     const session = await this.get({ ...input, tx })
     this.assertOpen(session)
-    const collectedData = this.mergeCollectedData(session.collectedData, input.data)
+    const collectedData = await this.mergeCollectedData(
+      session.collectedData,
+      input.data,
+      input.workspaceId,
+    )
     const updated = await orderIntakeSessionRepository.update(
       {
         workspaceId: input.workspaceId,
@@ -77,7 +119,10 @@ class OrderIntakeSessionService {
       tx,
     )
     if (!updated) {
-      throw validationException("version", "Order intake session was modified. Please reload and try again.")
+      throw validationException(
+        "version",
+        "Order intake session was modified. Please reload and try again.",
+      )
     }
     return updated
   }
@@ -107,7 +152,10 @@ class OrderIntakeSessionService {
       return { session, order: bound }
     }
 
-    const phone = this.normalizePhone(session.collectedData.phone)
+    const phone = await this.normalizePhone(
+      session.collectedData.phone,
+      input.workspaceId,
+    )
     const { canonicalData, customFields } = this.splitCollectedData(
       session.collectedData,
     )
@@ -142,7 +190,10 @@ class OrderIntakeSessionService {
           }),
         }
       }
-      throw validationException("version", "Order intake session was modified. Please reload and try again.")
+      throw validationException(
+        "version",
+        "Order intake session was modified. Please reload and try again.",
+      )
     }
     if (Object.keys(customFields).length > 0) {
       await orderService.updateDraftCustomFields({
@@ -170,7 +221,10 @@ class OrderIntakeSessionService {
     const session = await this.get({ ...input, tx })
     this.assertOpen(session)
     if (!session.orderId) {
-      throw validationException("orderId", "No order draft is bound to this intake session.")
+      throw validationException(
+        "orderId",
+        "No order draft is bound to this intake session.",
+      )
     }
     const order = await orderService.requestConfirmation({
       workspaceId: input.workspaceId,
@@ -188,7 +242,10 @@ class OrderIntakeSessionService {
       tx,
     )
     if (!completed) {
-      throw validationException("version", "Order intake session was modified. Please reload and try again.")
+      throw validationException(
+        "version",
+        "Order intake session was modified. Please reload and try again.",
+      )
     }
     return { session: completed, order }
   }
@@ -201,14 +258,21 @@ class OrderIntakeSessionService {
     tx?: DatabaseClient
   }): Promise<{ session: OrderConversationSessionModel; order: OrderModel }> {
     if (!input.tx) {
-      return await db.transaction((tx) => this.updateBoundDraft({ ...input, tx }))
+      return await db.transaction((tx) =>
+        this.updateBoundDraft({ ...input, tx }),
+      )
     }
     const { tx } = input
     const session = await this.recordDetails({ ...input, tx })
     if (!session.orderId) {
-      throw validationException("orderId", "A valid phone number is required before creating an order draft.")
+      throw validationException(
+        "orderId",
+        "A valid phone number is required before creating an order draft.",
+      )
     }
-    const { canonicalData, customFields } = this.splitCollectedData(session.collectedData)
+    const { canonicalData, customFields } = this.splitCollectedData(
+      session.collectedData,
+    )
     const order = await orderService.updateDraft({
       workspaceId: input.workspaceId,
       orderId: session.orderId,
@@ -220,37 +284,54 @@ class OrderIntakeSessionService {
   }
 
   private assertOpen(session: OrderConversationSessionModel) {
-    if (session.closedAt || ["completed", "abandoned", "expired"].includes(session.state)) {
+    if (
+      session.closedAt ||
+      ["completed", "abandoned", "expired"].includes(session.state)
+    ) {
       throw validationException("state", "Order intake session is closed.")
     }
     if (session.expiresAt <= new Date()) {
-      throw validationException("expiresAt", "Order intake session has expired.")
+      throw validationException(
+        "expiresAt",
+        "Order intake session has expired.",
+      )
     }
   }
 
-  private mergeCollectedData(
+  private async mergeCollectedData(
     existing: Record<string, unknown>,
     incoming: Record<string, unknown>,
+    workspaceId: string,
   ) {
     const existingSnapshot = this.asRecord(existing.customerSnapshot)
     const incomingSnapshot = this.asRecord(incoming.customerSnapshot)
-    const data = {
+    const data = this.normalizeFieldAliases({
       ...existingSnapshot,
       ...incomingSnapshot,
       ...existing,
       ...incoming,
-    }
+    })
     const retainedSnapshot = Object.fromEntries(
       Object.entries({ ...existingSnapshot, ...incomingSnapshot }).filter(
-        ([key]) => !CANONICAL_FIELD_KEYS.has(key),
+        ([key]) => !CANONICAL_FIELD_KEYS.has(FIELD_ALIASES[key] ?? key),
       ),
     )
+    const {
+      customerSnapshot: _customerSnapshot,
+      ...dataWithoutCustomerSnapshot
+    } = data
+    const collectedData =
+      Object.keys(retainedSnapshot).length > 0
+        ? { ...dataWithoutCustomerSnapshot, customerSnapshot: retainedSnapshot }
+        : dataWithoutCustomerSnapshot
 
-    if (Object.keys(retainedSnapshot).length > 0) data.customerSnapshot = retainedSnapshot
-    else delete data.customerSnapshot
-
-    if (data.phone !== undefined) data.phone = this.normalizePhone(data.phone)
-    return data
+    if (collectedData.phone !== undefined) {
+      collectedData.phone = await this.normalizePhone(
+        collectedData.phone,
+        workspaceId,
+      )
+    }
+    return collectedData
   }
 
   private asRecord(value: unknown): Record<string, unknown> {
@@ -259,9 +340,26 @@ class OrderIntakeSessionService {
       : {}
   }
 
+  private normalizeFieldAliases(data: Record<string, unknown>) {
+    const normalized = { ...data }
+    for (const [alias, canonical] of Object.entries(FIELD_ALIASES)) {
+      if (
+        normalized[canonical] === undefined &&
+        normalized[alias] !== undefined
+      ) {
+        normalized[canonical] = normalized[alias]
+      }
+    }
+    return Object.fromEntries(
+      Object.entries(normalized).filter(([key]) => !(key in FIELD_ALIASES)),
+    )
+  }
+
   private splitCollectedData(data: Record<string, unknown>) {
     const customFields =
-      data.customFields && typeof data.customFields === "object" && !Array.isArray(data.customFields)
+      data.customFields &&
+      typeof data.customFields === "object" &&
+      !Array.isArray(data.customFields)
         ? (data.customFields as Record<string, unknown>)
         : {}
     const canonicalData = Object.fromEntries(
@@ -270,15 +368,30 @@ class OrderIntakeSessionService {
     return { canonicalData, customFields }
   }
 
-  private normalizePhone(value: unknown) {
+  private async normalizePhone(value: unknown, workspaceId: string) {
     if (typeof value !== "string" || !value.trim()) {
       throw validationException("phone", "A valid phone number is required.")
     }
-    const phone = parsePhoneNumberFromString(value.trim())
-    if (!phone?.isValid()) {
-      throw validationException("phone", "A valid phone number is required.")
+    const workspace = await workspaceService.find({
+      where: { id: workspaceId },
+    })
+    const normalizedValue = normalizeBengaliDigits(value.trim())
+    const phone = parsePhoneNumberFromString(
+      normalizedValue,
+      resolveDefaultRegion(workspace?.targetCountry),
+    )
+    if (phone?.isValid()) {
+      return phone.number
     }
-    return phone.number
+
+    if (
+      workspace?.targetCountry === "BD" &&
+      BANGLADESH_LOCAL_PHONE_REGEX.test(normalizedValue)
+    ) {
+      return `+880${normalizedValue.slice(1)}`
+    }
+
+    throw validationException("phone", "A valid phone number is required.")
   }
 }
 

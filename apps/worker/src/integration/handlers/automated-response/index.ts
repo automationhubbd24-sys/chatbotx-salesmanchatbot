@@ -339,6 +339,11 @@ export async function processAutomatedResponse(
         role: aiMessageRoles.enum.user,
         content: `The customer replied to this earlier message: "${parentTriggerMessage.text}"\n\nCurrent customer message: "${triggerMessage.text}"`,
       })
+    } else if (triggerMessage?.text) {
+      messages.push({
+        role: aiMessageRoles.enum.user,
+        content: `CURRENT CUSTOMER MESSAGE (highest priority; answer this message, not an earlier product request):\n"${triggerMessage.text}"`,
+      })
     }
 
     if (isParentImageReply) {

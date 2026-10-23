@@ -4692,6 +4692,11 @@
     "empty": "No orders found.",
     "fields": {
       "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
       "type": "Order type",
       "status": "Status",
       "source": "Source",

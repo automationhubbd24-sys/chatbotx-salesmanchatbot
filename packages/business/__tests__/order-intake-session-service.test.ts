@@ -5,6 +5,7 @@ const mocks = vi.hoisted(() => ({
   createDraft: vi.fn(),
   createForIntent: vi.fn(),
   findById: vi.fn(),
+  findWorkspace: vi.fn(),
   getById: vi.fn(),
   transaction: vi.fn(),
   update: vi.fn(),
@@ -34,6 +35,10 @@ vi.mock("../src/order", () => ({
   },
 }))
 
+vi.mock("../src/workspace/service", () => ({
+  workspaceService: { find: mocks.findWorkspace },
+}))
+
 const { orderIntakeSessionService } = await import(
   "../src/order-intake-session/service"
 )
@@ -54,6 +59,7 @@ const baseSession = {
 describe("orderIntakeSessionService", () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mocks.findWorkspace.mockResolvedValue({ targetCountry: "unknown" })
     mocks.transaction.mockImplementation(
       async (callback: (tx: unknown) => unknown) => callback("tx"),
     )
@@ -131,7 +137,9 @@ describe("orderIntakeSessionService", () => {
     mocks.findById.mockImplementation(async ({ sessionId }) =>
       sessionId === "session-1" ? firstSession : secondSession,
     )
-    mocks.createDraft.mockResolvedValueOnce(firstOrder).mockResolvedValueOnce(secondOrder)
+    mocks.createDraft
+      .mockResolvedValueOnce(firstOrder)
+      .mockResolvedValueOnce(secondOrder)
     mocks.bindOrder
       .mockResolvedValueOnce({ ...firstSession, orderId: firstOrder.id })
       .mockResolvedValueOnce({ ...secondSession, orderId: secondOrder.id })
@@ -161,6 +169,113 @@ describe("orderIntakeSessionService", () => {
       2,
       expect.objectContaining({ conversationId: "conversation-1" }),
     )
+  })
+
+  test("normalizes a Bangladesh local phone using the workspace target country", async () => {
+    mocks.findWorkspace.mockResolvedValue({ targetCountry: "BD" })
+    mocks.findById.mockResolvedValue(baseSession)
+    mocks.update.mockImplementation(async ({ values }) => ({
+      ...baseSession,
+      collectedData: values.collectedData,
+      version: 2,
+    }))
+
+    const session = await orderIntakeSessionService.recordDetails({
+      workspaceId: "workspace-1",
+      sessionId: "session-1",
+      data: { phone: "01956871403" },
+    })
+
+    expect(session.collectedData.phone).toBe("+8801956871403")
+  })
+
+  test("normalizes Bengali Bangladesh phone digits using the workspace target country", async () => {
+    mocks.findWorkspace.mockResolvedValue({ targetCountry: "BD" })
+    mocks.findById.mockResolvedValue(baseSession)
+    mocks.update.mockImplementation(async ({ values }) => ({
+      ...baseSession,
+      collectedData: values.collectedData,
+      version: 2,
+    }))
+
+    const session = await orderIntakeSessionService.recordDetails({
+      workspaceId: "workspace-1",
+      sessionId: "session-1",
+      data: { phone: "০১৯৩৭০৪৮৩০৭৭" },
+    })
+
+    expect(session.collectedData.phone).toBe("+88019370483077")
+  })
+
+  test("preserves explicit E.164 phone normalization without a workspace country", async () => {
+    mocks.findById.mockResolvedValue(baseSession)
+    mocks.update.mockImplementation(async ({ values }) => ({
+      ...baseSession,
+      collectedData: values.collectedData,
+      version: 2,
+    }))
+
+    const session = await orderIntakeSessionService.recordDetails({
+      workspaceId: "workspace-1",
+      sessionId: "session-1",
+      data: { phone: "+8801956871403" },
+    })
+
+    expect(session.collectedData.phone).toBe("+8801956871403")
+  })
+
+  test("rejects local phones when the workspace country is missing or unknown", async () => {
+    mocks.findById.mockResolvedValue(baseSession)
+
+    await expect(
+      orderIntakeSessionService.recordDetails({
+        workspaceId: "workspace-1",
+        sessionId: "session-1",
+        data: { phone: "01956871403" },
+      }),
+    ).rejects.toThrow("A valid phone number is required.")
+
+    mocks.findWorkspace.mockResolvedValue({ targetCountry: null })
+
+    await expect(
+      orderIntakeSessionService.recordDetails({
+        workspaceId: "workspace-1",
+        sessionId: "session-1",
+        data: { phone: "01956871403" },
+      }),
+    ).rejects.toThrow("A valid phone number is required.")
+  })
+
+  test("maps common phone and delivery aliases to canonical order fields", async () => {
+    mocks.findWorkspace.mockResolvedValue({ targetCountry: "BD" })
+    mocks.findById.mockResolvedValue(baseSession)
+    mocks.update.mockImplementation(async ({ values }) => ({
+      ...baseSession,
+      collectedData: values.collectedData,
+      version: 2,
+    }))
+
+    const session = await orderIntakeSessionService.recordDetails({
+      workspaceId: "workspace-1",
+      sessionId: "session-1",
+      data: {
+        mobile: "01956871403",
+        customerName: "Habib",
+        delivery_location: "Dinajpur",
+        productName: "Red Bull",
+        totalPrice: 1000,
+      },
+    })
+
+    expect(session.collectedData).toMatchObject({
+      phone: "+8801956871403",
+      customer_name: "Habib",
+      delivery_address: "Dinajpur",
+      product_name: "Red Bull",
+      total_price: 1000,
+    })
+    expect(session.collectedData).not.toHaveProperty("mobile")
+    expect(session.collectedData).not.toHaveProperty("delivery_location")
   })
 
   test("flattens canonical customer snapshot values without overwriting top-level data", async () => {

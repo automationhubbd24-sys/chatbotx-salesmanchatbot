@@ -201,6 +201,38 @@ export function OrdersTable({
     return labels[source]
   }
 
+  const customerField = (
+    order: OrderListItem,
+    key: "customer_name" | "phone" | "delivery_address",
+  ) => {
+    const value = order.customerSnapshot?.[key]
+    return typeof value === "string" && value.trim()
+      ? value
+      : t("orders.customFieldValues.empty")
+  }
+
+  const productSummary = (order: OrderListItem) => {
+    const value = order.customerSnapshot?.product_name
+    return typeof value === "string" && value.trim()
+      ? value
+      : t("orders.customFieldValues.empty")
+  }
+
+  const quantitySummary = (order: OrderListItem) => {
+    const value = order.customerSnapshot?.quantity
+    let quantity = Number.NaN
+
+    if (typeof value === "number") {
+      quantity = value
+    } else if (typeof value === "string" && value.trim()) {
+      quantity = Number(value)
+    }
+
+    return Number.isFinite(quantity)
+      ? quantity
+      : t("orders.customFieldValues.empty")
+  }
+
   const statusLabel = (status: OrderModel["status"]) => {
     const labels: Record<OrderModel["status"], string> = {
       draft: t("orders.status.draft"),
@@ -388,6 +420,21 @@ export function OrdersTable({
                     {t("orders.fields.order")}
                   </th>
                   <th className="p-3 text-start font-medium">
+                    {t("orders.fields.customerName")}
+                  </th>
+                  <th className="p-3 text-start font-medium">
+                    {t("orders.fields.phone")}
+                  </th>
+                  <th className="p-3 text-start font-medium">
+                    {t("orders.fields.deliveryAddress")}
+                  </th>
+                  <th className="p-3 text-start font-medium">
+                    {t("orders.fields.productName")}
+                  </th>
+                  <th className="p-3 text-end font-medium">
+                    {t("orders.fields.quantity")}
+                  </th>
+                  <th className="p-3 text-start font-medium">
                     {t("orders.fields.status")}
                   </th>
                   <th className="p-3 text-start font-medium">
@@ -419,6 +466,31 @@ export function OrdersTable({
                     <td className="p-3 font-medium">
                       {order.externalOrderId ?? order.id}
                     </td>
+                    <td
+                      className="max-w-48 truncate p-3"
+                      title={customerField(order, "customer_name")}
+                    >
+                      {customerField(order, "customer_name")}
+                    </td>
+                    <td
+                      className="max-w-48 truncate p-3"
+                      title={customerField(order, "phone")}
+                    >
+                      {customerField(order, "phone")}
+                    </td>
+                    <td
+                      className="max-w-56 truncate p-3"
+                      title={customerField(order, "delivery_address")}
+                    >
+                      {customerField(order, "delivery_address")}
+                    </td>
+                    <td
+                      className="max-w-48 truncate p-3"
+                      title={productSummary(order)}
+                    >
+                      {productSummary(order)}
+                    </td>
+                    <td className="p-3 text-end">{quantitySummary(order)}</td>
                     <td className="p-3">{statusLabel(order.status)}</td>
                     <td className="p-3 text-muted-foreground">
                       {sourceLabel(order.source)}
