@@ -3,6 +3,7 @@ import {
   metaCatalogItemRepository,
   productRepository,
 } from "@chatbotx.io/database/repositories"
+import { productService } from "../product"
 import {
   getProductCategoryPathKey,
   productCategoryService,
@@ -100,7 +101,7 @@ class MetaCatalogImportService {
       return { imported: 0, existing: 0 }
     }
 
-    return await db.transaction(async (tx) => {
+    const result = await db.transaction(async (tx) => {
       const scope = {
         integrationMetaCatalogId: input.integrationMetaCatalogId,
         catalogId: input.catalogId,
@@ -250,8 +251,20 @@ class MetaCatalogImportService {
       return {
         imported: rows.length,
         existing: existingProducts.length + duplicateCount,
+        productIds: [
+          ...existingProducts.map((product) => product.productId),
+          ...rows.map((row) => row.id),
+        ],
       }
     })
+    await productService.refreshEmbeddingsAfterCommit({
+      workspaceId: input.workspaceId,
+      productIds: result.productIds,
+    })
+    return {
+      imported: result.imported,
+      existing: result.existing,
+    }
   }
 }
 

@@ -3995,6 +3995,7 @@
     "fields": {
       "baseURL": "Əsas URL",
       "defaultModel": "Standart model",
+      "embeddingModel": "Yerləşdirmə modeli",
       "enabled": "Aktivdir"
     },
     "provider": "AI provayderi",

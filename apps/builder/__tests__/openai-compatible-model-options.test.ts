@@ -15,6 +15,7 @@ function createIntegration(
     baseURL: "https://llm.example.com/v1",
     createdAt: new Date("2026-01-01T00:00:00Z"),
     defaultModel: "custom-model",
+    embeddingModel: null,
     enabled: true,
     name: "Local Gateway",
     preset: "custom",

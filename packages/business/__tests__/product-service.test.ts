@@ -7,6 +7,13 @@ const mocks = vi.hoisted(() => ({
   productFind: vi.fn(),
   productUpdate: vi.fn(),
   findProductsByIds: vi.fn(),
+  listForAgentSearch: vi.fn(),
+  listForAgentSearchPage: vi.fn(),
+  listForAgentSearchByIds: vi.fn(),
+  embeddingDeleteByProductIds: vi.fn(),
+  queueAdd: vi.fn(),
+  createProductQueryEmbedding: vi.fn(),
+  searchProductEmbeddings: vi.fn(),
   transaction: vi.fn(),
   deleteRow: vi.fn(),
   insert: vi.fn(),
@@ -40,8 +47,26 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
     deleteByIds: (...args: unknown[]) => mocks.productDeleteByIds(...args),
     find: (...args: unknown[]) => mocks.productFind(...args),
     findByIds: (...args: unknown[]) => mocks.findProductsByIds(...args),
+    listForAgentSearch: (...args: unknown[]) =>
+      mocks.listForAgentSearch(...args),
+    listForAgentSearchPage: (...args: unknown[]) =>
+      mocks.listForAgentSearchPage(...args),
+    listForAgentSearchByIds: (...args: unknown[]) =>
+      mocks.listForAgentSearchByIds(...args),
     update: (...args: unknown[]) => mocks.productUpdate(...args),
   },
+}))
+
+vi.mock("@chatbotx.io/worker-config", () => ({
+  DefaultJobAction: { refreshProductEmbedding: "refreshProductEmbedding" },
+  defaultQueue: { add: mocks.queueAdd },
+}))
+
+vi.mock("../src/product/embedding", () => ({
+  createProductQueryEmbedding: mocks.createProductQueryEmbedding,
+  deleteProductEmbeddings: mocks.embeddingDeleteByProductIds,
+  PRODUCT_VECTOR_LOW_RESULT_COUNT: 3,
+  searchProductEmbeddings: mocks.searchProductEmbeddings,
 }))
 
 vi.mock("@chatbotx.io/database/schema", () => ({
@@ -75,6 +100,11 @@ beforeEach(() => {
     id: "product-1",
     categoryId: "category-1",
   })
+  mocks.listForAgentSearch.mockResolvedValue([])
+  mocks.listForAgentSearchPage.mockResolvedValue([])
+  mocks.listForAgentSearchByIds.mockResolvedValue([])
+  mocks.createProductQueryEmbedding.mockResolvedValue(undefined)
+  mocks.searchProductEmbeddings.mockResolvedValue([])
   mocks.transaction.mockImplementation(
     async (run: (client: typeof tx) => unknown) => await run(tx),
   )
@@ -258,7 +288,152 @@ describe("productService sub-category parentage", () => {
   })
 })
 
+const agentProduct = (id: string, name: string) => ({
+  id,
+  name,
+  sku: null,
+  shortDescription: null,
+  longDescription: null,
+  vendor: null,
+  category: null,
+  subcategory: null,
+  tags: [],
+  variantOptions: [],
+  variants: [],
+  addons: [],
+  rank: 0,
+})
+
+describe("productService semantic agent search", () => {
+  test("preserves vector similarity ordering after product hydration", async () => {
+    const first = agentProduct("product-1", "First")
+    const second = agentProduct("product-2", "Second")
+    mocks.listForAgentSearch.mockResolvedValue([first, second])
+    mocks.createProductQueryEmbedding.mockResolvedValue({
+      embedding: Array.from({ length: 3072 }, () => 0),
+      model: "openai:text-embedding-3-large",
+    })
+    mocks.searchProductEmbeddings.mockResolvedValue([
+      { productId: "product-2", distance: 0.1 },
+      { productId: "product-1", distance: 0.2 },
+    ])
+    mocks.listForAgentSearchByIds.mockResolvedValue([first, second])
+
+    const results = await productService.searchForAgent({
+      workspaceId: "workspace-1",
+      query: "first second",
+    })
+
+    expect(results.map((product) => product.id)).toEqual([
+      "product-2",
+      "product-1",
+    ])
+  })
+
+  test("merges lexical results without duplicates when vector results are sparse", async () => {
+    const vector = agentProduct("product-1", "Blue Shirt")
+    const lexical = agentProduct("product-2", "Blue Hat")
+    mocks.listForAgentSearch.mockResolvedValue([vector, lexical])
+    mocks.createProductQueryEmbedding.mockResolvedValue({
+      embedding: Array.from({ length: 3072 }, () => 0),
+      model: "openai:text-embedding-3-large",
+    })
+    mocks.searchProductEmbeddings.mockResolvedValue([
+      { productId: "product-1", distance: 0.1 },
+    ])
+    mocks.listForAgentSearchByIds.mockResolvedValue([vector])
+
+    const results = await productService.searchForAgent({
+      workspaceId: "workspace-1",
+      query: "blue",
+    })
+
+    expect(results.map((product) => product.id)).toEqual([
+      "product-1",
+      "product-2",
+    ])
+  })
+
+  test("returns lexical results when embedding resolution fails", async () => {
+    const product = agentProduct("product-1", "Blue Shirt")
+    mocks.listForAgentSearch.mockResolvedValue([product])
+    mocks.createProductQueryEmbedding.mockRejectedValue(
+      new Error("provider failed"),
+    )
+
+    await expect(
+      productService.searchForAgent({
+        workspaceId: "workspace-1",
+        query: "blue",
+      }),
+    ).resolves.toEqual([product])
+    expect(mocks.searchProductEmbeddings).not.toHaveBeenCalled()
+  })
+
+  test("uses lexical results when no dimension-safe query embedding is available", async () => {
+    const product = agentProduct("product-1", "Blue Shirt")
+    mocks.listForAgentSearch.mockResolvedValue([product])
+    mocks.createProductQueryEmbedding.mockResolvedValue(undefined)
+
+    await expect(
+      productService.searchForAgent({
+        workspaceId: "workspace-1",
+        query: "blue",
+      }),
+    ).resolves.toEqual([product])
+    expect(mocks.searchProductEmbeddings).not.toHaveBeenCalled()
+  })
+})
+
 describe("productService write shaping", () => {
+  test("enqueues every sequential update for embedding refresh", async () => {
+    await productService.update({
+      workspaceId: "workspace-1",
+      productId: "product-1",
+      data: { name: "First rename" },
+    })
+    await productService.update({
+      workspaceId: "workspace-1",
+      productId: "product-1",
+      data: { name: "Second rename" },
+    })
+
+    expect(mocks.queueAdd).toHaveBeenCalledTimes(2)
+    for (const [, , options] of mocks.queueAdd.mock.calls) {
+      expect(options).toMatchObject({ attempts: 3, removeOnComplete: true })
+      expect(options).not.toHaveProperty("jobId")
+    }
+  })
+
+  test("schedules one bounded catalog page with a continuation cursor", async () => {
+    mocks.listForAgentSearchPage.mockResolvedValue([
+      { id: "product-1" },
+      { id: "product-2" },
+    ])
+
+    await expect(
+      productService.scheduleEmbeddingRefreshPage({
+        workspaceId: "workspace-1",
+      }),
+    ).resolves.toEqual({ scheduled: 2, nextAfterId: "product-2" })
+
+    expect(mocks.listForAgentSearchPage).toHaveBeenCalledWith({
+      workspaceId: "workspace-1",
+      limit: 50,
+    })
+    expect(mocks.queueAdd).toHaveBeenCalledWith(
+      "refreshProductEmbedding",
+      expect.objectContaining({
+        data: {
+          workspaceId: "workspace-1",
+          productIds: ["product-1", "product-2"],
+          nextAfterId: "product-2",
+        },
+      }),
+      expect.objectContaining({ attempts: 3, removeOnComplete: true }),
+    )
+  })
+
   test("stores the form's image mode as the column's type", async () => {
     await productService.create({
       data: {

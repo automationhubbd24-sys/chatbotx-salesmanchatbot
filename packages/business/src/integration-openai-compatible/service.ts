@@ -17,6 +17,7 @@ import {
 import { AuthType, type SecretTextAuthValue } from "@chatbotx.io/sdk"
 import { createId } from "@chatbotx.io/utils"
 import { BaseService } from "../base.service"
+import { productService } from "../product"
 import {
   normalizeOpenaiCompatibleBaseUrl,
   validateOpenaiCompatibleBaseUrlForEnvironment,
@@ -48,6 +49,7 @@ export type ConnectOpenaiCompatibleInput = {
   preset: string
   baseURL: string
   defaultModel: string
+  embeddingModel?: string | null
   apiKey: string
   autoReply?: boolean
   enabled?: boolean
@@ -137,6 +139,7 @@ class IntegrationOpenaiCompatibleService extends BaseService {
 
   async connect(props: ConnectOpenaiCompatibleInput) {
     const auth = this.createAuth(props.apiKey)
+    const embeddingModel = props.embeddingModel?.trim() || null
     const baseURL = await validateOpenaiCompatibleBaseUrlForEnvironment(
       props.baseURL,
     )
@@ -167,6 +170,7 @@ class IntegrationOpenaiCompatibleService extends BaseService {
           autoReply: props.autoReply ?? false,
           baseURL,
           defaultModel: props.defaultModel,
+          embeddingModel,
           enabled: props.enabled ?? true,
           integrationId: integration.id,
           name: props.name,
@@ -183,6 +187,11 @@ class IntegrationOpenaiCompatibleService extends BaseService {
     }
 
     await this.audit("connect", "connected a new OpenAI-compatible integration")
+    if (embeddingModel) {
+      await productService.scheduleEmbeddingRefreshPage({
+        workspaceId: props.workspaceId,
+      })
+    }
   }
 
   async update(
@@ -201,7 +210,12 @@ class IntegrationOpenaiCompatibleService extends BaseService {
       excludeId: id,
     })
 
-    const { apiKey, baseURL: rawBaseURL, ...rest } = data
+    const { apiKey, baseURL: rawBaseURL, embeddingModel, ...rest } = data
+    const nextEmbeddingModel =
+      embeddingModel === undefined ? undefined : embeddingModel?.trim() || null
+    const embeddingModelChanged =
+      nextEmbeddingModel !== undefined &&
+      nextEmbeddingModel !== existing.embeddingModel
     let baseURL: string | undefined
     if (rawBaseURL !== undefined) {
       const normalizedBaseUrl = normalizeOpenaiCompatibleBaseUrl(rawBaseURL)
@@ -219,6 +233,9 @@ class IntegrationOpenaiCompatibleService extends BaseService {
         .set({
           ...rest,
           ...(baseURL === undefined ? {} : { baseURL }),
+          ...(nextEmbeddingModel === undefined
+            ? {}
+            : { embeddingModel: nextEmbeddingModel }),
           ...(apiKey === undefined ? {} : { auth: this.createAuth(apiKey) }),
         })
         .where(
@@ -238,6 +255,9 @@ class IntegrationOpenaiCompatibleService extends BaseService {
       "update",
       "updated the OpenAI-compatible integration configuration",
     )
+    if (embeddingModelChanged && nextEmbeddingModel) {
+      await productService.scheduleEmbeddingRefreshPage({ workspaceId })
+    }
   }
 
   async disconnect(workspaceId: string, id: string) {

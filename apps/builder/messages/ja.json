@@ -3732,6 +3732,7 @@
     "fields": {
       "baseURL": "ベースURL",
       "defaultModel": "デフォルトモデル",
+      "embeddingModel": "埋め込みモデル",
       "enabled": "有効"
     },
     "provider": "AIプロバイダー",

@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "عنوان URL الأساسي",
       "defaultModel": "النموذج الافتراضي",
+      "embeddingModel": "نموذج التضمين",
       "enabled": "مفعّل"
     },
     "provider": "مزوّد الذكاء الاصطناعي",

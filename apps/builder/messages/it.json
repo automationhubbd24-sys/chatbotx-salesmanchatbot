@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "URL di base",
       "defaultModel": "Modello predefinito",
+      "embeddingModel": "Modello di embedding",
       "enabled": "Attivo"
     },
     "provider": "Provider IA",

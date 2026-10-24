@@ -3995,6 +3995,7 @@
     "fields": {
       "baseURL": "Base URL",
       "defaultModel": "Default model",
+      "embeddingModel": "Embedding model",
       "enabled": "Enabled"
     },
     "provider": "AI Provider",

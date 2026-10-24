@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "URL base",
       "defaultModel": "Predeterminado modelo",
+      "embeddingModel": "Modelo de incrustación",
       "enabled": "Activado"
     },
     "provider": "Proveedor de IA",

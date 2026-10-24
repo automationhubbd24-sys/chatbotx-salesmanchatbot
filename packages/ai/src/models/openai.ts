@@ -3,6 +3,7 @@ import { z } from "zod"
 export const openaiEmbeddingModels = z.enum([
   "text-embedding-ada-002",
   "text-embedding-3-small",
+  "text-embedding-3-large",
 ])
 export type OpenAIEmbeddingModel = z.infer<typeof openaiEmbeddingModels>
 

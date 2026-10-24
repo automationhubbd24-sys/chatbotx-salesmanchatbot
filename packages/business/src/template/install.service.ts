@@ -19,6 +19,8 @@ import { botFieldService } from "../bot-field/service"
 import { customFieldService } from "../custom-field/service"
 import { toPublicErrorMessage } from "../errors"
 import { folderService } from "../folder"
+import { logger } from "../logger"
+import { productService } from "../product/service"
 import { resolveCustomFieldManifest } from "./adapters/manifests/custom-fields"
 import { resolveFolderManifest } from "./adapters/manifests/folders"
 import { resolveProductCategoryManifest } from "./adapters/manifests/product-categories"
@@ -181,6 +183,7 @@ type RunInstallResult = {
   warnings: TemplateInstallWarning[]
   resourceCount: number
   installFolderId: string | null
+  productIds: string[]
 }
 
 /**
@@ -330,6 +333,7 @@ const runInstall = async (
     warnings,
     resourceCount: resourceCount.value,
     installFolderId,
+    productIds: [...(ctx.idMaps.product?.values() ?? [])],
   }
 }
 
@@ -373,7 +377,7 @@ export const templateInstallService = {
     createInstallFolder: boolean
   }): Promise<void> {
     try {
-      await db.transaction(async (tx) => {
+      const outcome = await db.transaction(async (tx) => {
         await tx
           .update(templateInstallationModel)
           .set({ status: "installing" })
@@ -392,9 +396,26 @@ export const templateInstallService = {
             completedAt: new Date(),
           })
           .where(eq(templateInstallationModel.id, input.installationId))
+
+        return outcome
       })
 
-      await invalidateAfterCommit(input.workspaceId)
+      await Promise.all([
+        invalidateAfterCommit(input.workspaceId),
+        productService.refreshEmbeddingsAfterCommit({
+          workspaceId: input.workspaceId,
+          productIds: outcome.productIds,
+        }),
+      ]).catch((err) => {
+        logger.warn(
+          {
+            err,
+            installationId: input.installationId,
+            workspaceId: input.workspaceId,
+          },
+          "[template] post-commit install side effect failed",
+        )
+      })
     } catch (error) {
       await db
         .update(templateInstallationModel)

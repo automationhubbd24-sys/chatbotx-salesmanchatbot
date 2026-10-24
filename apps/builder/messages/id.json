@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "URL Dasar",
       "defaultModel": "Model default",
+      "embeddingModel": "Model embedding",
       "enabled": "Diaktifkan"
     },
     "provider": "Penyedia AI",

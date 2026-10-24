@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "Temel URL",
       "defaultModel": "Varsayılan model",
+      "embeddingModel": "Gömme modeli",
       "enabled": "Etkin"
     },
     "provider": "AI Sağlayıcısı",

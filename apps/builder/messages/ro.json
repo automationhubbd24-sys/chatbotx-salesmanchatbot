@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "URL de bază",
       "defaultModel": "Model implicit",
+      "embeddingModel": "Model de încorporare",
       "enabled": "Activat"
     },
     "provider": "Furnizor IA",

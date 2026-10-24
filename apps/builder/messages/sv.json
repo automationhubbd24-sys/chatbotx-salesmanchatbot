@@ -4654,6 +4654,7 @@
     "fields": {
       "baseURL": "Bas-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Inbäddningsmodell",
       "enabled": "Aktiverad"
     },
     "provider": "AI-leverantör",

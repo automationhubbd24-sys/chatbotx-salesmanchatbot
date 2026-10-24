@@ -3786,6 +3786,7 @@
     "fields": {
       "baseURL": "基礎URL",
       "defaultModel": "預設模型",
+      "embeddingModel": "嵌入模型",
       "enabled": "已啟用"
     },
     "provider": "人工智慧供應商",

@@ -3732,6 +3732,7 @@
     "fields": {
       "baseURL": "URL base",
       "defaultModel": "Modelo padrão",
+      "embeddingModel": "Modelo de embeddings",
       "enabled": "Ativado"
     },
     "provider": "Provedor de IA",

@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Einbettungsmodell",
       "enabled": "Aktiviert"
     },
     "provider": "KI-Anbieter",

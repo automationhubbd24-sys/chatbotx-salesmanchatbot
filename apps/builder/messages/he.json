@@ -1758,6 +1758,7 @@
     "fields": {
       "baseURL": "כתובת URL בסיסית",
       "defaultModel": "מודל ברירת מחדל",
+      "embeddingModel": "מודל הטמעה",
       "enabled": "מופעל"
     },
     "provider": "ספק AI",

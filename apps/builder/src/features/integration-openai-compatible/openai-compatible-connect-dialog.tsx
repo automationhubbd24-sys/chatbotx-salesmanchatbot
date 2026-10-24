@@ -99,6 +99,7 @@ export function OpenaiCompatibleConnectDialog({
           autoReply: false,
           baseURL: "",
           defaultModel: "",
+          embeddingModel: "",
           enabled: true,
           name: "",
           streaming: true,
@@ -116,6 +117,8 @@ export function OpenaiCompatibleConnectDialog({
   const selectedPresetConfig = openaiCompatiblePresetConfigs[selectedPreset]
   const useCustomModelInput =
     shouldUseCustomOpenaiCompatibleModelInput(selectedPresetConfig)
+  const useCustomEmbeddingModelInput =
+    shouldUseCustomOpenaiCompatibleModelInput(selectedPresetConfig, "embedding")
 
   useEffect(() => {
     if (preset !== selectedPreset) {
@@ -129,6 +132,9 @@ export function OpenaiCompatibleConnectDialog({
     form.setValue("name", config.label, { shouldValidate: true })
     form.setValue("baseURL", config.defaultBaseURL, { shouldValidate: true })
     form.setValue("defaultModel", config.defaultModel, {
+      shouldValidate: true,
+    })
+    form.setValue("embeddingModel", config.defaultEmbeddingModel ?? "", {
       shouldValidate: true,
     })
   }, [form, preset, selectedPreset])
@@ -176,6 +182,21 @@ export function OpenaiCompatibleConnectDialog({
                   selectedPresetConfig,
                 )}
                 required
+              />
+            )}
+            {useCustomEmbeddingModelInput ? (
+              <InputField
+                label={t("openaiCompatible.fields.embeddingModel")}
+                name="embeddingModel"
+              />
+            ) : (
+              <ComboboxField
+                label={t("openaiCompatible.fields.embeddingModel")}
+                name="embeddingModel"
+                options={buildOpenaiCompatibleModelOptions(
+                  selectedPresetConfig,
+                  "embedding",
+                )}
               />
             )}
             <InputField

@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
   resolveCategoryPaths: vi.fn(),
   transaction: vi.fn(),
   updateProduct: vi.fn(),
+  refreshEmbeddingsAfterCommit: vi.fn(),
 }))
 
 const transactionClient = { name: "transaction-client" }
@@ -31,6 +32,13 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
     findByImportIdentifiers: (...args: unknown[]) =>
       mocks.findByImportIdentifiers(...args),
     update: (...args: unknown[]) => mocks.updateProduct(...args),
+  },
+}))
+
+vi.mock("../src/product", () => ({
+  productService: {
+    refreshEmbeddingsAfterCommit: (...args: unknown[]) =>
+      mocks.refreshEmbeddingsAfterCommit(...args),
   },
 }))
 
@@ -117,6 +125,28 @@ describe("metaCatalogImportService", () => {
         values: expect.not.objectContaining({ sku: expect.anything() }),
       }),
       transactionClient,
+    )
+  })
+
+  test("enqueues embedding refresh after committing updated and created products", async () => {
+    mocks.findByRetailerIds.mockResolvedValue([
+      { retailerId: "existing", productId: "product-existing" },
+    ])
+    mocks.createFromImport.mockResolvedValue([{ id: "product-created" }])
+
+    await metaCatalogImportService.importPage({
+      workspaceId: "workspace-1",
+      integrationMetaCatalogId: "connection-1",
+      catalogId: "catalog-1",
+      products: [createProduct("existing"), createProduct("created")],
+    })
+
+    expect(mocks.refreshEmbeddingsAfterCommit).toHaveBeenCalledWith({
+      workspaceId: "workspace-1",
+      productIds: ["product-existing", "product-created"],
+    })
+    expect(mocks.transaction.mock.invocationCallOrder[0]).toBeLessThan(
+      mocks.refreshEmbeddingsAfterCommit.mock.invocationCallOrder[0] ?? Infinity,
     )
   })
 

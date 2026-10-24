@@ -4654,6 +4654,7 @@
     "fields": {
       "baseURL": "基础URL",
       "defaultModel": "缺省模型",
+      "embeddingModel": "嵌入模型",
       "enabled": "已激活"
     },
     "provider": "人工智能供应商",

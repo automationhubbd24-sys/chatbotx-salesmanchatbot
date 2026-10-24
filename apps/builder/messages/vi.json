@@ -3795,6 +3795,7 @@
     "fields": {
       "baseURL": "Base URL",
       "defaultModel": "Model mặc định",
+      "embeddingModel": "Mô hình nhúng",
       "enabled": "Đang bật"
     },
     "provider": "AI Provider",

@@ -15,11 +15,14 @@ export type OpenaiCompatibleProviderPreset = z.infer<
 
 export type OpenaiCompatiblePresetConfig = {
   allowCustomModelId?: boolean
+  allowCustomEmbeddingModelId?: boolean
   label: string
   defaultBaseURL: string
   defaultModel: string
+  defaultEmbeddingModel?: string
   modelOptions: Array<{ label: string; value: string }>
   analyzeImageModelOptions?: Array<{ label: string; value: string }>
+  embeddingModelOptions?: Array<{ label: string; value: string }>
 }
 
 export const openaiCompatiblePresetConfigs: Record<

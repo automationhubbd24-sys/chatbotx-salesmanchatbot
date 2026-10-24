@@ -8,6 +8,7 @@ import {
   type ConnectAiProviderInput,
   connectAiProviderIntegration,
 } from "../integration-ai-provider/connect"
+import { productService } from "../product"
 
 export type UpdateOpenAIInput = { autoReply?: boolean }
 
@@ -38,6 +39,11 @@ class IntegrationOpenAIService extends BaseService {
         ? "updated the OpenAI integration configuration"
         : "connected a new OpenAI integration",
     )
+    if (!existing) {
+      await productService.scheduleEmbeddingRefreshPage({
+        workspaceId: input.workspaceId,
+      })
+    }
   }
 
   async update(

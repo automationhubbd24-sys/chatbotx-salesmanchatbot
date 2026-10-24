@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standaardmodel",
+      "embeddingModel": "Embeddingsmodel",
       "enabled": "Ingeschakeld"
     },
     "provider": "AI-provider",

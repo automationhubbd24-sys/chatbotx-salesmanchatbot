@@ -3753,6 +3753,7 @@
     "fields": {
       "baseURL": "Perus-URL",
       "defaultModel": "Oletusmalli",
+      "embeddingModel": "Upotusmalli",
       "enabled": "Käytössä"
     },
     "provider": "AI-palveluntarjoaja",
