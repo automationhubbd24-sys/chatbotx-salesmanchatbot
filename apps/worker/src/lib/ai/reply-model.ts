@@ -3,6 +3,7 @@ import {
   createAIProviderInstance,
   createOpenaiCompatibleModelInstance,
   getAIIntegrationInDB,
+  getOpenaiCompatibleAutoReplyIntegrationInDB,
 } from "@chatbotx.io/ai/server"
 import { integrationOpenaiCompatibleService } from "@chatbotx.io/business"
 import type {
@@ -39,24 +40,28 @@ export async function createReplyModel(props: {
   const { providerInfo, workspaceId } = props
 
   if (isOpenaiCompatibleProviderModel(providerInfo)) {
-    const integration =
+    const configuredIntegration =
       await integrationOpenaiCompatibleService.findByWorkspaceIdAndId({
         workspaceId,
         id: providerInfo.integrationId,
       })
+    const integration =
+      configuredIntegration?.enabled && configuredIntegration.autoReply
+        ? configuredIntegration
+        : await getOpenaiCompatibleAutoReplyIntegrationInDB({ workspaceId })
 
-    if (!(integration?.enabled && integration.autoReply)) {
+    if (!integration) {
       logger.info(
         {
           workspaceId,
           provider: "openaiCompatible",
           modelId: providerInfo.model,
           integrationId: providerInfo.integrationId,
-          integrationFound: Boolean(integration),
-          enabled: integration?.enabled ?? null,
-          autoReply: integration?.autoReply ?? null,
+          integrationFound: Boolean(configuredIntegration),
+          enabled: configuredIntegration?.enabled ?? null,
+          autoReply: configuredIntegration?.autoReply ?? null,
         },
-        "[automated-response] provider skipped: integration missing, disabled, or auto-reply off",
+        "[automated-response] provider skipped: no auto-reply-enabled integration found",
       )
       return null
     }
@@ -69,6 +74,8 @@ export async function createReplyModel(props: {
         integrationId: integration.id,
         integrationName: integration.name,
         preset: integration.preset,
+        usedCurrentAutoReplyIntegration:
+          integration.id !== providerInfo.integrationId,
       },
       "[automated-response] provider model resolved",
     )
