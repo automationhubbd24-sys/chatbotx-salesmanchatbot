@@ -1,10 +1,16 @@
-import { systemFunctionCatalog } from "@chatbotx.io/ai"
+import {
+  orderSystemFunctionIds,
+  systemFunctionCatalog,
+  systemFunctionGroupIds,
+} from "@chatbotx.io/ai"
 import { createStore } from "zustand/vanilla"
 import type { ListAIFilesResponse } from "@/features/ai-files/schema"
 import type { ListAIFunctionsResponse } from "@/features/ai-functions/schema"
 import type { ListAIMcpServersResponse } from "@/features/ai-mcp-servers/schema"
 import { getClientErrorMessage } from "@/lib/orpc/client-error"
 import { client } from "@/lib/orpc/orpc"
+
+const orderSystemFunctionIdSet = new Set<string>(orderSystemFunctionIds)
 
 type AIToolsState = {
   loadingAIFiles: boolean
@@ -41,10 +47,15 @@ export const createAIToolsStore = (props: Pick<AIToolsState, "workspaceId">) =>
     files: [],
     functions: [],
     mcpServers: [],
-    systemFunctions: Object.values(systemFunctionCatalog).map((item) => ({
-      id: item.id,
-      name: item.id,
-    })),
+    systemFunctions: [
+      ...Object.values(systemFunctionCatalog)
+        .filter((item) => !orderSystemFunctionIdSet.has(item.id))
+        .map((item) => ({ id: item.id, name: item.id })),
+      {
+        id: systemFunctionGroupIds.orderTools,
+        name: systemFunctionGroupIds.orderTools,
+      },
+    ],
 
     initialize: async () => {
       if (get().initialized) {

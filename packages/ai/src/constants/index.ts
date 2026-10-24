@@ -115,6 +115,21 @@ export const systemFunctionNames = {
   webSearch: "web_search",
 } as const
 
+export const systemFunctionGroupIds = {
+  orderTools: "order_tools",
+} as const
+
+export const orderSystemFunctionIds = [
+  systemFunctionNames.startOrderIntake,
+  systemFunctionNames.updateOrderIntake,
+  systemFunctionNames.getOrderIntake,
+  systemFunctionNames.updateOrderDraft,
+  systemFunctionNames.requestOrderConfirmation,
+  systemFunctionNames.confirmOrder,
+  systemFunctionNames.cancelOrderDraft,
+  systemFunctionNames.getOrderDetails,
+] as const
+
 export const systemFunctionCatalog = {
   [systemFunctionNames.connectUserToHuman]: {
     id: systemFunctionNames.connectUserToHuman,
@@ -146,14 +161,52 @@ export const systemFunctionCatalog = {
     description:
       "Retrieve customer-safe details for one active, searchable catalog product by its id.",
   },
-  [systemFunctionNames.startOrderIntake]: { id: systemFunctionNames.startOrderIntake, capability: "order_intake", description: "Start a new customer order-intake session for the supplied customer intent message. This does not create an order." },
-  [systemFunctionNames.updateOrderIntake]: { id: systemFunctionNames.updateOrderIntake, capability: "order_intake", description: "Update an explicit order-intake session with collected customer details. A draft order is created only after the server validates a phone number." },
-  [systemFunctionNames.getOrderIntake]: { id: systemFunctionNames.getOrderIntake, capability: "order_intake", description: "Get an explicit order-intake session by session id. It never infers an order from this conversation." },
-  [systemFunctionNames.updateOrderDraft]: { id: systemFunctionNames.updateOrderDraft, capability: "order_draft", description: "Update the explicit order draft identified by order id with customer-approved values." },
-  [systemFunctionNames.requestOrderConfirmation]: { id: systemFunctionNames.requestOrderConfirmation, capability: "order_confirmation", description: "Request customer confirmation for the explicit order identified by order id." },
-  [systemFunctionNames.confirmOrder]: { id: systemFunctionNames.confirmOrder, capability: "order_confirmation", description: "Confirm the explicit order identified by order id using its confirmation token and version." },
-  [systemFunctionNames.cancelOrderDraft]: { id: systemFunctionNames.cancelOrderDraft, capability: "order_draft", description: "Cancel the explicit order draft identified by order id." },
-  [systemFunctionNames.getOrderDetails]: { id: systemFunctionNames.getOrderDetails, capability: "order_details", description: "Retrieve order details by order id." },
+  [systemFunctionNames.startOrderIntake]: {
+    id: systemFunctionNames.startOrderIntake,
+    capability: "order_intake",
+    description:
+      "Start a new customer order-intake session for the supplied customer intent message. This does not create an order.",
+  },
+  [systemFunctionNames.updateOrderIntake]: {
+    id: systemFunctionNames.updateOrderIntake,
+    capability: "order_intake",
+    description:
+      "Update an explicit order-intake session with collected customer details. A draft order is created only after the server validates a phone number.",
+  },
+  [systemFunctionNames.getOrderIntake]: {
+    id: systemFunctionNames.getOrderIntake,
+    capability: "order_intake",
+    description:
+      "Get an explicit order-intake session by session id. It never infers an order from this conversation.",
+  },
+  [systemFunctionNames.updateOrderDraft]: {
+    id: systemFunctionNames.updateOrderDraft,
+    capability: "order_draft",
+    description:
+      "Update the explicit order draft identified by order id with customer-approved values.",
+  },
+  [systemFunctionNames.requestOrderConfirmation]: {
+    id: systemFunctionNames.requestOrderConfirmation,
+    capability: "order_confirmation",
+    description:
+      "Request customer confirmation for the explicit order identified by order id.",
+  },
+  [systemFunctionNames.confirmOrder]: {
+    id: systemFunctionNames.confirmOrder,
+    capability: "order_confirmation",
+    description:
+      "Confirm the explicit order identified by order id using its confirmation token and version.",
+  },
+  [systemFunctionNames.cancelOrderDraft]: {
+    id: systemFunctionNames.cancelOrderDraft,
+    capability: "order_draft",
+    description: "Cancel the explicit order draft identified by order id.",
+  },
+  [systemFunctionNames.getOrderDetails]: {
+    id: systemFunctionNames.getOrderDetails,
+    capability: "order_details",
+    description: "Retrieve order details by order id.",
+  },
   [systemFunctionNames.urlContext]: {
     id: systemFunctionNames.urlContext,
     capability: "url_context",

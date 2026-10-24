@@ -1,11 +1,16 @@
 "use client"
 
+import { orderSystemFunctionIds } from "@chatbotx.io/ai"
 import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
 import { useTranslations } from "next-intl"
 import { type ComponentPropsWithoutRef, useEffect } from "react"
 import { useFormContext } from "react-hook-form"
 import { useAIToolMultiSelectGroups } from "../hooks/use-ai-tool-multi-select-groups"
 import { useAIToolsStore } from "../provider/ai-tools-store-context"
+
+const legacyOrderToolValues = new Set(
+  orderSystemFunctionIds.map((id) => `sys:${id}`),
+)
 
 type AIToolMultiSelectProps = Omit<
   ComponentPropsWithoutRef<typeof MultiSelectField>,
@@ -45,7 +50,9 @@ export const AIToolMultiSelect = ({
       toolOptions.flatMap((group) => group.options.map((o) => o.value)),
     )
     const currentTools = (getValues(name) as string[]) ?? []
-    const validTools = currentTools.filter((tool) => allOptionValues.has(tool))
+    const validTools = currentTools.filter(
+      (tool) => allOptionValues.has(tool) || legacyOrderToolValues.has(tool),
+    )
 
     if (validTools.length < currentTools.length) {
       setValue(name, validTools, { shouldValidate: true, shouldDirty: true })

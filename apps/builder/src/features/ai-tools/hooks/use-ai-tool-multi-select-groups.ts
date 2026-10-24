@@ -1,6 +1,6 @@
 "use client"
 
-import { systemFunctionNames } from "@chatbotx.io/ai"
+import { systemFunctionGroupIds, systemFunctionNames } from "@chatbotx.io/ai"
 import type {
   AIFileModel,
   AIFunctionModel,
@@ -106,6 +106,7 @@ export const useAIToolMultiSelectGroups = ({
           mcp: t("fields.mcpServer.label"),
           sys: t("fields.systemFunction.label"),
           systemFunctions: {
+            [systemFunctionGroupIds.orderTools]: t("orders.title"),
             [systemFunctionNames.connectUserToHuman]: t(
               "fields.systemFunction.names.connectUserToHuman",
             ),
