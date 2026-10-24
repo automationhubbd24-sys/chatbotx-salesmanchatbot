@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS "ProductEmbedding" (
 ALTER TABLE "IntegrationOpenaiCompatible" ADD COLUMN IF NOT EXISTS "embeddingModel" text;--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "ProductEmbedding_productId_key" ON "ProductEmbedding" ("productId");--> statement-breakpoint
 CREATE INDEX IF NOT EXISTS "ProductEmbedding_workspaceId_idx" ON "ProductEmbedding" ("workspaceId");--> statement-breakpoint
-CREATE INDEX IF NOT EXISTS "ProductEmbedding_embedding_idx" ON "ProductEmbedding" USING hnsw ("embedding" vector_cosine_ops);--> statement-breakpoint
 DO $$ BEGIN
 	IF NOT EXISTS (
 		SELECT 1 FROM pg_constraint WHERE conname = 'ProductEmbedding_productId_Product_id_fkey'
