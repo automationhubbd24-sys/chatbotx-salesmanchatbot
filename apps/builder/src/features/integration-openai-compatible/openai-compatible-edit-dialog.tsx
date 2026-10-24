@@ -87,6 +87,7 @@ export function OpenaiCompatibleEditDialog({
           enabled: integration.enabled,
           name: integration.name,
           preset: integration.preset,
+          streaming: integration.streaming,
         },
       },
     },
@@ -151,6 +152,13 @@ export function OpenaiCompatibleEditDialog({
               formItemClassName="flex flex-row items-center justify-start gap-3 space-y-0"
               label={t("openaiCompatible.autoReply.label")}
               name="autoReply"
+              required
+            />
+            <SwitchField
+              description={t("openaiCompatible.streaming.description")}
+              formItemClassName="flex flex-row items-center justify-start gap-3 space-y-0"
+              label={t("openaiCompatible.streaming.label")}
+              name="streaming"
               required
             />
             <SwitchField

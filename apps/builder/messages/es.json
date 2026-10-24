@@ -3741,6 +3741,10 @@
       "description": "Todosow este proveedor un be used para automated AI respuestas.",
       "label": "AI Auto Respuesta"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Conectar AbrirAI-compatible proveedors para AI Agent ftodosback modelos.",
       "label": "AbrirAI-compatible proveedors"

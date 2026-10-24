@@ -18,6 +18,7 @@ function createIntegration(
     enabled: true,
     name: "Local Gateway",
     preset: "custom",
+    streaming: true,
     updatedAt: new Date("2026-01-01T00:00:00Z"),
     workspaceId: "workspace-1",
     ...overrides,

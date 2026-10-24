@@ -3983,6 +3983,10 @@
       "description": "Bu provayderin avtomatik AI cavabları üçün istifadəsinə icazə verin.",
       "label": "AI avtomatik cavabı"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AI agentinin ehtiyat modelləri üçün OpenAI-yə uyğun provayderləri qoşun.",
       "label": "OpenAI-yə uyğun provayderlər"

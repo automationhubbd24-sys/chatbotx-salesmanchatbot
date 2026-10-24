@@ -3741,6 +3741,10 @@
       "description": "Salli tämän palveluntarjoajan käyttö automaattisissa AI-vastauksissa.",
       "label": "Automaattinen AI-vastaus"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Yhdistä OpenAI-yhteensopivia palveluntarjoajia AI-agentin varamalleiksi.",
       "label": "OpenAI-yhteensopivat palveluntarjoajat"

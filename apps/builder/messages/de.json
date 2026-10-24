@@ -3741,6 +3741,10 @@
       "description": "Diesen Anbieter für automatische KI-Antworten zulassen.",
       "label": "Automatische KI-Antwort"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "OpenAI-kompatible Anbieter als Fallback-Modelle für KI-Agenten verbinden.",
       "label": "OpenAI-kompatible Anbieter"

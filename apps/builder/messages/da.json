@@ -3741,6 +3741,10 @@
       "description": "Tillad denne udbyder til være used for automated AI svar.",
       "label": "AI Auto Svar"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Forbind OpenAI-compatible providers for AI Agent fallback models.",
       "label": "OpenAI-compatible providers"

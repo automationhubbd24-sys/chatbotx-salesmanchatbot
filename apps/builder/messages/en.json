@@ -3983,6 +3983,10 @@
       "description": "Allow this provider to be used for automated AI replies.",
       "label": "AI Auto Reply"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Connect OpenAI-compatible providers for AI Agent fallback models.",
       "label": "OpenAI-compatible providers"

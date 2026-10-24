@@ -3741,6 +3741,10 @@
       "description": "Permite ca acest furnizor să fie utilizat pentru răspunsuri IA automate.",
       "label": "Răspuns automat IA"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Conectează furnizori compatibili cu OpenAI pentru modele de rezervă ale Agentului IA.",
       "label": "Furnizori compatibili cu OpenAI"

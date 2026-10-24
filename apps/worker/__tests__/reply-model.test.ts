@@ -44,6 +44,7 @@ describe("createReplyModel OpenAI-compatible", () => {
       id: "configured-integration",
       enabled: true,
       autoReply: true,
+      streaming: false,
       name: "OpenRouter custom",
       preset: "custom",
     }
@@ -62,7 +63,7 @@ describe("createReplyModel OpenAI-compatible", () => {
       integration,
       modelId: providerInfo.model,
     })
-    expect(result).toEqual({ model: "custom-model" })
+    expect(result).toEqual({ model: "custom-model", streaming: false })
   })
 
   test("uses the current enabled auto-reply integration when the stored binding is stale", async () => {
@@ -70,6 +71,7 @@ describe("createReplyModel OpenAI-compatible", () => {
       id: "current-integration",
       enabled: true,
       autoReply: true,
+      streaming: true,
       name: "Current custom provider",
       preset: "custom",
     }
@@ -93,7 +95,7 @@ describe("createReplyModel OpenAI-compatible", () => {
       integration: currentIntegration,
       modelId: providerInfo.model,
     })
-    expect(result).toEqual({ model: "current-model" })
+    expect(result).toEqual({ model: "current-model", streaming: true })
   })
 
   test("skips the provider when there is no enabled auto-reply integration", async () => {

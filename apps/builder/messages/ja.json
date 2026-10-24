@@ -3720,6 +3720,10 @@
       "description": "このプロバイダーをAI自動返信に使用できるようにします。",
       "label": "AI自動返信"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AIエージェントのフォールバックモデルとして、OpenAI互換プロバイダーを接続します。",
       "label": "OpenAI互換プロバイダー"

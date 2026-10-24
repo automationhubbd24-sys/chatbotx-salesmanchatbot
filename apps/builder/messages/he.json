@@ -1746,6 +1746,10 @@
       "description": "אפשרו שימוש בספק זה לתשובות AI אוטומטיות.",
       "label": "מענה אוטומטי באמצעות AI"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "חברו ספקים תואמי OpenAI כמודלי חלופה לסוכן AI.",
       "label": "ספקים תואמי OpenAI"

@@ -108,6 +108,15 @@ function OpenaiCompatibleProviderRow({
           />
         </div>
         <div className="flex items-center gap-2 text-sm">
+          <span>{t("openaiCompatible.streaming.label")}</span>
+          <Switch
+            aria-label={t("openaiCompatible.streaming.label")}
+            checked={integration.streaming}
+            disabled={isPending}
+            onCheckedChange={(streaming) => execute({ streaming })}
+          />
+        </div>
+        <div className="flex items-center gap-2 text-sm">
           <span>{t("openaiCompatible.autoReply.label")}</span>
           <Switch
             aria-label={t("openaiCompatible.autoReply.label")}

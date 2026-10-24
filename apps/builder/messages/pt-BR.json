@@ -3720,6 +3720,10 @@
       "description": "Permita que este provedor seja usado em respostas automáticas por IA.",
       "label": "Resposta automática por IA"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Conecte provedores compatíveis com a OpenAI como modelos alternativos dos agentes de IA.",
       "label": "Provedores compatíveis com a OpenAI"

@@ -3741,6 +3741,10 @@
       "description": "Consenti l'utilizzo di questo provider per le risposte automatiche dell'IA.",
       "label": "Risposta automatica IA"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Collega provider compatibili con OpenAI da usare come modelli di riserva degli agenti IA.",
       "label": "Provider compatibili con OpenAI"

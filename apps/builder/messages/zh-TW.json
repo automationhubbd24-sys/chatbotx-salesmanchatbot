@@ -3774,6 +3774,10 @@
       "description": "允許此提供者用於自動 AI 回覆。",
       "label": "人工智慧自動回覆"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "連接 OpenAI AI Agent 後備模型的相容提供者。",
       "label": "OpenAI相容供應商"

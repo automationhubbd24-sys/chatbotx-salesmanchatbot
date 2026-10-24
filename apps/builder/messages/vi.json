@@ -3783,6 +3783,10 @@
       "description": "Cho phép provider này được dùng cho phản hồi AI tự động.",
       "label": "AI Auto Reply"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Kết nối các provider tương thích OpenAI cho danh sách fallback của AI Agent.",
       "label": "Provider tương thích OpenAI"

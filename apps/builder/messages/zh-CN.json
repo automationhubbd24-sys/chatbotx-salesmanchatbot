@@ -4642,6 +4642,10 @@
       "description": "允许此提供者用于自动 AI 回复。",
       "label": "人工智能自动回复"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "连接 OpenAI AI Agent 后备模型的兼容提供者。",
       "label": "OpenAI兼容供应商"

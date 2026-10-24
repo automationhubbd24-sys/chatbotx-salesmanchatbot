@@ -41,6 +41,7 @@ import {
 } from "@chatbotx.io/worker-config"
 import {
   type LanguageModel,
+  generateText,
   type ModelMessage,
   stepCountIs,
   streamText,
@@ -189,6 +190,10 @@ export type GeneratedAIReply = {
   modelId: string
 }
 
+async function* textToAsyncIterable(text: string): AsyncIterable<string> {
+  yield text
+}
+
 const CURRENT_MESSAGE_PRIORITY_POLICY = [
   "CURRENT CUSTOMER MESSAGE PRIORITY (REQUIRED):",
   "- The latest customer message is the request you must answer. Conversation summaries and earlier messages are background only.",
@@ -300,25 +305,48 @@ export async function generateAIReplyText(
       }
       const provider = getProviderName(providerInfo)
 
-      const result = await streamText({
-        model: modelConfig.model,
-        system: guardedSystemPrompt,
-        messages,
-        maxOutputTokens: aiAgent.maxOutputTokens,
-        temperature: aiAgent.temperature,
-        tools: {},
-        toolChoice: "none",
-        stopWhen: stepCountIs(1),
-        timeout: {
-          totalMs: aiTimeouts.aiTotal,
-          stepMs: aiTimeouts.aiStep,
-          chunkMs: aiTimeouts.aiChunk,
-        },
-        abortSignal: controller.signal,
-      })
+      const textStream =
+        modelConfig.streaming === false
+          ? textToAsyncIterable(
+              (
+                await generateText({
+                  model: modelConfig.model,
+                  system: guardedSystemPrompt,
+                  messages,
+                  maxOutputTokens: aiAgent.maxOutputTokens,
+                  temperature: aiAgent.temperature,
+                  tools: {},
+                  toolChoice: "none",
+                  stopWhen: stepCountIs(1),
+                  timeout: {
+                    totalMs: aiTimeouts.aiTotal,
+                    stepMs: aiTimeouts.aiStep,
+                  },
+                  abortSignal: controller.signal,
+                })
+              ).text,
+            )
+          : (
+              await streamText({
+                model: modelConfig.model,
+                system: guardedSystemPrompt,
+                messages,
+                maxOutputTokens: aiAgent.maxOutputTokens,
+                temperature: aiAgent.temperature,
+                tools: {},
+                toolChoice: "none",
+                stopWhen: stepCountIs(1),
+                timeout: {
+                  totalMs: aiTimeouts.aiTotal,
+                  stepMs: aiTimeouts.aiStep,
+                  chunkMs: aiTimeouts.aiChunk,
+                },
+                abortSignal: controller.signal,
+              })
+            ).textStream
 
       const { fullText } = await processStreamingText(
-        result.textStream,
+        textStream,
         async () => {
           // generate-only: never send
         },
@@ -875,26 +903,29 @@ async function runAIReply(
     let toolErrorsCount = 0
 
     const hasTools = Object.keys(tools).length > 0
-    const result = await streamText({
+    const createTextOptions = () => ({
       model: modelConfig.model,
       system: systemPrompt,
       messages,
       maxOutputTokens: aiAgent.maxOutputTokens,
       temperature: aiAgent.temperature,
       tools,
-      toolChoice: hasTools ? "auto" : "none",
+      toolChoice: hasTools ? ("auto" as const) : ("none" as const),
       stopWhen: stepCountIs(5),
-      timeout: {
-        totalMs: aiTimeouts.aiTotal,
-        stepMs: aiTimeouts.aiStep,
-        chunkMs: aiTimeouts.aiChunk,
-      },
+    })
+    const callbacks = {
       onStepFinish: ({
         stepNumber,
         finishReason,
         rawFinishReason,
         toolCalls,
         toolResults,
+      }: {
+        stepNumber: number
+        finishReason: string
+        rawFinishReason?: string
+        toolCalls: Array<{ toolName?: string } | undefined>
+        toolResults: unknown[]
       }) => {
         stepCount = Math.max(stepCount, stepNumber + 1)
         finishReasons.push({
@@ -922,6 +953,11 @@ async function runAIReply(
         durationMs,
         success,
         error,
+      }: {
+        toolCall?: { toolName?: string; toolCallId?: string }
+        durationMs?: number
+        success: boolean
+        error?: unknown
       }) => {
         if (!success) {
           const normalizedError = normalizeError(error)
@@ -941,8 +977,34 @@ async function runAIReply(
           )
         }
       },
-      abortSignal,
-    })
+    }
+    const textStream =
+      modelConfig.streaming === false
+        ? textToAsyncIterable(
+            (
+              await generateText({
+                ...createTextOptions(),
+                timeout: {
+                  totalMs: aiTimeouts.aiTotal,
+                  stepMs: aiTimeouts.aiStep,
+                },
+                ...callbacks,
+                abortSignal,
+              })
+            ).text,
+          )
+        : (
+            await streamText({
+              ...createTextOptions(),
+              timeout: {
+                totalMs: aiTimeouts.aiTotal,
+                stepMs: aiTimeouts.aiStep,
+                chunkMs: aiTimeouts.aiChunk,
+              },
+              ...callbacks,
+              abortSignal,
+            })
+          ).textStream
 
     const buildToolStats = () => {
       const toolNames = Array.from(toolNamesSet).slice(0, 10)
@@ -981,7 +1043,7 @@ async function runAIReply(
     if (richModeEnabled) {
       const richResult = await handleRichAIReply({
         props,
-        textStream: result.textStream,
+        textStream,
         directSendTracker,
         provider,
         modelId: selectedModelId,
@@ -993,7 +1055,7 @@ async function runAIReply(
     }
 
     const { messageCount, fullText } = await processStreamingText(
-      result.textStream,
+      textStream,
       async (_segment, parts) => {
         if (directSendTracker.sent) {
           return

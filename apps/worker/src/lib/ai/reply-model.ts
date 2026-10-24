@@ -36,6 +36,7 @@ export async function createReplyModel(props: {
 }): Promise<null | {
   model: LanguageModel
   providerInstance?: AIProviderInstance
+  streaming?: boolean
 }> {
   const { providerInfo, workspaceId } = props
 
@@ -85,6 +86,7 @@ export async function createReplyModel(props: {
         integration,
         modelId: providerInfo.model,
       }),
+      streaming: integration.streaming,
     }
   }
 

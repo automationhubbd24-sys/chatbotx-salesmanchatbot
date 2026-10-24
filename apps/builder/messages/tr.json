@@ -3741,6 +3741,10 @@
       "description": "Bu sağlayıcının otomatik AI yanıtları için kullanılmasına izin ver.",
       "label": "AI Otomatik Yanıt"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AI Aracısı yedek modelleri için OpenAI uyumlu sağlayıcıları bağlayın.",
       "label": "OpenAI uyumlu sağlayıcılar"

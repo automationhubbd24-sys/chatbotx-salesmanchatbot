@@ -3741,6 +3741,10 @@
       "description": "Autoriser ce fournisseur pour les réponses automatiques par IA.",
       "label": "Réponse automatique par IA"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Connectez des fournisseurs compatibles avec OpenAI comme modèles de secours des agents IA.",
       "label": "Fournisseurs compatibles avec OpenAI"

@@ -3741,6 +3741,10 @@
       "description": "Sta toe dat deze provider wordt gebruikt voor automatische AI-antwoorden.",
       "label": "Automatisch AI-antwoord"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Koppel OpenAI-compatibele providers voor terugvalmodellen van AI-agents.",
       "label": "OpenAI-compatibele providers"

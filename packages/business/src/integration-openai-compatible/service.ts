@@ -51,6 +51,7 @@ export type ConnectOpenaiCompatibleInput = {
   apiKey: string
   autoReply?: boolean
   enabled?: boolean
+  streaming?: boolean
 }
 
 export type UpdateOpenaiCompatibleInput = Partial<
@@ -170,6 +171,7 @@ class IntegrationOpenaiCompatibleService extends BaseService {
           integrationId: integration.id,
           name: props.name,
           preset: props.preset,
+          streaming: props.streaming ?? true,
           workspaceId: props.workspaceId,
         })
       })

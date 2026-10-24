@@ -4642,6 +4642,10 @@
       "description": "Tillåt att denna leverantör används för automatiska AI-svar.",
       "label": "Automatiskt AI-svar"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Anslut OpenAI-kompatibla leverantörer som reservmodeller för AI-agenter.",
       "label": "OpenAI-kompatibla leverantörer"

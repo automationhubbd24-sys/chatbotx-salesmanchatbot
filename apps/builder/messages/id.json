@@ -3741,6 +3741,10 @@
       "description": "Izinkan penyedia ini digunakan untuk balasan AI otomatis.",
       "label": "Balasan Otomatis AI"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Hubungkan penyedia yang kompatibel dengan OpenAI untuk model cadangan Agen AI.",
       "label": "Penyedia yang kompatibel dengan OpenAI"

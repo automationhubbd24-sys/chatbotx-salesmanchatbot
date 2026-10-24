@@ -1,0 +1,1 @@
+ALTER TABLE "IntegrationOpenaiCompatible" ADD COLUMN "streaming" boolean DEFAULT true NOT NULL;

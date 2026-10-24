@@ -10,6 +10,7 @@ export type IntegrationOpenaiCompatibleResource = Pick<
   | "defaultModel"
   | "enabled"
   | "autoReply"
+  | "streaming"
   | "createdAt"
   | "updatedAt"
 > & {
@@ -28,6 +29,7 @@ export function mapIntegrationOpenaiCompatibleResource(
     defaultModel: integration.defaultModel,
     enabled: integration.enabled,
     autoReply: integration.autoReply,
+    streaming: integration.streaming,
     createdAt: integration.createdAt,
     updatedAt: integration.updatedAt,
   }

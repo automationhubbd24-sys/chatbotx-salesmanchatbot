@@ -27,6 +27,7 @@ export const connectOpenaiCompatibleSchema = z.object({
   enabled: z.boolean().default(true),
   name: z.string().trim().min(1).max(255),
   preset: openaiCompatibleProviderPresets.default("lmstudio"),
+  streaming: z.boolean().default(true),
 })
 export type ConnectOpenaiCompatibleSchema = z.infer<
   typeof connectOpenaiCompatibleSchema
@@ -54,6 +55,7 @@ export function resolveOpenaiCompatibleDefaultModel(input: {
 export const updateOpenaiCompatibleEnabledSchema = z.object({
   autoReply: z.boolean().optional(),
   enabled: z.boolean().optional(),
+  streaming: z.boolean().optional(),
 })
 export type UpdateOpenaiCompatibleEnabledSchema = z.infer<
   typeof updateOpenaiCompatibleEnabledSchema

@@ -3741,6 +3741,10 @@
       "description": "السماح باستخدام هذا المزوّد للردود التلقائية بالذكاء الاصطناعي.",
       "label": "الرد التلقائي بالذكاء الاصطناعي"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "ربط مزوّدين متوافقين مع OpenAI لاستخدامهم كنماذج احتياطية لوكيل الذكاء الاصطناعي.",
       "label": "مزوّدو الخدمات المتوافقون مع OpenAI"
