@@ -215,6 +215,51 @@ describe("handleSummarizeConversation", () => {
     )
   })
 
+  test("self-heals a 'summarizing' flag with a missing start timestamp", async () => {
+    mocks.get
+      .mockResolvedValueOnce({
+        summarizing: true,
+        summarizingStartedAt: null,
+        needsResummarize: false,
+        summary: "old",
+        history: Array.from({ length: 25 }, (_, i) => ({
+          role: "user",
+          content: `msg-${i}`,
+          messageId: `msg-${i}`,
+        })),
+      })
+      .mockResolvedValueOnce({
+        summarizing: true,
+        needsResummarize: false,
+        summary: "old",
+        history: Array.from({ length: 25 }, (_, i) => ({
+          role: "user",
+          content: `msg-${i}`,
+          messageId: `msg-${i}`,
+        })),
+      })
+    mocks.findFirstConversation.mockResolvedValue({
+      id: "conv-1",
+      workspaceId: "ws-1",
+    })
+    mocks.summarizeConversation.mockResolvedValue("recovered summary")
+
+    await handleSummarizeConversation({ conversationId: "conv-1" })
+
+    expect(mocks.loggerWarn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        conversationId: "conv-1",
+        missingSummarizingStartedAt: true,
+      }),
+      expect.stringContaining("missing its start timestamp"),
+    )
+    expect(mocks.summarizeConversation).toHaveBeenCalled()
+    expect(mocks.update).toHaveBeenCalledWith(
+      "conv-1",
+      expect.objectContaining({ summary: "recovered summary" }),
+    )
+  })
+
   test("logs and does not throw when the follow-up requeue fails after a successful summarize", async () => {
     mocks.get
       .mockResolvedValueOnce({

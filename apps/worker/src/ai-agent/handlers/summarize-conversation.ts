@@ -74,7 +74,7 @@ export async function handleSummarizeConversation(
         const startedAt = context.summarizingStartedAt
         const staleForMs = startedAt === null ? null : Date.now() - startedAt
         const isStale =
-          staleForMs !== null && staleForMs > STALE_SUMMARIZING_THRESHOLD_MS
+          staleForMs === null || staleForMs > STALE_SUMMARIZING_THRESHOLD_MS
 
         if (!isStale) {
           await aiContextStore.update(conversationId, {
@@ -87,8 +87,12 @@ export async function handleSummarizeConversation(
         // `.then`/`.catch` (worker crash, redeploy, OOM) — no other code path
         // will clear this flag. Recover by proceeding as if it were false.
         logger.warn(
-          { conversationId, staleForMs },
-          "[summarizer-worker] 'summarizing' flag stale for longer than a healthy summarize call can take — recovering from a likely crashed job",
+          {
+            conversationId,
+            staleForMs,
+            missingSummarizingStartedAt: startedAt === null,
+          },
+          "[summarizer-worker] 'summarizing' flag stale for longer than a healthy summarize call can take, or missing its start timestamp — recovering from a likely crashed job",
         )
       }
 

@@ -156,7 +156,7 @@ export async function summarizeConversation(props: {
     return finalSummary
   } catch (error) {
     logger.error(
-      { error, workspaceId, provider: selectedProvider },
+      { err: error, workspaceId, provider: selectedProvider },
       "[summarizer] Failed to generate summary",
     )
     return existingSummary || ""
