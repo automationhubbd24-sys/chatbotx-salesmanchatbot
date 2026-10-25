@@ -1,5 +1,8 @@
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
+import type {
+  IntegrationOpenaiCompatibleEmbeddingModel,
+  IntegrationOpenaiCompatibleModel,
+} from "@chatbotx.io/database/types"
 import { secretTextAuthSchema } from "@chatbotx.io/sdk"
 
 class InvalidOpenaiCompatibleAuthError extends Error {
@@ -47,4 +50,19 @@ export function createOpenaiCompatibleEmbeddingModelInstance(props: {
   return createOpenaiCompatibleProvider(props.integration).embeddingModel(
     props.modelId,
   )
+}
+
+export function createOpenaiCompatibleTextEmbeddingModelInstance(props: {
+  integration: IntegrationOpenaiCompatibleEmbeddingModel
+}) {
+  const authParsed = secretTextAuthSchema.safeParse(props.integration.auth)
+  if (!authParsed.success) {
+    throw new InvalidOpenaiCompatibleAuthError()
+  }
+
+  return createOpenAICompatible({
+    name: "openai-compatible-embedding",
+    baseURL: props.integration.baseURL,
+    apiKey: authParsed.data.secretText,
+  }).embeddingModel(props.integration.embeddingModel)
 }

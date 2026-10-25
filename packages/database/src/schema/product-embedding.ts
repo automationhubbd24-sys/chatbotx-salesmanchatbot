@@ -34,6 +34,10 @@ export const productEmbeddingModel = pgTable(
   },
   (table) => [
     uniqueIndex("ProductEmbedding_productId_key").on(table.productId),
+    index("ProductEmbedding_embedding_idx").using(
+      "hnsw",
+      table.embedding.op("vector_cosine_ops"),
+    ),
     index("ProductEmbedding_workspaceId_idx").using(
       "btree",
       table.workspaceId.asc().nullsLast(),

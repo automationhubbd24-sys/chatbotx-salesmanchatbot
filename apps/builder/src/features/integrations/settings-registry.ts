@@ -41,6 +41,11 @@ export const INTEGRATION_SETTINGS_REGISTRY: readonly IntegrationSettingsEntry[] 
       titleKey: "openaiCompatible.title",
       icon: BotIcon,
     },
+    {
+      slug: "openai-compatible-text-embedding",
+      titleKey: "openaiCompatibleTextEmbedding.title",
+      icon: BotIcon,
+    },
     { slug: "google-sheets", titleKey: "googleSheets.title", icon: TableIcon },
     { slug: "facebook-ads", titleKey: "facebookAds.title", icon: SiFacebook },
     { slug: "make", titleKey: "make.title", icon: SiMake },

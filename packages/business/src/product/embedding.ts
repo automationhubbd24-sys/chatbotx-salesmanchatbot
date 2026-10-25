@@ -47,6 +47,26 @@ function parseApiKey(auth: unknown, provider: string) {
 async function resolveProductEmbeddingModel(
   workspaceId: string,
 ): Promise<ProductEmbeddingModel> {
+  const integrationOpenaiCompatibleEmbedding =
+    await db.query.integrationOpenaiCompatibleEmbeddingModel.findFirst({
+      where: { workspaceId, enabled: true },
+    })
+  if (integrationOpenaiCompatibleEmbedding) {
+    const modelId = integrationOpenaiCompatibleEmbedding.embeddingModel.trim()
+    return {
+      model: createOpenAICompatible({
+        name: "openai-compatible-embedding",
+        baseURL: integrationOpenaiCompatibleEmbedding.baseURL,
+        apiKey: parseApiKey(
+          integrationOpenaiCompatibleEmbedding.auth,
+          "OpenAI-compatible text embedding",
+        ),
+      }).embeddingModel(modelId),
+      modelId,
+      provider: "openaiCompatibleEmbedding",
+    }
+  }
+
   const integrationOpenai = await db.query.integrationOpenaiModel.findFirst({
     where: { workspaceId },
   })

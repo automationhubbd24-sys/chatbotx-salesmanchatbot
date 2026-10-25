@@ -4664,6 +4664,23 @@
       "presetAlreadyConnected": "Den här förinställningen är redan ansluten för den här arbetsytan."
     }
   },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
+    }
+  },
   "openrouter": {
     "autoReply": {
       "description": "Aktivera automatiska AI-svar som drivs av OpenRouter.",

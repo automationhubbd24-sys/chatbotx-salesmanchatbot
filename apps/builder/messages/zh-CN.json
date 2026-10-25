@@ -4664,6 +4664,23 @@
       "presetAlreadyConnected": "此缺省已为此工作区连接。"
     }
   },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
+    }
+  },
   "openrouter": {
     "autoReply": {
       "description": "激活由 OpenRouter 提供支持的 AI 自动回复。",

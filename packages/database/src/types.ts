@@ -70,6 +70,8 @@ export type IntegrationOpenrouterModel =
   typeof schema.integrationOpenrouterModel.$inferSelect
 export type IntegrationOpenaiCompatibleModel =
   typeof schema.integrationOpenaiCompatibleModel.$inferSelect
+export type IntegrationOpenaiCompatibleEmbeddingModel =
+  typeof schema.integrationOpenaiCompatibleEmbeddingModel.$inferSelect
 export type IntegrationGetResponseModel =
   typeof schema.integrationGetResponseModel.$inferSelect
 export type IntegrationModel = typeof schema.integrationModel.$inferSelect

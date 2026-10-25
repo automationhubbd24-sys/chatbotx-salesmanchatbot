@@ -94,9 +94,9 @@ const fromCredentialProvider = <Key extends StoreBindingKey>(
 
 /**
  * Compile-time exhaustive `Record<IntegrationType, ConnectionAdapter | null>`.
- * `null` marks a type with no connect lifecycle yet: `metaCatalog`,
- * `outlookCalendar`, and `threads` have no live builder feature or supported
- * connection engine path. `chatbotx` DOES have a real adapter (its `store` is
+ * `null` marks a type with no generic connection-engine lifecycle:
+ * `metaCatalog`, `openaiCompatibleEmbedding`, `outlookCalendar`, and `threads`.
+ * `chatbotx` DOES have a real adapter (its `store` is
  * `undefined` — it has no satellite table; the `Inbox` row is the whole
  * connection).
  */
@@ -141,6 +141,7 @@ export const CONNECTION_REGISTRY: StoreBoundConnectionRegistry = {
     openaiCompatibleConnectionProvider,
     "openaiCompatible",
   ),
+  openaiCompatibleEmbedding: null,
   openrouter: fromCredentialProvider(
     openrouterConnectionProvider,
     "openrouter",

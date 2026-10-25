@@ -98,6 +98,7 @@ import { integrationMessengerRelations } from "./integration-messenger"
 import { integrationMoosendRelations } from "./integration-moosend"
 import { integrationOpenaiRelations } from "./integration-openai"
 import { integrationOpenaiCompatibleRelations } from "./integration-openai-compatible"
+import { integrationOpenaiCompatibleEmbeddingRelations } from "./integration-openai-compatible-embedding"
 import { integrationOpenrouterRelations } from "./integration-openrouter"
 import { integrationOutlookCalendarRelations } from "./integration-outlook-calendar"
 import { integrationSendGridRelations } from "./integration-sendgrid"
@@ -253,6 +254,7 @@ export const relations = {
   ...integrationOpenrouterRelations,
   ...integrationOutlookCalendarRelations,
   ...integrationOpenaiCompatibleRelations,
+  ...integrationOpenaiCompatibleEmbeddingRelations,
   ...contactsOnBroadcastsRelations,
   ...contactsToTagsRelations,
   ...tagChannelRelations,

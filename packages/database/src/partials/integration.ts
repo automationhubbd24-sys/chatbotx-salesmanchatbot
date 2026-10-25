@@ -23,6 +23,7 @@ export const integrationTypes = z.enum([
   "moosend",
   "openai",
   "openaiCompatible",
+  "openaiCompatibleEmbedding",
   "openrouter",
   "outlookCalendar",
   "sendGrid",

@@ -605,6 +605,7 @@ export const CONNECTION_STORE_BINDINGS: Partial<
     ],
     defaultConfigValues: () => AI_KEY_PROVIDER_DEFAULTS.openai,
   }),
+  openaiCompatibleEmbedding: null,
   openaiCompatible: makeWorkspaceIntegrationBinding({
     table: integrationOpenaiCompatibleModel,
     tableName: "IntegrationOpenaiCompatible",
