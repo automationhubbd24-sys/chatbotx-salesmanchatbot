@@ -81,36 +81,6 @@ async function resolveProductEmbeddingModel(
     }
   }
 
-  const integrationOpenaiCompatible =
-    await db.query.integrationOpenaiCompatibleModel.findFirst({
-      where: {
-        workspaceId,
-        enabled: true,
-        embeddingModel: { isNotNull: true },
-      },
-    })
-  const modelId = integrationOpenaiCompatible?.embeddingModel?.trim()
-  if (integrationOpenaiCompatible && modelId) {
-    const authParsed = secretTextAuthSchema.safeParse(
-      integrationOpenaiCompatible.auth,
-    )
-    if (integrationOpenaiCompatible.auth !== null && !authParsed.success) {
-      throw new ProductEmbeddingConfigurationError(
-        "Invalid OpenAI-compatible integration auth configuration",
-      )
-    }
-    const apiKey = authParsed.success ? authParsed.data.secretText : undefined
-    return {
-      model: createOpenAICompatible({
-        name: integrationOpenaiCompatible.preset || "openai-compatible",
-        baseURL: integrationOpenaiCompatible.baseURL,
-        apiKey,
-      }).embeddingModel(modelId),
-      modelId,
-      provider: "openaiCompatible",
-    }
-  }
-
   const integrationGemini = await db.query.integrationGeminiModel.findFirst({
     where: { workspaceId },
   })

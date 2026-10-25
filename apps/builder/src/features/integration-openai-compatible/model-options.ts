@@ -7,26 +7,18 @@ import type { IntegrationOpenaiCompatibleResource } from "./schema/resource"
 
 export function shouldUseCustomOpenaiCompatibleModelInput(
   config: OpenaiCompatiblePresetConfig | undefined,
-  kind: "default" | "analyzeImage" | "embedding" = "default",
+  kind: "default" | "analyzeImage" = "default",
 ) {
   const modelOptions = buildOpenaiCompatibleModelOptions(config, kind)
-  const allowCustomModelId =
-    kind === "embedding"
-      ? config?.allowCustomEmbeddingModelId
-      : config?.allowCustomModelId
-  return Boolean(allowCustomModelId || modelOptions.length === 0)
+  return Boolean(config?.allowCustomModelId || modelOptions.length === 0)
 }
 
 export function buildOpenaiCompatibleModelOptions(
   config: OpenaiCompatiblePresetConfig | undefined,
-  kind: "default" | "analyzeImage" | "embedding" = "default",
+  kind: "default" | "analyzeImage" = "default",
 ): SelectOption[] {
   if (kind === "analyzeImage") {
     return config?.analyzeImageModelOptions ?? []
-  }
-
-  if (kind === "embedding") {
-    return config?.embeddingModelOptions ?? []
   }
 
   return config?.modelOptions ?? []

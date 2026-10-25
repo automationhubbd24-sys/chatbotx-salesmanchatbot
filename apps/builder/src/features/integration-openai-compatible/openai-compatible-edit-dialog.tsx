@@ -84,7 +84,6 @@ export function OpenaiCompatibleEditDialog({
           autoReply: integration.autoReply,
           baseURL: integration.baseURL,
           defaultModel: integration.defaultModel,
-          embeddingModel: integration.embeddingModel ?? "",
           enabled: integration.enabled,
           name: integration.name,
           preset: integration.preset,
@@ -99,8 +98,6 @@ export function OpenaiCompatibleEditDialog({
     openaiCompatiblePresetConfigs[preset ?? integration.preset]
   const useCustomModelInput =
     shouldUseCustomOpenaiCompatibleModelInput(presetConfig)
-  const useCustomEmbeddingModelInput =
-    shouldUseCustomOpenaiCompatibleModelInput(presetConfig, "embedding")
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>
@@ -143,21 +140,6 @@ export function OpenaiCompatibleEditDialog({
                 name="defaultModel"
                 options={buildOpenaiCompatibleModelOptions(presetConfig)}
                 required
-              />
-            )}
-            {useCustomEmbeddingModelInput ? (
-              <InputField
-                label={t("openaiCompatible.fields.embeddingModel")}
-                name="embeddingModel"
-              />
-            ) : (
-              <ComboboxField
-                label={t("openaiCompatible.fields.embeddingModel")}
-                name="embeddingModel"
-                options={buildOpenaiCompatibleModelOptions(
-                  presetConfig,
-                  "embedding",
-                )}
               />
             )}
             <InputField

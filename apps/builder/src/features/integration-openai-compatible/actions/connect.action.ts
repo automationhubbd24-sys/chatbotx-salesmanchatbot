@@ -18,7 +18,6 @@ import {
   type ConnectOpenaiCompatibleSchema,
   connectOpenaiCompatibleSchema,
   resolveOpenaiCompatibleDefaultModel,
-  resolveOpenaiCompatibleEmbeddingModel,
 } from "../schema/request"
 
 export const connectOpenaiCompatibleAction = workspaceActionClient
@@ -75,7 +74,6 @@ export const connectOpenaiCompatibleAction = workspaceActionClient
           ...parsedInput,
           baseURL,
           defaultModel: resolveOpenaiCompatibleDefaultModel(parsedInput),
-          embeddingModel: resolveOpenaiCompatibleEmbeddingModel(parsedInput),
         })
       } catch (error) {
         if (isBaseUrlValidationError(error)) {

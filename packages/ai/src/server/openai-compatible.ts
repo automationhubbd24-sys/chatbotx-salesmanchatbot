@@ -43,15 +43,6 @@ export function createOpenaiCompatibleModelInstance(props: {
   return createOpenaiCompatibleProvider(props.integration)(props.modelId)
 }
 
-export function createOpenaiCompatibleEmbeddingModelInstance(props: {
-  integration: IntegrationOpenaiCompatibleModel
-  modelId: string
-}) {
-  return createOpenaiCompatibleProvider(props.integration).embeddingModel(
-    props.modelId,
-  )
-}
-
 export function createOpenaiCompatibleTextEmbeddingModelInstance(props: {
   integration: IntegrationOpenaiCompatibleEmbeddingModel
 }) {

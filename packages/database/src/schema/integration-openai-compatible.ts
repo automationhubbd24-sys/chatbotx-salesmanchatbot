@@ -19,7 +19,6 @@ export const integrationOpenaiCompatibleModel = pgTable(
     autoReply: boolean().default(false).notNull(),
     baseURL: text().notNull(),
     defaultModel: text().notNull(),
-    embeddingModel: text(),
     enabled: boolean().default(true).notNull(),
     integrationId: bigintAsString()
       .notNull()

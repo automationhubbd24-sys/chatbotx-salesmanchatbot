@@ -9,7 +9,6 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
   updateSet: vi.fn(),
   updateWhere: vi.fn(),
-  scheduleEmbeddingRefreshPage: vi.fn(),
   validateBaseUrl: vi.fn(async (baseURL: string) => baseURL.trim()),
 }))
 
@@ -19,12 +18,6 @@ vi.mock("../src/integration-openai-compatible/validate-base-url", () => ({
 }))
 
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord: vi.fn() }))
-
-vi.mock("../src/product", () => ({
-  productService: {
-    scheduleEmbeddingRefreshPage: mocks.scheduleEmbeddingRefreshPage,
-  },
-}))
 
 vi.mock("@chatbotx.io/database/client", () => ({
   and: vi.fn(),
@@ -116,28 +109,8 @@ describe("IntegrationOpenaiCompatibleService", () => {
     expect(mocks.insertValues).toHaveBeenLastCalledWith(
       expect.objectContaining({
         baseURL: "https://example.com/v1",
-        embeddingModel: null,
       }),
     )
-  })
-
-  test("stores a trimmed embedding model and starts the bounded backfill after connect", async () => {
-    await integrationOpenaiCompatibleService.connect({
-      workspaceId: "workspace-1",
-      name: "NIM",
-      preset: "nim",
-      baseURL: "https://example.com/v1",
-      defaultModel: "model-1",
-      embeddingModel: "  text-embedding-3-large  ",
-      apiKey: "secret",
-    })
-
-    expect(mocks.insertValues).toHaveBeenLastCalledWith(
-      expect.objectContaining({ embeddingModel: "text-embedding-3-large" }),
-    )
-    expect(mocks.scheduleEmbeddingRefreshPage).toHaveBeenCalledWith({
-      workspaceId: "workspace-1",
-    })
   })
 
   test("validates changed base URL on update and persists normalized value", async () => {
@@ -161,26 +134,6 @@ describe("IntegrationOpenaiCompatibleService", () => {
         baseURL: "https://new.example.com/v1",
       }),
     )
-  })
-
-  test("starts a backfill only when a nonempty embedding model changes", async () => {
-    mocks.findFirst.mockResolvedValue({
-      id: "openai-compatible-1",
-      embeddingModel: "old-model",
-    })
-
-    await integrationOpenaiCompatibleService.update(
-      "workspace-1",
-      "openai-compatible-1",
-      { embeddingModel: " new-model " },
-    )
-
-    expect(mocks.updateSet).toHaveBeenCalledWith(
-      expect.objectContaining({ embeddingModel: "new-model" }),
-    )
-    expect(mocks.scheduleEmbeddingRefreshPage).toHaveBeenCalledWith({
-      workspaceId: "workspace-1",
-    })
   })
 
   test("does not run environment validation when normalized base URL is unchanged", async () => {

@@ -5,10 +5,6 @@ import {
 import { z } from "zod"
 
 const defaultModelSchema = z.string().trim().min(1).max(255)
-const embeddingModelSchema = z.preprocess(
-  (value) => (value === "" ? undefined : value),
-  defaultModelSchema.optional(),
-)
 const baseURLSchema = z
   .string()
   .trim()
@@ -28,7 +24,6 @@ export const connectOpenaiCompatibleSchema = z.object({
   autoReply: z.boolean().default(false),
   baseURL: baseURLSchema,
   defaultModel: defaultModelSchema.optional(),
-  embeddingModel: embeddingModelSchema,
   enabled: z.boolean().default(true),
   name: z.string().trim().min(1).max(255),
   preset: openaiCompatibleProviderPresets.default("lmstudio"),
@@ -54,17 +49,6 @@ export function resolveOpenaiCompatibleDefaultModel(input: {
   return (
     input.defaultModel ??
     openaiCompatiblePresetConfigs[input.preset].defaultModel
-  )
-}
-
-export function resolveOpenaiCompatibleEmbeddingModel(input: {
-  preset: z.infer<typeof openaiCompatibleProviderPresets>
-  embeddingModel?: string
-}) {
-  return (
-    input.embeddingModel ??
-    openaiCompatiblePresetConfigs[input.preset].defaultEmbeddingModel ??
-    null
   )
 }
 

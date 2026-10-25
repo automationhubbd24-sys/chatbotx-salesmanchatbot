@@ -17,7 +17,6 @@ import { workspaceActionClient } from "@/lib/safe-action"
 import { verifyOpenaiCompatibleProvider } from "../lib"
 import {
   resolveOpenaiCompatibleDefaultModel,
-  resolveOpenaiCompatibleEmbeddingModel,
   type UpdateOpenaiCompatibleEnabledSchema,
   type UpdateOpenaiCompatibleSchema,
   updateOpenaiCompatibleEnabledSchema,
@@ -114,13 +113,6 @@ export const updateOpenaiCompatibleAction = workspaceActionClient
               ? {}
               : {
                   defaultModel: resolveOpenaiCompatibleDefaultModel({
-                    preset: parsedInput.preset,
-                  }),
-                }),
-            ...(parsedInput.embeddingModel || !parsedInput.preset
-              ? {}
-              : {
-                  embeddingModel: resolveOpenaiCompatibleEmbeddingModel({
                     preset: parsedInput.preset,
                   }),
                 }),
