@@ -18,6 +18,31 @@ describe("catalog freshness guard", () => {
       `base\n\n${helpTexts.catalogFreshnessGuard}`,
     )
   })
+
+  test("grounds live product facts in only the latest search result", () => {
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "ONLY the most recent search_products result",
+    )
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "not returned by that result",
+    )
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "prior assistant responses",
+    )
+    expect(helpTexts.catalogFreshnessGuard).toContain("knowledge-base/RAG")
+  })
+
+  test("requires a no-matches response rather than historic products", () => {
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "no matching available products were found",
+    )
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "Do not offer products from conversation history or RAG results",
+    )
+    expect(helpTexts.catalogFreshnessGuard).toContain(
+      "available status is authoritative",
+    )
+  })
 })
 
 describe("AI Agent Action tool protocol", () => {

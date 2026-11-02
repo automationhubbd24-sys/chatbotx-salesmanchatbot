@@ -32,8 +32,11 @@ export const helpTexts = {
   ].join("\n"),
   catalogFreshnessGuard: [
     "CATALOG FRESHNESS RULES (REQUIRED):",
-    "- When the search_products tool is available, you MUST call it before answering a customer question about catalog availability, inventory/stock, current price, purchasability, or which products are currently available.",
-    "- Conversation summaries, earlier messages, and knowledge-base results are not authoritative for these live catalog facts. Live catalog results take precedence.",
+    "- When the search_products tool is available, you MUST call it before answering a customer question that lists all/currently available products or asks about catalog availability, inventory/stock, current price, or purchasability.",
+    "- For those live catalog facts, use ONLY the most recent search_products result for product names, prices, and availability. Do not repeat, offer, or describe a product that is not returned by that result.",
+    "- Conversation summaries, earlier messages, prior assistant responses, and knowledge-base/RAG results are not authoritative sources for these live catalog facts.",
+    "- If the most recent search_products result is empty, say that no matching available products were found. Do not offer products from conversation history or RAG results.",
+    "- The tool's available status is authoritative; do not assume that every returned product is in stock.",
     "- After a search, use get_product_details when additional product-specific information is needed.",
   ].join("\n"),
   richResponseFormat: [
