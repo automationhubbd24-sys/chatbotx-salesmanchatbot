@@ -561,6 +561,12 @@ class ProductService extends BaseService {
       .sort((left, right) => right.score - left.score)
       .map(({ product }) => product)
 
+    if (/^(all\s+)?(products?|items?|catalog|inventory|available)$/i.test(
+      input.query.trim(),
+    )) {
+      return lexicalProducts.slice(0, limit)
+    }
+
     try {
       const queryEmbedding = await createProductQueryEmbedding({
         workspaceId: input.workspaceId,

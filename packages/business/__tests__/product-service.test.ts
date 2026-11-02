@@ -330,6 +330,20 @@ describe("productService semantic agent search", () => {
     ])
   })
 
+  test("lists the live catalog without an embedding request", async () => {
+    const first = agentProduct("product-1", "Mango Tea")
+    const second = agentProduct("product-2", "Redbul")
+    mocks.listForAgentSearch.mockResolvedValue([first, second])
+
+    await expect(
+      productService.searchForAgent({
+        workspaceId: "workspace-1",
+        query: "all products",
+      }),
+    ).resolves.toEqual([first, second])
+    expect(mocks.createProductQueryEmbedding).not.toHaveBeenCalled()
+  })
+
   test("merges lexical results without duplicates when vector results are sparse", async () => {
     const vector = agentProduct("product-1", "Blue Shirt")
     const lexical = agentProduct("product-2", "Blue Hat")
