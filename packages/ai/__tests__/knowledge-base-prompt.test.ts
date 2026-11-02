@@ -19,6 +19,19 @@ describe("knowledge base prompt policy", () => {
     expect(helpTexts.knowledgeBaseGuard).toContain("company-specific details")
   })
 
+  test("keeps live catalog facts out of knowledge-base authority", () => {
+    expect(helpTexts.knowledgeBaseGuard).toContain("search_products")
+    expect(helpTexts.knowledgeBaseGuard).toContain("current price")
+    expect(helpTexts.knowledgeBaseGuard).toContain("not authoritative")
+  })
+
+  test("catalog freshness policy requires live product search", () => {
+    expect(helpTexts.catalogFreshnessGuard).toContain("search_products")
+    expect(helpTexts.catalogFreshnessGuard).toContain("availability")
+    expect(helpTexts.catalogFreshnessGuard).toContain("current price")
+    expect(helpTexts.catalogFreshnessGuard).toContain("get_product_details")
+  })
+
   test("prevents knowledge-base use for conversational non-search cases", () => {
     expect(helpTexts.knowledgeBaseGuard).toContain("greetings")
     expect(helpTexts.knowledgeBaseGuard).toContain("small talk")

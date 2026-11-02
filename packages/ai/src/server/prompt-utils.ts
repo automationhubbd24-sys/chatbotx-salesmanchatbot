@@ -40,6 +40,16 @@ export function appendFabricationGuard(
   return `${systemPrompt}\n\n${helpTexts.fabricationGuard}`.trim()
 }
 
+export function appendCatalogFreshnessGuard(
+  systemPrompt: string,
+  tools: ToolSet,
+): string {
+  if (!tools[systemFunctionNames.searchProducts]) {
+    return systemPrompt
+  }
+  return `${systemPrompt}\n\n${helpTexts.catalogFreshnessGuard}`.trim()
+}
+
 export function appendKnowledgeBaseGuard(
   systemPrompt: string,
   tools: ToolSet,

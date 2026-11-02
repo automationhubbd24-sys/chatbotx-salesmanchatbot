@@ -7,6 +7,7 @@ import {
 import {
   aiContextService,
   aiIntegrationService,
+  appendCatalogFreshnessGuard,
   appendFabricationGuard,
   appendKnowledgeBaseGuard,
   appendToolOutputGuard,
@@ -181,7 +182,10 @@ async function runAIReplyInternal(
       : promptBase
 
     const systemPrompt = appendKnowledgeBaseGuard(
-      appendFabricationGuard(appendToolOutputGuard(completePrompt), tools),
+      appendCatalogFreshnessGuard(
+        appendFabricationGuard(appendToolOutputGuard(completePrompt), tools),
+        tools,
+      ),
       tools,
     )
 

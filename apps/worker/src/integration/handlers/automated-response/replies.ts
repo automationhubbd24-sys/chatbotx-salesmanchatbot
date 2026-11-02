@@ -11,6 +11,7 @@ import { orderService } from "@chatbotx.io/business"
 import {
   aiContextService,
   appendAIAgentActionToolProtocol,
+  appendCatalogFreshnessGuard,
   appendFabricationGuard,
   appendHandoffPolicy,
   appendKnowledgeBaseGuard,
@@ -877,8 +878,11 @@ async function runAIReply(
     const guardedPrompt = appendUnavailableWebSearchPolicy(
       appendHandoffPolicy(
         appendKnowledgeBaseGuard(
-          appendFabricationGuard(
-            appendToolOutputGuard(promptWithActionProtocol),
+          appendCatalogFreshnessGuard(
+            appendFabricationGuard(
+              appendToolOutputGuard(promptWithActionProtocol),
+              tools,
+            ),
             tools,
           ),
           tools,

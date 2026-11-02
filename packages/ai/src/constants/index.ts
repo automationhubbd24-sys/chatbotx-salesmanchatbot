@@ -25,9 +25,16 @@ export const helpTexts = {
   ].join("\n"),
   knowledgeBaseGuard: [
     "KNOWLEDGE BASE RULES (REQUIRED):",
-    "- You MUST call search_knowledge_base BEFORE answering any question about products, services, prices, images, or company-specific details.",
+    "- You MUST call search_knowledge_base BEFORE answering questions about static product details, services, images, or company-specific details.",
+    "- For live catalog availability, inventory/stock, current price, purchasability, or which products are currently available, use search_products when it is available; knowledge-base results are not authoritative.",
     "- Do NOT use search_knowledge_base for greetings, small talk, or simple clarification.",
     "- If search_knowledge_base returns no results or insufficient information, tell the user you could not find matching information.",
+  ].join("\n"),
+  catalogFreshnessGuard: [
+    "CATALOG FRESHNESS RULES (REQUIRED):",
+    "- When the search_products tool is available, you MUST call it before answering a customer question about catalog availability, inventory/stock, current price, purchasability, or which products are currently available.",
+    "- Conversation summaries, earlier messages, and knowledge-base results are not authoritative for these live catalog facts. Live catalog results take precedence.",
+    "- After a search, use get_product_details when additional product-specific information is needed.",
   ].join("\n"),
   richResponseFormat: [
     "Output:",
@@ -153,7 +160,7 @@ export const systemFunctionCatalog = {
     id: systemFunctionNames.searchProducts,
     capability: "catalog_search",
     description:
-      "Search the workspace's live catalog for active, searchable products that match the customer's query.",
+      "Search the workspace's authoritative, current catalog for active, searchable products, including availability and purchasability.",
   },
   [systemFunctionNames.getProductDetails]: {
     id: systemFunctionNames.getProductDetails,
