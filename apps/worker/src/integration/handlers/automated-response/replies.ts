@@ -430,7 +430,7 @@ async function createReplyToolset(options: {
       mcp: toolPrefixes.enum.mcp,
       sys: toolPrefixes.enum.sys,
     },
-    orderCustomFieldCatalog: await orderService.listCustomFieldDefinitions({ workspaceId: conversation.workspaceId }).then((definitions) => definitions.filter((definition) => definition.aiVisible).map((definition) => ({ key: definition.key, label: definition.label, type: definition.type, options: definition.options }))),
+    orderCustomFieldCatalog: await orderService.listCustomFieldDefinitions({ workspaceId: conversation.workspaceId }).then((definitions) => definitions.filter((definition) => definition.aiVisible).map((definition) => ({ key: definition.key, label: definition.label, type: definition.type, required: definition.required, orderType: definition.orderType, options: definition.options }))),
     systemFunctionContextGetter: async () => ({
       workspaceId: conversation.workspaceId,
       conversationId: conversation.id,

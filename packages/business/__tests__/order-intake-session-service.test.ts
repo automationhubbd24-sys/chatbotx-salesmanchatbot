@@ -201,10 +201,10 @@ describe("orderIntakeSessionService", () => {
     const session = await orderIntakeSessionService.recordDetails({
       workspaceId: "workspace-1",
       sessionId: "session-1",
-      data: { phone: "০১৯৩৭০৪৮৩০৭৭" },
+      data: { phone: "০১৯৩৭০৪৮৩০৭" },
     })
 
-    expect(session.collectedData.phone).toBe("+88019370483077")
+    expect(session.collectedData.phone).toBe("+8801937048307")
   })
 
   test("preserves explicit E.164 phone normalization without a workspace country", async () => {
@@ -224,24 +224,37 @@ describe("orderIntakeSessionService", () => {
     expect(session.collectedData.phone).toBe("+8801956871403")
   })
 
-  test("rejects local phones when the workspace country is missing or unknown", async () => {
+  test.each([
+    ["01310148077", "unknown"],
+    ["০১৩১-০১৪ ৮০৭৭", "unknown"],
+    ["8801310148077", "unknown"],
+    ["+880 (13) 1014-8077", null],
+  ])("normalizes Bangladesh phone %s when workspace country is %s", async (phone, targetCountry) => {
+    mocks.findWorkspace.mockResolvedValue({ targetCountry })
+    mocks.findById.mockResolvedValue(baseSession)
+    mocks.update.mockImplementation(async ({ values }) => ({
+      ...baseSession,
+      collectedData: values.collectedData,
+      version: 2,
+    }))
+
+    const session = await orderIntakeSessionService.recordDetails({
+      workspaceId: "workspace-1",
+      sessionId: "session-1",
+      data: { phone },
+    })
+
+    expect(session.collectedData.phone).toBe("+8801310148077")
+  })
+
+  test("rejects malformed and ambiguous Bangladesh phone input", async () => {
     mocks.findById.mockResolvedValue(baseSession)
 
     await expect(
       orderIntakeSessionService.recordDetails({
         workspaceId: "workspace-1",
         sessionId: "session-1",
-        data: { phone: "01956871403" },
-      }),
-    ).rejects.toThrow("A valid phone number is required.")
-
-    mocks.findWorkspace.mockResolvedValue({ targetCountry: null })
-
-    await expect(
-      orderIntakeSessionService.recordDetails({
-        workspaceId: "workspace-1",
-        sessionId: "session-1",
-        data: { phone: "01956871403" },
+        data: { phone: "1310148077" },
       }),
     ).rejects.toThrow("A valid phone number is required.")
   })

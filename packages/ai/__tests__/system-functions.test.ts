@@ -3,6 +3,65 @@ import { systemFunctionNames } from "../src/constants"
 import { getAISystemTools } from "../src/server/tools/system-functions"
 
 describe("e-commerce system functions", () => {
+  test("includes the seller field catalog in order intake and draft update descriptions", () => {
+    const catalog = [
+      {
+        key: "size",
+        label: "Size",
+        type: "select",
+        required: true,
+        orderType: "product",
+        options: ["S", "M"],
+      },
+    ]
+    const tools = getAISystemTools({
+      selectedSystemIds: [
+        systemFunctionNames.updateOrderIntake,
+        systemFunctionNames.updateOrderDraft,
+      ],
+      orderCustomFieldCatalog: catalog,
+    })
+
+    for (const id of [
+      systemFunctionNames.updateOrderIntake,
+      systemFunctionNames.updateOrderDraft,
+    ]) {
+      const description = (tools[id] as { description?: unknown }).description
+      expect(description).toEqual(expect.any(String))
+      expect(description).toContain(JSON.stringify(catalog))
+    }
+  })
+
+  test("embeds the serialized seller catalog in both order update tool descriptions", () => {
+    const catalog = [
+      {
+        key: "size",
+        label: "Size",
+        type: "select",
+        options: ["S", "M"],
+        required: true,
+        orderType: "product",
+      },
+    ]
+    const tools = getAISystemTools({
+      selectedSystemIds: [
+        systemFunctionNames.updateOrderIntake,
+        systemFunctionNames.updateOrderDraft,
+      ],
+      orderCustomFieldCatalog: catalog,
+    })
+
+    const serializedCatalog = JSON.stringify(catalog)
+    expect(
+      (tools[systemFunctionNames.updateOrderIntake] as { description: string })
+        .description,
+    ).toContain(serializedCatalog)
+    expect(
+      (tools[systemFunctionNames.updateOrderDraft] as { description: string })
+        .description,
+    ).toContain(serializedCatalog)
+  })
+
   test("selects catalog tools, validates trimmed search input, and dispatches executors", async () => {
     const searchProducts = vi.fn().mockResolvedValue({
       products: [{ id: "product-1", name: "Shoe" }],

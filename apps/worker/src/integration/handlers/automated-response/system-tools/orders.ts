@@ -12,6 +12,7 @@ import {
 } from "@chatbotx.io/ai/server"
 import { systemFunctionNames } from "@chatbotx.io/ai"
 import { orderIntakeSessionService, orderService } from "@chatbotx.io/business"
+import { ChatbotXException } from "@chatbotx.io/business/errors"
 import type { OrderType } from "@chatbotx.io/database/partials"
 import type { OrderConversationSessionModel } from "@chatbotx.io/database/types"
 import { normalizeError } from "universal-error-normalizer"
@@ -80,6 +81,17 @@ function executor<T extends keyof SystemToolExecutors>(name: T, run: (args: Para
     try { return await run(args as Parameters<NonNullable<SystemToolExecutors[T]>>[0], context) }
     catch (error) {
       logger.error({ err: normalizeError(error), workspaceId: context.workspaceId, conversationId: context.conversationId }, `[orders] ${name} failed`)
+      if (error instanceof ChatbotXException && error.code === "validation") {
+        return {
+          order: null,
+          error: error.message,
+          validation: {
+            field: error.field,
+            code: error.code,
+            message: error.message,
+          },
+        }
+      }
       return { order: null, error: "Unable to process the order request." }
     }
   }) as NonNullable<SystemToolExecutors[T]>

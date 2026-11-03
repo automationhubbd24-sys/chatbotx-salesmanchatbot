@@ -7,17 +7,19 @@ import { logger } from "../../logger"
 export interface SystemFunctionContext {
   channel?: string
   contactId: string
-  triggerMessageId?: string
   conversationId: string
-  sendMessage?: (text: string) => Promise<void>
-  triggerFlow?: (flowId: string) => Promise<void>
-  workspaceId: string
   orderCustomFieldCatalog?: Array<{
     key: string
     label: string
-    type: string
     options?: string[] | null
+    orderType: string
+    required: boolean
+    type: string
   }>
+  sendMessage?: (text: string) => Promise<void>
+  triggerFlow?: (flowId: string) => Promise<void>
+  triggerMessageId?: string
+  workspaceId: string
 }
 
 export interface SystemFunctionHandoffRequest {
@@ -249,9 +251,9 @@ export type SystemToolExecutors = Partial<{
 }>
 
 export interface GetAISystemToolsOptions {
+  orderCustomFieldCatalog?: SystemFunctionContext["orderCustomFieldCatalog"]
   selectedSystemIds: string[]
   systemFunctionContextGetter?: () => Promise<SystemFunctionContext | null>
-  orderCustomFieldCatalog?: SystemFunctionContext["orderCustomFieldCatalog"]
   systemToolExecutors?: SystemToolExecutors
 }
 
@@ -356,9 +358,32 @@ const buildOrderTool = (options: GetAISystemToolsOptions, id: SystemFunctionId, 
     },
   })
 
+const withOrderCustomFieldCatalog = (
+  description: string,
+  options: GetAISystemToolsOptions,
+) =>
+  `${description} Use the customFields object with the exact field key from the seller's field catalog. Available fields: ${JSON.stringify(options.orderCustomFieldCatalog ?? [])}`
+
+const buildOrderIntakeUpdateTool = (options: GetAISystemToolsOptions) =>
+  tool({
+    description: withOrderCustomFieldCatalog(
+      systemFunctionCatalog[systemFunctionNames.updateOrderIntake].description,
+      options,
+    ),
+    inputSchema: updateOrderIntakeSchema,
+    execute: async (args) => {
+      const context = await options.systemFunctionContextGetter?.()
+      const executor = options.systemToolExecutors?.[systemFunctionNames.updateOrderIntake]
+      return executor ? executor(args, context ?? null) : { order: null }
+    },
+  })
+
 const buildOrderUpdateTool = (options: GetAISystemToolsOptions) =>
   tool({
-    description: `${systemFunctionCatalog[systemFunctionNames.updateOrderDraft].description} Use the customFields object with the exact field key from the seller's field catalog. Available fields: ${JSON.stringify(options.orderCustomFieldCatalog ?? [])}`,
+    description: withOrderCustomFieldCatalog(
+      systemFunctionCatalog[systemFunctionNames.updateOrderDraft].description,
+      options,
+    ),
     inputSchema: updateOrderDraftSchema,
     execute: async (args) => {
       const context = await options.systemFunctionContextGetter?.()
@@ -413,7 +438,7 @@ const systemToolBuilders: Record<
   [systemFunctionNames.searchProducts]: buildSearchProductsTool,
   [systemFunctionNames.getProductDetails]: buildGetProductDetailsTool,
   [systemFunctionNames.startOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.startOrderIntake, startOrderIntakeSchema),
-  [systemFunctionNames.updateOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.updateOrderIntake, updateOrderIntakeSchema),
+  [systemFunctionNames.updateOrderIntake]: buildOrderIntakeUpdateTool,
   [systemFunctionNames.getOrderIntake]: (o) => buildOrderTool(o, systemFunctionNames.getOrderIntake, currentOrderIntakeSchema),
   [systemFunctionNames.updateOrderDraft]: buildOrderUpdateTool,
   [systemFunctionNames.requestOrderConfirmation]: (o) => buildOrderTool(o, systemFunctionNames.requestOrderConfirmation, requestOrderConfirmationSchema),

@@ -12,10 +12,15 @@ import { workspaceService } from "../workspace/service"
 
 const UNKNOWN_TARGET_COUNTRY = "unknown"
 const BENGALI_DIGITS = "০১২৩৪৫৬৭৮৯"
-const BANGLADESH_LOCAL_PHONE_REGEX = /^01\d{10}$/
+const BANGLADESH_LOCAL_PHONE_REGEX = /^01\d{9}$/
+const BANGLADESH_COUNTRY_PHONE_REGEX = /^8801\d{9}$/
+const AMBIGUOUS_BANGLADESH_PHONE_REGEX = /^1\d{9}$/
 
 const normalizeBengaliDigits = (value: string) =>
   value.replace(/[০-৯]/g, (digit) => String(BENGALI_DIGITS.indexOf(digit)))
+
+const removePhoneFormatting = (value: string) =>
+  value.replace(/[\s().,/-]/g, "")
 
 const resolveDefaultRegion = (
   targetCountry: string | null | undefined,
@@ -375,20 +380,27 @@ class OrderIntakeSessionService {
     const workspace = await workspaceService.find({
       where: { id: workspaceId },
     })
-    const normalizedValue = normalizeBengaliDigits(value.trim())
-    const phone = parsePhoneNumberFromString(
-      normalizedValue,
-      resolveDefaultRegion(workspace?.targetCountry),
+    const normalizedValue = removePhoneFormatting(
+      normalizeBengaliDigits(value.trim()),
     )
-    if (phone?.isValid()) {
-      return phone.number
+    let bangladeshPhone: string | undefined
+    if (BANGLADESH_LOCAL_PHONE_REGEX.test(normalizedValue)) {
+      bangladeshPhone = `+880${normalizedValue.slice(1)}`
+    } else if (BANGLADESH_COUNTRY_PHONE_REGEX.test(normalizedValue)) {
+      bangladeshPhone = `+${normalizedValue}`
     }
 
-    if (
-      workspace?.targetCountry === "BD" &&
-      BANGLADESH_LOCAL_PHONE_REGEX.test(normalizedValue)
-    ) {
-      return `+880${normalizedValue.slice(1)}`
+    let phone: ReturnType<typeof parsePhoneNumberFromString>
+    if (bangladeshPhone) {
+      phone = parsePhoneNumberFromString(bangladeshPhone)
+    } else if (!AMBIGUOUS_BANGLADESH_PHONE_REGEX.test(normalizedValue)) {
+      phone = parsePhoneNumberFromString(
+        normalizedValue,
+        resolveDefaultRegion(workspace?.targetCountry),
+      )
+    }
+    if (phone?.isValid()) {
+      return phone.number
     }
 
     throw validationException("phone", "A valid phone number is required.")
