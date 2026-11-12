@@ -1,0 +1,38 @@
+name: salesmanchatbot-javascript-executor
+
+services:
+  javascript-executor:
+    platform: linux/amd64
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: apps/javascript-executor/docker/Dockerfile
+    environment:
+      JAVASCRIPT_EXECUTOR_TOKEN: ${JAVASCRIPT_EXECUTOR_TOKEN}
+      MAX_CONCURRENCY: ${MAX_CONCURRENCY:-2}
+    networks:
+      - javascript-executor-network
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,noexec,nosuid,nodev
+    pids_limit: 128
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 512M
+          pids: 128
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3210/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  javascript-executor-network:
+    external: true
+    name: salesmanchatbot-javascript-executor-network

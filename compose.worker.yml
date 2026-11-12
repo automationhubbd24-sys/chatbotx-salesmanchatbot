@@ -1,0 +1,25 @@
+name: salesmanchatbot-worker
+
+services:
+  worker:
+    platform: linux/amd64
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: apps/worker/docker/Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      JAVASCRIPT_EXECUTOR_URL: "http://javascript-executor:3210"
+      REALTIME_INTERNAL_URL: "http://realtime:1999"
+    networks:
+      - salesmanchatbot-network
+      - javascript-executor-network
+
+networks:
+  salesmanchatbot-network:
+    external: true
+    name: salesmanchatbot-network
+  javascript-executor-network:
+    external: true
+    name: salesmanchatbot-javascript-executor-network
