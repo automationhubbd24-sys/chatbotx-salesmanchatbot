@@ -57,7 +57,7 @@ vi.mock(
   }),
 )
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/calling", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/calling", () => ({
   getCallingSettings: getCallingSettingsMock,
   getCallPermissions: getCallPermissionsMock,
   // Real implementation — the gate is only as good as the key it reads.
@@ -71,11 +71,11 @@ vi.mock("@chatbotx.io/integration-whatsapp/api/calling", () => ({
       ?.can_perform_action === true,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: withCacheMock,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   callPermissionStatuses: {
     permanent: "permanent",
     temporary: "temporary",
@@ -91,8 +91,8 @@ vi.mock("@chatbotx.io/business", () => ({
   workspaceService: { findById: findWorkspaceByIdMock },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code = "systemError", httpStatusCode = 400) {
@@ -103,11 +103,11 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { whatsapp: "whatsapp" } },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     findByInboxIdForWorkspace: findByInboxIdForWorkspaceMock,
   },

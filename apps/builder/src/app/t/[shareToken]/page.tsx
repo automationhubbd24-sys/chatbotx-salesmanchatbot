@@ -1,15 +1,15 @@
-import { templateService, workspaceMemberService } from "@chatbotx.io/business"
-import { AspectRatio } from "@chatbotx.io/ui/components/ui/aspect-ratio"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { templateService, workspaceMemberService } from "@salesmanchatbot.io/business"
+import { AspectRatio } from "@salesmanchatbot.io/ui/components/ui/aspect-ratio"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { cache } from "react"

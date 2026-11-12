@@ -2,14 +2,14 @@ import {
   platformCredentialService,
   resolveTenantSettingsByOwner,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { db, isUniqueViolationError } from "@chatbotx.io/database/client"
-import { accountModel, userModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { db, isUniqueViolationError } from "@salesmanchatbot.io/database/client"
+import { accountModel, userModel } from "@salesmanchatbot.io/database/schema"
 import {
   DEFAULT_ACCOUNT_CREDENTIALS_SUBJECT,
   sendAccountCredentials,
-} from "@chatbotx.io/mail"
+} from "@salesmanchatbot.io/mail"
 import { generateRandomString, hashPassword } from "better-auth/crypto"
 
 const TEMP_PASSWORD_LENGTH = 16
@@ -59,7 +59,7 @@ export async function provisionResellerAccount(
     livemode,
   })
   if (!smtp) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       "Reseller has no SMTP credential configured; cannot send account credentials",
       "smtpCredentialMissing",
       400,
@@ -146,7 +146,7 @@ export async function provisionResellerAccount(
         .returning({ id: userModel.id })
 
       if (!createdUser) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Failed to create provisioned user",
           "provisionFailed",
           500,

@@ -11,8 +11,8 @@ import {
   notInArray,
   relationsFilterToSQL,
   sql,
-} from "@chatbotx.io/database/client"
-import { rootFolderId } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { rootFolderId } from "@salesmanchatbot.io/database/partials"
 import {
   contactInboxModel,
   contactModel,
@@ -20,16 +20,16 @@ import {
   contactToTagChannelModel,
   tagChannelModel,
   tagModel,
-} from "@chatbotx.io/database/schema"
-import type { TagChannelModel, TagModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { TagChannelModel, TagModel } from "@salesmanchatbot.io/database/types"
 import {
   likeContains,
   parseOrderByAsObject,
   parsePagination,
-} from "@chatbotx.io/database/utils"
-import { emitTagApplied, emitTagRemoved } from "@chatbotx.io/events"
-import { withCache } from "@chatbotx.io/redis"
-import { createId, isNumericId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { emitTagApplied, emitTagRemoved } from "@salesmanchatbot.io/events"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId, isNumericId } from "@salesmanchatbot.io/utils"
 import { adsConversionService } from "../ads-conversion/service"
 import { BaseService } from "../base.service"
 import { type ContactAccessScope, contactService } from "../contact"

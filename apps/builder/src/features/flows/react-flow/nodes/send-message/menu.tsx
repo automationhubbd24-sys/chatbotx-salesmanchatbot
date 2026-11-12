@@ -1,11 +1,11 @@
-import { type ChannelType, channelTypes } from "@chatbotx.io/database/partials"
+import { type ChannelType, channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   CHANNEL_FLOW_POLICIES,
   getChannelFlowPolicy,
   type StepType,
   stepSupport,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   CreditCardIcon,
   ImageIcon,

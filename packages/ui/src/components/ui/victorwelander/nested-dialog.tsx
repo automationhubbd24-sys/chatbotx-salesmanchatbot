@@ -5,7 +5,7 @@
 import * as React from "react";
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { X } from "lucide-react";
-import { cn } from "@chatbotx.io/ui/lib/utils";
+import { cn } from "@salesmanchatbot.io/ui/lib/utils";
 
 interface DialogContextValue {
   innerOpen: boolean;

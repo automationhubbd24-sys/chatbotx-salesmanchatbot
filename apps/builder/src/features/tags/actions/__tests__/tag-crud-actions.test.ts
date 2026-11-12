@@ -5,14 +5,14 @@ const mockCreate = vi.fn()
 const mockSoftDelete = vi.fn()
 const mockReturnValidationErrors = vi.fn((_schema, errors) => errors)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: {
     create: (...args: unknown[]) => mockCreate(...args),
     softDelete: (...args: unknown[]) => mockSoftDelete(...args),
   },
 }))
 
-class FakeChatbotXException extends Error {
+class FakesalesmanChatbotException extends Error {
   code: string
   constructor(message: string, code = "validation") {
     super(message)
@@ -20,8 +20,8 @@ class FakeChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: FakeChatbotXException,
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: FakesalesmanChatbotException,
 }))
 
 vi.mock("next-safe-action", () => ({
@@ -76,7 +76,7 @@ describe("createTagAction", () => {
 
   test("maps a validation exception to a field-level form error", async () => {
     mockCreate.mockRejectedValue(
-      new FakeChatbotXException("Name is already taken."),
+      new FakesalesmanChatbotException("Name is already taken."),
     )
 
     await expect(

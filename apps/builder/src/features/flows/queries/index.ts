@@ -1,4 +1,4 @@
-import { flowService } from "@chatbotx.io/business"
+import { flowService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   FindFlowParams,

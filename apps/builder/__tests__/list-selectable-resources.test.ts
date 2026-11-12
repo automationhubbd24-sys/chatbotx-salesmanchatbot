@@ -10,7 +10,7 @@ const { mockListFlows, mockListTags, mockListKeywords, mockListSettings } =
     mockListSettings: vi.fn(),
   }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   templateSelectableResourceRepository: {
     listFlows: mockListFlows,
     listTags: mockListTags,

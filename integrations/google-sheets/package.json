@@ -1,17 +1,17 @@
 {
-  "name": "@chatbotx.io/integration-google-sheets",
+  "name": "@salesmanchatbot.io/integration-google-sheets",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/sdk": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/sdk": "workspace:*",
     "google-auth-library": "^10.6.2",
     "googleapis": "^171.4.0"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "^24.10.4",
     "msw": "^2.7.3",
     "typescript": "^5",

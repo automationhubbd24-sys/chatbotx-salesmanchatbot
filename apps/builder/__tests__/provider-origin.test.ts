@@ -9,7 +9,7 @@ const { mockFindActiveByTenantId, mockFindByOwner } = vi.hoisted(() => ({
   mockFindByOwner: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customDomainService: {
     findActiveByTenantId: mockFindActiveByTenantId,
   },

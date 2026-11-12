@@ -1,10 +1,10 @@
-import { and, db, eq } from "@chatbotx.io/database/client"
+import { and, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   integrationModel,
   integrationOpenaiCompatibleEmbeddingModel,
-} from "@chatbotx.io/database/schema"
-import { AuthType, type SecretTextAuthValue } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { AuthType, type SecretTextAuthValue } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { productService } from "../product"
 import { validateOpenaiCompatibleBaseUrlForEnvironment } from "../integration-openai-compatible/validate-base-url"

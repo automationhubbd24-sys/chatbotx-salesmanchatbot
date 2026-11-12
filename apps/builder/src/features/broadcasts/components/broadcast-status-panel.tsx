@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { PanelLeftCloseIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useQueryStates } from "nuqs"

@@ -1,4 +1,4 @@
-import { listErrorLogs } from "@chatbotx.io/business/error-log"
+import { listErrorLogs } from "@salesmanchatbot.io/business/error-log"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"
 import { possibleErrorsOnListingResource } from "@/lib/orpc/orpc-error-helper"
 import { withPublicPaging } from "@/lib/public-api/list"
@@ -28,7 +28,7 @@ export const errorLogsPublicRouter = {
     // contract; there is no table header here to drive anything else.
     //
     // Note this is no longer what keeps a withheld column from being used as a
-    // sort oracle — `SORTABLE_COLUMNS` (`@chatbotx.io/business/error-log-columns`) does that for both
+    // sort oracle — `SORTABLE_COLUMNS` (`@salesmanchatbot.io/business/error-log-columns`) does that for both
     // routes, and `sourceId` is not selected on either. Re-exposing `sort` here
     // would be safe on that count and still wrong on paging stability.
     .input(

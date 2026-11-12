@@ -34,7 +34,7 @@ vi.mock("@/lib/workspace/load-servable-workspace", () => ({
   loadServableWorkspace: mockLoadServableWorkspace,
 }))
 
-vi.mock("@chatbotx.io/business/open-link", () => ({
+vi.mock("@salesmanchatbot.io/business/open-link", () => ({
   resolveOpenLinkDestination: mockResolveOpenLinkDestination,
 }))
 

@@ -1,7 +1,7 @@
 "use client"
 
-import { BUTTON_LABEL_MAX } from "@chatbotx.io/flow-config"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
+import { BUTTON_LABEL_MAX } from "@salesmanchatbot.io/flow-config"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import {

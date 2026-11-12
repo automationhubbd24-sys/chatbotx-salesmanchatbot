@@ -20,7 +20,7 @@ importers:
       '@biomejs/biome':
         specifier: ^2.4.16
         version: 2.4.16
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:packages/vitest-config
       '@types/node':
@@ -71,157 +71,157 @@ importers:
       '@bull-board/ui':
         specifier: ^9.10.1
         version: 9.10.1(bullmq@5.78.0)(typescript@5.9.3)
-      '@chatbotx.io/ai':
+      '@salesmanchatbot.io/ai':
         specifier: workspace:*
         version: link:../../packages/ai
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../../packages/analytics
-      '@chatbotx.io/analytics-nextjs':
+      '@salesmanchatbot.io/analytics-nextjs':
         specifier: workspace:*
         version: link:../../packages/analytics-nextjs
-      '@chatbotx.io/auth':
+      '@salesmanchatbot.io/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@chatbotx.io/automated-response':
+      '@salesmanchatbot.io/automated-response':
         specifier: workspace:*
         version: link:../../packages/automated-response
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/channel-registry':
+      '@salesmanchatbot.io/channel-registry':
         specifier: workspace:*
         version: link:../../packages/channel-registry
-      '@chatbotx.io/connections':
+      '@salesmanchatbot.io/connections':
         specifier: workspace:*
         version: link:../../packages/connections
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../../packages/encryption
-      '@chatbotx.io/event-bus':
+      '@salesmanchatbot.io/event-bus':
         specifier: workspace:*
         version: link:../../packages/event-bus
-      '@chatbotx.io/events':
+      '@salesmanchatbot.io/events':
         specifier: workspace:*
         version: link:../../packages/events
-      '@chatbotx.io/filesystem':
+      '@salesmanchatbot.io/filesystem':
         specifier: workspace:*
         version: link:../../packages/filesystem
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/imports':
+      '@salesmanchatbot.io/imports':
         specifier: workspace:*
         version: link:../../packages/imports
-      '@chatbotx.io/integration-active-campaign':
+      '@salesmanchatbot.io/integration-active-campaign':
         specifier: workspace:*
         version: link:../../integrations/active-campaign
-      '@chatbotx.io/integration-api':
+      '@salesmanchatbot.io/integration-api':
         specifier: workspace:*
         version: link:../../integrations/api
-      '@chatbotx.io/integration-chatbotx':
+      '@salesmanchatbot.io/integration-salesmanchatbot':
         specifier: workspace:*
-        version: link:../../integrations/chatbotx
-      '@chatbotx.io/integration-drip':
+        version: link:../../integrations/salesmanchatbot
+      '@salesmanchatbot.io/integration-drip':
         specifier: workspace:*
         version: link:../../integrations/drip
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../../integrations/facebook-ads
-      '@chatbotx.io/integration-get-response':
+      '@salesmanchatbot.io/integration-get-response':
         specifier: workspace:*
         version: link:../../integrations/get-response
-      '@chatbotx.io/integration-google-calendar':
+      '@salesmanchatbot.io/integration-google-calendar':
         specifier: workspace:*
         version: link:../../integrations/google-calendar
-      '@chatbotx.io/integration-google-sheets':
+      '@salesmanchatbot.io/integration-google-sheets':
         specifier: workspace:*
         version: link:../../integrations/google-sheets
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../../integrations/instagram
-      '@chatbotx.io/integration-instagram-facebook':
+      '@salesmanchatbot.io/integration-instagram-facebook':
         specifier: workspace:*
         version: link:../../integrations/instagram-facebook
-      '@chatbotx.io/integration-klaviyo':
+      '@salesmanchatbot.io/integration-klaviyo':
         specifier: workspace:*
         version: link:../../integrations/klaviyo
-      '@chatbotx.io/integration-mailchimp':
+      '@salesmanchatbot.io/integration-mailchimp':
         specifier: workspace:*
         version: link:../../integrations/mailchimp
-      '@chatbotx.io/integration-mailer-lite':
+      '@salesmanchatbot.io/integration-mailer-lite':
         specifier: workspace:*
         version: link:../../integrations/mailer-lite
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../../integrations/messenger
-      '@chatbotx.io/integration-meta-catalog':
+      '@salesmanchatbot.io/integration-meta-catalog':
         specifier: workspace:*
         version: link:../../integrations/meta-catalog
-      '@chatbotx.io/integration-meta-conversions':
+      '@salesmanchatbot.io/integration-meta-conversions':
         specifier: workspace:*
         version: link:../../integrations/meta-conversions
-      '@chatbotx.io/integration-moosend':
+      '@salesmanchatbot.io/integration-moosend':
         specifier: workspace:*
         version: link:../../integrations/moosend
-      '@chatbotx.io/integration-sendgrid':
+      '@salesmanchatbot.io/integration-sendgrid':
         specifier: workspace:*
         version: link:../../integrations/sendgrid
-      '@chatbotx.io/integration-smtp':
+      '@salesmanchatbot.io/integration-smtp':
         specifier: workspace:*
         version: link:../../integrations/smtp
-      '@chatbotx.io/integration-telegram':
+      '@salesmanchatbot.io/integration-telegram':
         specifier: workspace:*
         version: link:../../integrations/telegram
-      '@chatbotx.io/integration-threads':
+      '@salesmanchatbot.io/integration-threads':
         specifier: workspace:*
         version: link:../../integrations/threads
-      '@chatbotx.io/integration-tiktok':
+      '@salesmanchatbot.io/integration-tiktok':
         specifier: workspace:*
         version: link:../../integrations/tiktok
-      '@chatbotx.io/integration-webchat':
+      '@salesmanchatbot.io/integration-webchat':
         specifier: workspace:*
         version: link:../../integrations/webchat
-      '@chatbotx.io/integration-whatsapp':
+      '@salesmanchatbot.io/integration-whatsapp':
         specifier: workspace:*
         version: link:../../integrations/whatsapp
-      '@chatbotx.io/integration-zalo':
+      '@salesmanchatbot.io/integration-zalo':
         specifier: workspace:*
         version: link:../../integrations/zalo
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/mail':
+      '@salesmanchatbot.io/mail':
         specifier: workspace:*
         version: link:../../packages/mail
-      '@chatbotx.io/minigame-ui':
+      '@salesmanchatbot.io/minigame-ui':
         specifier: workspace:*
         version: link:../../packages/minigame-ui
-      '@chatbotx.io/partysocket-config':
+      '@salesmanchatbot.io/partysocket-config':
         specifier: workspace:*
         version: link:../../packages/partysocket-config
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../../packages/redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/sequence-scheduler':
+      '@salesmanchatbot.io/sequence-scheduler':
         specifier: workspace:*
         version: link:../../packages/sequence-scheduler
-      '@chatbotx.io/ui':
+      '@salesmanchatbot.io/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
-      '@chatbotx.io/variables':
+      '@salesmanchatbot.io/variables':
         specifier: workspace:*
         version: link:../../packages/variables
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../../packages/worker-config
       '@codemirror/lang-css':
@@ -447,10 +447,10 @@ importers:
       '@aws-sdk/client-s3':
         specifier: ^3.1039.0
         version: 3.1063.0
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@lingual/i18n-check':
@@ -541,10 +541,10 @@ importers:
 
   apps/javascript-executor:
     dependencies:
-      '@chatbotx.io/javascript-sandbox':
+      '@salesmanchatbot.io/javascript-sandbox':
         specifier: workspace:*
         version: link:../../packages/javascript-sandbox
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
       '@t3-oss/env-core':
@@ -560,10 +560,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -603,7 +603,7 @@ importers:
       '@ai-sdk/openai':
         specifier: ^3.0.54
         version: 3.0.68(zod@4.6.5)
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
       '@orpc/zod':
@@ -633,10 +633,10 @@ importers:
 
   apps/realtime:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/partysocket-config':
+      '@salesmanchatbot.io/partysocket-config':
         specifier: workspace:*
         version: link:../../packages/partysocket-config
       '@t3-oss/env-core':
@@ -655,10 +655,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -688,145 +688,145 @@ importers:
       '@aws-sdk/client-s3':
         specifier: ^3.1039.0
         version: 3.1063.0
-      '@chatbotx.io/ai':
+      '@salesmanchatbot.io/ai':
         specifier: workspace:*
         version: link:../../packages/ai
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../../packages/analytics
-      '@chatbotx.io/automated-response':
+      '@salesmanchatbot.io/automated-response':
         specifier: workspace:*
         version: link:../../packages/automated-response
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/channel-registry':
+      '@salesmanchatbot.io/channel-registry':
         specifier: workspace:*
         version: link:../../packages/channel-registry
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../../packages/encryption
-      '@chatbotx.io/event-bus':
+      '@salesmanchatbot.io/event-bus':
         specifier: workspace:*
         version: link:../../packages/event-bus
-      '@chatbotx.io/events':
+      '@salesmanchatbot.io/events':
         specifier: workspace:*
         version: link:../../packages/events
-      '@chatbotx.io/filesystem':
+      '@salesmanchatbot.io/filesystem':
         specifier: workspace:*
         version: link:../../packages/filesystem
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/imports':
+      '@salesmanchatbot.io/imports':
         specifier: workspace:*
         version: link:../../packages/imports
-      '@chatbotx.io/integration-active-campaign':
+      '@salesmanchatbot.io/integration-active-campaign':
         specifier: workspace:*
         version: link:../../integrations/active-campaign
-      '@chatbotx.io/integration-api':
+      '@salesmanchatbot.io/integration-api':
         specifier: workspace:*
         version: link:../../integrations/api
-      '@chatbotx.io/integration-chatbotx':
+      '@salesmanchatbot.io/integration-salesmanchatbot':
         specifier: workspace:*
-        version: link:../../integrations/chatbotx
-      '@chatbotx.io/integration-drip':
+        version: link:../../integrations/salesmanchatbot
+      '@salesmanchatbot.io/integration-drip':
         specifier: workspace:*
         version: link:../../integrations/drip
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../../integrations/facebook-ads
-      '@chatbotx.io/integration-get-response':
+      '@salesmanchatbot.io/integration-get-response':
         specifier: workspace:*
         version: link:../../integrations/get-response
-      '@chatbotx.io/integration-google-calendar':
+      '@salesmanchatbot.io/integration-google-calendar':
         specifier: workspace:*
         version: link:../../integrations/google-calendar
-      '@chatbotx.io/integration-google-sheets':
+      '@salesmanchatbot.io/integration-google-sheets':
         specifier: workspace:*
         version: link:../../integrations/google-sheets
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../../integrations/instagram
-      '@chatbotx.io/integration-instagram-facebook':
+      '@salesmanchatbot.io/integration-instagram-facebook':
         specifier: workspace:*
         version: link:../../integrations/instagram-facebook
-      '@chatbotx.io/integration-klaviyo':
+      '@salesmanchatbot.io/integration-klaviyo':
         specifier: workspace:*
         version: link:../../integrations/klaviyo
-      '@chatbotx.io/integration-mailchimp':
+      '@salesmanchatbot.io/integration-mailchimp':
         specifier: workspace:*
         version: link:../../integrations/mailchimp
-      '@chatbotx.io/integration-mailer-lite':
+      '@salesmanchatbot.io/integration-mailer-lite':
         specifier: workspace:*
         version: link:../../integrations/mailer-lite
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../../integrations/messenger
-      '@chatbotx.io/integration-meta-catalog':
+      '@salesmanchatbot.io/integration-meta-catalog':
         specifier: workspace:*
         version: link:../../integrations/meta-catalog
-      '@chatbotx.io/integration-meta-conversions':
+      '@salesmanchatbot.io/integration-meta-conversions':
         specifier: workspace:*
         version: link:../../integrations/meta-conversions
-      '@chatbotx.io/integration-moosend':
+      '@salesmanchatbot.io/integration-moosend':
         specifier: workspace:*
         version: link:../../integrations/moosend
-      '@chatbotx.io/integration-sendgrid':
+      '@salesmanchatbot.io/integration-sendgrid':
         specifier: workspace:*
         version: link:../../integrations/sendgrid
-      '@chatbotx.io/integration-smtp':
+      '@salesmanchatbot.io/integration-smtp':
         specifier: workspace:*
         version: link:../../integrations/smtp
-      '@chatbotx.io/integration-telegram':
+      '@salesmanchatbot.io/integration-telegram':
         specifier: workspace:*
         version: link:../../integrations/telegram
-      '@chatbotx.io/integration-threads':
+      '@salesmanchatbot.io/integration-threads':
         specifier: workspace:*
         version: link:../../integrations/threads
-      '@chatbotx.io/integration-tiktok':
+      '@salesmanchatbot.io/integration-tiktok':
         specifier: workspace:*
         version: link:../../integrations/tiktok
-      '@chatbotx.io/integration-webchat':
+      '@salesmanchatbot.io/integration-webchat':
         specifier: workspace:*
         version: link:../../integrations/webchat
-      '@chatbotx.io/integration-whatsapp':
+      '@salesmanchatbot.io/integration-whatsapp':
         specifier: workspace:*
         version: link:../../integrations/whatsapp
-      '@chatbotx.io/integration-zalo':
+      '@salesmanchatbot.io/integration-zalo':
         specifier: workspace:*
         version: link:../../integrations/zalo
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/mail':
+      '@salesmanchatbot.io/mail':
         specifier: workspace:*
         version: link:../../packages/mail
-      '@chatbotx.io/partysocket-config':
+      '@salesmanchatbot.io/partysocket-config':
         specifier: workspace:*
         version: link:../../packages/partysocket-config
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../../packages/redis
-      '@chatbotx.io/scheduler':
+      '@salesmanchatbot.io/scheduler':
         specifier: workspace:*
         version: link:../../packages/scheduler
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/sequence-scheduler':
+      '@salesmanchatbot.io/sequence-scheduler':
         specifier: workspace:*
         version: link:../../packages/sequence-scheduler
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
-      '@chatbotx.io/variables':
+      '@salesmanchatbot.io/variables':
         specifier: workspace:*
         version: link:../../packages/variables
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../../packages/worker-config
       '@faker-js/faker':
@@ -911,10 +911,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/html-to-text':
@@ -950,10 +950,10 @@ importers:
 
   integrations/active-campaign:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -966,10 +966,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -984,19 +984,19 @@ importers:
 
   integrations/api:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       ky:
@@ -1006,10 +1006,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1022,9 +1022,9 @@ importers:
         specifier: ^4.1.0
         version: 4.1.8(@opentelemetry/api@1.9.1)(@types/node@24.13.1)(@vitest/coverage-v8@4.1.8)(jsdom@25.0.1)(msw@2.14.6(@types/node@24.13.1)(typescript@5.9.3))(vite@7.3.5(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.23.0)(yaml@2.9.0))
 
-  integrations/chatbotx:
+  integrations/salesmanchatbot:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1034,10 +1034,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1052,10 +1052,10 @@ importers:
 
   integrations/drip:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1068,10 +1068,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1086,13 +1086,13 @@ importers:
 
   integrations/facebook-ads:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       ky:
@@ -1105,10 +1105,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1123,7 +1123,7 @@ importers:
 
   integrations/get-response:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1136,10 +1136,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1154,10 +1154,10 @@ importers:
 
   integrations/google-calendar:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       google-auth-library:
@@ -1170,10 +1170,10 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1188,10 +1188,10 @@ importers:
 
   integrations/google-sheets:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       google-auth-library:
@@ -1201,10 +1201,10 @@ importers:
         specifier: ^171.4.0
         version: 171.4.0
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1222,19 +1222,19 @@ importers:
 
   integrations/instagram:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       cross-fetch:
@@ -1253,10 +1253,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1271,22 +1271,22 @@ importers:
 
   integrations/instagram-facebook:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../instagram
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       cross-fetch:
@@ -1305,10 +1305,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1323,7 +1323,7 @@ importers:
 
   integrations/klaviyo:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1336,10 +1336,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1354,10 +1354,10 @@ importers:
 
   integrations/mailchimp:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       '@noble/hashes':
@@ -1373,10 +1373,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1391,7 +1391,7 @@ importers:
 
   integrations/mailer-lite:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1404,10 +1404,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1422,22 +1422,22 @@ importers:
 
   integrations/messenger:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       '@types/node':
@@ -1459,10 +1459,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       msw:
@@ -1477,19 +1477,19 @@ importers:
 
   integrations/meta-catalog:
     dependencies:
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../facebook-ads
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../messenger
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       ky:
@@ -1499,10 +1499,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1517,7 +1517,7 @@ importers:
 
   integrations/meta-conversions:
     dependencies:
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       ky:
@@ -1527,10 +1527,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1545,7 +1545,7 @@ importers:
 
   integrations/moosend:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1555,10 +1555,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1576,17 +1576,17 @@ importers:
       '@ai-sdk/openai':
         specifier: ^3.0.54
         version: 3.0.68(zod@4.6.5)
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ai:
         specifier: ^6.0.170
         version: 6.0.197(zod@4.6.5)
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1604,7 +1604,7 @@ importers:
 
   integrations/sendgrid:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1614,10 +1614,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1632,7 +1632,7 @@ importers:
 
   integrations/smtp:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       nodemailer:
@@ -1642,10 +1642,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1663,16 +1663,16 @@ importers:
 
   integrations/telegram:
     dependencies:
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       ky:
@@ -1685,10 +1685,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1706,10 +1706,10 @@ importers:
 
   integrations/threads:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
@@ -1719,10 +1719,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1737,16 +1737,16 @@ importers:
 
   integrations/tiktok:
     dependencies:
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       '@types/node':
@@ -1762,10 +1762,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       msw:
@@ -1780,17 +1780,17 @@ importers:
 
   integrations/webchat:
     dependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
       ky:
         specifier: ^2.0.2
         version: 2.0.2
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1805,22 +1805,22 @@ importers:
 
   integrations/whatsapp:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../../packages/business
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../../packages/worker-config
       '@edenchazard/tiny-chunk-array':
@@ -1851,10 +1851,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       msw:
@@ -1869,16 +1869,16 @@ importers:
 
   integrations/zalo:
     dependencies:
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../../packages/flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       cross-fetch:
@@ -1897,10 +1897,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../../packages/vitest-config
       '@types/node':
@@ -1933,25 +1933,25 @@ importers:
       '@ai-sdk/openai-compatible':
         specifier: ^2.0.56
         version: 2.0.56(zod@4.6.5)
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../worker-config
       '@openrouter/ai-sdk-provider':
@@ -1976,10 +1976,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/mime-types':
@@ -1994,22 +1994,22 @@ importers:
 
   packages/analytics:
     dependencies:
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       date-fns:
@@ -2025,10 +2025,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2043,19 +2043,19 @@ importers:
 
   packages/analytics-nextjs:
     dependencies:
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../analytics
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/ui':
+      '@salesmanchatbot.io/ui':
         specifier: workspace:*
         version: link:../ui
       '@hookform/resolvers':
@@ -2092,10 +2092,10 @@ importers:
         specifier: ^5.0.12
         version: 5.0.14(@types/react@19.2.14)(immer@11.1.15)(react@19.2.5)(use-sync-external-store@1.6.0(react@19.2.5))
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2119,22 +2119,22 @@ importers:
 
   packages/auth:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/mail':
+      '@salesmanchatbot.io/mail':
         specifier: workspace:*
         version: link:../mail
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       '@t3-oss/env-core':
@@ -2150,10 +2150,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:
@@ -2165,31 +2165,31 @@ importers:
 
   packages/automated-response:
     dependencies:
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../analytics
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/events':
+      '@salesmanchatbot.io/events':
         specifier: workspace:*
         version: link:../events
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
-      '@chatbotx.io/variables':
+      '@salesmanchatbot.io/variables':
         specifier: workspace:*
         version: link:../variables
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../worker-config
       '@t3-oss/env-core':
@@ -2202,10 +2202,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2229,64 +2229,64 @@ importers:
       '@ai-sdk/openai-compatible':
         specifier: ^2.0.56
         version: 2.0.56(zod@4.6.5)
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../analytics
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../encryption
-      '@chatbotx.io/event-bus':
+      '@salesmanchatbot.io/event-bus':
         specifier: workspace:*
         version: link:../event-bus
-      '@chatbotx.io/events':
+      '@salesmanchatbot.io/events':
         specifier: workspace:*
         version: link:../events
-      '@chatbotx.io/filesystem':
+      '@salesmanchatbot.io/filesystem':
         specifier: workspace:*
         version: link:../filesystem
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/imports':
+      '@salesmanchatbot.io/imports':
         specifier: workspace:*
         version: link:../imports
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../../integrations/facebook-ads
-      '@chatbotx.io/integration-google-calendar':
+      '@salesmanchatbot.io/integration-google-calendar':
         specifier: workspace:*
         version: link:../../integrations/google-calendar
-      '@chatbotx.io/integration-tiktok':
+      '@salesmanchatbot.io/integration-tiktok':
         specifier: workspace:*
         version: link:../../integrations/tiktok
-      '@chatbotx.io/javascript-sandbox':
+      '@salesmanchatbot.io/javascript-sandbox':
         specifier: workspace:*
         version: link:../javascript-sandbox
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/partysocket-config':
+      '@salesmanchatbot.io/partysocket-config':
         specifier: workspace:*
         version: link:../partysocket-config
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/scheduler':
+      '@salesmanchatbot.io/scheduler':
         specifier: workspace:*
         version: link:../scheduler
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/sequence-scheduler':
+      '@salesmanchatbot.io/sequence-scheduler':
         specifier: workspace:*
         version: link:../sequence-scheduler
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../worker-config
       '@napi-rs/canvas':
@@ -2335,10 +2335,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2359,104 +2359,104 @@ importers:
 
   packages/channel-registry:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/filesystem':
+      '@salesmanchatbot.io/filesystem':
         specifier: workspace:*
         version: link:../filesystem
-      '@chatbotx.io/integration-active-campaign':
+      '@salesmanchatbot.io/integration-active-campaign':
         specifier: workspace:*
         version: link:../../integrations/active-campaign
-      '@chatbotx.io/integration-api':
+      '@salesmanchatbot.io/integration-api':
         specifier: workspace:*
         version: link:../../integrations/api
-      '@chatbotx.io/integration-chatbotx':
+      '@salesmanchatbot.io/integration-salesmanchatbot':
         specifier: workspace:*
-        version: link:../../integrations/chatbotx
-      '@chatbotx.io/integration-drip':
+        version: link:../../integrations/salesmanchatbot
+      '@salesmanchatbot.io/integration-drip':
         specifier: workspace:*
         version: link:../../integrations/drip
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../../integrations/facebook-ads
-      '@chatbotx.io/integration-get-response':
+      '@salesmanchatbot.io/integration-get-response':
         specifier: workspace:*
         version: link:../../integrations/get-response
-      '@chatbotx.io/integration-google-calendar':
+      '@salesmanchatbot.io/integration-google-calendar':
         specifier: workspace:*
         version: link:../../integrations/google-calendar
-      '@chatbotx.io/integration-google-sheets':
+      '@salesmanchatbot.io/integration-google-sheets':
         specifier: workspace:*
         version: link:../../integrations/google-sheets
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../../integrations/instagram
-      '@chatbotx.io/integration-instagram-facebook':
+      '@salesmanchatbot.io/integration-instagram-facebook':
         specifier: workspace:*
         version: link:../../integrations/instagram-facebook
-      '@chatbotx.io/integration-klaviyo':
+      '@salesmanchatbot.io/integration-klaviyo':
         specifier: workspace:*
         version: link:../../integrations/klaviyo
-      '@chatbotx.io/integration-mailchimp':
+      '@salesmanchatbot.io/integration-mailchimp':
         specifier: workspace:*
         version: link:../../integrations/mailchimp
-      '@chatbotx.io/integration-mailer-lite':
+      '@salesmanchatbot.io/integration-mailer-lite':
         specifier: workspace:*
         version: link:../../integrations/mailer-lite
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../../integrations/messenger
-      '@chatbotx.io/integration-moosend':
+      '@salesmanchatbot.io/integration-moosend':
         specifier: workspace:*
         version: link:../../integrations/moosend
-      '@chatbotx.io/integration-sendgrid':
+      '@salesmanchatbot.io/integration-sendgrid':
         specifier: workspace:*
         version: link:../../integrations/sendgrid
-      '@chatbotx.io/integration-smtp':
+      '@salesmanchatbot.io/integration-smtp':
         specifier: workspace:*
         version: link:../../integrations/smtp
-      '@chatbotx.io/integration-telegram':
+      '@salesmanchatbot.io/integration-telegram':
         specifier: workspace:*
         version: link:../../integrations/telegram
-      '@chatbotx.io/integration-threads':
+      '@salesmanchatbot.io/integration-threads':
         specifier: workspace:*
         version: link:../../integrations/threads
-      '@chatbotx.io/integration-tiktok':
+      '@salesmanchatbot.io/integration-tiktok':
         specifier: workspace:*
         version: link:../../integrations/tiktok
-      '@chatbotx.io/integration-webchat':
+      '@salesmanchatbot.io/integration-webchat':
         specifier: workspace:*
         version: link:../../integrations/webchat
-      '@chatbotx.io/integration-whatsapp':
+      '@salesmanchatbot.io/integration-whatsapp':
         specifier: workspace:*
         version: link:../../integrations/whatsapp
-      '@chatbotx.io/integration-zalo':
+      '@salesmanchatbot.io/integration-zalo':
         specifier: workspace:*
         version: link:../../integrations/zalo
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       image-size:
         specifier: ^2.0.3
         version: 2.0.3
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2474,101 +2474,101 @@ importers:
 
   packages/connections:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../encryption
-      '@chatbotx.io/integration-active-campaign':
+      '@salesmanchatbot.io/integration-active-campaign':
         specifier: workspace:*
         version: link:../../integrations/active-campaign
-      '@chatbotx.io/integration-api':
+      '@salesmanchatbot.io/integration-api':
         specifier: workspace:*
         version: link:../../integrations/api
-      '@chatbotx.io/integration-chatbotx':
+      '@salesmanchatbot.io/integration-salesmanchatbot':
         specifier: workspace:*
-        version: link:../../integrations/chatbotx
-      '@chatbotx.io/integration-drip':
+        version: link:../../integrations/salesmanchatbot
+      '@salesmanchatbot.io/integration-drip':
         specifier: workspace:*
         version: link:../../integrations/drip
-      '@chatbotx.io/integration-facebook-ads':
+      '@salesmanchatbot.io/integration-facebook-ads':
         specifier: workspace:*
         version: link:../../integrations/facebook-ads
-      '@chatbotx.io/integration-get-response':
+      '@salesmanchatbot.io/integration-get-response':
         specifier: workspace:*
         version: link:../../integrations/get-response
-      '@chatbotx.io/integration-google-calendar':
+      '@salesmanchatbot.io/integration-google-calendar':
         specifier: workspace:*
         version: link:../../integrations/google-calendar
-      '@chatbotx.io/integration-google-sheets':
+      '@salesmanchatbot.io/integration-google-sheets':
         specifier: workspace:*
         version: link:../../integrations/google-sheets
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../../integrations/instagram
-      '@chatbotx.io/integration-instagram-facebook':
+      '@salesmanchatbot.io/integration-instagram-facebook':
         specifier: workspace:*
         version: link:../../integrations/instagram-facebook
-      '@chatbotx.io/integration-klaviyo':
+      '@salesmanchatbot.io/integration-klaviyo':
         specifier: workspace:*
         version: link:../../integrations/klaviyo
-      '@chatbotx.io/integration-mailchimp':
+      '@salesmanchatbot.io/integration-mailchimp':
         specifier: workspace:*
         version: link:../../integrations/mailchimp
-      '@chatbotx.io/integration-mailer-lite':
+      '@salesmanchatbot.io/integration-mailer-lite':
         specifier: workspace:*
         version: link:../../integrations/mailer-lite
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../../integrations/messenger
-      '@chatbotx.io/integration-moosend':
+      '@salesmanchatbot.io/integration-moosend':
         specifier: workspace:*
         version: link:../../integrations/moosend
-      '@chatbotx.io/integration-sendgrid':
+      '@salesmanchatbot.io/integration-sendgrid':
         specifier: workspace:*
         version: link:../../integrations/sendgrid
-      '@chatbotx.io/integration-smtp':
+      '@salesmanchatbot.io/integration-smtp':
         specifier: workspace:*
         version: link:../../integrations/smtp
-      '@chatbotx.io/integration-telegram':
+      '@salesmanchatbot.io/integration-telegram':
         specifier: workspace:*
         version: link:../../integrations/telegram
-      '@chatbotx.io/integration-tiktok':
+      '@salesmanchatbot.io/integration-tiktok':
         specifier: workspace:*
         version: link:../../integrations/tiktok
-      '@chatbotx.io/integration-webchat':
+      '@salesmanchatbot.io/integration-webchat':
         specifier: workspace:*
         version: link:../../integrations/webchat
-      '@chatbotx.io/integration-whatsapp':
+      '@salesmanchatbot.io/integration-whatsapp':
         specifier: workspace:*
         version: link:../../integrations/whatsapp
-      '@chatbotx.io/integration-zalo':
+      '@salesmanchatbot.io/integration-zalo':
         specifier: workspace:*
         version: link:../../integrations/zalo
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       zod:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2583,19 +2583,19 @@ importers:
 
   packages/database:
     dependencies:
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../encryption
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       '@t3-oss/env-core':
@@ -2620,10 +2620,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2657,10 +2657,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2675,26 +2675,26 @@ importers:
 
   packages/event-bus:
     dependencies:
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../worker-config
       zod:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2706,23 +2706,23 @@ importers:
 
   packages/events:
     dependencies:
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/worker-config':
+      '@salesmanchatbot.io/worker-config':
         specifier: workspace:*
         version: link:../worker-config
       lru-cache:
         specifier: ^11.3.5
         version: 11.5.1
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:
@@ -2740,13 +2740,13 @@ importers:
       '@aws-sdk/lib-storage':
         specifier: ^3.1039.0
         version: 3.1063.0(@aws-sdk/client-s3@3.1063.0)
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       '@t3-oss/env-core':
@@ -2765,10 +2765,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2786,7 +2786,7 @@ importers:
 
   packages/flow-config:
     dependencies:
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       '@xyflow/react':
@@ -2799,10 +2799,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2820,10 +2820,10 @@ importers:
 
   packages/imports:
     dependencies:
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       csv-parse:
@@ -2839,10 +2839,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2864,10 +2864,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -2889,10 +2889,10 @@ importers:
         specifier: ^10.3.1
         version: 10.3.1
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:
@@ -2917,10 +2917,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/mjml':
@@ -2944,7 +2944,7 @@ importers:
 
   packages/minigame-ui:
     dependencies:
-      '@chatbotx.io/ui':
+      '@salesmanchatbot.io/ui':
         specifier: workspace:*
         version: link:../ui
       lucide-react:
@@ -2954,7 +2954,7 @@ importers:
         specifier: 19.2.5
         version: 19.2.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/react':
@@ -2966,7 +2966,7 @@ importers:
 
   packages/partysocket-config:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
       '@t3-oss/env-core':
@@ -2982,10 +2982,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -3000,7 +3000,7 @@ importers:
 
   packages/redis:
     dependencies:
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
       '@t3-oss/env-core':
@@ -3022,10 +3022,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       dotenv-cli:
@@ -3040,17 +3040,17 @@ importers:
 
   packages/scheduler:
     dependencies:
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
       ioredis:
         specifier: 5.10.1
         version: 5.10.1
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:
@@ -3062,23 +3062,23 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       zod:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -3093,26 +3093,26 @@ importers:
 
   packages/sequence-scheduler:
     dependencies:
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/scheduler':
+      '@salesmanchatbot.io/scheduler':
         specifier: workspace:*
         version: link:../scheduler
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       date-fns:
         specifier: ^4.1.0
         version: 4.4.0
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:
@@ -3133,7 +3133,7 @@ importers:
       '@base-ui/react':
         specifier: ^1.6.0
         version: 1.6.0(@date-fns/tz@1.5.0)(@types/react@19.2.14)(date-fns@4.4.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
       '@diceui/combobox':
@@ -3251,10 +3251,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@tailwindcss/postcss':
@@ -3309,10 +3309,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -3327,37 +3327,37 @@ importers:
 
   packages/variables:
     dependencies:
-      '@chatbotx.io/business':
+      '@salesmanchatbot.io/business':
         specifier: workspace:*
         version: link:../business
-      '@chatbotx.io/channel-registry':
+      '@salesmanchatbot.io/channel-registry':
         specifier: workspace:*
         version: link:../channel-registry
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/encryption':
+      '@salesmanchatbot.io/encryption':
         specifier: workspace:*
         version: link:../encryption
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/integration-instagram':
+      '@salesmanchatbot.io/integration-instagram':
         specifier: workspace:*
         version: link:../../integrations/instagram
-      '@chatbotx.io/integration-messenger':
+      '@salesmanchatbot.io/integration-messenger':
         specifier: workspace:*
         version: link:../../integrations/messenger
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
-      '@chatbotx.io/utils':
+      '@salesmanchatbot.io/utils':
         specifier: workspace:*
         version: link:../utils
       date-fns-tz:
@@ -3367,10 +3367,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       '@types/node':
@@ -3404,7 +3404,7 @@ importers:
         specifier: ^4.1.8
         version: 4.1.8(@opentelemetry/api@1.9.1)(@types/node@24.13.1)(@vitest/coverage-v8@4.1.8)(jsdom@25.0.1)(msw@2.14.6(@types/node@24.13.1)(typescript@5.9.3))(vite@7.3.5(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.23.0)(yaml@2.9.0))
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@types/node':
@@ -3416,22 +3416,22 @@ importers:
 
   packages/worker-config:
     dependencies:
-      '@chatbotx.io/analytics':
+      '@salesmanchatbot.io/analytics':
         specifier: workspace:*
         version: link:../analytics
-      '@chatbotx.io/database':
+      '@salesmanchatbot.io/database':
         specifier: workspace:*
         version: link:../database
-      '@chatbotx.io/flow-config':
+      '@salesmanchatbot.io/flow-config':
         specifier: workspace:*
         version: link:../flow-config
-      '@chatbotx.io/logger':
+      '@salesmanchatbot.io/logger':
         specifier: workspace:*
         version: link:../logger
-      '@chatbotx.io/redis':
+      '@salesmanchatbot.io/redis':
         specifier: workspace:*
         version: link:../redis
-      '@chatbotx.io/sdk':
+      '@salesmanchatbot.io/sdk':
         specifier: workspace:*
         version: link:../sdk
       '@t3-oss/env-nextjs':
@@ -3450,10 +3450,10 @@ importers:
         specifier: ^4.3.6
         version: 4.6.5
     devDependencies:
-      '@chatbotx.io/typescript-config':
+      '@salesmanchatbot.io/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@chatbotx.io/vitest-config':
+      '@salesmanchatbot.io/vitest-config':
         specifier: workspace:*
         version: link:../vitest-config
       typescript:

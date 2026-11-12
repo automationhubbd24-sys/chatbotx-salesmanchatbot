@@ -1,5 +1,5 @@
-import { toLogSafeError } from "@chatbotx.io/logger"
-import type { ContactHandlers } from "@chatbotx.io/sdk"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
+import type { ContactHandlers } from "@salesmanchatbot.io/sdk"
 import { fetchInstagramContactProfile } from "../apis/contact-profile"
 import { getPostDetails, toChannelPostDetails } from "../apis/post"
 import { getContactProfilePicUrl, getUserProfile } from "../apis/user"

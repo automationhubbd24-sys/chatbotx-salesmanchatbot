@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { useTranslations } from "next-intl"
 
 type Props = {

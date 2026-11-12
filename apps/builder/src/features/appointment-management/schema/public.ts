@@ -1,8 +1,8 @@
-import { appointmentReminderDispatchStatuses } from "@chatbotx.io/database/partials"
+import { appointmentReminderDispatchStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   appointmentReminderDispatchModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 import { publicListRequest } from "@/lib/public-api/list"
 

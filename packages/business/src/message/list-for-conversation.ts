@@ -3,8 +3,8 @@ import {
   getSafeSinceTime,
   type MessageWithAttachments,
   type PaginationCursor,
-} from "@chatbotx.io/database/repositories"
-import { uploader } from "@chatbotx.io/filesystem"
+} from "@salesmanchatbot.io/database/repositories"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import { endOfHour } from "date-fns"
 import { contactInboxService } from "../contact-inbox/service"
 import { conversationService } from "../conversation/service"

@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { PUBLIC_LIST_MAX_PER_PAGE } from "@/lib/public-api/list"
 import { sendWhatsappTemplateRequest } from "./send-template"

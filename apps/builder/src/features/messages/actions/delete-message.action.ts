@@ -4,12 +4,12 @@ import {
   broadcastToWorkspaceParty,
   contactInboxService,
   conversationService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { ChatJobAction, chatQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { ChatJobAction, chatQueue } from "@salesmanchatbot.io/worker-config"
 import { workspaceActionClient } from "@/lib/safe-action"
 import {
   type DeleteMessageRequest,
@@ -37,7 +37,7 @@ export const deleteMessage = async (props: {
     workspaceId,
   })
   if (!message || message.conversationId !== conversationId) {
-    throw new ChatbotXException("Comment not found")
+    throw new salesmanChatbotException("Comment not found")
   }
 
   // Soft-delete immediately in the DB and notify other tabs in realtime.

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { Table } from "@tanstack/react-table"
 import { FolderUpIcon } from "lucide-react"
 import { useRouter } from "next/navigation"

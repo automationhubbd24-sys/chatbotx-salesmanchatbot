@@ -34,17 +34,17 @@ const {
   withLockSpy: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   sequenceDispatchRepository: {
     listPendingWorkspaceIds: findPendingWorkspaceIdsSpy,
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   sequenceConnections: { useExisting: useExistingSpy },
 }))
 
-vi.mock("@chatbotx.io/scheduler", () => ({
+vi.mock("@salesmanchatbot.io/scheduler", () => ({
   SchedulerClient: class {
     addToRetry = addToRetrySpy
     batchAddToSchedule = batchAddToScheduleSpy
@@ -59,7 +59,7 @@ vi.mock("@chatbotx.io/scheduler", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getSequenceSchedulerQueue: getSequenceSchedulerQueueSpy,
 }))
 

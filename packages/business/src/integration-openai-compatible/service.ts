@@ -4,18 +4,18 @@ import {
   db,
   eq,
   isDatabaseError,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type AIAgentProviderModels,
   aiAgentProviderModels,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   aiAgentModel,
   integrationModel,
   integrationOpenaiCompatibleModel,
-} from "@chatbotx.io/database/schema"
-import { AuthType, type SecretTextAuthValue } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { AuthType, type SecretTextAuthValue } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import {
   normalizeOpenaiCompatibleBaseUrl,

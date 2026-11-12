@@ -50,17 +50,17 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mocks.auditRecord },
 }))
 
-vi.mock("@chatbotx.io/business/connection", () => ({
+vi.mock("@salesmanchatbot.io/business/connection", () => ({
   connectionStateService: {
     disconnectInbox: mocks.connectionStateDisconnect,
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   coexistService: {
     tearDownForIntegration: mocks.coexistTearDownForIntegration,
   },
@@ -77,7 +77,7 @@ vi.mock("@chatbotx.io/business", () => ({
   workspaceService: { findById: mocks.workspaceFindById },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.dbTransaction },
   and: vi.fn((...conditions: unknown[]) => ({ conditions })),
   eq: vi.fn((field: unknown, value: unknown) => ({ field, value })),
@@ -85,13 +85,13 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: vi.fn((field: unknown, values: unknown[]) => ({ field, values })),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   metaCapiEventRepository: {
     deleteByIntegration: mocks.metaCapiDeleteByIntegration,
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   coexistSyncRunModel: {
     finishedAt: "finishedAt",
     integrationId: "integrationId",
@@ -105,20 +105,20 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   isDisconnectSafeError: mocks.messengerDisconnectSafe,
   isRevokedTokenError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   isRevokedTokenError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   isRevokedTokenError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   subscribePageToAppWebhook: mocks.subscribePageToAppWebhook,
 }))
 

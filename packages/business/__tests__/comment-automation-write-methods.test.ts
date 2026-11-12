@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   flowExists: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ and: args }),
   db: {
     query: {
@@ -32,9 +32,9 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: (...args: unknown[]) => ({ sql: args }),
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () => {
+vi.mock("@salesmanchatbot.io/database/partials", async () => {
   // The real allowlists, so the pins below are tested against what ships. Read
-  // from the source file, not the barrel, which pulls in `@chatbotx.io/utils`
+  // from the source file, not the barrel, which pulls in `@salesmanchatbot.io/utils`
   // (mocked below).
   const actual = await vi.importActual<
     typeof import("../../database/src/partials/comment-automation")
@@ -53,13 +53,13 @@ vi.mock("@chatbotx.io/database/partials", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactInboxModel: {},
   commentAutomationModel: { name: "commentAutomation.name" },
   commentAutomationReplyModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: (input: { page: number; perPage: number }) => ({
     limit: input.perPage,
     offset: (input.page - 1) * input.perPage,
@@ -68,7 +68,7 @@ vi.mock("@chatbotx.io/database/utils", () => ({
   parseOrderByAsObject: () => ({}),
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => "id-1",
 }))
 

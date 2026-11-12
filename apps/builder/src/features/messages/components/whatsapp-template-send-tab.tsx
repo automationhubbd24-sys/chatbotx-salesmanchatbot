@@ -4,11 +4,11 @@ import {
   extractTemplateParams,
   type TemplateComponent,
   type WaTemplateParams,
-} from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { DialogClose } from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { DialogClose } from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { useQuery } from "@tanstack/react-query"

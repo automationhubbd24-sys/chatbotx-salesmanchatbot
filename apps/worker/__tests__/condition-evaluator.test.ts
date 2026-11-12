@@ -1,5 +1,5 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import type { ConditionEvaluationContext } from "../src/trigger/types"
 
@@ -8,7 +8,7 @@ const { contactCustomFieldFindValue, customFieldFindBy } = vi.hoisted(() => ({
   customFieldFindBy: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: { findValue: contactCustomFieldFindValue },
   customFieldService: { findBy: customFieldFindBy },
 }))

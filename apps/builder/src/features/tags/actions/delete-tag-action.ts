@@ -1,5 +1,5 @@
 "use server"
-import { tagService } from "@chatbotx.io/business"
+import { tagService } from "@salesmanchatbot.io/business"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

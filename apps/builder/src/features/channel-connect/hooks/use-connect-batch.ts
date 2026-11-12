@@ -1,7 +1,7 @@
 "use client"
 
-import type { ConnectSessionErrorCode } from "@chatbotx.io/business/inbox/connect-outcome-types"
-import { mapWithConcurrency } from "@chatbotx.io/utils"
+import type { ConnectSessionErrorCode } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
+import { mapWithConcurrency } from "@salesmanchatbot.io/utils"
 import { type RefObject, useCallback, useMemo, useRef, useState } from "react"
 import type { CoexistCallResult } from "../lib/coexist-client"
 import type { ConnectTarget } from "../lib/picker-items"

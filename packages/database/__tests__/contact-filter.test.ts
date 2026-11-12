@@ -3,7 +3,7 @@ import {
   BOOLEAN_LITERAL_PATTERN_SOURCE,
   BOOLEAN_TRUTHY_LITERALS,
   canonicalBooleanLiteral,
-} from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/utils/custom-field"
 import { relationsFilterToSQL, type SQL } from "drizzle-orm"
 import { alias, PgDialect } from "drizzle-orm/pg-core"
 import { describe, expect, test } from "vitest"

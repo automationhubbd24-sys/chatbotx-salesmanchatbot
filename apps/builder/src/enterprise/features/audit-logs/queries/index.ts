@@ -1,8 +1,8 @@
 import {
   assertEnterpriseFeatures,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { listAuditLogs as listAuditLogsService } from "@chatbotx.io/business/audit"
+} from "@salesmanchatbot.io/business"
+import { listAuditLogs as listAuditLogsService } from "@salesmanchatbot.io/business/audit"
 import type { PaginatedResponse } from "@/features/common/schema/pagination"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import type { AuditLogResource } from "../schema"

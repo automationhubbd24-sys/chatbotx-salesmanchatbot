@@ -1,4 +1,4 @@
-import type { FlowNode } from "@chatbotx.io/flow-config"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, type Mock, test, vi } from "vitest"
 
 // --- mock vars (must be declared before vi.mock calls) ---
@@ -18,7 +18,7 @@ const dbInsert = vi.fn(() => ({ values: dbInsertValues }))
 
 // --- mocks ---
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       integrationWhatsappModel: { findFirst: dbQueryIntegrationFindFirst },
@@ -33,7 +33,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: vi.fn((strings: TemplateStringsArray) => strings.join("")),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactCustomFieldModel: {
     contactId: "contactId",
     customFieldId: "customFieldId",
@@ -50,14 +50,14 @@ vi.mock("../src/lib/logger", () => ({
 }))
 
 const emitCustomFieldChanged = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCustomFieldChanged,
 }))
 
 // The handler now delegates custom-field writes to the business service (which
 // owns normalization + change events). Mock the whole barrel so its real schema
 // graph isn't pulled into this test's partial schema mock.
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: {
     setValues: (...args: unknown[]) => setCustomFieldValues(...args),
   },
@@ -66,8 +66,8 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: vi.fn(() => "test-id"),

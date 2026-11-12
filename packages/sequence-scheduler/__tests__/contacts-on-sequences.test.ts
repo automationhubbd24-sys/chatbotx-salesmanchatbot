@@ -4,7 +4,7 @@ const findManyInboxMock = vi.fn()
 const findManyContactInboxMock = vi.fn()
 const findManyContactsOnSeqMock = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       inboxModel: { findMany: findManyInboxMock },

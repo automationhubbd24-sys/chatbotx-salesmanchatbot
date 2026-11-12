@@ -5,7 +5,7 @@ import { describe, expect, test, vi } from "vitest"
 // branch logic deterministically without loading the database module graph.
 // The stub subtracts one hour, mirroring the real "previous hour" behavior.
 const ONE_HOUR_MS = 3_600_000
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   getSafeSinceTime: (date: Date) => new Date(date.getTime() - ONE_HOUR_MS),
 }))
 

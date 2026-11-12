@@ -2,14 +2,14 @@ import {
   botMessageAnalyticsService,
   messageAnalyticsService,
   timeRangeQueryWithGranularityMHDSchema,
-} from "@chatbotx.io/analytics"
+} from "@salesmanchatbot.io/analytics"
 import {
   getBotMessagesAIProvidersResponseSchema,
   getMessagesBySenderStatsResponseSchema,
   getMessagesStatsResponseSchema,
   timeRangeQuerySchema,
   timeRangeQueryWithGranularityDMSchema,
-} from "@chatbotx.io/analytics/schemas"
+} from "@salesmanchatbot.io/analytics/schemas"
 import { os } from "@orpc/server"
 import { logger } from "../lib/log"
 

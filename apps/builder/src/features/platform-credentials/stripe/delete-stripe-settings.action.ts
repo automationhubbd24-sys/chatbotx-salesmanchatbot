@@ -1,6 +1,6 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 
 import { isCloud } from "@/env"
 import { authActionClient } from "@/lib/safe-action"

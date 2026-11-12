@@ -1,4 +1,4 @@
-import { contactService } from "@chatbotx.io/business"
+import { contactService } from "@salesmanchatbot.io/business"
 import type { ContactPermissionScope } from "../permissions"
 import type {
   ListContactsRequest,

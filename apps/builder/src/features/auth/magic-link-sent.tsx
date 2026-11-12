@@ -1,11 +1,11 @@
 "use client"
 
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { MailIcon } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

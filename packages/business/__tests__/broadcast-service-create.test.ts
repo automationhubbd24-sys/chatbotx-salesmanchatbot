@@ -43,12 +43,12 @@ const dbMock: {
   transaction: (fn) => fn(dbMock),
 }
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   broadcastAnalyticsService: { getContacts: vi.fn() },
   sequenceAnalyticsService: { getContacts: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: dbMock,
   and: (...args: unknown[]) => ({ __and: args }),
   asc: vi.fn(),
@@ -99,10 +99,10 @@ const sendsTemplateStub = (broadcast: MinimalBroadcastPayload): boolean =>
 // export this file doesn't stub) come from the real module via
 // `vi.importActual` — pure Phase-1 helpers, so this test can't drift from
 // their actual implementation.
-vi.mock("@chatbotx.io/database/partials", async () => {
+vi.mock("@salesmanchatbot.io/database/partials", async () => {
   const actual = await vi.importActual<
-    typeof import("@chatbotx.io/database/partials")
-  >("@chatbotx.io/database/partials")
+    typeof import("@salesmanchatbot.io/database/partials")
+  >("@salesmanchatbot.io/database/partials")
   return {
     ...actual,
     broadcastStatuses: { enum: { draft: "draft", scheduled: "scheduled" } },
@@ -142,7 +142,7 @@ vi.mock("@chatbotx.io/database/partials", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   broadcastModel: {},
   broadcastTargetModel: {},
   contactInboxModel: {},
@@ -155,19 +155,19 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   whatsappMessageTemplateModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/queries", () => ({
+vi.mock("@salesmanchatbot.io/database/queries", () => ({
   buildContactInboxContactFilterSQL: vi.fn(),
   contactInboxInteractedWithin24hSQL: vi.fn(),
   pruneEmailPhoneFilterConditions: mockPruneFilter,
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   chunkById: vi.fn(),
   likeContains: vi.fn(),
   getPaginationWithDefaults: vi.fn(() => ({ limit: 10, offset: 0 })),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   broadcastRepository: {
     listWithRelations: vi.fn(),
     count: vi.fn(),
@@ -177,14 +177,14 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-// The real `@chatbotx.io/database/partials` barrel (imported actual above)
+// The real `@salesmanchatbot.io/database/partials` barrel (imported actual above)
 // pulls in other partials (e.g. automated-response.ts) that need real utils
 // exports such as `zodBigintAsString`, so this mock spreads the actual
 // module rather than replacing it outright.
-vi.mock("@chatbotx.io/utils", async () => {
+vi.mock("@salesmanchatbot.io/utils", async () => {
   const actual =
-    await vi.importActual<typeof import("@chatbotx.io/utils")>(
-      "@chatbotx.io/utils",
+    await vi.importActual<typeof import("@salesmanchatbot.io/utils")>(
+      "@salesmanchatbot.io/utils",
     )
   return {
     ...actual,
@@ -192,7 +192,7 @@ vi.mock("@chatbotx.io/utils", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   findTemplateStartStep: vi.fn(),
   stepTypes: {
     enum: {

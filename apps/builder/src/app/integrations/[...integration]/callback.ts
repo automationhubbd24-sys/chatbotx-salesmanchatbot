@@ -11,58 +11,58 @@ import {
   messengerIntegrationService,
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService, withAuditContext } from "@chatbotx.io/business/audit"
-import { connectSessionService } from "@chatbotx.io/business/connect-session"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { auditService, withAuditContext } from "@salesmanchatbot.io/business/audit"
+import { connectSessionService } from "@salesmanchatbot.io/business/connect-session"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   CONNECTION_REGISTRY,
   connectionService,
   failSession,
-} from "@chatbotx.io/connections"
-import { db } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/connections"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   type IntegrationType,
   type MessagingAdChannel,
   messagingAdChannelTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   integrationGoogleSheetsModel,
   integrationModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   exchangeCodeForToken as exchangeFacebookAdsCode,
   exchangeLongLivedToken as exchangeFacebookAdsLongLivedToken,
   type FacebookAdsAuthValue,
-} from "@chatbotx.io/integration-facebook-ads"
-import { exchangeCodeForToken as exchangeInstagramCode } from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { exchangeCodeForToken as exchangeInstagramCode } from "@salesmanchatbot.io/integration-instagram"
 import {
   exchangeCodeForToken as exchangeInstagramFacebookCode,
   getFacebookUser as getInstagramFacebookUser,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   exchangeCodeForToken as exchangeMessengerCode,
   type FacebookUser,
   getFacebookUser as getMessengerFacebookUser,
-} from "@chatbotx.io/integration-messenger"
-import { exchangeLongLivedToken as exchangeMessengerLongLivedToken } from "@chatbotx.io/integration-messenger/apis/page"
-import type { MetaCatalogAuthValue } from "@chatbotx.io/integration-meta-catalog/schemas"
+} from "@salesmanchatbot.io/integration-messenger"
+import { exchangeLongLivedToken as exchangeMessengerLongLivedToken } from "@salesmanchatbot.io/integration-messenger/apis/page"
+import type { MetaCatalogAuthValue } from "@salesmanchatbot.io/integration-meta-catalog/schemas"
 import {
   buildThreadsAuthValue,
   exchangeCodeForToken as exchangeThreadsCode,
   getThreadsProfile,
-} from "@chatbotx.io/integration-threads"
-import { TiktokMissingScopesError } from "@chatbotx.io/integration-tiktok"
+} from "@salesmanchatbot.io/integration-threads"
+import { TiktokMissingScopesError } from "@salesmanchatbot.io/integration-tiktok"
 import {
   AuthType,
   type AuthValue,
   type Oauth2AuthValue,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   createId,
   getPublicUrlFromRequest,
   zodBigintAsString,
-} from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/utils"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 import type { NextRequest } from "next/server"
@@ -452,7 +452,7 @@ const handleConnectSessionCallback = async (
     // it must NOT call `fail()` and flip a still-active session to
     // `failed` out from under the request that's actually progressing it.
     const isBenignReplay =
-      err instanceof ChatbotXException &&
+      err instanceof salesmanChatbotException &&
       (err.code === "connectionStateMismatch" ||
         err.code === "connectSessionExpired")
     if (isBenignReplay) {
@@ -471,7 +471,7 @@ const handleConnectSessionCallback = async (
       // callback into a 500 — the person still needs to land back on
       // `returnUrl`, and the session just stays in its prior (non-terminal)
       // status until the nightly reconcile or a future webhook retry —
-      // `failSession` (`@chatbotx.io/connections`) swallows that for us.
+      // `failSession` (`@salesmanchatbot.io/connections`) swallows that for us.
       logger.error(
         { err, sessionId: session.id, provider: session.provider },
         "connect session completeAuthorization failed",
@@ -1013,7 +1013,7 @@ export const handleCallback = async (
         // duplicated-channel toast instead of a 500 page. `redirect()` throws
         // NEXT_REDIRECT, so it must stay out of the `try` above.
         if (
-          error instanceof ChatbotXException &&
+          error instanceof salesmanChatbotException &&
           error.code === "channelDuplicated"
         ) {
           return redirect(

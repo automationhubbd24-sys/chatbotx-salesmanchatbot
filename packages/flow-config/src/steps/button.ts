@@ -1,4 +1,4 @@
-import { createId, zodBigintAsString } from "@chatbotx.io/utils"
+import { createId, zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { countMessageCharacters } from "../channel-rules/characters"
 import { actionSteps } from "../shared"

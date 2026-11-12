@@ -80,17 +80,17 @@ const {
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   messageModel: { id: "id", sourceId: "sourceId" },
   contactInboxModel: { id: "id" },
   conversationModel: { id: "id", lastActivityAt: "lastActivityAt" },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: mockBroadcast,
   publishToWorkspaceParty: mockBroadcast,
   contactInboxService: {
@@ -109,28 +109,28 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/sdk")>()
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()
   return {
     ...actual,
     parseSdkError: vi.fn().mockResolvedValue({ message: "sdk error" }),
   }
 })
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "test-id") }
 })
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: mockContactVariables },
 }))
 
@@ -152,16 +152,16 @@ vi.mock("../src/chat/handlers/send-message", () => ({
   sendFlowStepToChannel: mockSendFlowStep,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     evaluateTemplateSent: "evaluateTemplateSent",
   },
   enqueueIntegrationJob: mockEnqueueIntegrationJob,
 }))
 
-vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/flow-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/flow-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/flow-config")>()
   return {
     ...actual,
     messageEventTypeSchema: {
@@ -182,7 +182,7 @@ import type { ProcessMessengerTemplateParams } from "../src/chat/handlers/send-m
 const { processMessengerTemplate, sendMessengerTemplateMessage } = await import(
   "../src/chat/handlers/send-messenger-template"
 )
-const { ChannelError, ChannelErrorCategory } = await import("@chatbotx.io/sdk")
+const { ChannelError, ChannelErrorCategory } = await import("@salesmanchatbot.io/sdk")
 
 // ---------------------------------------------------------------------------
 // Fixtures

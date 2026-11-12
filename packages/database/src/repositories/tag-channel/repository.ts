@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { and, type DatabaseClient, db, eq, inArray, sql } from "../../client"
 import {
   contactInboxModel,
@@ -11,7 +11,7 @@ import type { TagChannelModel } from "../../types"
 
 // A function, not a module-scope constant: referencing `tagChannelModel`'s
 // columns at import time breaks any test that partially mocks
-// `@chatbotx.io/database/schema` without `tagChannelModel`, even when that
+// `@salesmanchatbot.io/database/schema` without `tagChannelModel`, even when that
 // test never touches tag-channel code — it only imports the repositories
 // barrel. Computing this lazily, inside each call, avoids that.
 const tagChannelConflictTarget = () => [

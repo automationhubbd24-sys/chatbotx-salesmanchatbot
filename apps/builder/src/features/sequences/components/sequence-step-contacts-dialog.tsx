@@ -1,6 +1,6 @@
 "use client"
 
-import type { SequenceStepEventType } from "@chatbotx.io/analytics/schemas"
+import type { SequenceStepEventType } from "@salesmanchatbot.io/analytics/schemas"
 import { useTranslations } from "next-intl"
 import { memo, useCallback } from "react"
 import {

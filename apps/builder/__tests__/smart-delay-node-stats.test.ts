@@ -1,5 +1,5 @@
-import type { SmartDelayStepCountRow } from "@chatbotx.io/business/smart-delay"
-import { type FlowNode, nodeTypeSchema } from "@chatbotx.io/flow-config"
+import type { SmartDelayStepCountRow } from "@salesmanchatbot.io/business/smart-delay"
+import { type FlowNode, nodeTypeSchema } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { buildSmartDelayNodeStats } from "../src/features/flows/analytics/smart-delay-node-stats"
 

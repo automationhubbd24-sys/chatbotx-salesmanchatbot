@@ -1,11 +1,11 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { and, db, eq, findOrFail, inArray } from "@chatbotx.io/database/client"
-import { channelTypes } from "@chatbotx.io/database/partials"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { and, db, eq, findOrFail, inArray } from "@salesmanchatbot.io/database/client"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   integrationZaloModel,
   tagChannelModel,
-} from "@chatbotx.io/database/schema"
-import type { IntegrationZaloModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { IntegrationZaloModel } from "@salesmanchatbot.io/database/types"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"
 import { notFoundException } from "../errors"

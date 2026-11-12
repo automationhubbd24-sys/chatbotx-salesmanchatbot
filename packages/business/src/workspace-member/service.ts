@@ -4,23 +4,23 @@ import {
   db,
   eq,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
-import { workspaceMemberRoles } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { workspaceMemberRoles } from "@salesmanchatbot.io/database/partials"
 import {
   type WorkspaceMemberPermissionsRow,
   workspaceMemberRepository,
-} from "@chatbotx.io/database/repositories"
-import { workspaceMemberModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import { workspaceMemberModel } from "@salesmanchatbot.io/database/schema"
 import type {
   UserModel,
   WorkspaceMemberModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/utils"
+import { withCache } from "@salesmanchatbot.io/redis"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 import { logger } from "../logger"

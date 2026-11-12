@@ -1,4 +1,4 @@
-import { openrouterModels } from "@chatbotx.io/ai"
+import { openrouterModels } from "@salesmanchatbot.io/ai"
 import { z } from "zod"
 
 export const connectOpenRouterSchema = z.object({

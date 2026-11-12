@@ -2,8 +2,8 @@ import {
   channelTypes,
   conversationBotCategories,
   conversationStatuses,
-} from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { contactFilterRequest } from "@/features/contact-filter/schema"
 import { cursorPaginationRequest } from "@/lib/pagination"

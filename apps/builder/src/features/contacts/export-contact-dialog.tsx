@@ -1,7 +1,7 @@
 "use client"
 
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   type DialogChangeEventDetails,
@@ -10,9 +10,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import type { MultiSelectGroup } from "@chatbotx.io/ui/components/ui/sersavan/multi-select"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import type { MultiSelectGroup } from "@salesmanchatbot.io/ui/components/ui/sersavan/multi-select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { useQuery } from "@tanstack/react-query"

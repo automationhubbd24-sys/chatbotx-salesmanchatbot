@@ -1,18 +1,18 @@
 import {
   conversationService,
   resolveContactAvatarUrl,
-} from "@chatbotx.io/business"
-import { resolveAdReferral } from "@chatbotx.io/business/ads-conversion/channel-fields"
-import { notFoundException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { resolveAdReferral } from "@salesmanchatbot.io/business/ads-conversion/channel-fields"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
 import {
   contactInboxOperationalColumns,
   createMessageRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxOperationalModel,
   InboxModel,
-} from "@chatbotx.io/database/types"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { endOfHour } from "date-fns"
 import z from "zod"
 import type { ListConversationsRequest } from "@/features/conversations/schema/query"

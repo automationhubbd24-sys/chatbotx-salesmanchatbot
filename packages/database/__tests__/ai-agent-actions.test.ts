@@ -1,7 +1,7 @@
 import {
   aiAgentActionRulesSchema,
   aiAgentActionSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 
 const actionIds = [

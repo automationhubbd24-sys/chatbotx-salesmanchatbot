@@ -26,7 +26,7 @@ vi.mock("../src/send-time-validator", () => ({
   calculateNextValidSendTime: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       contactsOnSequenceModel: {
@@ -61,7 +61,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   gt: (c: unknown, v: unknown) => ({ __gt: [c, v] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactsOnSequenceModel: { id: "__cos_id", workspaceId: "__cos_ws" },
   sequenceStepModel: {
     sequenceId: "__step_seqId",
@@ -70,8 +70,8 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: () => "test-id",

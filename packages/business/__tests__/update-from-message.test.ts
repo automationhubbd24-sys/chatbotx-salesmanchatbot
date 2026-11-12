@@ -16,7 +16,7 @@ const {
   mockEmitContactInfoUpdated: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockUpdate,
     query: {
@@ -28,11 +28,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactInfoUpdated: mockEmitContactInfoUpdated,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: {
     id: "id",
     phoneNumber: "phoneNumber",

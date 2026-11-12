@@ -1,4 +1,4 @@
-import type { CommentHandlers } from "@chatbotx.io/sdk"
+import type { CommentHandlers } from "@salesmanchatbot.io/sdk"
 import {
   deleteComment as deleteCommentApi,
   editComment as editCommentApi,

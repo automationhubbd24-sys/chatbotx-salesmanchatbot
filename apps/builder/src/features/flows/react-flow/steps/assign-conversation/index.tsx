@@ -2,7 +2,7 @@ import {
   type AssignConversationStepSchema,
   assignConversationStepDefaultFn,
   assignConversationStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import AssignConversationStepEditor from "./editor"
 import AssignConversationStepViewer from "./viewer"

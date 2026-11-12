@@ -1,10 +1,10 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import {
   type GoogleCredential,
   googleCredentialUpdateSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 import { authActionClient } from "@/lib/safe-action"
 import { credentialScopeSchema, resolveCredentialScopedUserId } from "../scope"

@@ -1,14 +1,14 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 import {
   adsEligibleChannelTypes,
   DEFAULT_ADS_CONVERSION_CHANNEL,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import { notFound } from "next/navigation"
 
 /**
  * Channels the Click to Message Ads tool supports, in the canonical display
  * order (WhatsApp, Messenger, Instagram) — re-exported from
- * `adsEligibleChannelTypes` (`@chatbotx.io/utils/channel`) rather than
+ * `adsEligibleChannelTypes` (`@salesmanchatbot.io/utils/channel`) rather than
  * redeclared, so the tool's tabs can never drift from the Ads dashboard's
  * channel set/order (`AnalyticsNav` renders the same order).
  */

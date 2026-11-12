@@ -2,7 +2,7 @@ import {
   landingPageNodeDefaultFn,
   landingPageNodeSchema,
   nodeTypeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { AppWindowIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { landingPageEditorMenus } from "./menu"

@@ -1,15 +1,15 @@
 "use client"
 
-import type { IntegrationMessengerModel } from "@chatbotx.io/database/types"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import type { IntegrationMessengerModel } from "@salesmanchatbot.io/database/types"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import { CapiConnectedCard } from "@/features/meta-conversions/components/capi-connected-card"
 import { CapiMethodChooser } from "@/features/meta-conversions/components/capi-method-chooser"

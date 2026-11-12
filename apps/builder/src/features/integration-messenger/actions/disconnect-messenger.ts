@@ -3,16 +3,16 @@ import {
   instagramIntegrationService,
   messengerIntegrationService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { connectionStateService } from "@chatbotx.io/business/connection"
-import { db } from "@chatbotx.io/database/client"
-import { metaCapiEventRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { connectionStateService } from "@salesmanchatbot.io/business/connection"
+import { db } from "@salesmanchatbot.io/database/client"
+import { metaCapiEventRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   isDisconnectSafeError,
   type MessengerAuthValue,
-} from "@chatbotx.io/integration-messenger"
-import { subscribePageToAppWebhook } from "@chatbotx.io/integration-messenger/apis/page"
+} from "@salesmanchatbot.io/integration-messenger"
+import { subscribePageToAppWebhook } from "@salesmanchatbot.io/integration-messenger/apis/page"
 import { integrations } from "@/integration"
 import { logger } from "@/lib/log"
 

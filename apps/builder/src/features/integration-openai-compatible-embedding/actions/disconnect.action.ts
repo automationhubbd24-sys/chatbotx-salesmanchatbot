@@ -1,6 +1,6 @@
 "use server"
 
-import { integrationOpenaiCompatibleEmbeddingService } from "@chatbotx.io/business"
+import { integrationOpenaiCompatibleEmbeddingService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

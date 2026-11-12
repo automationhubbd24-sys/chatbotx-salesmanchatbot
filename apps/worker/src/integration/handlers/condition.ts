@@ -1,11 +1,11 @@
-import { contactService } from "@chatbotx.io/business"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
-import type { ConditionStepSchema } from "@chatbotx.io/flow-config"
-import { resolveContactVariablesDeep } from "@chatbotx.io/variables"
+import { contactService } from "@salesmanchatbot.io/business"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
+import type { ConditionStepSchema } from "@salesmanchatbot.io/flow-config"
+import { resolveContactVariablesDeep } from "@salesmanchatbot.io/variables"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { type ExecuteStepProps, seekConnectedNode } from "./flow-utils"
 

@@ -1,4 +1,4 @@
-import type { Context } from "@chatbotx.io/sdk"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import z from "zod"
 import { DEFAULT_API_VERSION } from "../constants"
 import { MessengerAPIException, rescue } from "../exception"

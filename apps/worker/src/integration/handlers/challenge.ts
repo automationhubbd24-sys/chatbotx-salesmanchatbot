@@ -1,7 +1,7 @@
-import { emit } from "@chatbotx.io/event-bus"
-import type { FlowNode } from "@chatbotx.io/flow-config"
-import { initVariables, SdkException } from "@chatbotx.io/sdk"
-import type { IntegrationJobRunChallenge } from "@chatbotx.io/worker-config"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
+import { initVariables, SdkException } from "@salesmanchatbot.io/sdk"
+import type { IntegrationJobRunChallenge } from "@salesmanchatbot.io/worker-config"
 import {
   detectConversationAndContactInbox,
   detectFlowVersion,

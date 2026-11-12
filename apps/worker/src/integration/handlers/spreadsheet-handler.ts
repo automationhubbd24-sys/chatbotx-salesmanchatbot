@@ -4,12 +4,12 @@ import {
   contactCustomFieldService,
   integrationGoogleSheetService,
   spreadsheetService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   ContactInboxModel,
   ConversationModel,
   SpreadsheetModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   FieldReferenceKind,
   type FilterMode,
@@ -21,15 +21,15 @@ import {
   type SpreadsheetSchema,
   type SpreadsheetSendDataSchema,
   type SpreadsheetUpdateRowSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   type GoogleSheetsAuthValue,
   integration as integrationGooglesheets,
-} from "@chatbotx.io/integration-google-sheets"
+} from "@salesmanchatbot.io/integration-google-sheets"
 import {
   SourceTimezoneStrategy,
   TemporalInputParsing,
-} from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/utils/datetime"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow"
 import { logStepProviderError } from "./flow-utils"

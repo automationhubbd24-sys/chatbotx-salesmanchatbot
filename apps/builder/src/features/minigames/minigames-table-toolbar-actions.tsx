@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import type { Table } from "@tanstack/react-table"
 import { PlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

@@ -1,6 +1,6 @@
 "use client"
 
-import { buildMessageLink } from "@chatbotx.io/business/utils"
+import { buildMessageLink } from "@salesmanchatbot.io/business/utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,15 +11,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   EllipsisVerticalIcon,
   ExternalLinkIcon,

@@ -1,18 +1,18 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { InfoIcon, Loader2Icon, XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

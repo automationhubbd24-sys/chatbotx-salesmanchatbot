@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   uploadTypes: {
     enum: {
       import: "import",
@@ -11,7 +11,7 @@ vi.mock("@chatbotx.io/database/partials", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/imports", () => ({
+vi.mock("@salesmanchatbot.io/imports", () => ({
   getImportEntry: vi.fn(),
 }))
 

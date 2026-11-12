@@ -4,39 +4,39 @@ import {
   inboxService,
   integrationThreadsService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { findOrFail } from "@chatbotx.io/database/client"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
-import { integrationLookupRepository } from "@chatbotx.io/database/repositories"
-import { inboxModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
+import { integrationLookupRepository } from "@salesmanchatbot.io/database/repositories"
+import { inboxModel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   InboxModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
-import { integration as integrationActiveCampaign } from "@chatbotx.io/integration-active-campaign"
-import { integration as integrationApi } from "@chatbotx.io/integration-api"
-import { integration as integrationChatbotx } from "@chatbotx.io/integration-chatbotx"
-import { integration as integrationDrip } from "@chatbotx.io/integration-drip"
-import { integration as integrationFacebookAds } from "@chatbotx.io/integration-facebook-ads"
-import { integration as integrationGetResponse } from "@chatbotx.io/integration-get-response"
-import { integration as integrationGoogleCalendar } from "@chatbotx.io/integration-google-calendar"
-import { integration as integrationGoogleSheets } from "@chatbotx.io/integration-google-sheets"
-import { integration as integrationInstagram } from "@chatbotx.io/integration-instagram"
-import { integration as integrationInstagramFacebook } from "@chatbotx.io/integration-instagram-facebook"
-import { integration as integrationKlaviyo } from "@chatbotx.io/integration-klaviyo"
-import { integration as integrationMailchimp } from "@chatbotx.io/integration-mailchimp"
-import { integration as integrationMailerLite } from "@chatbotx.io/integration-mailer-lite"
-import { integration as integrationMessenger } from "@chatbotx.io/integration-messenger"
-import { integration as integrationMoosend } from "@chatbotx.io/integration-moosend"
-import { integration as integrationSendGrid } from "@chatbotx.io/integration-sendgrid"
-import { integration as integrationSmtp } from "@chatbotx.io/integration-smtp"
-import { integration as integrationTelegram } from "@chatbotx.io/integration-telegram"
-import { integration as integrationThreads } from "@chatbotx.io/integration-threads"
-import { integration as integrationTiktok } from "@chatbotx.io/integration-tiktok"
-import { integration as integrationWebchat } from "@chatbotx.io/integration-webchat"
-import { integration as integrationWhatsapp } from "@chatbotx.io/integration-whatsapp"
-import { integration as integrationZalo } from "@chatbotx.io/integration-zalo"
+} from "@salesmanchatbot.io/database/types"
+import { integration as integrationActiveCampaign } from "@salesmanchatbot.io/integration-active-campaign"
+import { integration as integrationApi } from "@salesmanchatbot.io/integration-api"
+import { integration as integrationChatbotx } from "@salesmanchatbot.io/integration-salesmanchatbot"
+import { integration as integrationDrip } from "@salesmanchatbot.io/integration-drip"
+import { integration as integrationFacebookAds } from "@salesmanchatbot.io/integration-facebook-ads"
+import { integration as integrationGetResponse } from "@salesmanchatbot.io/integration-get-response"
+import { integration as integrationGoogleCalendar } from "@salesmanchatbot.io/integration-google-calendar"
+import { integration as integrationGoogleSheets } from "@salesmanchatbot.io/integration-google-sheets"
+import { integration as integrationInstagram } from "@salesmanchatbot.io/integration-instagram"
+import { integration as integrationInstagramFacebook } from "@salesmanchatbot.io/integration-instagram-facebook"
+import { integration as integrationKlaviyo } from "@salesmanchatbot.io/integration-klaviyo"
+import { integration as integrationMailchimp } from "@salesmanchatbot.io/integration-mailchimp"
+import { integration as integrationMailerLite } from "@salesmanchatbot.io/integration-mailer-lite"
+import { integration as integrationMessenger } from "@salesmanchatbot.io/integration-messenger"
+import { integration as integrationMoosend } from "@salesmanchatbot.io/integration-moosend"
+import { integration as integrationSendGrid } from "@salesmanchatbot.io/integration-sendgrid"
+import { integration as integrationSmtp } from "@salesmanchatbot.io/integration-smtp"
+import { integration as integrationTelegram } from "@salesmanchatbot.io/integration-telegram"
+import { integration as integrationThreads } from "@salesmanchatbot.io/integration-threads"
+import { integration as integrationTiktok } from "@salesmanchatbot.io/integration-tiktok"
+import { integration as integrationWebchat } from "@salesmanchatbot.io/integration-webchat"
+import { integration as integrationWhatsapp } from "@salesmanchatbot.io/integration-whatsapp"
+import { integration as integrationZalo } from "@salesmanchatbot.io/integration-zalo"
 import {
   type AuthValue,
   type BaseConfig,
@@ -45,7 +45,7 @@ import {
   type Integration,
   type IntegrationDefinition,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { IntegrationNotFoundError } from "./errors"
 
 export { IntegrationNotFoundError } from "./errors"
@@ -53,7 +53,7 @@ export { IntegrationNotFoundError } from "./errors"
 export const integrations = {
   activeCampaign: integrationActiveCampaign,
   api: integrationApi,
-  chatbotx: integrationChatbotx,
+  salesmanchatbot: integrationChatbotx,
   drip: integrationDrip,
   facebookAds: integrationFacebookAds,
   getResponse: integrationGetResponse,

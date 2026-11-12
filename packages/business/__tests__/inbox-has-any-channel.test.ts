@@ -21,7 +21,7 @@ const inArrayMock = vi.fn((field: unknown, values: unknown[]) => ({
   values,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...conditions: unknown[]) => andMock(...conditions),
   db: {
     select: (...args: unknown[]) => selectMock(...(args as [])),

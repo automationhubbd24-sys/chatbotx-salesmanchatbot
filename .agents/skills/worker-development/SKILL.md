@@ -10,7 +10,7 @@ description: >-
 
 Workers run as separate Node processes in `apps/worker/`. They consume jobs from **BullMQ** queues backed by Redis.
 
-**Shared config** lives in `packages/worker-config/` (`@chatbotx.io/worker-config`).
+**Shared config** lives in `packages/worker-config/` (`@salesmanchatbot.io/worker-config`).
 
 ## Existing Workers
 
@@ -26,7 +26,7 @@ Workers run as separate Node processes in `apps/worker/`. They consume jobs from
 | schedule | (cron) | `src/schedule/worker.ts` |
 | sequence-scheduler | `sequenceScheduler` | `src/sequence-scheduler/worker*.ts` |
 | notification | `notification` | `src/notification/worker.ts` |
-| events | event-bus (not BullMQ) | `src/events/worker.ts` — `startWorker([...listeners])` from `@chatbotx.io/event-bus/worker` |
+| events | event-bus (not BullMQ) | `src/events/worker.ts` — `startWorker([...listeners])` from `@salesmanchatbot.io/event-bus/worker` |
 
 `queueNames` (`packages/worker-config/src/lib/types.ts:3`) also declares `broadcast` and
 `quota`, which have queues but no dedicated worker entry — their jobs are consumed by the
@@ -150,7 +150,7 @@ Include in the `dev` script's concurrently list if needed.
 From builder or other apps:
 
 ```typescript
-import { myQueue, MyQueueJobAction } from "@chatbotx.io/worker-config"
+import { myQueue, MyQueueJobAction } from "@salesmanchatbot.io/worker-config"
 
 await myQueue.add("processItem", {
   type: MyQueueJobAction.processItem,
@@ -249,12 +249,12 @@ workers from processing the same dispatch.
 
 | What | Import from |
 |------|-------------|
-| Queue names, job types | `@chatbotx.io/worker-config` |
-| Redis connection, options | `@chatbotx.io/worker-config` |
-| Database | `@chatbotx.io/database/client` |
+| Queue names, job types | `@salesmanchatbot.io/worker-config` |
+| Redis connection, options | `@salesmanchatbot.io/worker-config` |
+| Database | `@salesmanchatbot.io/database/client` |
 | Integration handlers | `../services/integrations` (within worker) |
-| Logger | `@chatbotx.io/logger` |
-| SDK types | `@chatbotx.io/sdk` |
+| Logger | `@salesmanchatbot.io/logger` |
+| SDK types | `@salesmanchatbot.io/sdk` |
 
 ## Logging
 

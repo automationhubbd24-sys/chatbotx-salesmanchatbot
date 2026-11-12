@@ -53,9 +53,9 @@ const reflinkService = {
   update: vi.fn(),
   deleteMany: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ reflinkService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ reflinkService }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),

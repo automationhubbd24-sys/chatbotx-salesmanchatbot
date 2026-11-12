@@ -1,28 +1,28 @@
 "use client"
 
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
 import type { ColumnDef } from "@tanstack/react-table"
 import { EllipsisVerticalIcon, Loader, ScrollTextIcon } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"

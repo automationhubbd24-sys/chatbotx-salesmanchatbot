@@ -22,7 +22,7 @@ const {
   checkWorkspaceOwnerAccess: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isPlatformAdmin: vi.fn(),
   isSuperAdmin: vi.fn(),
   isWorkspaceScheduledForDeletion: vi.fn(() => false),
@@ -35,30 +35,30 @@ vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   workspaceAccessDenialException: (
     reason: "trialExpired" | "macLimitReached",
   ) =>
-    new (class ChatbotXException extends Error {})(
+    new (class salesmanChatbotException extends Error {})(
       reason === "macLimitReached"
         ? "Monthly active contact limit reached"
         : "Trial expired",
     ),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   findOrFail: vi.fn(),
   isDatabaseError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({ userModel: {} }))
+vi.mock("@salesmanchatbot.io/database/schema", () => ({ userModel: {} }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   SdkException: class SdkException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/utils", () => {
-  // `@chatbotx.io/database/partials` re-exports every partial schema
+vi.mock("@salesmanchatbot.io/utils", () => {
+  // `@salesmanchatbot.io/database/partials` re-exports every partial schema
   // (including ones unrelated to this test, e.g. minigame.ts) through one
   // barrel, and some of those call `zodBigintAsString().nullable()` /
   // `.optional()` at module-eval time. A stub with only `safeParse` breaks

@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------
@@ -42,14 +42,14 @@ vi.mock("@/lib/platform-credential-owner", () => ({
 // Fully replaced (not `importOriginal`) — the real module's
 // `checkWorkspaceOwnerAccess` pulls in `@/env`, which requires real
 // deployment env vars this test suite never sets. `workspaceAccessDenialException`
-// still builds a genuine `ChatbotXException` so callers' (real, unmocked)
+// still builds a genuine `salesmanChatbotException` so callers' (real, unmocked)
 // `toConnectSessionError` recognizes it exactly like production.
 vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   checkWorkspaceOwnerAccess: checkWorkspaceOwnerAccessMock,
   workspaceAccessDenialException: (
     reason: "trialExpired" | "macLimitReached",
   ) =>
-    new ChatbotXException(
+    new salesmanChatbotException(
       reason === "macLimitReached"
         ? "Monthly active contact limit reached"
         : "Trial expired",
@@ -59,12 +59,12 @@ vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
 }))
 
 vi.mock("@/features/integration-webchat/lib", () => ({
-  BRANDING_TITLE: "ChatbotX",
+  BRANDING_TITLE: "salesmanChatbot",
   getBrandingUrl: (channel: string, appUrl: string) =>
     `${appUrl}/branding/${channel}`,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: { find: findWorkspaceMock },
   workspaceMemberService: { isMember: isMemberMock },
   platformCredentialService: { resolveForOwner: platformCredentialResolveMock },
@@ -209,7 +209,7 @@ describe("resolveConnectSession", () => {
       },
       appUrl: "https://app.test",
       brandingMenuEntry: {
-        label: "ChatbotX",
+        label: "salesmanChatbot",
         type: "url",
         url: "https://app.test/branding/instagram",
       },

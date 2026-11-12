@@ -1,5 +1,5 @@
-import { purgeErrorLogs as purgeErrorLogRows } from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { purgeErrorLogs as purgeErrorLogRows } from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 
 const log = getChildLogger("purge-error-logs")
 

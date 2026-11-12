@@ -31,7 +31,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: { externalWebhookModel: { findFirst: mocks.findFirst } },
     $count: mocks.count,
@@ -43,12 +43,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   findOrFail: mocks.findOrFail,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   externalWebhookModel: mocks.externalWebhookModel,
 }))
 
 let idCounter = 0
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: vi.fn(() => `generated-id-${++idCounter}`),
 }))
 
@@ -85,7 +85,7 @@ beforeEach(() => {
 })
 
 describe("externalWebhookService.register", () => {
-  test("rejects a non-public URL as a 422 ChatbotXException before touching the DB", async () => {
+  test("rejects a non-public URL as a 422 salesmanChatbotException before touching the DB", async () => {
     assertPublicUrl.mockRejectedValueOnce(
       new Error(
         "[ssrf-guard] Webhook URL is not allowed: http://127.0.0.1/hook",

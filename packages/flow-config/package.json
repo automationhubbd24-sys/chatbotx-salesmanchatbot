@@ -1,17 +1,17 @@
 {
-  "name": "@chatbotx.io/flow-config",
+  "name": "@salesmanchatbot.io/flow-config",
   "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "24.x",
     "@types/react": "19.2.14",
     "typescript": "^5",
     "vitest": "^4.1.0"
   },
   "dependencies": {
-    "@chatbotx.io/utils": "workspace:*",
+    "@salesmanchatbot.io/utils": "workspace:*",
     "@xyflow/react": "^12.10.2",
     "date-fns": "^4.1.0",
     "zod": "^4.3.6"

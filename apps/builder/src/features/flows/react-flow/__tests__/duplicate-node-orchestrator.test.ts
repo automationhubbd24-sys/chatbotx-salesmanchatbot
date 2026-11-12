@@ -1,4 +1,4 @@
-import type { FlowNode } from "@chatbotx.io/flow-config"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test, vi } from "vitest"
 import {
   createDuplicateNode,

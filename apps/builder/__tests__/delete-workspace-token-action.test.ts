@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   requireWorkspaceTokenSuperAdmin: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { deleteToken: mocks.deleteToken },
 }))
 

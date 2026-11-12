@@ -1,4 +1,4 @@
-import type { MinigamePlayerSettings } from "@chatbotx.io/database/partials"
+import type { MinigamePlayerSettings } from "@salesmanchatbot.io/database/partials"
 
 type PlayerSettingsFormValue = Partial<MinigamePlayerSettings> | undefined
 

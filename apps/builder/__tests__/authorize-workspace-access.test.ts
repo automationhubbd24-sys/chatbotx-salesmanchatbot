@@ -9,18 +9,18 @@ const { getAccessState, isAtLimit, isCloud } = vi.hoisted(() => ({
   isCloud: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   quotaEnforcementService: { isAtLimit },
   userQuotaService: { getAccessState },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code = "systemError", httpStatusCode = 400) {
       super(message)
-      this.name = "ChatbotXException"
+      this.name = "salesmanChatbotException"
       this.code = code
       this.httpStatusCode = httpStatusCode
     }

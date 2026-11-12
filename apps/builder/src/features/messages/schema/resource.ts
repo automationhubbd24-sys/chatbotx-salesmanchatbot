@@ -1,5 +1,5 @@
-import { createSelectSchema, messageModel } from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { createSelectSchema, messageModel } from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { attachmentResource } from "@/features/attachments/schema/resource"
 import { contactResource } from "@/features/contacts/schema/resource"

@@ -1,9 +1,9 @@
 import { datePartOf, isRealCalendarDate } from "./datetime"
 
 /**
- * Lives here (not `@chatbotx.io/database`) so a "use client" component (e.g.
+ * Lives here (not `@salesmanchatbot.io/database`) so a "use client" component (e.g.
  * the contact-filter condition dialog) can validate a filter value without
- * depending on the database's query layer. `@chatbotx.io/database`'s
+ * depending on the database's query layer. `@salesmanchatbot.io/database`'s
  * contact-filter query module re-exports this for existing backend
  * importers. Mirrors the `channelTypes` precedent in `./channel.ts`.
  */

@@ -1,4 +1,4 @@
-import type { EncryptedData } from "@chatbotx.io/encryption"
+import type { EncryptedData } from "@salesmanchatbot.io/encryption"
 import { and, type DatabaseClient, db, eq, isNull, sql } from "../../client"
 import { logger } from "../../logger"
 import {

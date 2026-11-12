@@ -60,7 +60,7 @@ const txClient = {
   },
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ __and: args }),
   db: {
     query: {
@@ -83,7 +83,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceUsageModel: {},
   userQuotaModel: {},
   questionnaireSubmissionModel: {},
@@ -103,11 +103,11 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   macAnalyticsService: {},
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitSequenceUnsubscribed: emitSequenceUnsubscribedSpy,
 }))
 
@@ -117,7 +117,7 @@ vi.mock("../src/logger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/sequence-scheduler", () => ({
+vi.mock("@salesmanchatbot.io/sequence-scheduler", () => ({
   cancelPendingDispatches: cancelPendingDispatchesSpy,
   enrollContactInSequence: enrollContactInSequenceSpy,
   removeDispatchesFromSchedule: removeDispatchesFromScheduleSpy,

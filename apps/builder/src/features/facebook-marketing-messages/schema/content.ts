@@ -1,10 +1,10 @@
-import { uploadModes } from "@chatbotx.io/database/partials"
-import { BUTTON_LABEL_MAX } from "@chatbotx.io/flow-config"
+import { uploadModes } from "@salesmanchatbot.io/database/partials"
+import { BUTTON_LABEL_MAX } from "@salesmanchatbot.io/flow-config"
 import {
   createId,
   zodBigintAsString,
   zodUrlWithVariables,
-} from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 /** Meta: quick replies allow "Up to 13 buttons" — NOT the flow package's 10. */

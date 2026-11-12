@@ -12,7 +12,7 @@ vi.mock("next-intl", () => ({
 // Mirrors `ads-account-filter.test.tsx` — the base-ui `Select` primitive
 // needs real DOM/portal wiring the test doesn't care about; a thin stub lets
 // us assert on the value/options/callback contract instead.
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({
     children,
     value,

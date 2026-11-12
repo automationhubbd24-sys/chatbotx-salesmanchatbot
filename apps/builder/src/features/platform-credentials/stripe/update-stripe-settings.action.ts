@@ -1,12 +1,12 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import {
   type StripeCredential,
   type StripeCredentialUpdate,
   stripeCredentialUpdateSchema,
-} from "@chatbotx.io/database/partials"
-import type { UserModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 
 import { isCloud } from "@/env"
 import { authActionClient } from "@/lib/safe-action"

@@ -1,4 +1,4 @@
-import { parseBigIntId } from "@chatbotx.io/utils"
+import { parseBigIntId } from "@salesmanchatbot.io/utils"
 
 export const UNASSIGNED_ASSIGNEE_VALUE = "unassigned"
 const USER_ASSIGNEE_PREFIX = "u_"

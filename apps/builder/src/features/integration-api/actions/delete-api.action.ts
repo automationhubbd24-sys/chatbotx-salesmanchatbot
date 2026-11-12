@@ -1,8 +1,8 @@
 "use server"
 
-import { integrationApiService, workspaceService } from "@chatbotx.io/business"
-import type { ApiAuthValue } from "@chatbotx.io/integration-api"
-import { integration as integrationApi } from "@chatbotx.io/integration-api"
+import { integrationApiService, workspaceService } from "@salesmanchatbot.io/business"
+import type { ApiAuthValue } from "@salesmanchatbot.io/integration-api"
+import { integration as integrationApi } from "@salesmanchatbot.io/integration-api"
 import {
   type WorkspaceIdAndIdRequestParams,
   workspaceIdAndIdRequestParams,

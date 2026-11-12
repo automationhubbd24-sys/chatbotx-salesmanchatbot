@@ -1,11 +1,11 @@
 import type {
   ChannelType,
   CustomFieldType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   ComboboxField,
   type ComboboxFieldProps,
-} from "@chatbotx.io/ui/components/form/combobox-field"
+} from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import type { FieldValues } from "react-hook-form"
 import { useCustomFieldSelectOptions } from "../provider/custom-field-hook"
 

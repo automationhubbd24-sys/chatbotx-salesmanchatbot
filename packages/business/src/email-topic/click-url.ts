@@ -1,4 +1,4 @@
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import { z } from "zod"
 
 // Click-tracking links live in marketing emails that may be opened long after

@@ -3,8 +3,8 @@
 import {
   workspaceLifecycleService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,
@@ -24,7 +24,7 @@ export const scheduleWorkspaceDeletionAction = workspaceActionClientAllowExpired
       const currentUserAndTargetWorkspace =
         await getCurrentUserAndTargetWorkspace(workspaceId)
       if (!currentUserAndTargetWorkspace) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "You are not authorized to delete this workspace",
         )
       }
@@ -32,7 +32,7 @@ export const scheduleWorkspaceDeletionAction = workspaceActionClientAllowExpired
       const { permissions } =
         currentUserAndTargetWorkspace.targetWorkspaceMember
       if (!hasWorkspacePermission(permissions, "superAdmin")) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "You need to be a super admin to delete this workspace",
         )
       }

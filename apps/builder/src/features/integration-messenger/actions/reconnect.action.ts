@@ -3,11 +3,11 @@
 import {
   messengerIntegrationService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { generateAuthUrl } from "@chatbotx.io/integration-messenger"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { generateAuthUrl } from "@salesmanchatbot.io/integration-messenger"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { redirect } from "next/navigation"
 import { getOriginUrlFromHeader } from "@/lib/domain"
 import { resolveOwnerForWorkspace } from "@/lib/platform-credential-owner"
@@ -36,7 +36,7 @@ export const reconnectMessengerAction = workspaceActionClient
           workspaceId,
         })
       if (!integrationMessenger) {
-        throw new ChatbotXException("Integration Messenger not found")
+        throw new salesmanChatbotException("Integration Messenger not found")
       }
 
       const messengerCredential =
@@ -45,7 +45,7 @@ export const reconnectMessengerAction = workspaceActionClient
           type: "messenger",
         })
       if (!messengerCredential) {
-        throw new ChatbotXException("Messenger App settings not found")
+        throw new salesmanChatbotException("Messenger App settings not found")
       }
 
       const redirectUrl = await buildProviderCallbackUrl(

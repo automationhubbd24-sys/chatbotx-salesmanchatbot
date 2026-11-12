@@ -6,13 +6,13 @@ import {
   type SendTextStepSchema,
   type StepType,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type {
   MessageHandlers,
   OutgoingContact,
   OutgoingMessage,
   SendFlowStepProps,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { sendMessageToZaloOA, uploadAttachment } from "../../../api/message"
 import { mapToChannelError } from "../../../lib/error-mapper"
 import { logger } from "../../../lib/logger"

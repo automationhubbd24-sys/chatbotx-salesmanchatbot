@@ -1,7 +1,7 @@
 "use server"
 
-import { orderService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { orderService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { orderCustomFieldDefinitionSchema } from "../schema/action"
 

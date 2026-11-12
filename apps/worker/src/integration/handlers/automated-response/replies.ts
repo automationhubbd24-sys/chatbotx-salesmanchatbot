@@ -5,9 +5,9 @@ import {
   processStreamingText,
   systemFunctionNames,
   toolPrefixes,
-} from "@chatbotx.io/ai"
-import type { AIProviderInstance } from "@chatbotx.io/ai/server"
-import { orderService } from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/ai"
+import type { AIProviderInstance } from "@salesmanchatbot.io/ai/server"
+import { orderService } from "@salesmanchatbot.io/business"
 import {
   aiContextService,
   appendAIAgentActionToolProtocol,
@@ -20,26 +20,26 @@ import {
   McpClient,
   normalizeAuthorizedWebSearchDomains,
   normalizeMcpContent,
-} from "@chatbotx.io/ai/server"
+} from "@salesmanchatbot.io/ai/server"
 import type {
   AIAgentActionRule,
   AIAgentModelConfig,
   AIAgentProviderModels,
   DefaultReplyFrequency,
-} from "@chatbotx.io/database/partials"
-import { aiAgentActionRulesSchema } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
+import { aiAgentActionRulesSchema } from "@salesmanchatbot.io/database/partials"
 import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import {
   type BotResponseTrackingContext,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   type LanguageModel,
   generateText,

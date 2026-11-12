@@ -1,5 +1,5 @@
-import { conversationService } from "@chatbotx.io/business"
-import type { QuestionnairesStepSchema } from "@chatbotx.io/flow-config"
+import { conversationService } from "@salesmanchatbot.io/business"
+import type { QuestionnairesStepSchema } from "@salesmanchatbot.io/flow-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 import { runQuestionnaireEngine } from "../../questionnaires/services/engine"

@@ -1,7 +1,7 @@
 import {
   threadControlActions as sdkActions,
   threadControlRoles as sdkRoles,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { describe, expect, it } from "vitest"
 import { threadControlActions, threadControlRoles } from "../src/partials"
 

@@ -5,19 +5,19 @@ import {
   contactImportFields,
   importTypes,
   uploadTypes,
-} from "@chatbotx.io/database/partials"
-import { matchContactImportHeaders } from "@chatbotx.io/imports"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/database/partials"
+import { matchContactImportHeaders } from "@salesmanchatbot.io/imports"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import {

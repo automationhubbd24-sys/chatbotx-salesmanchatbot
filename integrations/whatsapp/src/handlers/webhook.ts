@@ -1,11 +1,11 @@
-import { whatsappVoipSignalingService } from "@chatbotx.io/business"
+import { whatsappVoipSignalingService } from "@salesmanchatbot.io/business"
 import {
   type HandleRequestProps,
   type ReceivedMessageProps,
   SdkException,
-} from "@chatbotx.io/sdk"
-import { sha256Hex, verifyHmacSha256Signature } from "@chatbotx.io/utils/crypto"
-import type { WhatsappIdentityChangePayload } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import { sha256Hex, verifyHmacSha256Signature } from "@salesmanchatbot.io/utils/crypto"
+import type { WhatsappIdentityChangePayload } from "@salesmanchatbot.io/worker-config"
 import type { OnMessageArgs, OnStatusArgs } from "whatsapp-api-js/emitters"
 import { WhatsAppAPI as Middleware } from "whatsapp-api-js/middleware/next"
 import type { GetParams } from "whatsapp-api-js/types"
@@ -1197,7 +1197,7 @@ const enqueueIdentityChangePayloads = async (
  * transient Redis/DB failure longer than the queue default (2 attempts):
  * 5 attempts, 10s exponential backoff (~2.5 min). Enqueued here through the
  * raw queue the builder hands in, so the per-action `jobOptionsByAction` map in
- * `@chatbotx.io/worker-config` does not apply to it.
+ * `@salesmanchatbot.io/worker-config` does not apply to it.
  */
 const THREAD_CONTROL_EVENT_JOB_OPTIONS = {
   ...REDELIVERABLE_JOB_OPTIONS,

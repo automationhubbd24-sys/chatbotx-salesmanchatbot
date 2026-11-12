@@ -6,7 +6,7 @@ import {
   ThreadControlTakeRefusedError,
   type ThreadControlWebhookResult,
   threadControlRoles,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import {
   buildThreadControlBody,

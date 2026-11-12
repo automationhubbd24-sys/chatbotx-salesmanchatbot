@@ -1,5 +1,5 @@
-import { aiTimeouts, isImageUrl, processStreamingText } from "@chatbotx.io/ai"
-import type { AIAnalyzeImageSchema } from "@chatbotx.io/flow-config"
+import { aiTimeouts, isImageUrl, processStreamingText } from "@salesmanchatbot.io/ai"
+import type { AIAnalyzeImageSchema } from "@salesmanchatbot.io/flow-config"
 import { streamText } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"

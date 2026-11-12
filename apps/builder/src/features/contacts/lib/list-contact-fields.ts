@@ -1,6 +1,6 @@
-import { contactCustomFieldService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
+import { contactCustomFieldService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
 import type {
   ListContactCustomFieldsRequest,
   ListPublicContactCustomFieldsResponse,

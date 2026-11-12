@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockDeleteAndRecord = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: {
     deleteAndRecord: (...args: unknown[]) => mockDeleteAndRecord(...args),
   },

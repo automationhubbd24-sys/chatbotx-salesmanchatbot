@@ -2,7 +2,7 @@
 
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -63,7 +63,7 @@ const sequenceService = {
   upsertStep: vi.fn(),
   deleteStep: vi.fn(),
 }
-vi.mock("@chatbotx.io/business/sequence", () => ({ sequenceService }))
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({ sequenceService }))
 
 vi.mock("../src/features/sequences/queries", () => ({
   listSequences: vi.fn(),

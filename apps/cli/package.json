@@ -1,10 +1,10 @@
 {
-  "name": "chatbotx",
+  "name": "salesmanchatbot",
   "version": "0.0.0-dev",
-  "description": "ChatbotX CLI - Command line interface for the ChatbotX API",
+  "description": "salesmanChatbot CLI - Command line interface for the salesmanChatbot API",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChatbotXIO/ChatbotX.git",
+    "url": "git+https://github.com/salesmanChatbotIO/salesmanChatbot.git",
     "directory": "apps/cli"
   },
   "main": "dist/index.cjs",
@@ -15,13 +15,13 @@
     "LICENSE"
   ],
   "bin": {
-    "chatbotx": "./dist/index.cjs"
+    "salesmanchatbot": "./dist/index.cjs"
   },
   "scripts": {
     "build": "tsdown",
     "check-types": "tsc --noEmit",
     "dev:cli": "tsx src/index.ts",
-    "prepublishOnly": "node --input-type=commonjs -e \"const v=require('./package.json').version; if (v === '0.0.0-dev') { console.error('chatbotx: version is the 0.0.0-dev placeholder — publish via .github/workflows/publish-cli.yml'); process.exit(1) }\"",
+    "prepublishOnly": "node --input-type=commonjs -e \"const v=require('./package.json').version; if (v === '0.0.0-dev') { console.error('salesmanchatbot: version is the 0.0.0-dev placeholder — publish via .github/workflows/publish-cli.yml'); process.exit(1) }\"",
     "start": "node ./dist/index.cjs",
     "test": "pnpm build && vitest run --passWithNoTests",
     "test:watch": "vitest"

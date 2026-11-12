@@ -1,4 +1,4 @@
-import { withAuditContext } from "@chatbotx.io/business/audit"
+import { withAuditContext } from "@salesmanchatbot.io/business/audit"
 import { getGuestClientIp } from "@/lib/rate-limit/guest-rate-limit"
 import { base } from "@/middlewares/context"
 

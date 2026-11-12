@@ -3,7 +3,7 @@ import {
   AITextToSpeechDefaultFn,
   aiEditImageDefaultFn,
   aiGenerateImageDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import {
   getHeavyJobOptions,

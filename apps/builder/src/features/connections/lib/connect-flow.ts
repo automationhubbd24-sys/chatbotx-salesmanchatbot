@@ -1,18 +1,18 @@
 import {
   channelHiddenException,
   connectionNotConfiguredException,
-} from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business/errors"
 import {
   CONNECTION_REGISTRY,
   connectionService,
   isCredentialStrategy,
   toChannelType,
-} from "@chatbotx.io/connections"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/connections"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
 import type {
   ConnectionModel,
   ConnectSessionModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { sanitizeOptionalReturnUrl } from "@/lib/oauth-referer"
 import { resolveChannelPolicy } from "@/lib/workspace/resolve-visible-channels"
 import { resolveOAuthCredential } from "./resolve-connect-credential"

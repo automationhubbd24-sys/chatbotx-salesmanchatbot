@@ -6,12 +6,12 @@ import {
   realtimeEventEnvelopeSchema,
   realtimeProtocolSchema,
   realtimeSubscriptionMessageSchema,
-} from "@chatbotx.io/partysocket-config"
-import { verifyMemberConnectToken } from "@chatbotx.io/partysocket-config/auth"
+} from "@salesmanchatbot.io/partysocket-config"
+import { verifyMemberConnectToken } from "@salesmanchatbot.io/partysocket-config/auth"
 import {
   PRESENCE_REPORT_INTERVAL_MS,
   presencePingMessageSchema,
-} from "@chatbotx.io/partysocket-config/presence"
+} from "@salesmanchatbot.io/partysocket-config/presence"
 import type * as Party from "partykit/server"
 import { z } from "zod"
 import { env } from "../env"
@@ -33,7 +33,7 @@ const BATCH_HEADER = "X-Realtime-Batch"
 const realtimeBatchBodySchema = z.object({ batch: z.array(z.unknown()) })
 
 /** Re-exported so existing importers of this module keep working. */
-export { PRESENCE_REPORT_INTERVAL_MS } from "@chatbotx.io/partysocket-config/presence"
+export { PRESENCE_REPORT_INTERVAL_MS } from "@salesmanchatbot.io/partysocket-config/presence"
 
 /**
  * PartyKit alarms cannot read `room.id`, so the workspace id is cached in

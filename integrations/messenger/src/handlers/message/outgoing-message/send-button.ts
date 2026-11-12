@@ -5,8 +5,8 @@ import {
   encodeButtonPayload,
   extractMetadata,
   type MetadataPayload,
-} from "@chatbotx.io/flow-config"
-import { logDiagnostic } from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/flow-config"
+import { logDiagnostic } from "@salesmanchatbot.io/logger"
 import { chunk } from "remeda"
 import { MAX_BUTTONS } from "../../../constants"
 import { logger } from "../../../lib/logger"

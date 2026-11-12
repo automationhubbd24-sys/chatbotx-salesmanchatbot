@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import {
   createSearchParamsCache,
   parseAsInteger,

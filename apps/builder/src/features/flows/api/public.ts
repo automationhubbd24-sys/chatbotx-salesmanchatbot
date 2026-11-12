@@ -2,10 +2,10 @@ import {
   flowService,
   flowVersionService,
   importService,
-} from "@chatbotx.io/business"
-import { validationException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import { validationException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { z } from "zod"
 import { flowVersionResource } from "@/features/flow-versions/schema/resource"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"

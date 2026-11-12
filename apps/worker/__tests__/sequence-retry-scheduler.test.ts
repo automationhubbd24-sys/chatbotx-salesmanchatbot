@@ -6,7 +6,7 @@ const setSpy = vi.fn()
 const whereSpy = vi.fn()
 const whereResolveSpy = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: (table: unknown) => {
       updateSpy(table)
@@ -27,7 +27,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (col: unknown, val: unknown) => ({ __eq: [col, val] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   sequenceDispatchModel: {
     id: { __col: "id" },
     workspaceId: { __col: "workspaceId" },

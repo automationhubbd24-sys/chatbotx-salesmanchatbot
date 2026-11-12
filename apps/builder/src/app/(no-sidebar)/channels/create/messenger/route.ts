@@ -1,8 +1,8 @@
 import {
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
-import "@chatbotx.io/business/audit"
+} from "@salesmanchatbot.io/business"
+import "@salesmanchatbot.io/business/audit"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 import type { NextRequest } from "next/server"

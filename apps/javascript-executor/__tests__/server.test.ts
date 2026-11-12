@@ -7,7 +7,7 @@ import type { AddressInfo } from "node:net"
 import {
   JavascriptSandboxError,
   MAX_EXECUTION_RESULT_BYTES,
-} from "@chatbotx.io/javascript-sandbox"
+} from "@salesmanchatbot.io/javascript-sandbox"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { createServer, ExecutionLimiter } from "../src/server"
 

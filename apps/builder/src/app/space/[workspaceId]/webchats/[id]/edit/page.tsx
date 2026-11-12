@@ -1,4 +1,4 @@
-import { inboxService } from "@chatbotx.io/business"
+import { inboxService } from "@salesmanchatbot.io/business"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 

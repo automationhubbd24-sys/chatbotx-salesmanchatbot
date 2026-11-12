@@ -1,12 +1,12 @@
 // @vitest-environment node
 
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   channelDuplicatedException,
   credentialMissingException,
   notWorkspaceMemberException,
-} from "@chatbotx.io/business/errors"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------
@@ -65,7 +65,7 @@ vi.mock("@/features/channel-connect/lib/resolve-connect-session", () => ({
 }))
 
 vi.mock("@/features/integration-webchat/lib", () => ({
-  BRANDING_TITLE: "ChatbotX",
+  BRANDING_TITLE: "salesmanChatbot",
   getBrandingUrl: () => "https://app.test/branding",
 }))
 
@@ -81,7 +81,7 @@ vi.mock("@/lib/log", () => ({
   logger: { warn: loggerWarnMock, error: loggerErrorMock, info: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: buildContextMock,
   messengerIntegrationService: {
     findConnectedPageIds: findConnectedPageIdsMock,
@@ -91,18 +91,18 @@ vi.mock("@chatbotx.io/business", () => ({
   tagSyncService: { enqueueChannelScan: enqueueChannelScanMock },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   getUserPages: getUserPagesMock,
   integration: { runChannelHandler: runChannelHandlerMock },
   logMessengerWelcomeProfile: logMessengerWelcomeProfileMock,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   exchangeLongLivedToken: exchangeLongLivedTokenMock,
   subscribePageToAppWebhook: subscribePageToAppWebhookMock,
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   AuthType: { oauth2: "oauth2" },
   SdkException: class SdkException extends Error {},
 }))
@@ -149,7 +149,7 @@ const resolvedSession = {
   },
   appUrl: "https://app.test",
   brandingMenuEntry: {
-    label: "ChatbotX",
+    label: "salesmanChatbot",
     type: "url" as const,
     url: "https://app.test/branding",
   },
@@ -182,7 +182,7 @@ describe("connectMessengerPage", () => {
 
   test("returns sessionExpired and touches nothing else when the pending-auth cookie is missing/invalid", async () => {
     resolveConnectSessionMock.mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "Your connect session expired. Please start again.",
         "connectSessionExpired",
       ),
@@ -211,7 +211,7 @@ describe("connectMessengerPage", () => {
 
   test("returns trialExpired when the workspace owner is blocked", async () => {
     resolveConnectSessionMock.mockRejectedValue(
-      new ChatbotXException("Trial expired", "trialExpired", 403),
+      new salesmanChatbotException("Trial expired", "trialExpired", 403),
     )
 
     const result = await call({
@@ -225,7 +225,7 @@ describe("connectMessengerPage", () => {
 
   test("returns macLimitReached when the workspace owner is blocked on MAC", async () => {
     resolveConnectSessionMock.mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "Monthly active contact limit reached",
         "macLimitReached",
         403,

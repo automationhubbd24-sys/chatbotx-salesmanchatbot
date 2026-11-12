@@ -1,7 +1,7 @@
 "use server"
 
-import { contactService } from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
+import { contactService } from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { requireContactPermissionScope } from "@/features/contacts/permissions"
 import { workspaceActionClient } from "@/lib/safe-action"

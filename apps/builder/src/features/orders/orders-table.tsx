@@ -1,25 +1,25 @@
 "use client"
 
-import type { OrderStatus } from "@chatbotx.io/database/partials"
+import type { OrderStatus } from "@salesmanchatbot.io/database/partials"
 import type {
   OrderCustomFieldDefinitionModel,
   OrderModel,
-} from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+} from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Tabs, TabsList, TabsTrigger } from "@chatbotx.io/ui/components/ui/tabs"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Tabs, TabsList, TabsTrigger } from "@salesmanchatbot.io/ui/components/ui/tabs"
 import {
   CalendarDaysIcon,
   ChevronLeftIcon,

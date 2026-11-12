@@ -1,6 +1,6 @@
 "use server"
 
-import { workspaceService } from "@chatbotx.io/business"
+import { workspaceService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

@@ -1,6 +1,6 @@
-import { aiTimeouts } from "@chatbotx.io/ai"
-import { aiIntegrationService, getAIModel } from "@chatbotx.io/ai/server"
-import type { AITextToSpeechSchema } from "@chatbotx.io/flow-config"
+import { aiTimeouts } from "@salesmanchatbot.io/ai"
+import { aiIntegrationService, getAIModel } from "@salesmanchatbot.io/ai/server"
+import type { AITextToSpeechSchema } from "@salesmanchatbot.io/flow-config"
 import {
   experimental_generateSpeech as generateSpeech,
   NoSpeechGeneratedError,

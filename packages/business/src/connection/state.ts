@@ -1,6 +1,6 @@
 /**
  * Pure Connection status state machine. It depends only on status types and
- * the standard `ChatbotXException`, so it can be unit-tested without a
+ * the standard `salesmanChatbotException`, so it can be unit-tested without a
  * database and reused by both `ConnectionStateService.transition` (DB writes
  * + audit) and any future dry-run/preview caller.
  *
@@ -17,8 +17,8 @@ import {
   ACTIVE_CONNECTION_STATUSES,
   type ConnectionStatus,
   type ConnectionStatusReason,
-} from "@chatbotx.io/database/partials"
-import { ChatbotXException } from "../errors"
+} from "@salesmanchatbot.io/database/partials"
+import { salesmanChatbotException } from "../errors"
 
 export type ConnectionEvent =
   | "connect.completed"
@@ -51,7 +51,7 @@ type ConnectionTransitionResult = {
 export const isActiveConnectionStatus = (status: ConnectionStatus): boolean =>
   (ACTIVE_CONNECTION_STATUSES as readonly ConnectionStatus[]).includes(status)
 
-export class InvalidConnectionTransitionException extends ChatbotXException {
+export class InvalidConnectionTransitionException extends salesmanChatbotException {
   constructor(from: ConnectionStatus | undefined, event: ConnectionEvent) {
     super(
       `Connection cannot handle event "${event}" from status "${from ?? "∅"}"`,

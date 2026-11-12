@@ -1,4 +1,4 @@
-import { createSelectSchema, flowModel } from "@chatbotx.io/database/schema"
+import { createSelectSchema, flowModel } from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 import { flowVersionResource } from "@/features/flow-versions/schema/resource"
 

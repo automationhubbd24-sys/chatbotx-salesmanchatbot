@@ -1,10 +1,10 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
-import { createId } from "@chatbotx.io/utils"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
+import { createId } from "@salesmanchatbot.io/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import {

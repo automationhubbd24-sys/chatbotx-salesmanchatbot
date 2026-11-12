@@ -31,7 +31,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...conditions: unknown[]) => ({ conditions })),
   db: {
     delete: mockDelete,
@@ -42,11 +42,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: vi.fn((field: unknown, values: unknown[]) => ({ field, values })),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { zalo: "zalo" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationZaloModel: { id: "id", openId: "openId" },
   tagChannelModel: {
     channelType: "channelType",
@@ -54,14 +54,14 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mockInvalidateCacheByTags,
 }))
 
 const dispatchAuditRecord = vi.fn()
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   // Defaults to "no Connection row" so the existing disconnect test below
   // (written before the Connection-row integration) keeps exercising the
   // legacy `inboxService.disconnect` fallback unchanged.

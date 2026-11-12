@@ -1,8 +1,8 @@
-import { productCategoryService, productService } from "@chatbotx.io/business"
+import { productCategoryService, productService } from "@salesmanchatbot.io/business"
 import {
   type ProductImportMeta,
   productImportMetaSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   BatchResult,
   ImportPrepareResult,

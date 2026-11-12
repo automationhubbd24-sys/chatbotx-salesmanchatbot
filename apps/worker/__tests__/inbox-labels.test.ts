@@ -14,7 +14,7 @@ const state = {
 }
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/business — tagService, tagSyncService, messenger/zalo
+// Mock: @salesmanchatbot.io/business — tagService, tagSyncService, messenger/zalo
 // integration services
 // ---------------------------------------------------------------------------
 const linkTagToContactsReturningNewUnscoped = vi.fn(
@@ -32,7 +32,7 @@ const messengerFindByPageIdUnscoped = vi.fn(
 )
 const zaloFindByOaId = vi.fn(async () => state.zaloIntegration)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: {
     linkTagToContactsReturningNewUnscoped: (...args: unknown[]) =>
       linkTagToContactsReturningNewUnscoped(...args),
@@ -57,30 +57,30 @@ vi.mock("@chatbotx.io/business", () => ({
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/database/repositories
+// Mock: @salesmanchatbot.io/database/repositories
 // ---------------------------------------------------------------------------
 const listIdsByInboxAndSourceIds = vi.fn(async () => state.contactInboxes)
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     listIdsByInboxAndSourceIds: (...args: unknown[]) =>
       listIdsByInboxAndSourceIds(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { messenger: "messenger", zalo: "zalo" } },
 }))
 
 const invalidateCacheByTags = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/redis", () => ({ invalidateCacheByTags }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ invalidateCacheByTags }))
 
 const emitTagApplied = vi.fn(async () => undefined)
 const emitTagRemoved = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/events", () => ({ emitTagApplied, emitTagRemoved }))
+vi.mock("@salesmanchatbot.io/events", () => ({ emitTagApplied, emitTagRemoved }))
 
 let idCounter = 0
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => `generated-${++idCounter}`) }
 })
 

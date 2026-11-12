@@ -45,7 +45,7 @@ const connectionStateMocks = vi.hoisted(() => ({
   updateDisplayName: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
@@ -54,11 +54,11 @@ vi.mock("@chatbotx.io/business", () => ({
   platformCredentialService: { resolveForOwner: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business/connect-session", () => ({
+vi.mock("@salesmanchatbot.io/business/connect-session", () => ({
   connectSessionService: connectSessionServiceMocks,
 }))
 
-vi.mock("@chatbotx.io/connections", () => ({
+vi.mock("@salesmanchatbot.io/connections", () => ({
   connectionService: connectionServiceMocks,
   isCredentialStrategy: (strategy: string) =>
     strategy === "token" || strategy === "api_key" || strategy === "self_serve",

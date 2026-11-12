@@ -2,7 +2,7 @@ import {
   type SubscribeSequenceStepSchema,
   subscribeSequenceStepDefaultFn,
   subscribeSequenceStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SubscribeSequenceStepEditor from "./editor"
 import SubscribeSequenceStepViewer from "./viewer"

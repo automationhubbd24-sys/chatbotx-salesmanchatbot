@@ -1,8 +1,8 @@
-import type { DateTimeTriggerType } from "@chatbotx.io/database/partials"
+import type { DateTimeTriggerType } from "@salesmanchatbot.io/database/partials"
 import {
   isRealCalendarDate,
   toZonedWallClock,
-} from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/utils/datetime"
 import { addDays, addHours, subDays, subHours } from "date-fns"
 
 export type DateTimeOperator = "before" | "after" | "atTheDayOf"

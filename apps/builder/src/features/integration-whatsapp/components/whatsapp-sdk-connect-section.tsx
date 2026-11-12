@@ -1,8 +1,8 @@
 "use client"
 
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCallback } from "react"

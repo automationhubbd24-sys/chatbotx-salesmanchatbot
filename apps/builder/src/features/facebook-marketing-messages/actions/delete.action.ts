@@ -1,6 +1,6 @@
 "use server"
 
-import { facebookMarketingMessagesService } from "@chatbotx.io/business"
+import { facebookMarketingMessagesService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

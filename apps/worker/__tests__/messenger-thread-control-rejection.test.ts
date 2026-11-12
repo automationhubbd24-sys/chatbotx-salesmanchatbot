@@ -8,15 +8,15 @@ const mocks = vi.hoisted(() => ({
   loggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   threadControlService: { recordEvent: mocks.recordEvent },
 }))
 
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   syncThreadOwner: mocks.syncThreadOwner,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   // No real subcode is published yet; the fast path is exercised with a stub.
   isThreadControlRejection: (error: { subCode: unknown }) =>
     Number(error.subCode) === REJECTION_SUBCODE,
@@ -29,7 +29,7 @@ vi.mock("../src/lib/logger", () => ({
 const { reconcileChannelSendError } = await import(
   "../src/chat/handlers/channel-send-error-reconcilers"
 )
-const { ChannelError, ChannelErrorCategory } = await import("@chatbotx.io/sdk")
+const { ChannelError, ChannelErrorCategory } = await import("@salesmanchatbot.io/sdk")
 
 const contactInbox = { id: "ci-1", inboxId: "inbox-1", channel: "messenger" }
 const conversation = { id: "conv-1", workspaceId: "ws-1" }

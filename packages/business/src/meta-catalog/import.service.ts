@@ -1,8 +1,8 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   metaCatalogItemRepository,
   productRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import { productService } from "../product"
 import {
   getProductCategoryPathKey,

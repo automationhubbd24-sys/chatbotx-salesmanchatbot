@@ -2,7 +2,7 @@ import {
   type ContactInfoType,
   type TriggerEventType,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { withContactInboxMetadata } from "./contact-inbox-context"
 
 /** Channel-neutral voice-call event metadata carried to triggers/webhooks. */

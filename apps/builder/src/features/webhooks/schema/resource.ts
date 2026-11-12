@@ -1,4 +1,4 @@
-import { createSelectSchema, webhookModel } from "@chatbotx.io/database/schema"
+import { createSelectSchema, webhookModel } from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 // Explicit `.pick()` so a future column added to `Webhook` (e.g. secret

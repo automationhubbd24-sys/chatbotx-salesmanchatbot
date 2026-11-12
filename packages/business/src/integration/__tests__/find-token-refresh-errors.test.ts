@@ -18,7 +18,7 @@ const setRows = (channel: string, rows: Row[]) => {
   tableData.set(channel, rows)
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => args,
   eq: vi.fn(),
   exists: vi.fn(),
@@ -39,7 +39,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationZaloModel: {
     __channel: "zalo",
     id: "id",

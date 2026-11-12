@@ -1,18 +1,18 @@
 import {
   AI_MESSAGE_HISTORY_LOOKBACK_MS,
   MAX_CONVERSATION_HISTORY,
-} from "@chatbotx.io/ai"
-import { aiMessageRoles } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/ai"
+import { aiMessageRoles } from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   findConversationAIContextState,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import type { AIGenerateTextAgentSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/types"
+import type { AIGenerateTextAgentSchema } from "@salesmanchatbot.io/flow-config"
 import type { ModelMessage } from "ai"
 
 export async function buildAIAgentMessages(

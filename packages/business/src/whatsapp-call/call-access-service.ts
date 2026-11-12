@@ -1,4 +1,4 @@
-import { whatsappCallRepository } from "@chatbotx.io/database/repositories"
+import { whatsappCallRepository } from "@salesmanchatbot.io/database/repositories"
 import { conversationService } from "../conversation/service"
 import { hasWorkspacePermission } from "../workspace-member/permissions"
 import { workspaceMemberService } from "../workspace-member/service"

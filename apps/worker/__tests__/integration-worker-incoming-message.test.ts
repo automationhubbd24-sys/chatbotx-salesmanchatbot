@@ -281,14 +281,14 @@ vi.mock("../src/integration/handlers/thread-control", () => ({
 // runs for real.
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
   contactInboxRepository: {
     findWithContact: mockFindContactInbox,
   },
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: {
     enqueue: mockAutomatedResponseEnqueue,
     enqueueFlowAction: vi.fn().mockResolvedValue(undefined),
@@ -296,7 +296,7 @@ vi.mock("@chatbotx.io/automated-response", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockDbUpdate,
     query: { contactInboxModel: { findFirst: mockFindContactInbox } },
@@ -308,7 +308,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isUniqueViolationError: mockIsUniqueViolationError,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   CONTACT_INBOX_SOURCE_ID_KEY: "ContactInbox_inboxId_sourceId_key",
   CONTACT_INBOX_SOURCE_USER_ID_KEY: "ContactInbox_inboxId_sourceUserId_key",
   contactInboxModel: {
@@ -344,7 +344,7 @@ const CONTACT_PROFILE_NAME_CAPABILITIES: Record<
   omnichannel: { inbound: null, onDemand: false },
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: { cancelAppointmentByToken: vi.fn() },
   publishToWorkspaceParty: mockPublishToWorkspaceParty,
   buildContext: mockBuildContext,
@@ -432,7 +432,7 @@ const lockAcquisitionError = (key: string) =>
     key,
   })
 
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
@@ -440,21 +440,21 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: vi.fn().mockResolvedValue(undefined),
   setWebhookExecutionContext: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/sdk")>()),
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()),
   contentTypes: { enum: { text: "text", location: "location" } },
   echoOrigins: { enum: { firstParty: "firstParty", thirdParty: "thirdParty" } },
   resolveSourceScopedIdentityMatch: async <T>(
@@ -488,23 +488,23 @@ vi.mock("@chatbotx.io/sdk", async (importOriginal) => ({
   getWhatsappCallPermissionReply: mockGetWhatsappCallPermissionReply,
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "test-id") }
 })
 
-vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/flow-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/flow-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/flow-config")>()
   return { ...actual }
 })
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   parseAppointmentCancelPostback: vi.fn().mockReturnValue(null),
   verifyAppointmentCancelPostback: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   isNoRedisEnv: () => true,
   defaultWorkerOptions: {
     concurrency: 5,
@@ -580,7 +580,7 @@ const fakeInbox = {
   id: "inbox-1",
   workspaceId: "ws-1",
   channel: "messenger",
-} as unknown as import("@chatbotx.io/database/types").InboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").InboxModel
 
 const fakeIntegrationRow = {
   id: "integration-1",
@@ -595,7 +595,7 @@ const fakeContactInbox = {
   sourceId: "psid-123",
   channel: "messenger",
   source: "messenger",
-} as unknown as import("@chatbotx.io/database/types").ContactInboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactInboxModel
 
 // Nameless — eligible for the post-save refresh (`hasEmptyProfileName`).
 const fakeContact = {
@@ -604,13 +604,13 @@ const fakeContact = {
   firstName: null,
   lastName: null,
   blockedAt: null,
-} as unknown as import("@chatbotx.io/database/types").ContactModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactModel
 
 const fakeConversation = {
   id: "conv-1",
   workspaceId: "ws-1",
   contactId: "contact-1",
-} as unknown as import("@chatbotx.io/database/types").ConversationModel
+} as unknown as import("@salesmanchatbot.io/database/types").ConversationModel
 
 const fakeCreatedMessage = {
   id: "msg-created",
@@ -773,7 +773,7 @@ describe("integration worker — incomingMessage case: profile refresh vs. autom
   test("a Click-to-Messenger ad tap whose text is only in referral.text is stored as text and dispatched to automations", async () => {
     const adText = "Register to visit the project"
     const { integration: messengerIntegration } = await import(
-      "@chatbotx.io/integration-messenger"
+      "@salesmanchatbot.io/integration-messenger"
     )
     // Parse with the REAL Messenger handler so the channel payload shape,
     // not a hand-built parsed message, is what reaches the worker.

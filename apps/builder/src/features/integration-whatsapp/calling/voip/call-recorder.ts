@@ -1,7 +1,7 @@
 import {
   ALLOWED_RECORDING_CONTENT_TYPES,
   type RecordingContentType,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { logger } from "@/lib/log"
 
 /**

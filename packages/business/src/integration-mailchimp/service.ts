@@ -1,11 +1,11 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   integrationMailchimpModel,
   integrationModel,
-} from "@chatbotx.io/database/schema"
-import { encryptUtils } from "@chatbotx.io/encryption"
-import type { AuthValue } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { AuthValue } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 class IntegrationMailchimpService extends BaseService {

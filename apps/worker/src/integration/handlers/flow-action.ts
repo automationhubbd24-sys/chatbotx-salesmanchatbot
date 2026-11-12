@@ -3,8 +3,8 @@ import {
   type FlowNode,
   resolveFlowActionTarget,
   ZALO_POSTBACK_TEXT_PREFIX,
-} from "@chatbotx.io/flow-config"
-import type { IncomingMessage } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { IncomingMessage } from "@salesmanchatbot.io/sdk"
 import { normalizeError } from "universal-error-normalizer"
 import { detectFlowVersion } from "../../lib/db"
 import { logger } from "../../lib/logger"

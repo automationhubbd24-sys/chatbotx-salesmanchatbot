@@ -1,8 +1,8 @@
-import type { Context, Oauth2AuthValue, Oauth2Config } from "@chatbotx.io/sdk"
+import type { Context, Oauth2AuthValue, Oauth2Config } from "@salesmanchatbot.io/sdk"
 
 export const DEFAULT_VERSION = "v4"
 
-export const ZALO_MESSAGE_METADATA = "SENT_FROM_CHATBOTX"
+export const ZALO_MESSAGE_METADATA = "SENT_FROM_SALESMANCHATBOT"
 
 export type ZaloConfig = Oauth2Config
 

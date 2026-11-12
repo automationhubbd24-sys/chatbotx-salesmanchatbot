@@ -3,9 +3,9 @@
 import type {
   MinigameAppearance,
   MinigamePrizeSettings,
-} from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { Gamepad2Icon, Share2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import type { ReactNode } from "react"

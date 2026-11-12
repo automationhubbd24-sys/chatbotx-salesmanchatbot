@@ -13,7 +13,7 @@ const mocks = vi.hoisted(() => ({
   warn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     completeProfileSnapshot: mocks.complete,
     listDueProfileSnapshots: mocks.due,
@@ -37,7 +37,7 @@ vi.mock("../src/lib/logger", () => ({
   logger: { error: mocks.error, warn: mocks.warn },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedStore: {
     delete: mocks.storeDelete,
     get: mocks.storeGet,

@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test } from "vitest"
 import {
   buildThreadsAuthValue,
@@ -105,7 +105,7 @@ describe("threads auth", () => {
         expect(url.searchParams.get("access_token")).toBe("threads-token")
         return HttpResponse.json({
           id: "123",
-          username: "chatbotx",
+          username: "salesmanchatbot",
           threads_biography: "bio",
         })
       }),
@@ -114,7 +114,7 @@ describe("threads auth", () => {
     await expect(getThreadsProfile("threads-token")).resolves.toEqual(
       expect.objectContaining({
         id: "123",
-        username: "chatbotx",
+        username: "salesmanchatbot",
       }),
     )
   })
@@ -127,7 +127,7 @@ describe("threads auth", () => {
         redirectUrl: "https://example.com/callback",
         accessToken: "threads-token",
         threadsUserId: "threads-user-1",
-        username: "chatbotx",
+        username: "salesmanchatbot",
       }),
     ).toEqual(
       expect.objectContaining({
@@ -138,7 +138,7 @@ describe("threads auth", () => {
         },
         metadata: expect.objectContaining({
           threadsUserId: "threads-user-1",
-          username: "chatbotx",
+          username: "salesmanchatbot",
           version: DEFAULT_API_VERSION,
         }),
       }),

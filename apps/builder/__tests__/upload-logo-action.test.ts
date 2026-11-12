@@ -35,7 +35,7 @@ function wireSelectBuilder() {
 }
 wireSelectBuilder()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: vi.fn(() => updateBuilder),
     select: vi.fn(() => selectBuilder),
@@ -50,7 +50,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isNull: (col: unknown) => ({ isNull: col }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceModel: {
     id: "workspace.id",
     logo: "workspace.logo",
@@ -62,23 +62,23 @@ vi.mock("@chatbotx.io/database/schema", () => ({
 }))
 
 const uploadFileFromUrl = vi.fn()
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploadFileFromUrl,
 }))
 
 const invalidateCacheByTags = vi.fn()
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags,
 }))
 
 const auditRecord = vi.fn()
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: auditRecord },
 }))
 
 const createId = vi.fn(() => "logo-id")
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId,
@@ -88,7 +88,7 @@ vi.mock("@chatbotx.io/utils", async (importOriginal) => {
 const { updateWorkspaceLogo } = await import(
   "../src/features/workspaces/actions/upload-logo"
 )
-const { db } = await import("@chatbotx.io/database/client")
+const { db } = await import("@salesmanchatbot.io/database/client")
 
 function createIntegration(profilePictureUrl?: string) {
   return {

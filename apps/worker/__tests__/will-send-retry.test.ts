@@ -1,4 +1,4 @@
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { describe, expect, it } from "vitest"
 import { willSendRetry } from "../src/chat/utils/retry"
 

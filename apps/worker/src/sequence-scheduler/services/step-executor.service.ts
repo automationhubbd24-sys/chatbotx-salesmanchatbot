@@ -1,5 +1,5 @@
-import type { SequenceStepWithFlow } from "@chatbotx.io/database/repositories"
-import { sequenceDispatchRepository } from "@chatbotx.io/database/repositories"
+import type { SequenceStepWithFlow } from "@salesmanchatbot.io/database/repositories"
+import { sequenceDispatchRepository } from "@salesmanchatbot.io/database/repositories"
 
 export type StepWithFlow = SequenceStepWithFlow
 type StepWithConfiguredFlow = StepWithFlow & {

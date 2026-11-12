@@ -1,7 +1,7 @@
 import {
   IntegrationJobAction,
   type IntegrationJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 
 const CHANNEL_ORIGINATED_JOB_TYPES: ReadonlySet<string> = new Set([
   IntegrationJobAction.incomingMessage,

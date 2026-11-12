@@ -1,10 +1,10 @@
 import {
   type TriggerAction,
   triggerActions,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
 import { useTranslations } from "next-intl"
 import { SetCustomField } from "@/features/contacts/components/add-custom-field-dialog"
 import { CustomFieldSelect } from "@/features/custom-fields/custom-field-select"

@@ -1,4 +1,4 @@
-import { orderService } from "@chatbotx.io/business"
+import { orderService } from "@salesmanchatbot.io/business"
 import { OrdersTable } from "@/features/orders/orders-table"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 

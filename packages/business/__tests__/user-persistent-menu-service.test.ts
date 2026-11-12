@@ -5,7 +5,7 @@ const { mockDeleteUserPersistentMenus } = vi.hoisted(() => ({
   mockDeleteUserPersistentMenus: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createUserPersistentMenu: vi.fn(),
   deleteUserPersistentMenus: mockDeleteUserPersistentMenus,
   findUserPersistentMenuById: vi.fn(),

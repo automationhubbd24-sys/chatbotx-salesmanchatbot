@@ -4,9 +4,9 @@ import {
   experimental_createMCPClient,
   type experimental_MCPClient,
 } from "@ai-sdk/mcp"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { aiMcpServerAuthTypes } from "@chatbotx.io/database/partials"
-import { resolveBotFieldVariableText } from "@chatbotx.io/variables/bot-field-variable-resolver"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { aiMcpServerAuthTypes } from "@salesmanchatbot.io/database/partials"
+import { resolveBotFieldVariableText } from "@salesmanchatbot.io/variables/bot-field-variable-resolver"
 import type { ValidatePrivateAIMcpServerRequest } from "../schema/action"
 
 export const validateAIMcpServer = async ({
@@ -21,7 +21,7 @@ export const validateAIMcpServer = async ({
       workspaceId: parsedInput.workspaceId,
     })
     if (resolution.status !== "resolved") {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Unable to validate MCP server.",
         "invalidMcpTokenTemplate",
         400,

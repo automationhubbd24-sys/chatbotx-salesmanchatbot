@@ -1,5 +1,5 @@
-import { scrubSecretsInString } from "@chatbotx.io/logger"
-import { UNKNOWN_ERROR } from "@chatbotx.io/sdk"
+import { scrubSecretsInString } from "@salesmanchatbot.io/logger"
+import { UNKNOWN_ERROR } from "@salesmanchatbot.io/sdk"
 import ky, { isHTTPError, type KyInstance } from "ky"
 import {
   type ChannelErrorSource,

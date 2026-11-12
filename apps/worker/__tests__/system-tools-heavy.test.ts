@@ -6,9 +6,9 @@ const mocks = vi.hoisted(() => ({
   resolveImageAttachment: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     getHeavyQueueEvents: vi.fn(() => ({})),

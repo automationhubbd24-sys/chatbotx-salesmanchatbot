@@ -2,15 +2,15 @@ import {
   coexistService,
   inboxService,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { CoexistIntegrationRow } from "@chatbotx.io/database/repositories"
-import type { InboxModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import type { CoexistIntegrationRow } from "@salesmanchatbot.io/database/repositories"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
 import {
   fetchInstagramFacebookConversationMessages,
   type InstagramFacebookConversation,
   type InstagramFacebookHistoryMessage,
   listInstagramFacebookConversations,
-} from "@chatbotx.io/integration-instagram-facebook/apis/sync"
+} from "@salesmanchatbot.io/integration-instagram-facebook/apis/sync"
 import { z } from "zod"
 import {
   buildHistoricalMessage,

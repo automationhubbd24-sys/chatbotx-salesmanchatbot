@@ -1,9 +1,9 @@
 "use client"
 
-import { FormFieldWrapper } from "@chatbotx.io/ui/components/form/field-wrapper"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { FormFieldWrapper } from "@salesmanchatbot.io/ui/components/form/field-wrapper"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardAction,
@@ -11,9 +11,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { useQueryClient } from "@tanstack/react-query"

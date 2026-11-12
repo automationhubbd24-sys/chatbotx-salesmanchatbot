@@ -7,7 +7,7 @@ import {
   type FlowVersionSchema,
   normalizeAuthoredGraph,
   zodErrorToFlowAuthoringErrors,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { publishFlowSchema } from "../schema/action"
 import {
   compileAndValidateSpec,

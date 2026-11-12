@@ -16,7 +16,7 @@ const {
   assertApiNotRateLimited: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
@@ -100,7 +100,7 @@ describe("real router: broadcasts public API scope wiring", () => {
 
   test("null scopes (unrestricted) passes the real GET /v1/broadcasts route", async () => {
     findWorkspaceByTokenHash.mockResolvedValue(authResult(null))
-    const { broadcastService } = await import("@chatbotx.io/business")
+    const { broadcastService } = await import("@salesmanchatbot.io/business")
     vi.mocked(broadcastService.list).mockResolvedValue({
       data: [],
       pageCount: 1,
@@ -156,7 +156,7 @@ describe("real router: broadcasts public API scope wiring", () => {
       }),
     ).rejects.toMatchObject({ code: "FORBIDDEN" })
 
-    const { broadcastService } = await import("@chatbotx.io/business")
+    const { broadcastService } = await import("@salesmanchatbot.io/business")
     expect(broadcastService.create).not.toHaveBeenCalled()
   })
 
@@ -174,7 +174,7 @@ describe("real router: broadcasts public API scope wiring", () => {
     })
 
     test("resend scopes to the token's workspace, not any workspace implied by the id", async () => {
-      const { broadcastService } = await import("@chatbotx.io/business")
+      const { broadcastService } = await import("@salesmanchatbot.io/business")
       vi.mocked(broadcastService.resendWithPruning).mockResolvedValue({
         id: "new-b-1",
         name: "My broadcast (Resend)",
@@ -199,7 +199,7 @@ describe("real router: broadcasts public API scope wiring", () => {
     })
 
     test("updateDraft scopes to the token's workspace, not any workspace implied by the id", async () => {
-      const { broadcastService } = await import("@chatbotx.io/business")
+      const { broadcastService } = await import("@salesmanchatbot.io/business")
       // The route's output declares `status` alongside `id`, so the mock
       // must return it too or oRPC's output validation rejects the response.
       vi.mocked(broadcastService.updateDraft).mockResolvedValue({
@@ -227,7 +227,7 @@ describe("real router: broadcasts public API scope wiring", () => {
     })
 
     test("listContacts scopes the lookup to the token's workspace", async () => {
-      const { broadcastService } = await import("@chatbotx.io/business")
+      const { broadcastService } = await import("@salesmanchatbot.io/business")
       vi.mocked(broadcastService.listContactsPage).mockResolvedValue({
         data: [],
         total: 0,

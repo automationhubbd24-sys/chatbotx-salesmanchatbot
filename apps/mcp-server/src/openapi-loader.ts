@@ -341,7 +341,7 @@ function parseOperation(
 }
 
 function parseToolsFromSpec(spec: OpenAPISpec): DynamicTool[] {
-  const baseUrl = spec.servers?.[0]?.url ?? env.CHATBOTX_API_URL
+  const baseUrl = spec.servers?.[0]?.url ?? env.SALESMANCHATBOT_API_URL
   const tools: DynamicTool[] = []
 
   for (const [pathTemplate, pathItem] of Object.entries(spec.paths ?? {})) {
@@ -369,7 +369,7 @@ function parseToolsFromSpec(spec: OpenAPISpec): DynamicTool[] {
  * fetch.
  */
 async function fetchAndParseSpec(): Promise<DynamicTool[]> {
-  const specUrl = `${env.CHATBOTX_API_URL}/public-spec.json`
+  const specUrl = `${env.SALESMANCHATBOT_API_URL}/public-spec.json`
 
   const response = await fetchWithTimeout(
     specUrl,
@@ -379,7 +379,7 @@ async function fetchAndParseSpec(): Promise<DynamicTool[]> {
         ...(cachedEtag ? { "If-None-Match": cachedEtag } : {}),
       },
     },
-    env.CHATBOTX_HTTP_TIMEOUT_MS,
+    env.SALESMANCHATBOT_HTTP_TIMEOUT_MS,
   )
 
   if (response.status === 304 && cachedTools !== null) {
@@ -443,7 +443,7 @@ export async function refreshOpenApiSpecIfStale(): Promise<DynamicTool[]> {
     return await loadOpenApiSpec()
   }
 
-  const isStale = Date.now() - fetchedAtMs >= env.CHATBOTX_SPEC_TTL_MS
+  const isStale = Date.now() - fetchedAtMs >= env.SALESMANCHATBOT_SPEC_TTL_MS
   if (!isStale) {
     return cachedTools
   }

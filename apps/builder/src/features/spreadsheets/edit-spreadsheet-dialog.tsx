@@ -1,8 +1,8 @@
 "use client"
 
-import type { SpreadsheetModel } from "@chatbotx.io/database/types"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { SpreadsheetModel } from "@salesmanchatbot.io/database/types"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -11,8 +11,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

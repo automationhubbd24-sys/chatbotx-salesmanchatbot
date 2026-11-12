@@ -10,7 +10,7 @@ import {
 
 /**
  * The pool `max` is read out of the source rather than imported: importing
- * `@chatbotx.io/database/client` constructs a real `pg.Pool` and validates
+ * `@salesmanchatbot.io/database/client` constructs a real `pg.Pool` and validates
  * `DATABASE_URL` at module load, which a unit test must not do. Reading the
  * literal keeps the assertion honest — if someone lowers the pool, this test
  * fails instead of silently going stale.

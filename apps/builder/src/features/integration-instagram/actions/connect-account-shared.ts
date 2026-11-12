@@ -1,6 +1,6 @@
 import "server-only"
 
-import { instagramIntegrationService } from "@chatbotx.io/business"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
 
 /**
  * Both Instagram connect cores (Business Login and via-Facebook) reject an

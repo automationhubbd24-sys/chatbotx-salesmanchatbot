@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import type { z } from "zod"
 import type { FlowAuthoringError } from "../authoring/errors"
 import { nodeTypeSchema } from "../nodes/base"

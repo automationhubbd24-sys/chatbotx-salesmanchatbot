@@ -14,7 +14,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   webhookService: { updateSettings: mockUpdateSettings },
 }))
 

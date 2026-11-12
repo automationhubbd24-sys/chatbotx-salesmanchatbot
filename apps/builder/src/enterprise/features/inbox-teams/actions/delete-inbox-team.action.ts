@@ -1,6 +1,6 @@
 "use server"
 
-import { inboxTeamService } from "@chatbotx.io/business"
+import { inboxTeamService } from "@salesmanchatbot.io/business"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

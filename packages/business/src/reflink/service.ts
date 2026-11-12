@@ -5,11 +5,11 @@ import {
   eq,
   inArray,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
-import { reflinkRepository } from "@chatbotx.io/database/repositories"
-import { reflinkModel } from "@chatbotx.io/database/schema"
-import type { ReflinkModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { reflinkRepository } from "@salesmanchatbot.io/database/repositories"
+import { reflinkModel } from "@salesmanchatbot.io/database/schema"
+import type { ReflinkModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { notFoundException, validationException } from "../errors"
 import { type IdLabel, selectLabelsByIds } from "../select-labels-by-ids"

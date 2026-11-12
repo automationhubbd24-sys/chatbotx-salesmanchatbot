@@ -1,4 +1,4 @@
-import { deepseekModels } from "@chatbotx.io/ai"
+import { deepseekModels } from "@salesmanchatbot.io/ai"
 import { z } from "zod"
 
 export const connectDeepSeekSchema = z.object({

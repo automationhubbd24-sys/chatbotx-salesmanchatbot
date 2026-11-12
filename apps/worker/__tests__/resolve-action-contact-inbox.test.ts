@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   findMostRecentByContact: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     findByIdForContact: (...args: unknown[]) =>
       mocks.findByIdForContact(...args),

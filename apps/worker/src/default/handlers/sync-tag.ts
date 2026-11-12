@@ -3,29 +3,29 @@ import {
   tagService,
   tagSyncService,
   zaloIntegrationService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   logProviderError,
   logProviderErrorForChannel,
-} from "@chatbotx.io/business/error-log"
-import { channelTypes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business/error-log"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   contactInboxRepository,
   integrationMessengerRepository,
   tagChannelRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxModel,
   IntegrationMessengerModel,
   IntegrationZaloModel,
-} from "@chatbotx.io/database/types"
-import { chunkById } from "@chatbotx.io/database/utils"
-import { integration as integrationMessenger } from "@chatbotx.io/integration-messenger"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
-import { integration as integrationZalo } from "@chatbotx.io/integration-zalo"
-import type { ZaloAuthValue } from "@chatbotx.io/integration-zalo/schema"
-import { distributedLock } from "@chatbotx.io/redis"
-import type { JobSyncTag } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/types"
+import { chunkById } from "@salesmanchatbot.io/database/utils"
+import { integration as integrationMessenger } from "@salesmanchatbot.io/integration-messenger"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
+import { integration as integrationZalo } from "@salesmanchatbot.io/integration-zalo"
+import type { ZaloAuthValue } from "@salesmanchatbot.io/integration-zalo/schema"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import type { JobSyncTag } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 
 const DELETE_CHUNK_SIZE = 500

@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url"
-import reactConfig from "@chatbotx.io/vitest-config/react"
+import reactConfig from "@salesmanchatbot.io/vitest-config/react"
 import { mergeConfig, type ViteUserConfig } from "vitest/config"
 
 const serverOnlyNoopPath = fileURLToPath(

@@ -42,7 +42,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   AVATAR_HYDRATION_CHANNELS: new Set(["messenger", "instagram"]),
   conversationService: {
     findManyQuery: mocks.findManyQuery,
@@ -52,11 +52,11 @@ vi.mock("@chatbotx.io/business", () => ({
   resolveTenantSettings: mocks.resolveTenantSettings,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: mocks.notFoundException,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxOperationalColumns: { sourceIdentityHistory: false },
   createMessageRepository: mocks.createMessageRepository,
   getSafeSinceTime: mocks.getSafeSinceTime,

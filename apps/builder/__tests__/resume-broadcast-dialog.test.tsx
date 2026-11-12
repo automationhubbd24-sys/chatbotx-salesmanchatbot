@@ -1,4 +1,4 @@
-import type { BroadcastModel } from "@chatbotx.io/database/types"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
 import { act, useCallback, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { useForm, useFormContext } from "react-hook-form"
@@ -61,7 +61,7 @@ const numberFieldProps = vi.hoisted(() => ({
   current: null as Record<string, unknown> | null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/input-number-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-number-field", () => ({
   InputNumberField: (props: { name: string; placeholder?: string }) => {
     numberFieldProps.current = props
     const { name } = props
@@ -94,7 +94,7 @@ vi.mock("@/features/broadcasts/actions/resume-broadcast.action", () => ({
   resumeBroadcastAction: { bind },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ open, children }: { open: boolean; children: React.ReactNode }) =>
     open ? <div data-testid="dialog">{children}</div> : null,
   DialogClose: ({ render }: { render: React.ReactElement }) => render,
@@ -115,7 +115,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

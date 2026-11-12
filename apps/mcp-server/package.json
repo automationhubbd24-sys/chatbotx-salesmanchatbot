@@ -1,15 +1,15 @@
 {
-  "name": "chatbotx-mcp",
+  "name": "salesmanchatbot-mcp",
   "version": "0.0.0-dev",
-  "description": "MCP Server for ChatbotX — gives AI agents access to your ChatbotX workspace via the Model Context Protocol",
+  "description": "MCP Server for salesmanChatbot — gives AI agents access to your salesmanChatbot workspace via the Model Context Protocol",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChatbotXIO/ChatbotX.git",
+    "url": "git+https://github.com/salesmanChatbotIO/salesmanChatbot.git",
     "directory": "apps/mcp-server"
   },
   "keywords": [
     "mcp",
-    "chatbotx",
+    "salesmanchatbot",
     "ai",
     "model-context-protocol"
   ],
@@ -18,7 +18,7 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "bin": {
-    "chatbotx-mcp": "dist/index.mjs"
+    "salesmanchatbot-mcp": "dist/index.mjs"
   },
   "exports": {
     ".": {
@@ -40,7 +40,7 @@
     "build": "tsdown",
     "check-types": "tsc --noEmit",
     "dev:mcp": "dotenv -e ../../.env -e .env -- tsx --watch src/index.ts",
-    "prepublishOnly": "node --input-type=commonjs -e \"const v=require('./package.json').version; if (v === '0.0.0-dev') { console.error('chatbotx-mcp: version is the 0.0.0-dev placeholder — publish via .github/workflows/publish-chatbotx-mcp.yml'); process.exit(1) }\"",
+    "prepublishOnly": "node --input-type=commonjs -e \"const v=require('./package.json').version; if (v === '0.0.0-dev') { console.error('salesmanchatbot-mcp: version is the 0.0.0-dev placeholder — publish via .github/workflows/publish-salesmanchatbot-mcp.yml'); process.exit(1) }\"",
     "start": "node dist/index.mjs",
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@ai-sdk/openai": "^3.0.54",
-    "@chatbotx.io/flow-config": "workspace:*",
+    "@salesmanchatbot.io/flow-config": "workspace:*",
     "@orpc/zod": "^1.15.4",
     "@types/node": "24.x",
     "ai": "^6.0.170",

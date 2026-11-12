@@ -3,9 +3,9 @@
 import {
   integrationWhatsappService,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { capiDatasetProvisioner } from "@/features/meta-conversions/lib/provision-capi-dataset"
 import { surfaceCapiError } from "@/features/meta-conversions/lib/surface-capi-error"
@@ -30,7 +30,7 @@ export const provisionWhatsappCapiDatasetAction = workspaceActionClient
         },
       )
       if (!integration) {
-        throw new ChatbotXException(t("whatsappNotFound"))
+        throw new salesmanChatbotException(t("whatsappNotFound"))
       }
 
       try {

@@ -1,6 +1,6 @@
 "use client"
 
-import type { IntegrationTelegramResource } from "@chatbotx.io/business"
+import type { IntegrationTelegramResource } from "@salesmanchatbot.io/business"
 import { useParams, useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

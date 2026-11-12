@@ -1,7 +1,7 @@
 "use server"
 
-import { integrationSmtpService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { integrationSmtpService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { prepareSmtpAuth } from "../lib/prepare-smtp-auth"
 import { updateSmtpRequest } from "../schema/mutation"

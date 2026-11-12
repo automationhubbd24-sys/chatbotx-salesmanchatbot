@@ -4,8 +4,8 @@ import {
   importTypes,
   rootFolderId,
   uploadTypes,
-} from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { Loader2Icon, UploadIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

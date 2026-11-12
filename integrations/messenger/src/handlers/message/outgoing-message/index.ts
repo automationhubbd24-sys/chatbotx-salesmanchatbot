@@ -11,7 +11,7 @@ import {
   type SendVideoStepSchema,
   type StepType,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   assertCommentPrivateReplyFollowUpDeliverable,
   ChannelError,
@@ -27,7 +27,7 @@ import {
   type OutgoingContact,
   type OutgoingMessage,
   type SendFlowStepProps,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { sendPrivateReplyMessage } from "../../../apis/comment"
 import {
   sendMessage as sendMessageApi,

@@ -1,8 +1,8 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { inboxStatuses } from "@chatbotx.io/utils/conversation"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { inboxStatuses } from "@salesmanchatbot.io/utils/conversation"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useInboxList } from "@/features/inboxes/provider/inbox-hook"

@@ -1,6 +1,6 @@
 "use client"
 
-import { resolveSendTextLengthLimits } from "@chatbotx.io/flow-config"
+import { resolveSendTextLengthLimits } from "@salesmanchatbot.io/flow-config"
 import { useWatch } from "react-hook-form"
 import { TiptapEditorField } from "@/components/tiptap/tiptap-editor-field"
 import { ButtonGroupEditor } from "../button/editor"

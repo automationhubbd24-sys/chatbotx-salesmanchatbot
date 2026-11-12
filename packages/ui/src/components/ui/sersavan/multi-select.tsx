@@ -1,7 +1,7 @@
 // Locally patched for RTL; reapply after refreshing from the upstream shadcn registry.
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -10,14 +10,14 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@chatbotx.io/ui/components/ui/command"
+} from "@salesmanchatbot.io/ui/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import {
   CheckIcon,

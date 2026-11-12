@@ -4,17 +4,17 @@ import type {
   AIAgentAction,
   AIAgentActionRule,
   AIAgentActionType,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { ArrowDownIcon, ArrowUpIcon, CopyIcon, XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"

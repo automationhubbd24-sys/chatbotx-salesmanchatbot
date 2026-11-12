@@ -2,10 +2,10 @@ import {
   inboxService,
   qrCodeService,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
-import { getInboxLinks } from "@chatbotx.io/business/utils"
-import type { InboxWithIntegrations } from "@chatbotx.io/database/types"
-import { getIdFromParams } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { getInboxLinks } from "@salesmanchatbot.io/business/utils"
+import type { InboxWithIntegrations } from "@salesmanchatbot.io/database/types"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound, redirect } from "next/navigation"
 import { InboxListLandingPage } from "@/features/inboxes/components/landing-inbox-list"
 import { maxPerPage } from "@/lib/shared-request"

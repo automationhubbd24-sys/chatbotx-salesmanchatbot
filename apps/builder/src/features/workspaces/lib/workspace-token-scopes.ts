@@ -1,4 +1,4 @@
-import type { WorkspaceApiTokenScope } from "@chatbotx.io/database/partials"
+import type { WorkspaceApiTokenScope } from "@salesmanchatbot.io/database/partials"
 
 /**
  * UI registry for the resource-area scope axis. Being a `Record` keyed by

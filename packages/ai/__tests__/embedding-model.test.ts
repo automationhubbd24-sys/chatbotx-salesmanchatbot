@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   openaiEmbedding: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       integrationGeminiModel: { findFirst: mocks.findFirstGemini },

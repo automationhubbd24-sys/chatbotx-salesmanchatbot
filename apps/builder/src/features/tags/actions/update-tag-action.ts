@@ -1,6 +1,6 @@
 "use server"
-import { tagService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { tagService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceIdAndIdRequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -12,7 +12,7 @@ export const updateTagAction = workspaceActionClient
     try {
       return await tagService.update({ workspaceId, id }, parsedInput)
     } catch (error) {
-      if (error instanceof ChatbotXException && error.code === "validation") {
+      if (error instanceof salesmanChatbotException && error.code === "validation") {
         returnValidationErrors(updateTagSchema, {
           name: { _errors: [error.message] },
         })

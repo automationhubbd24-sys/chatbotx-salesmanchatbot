@@ -1,4 +1,4 @@
-import { deriveAdSourcePlatform } from "@chatbotx.io/business/referral"
+import { deriveAdSourcePlatform } from "@salesmanchatbot.io/business/referral"
 import {
   contentTypes,
   echoOrigins,
@@ -7,7 +7,7 @@ import {
   type MessageHandlers,
   type MessageReferral,
   messageTypes,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import type { ServerMessageTypes } from "whatsapp-api-js/types"
 import { getWhatsappClient } from "../../client"
 import {

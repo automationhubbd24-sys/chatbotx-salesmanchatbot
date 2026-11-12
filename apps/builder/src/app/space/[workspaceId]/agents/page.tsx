@@ -1,8 +1,8 @@
 import {
   quotaEnforcementService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { getIdFromParams } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
 import { Suspense } from "react"

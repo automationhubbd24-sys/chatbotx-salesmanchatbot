@@ -1,4 +1,4 @@
-import type { FileType } from "@chatbotx.io/sdk"
+import type { FileType } from "@salesmanchatbot.io/sdk"
 import fetch from "cross-fetch"
 import { DEFAULT_API_VERSION } from "../constants"
 import { rescue } from "../exception"

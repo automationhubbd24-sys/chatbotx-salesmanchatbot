@@ -1,7 +1,7 @@
 import {
   type DistributedLock,
   distributedLockFactory,
-} from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/redis"
 
 import type Redis from "ioredis"
 import type { ChainableCommander } from "ioredis"

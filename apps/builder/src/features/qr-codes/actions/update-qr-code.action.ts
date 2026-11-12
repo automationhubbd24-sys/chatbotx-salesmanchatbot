@@ -1,8 +1,8 @@
 "use server"
 
-import { qrCodeService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { qrCodeService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -23,7 +23,7 @@ export const updateQrCodeAction = workspaceActionClient
         }),
       })
     } catch (error) {
-      if (error instanceof ChatbotXException && error.code === "validation") {
+      if (error instanceof salesmanChatbotException && error.code === "validation") {
         // The service tags each failure with the form field it belongs to
         // (`name` or `flowId`); fall back to `name` only when it left the
         // field unset.

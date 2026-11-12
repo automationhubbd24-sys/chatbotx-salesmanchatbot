@@ -12,7 +12,7 @@ import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4"
 import { beforeAll, describe, expect, test, vi } from "vitest"
 
 // `@/routers/public` transitively imports every feature's `api/public.ts`,
-// which pulls in `@chatbotx.io/database/client` (opens a real `pg.Pool` at
+// which pulls in `@salesmanchatbot.io/database/client` (opens a real `pg.Pool` at
 // module load) via feature `queries`/`actions` modules, and `@/orpc`'s
 // `authorizedAPI` chain, which boots the full better-auth stack via
 // `@/middlewares/auth`. Neither is reachable from this test (it only
@@ -25,7 +25,7 @@ vi.mock("@/middlewares/auth", () => ({
   workspaceAuthorizedMidddleware: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy, sql: proxy }
 })
@@ -116,11 +116,11 @@ function collectSchemaPropertyKeys(
   }
 }
 
-const PRODUCT_NAME_PATTERN = /chatbotx/i
+const PRODUCT_NAME_PATTERN = /salesmanchatbot/i
 
 // Collects every human-readable copy string (`summary`/`description`) in the
 // generated document, including schema field descriptions from zod
-// `.describe()`. Deliberately key-scoped: `chatbotx` is a legitimate
+// `.describe()`. Deliberately key-scoped: `salesmanchatbot` is a legitimate
 // ChannelType enum member (packages/database/src/partials/integration.ts), so
 // a document-wide string match would be a false positive.
 function collectCopyStrings(
@@ -783,7 +783,7 @@ describe("public API spec — error response coverage", () => {
 
   // Mirrors `toSnakeCase` in apps/mcp-server/src/openapi-loader.ts — kept in
   // sync manually rather than imported, since apps/builder has no dependency
-  // on chatbotx-mcp. If that implementation changes, update this too.
+  // on salesmanchatbot-mcp. If that implementation changes, update this too.
   const toSnakeCase = (str: string): string =>
     str
       .replace(/([A-Z]{2,})(?=[A-Z][a-z]|$)/g, "_$1")
@@ -891,7 +891,7 @@ describe("public API spec — declared codes match what the mapper throws", () =
     // Thrown by oRPC's own input-schema rejection, remapped from the raw
     // `BAD_REQUEST` — so it applies to every route with an `.input()`.
     "invalidRequestData",
-    // Thrown by `validationException` in @chatbotx.io/business.
+    // Thrown by `validationException` in @salesmanchatbot.io/business.
     "validation",
     "tooManyRequests",
     "INTERNAL_SERVER_ERROR",

@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/utils/channel"
+import type { ChannelType } from "@salesmanchatbot.io/utils/channel"
 import type { BaseStepSchema } from "../steps/base"
 import { type StepType, stepTypes } from "../steps/step-action"
 

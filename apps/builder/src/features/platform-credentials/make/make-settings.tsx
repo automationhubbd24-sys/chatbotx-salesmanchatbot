@@ -4,23 +4,23 @@ import {
   type MakeCredentialPublic,
   type MakeCredentialUpdate,
   makeCredentialUpdateSchema,
-} from "@chatbotx.io/database/partials"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardAction,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { SiMake, SiMakeHex } from "@icons-pack/react-simple-icons"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"

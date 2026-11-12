@@ -13,8 +13,8 @@ const {
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     httpStatusCode = 403
   },
 }))
@@ -119,7 +119,7 @@ describe("POST /api/whatsapp-voip-call-hangup", () => {
 
   test("rejects a cross-workspace membership check", async () => {
     assertCurrentUserCanAccessChatbot.mockRejectedValue(
-      new (await import("@chatbotx.io/business/errors")).ChatbotXException(
+      new (await import("@salesmanchatbot.io/business/errors")).salesmanChatbotException(
         "not a member",
       ),
     )

@@ -20,7 +20,7 @@ vi.mock("@/lib/safe-action", () => {
   return { callingActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappVoipCallService: { listResumableIncoming: listResumableIncomingMock },
 }))
 

@@ -1,8 +1,8 @@
 "use server"
 
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
@@ -39,10 +39,10 @@ export const updateHandoverResumeFlowAction = workspaceActionClient
         })
       } catch (error) {
         if (
-          error instanceof ChatbotXException &&
+          error instanceof salesmanChatbotException &&
           error.code === NOT_FOUND_CODE
         ) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             parsedInput.handoverResumeFlowId
               ? t("conversationRouting.settings.flowNotFound")
               : t("conversationRouting.settings.messengerIntegrationNotFound"),

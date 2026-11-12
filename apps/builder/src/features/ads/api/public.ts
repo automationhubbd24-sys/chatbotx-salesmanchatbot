@@ -4,7 +4,7 @@ import {
   adsRetargetService,
   getCachedCustomAudiences,
   resolveChannelAdAccountSources,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { z } from "zod"
 import { adsCampaignPublicRouter } from "@/features/ads-campaign/api/public"
 import {

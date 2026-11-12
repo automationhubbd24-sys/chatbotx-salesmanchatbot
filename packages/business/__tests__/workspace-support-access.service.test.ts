@@ -31,11 +31,11 @@ vi.mock("../src/logger", () => ({
   logger: { info: mocks.loggerInfo },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mocks.invalidateCacheByTags,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mocks.update,
     select: mocks.select,
@@ -56,7 +56,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   tenantModel: { id: "tenant.id", brandName: "tenant.brandName" },
   userModel: { id: "user.id", name: "user.name", email: "user.email" },
   workspaceModel: {
@@ -69,7 +69,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: (input: {
     page?: number | null
     perPage?: number | null

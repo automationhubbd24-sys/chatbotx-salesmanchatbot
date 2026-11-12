@@ -1,8 +1,8 @@
 import {
   type PageElementSchema,
   pageElementTypes,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils/id"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils/id"
 import {
   CodeIcon,
   HeadingIcon,

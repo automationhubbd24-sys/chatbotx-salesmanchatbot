@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   loggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isProductEmbeddingConfigurationError: mocks.isConfigurationError,
   productService: {
     listForEmbeddingRefresh: mocks.listForEmbeddingRefresh,

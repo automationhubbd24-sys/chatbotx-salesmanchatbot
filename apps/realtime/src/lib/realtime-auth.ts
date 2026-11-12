@@ -3,7 +3,7 @@ import {
   REALTIME_TOKEN_PURPOSE,
   type RealtimeAudienceKind,
   verifyRealtimeToken,
-} from "@chatbotx.io/partysocket-config/auth"
+} from "@salesmanchatbot.io/partysocket-config/auth"
 import type * as Party from "partykit/server"
 
 const PARTY_PATH_ROOM_INDEX = 2

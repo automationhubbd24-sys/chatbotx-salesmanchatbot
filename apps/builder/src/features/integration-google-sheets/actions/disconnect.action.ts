@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationGoogleSheetService } from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
+import { integrationGoogleSheetService } from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
 import {
   type GoogleSheetsAuthValue,
   integration as integrationGoogleSheets,
-} from "@chatbotx.io/integration-google-sheets"
+} from "@salesmanchatbot.io/integration-google-sheets"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

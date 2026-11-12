@@ -5,13 +5,13 @@ import {
   broadcastSubactions,
   channelTypes,
   resolveBroadcastSendRatePerMinute,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { format } from "date-fns"
 import { useFormatter, useTranslations } from "next-intl"
 import { useMemo } from "react"

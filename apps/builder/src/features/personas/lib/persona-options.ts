@@ -1,5 +1,5 @@
-import { integrationMessengerRepository } from "@chatbotx.io/database/repositories"
-import { selectRegisteredPersonas } from "@chatbotx.io/integration-messenger"
+import { integrationMessengerRepository } from "@salesmanchatbot.io/database/repositories"
+import { selectRegisteredPersonas } from "@salesmanchatbot.io/integration-messenger"
 import type {
   ListMessengerPersonasRequest,
   ListMessengerPersonasResponse,

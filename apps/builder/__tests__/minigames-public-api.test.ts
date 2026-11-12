@@ -64,7 +64,7 @@ const minigameService = {
 }
 const minigameContactService = { listPlays: vi.fn(), list: vi.fn() }
 
-vi.mock("@chatbotx.io/business/minigame", () => ({
+vi.mock("@salesmanchatbot.io/business/minigame", () => ({
   minigameService,
   minigameContactService,
 }))

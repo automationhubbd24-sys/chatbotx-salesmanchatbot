@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { PaperclipIcon, XCircleIcon } from "lucide-react"
 import Image from "next/image"
 

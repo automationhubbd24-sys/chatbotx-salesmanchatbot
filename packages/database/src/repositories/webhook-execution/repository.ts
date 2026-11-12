@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { db, sql } from "../../client"
 import { webhookExecutionModel } from "../../schema"
 

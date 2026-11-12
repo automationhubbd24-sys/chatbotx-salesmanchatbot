@@ -2,9 +2,9 @@ import {
   contactCustomFieldService,
   contactService,
   tagService,
-} from "@chatbotx.io/business"
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
-import type { MatchableEventType } from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/business"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
+import type { MatchableEventType } from "@salesmanchatbot.io/events"
 import type { MatchableWebhookEventData, WebhookPayload } from "../types"
 
 type WebhookPayloadBase = {

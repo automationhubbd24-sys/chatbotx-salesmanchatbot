@@ -12,7 +12,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/business
+// Mock: @salesmanchatbot.io/business
 // ---------------------------------------------------------------------------
 const removeContactSequencesForContact = vi.fn(() => {
   order.push("remove-sequence")
@@ -27,12 +27,12 @@ const setBroadcastSubscription = vi.fn(async () => ({ id: "c-1" }))
 
 const order: string[] = []
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: { attachByNamesToContacts, detachByNamesFromContacts },
   contactService: { setBroadcastSubscription },
 }))
 
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: {
     removeContactSequencesForContact,
     subscribeFromFlow,
@@ -40,17 +40,17 @@ vi.mock("@chatbotx.io/business/contact-sequence", () => ({
 }))
 
 // This suite never exercises `setContactCustomField` (the only handler that
-// touches `contactVariableService`), but the real `@chatbotx.io/variables`
+// touches `contactVariableService`), but the real `@salesmanchatbot.io/variables`
 // transitively needs the real schema, conflicting with the narrow mock above.
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: vi.fn(), replaceAll: vi.fn() },
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/events
+// Mock: @salesmanchatbot.io/events
 // ---------------------------------------------------------------------------
 const emitContactUnsubscribed = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactUnsubscribed,
 }))
 

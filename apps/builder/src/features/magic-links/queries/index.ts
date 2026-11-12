@@ -1,4 +1,4 @@
-import { magicLinkService } from "@chatbotx.io/business"
+import { magicLinkService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListMagicLinksRequest,

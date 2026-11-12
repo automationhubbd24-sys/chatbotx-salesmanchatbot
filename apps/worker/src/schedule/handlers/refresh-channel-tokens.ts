@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import { logger } from "../../lib/logger"
 import { refreshInstagramFacebookTokens } from "./refresh-instagram-facebook-tokens"
 import { refreshInstagramTokens } from "./refresh-instagram-tokens"

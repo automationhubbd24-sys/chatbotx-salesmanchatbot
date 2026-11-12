@@ -1,6 +1,6 @@
-import { aiHandoverBulkRunService } from "@chatbotx.io/business"
-import { getChildLogger } from "@chatbotx.io/logger"
-import { distributedLock, distributedStore } from "@chatbotx.io/redis"
+import { aiHandoverBulkRunService } from "@salesmanchatbot.io/business"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
+import { distributedLock, distributedStore } from "@salesmanchatbot.io/redis"
 
 const LOCK_KEY = "schedule:scan-ai-handover-bulk-runs"
 const LOCK_TIMEOUT_SECONDS = 50

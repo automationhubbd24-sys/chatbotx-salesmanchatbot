@@ -55,7 +55,7 @@ const commentAutomationService = {
   updateInstagram: vi.fn(),
   deleteInstagram: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ commentAutomationService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ commentAutomationService }))
 
 const listInstagramLoginMedia = vi.fn()
 const listInstagramFacebookMedia = vi.fn()

@@ -3,7 +3,7 @@ import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import { QuestionnaireApplicantNameCell } from "../src/features/questionnaires/components/questionnaire-applicant-name-cell"
 
-vi.mock("@chatbotx.io/ui/components/ui/avatar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/avatar", () => ({
   Avatar: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   AvatarFallback: ({ children }: { children: ReactNode }) => (
     <div>{children}</div>
@@ -13,7 +13,7 @@ vi.mock("@chatbotx.io/ui/components/ui/avatar", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   TooltipContent: ({ children }: { children: ReactNode }) => (
     <div>{children}</div>
@@ -23,7 +23,7 @@ vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
 
 vi.mock("@/features/tenant", () => ({
   useTenantSettings: () => ({
-    storageUrl: "https://cdn.example.com/chatbotx",
+    storageUrl: "https://cdn.example.com/salesmanchatbot",
   }),
 }))
 
@@ -64,7 +64,7 @@ describe("QuestionnaireApplicantNameCell", () => {
       container.querySelector<HTMLElement>("[data-testid='avatar-image']")
         ?.dataset.src,
     ).toBe(
-      "https://cdn.example.com/chatbotx/public/space/workspace-1/contacts/contact-1/avatar.png",
+      "https://cdn.example.com/salesmanchatbot/public/space/workspace-1/contacts/contact-1/avatar.png",
     )
 
     const link = container.querySelector("a")

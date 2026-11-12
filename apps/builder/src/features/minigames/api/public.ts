@@ -1,8 +1,8 @@
 import {
   minigameContactService,
   minigameService,
-} from "@chatbotx.io/business/minigame"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business/minigame"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { bulkUpdateIdsRequest } from "@/features/common/schema"
 import {

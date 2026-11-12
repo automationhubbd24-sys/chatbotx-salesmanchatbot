@@ -21,7 +21,7 @@ const callLog: string[] = []
 const messengerDeleteLabel = vi.fn()
 const zaloRemoveTag = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   tagChannelRepository: {
     listByTag: (...args: unknown[]) => findManyTagChannel(...args),
     listContactInboxIdsForChannelPage: (...args: unknown[]) =>
@@ -38,7 +38,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn().mockResolvedValue({ auth: {}, workspaceId: "ws-1" }),
   tagService: {
     hardDeleteSoftDeleted: (...args: unknown[]) => {
@@ -66,7 +66,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   // Single-pass chunkById: the query builder pages by id; with our small fixed
   // result sets it returns < chunkSize on the first call and stops.
   chunkById: async (
@@ -80,7 +80,7 @@ vi.mock("@chatbotx.io/database/utils", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: {
     runChannelHandler: (_group: unknown, name: unknown, ...args: unknown[]) => {
       if (name === "deleteLabel") {
@@ -91,7 +91,7 @@ vi.mock("@chatbotx.io/integration-messenger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   integration: {
     runAction: (name: unknown, ...args: unknown[]) => {
       if (name === "removeTag") {
@@ -102,13 +102,13 @@ vi.mock("@chatbotx.io/integration-zalo", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: vi.fn(({ fn }: { fn: () => Promise<unknown> }) => fn()),
   },
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: vi.fn(),
   logProviderErrorForChannel: vi.fn(),
 }))

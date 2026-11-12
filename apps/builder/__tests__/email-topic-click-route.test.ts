@@ -6,11 +6,11 @@ const verifyEmailClickToken = vi.fn()
 const findAnalyticsWorkspaceIdByToken = vi.fn()
 const loadServableWorkspace = vi.fn()
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   emailTopicAnalyticsService: { recordClick },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   emailTopicService: { findAnalyticsWorkspaceIdByToken },
   verifyEmailClickToken,
 }))

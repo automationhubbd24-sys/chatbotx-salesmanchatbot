@@ -1,9 +1,9 @@
 "use client"
 
-import { openaiCompatiblePresetConfigs } from "@chatbotx.io/ai"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { openaiCompatiblePresetConfigs } from "@salesmanchatbot.io/ai"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

@@ -8,8 +8,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef } from "react"

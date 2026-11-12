@@ -1,5 +1,5 @@
-import { and, db, eq } from "@chatbotx.io/database/client"
-import { sequenceDispatchModel } from "@chatbotx.io/database/schema"
+import { and, db, eq } from "@salesmanchatbot.io/database/client"
+import { sequenceDispatchModel } from "@salesmanchatbot.io/database/schema"
 import { logger } from "../../lib/logger"
 
 export class RetrySchedulerService {

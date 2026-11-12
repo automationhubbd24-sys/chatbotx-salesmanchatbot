@@ -1,7 +1,7 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -9,10 +9,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2Icon, PencilIcon } from "lucide-react"
 import { useRouter } from "next/navigation"

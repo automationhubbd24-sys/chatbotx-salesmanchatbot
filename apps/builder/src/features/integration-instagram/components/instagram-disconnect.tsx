@@ -1,6 +1,6 @@
 "use client"
 
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
 import { useParams, useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

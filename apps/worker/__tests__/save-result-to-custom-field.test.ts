@@ -16,15 +16,15 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const setValueByKey = vi.fn(async () => undefined)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: { setValueByKey },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { query: { contactInboxModel: { findFirst: vi.fn() } } },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   getStoragePrefix: vi.fn(() => "prefix"),
   uploader: {},
 }))
@@ -114,9 +114,9 @@ describe("saveResultToCustomField", () => {
   // `setValueByKey` must be swallowed to preserve that, while other errors
   // (previous test) still propagate.
   test("swallows a notFound rejection so a flow pointing at a deleted field keeps succeeding", async () => {
-    const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+    const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
     setValueByKey.mockRejectedValueOnce(
-      new ChatbotXException("Custom field not found", "notFound", 404),
+      new salesmanChatbotException("Custom field not found", "notFound", 404),
     )
 
     await expect(

@@ -3,7 +3,7 @@ import {
   HandleRequestType,
   Integration,
   type IntegrationDefinition,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   getThreadsProfile,
   refreshAccessToken,

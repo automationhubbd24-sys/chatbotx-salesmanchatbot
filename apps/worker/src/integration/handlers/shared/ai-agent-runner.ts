@@ -3,7 +3,7 @@ import {
   helpTexts,
   processStreamingText,
   toolPrefixes,
-} from "@chatbotx.io/ai"
+} from "@salesmanchatbot.io/ai"
 import {
   aiContextService,
   aiIntegrationService,
@@ -16,21 +16,21 @@ import {
   getAIToolset,
   McpClient,
   normalizeMcpContent,
-} from "@chatbotx.io/ai/server"
-import { integrationOpenaiCompatibleService } from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/ai/server"
+import { integrationOpenaiCompatibleService } from "@salesmanchatbot.io/business"
 import type {
   AIAgentModelConfig,
   AIAgentOpenaiCompatibleProviderModel,
   AIAgentProvider,
   AIAgentProviderModel,
   AIAgentProviderModels,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/database/types"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import { type ModelMessage, stepCountIs, streamText, type ToolSet } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"

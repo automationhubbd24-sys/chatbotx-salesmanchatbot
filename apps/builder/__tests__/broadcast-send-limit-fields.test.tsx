@@ -3,7 +3,7 @@ import {
   type ChannelType,
   TRIAL_BROADCAST_PLAN_POLICY,
   UNRESTRICTED_BROADCAST_PLAN_POLICY,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"

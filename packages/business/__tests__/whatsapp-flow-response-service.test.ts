@@ -7,7 +7,7 @@ const { findIntegrationWhatsapp, incrementCompletedCount, setValues } =
     setValues: vi.fn(async () => undefined),
   }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       integrationWhatsappModel: { findFirst: findIntegrationWhatsapp },
@@ -15,7 +15,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappFlowRepository: {
     incrementCompletedCount,
   },

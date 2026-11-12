@@ -1,4 +1,4 @@
-import { COEXIST_CHANNELS } from "@chatbotx.io/utils/channel"
+import { COEXIST_CHANNELS } from "@salesmanchatbot.io/utils/channel"
 import { describe, expect, test } from "vitest"
 import { coexistChannel } from "../src/schema/coexist-sync-run"
 

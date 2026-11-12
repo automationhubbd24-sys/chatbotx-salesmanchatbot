@@ -1,5 +1,5 @@
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import {
   createSearchParamsCache,
   parseAsBoolean,

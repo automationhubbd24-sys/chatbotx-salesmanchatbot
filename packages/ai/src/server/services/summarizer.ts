@@ -2,8 +2,8 @@ import type {
   AIAgentModelConfig,
   AIAgentOpenaiCompatibleProviderModel,
   AIAgentProviderModels,
-} from "@chatbotx.io/database/partials"
-import { defaultAIModels } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/partials"
+import { defaultAIModels } from "@salesmanchatbot.io/flow-config"
 import { generateText } from "ai"
 import { aiTimeouts, helpTexts, MAX_SUMMARY_LENGTH } from "../../constants"
 import { logger } from "../../logger"

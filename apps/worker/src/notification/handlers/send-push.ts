@@ -4,9 +4,9 @@ import {
   deviceTokenService,
   workspaceMemberService,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { ConversationModel } from "@chatbotx.io/database/types"
-import type { NotificationJobData } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import type { ConversationModel } from "@salesmanchatbot.io/database/types"
+import type { NotificationJobData } from "@salesmanchatbot.io/worker-config"
 import { Expo, type ExpoPushMessage, type ExpoPushToken } from "expo-server-sdk"
 import { logger } from "../../lib/logger"
 import { buildNotificationContent } from "../lib/build-notification-content"

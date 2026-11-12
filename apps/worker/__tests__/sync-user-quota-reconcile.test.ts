@@ -34,18 +34,18 @@ const state = {
 
 // The handler still consults `isForeignKeyViolationError` directly to decide
 // whether a reconcile failure is a benign ghost-user race.
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   isForeignKeyViolationError: vi.fn(
     (error: unknown, constraint: string) =>
       error instanceof Error && error.message === constraint,
   ),
 }))
 
-// The handler imports a few lightweight helpers from `@chatbotx.io/business`.
+// The handler imports a few lightweight helpers from `@salesmanchatbot.io/business`.
 // Mock them directly rather than loading the whole service+integration graph
 // (which would require the full real DB schema, incompatible with the partial
 // schema mock below). The helpers are pure, so re-implementing them is exact.
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   parseLiveCount: (value: string | null) => {
     if (value === null) {
       return null
@@ -105,9 +105,9 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-// liveKeyFor/USER_QUOTA_LABEL live in `@chatbotx.io/utils` (shared with
+// liveKeyFor/USER_QUOTA_LABEL live in `@salesmanchatbot.io/utils` (shared with
 // `packages/analytics`, so the two MAC writers can never diverge on key format).
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   USER_QUOTA_LABEL: "user-quota",
   liveKeyFor: (label: string, id: string) => `${label}-live:${id}`,
 }))
@@ -122,13 +122,13 @@ const redisClient = {
   scan: vi.fn(async () => ["0", [] as string[]]),
 }
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   cacheConnections: { useExisting: vi.fn(async () => redisClient) },
   distributedStore: { delete: vi.fn(async () => undefined) },
 }))
 
 const countActiveContactsForOwner = vi.fn(async () => state.ledgerMac)
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   macRepository: { countActiveContactsForOwner },
 }))
 
@@ -142,7 +142,7 @@ const { reconcileUser, syncUserQuota } = await import(
 
 // The mocked business members (factory-created vi.fns), for the owner-pool branch.
 const { tenantService, userQuotaService } = (await import(
-  "@chatbotx.io/business"
+  "@salesmanchatbot.io/business"
 )) as unknown as {
   tenantService: {
     findByOwner: ReturnType<typeof vi.fn>

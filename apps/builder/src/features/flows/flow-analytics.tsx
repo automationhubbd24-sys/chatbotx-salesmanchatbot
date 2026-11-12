@@ -1,6 +1,6 @@
 "use client"
 
-import type { FlowNodeStatsResponse } from "@chatbotx.io/analytics/schemas"
+import type { FlowNodeStatsResponse } from "@salesmanchatbot.io/analytics/schemas"
 import { ReactFlowProvider } from "@xyflow/react"
 
 import type { FlowVersionResource } from "../flow-versions/schema/resource"

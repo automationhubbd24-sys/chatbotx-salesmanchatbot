@@ -1,4 +1,4 @@
-import { whatsappFlowService } from "@chatbotx.io/business"
+import { whatsappFlowService } from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import { getWhatsappFlowScreens } from "../lib/whatsapp-flow-operations"

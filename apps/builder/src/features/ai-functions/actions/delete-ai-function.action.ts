@@ -1,7 +1,7 @@
 "use server"
 
-import { aiFunctionService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { aiFunctionService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 
 export const deleteAIFunctionAction = workspaceActionClient

@@ -1,4 +1,4 @@
-import { server } from "@chatbotx.io/vitest-config/msw"
+import { server } from "@salesmanchatbot.io/vitest-config/msw"
 import { afterAll, afterEach, beforeAll } from "vitest"
 
 /**

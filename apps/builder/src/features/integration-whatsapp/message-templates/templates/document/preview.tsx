@@ -1,4 +1,4 @@
-import { CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { memo, useCallback } from "react"
 import { Controller, useFormContext, useWatch } from "react-hook-form"
 import FileDropzone from "@/components/file-dropzone"

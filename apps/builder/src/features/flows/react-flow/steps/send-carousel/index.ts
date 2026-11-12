@@ -1,7 +1,7 @@
 import {
   type SendCarouselStepSchema,
   sendCarouselStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SendCarouselStepEditor from "./editor"
 import { sendCarouselValidator } from "./validator"

@@ -1,10 +1,10 @@
 import {
   type FileContextType,
   fileStatuses,
-} from "@chatbotx.io/database/partials"
-import { fileRepository } from "@chatbotx.io/database/repositories"
-import type { FileModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { fileRepository } from "@salesmanchatbot.io/database/repositories"
+import type { FileModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 type CreatePendingInput = {

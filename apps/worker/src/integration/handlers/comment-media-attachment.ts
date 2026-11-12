@@ -1,8 +1,8 @@
-import { assertPublicUrl, buildContext } from "@chatbotx.io/business"
-import { getStoragePrefix, uploadFileFromUrl } from "@chatbotx.io/filesystem"
-import type { ThreadsAuthValue } from "@chatbotx.io/integration-threads"
-import type { AuthValue, IncomingAttachment } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+import { assertPublicUrl, buildContext } from "@salesmanchatbot.io/business"
+import { getStoragePrefix, uploadFileFromUrl } from "@salesmanchatbot.io/filesystem"
+import type { ThreadsAuthValue } from "@salesmanchatbot.io/integration-threads"
+import type { AuthValue, IncomingAttachment } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { logger } from "../../lib/logger"
 import { allIntegrations } from "../../services/integrations"
 

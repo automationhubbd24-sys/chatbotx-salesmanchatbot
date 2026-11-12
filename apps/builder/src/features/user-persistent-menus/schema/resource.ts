@@ -1,8 +1,8 @@
-import { messengerPersistentMenuSchema } from "@chatbotx.io/database/partials"
+import { messengerPersistentMenuSchema } from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   userPersistentMenuModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const userPersistentMenuResource = createSelectSchema(

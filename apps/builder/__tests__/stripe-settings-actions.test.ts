@@ -11,12 +11,12 @@ vi.mock("@/lib/safe-action", () => {
   chain.action = (handler: unknown) => handler
   return { authActionClient: chain }
 })
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: { remove: removeSpy, upsert: upsertSpy },
 }))
 vi.mock("@/env", () => ({ isCloud: () => true }))
 const { stripeCredentialUpdateSchema } = await import(
-  "@chatbotx.io/database/partials"
+  "@salesmanchatbot.io/database/partials"
 )
 const { deleteStripeSettingsAction } = await import(
   "../src/features/platform-credentials/stripe/delete-stripe-settings.action"

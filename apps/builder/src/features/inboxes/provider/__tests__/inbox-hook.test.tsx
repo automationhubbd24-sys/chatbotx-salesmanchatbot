@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import { type QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act, useEffect, useRef, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"

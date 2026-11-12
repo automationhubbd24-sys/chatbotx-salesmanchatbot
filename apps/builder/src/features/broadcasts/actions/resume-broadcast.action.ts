@@ -1,7 +1,7 @@
 "use server"
 
-import { broadcastService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { resumeBroadcastSchema } from "../schema/action"
 import { withBroadcastPlanLimitOutcome } from "./broadcast-plan-limit-outcome"

@@ -3,8 +3,8 @@
 import type {
   AutomatedResponseType,
   FolderType,
-} from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import type { Table } from "@tanstack/react-table"
 import { FolderUpIcon } from "lucide-react"
 import { useRouter } from "next/navigation"

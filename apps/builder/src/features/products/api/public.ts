@@ -1,5 +1,5 @@
-import { createImportUpload, productService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { createImportUpload, productService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { peekImportHeadersForApi } from "@/features/import/lib/peek-import-headers-for-api"
 import {

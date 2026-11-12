@@ -1,4 +1,4 @@
-import type { BotResponseTrackingContext } from "@chatbotx.io/worker-config"
+import type { BotResponseTrackingContext } from "@salesmanchatbot.io/worker-config"
 import type { ReplyAIProvider } from "./replies"
 
 // Mutable box for a tracking context that must be attached to at most one

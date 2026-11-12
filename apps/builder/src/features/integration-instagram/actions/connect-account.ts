@@ -3,14 +3,14 @@ import "server-only"
 import {
   buildContext,
   instagramIntegrationService,
-} from "@chatbotx.io/business"
-import type { InstagramAuthValue } from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/business"
+import type { InstagramAuthValue } from "@salesmanchatbot.io/integration-instagram"
 import {
   getInstagramAccount,
   integration as integrationInstagram,
   subscribePageToInstagramWebhook,
-} from "@chatbotx.io/integration-instagram"
-import { AuthType } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-instagram"
+import { AuthType } from "@salesmanchatbot.io/sdk"
 import type { ResolvedConnectSession } from "@/features/channel-connect/lib/resolve-connect-session"
 import {
   type ConnectCandidateLookup,

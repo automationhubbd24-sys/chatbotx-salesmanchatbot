@@ -1,14 +1,14 @@
-import { isDatabaseError } from "@chatbotx.io/database/client"
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
-import { messagingAdsConnectionRepository } from "@chatbotx.io/database/repositories"
-import type { MessagingAdsConnectionModel } from "@chatbotx.io/database/types"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+import { isDatabaseError } from "@salesmanchatbot.io/database/client"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
+import { messagingAdsConnectionRepository } from "@salesmanchatbot.io/database/repositories"
+import type { MessagingAdsConnectionModel } from "@salesmanchatbot.io/database/types"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import {
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
   integration as facebookAdsIntegration,
-} from "@chatbotx.io/integration-facebook-ads"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { createId } from "@salesmanchatbot.io/utils"
 import { perChannelIntegrationIdsOrNull } from "../ads-conversion/channel-fields"
 import { logger } from "../logger"
 import { invalidateMessagingAdsCache } from "./graph-cache"

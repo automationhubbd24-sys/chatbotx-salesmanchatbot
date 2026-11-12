@@ -1,7 +1,7 @@
 "use server"
 
-import { aiAgentService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { aiAgentService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { updateAIAgentRequest } from "@/features/ai-agents/schema/action"
 import { workspaceActionClient } from "@/lib/safe-action"
 

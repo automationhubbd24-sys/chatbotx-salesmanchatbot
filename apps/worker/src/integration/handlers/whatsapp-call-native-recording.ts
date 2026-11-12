@@ -2,10 +2,10 @@ import {
   callRecordingService,
   DEFAULT_RECORDING_CONTENT_TYPE,
   isAllowedRecordingContentType,
-} from "@chatbotx.io/business"
-import { whatsappCallRepository } from "@chatbotx.io/database/repositories"
-import { setWebhookExecutionContext } from "@chatbotx.io/events"
-import type { IntegrationJobWhatsappCallNativeRecordingFetch } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import { whatsappCallRepository } from "@salesmanchatbot.io/database/repositories"
+import { setWebhookExecutionContext } from "@salesmanchatbot.io/events"
+import type { IntegrationJobWhatsappCallNativeRecordingFetch } from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { isBlockedWorkspace } from "../../lib/is-blocked-workspace"
 import { logger } from "../../lib/logger"

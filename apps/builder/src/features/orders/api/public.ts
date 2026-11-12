@@ -1,4 +1,4 @@
-import { orderService } from "@chatbotx.io/business"
+import { orderService } from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnCreatingResource,
   possibleErrorsOnFindingResource,

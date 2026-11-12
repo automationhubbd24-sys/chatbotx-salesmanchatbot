@@ -2,7 +2,7 @@ import {
   type MoosendCreateContactSchema,
   moosendCreateContactDefaultFn,
   moosendCreateContactSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import MoosendCreateContactEditor from "./editor"
 import MoosendCreateContactViewer from "./viewer"

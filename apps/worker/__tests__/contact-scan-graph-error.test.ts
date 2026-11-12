@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { describe, expect, it } from "vitest"
 import { classifyGraphSdkError } from "../src/integration/handlers/contact-scan/graph-error"
 

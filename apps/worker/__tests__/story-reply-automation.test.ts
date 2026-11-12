@@ -1,4 +1,4 @@
-import type { AIJobProcessStoryReplyAutomation } from "@chatbotx.io/worker-config"
+import type { AIJobProcessStoryReplyAutomation } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------
@@ -35,7 +35,7 @@ const {
   mockLoggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: { findBy: mockFindContactInboxBy },
   aiAgentService: { findBy: mockAiAgentFindBy },
   commentAutomationService: { isWithinSchedule: mockIsWithinSchedule },
@@ -46,21 +46,21 @@ vi.mock("@chatbotx.io/business", () => ({
   workspaceService: { findById: mockWorkspaceFindById },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: mockContactVariableGetAll,
     replaceAll: mockContactVariableReplaceAll,
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   chatQueue: { add: mockChatQueueAdd },
   IntegrationJobAction: { sendFlow: "sendFlow" },
   integrationQueue: { add: mockIntegrationQueueAdd },
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: vi.fn().mockReturnValue("webhook"),
 }))
 

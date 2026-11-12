@@ -33,7 +33,7 @@ vi.mock("@/lib/orpc/orpc", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({
     items,
     onValueChange,
@@ -64,7 +64,7 @@ vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
   SelectValue: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => children,
   TooltipContent: ({ children }: { children: ReactNode }) => children,
   TooltipTrigger: ({ render }: { render: ReactNode }) => render,

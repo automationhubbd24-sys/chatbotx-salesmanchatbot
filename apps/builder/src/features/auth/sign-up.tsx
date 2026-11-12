@@ -1,11 +1,11 @@
 "use client"
 
-import type { SocialProvider } from "@chatbotx.io/auth/server"
+import type { SocialProvider } from "@salesmanchatbot.io/auth/server"
 import {
   Card,
   CardContent,
   CardHeader,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
@@ -66,8 +66,8 @@ export const SignUpForm = ({
       </Card>
 
       <AcceptTermsAndPolicy
-        privacyPolicy={policyUrl ?? "https://chatbotx.io/privacy/"}
-        termsOfService={termsOfServiceUrl ?? "https://chatbotx.io/terms/"}
+        privacyPolicy={policyUrl ?? "https://salesmanchatbot.io/privacy/"}
+        termsOfService={termsOfServiceUrl ?? "https://salesmanchatbot.io/terms/"}
       />
     </div>
   )

@@ -3,18 +3,18 @@
 import type {
   RealtimeEventData,
   RealtimeTopic,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import {
   REALTIME_EVENT_TOPICS,
   RealtimeEventType,
   realtimeBatchEnvelopeSchema,
   realtimeEventEnvelopeSchema,
   serializeRealtimeSubscriptionMessage,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import {
   PRESENCE_REPORT_INTERVAL_MS,
   serializePresencePingMessage,
-} from "@chatbotx.io/partysocket-config/presence"
+} from "@salesmanchatbot.io/partysocket-config/presence"
 import usePartySocket from "partysocket/react"
 import {
   createContext,

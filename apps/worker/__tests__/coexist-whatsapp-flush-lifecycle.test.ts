@@ -37,7 +37,7 @@ const {
  */
 type RunWriteGuard = { status: string; claimToken?: string | null }
 
-vi.mock("@chatbotx.io/business/coexist", () => {
+vi.mock("@salesmanchatbot.io/business/coexist", () => {
   const write = (fields: Record<string, unknown>, guard?: RunWriteGuard) =>
     mockRunWrite(fields, guard)
   return {
@@ -106,14 +106,14 @@ vi.mock("../src/lib/logger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/database/repositories", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@chatbotx.io/database/repositories")
+    typeof import("@salesmanchatbot.io/database/repositories")
   >()),
   inboxRepository: { findById: mockFindInboxById },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockUpdate,
     select: mockSelect,
@@ -135,7 +135,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   isNoRedisEnv: () => true,
   buildCoexistPageJobId: ({
     runId: id,
@@ -161,8 +161,8 @@ vi.mock("@chatbotx.io/worker-config", () => ({
 // Carries the real schema forward and overrides only the models these tests
 // inspect: the repositories barrel now reaches `queries/contact-filter`,
 // which imports tables no stub here would list.
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/database/schema")>()),
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>()),
   whatsappCoexistStagingModel: {
     id: "id",
     phoneNumberId: "phoneNumberId",
@@ -757,7 +757,7 @@ describe("coexistWhatsappFlush — run lifecycle", () => {
     expect(processed?.processedAt).toBeInstanceOf(Date)
 
     // The poison row is NOT counted as imported and NOT marked processed.
-    const inArrayCalls = (await import("@chatbotx.io/database/client"))
+    const inArrayCalls = (await import("@salesmanchatbot.io/database/client"))
       .inArray as unknown as ReturnType<typeof vi.fn>
     const idLists = inArrayCalls.mock.calls.map((args) => args[1])
     expect(idLists).toContainEqual(["row-good"])

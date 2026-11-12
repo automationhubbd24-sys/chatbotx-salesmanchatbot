@@ -54,9 +54,9 @@ const importService = {
   find: vi.fn(),
   list: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ importService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ importService }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))

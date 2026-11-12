@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,8 +10,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { isContactScanChannel } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { isContactScanChannel } from "@salesmanchatbot.io/utils/channel"
 import type { Table } from "@tanstack/react-table"
 import {
   ArchiveIcon,

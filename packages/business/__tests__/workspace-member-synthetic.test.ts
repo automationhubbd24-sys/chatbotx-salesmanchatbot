@@ -12,7 +12,7 @@ const { buildSupportMembership, resolveWorkspaceMembership } = await import(
   "../src/workspace-member/synthetic"
 )
 
-const user = { id: "user-1", email: "admin@chatbotx.io" }
+const user = { id: "user-1", email: "admin@salesmanchatbot.io" }
 
 beforeEach(() => {
   vi.clearAllMocks()

@@ -1,4 +1,4 @@
-import type { TokenHash } from "@chatbotx.io/database/partials"
+import type { TokenHash } from "@salesmanchatbot.io/database/partials"
 
 const API_TOKEN_PREFIX = "cbx_api_"
 const WORKSPACE_TOKEN_PREFIX = "cbx_ws_"

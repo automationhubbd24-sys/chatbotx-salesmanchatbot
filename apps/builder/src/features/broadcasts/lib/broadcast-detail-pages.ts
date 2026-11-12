@@ -1,4 +1,4 @@
-import type { BroadcastTemplateDetail } from "@chatbotx.io/business"
+import type { BroadcastTemplateDetail } from "@salesmanchatbot.io/business"
 import type { BroadcastResourceWithRelations } from "../schema/resource"
 
 /** The page a legacy single-page broadcast sends from, else a dash. */

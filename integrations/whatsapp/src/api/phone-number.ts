@@ -1,4 +1,4 @@
-import type { Context } from "@chatbotx.io/sdk"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import ky from "ky"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 import { API_URL, DEFAULT_API_VERSION } from "../constants"

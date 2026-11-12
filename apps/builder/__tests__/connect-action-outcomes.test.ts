@@ -4,8 +4,8 @@ import {
   channelDuplicatedException,
   connectSessionExpiredException,
   notWorkspaceMemberException,
-} from "@chatbotx.io/business/errors"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------

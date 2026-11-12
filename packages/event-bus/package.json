@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/event-bus",
+  "name": "@salesmanchatbot.io/event-bus",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -7,15 +7,15 @@
     "./worker": "./src/worker.ts"
   },
   "dependencies": {
-    "@chatbotx.io/flow-config": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/redis": "workspace:*",
-    "@chatbotx.io/worker-config": "workspace:*",
+    "@salesmanchatbot.io/flow-config": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/redis": "workspace:*",
+    "@salesmanchatbot.io/worker-config": "workspace:*",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "^24.10.1",
     "vitest": "^4.1.0"
   },

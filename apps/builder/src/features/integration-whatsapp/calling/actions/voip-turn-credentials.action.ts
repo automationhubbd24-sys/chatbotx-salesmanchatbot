@@ -4,10 +4,10 @@ import {
   canCallConversation,
   voipTurnCredentialService,
   whatsappVoipCallService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { whatsappCallRepository } from "@chatbotx.io/database/repositories"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { whatsappCallRepository } from "@salesmanchatbot.io/database/repositories"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { env } from "@/env"
@@ -40,7 +40,7 @@ export const getWhatsappVoipTurnCredentialsAction = callingActionClient
 
     const call = await whatsappCallRepository.findById(whatsappCallId)
     if (!call || call.workspaceId !== workspaceId || !call.wacid) {
-      throw new ChatbotXException(t("whatsapp.calls.errors.callNotFound"))
+      throw new salesmanChatbotException(t("whatsapp.calls.errors.callNotFound"))
     }
 
     const control = await whatsappVoipCallService.readControl(call.wacid)
@@ -51,7 +51,7 @@ export const getWhatsappVoipTurnCredentialsAction = callingActionClient
       !control ||
       (control.reservedUserId !== "" && control.reservedUserId !== ctx.user.id)
     ) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         t("whatsapp.calls.errors.voipNotReservedAgent"),
       )
     }
@@ -67,7 +67,7 @@ export const getWhatsappVoipTurnCredentialsAction = callingActionClient
         userId: ctx.user.id,
       }))
     ) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         t("whatsapp.calls.errors.voipCallAccessDenied"),
         CALL_ACCESS_DENIED_CODE,
         CALL_ACCESS_DENIED_HTTP_STATUS,

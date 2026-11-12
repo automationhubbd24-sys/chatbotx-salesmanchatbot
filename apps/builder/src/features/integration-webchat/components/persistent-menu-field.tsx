@@ -4,17 +4,17 @@ import {
   type ChannelType,
   type WebchatPersistentMenuType,
   webchatPersistentMenuType,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
@@ -22,8 +22,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { PlusIcon, TrashIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { memo, useCallback, useEffect, useMemo, useRef } from "react"

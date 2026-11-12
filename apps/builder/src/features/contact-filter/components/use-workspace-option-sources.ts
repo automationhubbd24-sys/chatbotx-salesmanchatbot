@@ -1,7 +1,7 @@
 "use client"
 
-import { type ChannelType, channelTypes } from "@chatbotx.io/database/partials"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import { type ChannelType, channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"

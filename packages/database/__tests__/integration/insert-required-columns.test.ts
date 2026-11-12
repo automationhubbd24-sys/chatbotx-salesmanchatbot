@@ -24,11 +24,11 @@
  * captures the object handed to `.values()`.
  *
  * The suite SKIPS itself unless `DATABASE_URL` points at a reachable database.
- * `@chatbotx.io/vitest-config`'s `setup-env` always defines `DATABASE_URL`
+ * `@salesmanchatbot.io/vitest-config`'s `setup-env` always defines `DATABASE_URL`
  * (a deliberately non-routable `127.0.0.1:1` sentinel), so "is it defined" is
  * not a usable signal — the port is. Run it against local docker Postgres with:
  *
- *     pnpm --filter @chatbotx.io/database test:db
+ *     pnpm --filter @salesmanchatbot.io/database test:db
  */
 
 import { getTableColumns, getTableName } from "drizzle-orm"

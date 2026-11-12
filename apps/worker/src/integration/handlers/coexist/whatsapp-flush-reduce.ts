@@ -1,6 +1,6 @@
-import { isWhatsappHistoryTerminal } from "@chatbotx.io/business/coexist/history"
-import type { WhatsappCoexistStagingModel } from "@chatbotx.io/database/types"
-import type { IncomingContact } from "@chatbotx.io/sdk"
+import { isWhatsappHistoryTerminal } from "@salesmanchatbot.io/business/coexist/history"
+import type { WhatsappCoexistStagingModel } from "@salesmanchatbot.io/database/types"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../../lib/logger"
 import type { HistoricalContactMessages } from "./bulk-historical-import"
 import type {

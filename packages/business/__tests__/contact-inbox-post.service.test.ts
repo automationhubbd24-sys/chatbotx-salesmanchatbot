@@ -11,11 +11,11 @@ const mocks = vi.hoisted(() => ({
   lockWorkspaceForPostWrite: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.dbTransaction },
 }))
 
-vi.mock("@chatbotx.io/database/repositories/contact-inbox-post", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories/contact-inbox-post", () => ({
   contactInboxPostRepository: {
     deleteByContactInboxIds: mocks.deleteByContactInboxIds,
     deleteWorkspaceBatch: mocks.deleteWorkspaceBatch,

@@ -1,13 +1,13 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
 import {
   type InstagramAuthValue,
   listInstagramMedia as listInstagramLoginMediaApi,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import {
   type InstagramAuthValue as InstagramFacebookAuthValue,
   listInstagramMedia as listInstagramFacebookMediaApi,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import { resolvePostPreviewImage } from "@/features/shared/comment-automation/lib/post-preview-image"
 import { collectSettled } from "@/lib/collect-settled"
 

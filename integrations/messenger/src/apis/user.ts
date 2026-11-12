@@ -4,10 +4,10 @@ import type {
   IncomingContact,
   PersistentMenu,
   UserCustomSettings,
-} from "@chatbotx.io/sdk"
-import { normalizeGender, normalizeUtcOffset } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { fetchMediaWithLimits } from "@chatbotx.io/utils/media-download"
+} from "@salesmanchatbot.io/sdk"
+import { normalizeGender, normalizeUtcOffset } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { fetchMediaWithLimits } from "@salesmanchatbot.io/utils/media-download"
 import { API_URL, DEFAULT_API_VERSION } from "../constants"
 import { parseOriginError, rescue } from "../exception"
 import { facebookGraphClient } from "../lib/http-client"

@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/vitest-config",
+  "name": "@salesmanchatbot.io/vitest-config",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -28,7 +28,7 @@
     "vitest": "^4.1.8"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
     "@types/node": "^24.10.4",
     "typescript": "^5"
   }

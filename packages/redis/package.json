@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/redis",
+  "name": "@salesmanchatbot.io/redis",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@chatbotx.io/logger": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
     "async-mutex": "^0.5.0",
     "ioredis": "5.10.1",
@@ -16,8 +16,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "dotenv-cli": "^11.0.0",
     "typescript": "^5",
     "vitest": "^4.1.0"

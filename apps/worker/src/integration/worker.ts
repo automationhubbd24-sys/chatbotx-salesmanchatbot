@@ -1,19 +1,19 @@
 import { createHash } from "node:crypto"
-import { automatedResponseService } from "@chatbotx.io/automated-response"
+import { automatedResponseService } from "@salesmanchatbot.io/automated-response"
 import {
   conversationService,
   flushAllPendingWorkspaceBroadcasts,
   withBlockedOwnerGuard,
-} from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   DOCX_MIME_TYPES,
   getStoryReply,
   IMAGE_MIME_TYPES,
   PDF_MIME_TYPES,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   AIJobAction,
   aiAgentQueue,
@@ -30,7 +30,7 @@ import {
   queueNames,
   WhatsappVoipSignalingJobAction,
   type WhatsappVoipSignalingJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { env } from "../env"
 import { ensureBootstrapped } from "../lib/bootstrap"

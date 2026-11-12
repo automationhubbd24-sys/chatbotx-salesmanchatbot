@@ -1,7 +1,7 @@
 "use client"
 
-import type { ExternalRequestStepSchema } from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ExternalRequestStepSchema } from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { Loader2Icon, PlayIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFormContext } from "react-hook-form"

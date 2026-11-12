@@ -7,7 +7,7 @@ import {
   vi,
 } from "vitest"
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       inboxModel: { findFirst: vi.fn() },
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     replaceAll: vi.fn(),
   },
@@ -25,8 +25,8 @@ vi.mock("@chatbotx.io/variables", () => ({
 const { replaceMessengerTemplateVariables, validateMessengerTemplate } =
   await import("../src/integration/handlers/messenger-template-handler")
 
-const { db } = await import("@chatbotx.io/database/client")
-const { contactVariableService } = await import("@chatbotx.io/variables")
+const { db } = await import("@salesmanchatbot.io/database/client")
+const { contactVariableService } = await import("@salesmanchatbot.io/variables")
 
 const mockInboxFindFirst = db.query.inboxModel.findFirst as MockInstance
 const mockTemplateFindFirst = db.query.messengerMessageTemplateModel

@@ -16,20 +16,20 @@ vi.mock("@/features/common/schema", () => ({
   workspaceIdrequestParams: [],
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiFileService: {
     create: mocks.create,
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code = "systemError"
     httpStatusCode = 400
 
     constructor(message: string, code?: string, httpStatusCode?: number) {
       super(message)
-      this.name = "ChatbotXException"
+      this.name = "salesmanChatbotException"
       if (code) {
         this.code = code
       }
@@ -48,7 +48,7 @@ vi.mock("../src/features/ai-files/schema", () => ({
   createAIFileRequest: {},
 }))
 
-const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
 const { createAIFileAction } = await import(
   "@/features/ai-files/actions/create-ai-file.action"
 )
@@ -80,7 +80,7 @@ beforeEach(() => {
 describe("createAIFileAction", () => {
   test("translates a noEmbeddingProvider service error via next-intl", async () => {
     mocks.create.mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "AI file requires an embedding provider",
         "noEmbeddingProvider",
         400,

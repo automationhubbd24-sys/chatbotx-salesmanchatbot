@@ -1,4 +1,4 @@
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { Loader2Icon } from "lucide-react"
 import { cookies } from "next/headers"
 import { notFound } from "next/navigation"

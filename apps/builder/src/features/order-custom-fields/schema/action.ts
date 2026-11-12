@@ -1,4 +1,4 @@
-import { orderCustomFieldTypes, orderTypes } from "@chatbotx.io/database/partials"
+import { orderCustomFieldTypes, orderTypes } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 const optionsSchema = z.preprocess(

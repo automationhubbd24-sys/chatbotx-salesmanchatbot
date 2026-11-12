@@ -8,9 +8,9 @@ import {
   type FlowNode,
   resolveSendTextLengthLimits,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -19,13 +19,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useReactFlow } from "@xyflow/react"
 import { getProperty } from "dot-prop"

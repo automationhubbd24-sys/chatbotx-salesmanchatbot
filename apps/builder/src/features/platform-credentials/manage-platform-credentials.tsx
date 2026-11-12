@@ -1,8 +1,8 @@
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import type {
   CredentialPublicByType,
   CredentialType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { isCloud } from "@/env"
 import { getBrokerOrigin } from "@/lib/oauth-broker"
 import {

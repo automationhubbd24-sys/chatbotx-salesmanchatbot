@@ -1,10 +1,10 @@
-import { broadcastEventType } from "@chatbotx.io/analytics/schemas"
-import { broadcastStatuses, channelTypes } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { broadcastEventType } from "@salesmanchatbot.io/analytics/schemas"
+import { broadcastStatuses, channelTypes } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicListRequest } from "@/lib/public-api/list"
 
-// `listBroadcastContactsRequest`/`Response` in `@chatbotx.io/analytics/schemas`
+// `listBroadcastContactsRequest`/`Response` in `@salesmanchatbot.io/analytics/schemas`
 // carry `workspaceId` (injected from the token's resolved workspace, never
 // accepted from client input) and `conversationId` (an internal builder-
 // navigation detail, not a public API concern) — narrow variants declared

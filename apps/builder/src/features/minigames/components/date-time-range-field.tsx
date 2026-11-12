@@ -1,7 +1,7 @@
 "use client"
 
-import { DateTimePickerField } from "@chatbotx.io/ui/components/form/date-picker-field"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { DateTimePickerField } from "@salesmanchatbot.io/ui/components/form/date-picker-field"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { ArrowRightIcon } from "lucide-react"
 
 type DateTimeRangeFieldProps = {

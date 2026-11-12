@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 
 export const cursorPagination = z.object({
@@ -26,7 +26,7 @@ export const decodeCursor = (
     // Malformed input (not base64-encoded JSON) — treat like any other
     // invalid cursor rather than letting a raw SyntaxError escape as an
     // unhandled 500. See `toKnownOrpcError`, which only maps
-    // `ChatbotXException`/`ORPCError`.
+    // `salesmanChatbotException`/`ORPCError`.
     return null
   }
 

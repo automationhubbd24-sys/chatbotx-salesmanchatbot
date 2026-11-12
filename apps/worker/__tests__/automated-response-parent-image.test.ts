@@ -6,13 +6,13 @@ const mocks = vi.hoisted(() => ({
   replyByAI: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   AI_MESSAGE_HISTORY_LOOKBACK_MS: 60_000,
   MAX_CONVERSATION_HISTORY: 100,
   systemFunctionNames: { imageReader: "imageReader" },
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: {
     getOrInitContext: vi.fn(async () => null),
     mapContextToModelMessages: vi.fn(() => []),
@@ -20,12 +20,12 @@ vi.mock("@chatbotx.io/ai/server", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: { process: vi.fn(async () => false) },
   getAutomatedResponseKey: vi.fn(() => "automated-response-key"),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiAgentService: {
     findDefault: vi.fn(async () => ({
       id: "agent-1",
@@ -42,15 +42,15 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   simpleQueue: { getAll: vi.fn(async () => []) },
 }))
 
-vi.mock("@chatbotx.io/database/errors", () => ({
+vi.mock("@salesmanchatbot.io/database/errors", () => ({
   isMessageStorageError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   aiAgentProviderModels: { parse: (models: unknown) => models },
   aiMessageRoles: { enum: { user: "user" } },
   defaultReplyFrequencies: {
@@ -59,7 +59,7 @@ vi.mock("@chatbotx.io/database/partials", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn(async () => ({
     findTriggerMessage: mocks.findTriggerMessage,
     findAIContextMessages: mocks.findAIContextMessages,
@@ -68,8 +68,8 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   getSafeSinceTime: vi.fn(() => new Date(0)),
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({ emit: vi.fn() }))
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({ emit: vi.fn() }))
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   DOCX_MIME_TYPES: [],
   IMAGE_MIME_TYPES: ["image/jpeg", "image/png"],
   PDF_MIME_TYPES: [],

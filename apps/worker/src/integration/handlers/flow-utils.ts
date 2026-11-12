@@ -1,10 +1,10 @@
-import { logProviderError } from "@chatbotx.io/business/error-log"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import type {
   ContactInboxModel,
   ConversationModel,
   FlowVersionModel,
-} from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   type BaseStepSchema,
   BROADCAST_PAYLOAD_TYPE,
@@ -12,9 +12,9 @@ import {
   type EdgeSchema,
   type MetadataPayload,
   type StepType,
-} from "@chatbotx.io/flow-config"
-import type { CommentAnchor, Variables } from "@chatbotx.io/sdk"
-import type { ErrorLogProvider } from "@chatbotx.io/utils/error-log"
+} from "@salesmanchatbot.io/flow-config"
+import type { CommentAnchor, Variables } from "@salesmanchatbot.io/sdk"
+import type { ErrorLogProvider } from "@salesmanchatbot.io/utils/error-log"
 import {
   type BotResponseTrackingContext,
   BROADCAST_SEND_PRIORITY,
@@ -24,7 +24,7 @@ import {
   IntegrationJobAction,
   integrationQueue,
   type NodeVisits,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { waitForChatJobCompletion } from "../utils/message"
 
 export type ExecuteMultipleStepsProps = {

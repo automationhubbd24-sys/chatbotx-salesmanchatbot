@@ -2,7 +2,7 @@ import {
   followUpNodeDefaultFn,
   startFlowNodeDefaultFn,
   waitNodeDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { updateFlowVersionSchema } from "@/features/flows/schema/action"
 

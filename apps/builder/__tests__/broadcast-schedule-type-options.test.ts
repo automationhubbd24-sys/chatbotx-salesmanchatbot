@@ -1,4 +1,4 @@
-import { broadcastScheduleTypes } from "@chatbotx.io/database/partials"
+import { broadcastScheduleTypes } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import {
   BROADCAST_SCHEDULE_TYPE_MESSAGE_KEY,

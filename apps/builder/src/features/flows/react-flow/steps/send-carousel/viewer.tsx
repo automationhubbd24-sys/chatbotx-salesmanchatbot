@@ -1,7 +1,7 @@
 "use client"
 
-import type { SendCarouselStepSchema } from "@chatbotx.io/flow-config"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import type { SendCarouselStepSchema } from "@salesmanchatbot.io/flow-config"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useUpdateNodeInternals } from "@xyflow/react"
 import { useEffect } from "react"
 import SendCardStepViewer from "@/features/flows/react-flow/steps/send-card/viewer"

@@ -3,9 +3,9 @@
 import {
   hasWorkspaceAccess,
   integrationWebchatService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { getTenantSettings } from "@/features/tenant/utils"
 import { authActionClient } from "@/lib/safe-action"
 import { applyWebchatBranding } from "../lib"
@@ -23,7 +23,7 @@ export const createWebchatAction = authActionClient
         user: ctx.user,
       }))
     ) {
-      throw new ChatbotXException("Workspace not found", "notFound", 404)
+      throw new salesmanChatbotException("Workspace not found", "notFound", 404)
     }
 
     const persistentMenus = applyWebchatBranding(

@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   searchForAgent: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   productService: {
     findById: (...args: unknown[]) => mocks.findById(...args),
     searchForAgent: (...args: unknown[]) => mocks.searchForAgent(...args),

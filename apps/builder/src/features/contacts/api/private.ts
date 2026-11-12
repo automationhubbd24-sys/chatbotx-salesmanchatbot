@@ -1,4 +1,4 @@
-import { notFoundException } from "@chatbotx.io/business/errors"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
 import z from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

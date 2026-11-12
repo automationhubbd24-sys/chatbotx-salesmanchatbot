@@ -1,5 +1,5 @@
-import { type DatabaseClient, db } from "@chatbotx.io/database/client"
-import { orderRepository } from "@chatbotx.io/database/repositories"
+import { type DatabaseClient, db } from "@salesmanchatbot.io/database/client"
+import { orderRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   appointmentOrderDetailsSchema,
   diamondQuoteDetailsSchema,
@@ -7,8 +7,8 @@ import {
   type OrderSource,
   type OrderStatus,
   type OrderType,
-} from "@chatbotx.io/database/partials"
-import type { OrderModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { OrderModel } from "@salesmanchatbot.io/database/types"
 import { BaseService } from "../base.service"
 import { notFoundException, validationException } from "../errors"
 

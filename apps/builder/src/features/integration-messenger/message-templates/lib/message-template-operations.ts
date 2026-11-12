@@ -2,17 +2,17 @@ import {
   assertPublicUrl,
   buildContext,
   messengerMessageTemplateService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
-import type { IntegrationMessengerModel } from "@chatbotx.io/database/types"
-import { createPageMessageTemplate } from "@chatbotx.io/integration-messenger/apis/message-templates"
-import { resumableUploadImage } from "@chatbotx.io/integration-messenger/apis/upload"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import type { IntegrationMessengerModel } from "@salesmanchatbot.io/database/types"
+import { createPageMessageTemplate } from "@salesmanchatbot.io/integration-messenger/apis/message-templates"
+import { resumableUploadImage } from "@salesmanchatbot.io/integration-messenger/apis/upload"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { chunk } from "remeda"
 import { integrations } from "@/integration"
 import type { CreateMessengerMessageTemplateRequest } from "../schema/mutation"
@@ -121,7 +121,7 @@ async function uploadHeaderImage(
     if (error instanceof SdkException || !(error instanceof Error)) {
       throw error
     }
-    throw new ChatbotXException(error.message)
+    throw new salesmanChatbotException(error.message)
   }
 }
 

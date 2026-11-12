@@ -1,4 +1,4 @@
-import { type StepType, stepTypes } from "@chatbotx.io/flow-config"
+import { type StepType, stepTypes } from "@salesmanchatbot.io/flow-config"
 import { memo } from "react"
 import { activeCampaignSyncContactStep } from "./active-campaign-sync-contact"
 import { addContactNotesStep } from "./add-contact-notes"

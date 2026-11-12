@@ -2,25 +2,25 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const decodeRef = vi.fn()
 const encodeRef = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({ decodeRef, encodeRef }))
+vi.mock("@salesmanchatbot.io/business", () => ({ decodeRef, encodeRef }))
 
 const findUnscoped = vi.fn()
 const creditSharedLinkReferral = vi.fn()
 const isMinigameWithinPlayWindow = vi.fn()
-vi.mock("@chatbotx.io/business/minigame", () => ({
+vi.mock("@salesmanchatbot.io/business/minigame", () => ({
   minigameService: { findUnscoped },
   minigameContactService: { creditSharedLinkReferral },
   isMinigameWithinPlayWindow,
 }))
 
 const findOrFail = vi.fn()
-vi.mock("@chatbotx.io/database/client", () => ({ findOrFail }))
+vi.mock("@salesmanchatbot.io/database/client", () => ({ findOrFail }))
 
 // `ref.ts` -> business/minigame -> ...-> contactService pulls in
 // `queries/contact-filter`, which touches many unrelated schema tables at
 // module scope. A Proxy sentinel satisfies vitest's "does this export
 // exist" check for any table name without listing the whole schema.
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const overrides = {
     flowModel: { id: "flowModel.id" },
     flowVersionModel: { id: "flowVersionModel.id" },
@@ -34,19 +34,19 @@ vi.mock("@chatbotx.io/database/schema", () => {
 })
 
 const emit = vi.fn()
-vi.mock("@chatbotx.io/event-bus", () => ({ emit }))
+vi.mock("@salesmanchatbot.io/event-bus", () => ({ emit }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactReferredANewContact: vi.fn(),
   emitContactReferredExistingContact: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: () => "channel",
 }))
 
 const integrationQueueAdd = vi.fn()
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { sendFlow: "sendFlow" },
   integrationQueue: { add: integrationQueueAdd },
 }))

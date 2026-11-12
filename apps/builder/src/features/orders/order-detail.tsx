@@ -1,13 +1,13 @@
 "use client"
 
-import type { OrderModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { OrderModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   ArrowLeftIcon,
   CheckIcon,

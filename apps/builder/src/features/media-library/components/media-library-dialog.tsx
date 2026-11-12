@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -9,18 +9,18 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { ScrollArea } from "@chatbotx.io/ui/components/ui/scroll-area"
-import { DirectUploadButton } from "@chatbotx.io/ui/components/uploader/direct-upload-button"
-import { getMimeTypeFromFile } from "@chatbotx.io/ui/lib/file-types"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { ScrollArea } from "@salesmanchatbot.io/ui/components/ui/scroll-area"
+import { DirectUploadButton } from "@salesmanchatbot.io/ui/components/uploader/direct-upload-button"
+import { getMimeTypeFromFile } from "@salesmanchatbot.io/ui/lib/file-types"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   ChevronLeftIcon,
   FileIcon,

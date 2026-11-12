@@ -3,7 +3,7 @@
 import type {
   DynamicImageDocument,
   DynamicImageElement,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { useCallback, useState } from "react"
 import { DynamicImageCanvas } from "./canvas"
 import {

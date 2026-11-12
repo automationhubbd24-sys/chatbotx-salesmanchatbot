@@ -1,4 +1,4 @@
-import { decodeBase62, encodeBase62 } from "@chatbotx.io/utils"
+import { decodeBase62, encodeBase62 } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { logger } from "../logger"
 

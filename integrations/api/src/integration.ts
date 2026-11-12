@@ -5,7 +5,7 @@ import {
   type IntegrationDefinition,
   type Oauth2AuthValue,
   selfServeConnection,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { conversationHandlers } from "./handlers/conversation"
 import { messageHandlers } from "./handlers/message"
 import type { ApiActions, ApiAuthValue } from "./schema"

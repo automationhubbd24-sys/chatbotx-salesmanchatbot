@@ -1,10 +1,10 @@
 {
-  "name": "@chatbotx.io/filesystem",
+  "name": "@salesmanchatbot.io/filesystem",
   "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "^24.10.4",
     "@types/probe-image-size": "^7.2.5",
     "typescript": "^5",
@@ -13,9 +13,9 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1039.0",
     "@aws-sdk/lib-storage": "^3.1039.0",
-    "@chatbotx.io/database": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/utils": "workspace:*",
+    "@salesmanchatbot.io/database": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/utils": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
     "aws4fetch": "^1.0.20",
     "image-size": "^2.0.3",

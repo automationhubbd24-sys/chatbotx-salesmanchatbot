@@ -4,7 +4,7 @@ import type {
   MinigameAppearance,
   MinigamePrizeSettings,
   MinigameType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   DrawLotsArt,
   GashaponMachineArt,
@@ -12,7 +12,7 @@ import {
   LuckyWheelArt,
   type LuckyWheelSegment,
   ScratchOffArt,
-} from "@chatbotx.io/minigame-ui"
+} from "@salesmanchatbot.io/minigame-ui"
 import type { ComponentType, ReactNode } from "react"
 import { getDefaultMinigameAppearance } from "../../constants"
 import { DrawLotsPreview } from "./draw-lots-preview"

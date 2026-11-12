@@ -1,5 +1,5 @@
-import type { SendTextStepSchema } from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+import type { SendTextStepSchema } from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import type { TiktokAuthValue, TiktokSendMessageRequest } from "../../../schema"
 import {
   buildTiktokTemplates,

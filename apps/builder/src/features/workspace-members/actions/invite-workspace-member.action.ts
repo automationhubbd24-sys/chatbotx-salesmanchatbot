@@ -3,12 +3,12 @@
 import {
   quotaEnforcementService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { db } from "@chatbotx.io/database/client"
-import { invitationModel } from "@chatbotx.io/database/schema"
-import { createId, SymbolicSnowflakeIDs } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { db } from "@salesmanchatbot.io/database/client"
+import { invitationModel } from "@salesmanchatbot.io/database/schema"
+import { createId, SymbolicSnowflakeIDs } from "@salesmanchatbot.io/utils"
 import { addDays } from "date-fns"
 import { isCommunity } from "@/env"
 import { workspaceIdrequestParams } from "@/features/common/schema"
@@ -31,7 +31,7 @@ export const inviteWorkspaceMemberAction = workspaceActionClient
     const currentUserAndTargetChatbot =
       await getCurrentUserAndTargetWorkspace(workspaceId)
     if (!currentUserAndTargetChatbot) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to invite a workspace member",
       )
     }
@@ -39,7 +39,7 @@ export const inviteWorkspaceMemberAction = workspaceActionClient
     const currentPermissions =
       currentUserAndTargetChatbot.targetWorkspaceMember.permissions
     if (!hasWorkspacePermission(currentPermissions, "superAdmin")) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to invite a workspace member. You need to be a super admin to do this.",
       )
     }
@@ -49,7 +49,7 @@ export const inviteWorkspaceMemberAction = workspaceActionClient
       metric: "teamMembers",
     })
     if (atLimit) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Team member limit reached for this workspace plan",
       )
     }

@@ -1,5 +1,5 @@
-import type { AiHandoverTimeRange } from "@chatbotx.io/database/partials"
-import type { AiHandoverSettingsModel } from "@chatbotx.io/database/types"
+import type { AiHandoverTimeRange } from "@salesmanchatbot.io/database/partials"
+import type { AiHandoverSettingsModel } from "@salesmanchatbot.io/database/types"
 import { formatInTimeZone } from "date-fns-tz"
 
 /** The settings the active/inactive decision reads (a subset of the row). */

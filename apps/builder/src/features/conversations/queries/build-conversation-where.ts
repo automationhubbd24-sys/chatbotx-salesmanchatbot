@@ -1,5 +1,5 @@
-import { sql } from "@chatbotx.io/database/client"
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { sql } from "@salesmanchatbot.io/database/client"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   applyContactFilter,
   buildSmartKeywordWhere,
@@ -7,7 +7,7 @@ import {
   parseConversationAssigneeValues,
   pruneEmailPhoneFilterConditions,
   UNASSIGNED_ASSIGNEE_VALUE,
-} from "@chatbotx.io/database/queries"
+} from "@salesmanchatbot.io/database/queries"
 import type { ListConversationsRequest } from "@/features/conversations/schema/query"
 
 type ConversationCursor = {

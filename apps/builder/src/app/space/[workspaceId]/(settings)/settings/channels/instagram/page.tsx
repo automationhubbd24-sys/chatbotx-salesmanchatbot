@@ -1,5 +1,5 @@
-import { platformCredentialService } from "@chatbotx.io/business"
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import { InstagramManage } from "@/features/integration-instagram/components/instagram-manage"
 import { listIntegrationInstagrams } from "@/features/integration-instagram/queries"

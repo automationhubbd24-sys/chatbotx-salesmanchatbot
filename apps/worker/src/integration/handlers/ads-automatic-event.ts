@@ -1,13 +1,13 @@
 import {
   adsConversionService,
   withBlockedOwnerGuard,
-} from "@chatbotx.io/business"
-import { integrationWhatsappRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/business"
+import { integrationWhatsappRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   enqueueIntegrationJob,
   IntegrationJobAction,
   type IntegrationJobAdsAutomaticEvent,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 
 export const handleAdsAutomaticEvent = async (

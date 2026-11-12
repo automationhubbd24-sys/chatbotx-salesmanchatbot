@@ -1,4 +1,4 @@
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"
 import type { MessagingAdsToolEmptyStateConfig } from "../lib/tool-empty-state"

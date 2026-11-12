@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   findByUncached: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: (message: string) =>
     Object.assign(new Error(message), {
       code: "notFound",
@@ -19,7 +19,7 @@ vi.mock("@chatbotx.io/business/errors", () => ({
     }),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     listByContactId: mocks.listByContactId,
     findByUncached: mocks.findByUncached,

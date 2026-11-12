@@ -1,11 +1,11 @@
 "use client"
 
-import { CardHeader, CardTitle } from "@chatbotx.io/ui/components/ui/card"
+import { CardHeader, CardTitle } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { InfoIcon } from "lucide-react"
 
 type ChartHeaderProps = {

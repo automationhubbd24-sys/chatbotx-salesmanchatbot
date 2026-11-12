@@ -1,19 +1,19 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { formatDistanceToNowStrict } from "date-fns"
 import {
   MailIcon,

@@ -2,15 +2,15 @@ import {
   integrationMetaCatalogService,
   metaCatalogOperationService,
   metaCatalogSyncRunService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { MetaCatalogSyncScope } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { MetaCatalogSyncScope } from "@salesmanchatbot.io/database/partials"
 import {
   createCatalog,
   getCatalog,
   listBusinesses,
-} from "@chatbotx.io/integration-meta-catalog"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/integration-meta-catalog"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { toSafeMetaCatalogConnection } from "./meta-catalog-connection"
 
 // The Meta Catalog operations behind both the builder actions and the public
@@ -45,10 +45,10 @@ const translateSyncCollision = async <Result>(
     return await operation()
   } catch (error) {
     if (
-      error instanceof ChatbotXException &&
+      error instanceof salesmanChatbotException &&
       error.code === "metaCatalogSyncAlreadyRunning"
     ) {
-      throw new ChatbotXException(reasons.alreadyRunning, error.code, 409)
+      throw new salesmanChatbotException(reasons.alreadyRunning, error.code, 409)
     }
     throw error
   }

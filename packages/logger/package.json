@@ -1,10 +1,10 @@
 {
-  "name": "@chatbotx.io/logger",
+  "name": "@salesmanchatbot.io/logger",
   "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "typescript": "^5",
     "vitest": "^4.1.0"
   },

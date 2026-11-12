@@ -1,6 +1,6 @@
-import { integrationWhatsappResource } from "@chatbotx.io/business"
-import { whatsappTemplateStatusSchema } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { integrationWhatsappResource } from "@salesmanchatbot.io/business"
+import { whatsappTemplateStatusSchema } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { whatsappMessageTemplateResource } from "./resource"
 

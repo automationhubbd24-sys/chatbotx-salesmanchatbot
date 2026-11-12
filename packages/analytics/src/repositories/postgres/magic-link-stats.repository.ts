@@ -1,5 +1,5 @@
-import { db } from "@chatbotx.io/database/client"
-import { magicLinkStatModel } from "@chatbotx.io/database/schema"
+import { db } from "@salesmanchatbot.io/database/client"
+import { magicLinkStatModel } from "@salesmanchatbot.io/database/schema"
 import { LinkStatsRepository } from "./link-stats.repository"
 
 export const magicLinkStatsRepository = new LinkStatsRepository(

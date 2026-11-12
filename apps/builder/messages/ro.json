@@ -307,7 +307,7 @@
     "title": "General"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Aceasta elimină campania doar din ChatbotX. Campania de mesaje Meta continuă — pune-o pe pauză sau șterge-o în Ads Manager.",
+    "deleteWarning": "Aceasta elimină campania doar din salesmanChatbot. Campania de mesaje Meta continuă — pune-o pe pauză sau șterge-o în Ads Manager.",
     "title": "Facebook Marketing Messages",
     "description": "Crește implicarea și vânzările cu mesaje promoționale personalizate pe Messenger.",
     "create": "Creează",
@@ -4247,7 +4247,7 @@
         "title": "Eligibilitate pentru apeluri",
         "appSubscriptionMissing": "Configurează mai întâi webhook-ul WhatsApp pentru această aplicație în Meta App Dashboard, apoi încearcă din nou.",
         "appSubscriptionFailed": "Nu s-a putut verifica abonarea aplicației la webhook-ul 'calls'. Încearcă din nou în scurt timp.",
-        "callsNotSubscribed": "Această aplicație nu este abonată la câmpul webhook 'calls', astfel încât evenimentele de apel nu pot ajunge la ChatbotX (eroare Meta 138018: cerințele tehnice preliminare nu sunt îndeplinite — asigură-te că cel puțin o aplicație abonată la WABA are și câmpul webhook pentru apeluri).",
+        "callsNotSubscribed": "Această aplicație nu este abonată la câmpul webhook 'calls', astfel încât evenimentele de apel nu pot ajunge la salesmanChatbot (eroare Meta 138018: cerințele tehnice preliminare nu sunt îndeplinite — asigură-te că cel puțin o aplicație abonată la WABA are și câmpul webhook pentru apeluri).",
         "fixButton": "Remediază",
         "fixSuccess": "Aplicația este acum abonată la webhook-urile de apeluri WhatsApp.",
         "manualIntegrationNotice": "Acest număr a fost conectat manual și nu are acreditări de aplicație aici. Abonează câmpul webhook 'calls' pentru aplicația ta în Meta App Dashboard.",
@@ -6672,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Sursa acțiunii",

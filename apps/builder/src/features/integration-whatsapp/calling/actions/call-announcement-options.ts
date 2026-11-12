@@ -1,9 +1,9 @@
 import {
   resolveAnnouncementLanguage,
   type WhatsappCallAnnouncementOptions,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
-import { WhatsappException } from "@chatbotx.io/integration-whatsapp/exception"
-import { transcribesCalls } from "@chatbotx.io/utils/whatsapp-call"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
+import { WhatsappException } from "@salesmanchatbot.io/integration-whatsapp/exception"
+import { transcribesCalls } from "@salesmanchatbot.io/utils/whatsapp-call"
 
 /**
  * Fallback purpose (Meta requires this when status:"ENABLED", capped at
@@ -15,7 +15,7 @@ export const DEFAULT_CALL_ANNOUNCEMENT_PURPOSE = "Quality assurance and support"
 /**
  * The subset of IntegrationWhatsapp columns this needs, kept minimal rather
  * than importing the full database row type so this module has no dependency on
- * @chatbotx.io/database.
+ * @salesmanchatbot.io/database.
  */
 export type CallAnnouncementIntegration = {
   callRecordingEnabled: boolean

@@ -1,4 +1,4 @@
-import type { Context } from "@chatbotx.io/sdk"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { integration } from "../src/integration"
 import { createMoosendAuth, type MoosendAuthValue } from "../src/schemas"

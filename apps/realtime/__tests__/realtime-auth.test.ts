@@ -1,7 +1,7 @@
 import {
   REALTIME_TOKEN_PURPOSE,
   signRealtimeToken,
-} from "@chatbotx.io/partysocket-config/auth"
+} from "@salesmanchatbot.io/partysocket-config/auth"
 import { SignJWT } from "jose"
 import type * as Party from "partykit/server"
 import { describe, expect, it } from "vitest"

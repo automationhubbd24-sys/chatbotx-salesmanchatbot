@@ -1,15 +1,15 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import type { InstagramAuthValue } from "@chatbotx.io/integration-instagram"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import type { InstagramAuthValue } from "@salesmanchatbot.io/integration-instagram"
 import {
   getInstagramAccount,
   subscribePageToInstagramWebhook,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import {
   getFacebookUser,
   getUserInstagramAccounts,
   subscribePageToInstagramWebhook as subscribeFacebookPageToInstagramWebhook,
-} from "@chatbotx.io/integration-instagram-facebook"
-import { AuthType } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
+import { AuthType } from "@salesmanchatbot.io/sdk"
 import type { ReconnectResult } from "@/lib/channel-reconnect"
 import {
   buildIntegrationUserInfo,

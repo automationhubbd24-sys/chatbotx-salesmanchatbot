@@ -1,17 +1,17 @@
-import { and, db, eq, inArray } from "@chatbotx.io/database/client"
-import type { FolderType } from "@chatbotx.io/database/partials"
+import { and, db, eq, inArray } from "@salesmanchatbot.io/database/client"
+import type { FolderType } from "@salesmanchatbot.io/database/partials"
 import {
   conditionRepository,
   listWebhooksPaginated,
-} from "@chatbotx.io/database/repositories"
-import { conditionModel, webhookModel } from "@chatbotx.io/database/schema"
-import type { ConditionModel, WebhookModel } from "@chatbotx.io/database/types"
-import { removeWebhookCache, updateWebhookCache } from "@chatbotx.io/events"
-import { distributedLock } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import { conditionModel, webhookModel } from "@salesmanchatbot.io/database/schema"
+import type { ConditionModel, WebhookModel } from "@salesmanchatbot.io/database/types"
+import { removeWebhookCache, updateWebhookCache } from "@salesmanchatbot.io/events"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
   validationException,
 } from "../errors"
@@ -143,7 +143,7 @@ class WebhookService extends BaseService {
     try {
       await assertPublicUrl(url, "Webhook URL")
     } catch (error) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         error instanceof Error ? error.message : "Invalid webhook URL",
         "invalidRequestData",
         422,
@@ -159,7 +159,7 @@ class WebhookService extends BaseService {
           eq(webhookModel.workspaceId, workspaceId),
         )
         if (count >= MAX_WEBHOOKS_PER_WORKSPACE) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             `Workspace has reached the maximum of ${MAX_WEBHOOKS_PER_WORKSPACE} webhooks`,
             "webhookLimitReached",
           )

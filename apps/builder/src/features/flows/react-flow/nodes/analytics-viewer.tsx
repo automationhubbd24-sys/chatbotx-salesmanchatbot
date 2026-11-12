@@ -1,18 +1,18 @@
 "use client"
 
-import type { NodeResponse } from "@chatbotx.io/analytics/schemas"
+import type { NodeResponse } from "@salesmanchatbot.io/analytics/schemas"
 import {
   type FlowNode,
   type NodeType,
   nodeTypeSchema,
   shouldShowDefaultContinue,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { Position } from "@xyflow/react"
 import { useTranslations } from "next-intl"
 import { memo } from "react"

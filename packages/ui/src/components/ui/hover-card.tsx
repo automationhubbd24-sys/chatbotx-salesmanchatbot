@@ -3,7 +3,7 @@
 import type * as React from "react"
 import { PreviewCard as HoverCardPrimitive } from "@base-ui/react/preview-card"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function HoverCard({
   ...props

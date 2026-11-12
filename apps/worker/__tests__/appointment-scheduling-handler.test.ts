@@ -21,7 +21,7 @@ class MockSlotUnavailableException extends Error {}
 class MockAppointmentAvailabilityChangedException extends Error {}
 class MockAppointmentAlreadyScheduledException extends Error {}
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentCalendarService: {
     findByOrFail: findCalendarByOrFail,
   },
@@ -46,11 +46,11 @@ vi.mock("@chatbotx.io/business", () => ({
     MockAppointmentAlreadyScheduledException,
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   processStreamingText,
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   signAppointmentWebviewToken,
 }))
 
@@ -58,7 +58,7 @@ vi.mock("ai", () => ({
   streamText,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: {
     sendChatMessage: "sendChatMessage",
   },

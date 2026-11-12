@@ -47,7 +47,7 @@ const { workspaceTokenAuthAPIForScope, capturedProcedures } = vi.hoisted(() => {
 
 vi.mock("@/orpc", () => ({ workspaceTokenAuthAPIForScope }))
 
-class MockChatbotXException extends Error {
+class MocksalesmanChatbotException extends Error {
   code: string
   constructor(message: string, code = "systemError") {
     super(message)
@@ -55,14 +55,14 @@ class MockChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: vi.fn(
-    (message: string) => new MockChatbotXException(message, "notFound"),
+    (message: string) => new MocksalesmanChatbotException(message, "notFound"),
   ),
   validationException: vi.fn(
     (_field: string, message: string) =>
-      new MockChatbotXException(message, "validation"),
+      new MocksalesmanChatbotException(message, "validation"),
   ),
 }))
 
@@ -70,8 +70,8 @@ const aiIntegrationService = {
   invalidateCache: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/ai/server", () => ({ aiIntegrationService }))
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({ aiIntegrationService }))
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiProviders: {
     enum: {
       claude: "claude",
@@ -111,7 +111,7 @@ const integrationOpenAIService = {
 
 const connectionStateService = { findByProviderSourceId: vi.fn() }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationService,
   integrationClaudeService,
   integrationDeepSeekService,
@@ -124,7 +124,7 @@ const connectionService = {
   disconnect: vi.fn(),
   connectFromCredentials: vi.fn(),
 }
-vi.mock("@chatbotx.io/connections", () => ({ connectionService }))
+vi.mock("@salesmanchatbot.io/connections", () => ({ connectionService }))
 
 await import("@/features/integrations/api/public/crud")
 await import("@/features/integrations/api/public/ai")
@@ -367,7 +367,7 @@ describe("PUT /v1/integrations/ai/{provider}", () => {
 
   test("propagates connectionCredentialsRejected without invalidating the cache", async () => {
     connectionService.connectFromCredentials.mockRejectedValueOnce(
-      new MockChatbotXException(
+      new MocksalesmanChatbotException(
         "Invalid Gemini API key",
         "connectionCredentialsRejected",
       ),

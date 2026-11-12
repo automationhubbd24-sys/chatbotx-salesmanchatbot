@@ -1,5 +1,5 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { templateStructureKey } from "@chatbotx.io/flow-config"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { templateStructureKey } from "@salesmanchatbot.io/flow-config"
 import { useMemo } from "react"
 import type { FlowTemplateStore } from "@/features/flows/react-flow/stores/flow-template-store"
 import { useFlowTemplate } from "@/features/flows/react-flow/stores/flow-template-store-provider"

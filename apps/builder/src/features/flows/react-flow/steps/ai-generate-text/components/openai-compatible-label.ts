@@ -3,7 +3,7 @@ import type {
   AIExtractDataSchema,
   AIGenerateTextAgentSchema,
   AIGenerateTextSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { IntegrationOpenaiCompatibleResource } from "@/features/integration-openai-compatible/schema/resource"
 
 type OpenaiCompatibleStep =

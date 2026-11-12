@@ -1,7 +1,7 @@
 import {
   type BroadcastPlanLimitData,
   broadcastPlanLimitDataSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export type BroadcastPlanLimitOutcome = {
   outcome: "planLimit"

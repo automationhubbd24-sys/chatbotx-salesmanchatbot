@@ -1,14 +1,14 @@
-import { db, eq } from "@chatbotx.io/database/client"
-import { rootFolderId } from "@chatbotx.io/database/partials"
-import { flowVersionModel } from "@chatbotx.io/database/schema"
+import { db, eq } from "@salesmanchatbot.io/database/client"
+import { rootFolderId } from "@salesmanchatbot.io/database/partials"
+import { flowVersionModel } from "@salesmanchatbot.io/database/schema"
 import type {
   FlowExportedFlow,
   TemplateFlowEntry,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   collectFieldReferences,
   remapFlowGraphReferences,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { flowService } from "../../flow"
 import { flowVersionService } from "../../flow-version"
 import type {

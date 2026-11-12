@@ -1,15 +1,15 @@
-import type { LogProviderErrorInput } from "@chatbotx.io/business/error-log"
-import { logProviderErrors } from "@chatbotx.io/business/error-log"
+import type { LogProviderErrorInput } from "@salesmanchatbot.io/business/error-log"
+import { logProviderErrors } from "@salesmanchatbot.io/business/error-log"
 import type {
   EventBusMessageMetadata,
   MessageFailedPayload,
   MessagePayload,
-} from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/event-bus"
 import {
   BROADCAST_PAYLOAD_TYPE,
   SEQUENCE_SCHEDULE_PAYLOAD_TYPE,
-} from "@chatbotx.io/flow-config"
-import { errorLogProviders } from "@chatbotx.io/utils/error-log"
+} from "@salesmanchatbot.io/flow-config"
+import { errorLogProviders } from "@salesmanchatbot.io/utils/error-log"
 import { logger } from "../../../lib/logger"
 
 type FailedPayloadWithMetadata = MessageFailedPayload & EventBusMessageMetadata

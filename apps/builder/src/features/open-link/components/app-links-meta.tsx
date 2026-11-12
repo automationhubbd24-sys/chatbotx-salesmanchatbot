@@ -1,4 +1,4 @@
-import type { AppLinkTargets } from "@chatbotx.io/flow-config"
+import type { AppLinkTargets } from "@salesmanchatbot.io/flow-config"
 
 type AppLinksMetaProps = {
   targets: AppLinkTargets

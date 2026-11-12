@@ -1,20 +1,20 @@
 import {
   inboxService,
   whatsappMessageTemplateService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   IntegrationWhatsappModel,
   WhatsappMessageTemplateModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   extractTemplateParams,
   type SendWaTemplateMessageStepSchema,
   type TemplateComponent,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   contactVariableService,
   type ReplaceVariableProps,
-} from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/variables"
 
 export async function replaceWhatsappTemplateVariables(props: {
   templateParams: SendWaTemplateMessageStepSchema["template"]["params"]

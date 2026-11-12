@@ -1,9 +1,9 @@
 "use client"
 
-import type { TenantHelpItemModel } from "@chatbotx.io/database/types"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TenantHelpItemModel } from "@salesmanchatbot.io/database/types"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -13,8 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   Table,
   TableBody,
@@ -22,7 +22,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2, PencilIcon, PlusIcon, Trash2Icon } from "lucide-react"
 import { DynamicIcon, type IconName } from "lucide-react/dynamic"

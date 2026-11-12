@@ -12,7 +12,7 @@ const sql = Object.assign(
   },
 )
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { execute: dbExecute },
   sql,
 }))

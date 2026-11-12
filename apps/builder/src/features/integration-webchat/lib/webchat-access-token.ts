@@ -1,5 +1,5 @@
 import { Buffer } from "node:buffer"
-import { hmacSha256Hex, timingSafeStringEqual } from "@chatbotx.io/utils/crypto"
+import { hmacSha256Hex, timingSafeStringEqual } from "@salesmanchatbot.io/utils/crypto"
 import { getHostFromOrigin } from "./authorized-domain"
 
 const TOKEN_TTL_SECONDS = 30 * 60

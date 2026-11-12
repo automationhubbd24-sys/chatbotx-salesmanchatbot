@@ -3,10 +3,10 @@
 import {
   type MoosendCreateContactSchema,
   moosendCreateContactSchema,
-} from "@chatbotx.io/flow-config"
-import { MOOSEND_EDITOR_PAGE_SIZE } from "@chatbotx.io/integration-moosend"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { MOOSEND_EDITOR_PAGE_SIZE } from "@salesmanchatbot.io/integration-moosend"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -15,8 +15,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQuery } from "@tanstack/react-query"
 import { MailIcon } from "lucide-react"

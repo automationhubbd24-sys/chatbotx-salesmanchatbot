@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockUpdateFieldsAndCustomFields = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: {
     updateFieldsAndCustomFields: (...args: unknown[]) =>
       mockUpdateFieldsAndCustomFields(...args),

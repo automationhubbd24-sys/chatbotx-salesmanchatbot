@@ -1,4 +1,4 @@
-import type { OrderCustomFieldType } from "@chatbotx.io/database/partials"
+import type { OrderCustomFieldType } from "@salesmanchatbot.io/database/partials"
 
 export type OrderCustomFieldDisplay = {
   definitionId: string

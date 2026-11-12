@@ -6,19 +6,19 @@ import {
   findOrFail,
   inArray,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   channelTypes,
   type IntegrationUserInfo,
   type MessengerPersistentMenu,
-} from "@chatbotx.io/database/partials"
-import { integrationMessengerRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { integrationMessengerRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   integrationMessengerModel,
   tagChannelModel,
-} from "@chatbotx.io/database/schema"
-import type { IntegrationMessengerModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { IntegrationMessengerModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 import { flowService } from "../flow/service"

@@ -1,4 +1,4 @@
-import { broadcastService, conversationService } from "@chatbotx.io/business"
+import { broadcastService, conversationService } from "@salesmanchatbot.io/business"
 import {
   type BroadcastStatus,
   broadcastStatuses,
@@ -6,14 +6,14 @@ import {
   channelTypes,
   resolveBroadcastAudienceRange,
   resolveBroadcastTargetInboxIds,
-} from "@chatbotx.io/database/partials"
-import type { ContactFilterCriteriaInput } from "@chatbotx.io/database/queries"
-import { purgeBroadcastRecipients } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import type { ContactFilterCriteriaInput } from "@salesmanchatbot.io/database/queries"
+import { purgeBroadcastRecipients } from "@salesmanchatbot.io/database/repositories"
 import {
   broadcastSendJobId,
   ScheduleJobData,
   scheduleQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { isBlockedWorkspace } from "../../lib/is-blocked-workspace"
 import { logger } from "../../lib/logger"
 

@@ -1,4 +1,4 @@
-import type { ImportFormat, ImportType } from "@chatbotx.io/database/partials"
+import type { ImportFormat, ImportType } from "@salesmanchatbot.io/database/partials"
 
 export type BuildPathInput = {
   workspaceId: string

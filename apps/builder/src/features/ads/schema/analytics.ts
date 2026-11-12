@@ -1,4 +1,4 @@
-import { getDefaultAdsAnalyticsRange } from "@chatbotx.io/business/ads-analytics/date-range"
+import { getDefaultAdsAnalyticsRange } from "@salesmanchatbot.io/business/ads-analytics/date-range"
 import { createSearchParamsCache, parseAsString } from "nuqs/server"
 import { accountSearchParam } from "./account"
 
@@ -7,7 +7,7 @@ export {
   MAX_ADS_ANALYTICS_RANGE_DAYS,
   parseAnalyticsDateRange,
   toDateKey,
-} from "@chatbotx.io/business/ads-analytics/date-range"
+} from "@salesmanchatbot.io/business/ads-analytics/date-range"
 
 const defaultRange = getDefaultAdsAnalyticsRange()
 

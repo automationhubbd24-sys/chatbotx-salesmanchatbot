@@ -42,7 +42,7 @@ const dynamicImageService = {
   resolveBackgroundUrls: vi.fn().mockResolvedValue([]),
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
@@ -51,9 +51,9 @@ vi.mock("@chatbotx.io/business", () => ({
   mediaLibraryFileService,
 }))
 
-vi.mock("@chatbotx.io/business/dynamic-image", () => ({ dynamicImageService }))
+vi.mock("@salesmanchatbot.io/business/dynamic-image", () => ({ dynamicImageService }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, loader: () => unknown) => loader()),
   invalidateCacheByTags: vi.fn(),
 }))

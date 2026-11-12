@@ -6,11 +6,11 @@ import {
   commentPostSchema,
   commentReplyAfterSchema,
   commentReplySchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   commentAutomationModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 export const fbCommentResource = createSelectSchema(commentAutomationModel, {

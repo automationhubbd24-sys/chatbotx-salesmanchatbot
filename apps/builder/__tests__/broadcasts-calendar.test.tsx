@@ -1,4 +1,4 @@
-import type { BroadcastCalendarRow } from "@chatbotx.io/business"
+import type { BroadcastCalendarRow } from "@salesmanchatbot.io/business"
 import { addDays, format } from "date-fns"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -63,7 +63,7 @@ const toLocalDateString = (date: Date) => {
   return `${year}-${month}-${day}`
 }
 
-vi.mock("@chatbotx.io/ui/components/ui/calendar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/calendar", () => ({
   // Mirrors real react-day-picker 9.14's `resetOnSelect` + fully-controlled
   // `selected` semantics: a click completes the range when `selected` is
   // already partial (`from` set, no `to`); otherwise it starts a fresh
@@ -156,7 +156,7 @@ type PopoverContextValue = {
   onOpenChange: (open: boolean) => void
 }
 
-vi.mock("@chatbotx.io/ui/components/ui/popover", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/popover", async () => {
   const React = await import("react")
   const PopoverContext = React.createContext<PopoverContextValue>({
     open: false,
@@ -221,7 +221,7 @@ vi.mock("@chatbotx.io/ui/components/ui/popover", async () => {
   return { Popover, PopoverTrigger, PopoverContent }
 })
 
-vi.mock("@chatbotx.io/ui/components/ui/toggle-group", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/toggle-group", async () => {
   const React = await import("react")
   const ToggleGroupContext = React.createContext<{
     onValueChange?: (vals: string[]) => void

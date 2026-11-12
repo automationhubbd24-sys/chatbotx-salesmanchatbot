@@ -1,5 +1,5 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
-import type { MatchableEventType } from "@chatbotx.io/events"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
+import type { MatchableEventType } from "@salesmanchatbot.io/events"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { WebhookWithConditions } from "../src/webhook/types"
 
@@ -15,7 +15,7 @@ const {
   findNameByIdForWorkspace: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertPublicUrl,
   contactCustomFieldService: { listWithDefinitions: listCustomFields },
   contactService: { findById: contactFindById },

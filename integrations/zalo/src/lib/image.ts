@@ -1,5 +1,5 @@
-import type { Context } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+import type { Context } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { ZaloAuthValue } from "../schema/definition"
 
 export const fetchAndReuploadImage = async ({

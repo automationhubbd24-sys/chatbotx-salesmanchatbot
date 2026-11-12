@@ -1,6 +1,6 @@
 "use server"
 
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { sendWhatsappTemplateToConversation } from "../lib/send-whatsapp-template"
 import { sendWhatsappTemplateRequest } from "../schema/send-template"

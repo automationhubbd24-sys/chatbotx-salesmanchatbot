@@ -1,9 +1,9 @@
-# @chatbotx.io/utils
+# @salesmanchatbot.io/utils
 
 Generic, domain-agnostic helpers shared across the workspace: id generation, crypto,
 datetime/timezone math, request parsing, base62 encoding, concurrency, etc. This
 package has **zero internal workspace dependencies** — keep it that way. Anything
-that needs another `@chatbotx.io/*` package belongs somewhere else.
+that needs another `@salesmanchatbot.io/*` package belongs somewhere else.
 
 ## Exception: cross-cutting product enums (`channel.ts`, `custom-field.ts`)
 

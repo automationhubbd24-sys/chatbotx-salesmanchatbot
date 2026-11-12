@@ -4,8 +4,8 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { ConnectPickerScreen } from "@/features/channel-connect/components/connect-picker-screen"

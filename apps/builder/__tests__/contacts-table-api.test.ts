@@ -2,12 +2,12 @@
 
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
 
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const proxy = new Proxy(
     {},
     { get: (_target, property) => (property === "then" ? undefined : proxy) },

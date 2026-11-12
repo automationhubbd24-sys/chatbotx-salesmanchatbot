@@ -3,17 +3,17 @@
 import type { Column } from "@tanstack/react-table"
 import { PlusCircle, XCircle } from "lucide-react"
 import * as React from "react"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { Slider } from "@chatbotx.io/ui/components/ui/slider"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { Slider } from "@salesmanchatbot.io/ui/components/ui/slider"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 interface Range {
   min: number

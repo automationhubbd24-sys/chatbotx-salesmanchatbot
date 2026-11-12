@@ -10,18 +10,18 @@ vi.mock("ky", () => ({
   HTTPError: class HTTPError extends Error {},
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   validateOpenaiCompatibleBaseUrlForEnvironment: mocks.validateBaseUrl,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code = "systemError"
     httpStatusCode = 400
 
     constructor(message: string, code?: string, httpStatusCode?: number) {
       super(message)
-      this.name = "ChatbotXException"
+      this.name = "salesmanChatbotException"
       if (code) {
         this.code = code
       }
@@ -32,7 +32,7 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   },
 }))
 
-const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
 const { verifyOpenaiCompatibleProvider } = await import(
   "@/features/integration-openai-compatible/lib"
 )
@@ -48,7 +48,7 @@ describe("verifyOpenaiCompatibleProvider", () => {
 
   test("blocks unsafe base URLs before calling the provider", async () => {
     mocks.validateBaseUrl.mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "OpenAI-compatible base URL is not allowed.",
         "ssrfBlocked",
         400,

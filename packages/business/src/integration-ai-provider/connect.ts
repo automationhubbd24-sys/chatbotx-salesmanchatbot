@@ -1,7 +1,7 @@
-import { db, eq } from "@chatbotx.io/database/client"
-import { integrationModel } from "@chatbotx.io/database/schema"
-import { AuthType, type SecretTextAuthValue } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+import { db, eq } from "@salesmanchatbot.io/database/client"
+import { integrationModel } from "@salesmanchatbot.io/database/schema"
+import { AuthType, type SecretTextAuthValue } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { AnyPgTable } from "drizzle-orm/pg-core"
 
 type AiProviderTable = AnyPgTable & {

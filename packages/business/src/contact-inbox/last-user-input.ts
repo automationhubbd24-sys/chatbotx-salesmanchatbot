@@ -1,8 +1,8 @@
-import type { LastUserInputType } from "@chatbotx.io/database/partials"
+import type { LastUserInputType } from "@salesmanchatbot.io/database/partials"
 import {
   contentTypes,
   lastUserInputTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { getPublicFileUrl } from "../utils"
 
 type LastUserInputAttachment = {

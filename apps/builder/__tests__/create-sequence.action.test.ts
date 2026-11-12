@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { validationException } from "@chatbotx.io/business/errors"
+import { validationException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { mockCreate, mockReturnValidationErrors, mockGetTranslations } =
@@ -20,7 +20,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business/sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({
   sequenceService: { create: mockCreate },
 }))
 

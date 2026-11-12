@@ -1,6 +1,6 @@
 "use client"
 
-import type { MessengerTemplateComponent } from "@chatbotx.io/flow-config"
+import type { MessengerTemplateComponent } from "@salesmanchatbot.io/flow-config"
 import Image from "next/image"
 
 type MessengerTemplatePreviewProps = {

@@ -1,4 +1,4 @@
-import type { MessageHandlers } from "@chatbotx.io/sdk"
+import type { MessageHandlers } from "@salesmanchatbot.io/sdk"
 import { getMessageMediaUrls as fetchMessageMediaUrls } from "../../apis/sync"
 import type { MessengerAuthValue } from "../../schema"
 

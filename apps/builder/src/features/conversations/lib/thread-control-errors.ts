@@ -1,10 +1,10 @@
-import { ThreadControlUnsupportedError } from "@chatbotx.io/business"
+import { ThreadControlUnsupportedError } from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
-import type { ThreadControlAction } from "@chatbotx.io/database/partials"
-import { ChannelError, ThreadControlTakeRefusedError } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import type { ThreadControlAction } from "@salesmanchatbot.io/database/partials"
+import { ChannelError, ThreadControlTakeRefusedError } from "@salesmanchatbot.io/sdk"
 import {
   THREAD_CONTROL_NOT_ESCALATION,
   type ThreadControlRefusal,
@@ -32,7 +32,7 @@ export function mapThreadControlError(
   t: Translate,
 ): ThreadControlRefusal {
   if (error instanceof ThreadControlUnsupportedError) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("conversationRouting.errors.unsupported"),
       "threadControlUnsupported",
       400,
@@ -44,7 +44,7 @@ export function mapThreadControlError(
   if (action === "take" && error instanceof ThreadControlTakeRefusedError) {
     return { status: THREAD_CONTROL_NOT_ESCALATION }
   }
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     toPublicErrorMessage(error, t("conversationRouting.errors.actionFailed")),
     "threadControlFailed",
     400,

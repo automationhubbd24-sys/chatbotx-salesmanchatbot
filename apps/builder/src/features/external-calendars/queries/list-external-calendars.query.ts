@@ -1,4 +1,4 @@
-import { appointmentExternalCalendarService } from "@chatbotx.io/business"
+import { appointmentExternalCalendarService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 
 export async function listExternalCalendars(input: { workspaceId: string }) {

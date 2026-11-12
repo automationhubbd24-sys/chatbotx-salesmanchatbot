@@ -1,4 +1,4 @@
-import type { HandleRequestProps } from "@chatbotx.io/sdk"
+import type { HandleRequestProps } from "@salesmanchatbot.io/sdk"
 import { TiktokWebhookException } from "../exception"
 import { logger } from "../lib/logger"
 import { hmacSha256Hex, timingSafeStringEqual } from "../lib/webhook"

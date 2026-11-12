@@ -1,5 +1,5 @@
-import { spreadsheetService } from "@chatbotx.io/business"
-import type { SpreadsheetModel } from "@chatbotx.io/database/types"
+import { spreadsheetService } from "@salesmanchatbot.io/business"
+import type { SpreadsheetModel } from "@salesmanchatbot.io/database/types"
 import type { CreateSpreadsheetRequest } from "../schema/mutation"
 import { resolveSpreadsheetIdFromUrl } from "./google-sheets"
 

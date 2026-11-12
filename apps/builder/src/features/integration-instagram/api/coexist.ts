@@ -1,4 +1,4 @@
-import { coexistService } from "@chatbotx.io/business"
+import { coexistService } from "@salesmanchatbot.io/business"
 import {
   setCoexistRequestSchema,
   setCoexistResponseSchema,

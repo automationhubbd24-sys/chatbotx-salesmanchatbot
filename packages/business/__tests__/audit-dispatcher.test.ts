@@ -7,7 +7,7 @@ vi.mock("../src/logger", () => ({ logger: { warn: mocks.warn } }))
 const { dispatchAuditRecordSafely } = await import("../src/audit/dispatcher")
 
 type GlobalWithAuditDispatcher = typeof globalThis & {
-  __chatbotxAuditRecord?: (input: unknown) => Promise<void> | void
+  __salesmanchatbotAuditRecord?: (input: unknown) => Promise<void> | void
 }
 
 const globalWithDispatcher = globalThis as GlobalWithAuditDispatcher
@@ -15,12 +15,12 @@ const globalWithDispatcher = globalThis as GlobalWithAuditDispatcher
 describe("dispatchAuditRecordSafely", () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    globalWithDispatcher.__chatbotxAuditRecord = undefined
+    globalWithDispatcher.__salesmanchatbotAuditRecord = undefined
   })
 
   test("dispatches through the registered recorder and does not log", async () => {
     const recorder = vi.fn().mockResolvedValue(undefined)
-    globalWithDispatcher.__chatbotxAuditRecord = recorder
+    globalWithDispatcher.__salesmanchatbotAuditRecord = recorder
 
     await dispatchAuditRecordSafely(
       { action: "connect", detail: "connected a new channel" },
@@ -35,7 +35,7 @@ describe("dispatchAuditRecordSafely", () => {
   })
 
   test("logs and swallows when the recorder rejects — never rejects itself", async () => {
-    globalWithDispatcher.__chatbotxAuditRecord = vi
+    globalWithDispatcher.__salesmanchatbotAuditRecord = vi
       .fn()
       .mockRejectedValue(new Error("recorder down"))
 
@@ -53,7 +53,7 @@ describe("dispatchAuditRecordSafely", () => {
   })
 
   test("logs and swallows when the recorder throws synchronously", async () => {
-    globalWithDispatcher.__chatbotxAuditRecord = vi.fn(() => {
+    globalWithDispatcher.__salesmanchatbotAuditRecord = vi.fn(() => {
       throw new Error("sync boom")
     })
 

@@ -4,14 +4,14 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Progress } from "@chatbotx.io/ui/components/ui/progress"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Progress } from "@salesmanchatbot.io/ui/components/ui/progress"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import type { RefObject } from "react"

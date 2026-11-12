@@ -1,4 +1,4 @@
-import { sequenceConnections } from "@chatbotx.io/redis"
+import { sequenceConnections } from "@salesmanchatbot.io/redis"
 import { Queue } from "bullmq"
 import { defaultJobOptions, isNoRedisEnv } from "../../lib/connection"
 import { queueNames } from "../../lib/types"

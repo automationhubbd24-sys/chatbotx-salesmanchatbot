@@ -1,16 +1,16 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import Link from "next/link"
 import { InboxIcon } from "@/features/inboxes/components/inbox-icon"
 import { useAvatarUrl } from "../utils"

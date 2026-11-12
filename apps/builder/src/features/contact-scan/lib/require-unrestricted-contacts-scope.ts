@@ -1,4 +1,4 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   type ContactPermissionScope,
   requireContactPermissionScope,
@@ -18,7 +18,7 @@ export async function requireUnrestrictedContactsScope(
 ): Promise<ContactPermissionScope> {
   const scope = await requireContactPermissionScope(workspaceId)
   if (scope.restrictToAssignedUserId) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       "You do not have permission to run an Automatic Customer Scan.",
       "contactScanForbidden",
       403,

@@ -2,12 +2,12 @@ import {
   CapiTestEventError,
   type MetaConversionsChannel,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   getDataset,
   sendConversionEvent,
-} from "@chatbotx.io/integration-meta-conversions"
+} from "@salesmanchatbot.io/integration-meta-conversions"
 import { findCapiIntegration } from "./find-capi-integration"
 import { capiDatasetProvisioner } from "./provision-capi-dataset"
 import { surfaceCapiError } from "./surface-capi-error"
@@ -34,7 +34,7 @@ const requireIntegration = async (
     "type" in integration &&
     integration.type !== "facebook"
   if (!integration || isUnsupportedInstagram) {
-    throw new ChatbotXException("Channel not found", "notFound", 404)
+    throw new salesmanChatbotException("Channel not found", "notFound", 404)
   }
   return integration
 }

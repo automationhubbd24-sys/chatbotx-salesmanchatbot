@@ -33,7 +33,7 @@ vi.mock("next/navigation", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: {
     resolveForOwner: vi.fn(async () => null),
   },
@@ -85,8 +85,8 @@ vi.mock("@/features/integration-zalo/libs/zalo", () => ({
   generateZaloRedirectUri: vi.fn(async () => ""),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     getIdFromParams: (

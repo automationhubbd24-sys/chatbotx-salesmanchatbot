@@ -1,7 +1,7 @@
 import {
   COEXIST_CHANNELS,
   type CoexistChannel,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import { sql } from "drizzle-orm"
 import {
   index,
@@ -36,9 +36,9 @@ import { userModel } from "./auth-user"
  * 3. UPDATE importedContactCount/importedMessageCount/skippedCount/failedCount in batches
  * 4. UPDATE status/finishedAt/currentError on finish
  */
-// Values come from `@chatbotx.io/utils/channel` (`COEXIST_CHANNELS`) so this
+// Values come from `@salesmanchatbot.io/utils/channel` (`COEXIST_CHANNELS`) so this
 // enum can never drift from the shared list other layers (e.g.
-// `@chatbotx.io/business`) key off of. Same three values as before this
+// `@salesmanchatbot.io/business`) key off of. Same three values as before this
 // change — verified to emit no migration SQL.
 //
 // Cast to the literal union (not `[string, ...string[]]` like e.g.
@@ -86,7 +86,7 @@ export const coexistRunType = pgEnum(
  * processed, so dropping them lost the media for good.
  *
  * Structurally compatible with the SDK's `IncomingAttachment` in both
- * directions, without `packages/database` depending on `@chatbotx.io/sdk`.
+ * directions, without `packages/database` depending on `@salesmanchatbot.io/sdk`.
  */
 export type PendingCoexistAttachment = {
   sourceId: string

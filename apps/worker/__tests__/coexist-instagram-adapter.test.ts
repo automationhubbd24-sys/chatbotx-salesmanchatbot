@@ -4,7 +4,7 @@ const { mockExtractContactInfo } = vi.hoisted(() => ({
   mockExtractContactInfo: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   coexistService: { findIntegrationForCoexist: vi.fn() },
   extractContactInfo: mockExtractContactInfo,
   inboxService: { find: vi.fn() },

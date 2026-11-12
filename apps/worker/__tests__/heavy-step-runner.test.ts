@@ -1,4 +1,4 @@
-import { aiGenerateImageDefaultFn } from "@chatbotx.io/flow-config"
+import { aiGenerateImageDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { HeavyStepProps } from "../src/integration/handlers/flow-utils"
 
@@ -10,9 +10,9 @@ const mocks = vi.hoisted(() => ({
 const redisState = new Map<string, string>()
 const heavyResumeFallbackJobIdPattern = /^heavy-resume-fallback-/
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     getRedisConnection: () => mocks.redis,
@@ -25,7 +25,7 @@ vi.mock("../src/lib/logger", () => ({
   logger: { error: vi.fn(), warn: vi.fn() },
 }))
 
-const { HeavyJobAction } = await import("@chatbotx.io/worker-config")
+const { HeavyJobAction } = await import("@salesmanchatbot.io/worker-config")
 const { buildHeavyJobId, runViaHeavyWorker } = await import(
   "../src/integration/handlers/heavy-step-runner"
 )

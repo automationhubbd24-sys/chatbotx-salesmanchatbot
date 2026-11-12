@@ -22,7 +22,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn(),
   asc: vi.fn(),
   db: {},
@@ -32,7 +32,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isNull: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   appointmentCalendarAvailabilityModel: {},
   appointmentCalendarModel: {},
   appointmentCalendarReminderModel: {
@@ -40,13 +40,13 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(),
   likeContains: vi.fn(),
   parseOrderBy: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: mocks.createId,
 }))
 

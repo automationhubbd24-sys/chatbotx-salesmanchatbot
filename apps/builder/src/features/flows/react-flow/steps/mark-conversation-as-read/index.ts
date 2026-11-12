@@ -2,7 +2,7 @@ import {
   type MarkConversationAsReadStepSchema,
   markConversationAsReadStepDefaultFn,
   markConversationAsReadStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import MarkConversationAsReadStepEditor from "./editor"
 import MarkConversationAsReadStepViewer from "./viewer"

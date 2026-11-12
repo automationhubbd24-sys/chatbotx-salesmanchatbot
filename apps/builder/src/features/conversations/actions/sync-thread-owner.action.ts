@@ -3,13 +3,13 @@
 import {
   conversationService,
   type ThreadControlSnapshot,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
-} from "@chatbotx.io/business/errors"
-import { syncConversationThreadOwner } from "@chatbotx.io/channel-registry/thread-control"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business/errors"
+import { syncConversationThreadOwner } from "@salesmanchatbot.io/channel-registry/thread-control"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { requireContactAccessForMember } from "@/features/contacts/permissions"
@@ -67,7 +67,7 @@ export const syncThreadOwnerAction = workspaceActionClient
         })
         return { status: "synced", snapshot }
       } catch (error) {
-        if (error instanceof ChatbotXException && error.code === "notFound") {
+        if (error instanceof salesmanChatbotException && error.code === "notFound") {
           throw notFoundException(t("conversationRouting.errors.notFound"))
         }
         throw error

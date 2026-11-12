@@ -1,4 +1,4 @@
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
 import { Queue } from "bullmq"
 import {
   defaultJobOptions,

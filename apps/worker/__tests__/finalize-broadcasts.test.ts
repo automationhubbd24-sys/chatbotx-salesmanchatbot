@@ -1,4 +1,4 @@
-import { BROADCAST_OUTCOME_GRACE_MS } from "@chatbotx.io/database/partials"
+import { BROADCAST_OUTCOME_GRACE_MS } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const listAwaitingFinalization = vi.fn()
@@ -8,7 +8,7 @@ const recordAuditLog = vi.fn()
 const runExclusiveSpy = vi.fn()
 const loggerInfoSpy = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: {
     listAwaitingFinalization: (...args: unknown[]) =>
       listAwaitingFinalization(...args),
@@ -18,15 +18,15 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: (...args: unknown[]) => recordAuditLog(...args) },
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () =>
-  vi.importActual("@chatbotx.io/database/partials"),
+vi.mock("@salesmanchatbot.io/database/partials", async () =>
+  vi.importActual("@salesmanchatbot.io/database/partials"),
 )
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: (opts: {
       key: string

@@ -1,8 +1,8 @@
 "use client"
 
-import type { FolderType } from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { FolderType } from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,9 +10,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FolderUpIcon, Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"

@@ -1,6 +1,6 @@
-import { importStatuses } from "@chatbotx.io/database/partials"
-import { flowCapabilitySchema } from "@chatbotx.io/flow-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { importStatuses } from "@salesmanchatbot.io/database/partials"
+import { flowCapabilitySchema } from "@salesmanchatbot.io/flow-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicListRequest, publicListResponse } from "@/lib/public-api/list"
 

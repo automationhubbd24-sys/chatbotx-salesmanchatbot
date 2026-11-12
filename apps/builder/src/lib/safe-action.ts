@@ -3,14 +3,14 @@ import {
   isSuperAdmin,
   isWorkspaceScheduledForDeletion,
   resolveWorkspaceAccess,
-} from "@chatbotx.io/business"
-import { getAuditActor, withAuditContext } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { findOrFail, isDatabaseError } from "@chatbotx.io/database/client"
-import { userModel } from "@chatbotx.io/database/schema"
-import { FlowAuthoringException } from "@chatbotx.io/flow-config"
-import { SdkException } from "@chatbotx.io/sdk"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { getAuditActor, withAuditContext } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { findOrFail, isDatabaseError } from "@salesmanchatbot.io/database/client"
+import { userModel } from "@salesmanchatbot.io/database/schema"
+import { FlowAuthoringException } from "@salesmanchatbot.io/flow-config"
+import { SdkException } from "@salesmanchatbot.io/sdk"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { headers } from "next/headers"
 import { getTranslations } from "next-intl/server"
 import {
@@ -37,13 +37,13 @@ const SERVER_ERROR_STATUS_THRESHOLD = 500
 export const actionClient = createSafeActionClient({
   handleServerError(error) {
     if (
-      error instanceof ChatbotXException ||
+      error instanceof salesmanChatbotException ||
       error instanceof FlowAuthoringException ||
       error instanceof SdkException
     ) {
       // Expected client-facing 4xx (e.g. notFoundException, validationException)
       // — warn rather than error so alerting stays quiet, but still keep the
-      // signal in the logs. A 5xx ChatbotXException still gets logged at error
+      // signal in the logs. A 5xx salesmanChatbotException still gets logged at error
       // level below since findOrFail/generic throws land there too. Mirrors
       // `mapKnownOrpcErrors` in orpc.ts, which applies the same split to the
       // oRPC surface.
@@ -86,7 +86,7 @@ export const authActionClient = actionClient.use(async ({ next }) => {
   // force-change action itself deliberately runs on the lower-level
   // `actionClient` so it stays callable while the flag is set.
   if (user.mustChangePassword) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       "Password change required",
       "mustChangePassword",
       403,
@@ -177,7 +177,7 @@ export const workspaceActionClient = workspaceActionClientAllowExpired.use(
     // mutation regardless of trial status, so this runs before the trial check
     // below. Mirrors the RSC-side redirect in enforceWorkspaceNotScheduledForDeletion.
     if (isWorkspaceScheduledForDeletion(ctx.workspace)) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Workspace deletion scheduled",
         "workspaceScheduledDeletion",
         403,
@@ -226,7 +226,7 @@ export const rejectSupportSession = createMiddleware<{
 }>().define(async ({ ctx, next }) => {
   if (ctx.isSupportSession) {
     const t = await getTranslations()
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("whatsapp.calls.errors.supportSessionCallingBlocked"),
       "supportSessionCallingBlocked",
       403,
@@ -245,7 +245,7 @@ export const requireContactsAccess = createMiddleware<{
 }>().define(async ({ ctx, next }) => {
   if (!hasContactsAccess(ctx.workspaceMemberPermissions)) {
     const t = await getTranslations()
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("whatsapp.calls.errors.callingAccessDenied"),
       "callingAccessDenied",
       403,
@@ -292,7 +292,7 @@ export const requireCallHistoryAccess = createMiddleware<{
     )
   ) {
     const t = await getTranslations()
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("whatsapp.calls.errors.callHistoryAccessDenied"),
       "callHistoryAccessDenied",
       403,

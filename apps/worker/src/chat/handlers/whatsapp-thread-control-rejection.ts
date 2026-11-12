@@ -1,7 +1,7 @@
-import { threadControlService } from "@chatbotx.io/business"
-import { toThreadControlTimestamp } from "@chatbotx.io/database/partials"
-import { THREAD_CONTROL_REJECTION_CODES } from "@chatbotx.io/integration-whatsapp"
-import { ChannelError } from "@chatbotx.io/sdk"
+import { threadControlService } from "@salesmanchatbot.io/business"
+import { toThreadControlTimestamp } from "@salesmanchatbot.io/database/partials"
+import { THREAD_CONTROL_REJECTION_CODES } from "@salesmanchatbot.io/integration-whatsapp"
+import { ChannelError } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../lib/logger"
 import type { ChannelSendErrorContext } from "./channel-send-error-types"
 

@@ -1,4 +1,4 @@
-import type { AIAgentActionRule } from "@chatbotx.io/database/partials"
+import type { AIAgentActionRule } from "@salesmanchatbot.io/database/partials"
 import { type Tool, tool } from "ai"
 import { z } from "zod"
 import { logger } from "../../../lib/logger"

@@ -7,7 +7,7 @@ const workerConfigMock = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getRedisConnection: workerConfigMock.getRedisConnection,
 }))
 

@@ -14,13 +14,13 @@ vi.mock("date-fns", () => ({
   startOfMinute: (_input: unknown) => FIXED_START,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: {
     listDueScheduled: (...args: unknown[]) => listDueScheduled(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   scheduleQueue: {
     addBulk: (...args: unknown[]) => addBulkSpy(...args),
   },

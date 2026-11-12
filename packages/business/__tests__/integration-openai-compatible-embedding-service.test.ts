@@ -24,7 +24,7 @@ vi.mock("../src/product", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn(),
   db: {
     delete: vi.fn(() => ({ where: mocks.deleteWhere })),
@@ -39,7 +39,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationModel: { id: "id" },
   integrationOpenaiCompatibleEmbeddingModel: {
     id: "id",
@@ -47,8 +47,8 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/utils")>()),
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/utils")>()),
   createId: vi.fn(() => "generated-id"),
 }))
 

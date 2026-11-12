@@ -1,6 +1,6 @@
 "use client"
 
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import { useQuery } from "@tanstack/react-query"
 import { useTenantSettings } from "@/features/tenant"
 import { useWorkspaceId } from "@/hooks/routing"

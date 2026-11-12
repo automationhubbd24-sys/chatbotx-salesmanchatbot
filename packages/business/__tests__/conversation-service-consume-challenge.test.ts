@@ -13,13 +13,13 @@ const { returningMock, whereMock, setMock, updateMock } = vi.hoisted(() => {
   return { returningMock, whereMock, setMock, updateMock }
 })
 
-vi.mock("@chatbotx.io/database/client", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/client", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@chatbotx.io/database/client")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/client")>()
   return { ...original, db: { update: updateMock } }
 })
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, fn: () => unknown) => fn()),
   invalidateCacheByTags: vi.fn(),
   createRedisConnection: vi.fn(() => ({ on: vi.fn() })),
@@ -28,17 +28,17 @@ vi.mock("@chatbotx.io/redis", () => ({
 // `conversationService` now imports `contactService` (for the location write
 // inside `recordInboundActivity`), which pulls the analytics package into the
 // import chain; its MAC tracking service reads `bloomFilter` off
-// `@chatbotx.io/redis` at module scope. Stub analytics rather than partially
+// `@salesmanchatbot.io/redis` at module scope. Stub analytics rather than partially
 // mocking redis — matches the contact-service tests' convention.
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   macAnalyticsService: {},
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitConversationArchived: vi.fn(),
   emitConversationAssigned: vi.fn(),
   emitConversationFollowUp: vi.fn(),

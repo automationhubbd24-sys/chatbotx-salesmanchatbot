@@ -1,8 +1,8 @@
 "use client"
 
-import type { ContactFilterField } from "@chatbotx.io/database/partials"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import type { ContactFilterField } from "@salesmanchatbot.io/database/partials"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form"

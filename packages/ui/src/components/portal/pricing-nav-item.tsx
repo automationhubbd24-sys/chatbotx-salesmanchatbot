@@ -10,13 +10,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@chatbotx.io/ui/components/ui/sidebar"
+} from "@salesmanchatbot.io/ui/components/ui/sidebar"
 import { Tag } from "lucide-react"
 
 /**

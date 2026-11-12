@@ -1,4 +1,4 @@
-import type { ButtonStepProps, ButtonType } from "@chatbotx.io/flow-config"
+import type { ButtonStepProps, ButtonType } from "@salesmanchatbot.io/flow-config"
 import { createStore } from "zustand"
 
 type UpdatedButtonData = {

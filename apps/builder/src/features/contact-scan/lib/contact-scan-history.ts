@@ -1,5 +1,5 @@
-import { contactScanService } from "@chatbotx.io/business"
-import type { ContactScanChannel } from "@chatbotx.io/utils/channel"
+import { contactScanService } from "@salesmanchatbot.io/business"
+import type { ContactScanChannel } from "@salesmanchatbot.io/utils/channel"
 import type {
   ContactScanRunStatus,
   ListContactScanHistoryItem,

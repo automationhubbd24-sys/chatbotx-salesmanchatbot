@@ -1,15 +1,15 @@
 import "server-only"
 
-import { instagramIntegrationService } from "@chatbotx.io/business"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
 import {
   type CommentPost,
   type IgCommentAutomationType,
   isLiveCommentAutomation,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   type InstagramAuthValue,
   subscribePageToInstagramWebhook,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import { collectSettled } from "@/lib/collect-settled"
 
 /**

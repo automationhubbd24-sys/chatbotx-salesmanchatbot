@@ -1,4 +1,4 @@
-import { signMediaToken } from "@chatbotx.io/encryption"
+import { signMediaToken } from "@salesmanchatbot.io/encryption"
 import { logger } from "../logger"
 import { resolveWorkspaceAppUrl } from "../platform/settings"
 import {

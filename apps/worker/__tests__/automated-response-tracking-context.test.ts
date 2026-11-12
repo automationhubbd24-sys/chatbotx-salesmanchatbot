@@ -2,7 +2,7 @@ import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type { ModelMessage } from "ai"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { replyByAI } from "../src/integration/handlers/automated-response/replies"
@@ -29,7 +29,7 @@ const capturedContext = vi.hoisted(() => ({
   current: null as null | { sendMessage: (text: string) => Promise<void> },
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiProviders: { openai: "openai" },
   aiTimeouts: { aiTotal: 30_000, aiStep: 10_000, aiChunk: 5000 },
   helpTexts: {
@@ -53,7 +53,7 @@ vi.mock("@chatbotx.io/ai", () => ({
   appendUnavailableWebSearchPolicy: (p: string) => p,
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: { appendHistory: appendHistoryMock },
   appendFabricationGuard: (p: string) => p,
   appendHandoffPolicy: (p: string) => p,
@@ -78,7 +78,7 @@ vi.mock("@chatbotx.io/ai/server", () => ({
   normalizeMcpContent: vi.fn((c: unknown) => c),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationOpenaiCompatibleService: {
     findByWorkspaceIdAndId: vi.fn(),
   },
@@ -106,16 +106,16 @@ vi.mock("../src/integration/utils/message", () => ({
   sendMessageWithRender: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn(async () => []),
     replaceAll: vi.fn(async ({ text }: { text: string }) => text),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     integrationQueue: { add: vi.fn(async () => undefined) },

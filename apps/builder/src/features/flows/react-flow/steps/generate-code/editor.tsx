@@ -5,10 +5,10 @@ import {
   type GenerateCodeStepSchema,
   GenerateCodeType,
   generateCodeStepSchema,
-} from "@chatbotx.io/flow-config"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -18,8 +18,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ShuffleIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

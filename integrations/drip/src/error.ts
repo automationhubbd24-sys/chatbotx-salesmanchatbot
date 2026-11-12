@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 
 export class DripNoAccountError extends SdkException {
   constructor() {

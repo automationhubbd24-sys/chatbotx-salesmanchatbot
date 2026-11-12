@@ -1,11 +1,11 @@
 import z from "zod"
 
 // The channel rules (which channels, windows, text limit) are data in
-// `@chatbotx.io/utils/channel`; re-exported here for the database layer.
+// `@salesmanchatbot.io/utils/channel`; re-exported here for the database layer.
 export {
   type AiHandoverChannel,
   parseAiHandoverChannel,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 
 /** Last hour boundary of a day: `{ from: 0, to: 24 }` means "all day". */
 export const AI_HANDOVER_DAY_END_HOUR = 24

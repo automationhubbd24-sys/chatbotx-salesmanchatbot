@@ -7,18 +7,18 @@ import {
   ilike,
   inArray,
   isNull,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   appointmentCalendarAvailabilityModel,
   appointmentCalendarModel,
   appointmentCalendarReminderModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderBy,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type AppointmentCalendarListInput = {
   workspaceId: string

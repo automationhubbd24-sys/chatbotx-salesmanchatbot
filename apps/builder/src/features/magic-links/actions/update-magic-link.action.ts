@@ -6,9 +6,9 @@ import {
   eq,
   findOrFail,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
-import { magicLinkModel } from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { magicLinkModel } from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceActionClient } from "@/lib/safe-action"
 import {

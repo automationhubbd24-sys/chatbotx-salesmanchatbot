@@ -2,15 +2,15 @@
 
 // Locally patched for RTL; reapply after refreshing from the upstream shadcn registry.
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@chatbotx.io/ui/components/ui/radio-group"
-import type { Plan } from "@chatbotx.io/ui/lib/billingsdk-config"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/radio-group"
+import type { Plan } from "@salesmanchatbot.io/ui/lib/billingsdk-config"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Award, Building2, Check, Package } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"

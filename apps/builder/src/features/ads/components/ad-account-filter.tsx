@@ -6,13 +6,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import type { AdsEligibleChannelType } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import type { AdsEligibleChannelType } from "@salesmanchatbot.io/utils/channel"
 import { useQuery } from "@tanstack/react-query"
 import { InfoIcon } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"

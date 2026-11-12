@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
-import { ChatbotXException } from "../../errors"
+import { salesmanChatbotException } from "../../errors"
 
 const mocks = vi.hoisted(() => ({
   inboxFindMany: vi.fn(),
@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => ({
   count: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       inboxModel: {
@@ -28,7 +28,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn((_, where) => where),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   inboxModel: { id: "id" },
   workspaceUsageModel: { workspaceId: "workspaceId-column" },
 }))
@@ -36,15 +36,15 @@ vi.mock("@chatbotx.io/database/schema", () => ({
 // `inboxService` now imports `inboxRepository` from the repositories
 // barrel for `listChannelOptionsByWorkspace` — stubbed here (unused by any
 // test in this file) so the barrel's OTHER, unrelated repositories don't
-// drag in a transitive schema this file's `@chatbotx.io/database/schema`
+// drag in a transitive schema this file's `@salesmanchatbot.io/database/schema`
 // mock never had to satisfy before.
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   inboxRepository: { listOptionsByWorkspaceAndChannel: vi.fn() },
   aiHandoverSettingsRepository: { lockExisting: vi.fn(async () => null) },
   aiHandoverBulkRunRepository: { cancelLive: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
@@ -232,7 +232,7 @@ describe("InboxService.create", () => {
       message: "Channel limit reached for this plan",
     })
     await expect(createInbox.catch((err) => err)).resolves.toBeInstanceOf(
-      ChatbotXException,
+      salesmanChatbotException,
     )
     expect(mocks.inboxInsert).not.toHaveBeenCalled()
   })

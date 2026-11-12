@@ -7,7 +7,7 @@ import {
   realtimeCallTransportOutboundStatusVoipSchema,
   whatsappCallClaimedElsewhereSchema,
   whatsappCallPermissionUpdatedSchema,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import type { z } from "zod"
 import type { RealtimeEvent, RealtimeEventName } from "./types"
 

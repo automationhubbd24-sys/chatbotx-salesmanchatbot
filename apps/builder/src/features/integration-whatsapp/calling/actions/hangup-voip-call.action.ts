@@ -1,6 +1,6 @@
 "use server"
 
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { endVoipCallAsAgent } from "./end-voip-call-as-agent"

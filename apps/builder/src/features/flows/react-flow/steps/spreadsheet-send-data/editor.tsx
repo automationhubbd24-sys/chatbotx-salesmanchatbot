@@ -1,7 +1,7 @@
 "use client"
 
-import { spreadsheetSendDataSchema } from "@chatbotx.io/flow-config"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { spreadsheetSendDataSchema } from "@salesmanchatbot.io/flow-config"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useCallback } from "react"
 import { useForm, useFormContext, useWatch } from "react-hook-form"

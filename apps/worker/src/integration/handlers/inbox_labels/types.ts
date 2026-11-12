@@ -1,4 +1,4 @@
-import type { channelTypes } from "@chatbotx.io/database/partials"
+import type { channelTypes } from "@salesmanchatbot.io/database/partials"
 
 export type ChannelType =
   | typeof channelTypes.enum.messenger

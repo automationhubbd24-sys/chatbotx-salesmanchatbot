@@ -4,16 +4,16 @@ import {
   integrationFacebookAdsService,
   messengerIntegrationService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { FacebookCustomAudienceSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { FacebookCustomAudienceSchema } from "@salesmanchatbot.io/flow-config"
 import {
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
   GRAPH_ERROR_CODE_INVALID_TOKEN,
   getGraphErrorCode,
   integration as integrationFacebookAds,
-} from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/integration-facebook-ads"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow"

@@ -2,7 +2,7 @@ import {
   FlowAuthoringException,
   publishFlowSchema,
   zodErrorToFlowAuthoringErrors,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
 /** Rejects graphs that would silently lose content on their configured channel. */
 export const assertFlowGraphPublishable = (input: {

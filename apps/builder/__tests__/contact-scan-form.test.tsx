@@ -72,17 +72,17 @@ vi.mock("@next-safe-action/adapter-react-hook-form/hooks", () => ({
 // Swap the heavy widgets for minimal probes — native `<select>`/date-picker
 // interaction is irrelevant to what this test covers (the `disabled` prop
 // the form computes, and the status-panel copy).
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({ name }: { name: string }) => (
     <span data-testid={`field-${name}`} />
   ),
 }))
 
 // Wired to a real `Controller` (rendered inside the real `FormProvider` from
-// `@chatbotx.io/ui/components/ui/form`, unmocked here) so tests can drive
+// `@salesmanchatbot.io/ui/components/ui/form`, unmocked here) so tests can drive
 // `scanFromAt` and observe the dynamic description that reads it via
 // `form.watch` — a plain display stub can't exercise that.
-vi.mock("@chatbotx.io/ui/components/form/date-picker-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/date-picker-field", () => ({
   DateTimePickerField: ({
     disabled,
     name,
@@ -108,7 +108,7 @@ vi.mock("@chatbotx.io/ui/components/form/date-picker-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

@@ -1,4 +1,4 @@
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"

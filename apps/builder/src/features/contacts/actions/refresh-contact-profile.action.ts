@@ -1,5 +1,5 @@
 "use server"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { refreshContactProfile } from "../lib/refresh-contact-profile"
 import { requireContactPermissionScope } from "../permissions"

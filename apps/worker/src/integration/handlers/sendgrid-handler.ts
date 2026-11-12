@@ -1,14 +1,14 @@
 import { createHash } from "node:crypto"
-import { buildContext, integrationSendGridService } from "@chatbotx.io/business"
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { SendGridAddContactSchema } from "@chatbotx.io/flow-config"
+import { buildContext, integrationSendGridService } from "@salesmanchatbot.io/business"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { SendGridAddContactSchema } from "@salesmanchatbot.io/flow-config"
 import {
   SendGridApiError,
   type SendGridAuthValue,
   sendGridAuthSchema,
   integration as sendGridIntegration,
-} from "@chatbotx.io/integration-sendgrid"
+} from "@salesmanchatbot.io/integration-sendgrid"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"
 import { logger } from "../../lib/logger"

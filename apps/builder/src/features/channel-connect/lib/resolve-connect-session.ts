@@ -5,17 +5,17 @@ import {
   resolveTenantSettings,
   workspaceMemberService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   connectSessionExpiredException,
   credentialMissingException,
   notWorkspaceMemberException,
-} from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business/errors"
 import type {
   ChannelType,
   CredentialType,
-} from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   BRANDING_TITLE,
   getBrandingUrl,
@@ -74,7 +74,7 @@ export type ResolvedConnectSession<T extends CredentialType> = {
  * (`connectSessionExpiredException`, `notWorkspaceMemberException`,
  * `workspaceAccessDenialException`, `credentialMissingException`) — callers
  * catch once and map through `toConnectSessionError`
- * (`@chatbotx.io/business/inbox/connect-outcome`), exactly like every other
+ * (`@salesmanchatbot.io/business/inbox/connect-outcome`), exactly like every other
  * step in the action.
  *
  * The channel is passed in as plain data (`credentialType`/`brandingChannel`)

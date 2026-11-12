@@ -1,9 +1,9 @@
 import {
   contactCustomFieldModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { FieldOperationType } from "@chatbotx.io/flow-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { FieldOperationType } from "@salesmanchatbot.io/flow-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicCustomFieldResource } from "@/features/custom-fields/schema/resource"
 

@@ -1,6 +1,6 @@
-import { COMMENT_AUTOMATION_ERROR_RETENTION_DAYS } from "@chatbotx.io/analytics/schemas"
-import { purgeFailedCommentAutomationEvents as purgeEventRows } from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { COMMENT_AUTOMATION_ERROR_RETENTION_DAYS } from "@salesmanchatbot.io/analytics/schemas"
+import { purgeFailedCommentAutomationEvents as purgeEventRows } from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 
 const log = getChildLogger("purge-comment-automation-events")
 

@@ -1,5 +1,5 @@
-import { isSuperAdmin } from "@chatbotx.io/business"
-import type { UserModel } from "@chatbotx.io/database/types"
+import { isSuperAdmin } from "@salesmanchatbot.io/business"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { z } from "zod"
 import { isCloud } from "@/env"
 

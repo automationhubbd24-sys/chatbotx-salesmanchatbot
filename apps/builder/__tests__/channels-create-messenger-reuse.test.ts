@@ -50,7 +50,7 @@ vi.mock("next/navigation", () => ({
   redirect: mockRedirect,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: { resolveForOwner: mockResolveForOwner },
   workspaceService: {
     find: mockFindWorkspace,
@@ -189,7 +189,7 @@ describe("GET /channels/create/messenger — Facebook SSO token reuse", () => {
 
   test("redirects to /channels/create?error=… instead of 500 when the first workspace hits the plan limit", async () => {
     const { workspaceLimitReachedException } = await import(
-      "@chatbotx.io/business/errors"
+      "@salesmanchatbot.io/business/errors"
     )
     mockTryReuseFacebookSsoToken.mockResolvedValue({
       reusable: true,

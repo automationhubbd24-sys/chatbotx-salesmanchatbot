@@ -4,12 +4,12 @@ const mockUploadFileFromUrl = vi.fn()
 const mockAssertPublicUrl = vi.fn()
 const mockRunThreadsAction = vi.fn()
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   getStoragePrefix: (workspaceId: string) => `public/ws/${workspaceId}/2026`,
   uploadFileFromUrl: mockUploadFileFromUrl,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertPublicUrl: mockAssertPublicUrl,
   buildContext: vi.fn(async () => ({ ctx: "threads" })),
 }))

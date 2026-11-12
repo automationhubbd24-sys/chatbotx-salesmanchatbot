@@ -1,7 +1,7 @@
 import type {
   RealtimeEventData,
   RealtimeEventType,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 
 /**
  * Channel-agnostic realtime platform. This module (and everything else under

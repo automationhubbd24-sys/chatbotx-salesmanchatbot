@@ -2,7 +2,7 @@ import {
   type DisableMessengerComposerStepSchema,
   disableMessengerComposerStepDefaultFn,
   disableMessengerComposerStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import DisableMessengerComposerStepEditor from "./editor"
 import DisableMessengerComposerStepViewer from "./viewer"

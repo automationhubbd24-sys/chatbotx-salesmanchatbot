@@ -2,10 +2,10 @@ import {
   flowAnalyticsService,
   flowNodeStatsResponse,
   flowStatsRequest,
-} from "@chatbotx.io/analytics"
-import { flowVersionService } from "@chatbotx.io/business"
-import { convertStartNodeToMessengerAdsJson } from "@chatbotx.io/integration-messenger/messenger-ads"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/analytics"
+import { flowVersionService } from "@salesmanchatbot.io/business"
+import { convertStartNodeToMessengerAdsJson } from "@salesmanchatbot.io/integration-messenger/messenger-ads"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { flowVersionResource } from "@/features/flow-versions/schema/resource"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"

@@ -1,7 +1,7 @@
-import type { Context, Oauth2AuthValue, Oauth2Config } from "@chatbotx.io/sdk"
+import type { Context, Oauth2AuthValue, Oauth2Config } from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 
-export const INSTAGRAM_MESSAGE_METADATA = "SENT_FROM_CHATBOTX"
+export const INSTAGRAM_MESSAGE_METADATA = "SENT_FROM_SALESMANCHATBOT"
 
 export type InstagramConfig = Oauth2Config & {
   verifyToken?: string

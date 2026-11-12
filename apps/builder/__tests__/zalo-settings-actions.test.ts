@@ -13,7 +13,7 @@ vi.mock("@/lib/safe-action", () => {
   chain.action = (handler: unknown) => handler
   return { authActionClient: chain }
 })
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: { remove: removeSpy, upsert: upsertSpy },
 }))
 vi.mock("../src/features/platform-credentials/scope", () => ({
@@ -21,7 +21,7 @@ vi.mock("../src/features/platform-credentials/scope", () => ({
   resolveCredentialScopedUserId: resolveSpy,
 }))
 const { zaloCredentialUpdateSchema } = await import(
-  "@chatbotx.io/database/partials"
+  "@salesmanchatbot.io/database/partials"
 )
 const { deleteZaloSettingsAction } = await import(
   "../src/features/platform-credentials/zalo/delete-zalo-settings.action"

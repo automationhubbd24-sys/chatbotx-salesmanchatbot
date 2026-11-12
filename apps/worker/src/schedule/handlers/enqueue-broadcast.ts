@@ -1,5 +1,5 @@
-import { broadcastService } from "@chatbotx.io/business"
-import { ScheduleJobData, scheduleQueue } from "@chatbotx.io/worker-config"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { ScheduleJobData, scheduleQueue } from "@salesmanchatbot.io/worker-config"
 import { startOfMinute } from "date-fns"
 
 const ENQUEUE_BULK_SIZE = 500

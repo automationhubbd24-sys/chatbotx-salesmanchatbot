@@ -1,4 +1,4 @@
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
 
 export class BaseService {
   protected invalidateCacheTags(tags: string | string[]) {

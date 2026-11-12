@@ -19,7 +19,7 @@ type SmtpConnectionInput = {
  * `docs/developer/workspace-api-tokens.md`.
  *
  * `resolveSmtpHostAndPort` needs `smtpHostMap` from
- * `@chatbotx.io/integration-smtp`, which `packages/business` must not depend
+ * `@salesmanchatbot.io/integration-smtp`, which `packages/business` must not depend
  * on, so this orchestration stays in the app layer rather than the service —
  * the service still owns the auth merge, change diff, and audit record.
  */

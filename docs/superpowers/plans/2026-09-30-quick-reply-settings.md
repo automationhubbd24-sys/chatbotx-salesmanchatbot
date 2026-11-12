@@ -408,7 +408,7 @@ describe("computeQuickReplyFollowUpTriggerAt", () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `pnpm --filter @chatbotx.io/flow-config exec vitest run __tests__/quick-reply-settings.test.ts`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config exec vitest run __tests__/quick-reply-settings.test.ts`
 Expected: FAIL — `quickReplySettingsDefaultFn` (and siblings) is not exported.
 
 - [ ] **Step 3: Add validation codes**
@@ -426,7 +426,7 @@ In `packages/flow-config/src/validation-codes.ts`, add inside `flowValidationCod
 Create `packages/flow-config/src/steps/quick-reply-settings.ts`:
 
 ```ts
-import { createId, zodBigintAsString } from "@chatbotx.io/utils"
+import { createId, zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { addMilliseconds } from "date-fns"
 import { z } from "zod"
 import { flowValidationCodes } from "../validation-codes"
@@ -734,10 +734,10 @@ export * from "./steps/quick-reply-settings"
 
 - [ ] **Step 7: Run tests**
 
-Run: `pnpm --filter @chatbotx.io/flow-config exec vitest run __tests__/quick-reply-settings.test.ts`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config exec vitest run __tests__/quick-reply-settings.test.ts`
 Expected: PASS.
 
-Run: `pnpm --filter @chatbotx.io/flow-config test && pnpm --filter @chatbotx.io/flow-config check-types`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config test && pnpm --filter @salesmanchatbot.io/flow-config check-types`
 Expected: PASS (existing tests unaffected).
 
 - [ ] **Step 8: Commit**
@@ -813,7 +813,7 @@ describe("quick reply settings handles", () => {
 
 - [ ] **Step 2: Run test to verify it fails**
 
-Run: `pnpm --filter @chatbotx.io/flow-config exec vitest run __tests__/routable-handle.test.ts -t "quick reply settings handles"`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config exec vitest run __tests__/routable-handle.test.ts -t "quick reply settings handles"`
 Expected: FAIL — `applyRouteInNode` returns `null`.
 
 - [ ] **Step 3: Implement the accessor**
@@ -892,7 +892,7 @@ Append `quickReplySettingsAccessor` to the `routableHandleAccessors` array.
 
 - [ ] **Step 4: Run tests**
 
-Run: `pnpm --filter @chatbotx.io/flow-config exec vitest run __tests__/routable-handle.test.ts`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config exec vitest run __tests__/routable-handle.test.ts`
 Expected: PASS (new and existing).
 
 - [ ] **Step 5: Commit**
@@ -934,7 +934,7 @@ export const smartDelayTypes = z.enum([
 ])
 ```
 
-Run: `pnpm --filter @chatbotx.io/database make:migration add_quick_reply_follow_up_type`
+Run: `pnpm --filter @salesmanchatbot.io/database make:migration add_quick_reply_follow_up_type`
 Then open the generated `migration.sql`. It must contain only:
 ```sql
 ALTER TYPE "public"."ContactOnSmartDelayType" ADD VALUE 'quickReplyFollowUp';
@@ -954,14 +954,14 @@ In `packages/database/src/schema/contact-on-smart-delay.ts`, after `ContactOnSma
       ),
 ```
 
-Run: `pnpm --filter @chatbotx.io/database make:migration add_quick_reply_follow_up_index`
+Run: `pnpm --filter @salesmanchatbot.io/database make:migration add_quick_reply_follow_up_index`
 Expected SQL (trim anything else):
 ```sql
 CREATE UNIQUE INDEX "ContactOnSmartDelay_quickReplyFollowUp_active_key" ON "ContactOnSmartDelay" USING btree ("workspaceId","contactInboxId","flowId","nodeId") WHERE "ContactOnSmartDelay"."status" NOT IN ('completed', 'failed', 'canceled') AND "ContactOnSmartDelay"."type" = 'quickReplyFollowUp';
 ```
 Show the SQL to the user. **Do not run `db:migrate`.**
 
-Run: `pnpm --filter @chatbotx.io/database db:check-drift`
+Run: `pnpm --filter @salesmanchatbot.io/database db:check-drift`
 Expected: exit 0 (no pending SQL).
 
 - [ ] **Step 3: Conversation challenge union**
@@ -1004,7 +1004,7 @@ export type ConversationAttributes = {
 - [ ] **Step 4: worker-config job types**
 
 In `packages/worker-config/src/queues/integration/index.ts`:
-- Add `import type { ConversationQuickReplyChallenge, ConversationStepChallenge } from "@chatbotx.io/database/partials"` (merge into an existing `@chatbotx.io/database/partials` import if present).
+- Add `import type { ConversationQuickReplyChallenge, ConversationStepChallenge } from "@salesmanchatbot.io/database/partials"` (merge into an existing `@salesmanchatbot.io/database/partials` import if present).
 - Add `resumeQuickReplyFollowUp: "resumeQuickReplyFollowUp",` next to `resumeFollowUp` in `IntegrationJobAction` (line ~46).
 - Replace the inline `challenge: { type: "step"; data: {...} }` in `IntegrationJobRunChallenge` with:
 ```ts
@@ -1033,7 +1033,7 @@ and use `existingChallenge` where the old variable was used. (Keep each site's o
 
 - [ ] **Step 6: Typecheck everything that reads the type**
 
-Run: `pnpm --filter @chatbotx.io/database check-types && pnpm --filter @chatbotx.io/worker-config check-types && pnpm --filter worker check-types && pnpm --filter builder check-types`
+Run: `pnpm --filter @salesmanchatbot.io/database check-types && pnpm --filter @salesmanchatbot.io/worker-config check-types && pnpm --filter worker check-types && pnpm --filter builder check-types`
 Expected:
 - worker errors only in `handlers/smart-delay.ts` (`Record<SmartDelayType, …>` missing `quickReplyFollowUp`) and `handlers/challenge.ts` (`challenge.data.stepId` on the union). Those are fixed in Tasks 5–6; if any **other** file errors, narrow it with `challenge.type === "step"` the same way as Step 5.
 - builder: `create-webchat-message.action.ts` compiles (it only forwards the challenge).
@@ -1358,7 +1358,7 @@ Imports: `import { conversationService } from "../conversation/service"`, `impor
 
 - [ ] **Step 5: Typecheck + circular check**
 
-Run: `pnpm --filter @chatbotx.io/business check-types && pnpm check:circular`
+Run: `pnpm --filter @salesmanchatbot.io/business check-types && pnpm check:circular`
 Expected: PASS, no new cycles.
 
 - [ ] **Step 6: Commit**
@@ -1391,7 +1391,7 @@ git commit -m "feat(business): quick reply follow-up and challenge service metho
 Create `apps/worker/__tests__/quick-reply-settings.test.ts`:
 
 ```ts
-import { quickReplySettingsDefaultFn } from "@chatbotx.io/flow-config"
+import { quickReplySettingsDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -1406,10 +1406,10 @@ const mocks = vi.hoisted(() => ({
   logger: { warn: vi.fn(), info: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: mocks.conversationService,
 }))
-vi.mock("@chatbotx.io/business/smart-delay", () => ({
+vi.mock("@salesmanchatbot.io/business/smart-delay", () => ({
   smartDelayService: mocks.smartDelayService,
 }))
 vi.mock("../src/integration/handlers/smart-delay", () => ({
@@ -1613,17 +1613,17 @@ Expected: FAIL — module `../src/integration/handlers/quick-reply-settings` not
 Create `apps/worker/src/integration/handlers/quick-reply-settings.ts`:
 
 ```ts
-import { conversationService } from "@chatbotx.io/business"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
 import {
   type ConversationAttributes,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   computeQuickReplyFollowUpTriggerAt,
   type MetadataPayload,
   resolveActiveQuickReplySettings,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { logger } from "../../lib/logger"
 import { scheduleSmartDelayResume } from "./smart-delay"
 
@@ -1760,7 +1760,7 @@ export async function clearQuickReplyChallengeOnTap(props: {
 }
 ```
 
-If `MetadataPayload` is not exported from `@chatbotx.io/flow-config`, import it from the same place `handlers/smart-delay.ts` imports it.
+If `MetadataPayload` is not exported from `@salesmanchatbot.io/flow-config`, import it from the same place `handlers/smart-delay.ts` imports it.
 
 - [ ] **Step 4: Register the smart delay type**
 
@@ -1950,7 +1950,7 @@ git commit -m "feat(worker): arm and clear quick reply settings"
 Create `apps/worker/__tests__/quick-reply-resume.test.ts`:
 
 ```ts
-import { quickReplySettingsDefaultFn } from "@chatbotx.io/flow-config"
+import { quickReplySettingsDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -1972,17 +1972,17 @@ const mocks = vi.hoisted(() => ({
   logger: { warn: vi.fn(), info: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: mocks.conversationService,
   contactInboxService: mocks.contactInboxService,
 }))
-vi.mock("@chatbotx.io/business/contact-inbox", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-inbox", () => ({
   contactInboxService: mocks.contactInboxService,
 }))
-vi.mock("@chatbotx.io/business/smart-delay", () => ({
+vi.mock("@salesmanchatbot.io/business/smart-delay", () => ({
   smartDelayService: mocks.smartDelayService,
 }))
-vi.mock("@chatbotx.io/sdk", () => ({ initVariables: mocks.initVariables }))
+vi.mock("@salesmanchatbot.io/sdk", () => ({ initVariables: mocks.initVariables }))
 vi.mock("../src/lib/db", () => ({
   detectConversationAndContactInbox: mocks.detectConversationAndContactInbox,
   detectFlowVersion: mocks.detectFlowVersion,
@@ -2236,17 +2236,17 @@ Expected: FAIL — module not found.
 Create `apps/worker/src/integration/handlers/quick-reply-resume.ts`:
 
 ```ts
-import { contactInboxService, conversationService } from "@chatbotx.io/business"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
+import { contactInboxService, conversationService } from "@salesmanchatbot.io/business"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
 import {
   type ConversationQuickReplyChallenge,
   smartDelayStatuses,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   type ButtonStepProps,
   type FlowNode,
@@ -2256,8 +2256,8 @@ import {
   resolveActiveQuickReplySettings,
   type SendTextStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { initVariables } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import { initVariables } from "@salesmanchatbot.io/sdk"
 import {
   detectConversationAndContactInbox,
   detectFlowVersion,
@@ -2492,7 +2492,7 @@ export async function runQuickReplyFollowUpResume(data: {
 ```
 
 Check the import paths against the real code before running:
-- `contactInboxService`: `follow-up.ts` imports it from `@chatbotx.io/business/contact-inbox`. Use that path and keep the test's mock for that path.
+- `contactInboxService`: `follow-up.ts` imports it from `@salesmanchatbot.io/business/contact-inbox`. Use that path and keep the test's mock for that path.
 - `ContactInboxModel` / `ConversationModel`: import them from wherever `challenge.ts` / `flow.ts` get them.
 - `metadataSchema`: import it from the same place `smart-delay.ts` does.
 
@@ -2631,7 +2631,7 @@ Expected: FAIL — module not found.
 
 Create `apps/builder/src/features/messages/lib/should-run-webchat-challenge.ts`:
 ```ts
-import type { ConversationAttributes } from "@chatbotx.io/database/partials"
+import type { ConversationAttributes } from "@salesmanchatbot.io/database/partials"
 
 /**
  * Webchat taps arrive as a postback on the same message, so unlike the
@@ -2675,7 +2675,7 @@ and after `if (updated.length === 0) { return }`:
         conversationIds: [conversationId],
       })
 ```
-Imports: `sql` from `drizzle-orm` (merge with the existing `and, eq` import), `smartDelayService` from `@chatbotx.io/business/smart-delay`.
+Imports: `sql` from `drizzle-orm` (merge with the existing `and, eq` import), `smartDelayService` from `@salesmanchatbot.io/business/smart-delay`.
 
 - [ ] **Step 5: Run tests + typecheck**
 
@@ -2683,7 +2683,7 @@ Run: `pnpm --filter builder exec vitest run __tests__/should-run-webchat-challen
 Expected: PASS.
 
 Run: `pnpm --filter worker exec vitest run __tests__ -t "handoff"`
-Expected: PASS. If a handoff-executor test asserts the exact `.set()` payload, update it to include `additionalAttributes: expect.anything()` and to mock `@chatbotx.io/business/smart-delay`.
+Expected: PASS. If a handoff-executor test asserts the exact `.set()` payload, update it to include `additionalAttributes: expect.anything()` and to mock `@salesmanchatbot.io/business/smart-delay`.
 
 - [ ] **Step 6: Commit**
 
@@ -2732,7 +2732,7 @@ import {
   startAnotherNodeStepDefaultFn,
   startExternalFlowStepDefaultFn,
   startExternalNodeStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { useReactFlow } from "@xyflow/react"
 import { useTranslations } from "next-intl"
 import { useCallback } from "react"
@@ -2979,15 +2979,15 @@ import {
   quickReplyNextStepFollowsEdge,
   quickReplyNextStepHiddenButtonTypes,
   type QuickReplyNextStep,
-} from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { ChevronDownIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useState } from "react"
@@ -3106,19 +3106,19 @@ import {
   quickReplySettingsDefaultFn,
   quickReplySettingsDelayUnits,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { Settings2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -3366,7 +3366,7 @@ git commit -m "feat(flows): configure quick replies dialog"
 
 - [ ] **Step 1: Write the failing duplication test**
 
-Append to `duplicate-node-data.test.ts` (add `quickReplySettingsDefaultFn`, `startExternalFlowStepDefaultFn` to its `@chatbotx.io/flow-config` import if missing):
+Append to `duplicate-node-data.test.ts` (add `quickReplySettingsDefaultFn`, `startExternalFlowStepDefaultFn` to its `@salesmanchatbot.io/flow-config` import if missing):
 
 ```ts
 describe("duplicateFlowNodeData — quick reply settings", () => {
@@ -3448,7 +3448,7 @@ In `toolbar/duplicate-node-data.ts`, after the `quickReplies` block (line ~98-10
     }
   }
 ```
-Import `quickReplyNextStepFollowsEdge` and `type QuickReplyNextStep` from `@chatbotx.io/flow-config`. `isRecord`, `clone` and `createId` are already used in this file. Reuse them.
+Import `quickReplyNextStepFollowsEdge` and `type QuickReplyNextStep` from `@salesmanchatbot.io/flow-config`. `isRecord`, `clone` and `createId` are already used in this file. Reuse them.
 
 - [ ] **Step 4: Canvas handles**
 
@@ -3456,7 +3456,7 @@ Create `nodes/quick-reply-settings/quick-reply-settings-handles.tsx`:
 ```tsx
 "use client"
 
-import { listQuickReplySettingsHandles } from "@chatbotx.io/flow-config"
+import { listQuickReplySettingsHandles } from "@salesmanchatbot.io/flow-config"
 import { Position } from "@xyflow/react"
 import { useTranslations } from "next-intl"
 import { BaseHandle } from "@/components/base-handle"
@@ -3528,12 +3528,12 @@ Expected: PASS. `pnpm lint` includes `db:check-drift` and `check:agent-instructi
 
 - [ ] **Step 2: Typecheck all touched workspaces**
 
-Run: `pnpm --filter @chatbotx.io/flow-config check-types && pnpm --filter @chatbotx.io/database check-types && pnpm --filter @chatbotx.io/worker-config check-types && pnpm --filter @chatbotx.io/business check-types && pnpm --filter worker check-types && pnpm --filter builder check-types`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config check-types && pnpm --filter @salesmanchatbot.io/database check-types && pnpm --filter @salesmanchatbot.io/worker-config check-types && pnpm --filter @salesmanchatbot.io/business check-types && pnpm --filter worker check-types && pnpm --filter builder check-types`
 Expected: PASS.
 
 - [ ] **Step 3: Tests**
 
-Run: `pnpm --filter @chatbotx.io/flow-config test && pnpm --filter worker test && pnpm --filter builder test && pnpm --filter @chatbotx.io/business test`
+Run: `pnpm --filter @salesmanchatbot.io/flow-config test && pnpm --filter worker test && pnpm --filter builder test && pnpm --filter @salesmanchatbot.io/business test`
 Expected: PASS.
 
 - [ ] **Step 4: Structural checks**
@@ -3545,7 +3545,7 @@ Dispatch the `invariant-guard` agent on the branch diff. It checks i18n, the no-
 
 - [ ] **Step 5: End-to-end smoke (local; the user applies migrations)**
 
-Ask the user to run `pnpm --filter @chatbotx.io/database db:migrate`, after they have seen the two migration SQL files. Then, on a local Messenger or webchat test contact, set up a node with 2 quick replies, Retry at 2 retries leading to node B, and Follow-up after 1 minute leading to node C. Check each of these:
+Ask the user to run `pnpm --filter @salesmanchatbot.io/database db:migrate`, after they have seen the two migration SQL files. Then, on a local Messenger or webchat test contact, set up a node with 2 quick replies, Retry at 2 retries leading to node B, and Follow-up after 1 minute leading to node C. Check each of these:
 1. Type "hello". The retry message comes back with the quick replies.
 2. Type again. A second retry is sent.
 3. Type a third time. The contact lands on node B.

@@ -1,10 +1,10 @@
 import {
   CAPABILITIES_INCLUDES,
   getCapabilities,
-} from "@chatbotx.io/business/capabilities"
-import { capabilitiesResponseSchema } from "@chatbotx.io/business/capabilities/schema"
-import { flowSpecSchema } from "@chatbotx.io/flow-config"
-import { channelTypes } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/business/capabilities"
+import { capabilitiesResponseSchema } from "@salesmanchatbot.io/business/capabilities/schema"
+import { flowSpecSchema } from "@salesmanchatbot.io/flow-config"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4"
 import { z } from "zod"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"

@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   ensureContactAvatarMirrored: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/channel-registry/media-hydration", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/media-hydration", () => ({
   ensureContactAvatarMirrored: mocks.ensureContactAvatarMirrored,
 }))
 

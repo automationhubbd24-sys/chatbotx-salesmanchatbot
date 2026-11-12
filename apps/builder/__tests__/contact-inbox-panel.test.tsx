@@ -143,7 +143,7 @@ vi.mock("@/features/contact-sequences/update-contact-sequence-field", () => ({
 
 let latestAccordionOnValueChange: ((value: string[]) => void) | undefined
 
-vi.mock("@chatbotx.io/ui/components/ui/accordion", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/accordion", () => ({
   Accordion: ({
     children,
     onValueChange,

@@ -13,11 +13,11 @@ const mocks = vi.hoisted(() => ({
   updateDraftCustomFields: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.transaction },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   orderIntakeSessionRepository: {
     bindOrder: mocks.bindOrder,
     createForIntent: mocks.createForIntent,

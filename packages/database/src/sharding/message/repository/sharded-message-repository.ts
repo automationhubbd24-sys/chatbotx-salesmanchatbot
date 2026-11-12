@@ -2,7 +2,7 @@ import {
   invalidateCacheByTags,
   distributedLock as redisDistributedLock,
   withCache,
-} from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/redis"
 import {
   and,
   desc,

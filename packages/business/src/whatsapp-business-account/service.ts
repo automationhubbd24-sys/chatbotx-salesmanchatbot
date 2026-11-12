@@ -1,11 +1,11 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import {
   type MarkWhatsappBusinessAccountProvisionedInput,
   type UpdateWhatsappBusinessAccountScopeCacheInput,
   whatsappBusinessAccountRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappBusinessAccountModel } from "@chatbotx.io/database/types"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappBusinessAccountModel } from "@salesmanchatbot.io/database/types"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import { z } from "zod"
 import { BaseService } from "../base.service"
 

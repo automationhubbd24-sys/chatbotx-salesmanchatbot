@@ -1,4 +1,4 @@
-import { systemFunctionNames, toolPrefixes } from "@chatbotx.io/ai"
+import { systemFunctionNames, toolPrefixes } from "@salesmanchatbot.io/ai"
 import { z } from "zod"
 
 export const MAX_WEB_SEARCH_AUTHORIZED_DOMAINS = 20

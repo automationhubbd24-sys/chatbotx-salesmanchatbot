@@ -2,17 +2,17 @@ import {
   contactInboxService,
   type conversationService,
   messageService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { integrationWhatsappRepository } from "@chatbotx.io/database/repositories"
-import type { UserModel } from "@chatbotx.io/database/types"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
-import { invalidateCacheKeys } from "@chatbotx.io/redis"
-import type { MessageWhatsappCallPermissionRequestEntity } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { integrationWhatsappRepository } from "@salesmanchatbot.io/database/repositories"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
+import { invalidateCacheKeys } from "@salesmanchatbot.io/redis"
+import type { MessageWhatsappCallPermissionRequestEntity } from "@salesmanchatbot.io/sdk"
 import { logger } from "@/lib/log"
 import { resolveDialIdentity } from "../actions/outbound-dial-target"
 import {
@@ -81,7 +81,7 @@ export async function requestWhatsappCallPermission(props: {
       })
     : null
   if (props.inboxId && !pinned && props.requireRequestedInbox) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       messages.inboxNotFound ?? messages.notFound,
       "notFound",
       404,
@@ -96,7 +96,7 @@ export async function requestWhatsappCallPermission(props: {
       },
     }))
   if (!contactInbox) {
-    throw new ChatbotXException(messages.notWhatsappConversation)
+    throw new salesmanChatbotException(messages.notWhatsappConversation)
   }
 
   const integration =
@@ -105,7 +105,7 @@ export async function requestWhatsappCallPermission(props: {
       inboxId: contactInbox.inboxId,
     })
   if (!integration) {
-    throw new ChatbotXException(messages.notFound, "notFound", 404)
+    throw new salesmanChatbotException(messages.notFound, "notFound", 404)
   }
 
   const { permissionTarget } = resolveDialIdentity(contactInbox)
@@ -118,12 +118,12 @@ export async function requestWhatsappCallPermission(props: {
   // Whatever Meta said leads — it names the real reason. Fails closed either
   // way: a check that never ran is not evidence of remaining budget.
   if (!permissions.ok) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       toPublicErrorMessage(permissions.error, messages.permissionCheckFailed),
     )
   }
   if (!canSendCallPermissionRequest(permissions.permissions)) {
-    throw new ChatbotXException(messages.permissionRequestLimitReached)
+    throw new salesmanChatbotException(messages.permissionRequestLimitReached)
   }
 
   const entity: MessageWhatsappCallPermissionRequestEntity = {

@@ -1,6 +1,6 @@
 "use server"
 
-import { resolveFilterTimezone } from "@chatbotx.io/utils/datetime"
+import { resolveFilterTimezone } from "@salesmanchatbot.io/utils/datetime"
 import { cookies } from "next/headers"
 import {
   TIMEZONE_COOKIE_MAX_AGE_SECONDS,

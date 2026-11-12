@@ -17,7 +17,7 @@ const blockedWorkspaceIds = new Set<string>()
 // individual tests override this to simulate a lost promotion race.
 let promotionSucceeds = true
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   withBlockedOwnerGuard: async (
     workspaceId: unknown,
     fn: () => Promise<unknown>,
@@ -36,11 +36,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () =>
-  vi.importActual("@chatbotx.io/database/partials"),
+vi.mock("@salesmanchatbot.io/database/partials", async () =>
+  vi.importActual("@salesmanchatbot.io/database/partials"),
 )
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   purgeBroadcastRecipients: (...args: unknown[]) =>
     purgeBroadcastRecipientsSpy(...args),
 }))
@@ -52,7 +52,7 @@ vi.mock("../src/lib/logger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   broadcastSendJobId: (broadcastId: string) => `broadcast-send-${broadcastId}`,
   scheduleQueue: {
     add: (...args: unknown[]) => scheduleAddSpy(...args),

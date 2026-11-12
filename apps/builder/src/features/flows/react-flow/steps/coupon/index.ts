@@ -5,7 +5,7 @@ import {
   setUpCouponStepDefaultFn,
   setUpCouponStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import { CouponActionEditor } from "./editor"
 import { CouponActionViewer } from "./viewer"

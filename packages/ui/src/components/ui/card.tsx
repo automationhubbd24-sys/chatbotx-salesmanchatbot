@@ -1,6 +1,6 @@
 import type * as React from "react"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (

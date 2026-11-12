@@ -1,7 +1,7 @@
 import type {
   WorkspaceApiTokenModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { os } from "@orpc/server"
 import type { ResponseHeadersPluginContext } from "@orpc/server/plugins"
 import type { SessionUser } from "@/lib/auth/utils"

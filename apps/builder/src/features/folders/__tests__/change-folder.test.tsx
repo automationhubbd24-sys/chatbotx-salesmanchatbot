@@ -40,17 +40,17 @@ vi.mock("@next-safe-action/adapter-react-hook-form/hooks", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: React.ComponentProps<"button">) => (
     <button {...props}>{children}</button>
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   DialogContent: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -65,7 +65,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTrigger: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", () => ({
   Form: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
 

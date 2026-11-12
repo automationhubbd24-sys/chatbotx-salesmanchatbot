@@ -1,10 +1,10 @@
 import {
   contactCustomFieldService,
   contactInboxService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
-import { getStoragePrefix, uploader } from "@chatbotx.io/filesystem"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
+import { getStoragePrefix, uploader } from "@salesmanchatbot.io/filesystem"
 import { logger } from "../../lib/logger"
 import { integrationService } from "../../services/integrations"
 
@@ -84,7 +84,7 @@ export async function saveResultToCustomField(props: {
     // its step as success. `setValueByKey` throws notFound instead — swallow
     // exactly that case (log for operators) and let every other error
     // propagate to the caller's own handling.
-    if (error instanceof ChatbotXException && error.code === "notFound") {
+    if (error instanceof salesmanChatbotException && error.code === "notFound") {
       logger.warn(
         { workspaceId, contactId, customFieldId },
         "saveResultToCustomField target no longer exists; skipping",

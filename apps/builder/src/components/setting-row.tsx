@@ -1,4 +1,4 @@
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import type { ReactElement, ReactNode } from "react"
 
 type SettingRowProps = {

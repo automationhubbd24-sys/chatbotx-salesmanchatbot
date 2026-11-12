@@ -26,8 +26,8 @@ vi.mock("whatsapp-api-js/middleware/next", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils/crypto", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/utils/crypto")>()),
+vi.mock("@salesmanchatbot.io/utils/crypto", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/utils/crypto")>()),
   verifyHmacSha256Signature: vi.fn().mockResolvedValue(true),
 }))
 

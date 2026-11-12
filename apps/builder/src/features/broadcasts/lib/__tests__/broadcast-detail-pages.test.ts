@@ -1,4 +1,4 @@
-import type { BroadcastTemplateDetail } from "@chatbotx.io/business"
+import type { BroadcastTemplateDetail } from "@salesmanchatbot.io/business"
 import { describe, expect, test } from "vitest"
 import type { BroadcastResourceWithRelations } from "../../schema/resource"
 import {

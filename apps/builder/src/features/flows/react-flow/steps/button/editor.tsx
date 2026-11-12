@@ -3,13 +3,13 @@ import {
   CHANNEL_FLOW_POLICIES,
   getChannelFlowPolicy,
   resolveSendTextLengthLimits,
-} from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Sortable,
   SortableItem,
   SortableItemHandle,
-} from "@chatbotx.io/ui/components/ui/sortable"
+} from "@salesmanchatbot.io/ui/components/ui/sortable"
 import { GripVerticalIcon, PlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form"

@@ -66,7 +66,7 @@ vi.mock("@/lib/auth/utils", () => ({
   getCurrentUserAndTargetWorkspace: getCurrentUserAndTargetWorkspaceMock,
 }))
 
-vi.mock("@chatbotx.io/business", async () => {
+vi.mock("@salesmanchatbot.io/business", async () => {
   const { z } = await import("zod")
   const trigger = z.discriminatedUnion("type", [
     z.object({
@@ -161,8 +161,8 @@ vi.mock("@chatbotx.io/business", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
 vi.mock("next-intl/server", () => ({

@@ -1,11 +1,11 @@
-import { webhookService, workspaceService } from "@chatbotx.io/business"
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+import { webhookService, workspaceService } from "@salesmanchatbot.io/business"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   isMatchableEventType,
   matchableConditionTypesFor,
   SCANNER_VERIFIED_EVENT_TYPES,
-} from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/events"
 import { logger } from "../../lib/logger"
 import { ConditionEvaluator } from "../../trigger/services/condition-evaluator"
 import type {

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

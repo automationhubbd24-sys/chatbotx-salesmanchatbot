@@ -1,15 +1,15 @@
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import {
   type FacebookAdInsight,
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
   integration as facebookAdsIntegration,
-} from "@chatbotx.io/integration-facebook-ads"
-import { withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { withCache } from "@salesmanchatbot.io/redis"
 import { buildContext, type IntegrationContext } from "../integration-context"
 import { integrationFacebookAdsService } from "./service"
 
-export { integration as facebookAdsIntegration } from "@chatbotx.io/integration-facebook-ads"
+export { integration as facebookAdsIntegration } from "@salesmanchatbot.io/integration-facebook-ads"
 
 const FB_LIST_CACHE_TTL_SECONDS = 60
 const FB_INSIGHTS_CACHE_TTL_SECONDS = 60 * 60
@@ -32,7 +32,7 @@ export const buildFacebookAdsContext = async (workspaceId: string) => {
 // not `Awaited<ReturnType<typeof buildFacebookAdsContext>>` — `getContext`
 // resolvers passed into `getCachedAdInsights`/`getCachedDailyAdInsights`
 // (below) also come from `buildMessagingAdsContext`
-// (`@chatbotx.io/business/messaging-ads-connection`, the box's per-integration
+// (`@salesmanchatbot.io/business/messaging-ads-connection`, the box's per-integration
 // connection), which produces byte-identical shape via the same
 // `buildContextWithAuthStore` under the hood. See
 // `packages/business/src/ads-analytics/service.ts`'s

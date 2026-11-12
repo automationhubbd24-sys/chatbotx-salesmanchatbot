@@ -1,7 +1,7 @@
 "use server"
 
-import { integrationSmtpService, workspaceService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { integrationSmtpService, workspaceService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 
 export const deleteSmtpAction = workspaceActionClient

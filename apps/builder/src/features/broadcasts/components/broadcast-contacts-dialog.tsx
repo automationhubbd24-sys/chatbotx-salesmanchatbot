@@ -1,6 +1,6 @@
 "use client"
 
-import type { BroadcastEventType } from "@chatbotx.io/analytics/schemas"
+import type { BroadcastEventType } from "@salesmanchatbot.io/analytics/schemas"
 import { useTranslations } from "next-intl"
 import { memo, useCallback } from "react"
 import {

@@ -10,7 +10,7 @@ type GashaponMachineArtProps = {
   phase?: GashaponMachinePhase
 }
 
-// Intentionally not `@chatbotx.io/ui`'s `hexToRgb`, mirroring
+// Intentionally not `@salesmanchatbot.io/ui`'s `hexToRgb`, mirroring
 // `jackpot-machine-art.tsx`/`lucky-wheel-art.tsx`: this fallback tuple keeps
 // malformed input a visible color instead of silently rendering black.
 const FALLBACK_RGB: [number, number, number] = [219, 39, 119]

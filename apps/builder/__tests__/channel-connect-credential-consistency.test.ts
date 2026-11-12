@@ -70,7 +70,7 @@ vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: { resolveForOwner: mockResolveForOwner },
   workspaceService: {
     create: vi.fn(),
@@ -98,15 +98,15 @@ vi.mock("@chatbotx.io/business", () => ({
 
 // The REAL session/item-outcome mapping table — `resolveConnectSession`
 // (called by `connectMessengerPage`) throws genuine exceptions from the
-// (also real, below) `@chatbotx.io/business/errors`, so this file lets the
+// (also real, below) `@salesmanchatbot.io/business/errors`, so this file lets the
 // real mapping classify them instead of re-implementing that table as a
 // second source of truth that could silently drift from production.
-vi.mock("@chatbotx.io/business/inbox/connect-outcome", async (importOriginal) =>
+vi.mock("@salesmanchatbot.io/business/inbox/connect-outcome", async (importOriginal) =>
   importOriginal(),
 )
 
-vi.mock("@chatbotx.io/business/errors", () => {
-  class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => {
+  class salesmanChatbotException extends Error {
     code?: string
     constructor(message: string, code?: string) {
       super(message)
@@ -114,24 +114,24 @@ vi.mock("@chatbotx.io/business/errors", () => {
     }
   }
   return {
-    ChatbotXException,
+    salesmanChatbotException,
     connectSessionExpiredException: (message: string) =>
-      new ChatbotXException(message, "connectSessionExpired"),
+      new salesmanChatbotException(message, "connectSessionExpired"),
     notWorkspaceMemberException: () =>
-      new ChatbotXException("not a member", "notWorkspaceMember"),
+      new salesmanChatbotException("not a member", "notWorkspaceMember"),
     credentialMissingException: (message: string) =>
-      new ChatbotXException(message, "credentialMissing"),
+      new salesmanChatbotException(message, "credentialMissing"),
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: vi.fn(async () => undefined) },
   isDatabaseError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/schema")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>()
   return {
     ...actual,
     integrationInstagramModel: {},
@@ -139,7 +139,7 @@ vi.mock("@chatbotx.io/database/schema", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: { runChannelHandler: vi.fn() },
   logMessengerWelcomeProfile: vi.fn(),
   getUserPages: vi.fn(async () => ({
@@ -154,28 +154,28 @@ vi.mock("@chatbotx.io/integration-messenger", () => ({
     bmLookupFailed: false,
   })),
 }))
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   exchangeLongLivedToken: vi.fn(),
   subscribePageToAppWebhook: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   integration: { runChannelHandler: vi.fn() },
   subscribePageToInstagramWebhook: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   integration: { runChannelHandler: vi.fn() },
   subscribePageToInstagramWebhook: vi.fn(),
 }))
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   AuthType: { oauth2: "oauth2" },
   SdkException: class SdkException extends Error {},
 }))
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: () => "id-1" }
 })
-vi.mock("@chatbotx.io/utils/id", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils/id")>()
+vi.mock("@salesmanchatbot.io/utils/id", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils/id")>()
   return { ...actual, createId: () => "id-1" }
 })
 
@@ -183,7 +183,7 @@ vi.mock("next/navigation", () => ({ redirect: vi.fn() }))
 
 vi.mock("@/env", () => ({ isCloud: () => true }))
 vi.mock("@/features/integration-webchat/lib", () => ({
-  BRANDING_TITLE: "ChatbotX",
+  BRANDING_TITLE: "salesmanChatbot",
   getBrandingUrl: vi.fn(() => ""),
 }))
 vi.mock("@/features/workspaces/actions/upload-logo", () => ({

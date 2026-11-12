@@ -1,24 +1,24 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/form"
 import { ChevronDownIcon, ChevronUpIcon, Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

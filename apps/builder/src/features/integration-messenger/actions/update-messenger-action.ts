@@ -5,16 +5,16 @@ import {
   type IntegrationContext,
   inboxService,
   messengerIntegrationService,
-} from "@chatbotx.io/business"
-import { moveBrandingMenuLast } from "@chatbotx.io/business/branding"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { db } from "@chatbotx.io/database/client"
-import type { MessengerPersona } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import { moveBrandingMenuLast } from "@salesmanchatbot.io/business/branding"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { db } from "@salesmanchatbot.io/database/client"
+import type { MessengerPersona } from "@salesmanchatbot.io/database/partials"
 import type {
   IntegrationMessengerModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
-import { encodeButtonPayload } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/types"
+import { encodeButtonPayload } from "@salesmanchatbot.io/flow-config"
 import {
   ensureMessengerWhitelistedDomain,
   integration as integrationMessenger,
@@ -22,10 +22,10 @@ import {
   logMessengerWelcomeProfile,
   type MessengerProfileRequest,
   messengerMenusToCallToActions,
-} from "@chatbotx.io/integration-messenger"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
-import { distributedStore } from "@chatbotx.io/redis"
-import { createId, zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-messenger"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
+import { distributedStore } from "@salesmanchatbot.io/redis"
+import { createId, zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { normalizeError } from "universal-error-normalizer"
 import { getBrandingUrl } from "@/features/integration-webchat/lib"
 import { logger } from "@/lib/log"
@@ -85,7 +85,7 @@ export const updateMessenger = async (
       // the page's persona identity from every outbound message, so surface the
       // failure (rolls back the tx) instead of degrading to the generic page.
       if (defaultPersona && !isRegisteredPersona(defaultPersona)) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Couldn't register the default persona with Facebook. Please try saving again.",
         )
       }
@@ -196,11 +196,11 @@ export const updateMessenger = async (
   } catch (error) {
     // Preserve explicit, actionable messages (e.g. persona registration); only
     // unknown failures collapse to the generic message.
-    if (error instanceof ChatbotXException) {
+    if (error instanceof salesmanChatbotException) {
       throw error
     }
     logger.debug(error, "Failed to update Facebook page")
-    throw new ChatbotXException("Failed to update Facebook page")
+    throw new salesmanChatbotException("Failed to update Facebook page")
   }
 }
 

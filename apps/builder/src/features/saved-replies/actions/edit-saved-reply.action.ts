@@ -1,7 +1,7 @@
 "use server"
 
-import { savedReplyService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { savedReplyService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { editSavedReplyRequest } from "../schema/mutation"
 

@@ -40,7 +40,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     delete: mockDelete,
     insert: mockInsert,
@@ -56,7 +56,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   and: vi.fn((...args: unknown[]) => ({ and: args })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   aiMCPServerModel: {
     id: "id",
     workspaceId: "workspaceId",
@@ -64,7 +64,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => "mcp-server-1",
 }))
 

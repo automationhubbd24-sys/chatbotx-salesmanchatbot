@@ -1,4 +1,4 @@
-import { and, db, eq, inArray, type SQL } from "@chatbotx.io/database/client"
+import { and, db, eq, inArray, type SQL } from "@salesmanchatbot.io/database/client"
 import type { PgColumn, PgTable } from "drizzle-orm/pg-core"
 
 export type IdLabel = { id: string; name: string }

@@ -2,7 +2,7 @@ import { describe, expect, test, vi } from "vitest"
 
 // ── Mocks (must precede the dynamic import so the module can load) ────────────
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       contactModel: { findMany: vi.fn() },
@@ -17,14 +17,14 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (a: unknown, b: unknown) => ({ eq: [a, b] }),
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () =>
-  vi.importActual("@chatbotx.io/database/partials"),
+vi.mock("@salesmanchatbot.io/database/partials", async () =>
+  vi.importActual("@salesmanchatbot.io/database/partials"),
 )
 
 // Prevent the repositories barrel from being evaluated — it reaches
-// contact-inbox/repository.ts, which needs a fuller @chatbotx.io/database/schema
+// contact-inbox/repository.ts, which needs a fuller @salesmanchatbot.io/database/schema
 // mock than this file provides.
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactRepository: {
     listForExportPage: vi.fn(),
   },
@@ -33,25 +33,25 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/queries", () => ({
+vi.mock("@salesmanchatbot.io/database/queries", () => ({
   applyContactFilter: (criteria: unknown) => ({ __filter: criteria }),
   pruneEmailPhoneFilterConditions: (criteria: unknown) => criteria,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: { find: vi.fn(async () => ({ timezone: "UTC" })) },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactCustomFieldModel: {},
   fileModel: { id: "File.id", workspaceId: "File.workspaceId" },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   loopableItemsCount: 100,
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {
     createUpload: vi.fn(),
   },

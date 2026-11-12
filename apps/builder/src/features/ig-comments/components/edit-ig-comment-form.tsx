@@ -1,8 +1,8 @@
 "use client"
 
-import { normalizeReplyTexts } from "@chatbotx.io/database/partials"
+import { normalizeReplyTexts } from "@salesmanchatbot.io/database/partials"
 
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

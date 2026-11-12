@@ -69,7 +69,7 @@ vi.mock("@/lib/auth/utils", () => ({
   assertCurrentUserCanAccessChatbot: mocks.assertCurrentUserCanAccessChatbot,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       errorLogModel: { findMany: mocks.findMany },
@@ -81,12 +81,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   errorLogModel: { id: "errorLogModelId" },
   workspaceMemberModel: { id: "workspaceMemberModelId" },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: (input: { page?: number; perPage?: number }) => ({
     limit: input.perPage ?? 10,
     offset: ((input.page ?? 1) - 1) * (input.perPage ?? 10),
@@ -98,17 +98,17 @@ vi.mock("@chatbotx.io/database/utils", () => ({
   parseOrderByAsObject: () => ({}),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   rootFolderId: "0",
   withBroadcastTargets: { targets: true },
 }))
 
-vi.mock("@chatbotx.io/utils/error-log", () => ({
+vi.mock("@salesmanchatbot.io/utils/error-log", () => ({
   errorLogProviders: { safeParse: () => ({ success: false }) },
   errorLogProvidersMatchingLabel: () => [],
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   AVATAR_HYDRATION_CHANNELS: new Set(["messenger", "instagram"]),
   inboxTeamService: { listByWorkspace: mocks.listByWorkspace },
   conversationService: {
@@ -136,7 +136,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({
   sequenceService: {
     findWithSteps: mocks.sequenceFindWithSteps,
     list: async (input: { page?: number; perPage?: number }) => {
@@ -153,19 +153,19 @@ vi.mock("@chatbotx.io/business/sequence", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   listErrorLogs: mocks.listErrorLogsService,
 }))
 
-vi.mock("@chatbotx.io/business/ads-conversion/channel-fields", () => ({
+vi.mock("@salesmanchatbot.io/business/ads-conversion/channel-fields", () => ({
   resolveAdReferral: () => null,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: (message: string) => new Error(message),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxOperationalColumns: { sourceIdentityHistory: false },
   createMessageRepository: vi.fn().mockResolvedValue({
     findLastByConversation: mocks.findLastByConversation,
@@ -244,7 +244,7 @@ describe("public list queries never depend on a session", () => {
   })
 
   test("sequenceService.findWithSteps resolves without a session", async () => {
-    const { sequenceService } = await import("@chatbotx.io/business/sequence")
+    const { sequenceService } = await import("@salesmanchatbot.io/business/sequence")
     await expect(
       sequenceService.findWithSteps({ workspaceId: "ws-1", id: "seq-1" }),
     ).resolves.toBeDefined()
@@ -252,7 +252,7 @@ describe("public list queries never depend on a session", () => {
   })
 
   test("listErrorLogs resolves without a session", async () => {
-    const { listErrorLogs } = await import("@chatbotx.io/business/error-log")
+    const { listErrorLogs } = await import("@salesmanchatbot.io/business/error-log")
     await expect(listErrorLogs({ workspaceId: "ws-1" })).resolves.toBeDefined()
     expect(mocks.assertCurrentUserCanAccessChatbot).not.toHaveBeenCalled()
   })

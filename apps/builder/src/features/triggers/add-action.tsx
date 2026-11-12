@@ -3,14 +3,14 @@
 import {
   type TriggerAction,
   triggerActions,
-} from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import { PlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"

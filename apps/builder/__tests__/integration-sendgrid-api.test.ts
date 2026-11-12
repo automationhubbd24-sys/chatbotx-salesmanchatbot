@@ -15,7 +15,7 @@ const { MockSendGridApiError, mockRunAction } = vi.hoisted(() => {
 })
 
 // ---- mock: database client -----------------------------------------------
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       workspaceMemberModel: {
@@ -32,12 +32,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
 }))
 
 // ---- mock: database schema (pass-through avoids Drizzle init issues) ------
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) =>
-  importOriginal<typeof import("@chatbotx.io/database/schema")>(),
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) =>
+  importOriginal<typeof import("@salesmanchatbot.io/database/schema")>(),
 )
 
 // ---- mock: logger -----------------------------------------------------------
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     error: vi.fn(),
     info: vi.fn(),
@@ -59,7 +59,7 @@ vi.mock("@/lib/auth/auth", () => ({
 }))
 
 // ---- mock: worker-config (prevent Redis init) ------------------------------
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getRedisConnection: () => ({}),
   // Referenced at module scope by packages/business's coexist/workspace
   // services (pulled in transitively) — plain constants, no side effects.
@@ -77,7 +77,7 @@ vi.mock("@/features/integration-sendgrid/queries", () => ({
 }))
 
 // ---- mock: integration (manual — avoids importOriginal transitive deps) ----
-vi.mock("@chatbotx.io/integration-sendgrid", async () => {
+vi.mock("@salesmanchatbot.io/integration-sendgrid", async () => {
   const { z } = await import("zod")
   return {
     SendGridApiError: MockSendGridApiError,
@@ -106,7 +106,7 @@ const { call } = await import("@orpc/server")
 const { integrationSendGridAPI } = await import(
   "@/features/integration-sendgrid/api"
 )
-const { db } = await import("@chatbotx.io/database/client")
+const { db } = await import("@salesmanchatbot.io/database/client")
 
 const stubCtx = { headers: new Headers({ authorization: "Bearer test-token" }) }
 const stubSendGridCtx = { auth: { authType: "custom", apiKey: "key" } }

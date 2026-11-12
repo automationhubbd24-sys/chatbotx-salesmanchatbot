@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   findByContactInboxId: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappCallPermissionRepository: {
     upsertForContactInbox: mocks.upsertForContactInbox,
     findByContactInboxId: mocks.findByContactInboxId,

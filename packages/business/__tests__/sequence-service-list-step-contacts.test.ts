@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   findManyByIds: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn(),
   db: {},
   eq: vi.fn(),
@@ -13,20 +13,20 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isUniqueViolationError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   sequenceModel: {},
   sequenceStepModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   sequenceRepository: {},
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   sequenceAnalyticsService: { getContacts: mocks.getContacts },
 }))
 

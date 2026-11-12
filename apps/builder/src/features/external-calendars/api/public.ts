@@ -1,4 +1,4 @@
-import { appointmentExternalCalendarService } from "@chatbotx.io/business"
+import { appointmentExternalCalendarService } from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnDisconnectingExternalCalendar,
   possibleErrorsOnListingResource,

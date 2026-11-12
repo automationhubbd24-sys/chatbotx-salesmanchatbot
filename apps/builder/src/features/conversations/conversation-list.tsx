@@ -4,12 +4,12 @@ import {
   assignerFilterTypes,
   channelTypes,
   conversationBotCategories,
-} from "@chatbotx.io/database/partials"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/database/partials"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { SearchIcon, UserPlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"

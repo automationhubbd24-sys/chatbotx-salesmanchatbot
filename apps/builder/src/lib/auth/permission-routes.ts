@@ -1,20 +1,20 @@
 // Imported from the `workspace-member/permissions` subpath, NOT the
-// top-level `@chatbotx.io/business` barrel — that barrel transitively pulls
+// top-level `@salesmanchatbot.io/business` barrel — that barrel transitively pulls
 // in `packages/database`'s `db` client and breaks in a client-flavored
 // test/bundle environment. Re-exported unchanged for existing callers.
 import {
   hasContactsAccess,
   hasWorkspacePermission,
   type PermissionsInput,
-} from "@chatbotx.io/business/workspace-member/permissions"
-import type { WorkspaceMemberPermissions } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business/workspace-member/permissions"
+import type { WorkspaceMemberPermissions } from "@salesmanchatbot.io/database/partials"
 
 export {
   hasContactsAccess,
   hasWorkspacePermission,
   type PermissionsInput,
   type WorkspacePermissionKey,
-} from "@chatbotx.io/business/workspace-member/permissions"
+} from "@salesmanchatbot.io/business/workspace-member/permissions"
 
 export const PERMISSION_NAV = {
   dashboard: "analytics",

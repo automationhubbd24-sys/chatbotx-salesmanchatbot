@@ -1,4 +1,4 @@
-import { macAnalyticsService } from "@chatbotx.io/analytics"
+import { macAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   and,
   type DatabaseClient,
@@ -9,37 +9,37 @@ import {
   isNull,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type ContactSource,
   channelTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   buildContactWhere,
   type ContactFilterCriteriaInput,
   contactFilterHasPredicate,
-} from "@chatbotx.io/database/queries"
-import { contactRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/queries"
+import { contactRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   contactInboxModel,
   contactModel,
   conversationModel,
   inboxModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ContactModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
-import { emitContactCreated } from "@chatbotx.io/events"
-import { uploadFileFromUrl } from "@chatbotx.io/filesystem"
-import { invalidateCacheByTags, withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { emitContactCreated } from "@salesmanchatbot.io/events"
+import { uploadFileFromUrl } from "@salesmanchatbot.io/filesystem"
+import { invalidateCacheByTags, withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { dispatchAuditRecord } from "../audit/dispatcher"
 import { BaseService } from "../base.service"
 import { getContactInboxSinceTime } from "../contact-inbox/service"
 import { contactInboxPostService } from "../contact-inbox-post/service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { logger } from "../logger"
 import { NO_AVATAR_SENTINEL_KEY } from "../media/no-avatar-sentinel"
 import { messageCleanupService } from "../message-cleanup/service"
@@ -871,7 +871,7 @@ class ContactService extends BaseService {
         columns: { id: true },
       })
       if (phoneConflict) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Phone number already exists",
           "phoneExists",
           422,
@@ -920,7 +920,7 @@ class ContactService extends BaseService {
             })
             .returning()
           if (!newContactInbox) {
-            throw new ChatbotXException("Contact inbox not found")
+            throw new salesmanChatbotException("Contact inbox not found")
           }
 
           // No cancelByInboxSource here: this path mints a fresh random sourceId,

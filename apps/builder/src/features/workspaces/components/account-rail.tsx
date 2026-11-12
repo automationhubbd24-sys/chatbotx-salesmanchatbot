@@ -2,8 +2,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   CreditCardIcon,
   CrownIcon,

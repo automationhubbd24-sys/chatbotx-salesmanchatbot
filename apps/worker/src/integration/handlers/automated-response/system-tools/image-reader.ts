@@ -1,11 +1,11 @@
 import { createHash } from "node:crypto"
-import type { systemFunctionNames } from "@chatbotx.io/ai"
+import type { systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   ImageReaderInput,
   SystemToolExecutors,
-} from "@chatbotx.io/ai/server"
-import type { AIAgentModelConfig } from "@chatbotx.io/database/partials"
-import type { AttachmentModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/ai/server"
+import type { AIAgentModelConfig } from "@salesmanchatbot.io/database/partials"
+import type { AttachmentModel } from "@salesmanchatbot.io/database/types"
 import {
   getHeavyJobCompletionWaitTimeoutMs,
   getHeavyJobOptions,
@@ -14,7 +14,7 @@ import {
   heavyAnalyzeImageResultSchema,
   heavyQueue,
   waitForJobCompletionWithRetries,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import pLimit from "p-limit"
 import { normalizeError } from "universal-error-normalizer"
 import { env } from "../../../../env"

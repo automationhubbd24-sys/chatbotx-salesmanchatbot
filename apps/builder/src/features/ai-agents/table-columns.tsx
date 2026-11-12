@@ -1,19 +1,19 @@
 "use client"
 
-import type { AIAgentModel } from "@chatbotx.io/database/types"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import type { AIAgentModel } from "@salesmanchatbot.io/database/types"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import type { ColumnDef, Row } from "@tanstack/react-table"
 import { format } from "date-fns"
 import {

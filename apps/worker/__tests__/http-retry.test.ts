@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { describe, expect, it } from "vitest"
 import { isRetryable } from "../src/integration/handlers/shared/http-retry"
 

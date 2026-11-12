@@ -1,7 +1,7 @@
 import {
   getPublicHostFromRequest,
   getPublicProtocolFromRequest,
-} from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/utils"
 import { env } from "@/env"
 import { getBrokerOrigin } from "./oauth-broker"
 import { isAllowedOrigin } from "./oauth-referer"
@@ -17,7 +17,7 @@ const isRedirect = (status: number): boolean => status >= 300 && status < 400
  * `BETTER_AUTH_URL` (= the builder URL). So a user who clicked the link on a
  * reseller's custom domain is bounced to the builder host, losing the brand and,
  * worse, the freshly-minted session cookie scoped to that host. The email link's
- * host is already rewritten when sent (`@chatbotx.io/auth` server.ts); this is the
+ * host is already rewritten when sent (`@salesmanchatbot.io/auth` server.ts); this is the
  * matching fix for the *redirect* leg.
  *
  * Only a 3xx whose `Location` origin is the builder or broker origin (i.e. a

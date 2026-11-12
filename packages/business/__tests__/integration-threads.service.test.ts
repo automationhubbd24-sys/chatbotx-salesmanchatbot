@@ -23,7 +23,7 @@ const mocks = vi.hoisted(() => ({
   connectionTransition: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       integrationThreadsModel: {
@@ -45,7 +45,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   findOrFail: mocks.findOrFail,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationThreadsModel: {
     id: "IntegrationThreads.id",
     workspaceId: "IntegrationThreads.workspaceId",
@@ -63,7 +63,7 @@ vi.mock("../src/inbox/service", () => ({
   inboxService: { disconnect: mocks.disconnectInbox },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   // Defaults to "no Connection row" so the existing disconnect test below
   // (written before the Connection-row integration) keeps exercising the
   // legacy `inboxService.disconnect` fallback unchanged.
@@ -120,8 +120,8 @@ describe("integrationThreadsService", () => {
       ownerId: "owner-1",
       auth: { token: "token" },
       threadsUserId: "user-1",
-      username: "chatbotx",
-      name: "ChatbotX",
+      username: "salesmanchatbot",
+      name: "salesmanChatbot",
     })
 
     expect(mocks.connectChannelIntegration).toHaveBeenCalledWith(
@@ -150,8 +150,8 @@ describe("integrationThreadsService", () => {
       ownerId: "owner-1",
       auth: { token: "token" },
       threadsUserId: "user-1",
-      username: "chatbotx",
-      name: "ChatbotX",
+      username: "salesmanchatbot",
+      name: "salesmanChatbot",
     })
 
     expect(mocks.runConnectTransaction).toHaveBeenCalledWith(
@@ -174,8 +174,8 @@ describe("integrationThreadsService", () => {
       ownerId: "owner-1",
       auth: { token: "token" },
       threadsUserId: "user-1",
-      username: "chatbotx",
-      name: "ChatbotX",
+      username: "salesmanchatbot",
+      name: "salesmanChatbot",
       tx: callerTx as never,
     })
 
@@ -190,8 +190,8 @@ describe("integrationThreadsService", () => {
       workspaceId: "workspace-1",
       id: "threads-1",
       auth: { token: "new-token" },
-      username: "chatbotx-updated",
-      name: "ChatbotX Updated",
+      username: "salesmanchatbot-updated",
+      name: "salesmanChatbot Updated",
     })
 
     expect(mocks.updateTable).toHaveBeenCalled()
@@ -327,8 +327,8 @@ describe("integrationThreadsService", () => {
       workspaceId: "workspace-1",
       id: "threads-1",
       auth: { tokens: { accessToken: "token-3" } },
-      username: "chatbotx",
-      name: "ChatbotX",
+      username: "salesmanchatbot",
+      name: "salesmanChatbot",
     })
     expect(mocks.updateSet).toHaveBeenCalledWith(
       expect.objectContaining({ tokenRefreshError: null }),
@@ -342,8 +342,8 @@ describe("integrationThreadsService", () => {
         workspaceId: "workspace-1",
         id: "threads-1",
         auth: { tokens: { accessToken: "token-2" } },
-        username: "chatbotx",
-        name: "ChatbotX",
+        username: "salesmanchatbot",
+        name: "salesmanChatbot",
       }),
     ).resolves.toBe(true)
 
@@ -353,8 +353,8 @@ describe("integrationThreadsService", () => {
         workspaceId: "workspace-1",
         id: "threads-missing",
         auth: { tokens: { accessToken: "token-2" } },
-        username: "chatbotx",
-        name: "ChatbotX",
+        username: "salesmanchatbot",
+        name: "salesmanChatbot",
       }),
     ).resolves.toBe(false)
   })

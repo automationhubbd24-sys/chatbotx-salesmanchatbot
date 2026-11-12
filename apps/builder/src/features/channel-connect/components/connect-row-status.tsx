@@ -1,8 +1,8 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import type { RowCoexistState } from "../hooks/use-connect-batch"
 import {

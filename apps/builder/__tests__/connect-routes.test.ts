@@ -40,7 +40,7 @@ vi.mock("@/lib/auth/auth", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     error: vi.fn(),
     info: vi.fn(),
@@ -50,8 +50,8 @@ vi.mock("@chatbotx.io/logger", () => ({
 }))
 
 const { call } = await import("@orpc/server")
-const { getAuditActor } = await import("@chatbotx.io/business/audit")
-const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+const { getAuditActor } = await import("@salesmanchatbot.io/business/audit")
+const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
 const { integrationMessengerConnectAPIs } = await import(
   "@/features/integration-messenger/api/connect"
 )
@@ -148,9 +148,9 @@ describe("connect routes", () => {
     ).resolves.toEqual(sessionError)
   })
 
-  test("a ChatbotXException escaping a core is mapped to its own 4xx, never a 500", async () => {
+  test("a salesmanChatbotException escaping a core is mapped to its own 4xx, never a 500", async () => {
     mockConnectMessengerPage.mockRejectedValue(
-      new ChatbotXException("Nope", "BAD_REQUEST", 400),
+      new salesmanChatbotException("Nope", "BAD_REQUEST", 400),
     )
 
     const error = await call(

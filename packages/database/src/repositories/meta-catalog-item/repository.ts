@@ -9,13 +9,13 @@ import {
   ne,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   metaCatalogItemModel,
   productModel,
-} from "@chatbotx.io/database/schema"
-import { likeContains } from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { likeContains } from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 /** Keeps a single "type to search" list from ever returning an unbounded page. */
 const DEFAULT_SEARCH_LIMIT = 20

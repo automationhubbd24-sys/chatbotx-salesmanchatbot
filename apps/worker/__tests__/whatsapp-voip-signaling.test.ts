@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   sendToWorkspaceMember: mocks.sendToWorkspaceMember,
   resolveWhatsappCallerName: mocks.resolveWhatsappCallerName,
   whatsappVoipCallService: {
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappCallRepository: {
     findByWacid: mocks.findByWacid,
     findByAttemptId: mocks.findByAttemptId,
@@ -54,12 +54,12 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/calling", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/calling", () => ({
   rejectCall: mocks.rejectCall,
   terminateCall: mocks.terminateCall,
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: {
     whatsappCallTransportIncoming: "whatsappCallTransportIncoming",
     whatsappCallTransportEnded: "whatsappCallTransportEnded",
@@ -67,7 +67,7 @@ vi.mock("@chatbotx.io/partysocket-config", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   WhatsappVoipSignalingJobAction: {
     handleConnect: "handleConnect",
     expireIfUnanswered: "expireIfUnanswered",

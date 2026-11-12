@@ -1,5 +1,5 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { formatBotFieldReference } from "@chatbotx.io/flow-config"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { formatBotFieldReference } from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useCouponTopicOptions } from "@/features/coupons/provider/use-coupon-topic-options"

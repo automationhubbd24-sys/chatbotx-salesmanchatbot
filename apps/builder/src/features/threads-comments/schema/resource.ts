@@ -2,11 +2,11 @@ import {
   commentExcludeKeywordsTypes,
   commentHideCommentsSchema,
   commentIncludeKeywordsSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   commentAutomationModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 const threadsReplySchema = z.discriminatedUnion("type", [

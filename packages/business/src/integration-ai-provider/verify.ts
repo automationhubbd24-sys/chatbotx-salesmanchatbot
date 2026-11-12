@@ -1,4 +1,4 @@
-import { toLogSafeError } from "@chatbotx.io/logger"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
 import ky, { HTTPError } from "ky"
 import { logger } from "../logger"
 
@@ -8,7 +8,7 @@ const UNAUTHORIZED_STATUSES = [401, 403] as const
 /**
  * The subset of `IntegrationType` this module can validate a bare API key
  * for. Deliberately a local literal union (not `AIProvider` from
- * `@chatbotx.io/ai`) — that package depends on `@chatbotx.io/business`, so
+ * `@salesmanchatbot.io/ai`) — that package depends on `@salesmanchatbot.io/business`, so
  * importing it back here would be circular. Every value here is also a real
  * `IntegrationType`.
  */

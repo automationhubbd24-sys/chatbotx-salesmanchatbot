@@ -7,7 +7,7 @@ const loggerInfo = vi.fn()
 const loggerDebug = vi.fn()
 const loggerError = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customDomainService: { findActiveByDomain: vi.fn() },
   platformCredentialService: {
     findDecryptedThreadsByClientId: threadsFindDecryptedByClientId,
@@ -17,20 +17,20 @@ vi.mock("@chatbotx.io/business", () => ({
   tenantService: { findById: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { update: vi.fn() },
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   inboxStatuses: { enum: { disconnected: "disconnected" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   inboxModel: {},
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   integrationQueue: {},
 }))
 

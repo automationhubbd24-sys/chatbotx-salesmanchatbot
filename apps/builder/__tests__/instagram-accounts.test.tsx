@@ -1,4 +1,4 @@
-import type { InstagramAccount } from "@chatbotx.io/integration-instagram"
+import type { InstagramAccount } from "@salesmanchatbot.io/integration-instagram"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"

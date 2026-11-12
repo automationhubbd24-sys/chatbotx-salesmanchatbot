@@ -35,18 +35,18 @@ vi.mock("@/lib/domain", () => ({
   getDomainFromHeader: mockGetDomainFromHeader,
 }))
 
-vi.mock("@chatbotx.io/auth/tenant", () => ({
+vi.mock("@salesmanchatbot.io/auth/tenant", () => ({
   resolveTenantByDomain: mockResolveTenantByDomain,
   resolveTenantOwnerId: mockResolveTenantOwnerId,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: {
     find: mockFindWorkspace,
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   ROOT_TENANT_ID: "1",
 }))
 

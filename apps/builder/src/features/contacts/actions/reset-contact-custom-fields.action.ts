@@ -4,7 +4,7 @@ import {
   type ContactAccessScope,
   contactCustomFieldService,
   contactService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

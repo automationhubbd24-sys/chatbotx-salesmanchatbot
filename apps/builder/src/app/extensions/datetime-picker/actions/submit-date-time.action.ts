@@ -1,11 +1,11 @@
 "use server"
 
-import { verifyUserDataWebviewToken } from "@chatbotx.io/encryption"
-import { GET_USER_DATA_WEBVIEW_SELECTION_PAYLOAD_TYPE } from "@chatbotx.io/flow-config"
+import { verifyUserDataWebviewToken } from "@salesmanchatbot.io/encryption"
+import { GET_USER_DATA_WEBVIEW_SELECTION_PAYLOAD_TYPE } from "@salesmanchatbot.io/flow-config"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   type SubmitDateTimeInput,
   submitDateTimeRequestSchema,

@@ -1,12 +1,12 @@
 "use client"
 
-import type { InstagramAccount } from "@chatbotx.io/integration-instagram"
+import type { InstagramAccount } from "@salesmanchatbot.io/integration-instagram"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import { CONNECT_PICKER_CARD_CLASS } from "@/features/channel-connect/components/connect-picker-card"
 import { InstagramAccounts } from "@/features/integration-instagram/components/instagram-accounts"

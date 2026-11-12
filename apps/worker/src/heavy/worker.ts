@@ -9,7 +9,7 @@ import {
   IntegrationJobAction,
   integrationQueue,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { normalizeError } from "universal-error-normalizer"
 import { env } from "../env"

@@ -1,8 +1,8 @@
 import {
   AI_HANDOVER_BULK_LIVE_STATUSES,
   type AiHandoverBulkStatus,
-} from "@chatbotx.io/database/partials"
-import type { AiHandoverBulkRunModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { AiHandoverBulkRunModel } from "@salesmanchatbot.io/database/types"
 import type {
   AiHandoverBulkRunResource,
   GetApplyToAllStatusResponse,

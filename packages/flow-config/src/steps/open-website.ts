@@ -2,7 +2,7 @@ import {
   createId,
   zodBigintAsString,
   zodUrlWithVariables,
-} from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { stepTypes } from "./step-action"
 

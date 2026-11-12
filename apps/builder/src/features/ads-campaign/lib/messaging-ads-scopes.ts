@@ -1,5 +1,5 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
-import { FACEBOOK_ADS_SCOPES } from "@chatbotx.io/integration-facebook-ads"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
+import { FACEBOOK_ADS_SCOPES } from "@salesmanchatbot.io/integration-facebook-ads"
 
 /**
  * Per-channel scope additions on top of the base `FACEBOOK_ADS_SCOPES` — v3

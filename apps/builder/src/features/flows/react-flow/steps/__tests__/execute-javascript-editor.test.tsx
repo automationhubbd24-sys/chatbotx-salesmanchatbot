@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { executeJavascriptStepDefaultFn } from "@chatbotx.io/flow-config"
+import { executeJavascriptStepDefaultFn } from "@salesmanchatbot.io/flow-config"
 import type { ButtonHTMLAttributes, ReactNode } from "react"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -71,7 +71,7 @@ vi.mock("@/features/custom-fields/custom-field-select", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/input-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-field", () => ({
   InputField: ({
     name,
     placeholder,
@@ -111,15 +111,15 @@ vi.mock("../external-request/components/json-source-panel", () => ({
   JsonSourcePanel: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/label", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/label", () => ({
   Label: ({ children }: { children?: ReactNode }) => <span>{children}</span>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/separator", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/separator", () => ({
   Separator: () => <hr />,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button type="button" {...props}>
       {children}
@@ -127,7 +127,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: { children: ReactNode }) => <>{children}</>,
   DialogClose: ({ render }: { render: ReactNode }) => <>{render}</>,
   DialogContent: ({ children }: { children: ReactNode }) => <>{children}</>,
@@ -140,7 +140,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTrigger: ({ render }: { render: ReactNode }) => <>{render}</>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", async () => {
   const { FormProvider: RealFormProvider } = await import("react-hook-form")
   return { Form: RealFormProvider }
 })

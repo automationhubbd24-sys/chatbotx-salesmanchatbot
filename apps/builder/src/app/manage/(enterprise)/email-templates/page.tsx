@@ -1,4 +1,4 @@
-import { tenantService } from "@chatbotx.io/business"
+import { tenantService } from "@salesmanchatbot.io/business"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { PlatformEmailTemplatesSettings } from "@/enterprise/features/platform-email-templates/platform-email-templates-settings"

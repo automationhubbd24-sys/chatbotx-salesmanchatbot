@@ -4,15 +4,15 @@ import {
   type ButtonType,
   type QuickReplyNextStep,
   quickReplyNextStepHiddenButtonTypes,
-} from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { ChevronDownIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCallback, useState } from "react"

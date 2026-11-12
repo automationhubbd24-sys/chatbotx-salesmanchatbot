@@ -5,19 +5,19 @@ import {
   platformCredentialService,
   WHATSAPP_CAPI_SCOPE,
   whatsappBusinessAccountService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WhatsappCredential } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WhatsappCredential } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   appAccessToken,
   exchangeAccessToken,
-} from "@chatbotx.io/integration-whatsapp/api/auth"
-import { listPhoneNumbers as whatsappListPhoneNumbers } from "@chatbotx.io/integration-whatsapp/api/phone-number"
-import { findWaba } from "@chatbotx.io/integration-whatsapp/api/waba"
-import { resolveOwningWabaId } from "@chatbotx.io/integration-whatsapp/api/waba-owner"
-import { subscribeWebhook } from "@chatbotx.io/integration-whatsapp/api/webhook"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-whatsapp/api/auth"
+import { listPhoneNumbers as whatsappListPhoneNumbers } from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
+import { findWaba } from "@salesmanchatbot.io/integration-whatsapp/api/waba"
+import { resolveOwningWabaId } from "@salesmanchatbot.io/integration-whatsapp/api/waba-owner"
+import { subscribeWebhook } from "@salesmanchatbot.io/integration-whatsapp/api/webhook"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { getWhatsappGrantedScopes } from "@/features/integration-whatsapp/libs/capi-scope"
@@ -48,7 +48,7 @@ async function findReconnectTarget(input: {
     workspaceId: input.workspaceId,
   })
   if (!existing) {
-    throw new ChatbotXException(input.t("whatsapp.reconnect.errors.notFound"))
+    throw new salesmanChatbotException(input.t("whatsapp.reconnect.errors.notFound"))
   }
 
   return existing
@@ -68,7 +68,7 @@ async function resolveWhatsappSettings(input: {
     type: "whatsapp",
   })
   if (!credential) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       input.t("whatsapp.connect.errors.appSettingsNotFound"),
     )
   }
@@ -103,12 +103,12 @@ async function exchangeAndValidateWhatsappAccount(input: {
     phoneNumberIds: [input.existing.phoneNumberId],
   })
   if (!wabaId) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       input.t("whatsapp.connect.errors.wabaResolveFailed"),
     )
   }
   if (wabaId !== input.existing.wabaId) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       input.t("whatsapp.reconnect.errors.wabaMismatch"),
     )
   }
@@ -130,7 +130,7 @@ async function exchangeAndValidateWhatsappAccount(input: {
     (candidate) => candidate.id === input.existing.phoneNumberId,
   )
   if (!phoneNumber) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       input.t("whatsapp.reconnect.errors.phoneNumberMismatch"),
     )
   }

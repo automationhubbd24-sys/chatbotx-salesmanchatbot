@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import { useTranslations } from "next-intl"
 import type { ApiResource } from "../schema/resource"
 import { ApiDisconnect } from "./api-disconnect"

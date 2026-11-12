@@ -1,5 +1,5 @@
-import type { IntegrationType } from "@chatbotx.io/database/partials"
-import { HandleRequestType } from "@chatbotx.io/sdk"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
+import { HandleRequestType } from "@salesmanchatbot.io/sdk"
 import { notFound } from "next/navigation"
 import type { NextRequest } from "next/server"
 import { toCamelCase } from "remeda"

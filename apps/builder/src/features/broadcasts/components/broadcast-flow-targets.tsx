@@ -1,14 +1,14 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { stepTypes } from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { stepTypes } from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

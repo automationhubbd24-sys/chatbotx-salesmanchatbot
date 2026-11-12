@@ -1,7 +1,7 @@
 import {
   CALL_ASSIGNMENT_TRIGGER_HANDLERS,
   conversationService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { logger } from "@/lib/log"
 
 type CallAssignmentTrigger = keyof typeof CALL_ASSIGNMENT_TRIGGER_HANDLERS

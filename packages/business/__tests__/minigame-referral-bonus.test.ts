@@ -1,4 +1,4 @@
-import type { MinigamePlayerSettings } from "@chatbotx.io/database/partials"
+import type { MinigamePlayerSettings } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -35,7 +35,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...conditions: unknown[]) => ({ op: "and", conditions })),
   asc: vi.fn(),
   count: vi.fn(),
@@ -51,7 +51,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: { id: "Contact.id", fullName: "Contact.fullName" },
   conversationModel: {},
   minigameContactModel: {
@@ -67,20 +67,20 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   minigamePlayModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(),
   likeContains: vi.fn(),
 }))
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: {},
   chatQueue: { add: vi.fn() },
   IntegrationJobAction: {},
   integrationQueue: { add: vi.fn() },
 }))
-vi.mock("@chatbotx.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord: vi.fn() }))
 vi.mock("../src/contact-custom-field/service", () => ({
   contactCustomFieldService: { setValues: vi.fn() },

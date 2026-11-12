@@ -1,5 +1,5 @@
-import type { AppLinkTargets } from "@chatbotx.io/flow-config"
-import { resolveDeepLinkNavigation } from "@chatbotx.io/flow-config"
+import type { AppLinkTargets } from "@salesmanchatbot.io/flow-config"
+import { resolveDeepLinkNavigation } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 const targets: AppLinkTargets = {

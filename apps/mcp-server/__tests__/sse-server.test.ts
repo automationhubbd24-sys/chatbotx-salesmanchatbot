@@ -9,7 +9,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 // Dynamic per-test `import()` (not a static top-level import) matches this
 // repo's existing `openapi-loader.test.ts` convention: `sse-server.ts`
 // reads `env` from `@t3-oss/env-core` at module-eval time, so a test that
-// mutates `process.env.CHATBOTX_API_KEY` must pair `vi.resetModules()`
+// mutates `process.env.SALESMANCHATBOT_API_KEY` must pair `vi.resetModules()`
 // with a fresh import to see it — a static import would read `env` once,
 // frozen at the first test's `process.env`, for the whole file.
 
@@ -88,14 +88,14 @@ describe("makeApiKeyState / updateApiKeyStateFromRequest", () => {
 
   beforeEach(() => {
     vi.resetModules()
-    process.env.CHATBOTX_API_KEY = "  env-default-token  "
+    process.env.SALESMANCHATBOT_API_KEY = "  env-default-token  "
   })
 
   afterEach(() => {
     process.env = { ...originalEnv }
   })
 
-  test("falls back to CHATBOTX_API_KEY when the connect request carries no token", async () => {
+  test("falls back to SALESMANCHATBOT_API_KEY when the connect request carries no token", async () => {
     const { makeApiKeyState } = await import("../src/server/sse-server")
     const state = makeApiKeyState(fakeRequest({}))
     expect(state.current).toBe("env-default-token")

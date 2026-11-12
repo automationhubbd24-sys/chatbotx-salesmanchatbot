@@ -1,16 +1,16 @@
 import {
   broadcastToWorkspaceParty,
   flushAllPendingWorkspaceBroadcasts,
-} from "@chatbotx.io/business"
-import type { RealtimeEventData } from "@chatbotx.io/partysocket-config"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business"
+import type { RealtimeEventData } from "@salesmanchatbot.io/partysocket-config"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import {
   ChatJobAction,
   type ChatJobData,
   defaultWorkerOptions,
   getQueueConnection,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { env } from "../env"
 import { ensureBootstrapped } from "../lib/bootstrap"

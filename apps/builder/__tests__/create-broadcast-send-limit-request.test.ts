@@ -1,4 +1,4 @@
-import { broadcastSendLimitIssues } from "@chatbotx.io/database/partials"
+import { broadcastSendLimitIssues } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { createBroadcastRequest } from "@/features/broadcasts/schema/action"
 

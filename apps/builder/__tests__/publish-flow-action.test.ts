@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { sendMessageNodeDefaultFn } from "@chatbotx.io/flow-config"
+import { sendMessageNodeDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { mockPublish } = vi.hoisted(() => ({
@@ -15,7 +15,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowVersionService: { publish: mockPublish },
 }))
 

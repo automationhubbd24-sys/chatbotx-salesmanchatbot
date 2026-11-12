@@ -1,4 +1,4 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { notFound } from "next/navigation"
 import { requireUnrestrictedContactsScope } from "./require-unrestricted-contacts-scope"
 
@@ -7,7 +7,7 @@ import { requireUnrestrictedContactsScope } from "./require-unrestricted-contact
  * (`app/space/[workspaceId]/contacts/scan/page.tsx`). Wraps
  * `requireUnrestrictedContactsScope` — the same scope check
  * `scheduleContactScanAction` and `getContactScanStatusAuthenticatedAPI`
- * enforce — but converts its thrown `ChatbotXException` (e.g.
+ * enforce — but converts its thrown `salesmanChatbotException` (e.g.
  * `contactScanForbidden` for an assigned-only member) into `notFound()`,
  * consistent with how `requireContactsAccess` and
  * `requireWorkspacePermission` gate other pages in this app: a denied
@@ -19,7 +19,7 @@ export async function requireContactScanPageAccess(
   try {
     await requireUnrestrictedContactsScope(workspaceId)
   } catch (error) {
-    if (error instanceof ChatbotXException) {
+    if (error instanceof salesmanChatbotException) {
       notFound()
     }
     throw error

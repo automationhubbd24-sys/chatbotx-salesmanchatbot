@@ -4,7 +4,7 @@ const getBroadcastContactIdsPage = vi.fn()
 const getSequenceContactIdsPage = vi.fn()
 const bulkAttachToContacts = vi.fn()
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   broadcastAnalyticsService: {
     getContactIdsPage: (...args: unknown[]) =>
       getBroadcastContactIdsPage(...args),
@@ -15,13 +15,13 @@ vi.mock("@chatbotx.io/analytics", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: {
     bulkAttachToContacts: (...args: unknown[]) => bulkAttachToContacts(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   loopableItemsCount: 2,
 }))
 

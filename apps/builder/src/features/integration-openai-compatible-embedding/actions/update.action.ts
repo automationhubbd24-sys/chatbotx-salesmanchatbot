@@ -3,9 +3,9 @@
 import {
   integrationOpenaiCompatibleEmbeddingService,
   validateOpenaiCompatibleBaseUrlForEnvironment,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { secretTextAuthSchema } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { secretTextAuthSchema } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import {
@@ -95,6 +95,6 @@ export const updateOpenaiCompatibleEmbeddingAction = workspaceActionClient
     },
   )
 
-const isBaseUrlValidationError = (error: unknown): error is ChatbotXException =>
-  error instanceof ChatbotXException &&
+const isBaseUrlValidationError = (error: unknown): error is salesmanChatbotException =>
+  error instanceof salesmanChatbotException &&
   (error.code === "invalidBaseUrl" || error.code === "ssrfBlocked")

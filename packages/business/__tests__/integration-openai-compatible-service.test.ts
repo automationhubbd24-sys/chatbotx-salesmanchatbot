@@ -19,7 +19,7 @@ vi.mock("../src/integration-openai-compatible/validate-base-url", () => ({
 
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord: vi.fn() }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn(),
   db: {
     query: {
@@ -41,18 +41,18 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isDatabaseError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   aiAgentModel: { id: "id", workspaceId: "workspaceId" },
   integrationModel: { id: "id" },
   integrationOpenaiCompatibleModel: { id: "id", workspaceId: "workspaceId" },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/utils")>()),
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/utils")>()),
   createId: vi.fn(() => "generated-id"),
 }))
 

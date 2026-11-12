@@ -40,7 +40,7 @@ const DEFAULT_SPINNING_REELS: [boolean, boolean, boolean] = [
   false,
 ]
 
-// Intentionally not `@chatbotx.io/ui`'s `hexToRgb`: this fallback tuple keeps
+// Intentionally not `@salesmanchatbot.io/ui`'s `hexToRgb`: this fallback tuple keeps
 // malformed input a visible dark red instead of silently rendering black.
 const FALLBACK_RGB: [number, number, number] = [138, 0, 0]
 

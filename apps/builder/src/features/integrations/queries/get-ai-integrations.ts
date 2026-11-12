@@ -1,8 +1,8 @@
-import { aiProviders } from "@chatbotx.io/ai"
+import { aiProviders } from "@salesmanchatbot.io/ai"
 import {
   integrationOpenaiCompatibleService,
   integrationService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 export async function hasAIIntegration(workspaceId: string): Promise<boolean> {
   const [hasBuiltInAIIntegration, openaiCompatibleIntegrations] =

@@ -1,4 +1,4 @@
-import type { MessageButtonTemplate } from "@chatbotx.io/sdk"
+import type { MessageButtonTemplate } from "@salesmanchatbot.io/sdk"
 import { describe, expect, test } from "vitest"
 import { convertFlowStepText } from "../src/handlers/message/outgoing-message/send-text"
 

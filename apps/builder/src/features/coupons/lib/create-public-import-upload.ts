@@ -1,11 +1,11 @@
-import { fileService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { fileService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   fileContextTypes,
   importTypes,
   uploadTypes,
-} from "@chatbotx.io/database/partials"
-import { uploader } from "@chatbotx.io/filesystem"
+} from "@salesmanchatbot.io/database/partials"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import { getUploadHandler } from "@/lib/upload/handlers"
 
 export async function createPublicCouponImportUpload(input: {
@@ -24,7 +24,7 @@ export async function createPublicCouponImportUpload(input: {
   })
 
   if (!result.ok) {
-    throw new ChatbotXException(result.error, "couponImportUnsupportedFile")
+    throw new salesmanChatbotException(result.error, "couponImportUnsupportedFile")
   }
 
   const uploadUrl = await uploader.getPresignedUpload(result.path)

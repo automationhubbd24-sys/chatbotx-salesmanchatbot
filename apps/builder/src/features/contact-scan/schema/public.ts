@@ -1,5 +1,5 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { contactScanChannels } from "@chatbotx.io/utils/channel"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { contactScanChannels } from "@salesmanchatbot.io/utils/channel"
 import { z } from "zod"
 import { publicListRequest, publicListResponse } from "@/lib/public-api/list"
 import { contactScanRunStatus, getContactScanStatusRequest } from "./query"

@@ -7,7 +7,7 @@ const { claimForCallAgentMock, loggerWarnMock } = vi.hoisted(() => ({
   loggerWarnMock: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: { claimForCallAgent: claimForCallAgentMock },
   CALL_ASSIGNMENT_TRIGGER_HANDLERS: {
     answered: "whatsappCallAnswered",

@@ -6,7 +6,7 @@ vi.mock("@/lib/log", () => ({
   logger: { warn: vi.fn(), error: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedStore: {
     incrWithWindow: vi.fn(),
   },

@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   isUnauthorizedStatusError,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { dripRequest } from "./client"
 import {
   DRIP_ACCOUNTS_PATH,

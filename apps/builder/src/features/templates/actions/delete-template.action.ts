@@ -1,7 +1,7 @@
 "use server"
 
-import { templateService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { templateService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { templateActionClient } from "./template-action-client"
 
 export const deleteTemplateAction = templateActionClient

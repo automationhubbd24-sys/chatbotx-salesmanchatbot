@@ -1,17 +1,17 @@
-import { db } from "@chatbotx.io/database/client"
-import { fileContextTypes } from "@chatbotx.io/database/partials"
+import { db } from "@salesmanchatbot.io/database/client"
+import { fileContextTypes } from "@salesmanchatbot.io/database/partials"
 import {
   mediaLibraryFileRepository,
   mediaLibraryFolderRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   MediaLibraryFileModel,
   MediaLibraryFolderModel,
-} from "@chatbotx.io/database/types"
-import { uploader } from "@chatbotx.io/filesystem"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { fileService } from "../file/service"
 import { logger } from "../logger"
 import { resolveTenantSettings } from "../platform/settings"
@@ -147,7 +147,7 @@ class MediaLibraryService extends BaseService {
       input.path.startsWith(`workspaces/${input.workspaceId}/`) ||
       input.path.startsWith(`public/space/${input.workspaceId}/`)
     if (!isWorkspaceScopedPath) {
-      throw new ChatbotXException("Invalid file path", "invalidPath", 400)
+      throw new salesmanChatbotException("Invalid file path", "invalidPath", 400)
     }
 
     const file = await mediaLibraryFileRepository.create({

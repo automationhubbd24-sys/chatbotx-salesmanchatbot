@@ -1,4 +1,4 @@
-import type { MessageHandlers } from "@chatbotx.io/sdk"
+import type { MessageHandlers } from "@salesmanchatbot.io/sdk"
 import ky from "ky"
 import type { WebchatAuthValue } from "../schema"
 

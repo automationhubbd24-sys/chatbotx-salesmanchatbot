@@ -1,14 +1,14 @@
-import { commentAutomationAnalyticsService } from "@chatbotx.io/analytics"
+import { commentAutomationAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   listCommentAutomationContactsRequest,
   listCommentAutomationContactsResponse,
-} from "@chatbotx.io/analytics/schemas"
+} from "@salesmanchatbot.io/analytics/schemas"
 import {
   commentAutomationService,
   contactInboxService,
-} from "@chatbotx.io/business"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

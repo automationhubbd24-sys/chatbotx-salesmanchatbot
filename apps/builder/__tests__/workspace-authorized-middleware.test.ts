@@ -16,7 +16,7 @@ const {
   isAtLimit: vi.fn().mockResolvedValue(false),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceMemberService: { findMembership },
   resolveWorkspaceAccess,
   isWorkspaceScheduledForDeletion,
@@ -24,7 +24,7 @@ vi.mock("@chatbotx.io/business", () => ({
   quotaEnforcementService: { isAtLimit },
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   withAuditContext: (_actor: unknown, fn: () => unknown) => fn(),
 }))
 

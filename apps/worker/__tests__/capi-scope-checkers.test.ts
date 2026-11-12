@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   findWorkspace: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   WHATSAPP_CAPI_SCOPE: "whatsapp_business_manage_events",
   instagramIntegrationService: {},
   integrationWhatsappService: {},
@@ -34,9 +34,9 @@ vi.mock("@chatbotx.io/business", () => ({
   workspaceService: { findById: mocks.findWorkspace },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({}))
-vi.mock("@chatbotx.io/integration-messenger", () => ({}))
-vi.mock("@chatbotx.io/integration-whatsapp/api/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({}))
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({}))
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/auth", () => ({
   debugTokenOrThrow: mocks.debugTokenOrThrow,
 }))
 

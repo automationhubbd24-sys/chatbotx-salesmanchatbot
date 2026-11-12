@@ -15,7 +15,7 @@ vi.mock("@/lib/safe-action", () => {
   return { authActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: { remove: removeSpy, upsert: upsertSpy },
 }))
 
@@ -25,7 +25,7 @@ vi.mock("../src/features/platform-credentials/scope", () => ({
 }))
 
 const { threadsCredentialUpdateSchema } = await import(
-  "@chatbotx.io/database/partials"
+  "@salesmanchatbot.io/database/partials"
 )
 const { deleteThreadsSettingsAction } = await import(
   "../src/features/platform-credentials/threads/delete-threads-settings.action"

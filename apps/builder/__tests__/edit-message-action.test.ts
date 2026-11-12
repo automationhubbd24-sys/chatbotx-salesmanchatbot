@@ -20,17 +20,17 @@ const {
   mockUpdateMessageText: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: mockBroadcastToWorkspaceParty,
   contactInboxService: { findBy: mockContactInboxFindBy },
   conversationService: { findByOrFail: mockConversationFindByOrFail },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn().mockResolvedValue({
     findById: mockFindById,
     updateMessageText: mockUpdateMessageText,
@@ -39,16 +39,16 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   getImageDimensions: vi.fn(),
   uploader: { getObject: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageUpdated: "messageUpdated" },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { editChannelMessage: "editChannelMessage" },
   chatQueue: { add: mockChatQueueAdd },
 }))

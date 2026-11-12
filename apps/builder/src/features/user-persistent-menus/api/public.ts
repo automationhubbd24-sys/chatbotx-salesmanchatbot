@@ -1,5 +1,5 @@
-import { userPersistentMenuService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { userPersistentMenuService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import {
   possibleErrorsOnCreatingResource,

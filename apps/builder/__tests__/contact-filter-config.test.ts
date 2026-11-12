@@ -1,12 +1,12 @@
 // @vitest-environment node
 
-import { contactLocaleOptions } from "@chatbotx.io/business/contact-locale"
+import { contactLocaleOptions } from "@salesmanchatbot.io/business/contact-locale"
 import {
   contactSources,
   formFieldTypes,
   operatorTypes,
-} from "@chatbotx.io/database/partials"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/database/partials"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { describe, expect, test } from "vitest"
 import {
   type FieldConfig,

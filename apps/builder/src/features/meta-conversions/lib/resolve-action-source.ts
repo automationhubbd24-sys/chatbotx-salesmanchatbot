@@ -2,7 +2,7 @@ import {
   defaultMetaCapiActionSource,
   type MetaCapiActionSource,
   metaCapiActionSourceSchema,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 
 /**
  * Flow versions saved before `actionSource` existed on this step/action

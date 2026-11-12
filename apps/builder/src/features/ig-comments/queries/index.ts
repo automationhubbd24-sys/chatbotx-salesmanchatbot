@@ -1,4 +1,4 @@
-import { commentAutomationService } from "@chatbotx.io/business"
+import { commentAutomationService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListIgCommentsRequest,

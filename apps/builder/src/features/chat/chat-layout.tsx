@@ -1,19 +1,19 @@
 "use client"
 
-import type { ConversationAttributes } from "@chatbotx.io/database/partials"
+import type { ConversationAttributes } from "@salesmanchatbot.io/database/partials"
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@chatbotx.io/ui/components/ui/resizable"
+} from "@salesmanchatbot.io/ui/components/ui/resizable"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@chatbotx.io/ui/components/ui/sheet"
-import { useIsMobileState } from "@chatbotx.io/ui/hooks/use-mobile"
+} from "@salesmanchatbot.io/ui/components/ui/sheet"
+import { useIsMobileState } from "@salesmanchatbot.io/ui/hooks/use-mobile"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"

@@ -35,7 +35,7 @@ const mocks = vi.hoisted(() => {
 
 // Mirrors `integrationWhatsappService.disconnect`'s real transaction body —
 // the test asserts on these same tx calls, so the mock replicates them
-// rather than mocking `@chatbotx.io/business` transitively (which would
+// rather than mocking `@salesmanchatbot.io/business` transitively (which would
 // require booting the real business/database module graph).
 const integrationWhatsappServiceDisconnect = vi.fn(
   async (props: {
@@ -89,7 +89,7 @@ const integrationWhatsappServiceDisconnect = vi.fn(
   },
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: {
     disconnect: integrationWhatsappServiceDisconnect,
   },
@@ -99,16 +99,16 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.dbTransaction },
   findOrFail: mocks.findOrFail,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationWhatsappModel: { id: "whatsappId" },
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp", () => ({
   isRevokedTokenError: mocks.isRevokedTokenError,
 }))
 

@@ -8,17 +8,17 @@ import {
   inArray,
   isNull,
   lte,
-} from "@chatbotx.io/database/client"
-import { appointmentReminderDispatchStatuses } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { appointmentReminderDispatchStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   appointmentModel,
   appointmentReminderDispatchModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   parseOrderBy,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type AppointmentReminderDispatchListInput = {
   workspaceId?: string

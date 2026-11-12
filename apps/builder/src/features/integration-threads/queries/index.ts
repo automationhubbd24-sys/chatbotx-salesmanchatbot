@@ -1,4 +1,4 @@
-import { integrationThreadsService } from "@chatbotx.io/business"
+import { integrationThreadsService } from "@salesmanchatbot.io/business"
 
 export const listIntegrationThreads = async ({
   workspaceId,

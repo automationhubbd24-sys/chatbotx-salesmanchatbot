@@ -1,12 +1,12 @@
 "use server"
 
-import { importService } from "@chatbotx.io/business"
+import { importService } from "@salesmanchatbot.io/business"
 import {
   importFormats,
   productImportMetaSchema,
-} from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { z } from "zod"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"

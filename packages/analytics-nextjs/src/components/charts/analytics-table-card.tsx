@@ -8,8 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import type { ReactNode } from "react"
 import { AnalyticsTablePagination } from "./analytics-table-pagination"
 

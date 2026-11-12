@@ -34,7 +34,7 @@ vi.mock("@/components/tiptap/tiptap-editor-field", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", async () => {
   const { FormProvider } = await import("react-hook-form")
   return {
     Form: FormProvider,

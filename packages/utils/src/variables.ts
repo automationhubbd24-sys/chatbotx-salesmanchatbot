@@ -1,7 +1,7 @@
 /**
  * Canonical grammar for a runtime variable placeholder, e.g. `{{full_name}}`,
  * `{{raw:field}}`, or `{{coupon:SUMMER}}`. This is the single source of truth
- * shared by the interpolation engine (`@chatbotx.io/variables`) and edit-time
+ * shared by the interpolation engine (`@salesmanchatbot.io/variables`) and edit-time
  * validators (e.g. `zodUrlWithVariables`), so a value accepted at edit time is
  * exactly one the runtime will resolve. A token is any run of characters other
  * than a brace or a newline (the resolver trims surrounding whitespace), so it

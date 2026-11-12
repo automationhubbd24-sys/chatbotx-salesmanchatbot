@@ -19,7 +19,7 @@ const { mockFindFile, mockTransaction, mockInsertValues } = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       fileModel: {
@@ -32,7 +32,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (...args: unknown[]) => ({ eq: args }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceUsageModel: {},
   userQuotaModel: {},
   refLinkStatModel: {},
@@ -41,29 +41,29 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   importModel: {},
 }))
 
-// vitest's SSR deps optimizer bundles the whole `@chatbotx.io/database`
+// vitest's SSR deps optimizer bundles the whole `@salesmanchatbot.io/database`
 // package graph together once any subpath is imported, which otherwise pulls
 // in `contactRepository`'s real contact-filter query graph (needs the real
 // schema, conflicting with the narrow mock above) even though this service
-// never touches `@chatbotx.io/database/repositories`.
-vi.mock("@chatbotx.io/database/repositories", () => ({}))
+// never touches `@salesmanchatbot.io/database/repositories`.
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({}))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(),
   likeContains: vi.fn(),
   parseOrderBy: vi.fn(() => []),
 }))
 
-vi.mock("@chatbotx.io/imports/file-validation", () => ({
+vi.mock("@salesmanchatbot.io/imports/file-validation", () => ({
   resolveImportFileFormat: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/imports/registry", () => ({
+vi.mock("@salesmanchatbot.io/imports/registry", () => ({
   getImportEntry: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: vi.fn(() => "generated-import-id"),

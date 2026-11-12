@@ -1,13 +1,13 @@
 import {
   type ListSelectableResourcesResult,
   templateService,
-} from "@chatbotx.io/business"
-import type { TemplateCategory } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { TemplateCategory } from "@salesmanchatbot.io/database/partials"
 
 export type {
   ListSelectableResourcesResult,
   SelectableResourceItem,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 export const listSelectableResources = async (input: {
   workspaceId: string

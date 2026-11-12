@@ -2,14 +2,14 @@ import {
   type FolderType,
   folderTypes,
   rootFolderId,
-} from "@chatbotx.io/database/partials"
-import type { FolderModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { FolderModel } from "@salesmanchatbot.io/database/types"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import type { SearchParams } from "nuqs/server"

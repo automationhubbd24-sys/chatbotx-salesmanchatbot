@@ -1,32 +1,32 @@
 "use client"
 
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
-import { TagsInputField } from "@chatbotx.io/ui/components/ui/muhammada86/tags-input-field"
+} from "@salesmanchatbot.io/ui/components/ui/form"
+import { TagsInputField } from "@salesmanchatbot.io/ui/components/ui/muhammada86/tags-input-field"
 import { InfoIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useRef } from "react"

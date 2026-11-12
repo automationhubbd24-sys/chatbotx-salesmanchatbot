@@ -1,7 +1,7 @@
 import {
   commentAutomationService,
   withBlockedOwnerGuard,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   defaultWorkerOptions,
   getQueueConnection,
@@ -9,7 +9,7 @@ import {
   type LowJobData,
   type ProfileSnapshotJobData,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { env } from "../env"
 import { captureContactProfileSnapshot } from "../integration/handlers/capture-contact-profile-snapshot"

@@ -1,15 +1,15 @@
 "use client"
 
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
-import { Alert, AlertTitle } from "@chatbotx.io/ui/components/ui/alert"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
+import { Alert, AlertTitle } from "@salesmanchatbot.io/ui/components/ui/alert"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { CONNECT_PICKER_CARD_CLASS } from "@/features/channel-connect/components/connect-picker-card"

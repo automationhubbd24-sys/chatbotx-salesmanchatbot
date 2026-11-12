@@ -2,7 +2,7 @@ import {
   broadcastSubactions,
   channelTypes,
   contactFilterFields,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { getBroadcastExcludedFilterFields } from "../broadcast-filter-fields"
 

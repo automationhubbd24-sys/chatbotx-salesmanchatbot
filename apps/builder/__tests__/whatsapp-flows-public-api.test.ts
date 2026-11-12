@@ -36,7 +36,7 @@ const mocks = vi.hoisted(() => ({
   screens: vi.fn(),
   sync: vi.fn(),
 }))
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   whatsappFlowService: { list: mocks.list },
   integrationWhatsappService: { findByIdForWorkspace: mocks.findIntegration },
@@ -48,11 +48,11 @@ vi.mock(
     syncWhatsappFlows: mocks.sync,
   }),
 )
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },

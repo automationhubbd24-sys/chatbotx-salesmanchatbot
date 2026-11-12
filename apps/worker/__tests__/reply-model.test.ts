@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   info: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   createAIProviderInstance: vi.fn(),
   createOpenaiCompatibleModelInstance:
     mocks.createOpenaiCompatibleModelInstance,
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/ai/server", () => ({
     mocks.getOpenaiCompatibleAutoReplyIntegrationInDB,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationOpenaiCompatibleService: {
     findByWorkspaceIdAndId: mocks.findByWorkspaceIdAndId,
   },

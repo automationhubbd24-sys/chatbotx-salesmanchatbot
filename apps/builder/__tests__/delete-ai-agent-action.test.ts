@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // ── business spies ──────────────────────────────────────────────────────────
 const aiAgentDelete = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiAgentService: {
     delete: (...args: unknown[]) => aiAgentDelete(...args),
   },

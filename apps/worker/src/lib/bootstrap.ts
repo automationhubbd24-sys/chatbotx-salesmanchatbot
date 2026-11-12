@@ -1,4 +1,4 @@
-import { assertLicenseAtStartup } from "@chatbotx.io/business/license-startup"
+import { assertLicenseAtStartup } from "@salesmanchatbot.io/business/license-startup"
 
 async function bootstrapApp(): Promise<void> {
   await assertLicenseAtStartup()

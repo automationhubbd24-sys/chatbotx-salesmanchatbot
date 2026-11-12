@@ -12,16 +12,16 @@ import {
   eq,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   orderCustomFieldDefinitionModel,
   orderCustomFieldValueModel,
   orderItemModel,
   orderModel,
   orderStatusHistoryModel,
-} from "@chatbotx.io/database/schema"
-import type { OrderStatus } from "@chatbotx.io/database/partials"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { OrderStatus } from "@salesmanchatbot.io/database/partials"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type OrderInsertValues = Omit<typeof orderModel.$inferInsert, "id">
 export type OrderUpdateValues = Partial<Omit<typeof orderModel.$inferInsert, "id" | "workspaceId">>

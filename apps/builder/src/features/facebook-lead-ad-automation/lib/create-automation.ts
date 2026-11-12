@@ -1,8 +1,8 @@
 import "server-only"
 
-import { facebookLeadAdsAutomationService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { FacebookLeadAdsAutomationModel } from "@chatbotx.io/database/types"
+import { facebookLeadAdsAutomationService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { FacebookLeadAdsAutomationModel } from "@salesmanchatbot.io/database/types"
 import { logger } from "@/lib/log"
 import type { CreateFacebookLeadAdAutomationRequest } from "../schema/action"
 import { subscribePageLeadgen } from "./pages"
@@ -24,7 +24,7 @@ export async function createLeadAdAutomation(input: {
       { err: error, workspaceId, pageId: data.pageId },
       "createLeadAdAutomation: failed to subscribe page to leadgen",
     )
-    throw new ChatbotXException(messages.subscribeError)
+    throw new salesmanChatbotException(messages.subscribeError)
   }
 
   return await facebookLeadAdsAutomationService.create({

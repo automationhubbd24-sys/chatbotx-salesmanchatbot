@@ -1,25 +1,25 @@
-import { connectSessionService } from "@chatbotx.io/business/connect-session"
-import { isActiveConnectionStatus } from "@chatbotx.io/business/connection"
+import { connectSessionService } from "@salesmanchatbot.io/business/connect-session"
+import { isActiveConnectionStatus } from "@salesmanchatbot.io/business/connection"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   connectionAlreadyConnectedException,
   connectSessionExpiredException,
   notFoundException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business/errors"
 import type {
   ConnectSessionOutcome,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
-import { connectionRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { connectionRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   ConnectionModel,
   ConnectSessionModel,
-} from "@chatbotx.io/database/types"
-import { encryptUtils } from "@chatbotx.io/encryption"
-import type { ConnectionCandidate } from "@chatbotx.io/sdk"
-import { ConnectionProviderRejectedError } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { ConnectionCandidate } from "@salesmanchatbot.io/sdk"
+import { ConnectionProviderRejectedError } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   connectAndPersist,
   encryptedCandidatesSchema,
@@ -56,7 +56,7 @@ export const toFailureOutcome = (input: {
   targetId: string
 }): ConnectSessionOutcome => {
   if (
-    input.err instanceof ChatbotXException &&
+    input.err instanceof salesmanChatbotException &&
     input.err.code === "channelLimitReached"
   ) {
     return {
@@ -66,7 +66,7 @@ export const toFailureOutcome = (input: {
     }
   }
   if (
-    input.err instanceof ChatbotXException &&
+    input.err instanceof salesmanChatbotException &&
     input.err.code === "connectionAlreadyConnected"
   ) {
     return {

@@ -11,29 +11,29 @@ import {
   type ThreadControlState,
   threadControlRoles,
   toThreadControlTimestamp,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   contactInboxRepository,
   createMessageRepository,
   inboxRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxModel,
   InboxModel,
   MessageModel,
-} from "@chatbotx.io/database/types"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/database/types"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
 import type {
   ThreadControlContext,
   ThreadControlDelivery,
   ThreadOwnerResult,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { supportsArchiveRelease } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { supportsArchiveRelease } from "@salesmanchatbot.io/utils/channel"
 import {
   enqueueIntegrationJob,
   IntegrationJobAction,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
 import { contactInboxService } from "../contact-inbox/service"
 import { notFoundException } from "../errors"
@@ -158,7 +158,7 @@ export type ThreadControlChannelResult = {
 /**
  * The channel side of take/release/pass, supplied by the caller. `packages/
  * business` cannot import the channel registry (which imports this package),
- * so the registry-aware wrapper (`@chatbotx.io/channel-registry/thread-control`)
+ * so the registry-aware wrapper (`@salesmanchatbot.io/channel-registry/thread-control`)
  * resolves the integration and hands its handler in here.
  */
 export type ThreadControlChannelCall = (

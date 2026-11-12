@@ -1,9 +1,9 @@
 "use server"
 
-import { templateService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+import { templateService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { installTemplateRequest } from "../schema/mutation"
@@ -35,7 +35,7 @@ export const installTemplateAction = workspaceActionClient
       // could still call this action directly with a workspace id from
       // elsewhere, so the real gate lives here.
       if (!hasWorkspacePermission(workspaceMemberPermissions, "superAdmin")) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "You need to be a super admin to install a template into this workspace",
           "templateInstallSuperAdminRequired",
           403,

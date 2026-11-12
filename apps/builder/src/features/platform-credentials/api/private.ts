@@ -1,4 +1,4 @@
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import { z } from "zod"
 import { isCloud } from "@/env"
 import { authorizedAPI } from "@/orpc"

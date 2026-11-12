@@ -41,11 +41,11 @@ vi.mock("next-intl/server", () => ({
   getTranslations: async () => (key: string) => key,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: { findConnectedIgIds: mockFindConnectedIgIds },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   getUserInstagramAccounts: mockGetUserInstagramAccounts,
 }))
 

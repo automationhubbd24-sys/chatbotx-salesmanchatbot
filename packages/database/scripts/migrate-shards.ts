@@ -6,7 +6,7 @@
  * newer than what is stored in each shard's _shard_meta table.
  *
  * Usage:
- *   pnpm --filter @chatbotx.io/database db:migrate-shards
+ *   pnpm --filter @salesmanchatbot.io/database db:migrate-shards
  */
 import { readdir, readFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"

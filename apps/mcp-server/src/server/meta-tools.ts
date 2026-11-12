@@ -23,7 +23,7 @@ export const META_TOOLS = [
   {
     name: "search_tools",
     description:
-      "Search the full ChatbotX catalog for hidden or unlisted tool definitions; this never executes a tool. Direct listed tools may be called directly. Search with one action plus one resource, inspect each returned inputSchema, then call call_tool with the exact returned name.",
+      "Search the full salesmanChatbot catalog for hidden or unlisted tool definitions; this never executes a tool. Direct listed tools may be called directly. Search with one action plus one resource, inspect each returned inputSchema, then call call_tool with the exact returned name.",
     inputSchema: {
       type: "object",
       properties: {

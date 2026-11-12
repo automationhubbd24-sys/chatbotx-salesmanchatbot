@@ -1,5 +1,5 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: mocks.broadcastToWorkspaceParty,
   whatsappCallPermissionService: {
     recordPermanentGrant: mocks.recordPermanentGrant,

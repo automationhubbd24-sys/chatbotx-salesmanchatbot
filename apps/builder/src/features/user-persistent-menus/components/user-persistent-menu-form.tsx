@@ -1,9 +1,9 @@
 "use client"
 
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

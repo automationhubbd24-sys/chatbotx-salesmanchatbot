@@ -1,5 +1,5 @@
-import { templateService } from "@chatbotx.io/business"
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { templateService } from "@salesmanchatbot.io/business"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { AppBreadcrumb } from "@/components/app-breadcrumb"

@@ -1,5 +1,5 @@
-import { db, eq } from "@chatbotx.io/database/client"
-import { integrationModel } from "@chatbotx.io/database/schema"
+import { db, eq } from "@salesmanchatbot.io/database/client"
+import { integrationModel } from "@salesmanchatbot.io/database/schema"
 import { BaseService } from "../base.service"
 
 class IntegrationGoogleSheetService extends BaseService {

@@ -69,11 +69,11 @@ const {
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mockDbInsert,
     update: mockDbUpdate,
@@ -113,12 +113,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-// Partial: `@chatbotx.io/database/queries` builds filter maps from schema
+// Partial: `@salesmanchatbot.io/database/queries` builds filter maps from schema
 // tables at module scope, so replacing the whole module breaks the import
 // chain (e.g. `contactsToTagsModel`).
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/schema")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>()
   return {
     ...actual,
     messageModel: {
@@ -135,8 +135,8 @@ vi.mock("@chatbotx.io/database/schema", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/redis")>()
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/redis")>()
   return {
     ...actual,
     invalidateCacheByTags: vi.fn().mockResolvedValue(undefined),
@@ -151,10 +151,10 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn().mockResolvedValue(undefined),
 }))
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: vi.fn().mockResolvedValue(undefined),
 }))
 vi.mock("p-limit", () => ({ default: () => (fn: () => unknown) => fn() }))
@@ -241,7 +241,7 @@ describe("bulkImportMessages", () => {
     })
 
     // db.insert may be called for attachments, but never with messageModel
-    const messageModelMock = (await import("@chatbotx.io/database/schema"))
+    const messageModelMock = (await import("@salesmanchatbot.io/database/schema"))
       .messageModel
     for (const call of mockDbInsert.mock.calls) {
       expect(call[0]).not.toBe(messageModelMock)

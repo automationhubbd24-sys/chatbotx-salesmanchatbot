@@ -15,7 +15,7 @@ const { mockUpdate, mockReturning, mockInvalidateCacheByTags } = vi.hoisted(
   },
 )
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...conditions: unknown[]) => ({ conditions })),
   db: { update: mockUpdate },
   eq: vi.fn((field: unknown, value: unknown) => ({ field, value })),
@@ -24,7 +24,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   MESSENGER_PAGE_ID_UNIQUE_CONSTRAINT: "IntegrationMessenger_pageId_key",
   integrationMessengerModel: {
     id: "id",
@@ -42,11 +42,11 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { messenger: "messenger", zalo: "zalo" } },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationMessengerRepository: {},
   connectionRepository: { findByInboxId: vi.fn() },
 }))
@@ -58,11 +58,11 @@ vi.mock("../src/connection/state-service", () => ({
   connectionStateService: { transition: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mockInvalidateCacheByTags,
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: vi.fn(() => "generated-id"),
 }))
 

@@ -1,13 +1,13 @@
 "use client"
 
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import {
   type FieldPath,

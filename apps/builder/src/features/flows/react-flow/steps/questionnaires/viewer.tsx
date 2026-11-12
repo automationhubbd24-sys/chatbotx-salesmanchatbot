@@ -1,7 +1,7 @@
 "use client"
 
-import type { QuestionnairesStepSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { QuestionnairesStepSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { ClipboardListIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BaseStepViewer } from "../base/viewer"

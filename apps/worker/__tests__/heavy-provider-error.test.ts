@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const logProviderError = vi.fn()
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (input: unknown) => logProviderError(input),
 }))
 

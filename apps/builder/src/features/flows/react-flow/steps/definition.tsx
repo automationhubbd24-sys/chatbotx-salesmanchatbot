@@ -1,4 +1,4 @@
-import type { StepValidator } from "@chatbotx.io/flow-config"
+import type { StepValidator } from "@salesmanchatbot.io/flow-config"
 import type { JSX } from "react"
 import type z from "zod"
 import type { ZodTypeAny } from "zod"

@@ -1,4 +1,4 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 import type { MessagingAdsToolIntegration } from "../queries/tool-integrations"
 
 export type MessagingAdsToolEmptyStateConfig = {

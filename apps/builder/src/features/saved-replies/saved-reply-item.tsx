@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { PencilIcon, Trash2Icon } from "lucide-react"
 import { useAction } from "next-safe-action/hooks"
 import { toast } from "sonner"

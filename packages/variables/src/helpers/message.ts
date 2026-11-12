@@ -1,5 +1,5 @@
-import { messageService } from "@chatbotx.io/business"
-import { senderTypes } from "@chatbotx.io/database/partials"
+import { messageService } from "@salesmanchatbot.io/business"
+import { senderTypes } from "@salesmanchatbot.io/database/partials"
 import { resolveContactMessageWindow } from "./message-window"
 
 export const listLastMessages = async (

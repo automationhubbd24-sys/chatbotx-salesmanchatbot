@@ -1,4 +1,4 @@
-import { automatedResponseService } from "@chatbotx.io/business"
+import { automatedResponseService } from "@salesmanchatbot.io/business"
 import type { PaginatedResponse } from "@/features/common/schema/pagination"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {

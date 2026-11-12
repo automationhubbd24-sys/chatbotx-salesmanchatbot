@@ -1,7 +1,7 @@
 import {
   BOOLEAN_LITERAL_PATTERN_SOURCE,
   canonicalBooleanLiteral,
-} from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/utils/custom-field"
 import {
   DATE_PART_LENGTH,
   DEFAULT_FILTER_TIMEZONE,
@@ -12,7 +12,7 @@ import {
   hasExplicitOffset,
   hasTimeComponent,
   temporalWallClockWindow,
-} from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/utils/datetime"
 import type { AnyColumn, SQL } from "drizzle-orm"
 import { sql } from "drizzle-orm"
 import {

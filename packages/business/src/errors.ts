@@ -2,8 +2,8 @@ import type {
   BroadcastPlanLimitData,
   BroadcastPlanLimitReason,
   RestrictedBroadcastPlanPolicy,
-} from "@chatbotx.io/database/partials"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { DrizzleQueryError } from "drizzle-orm"
 
 /**
@@ -143,14 +143,14 @@ export const toPublicErrorMessage = (
   }
   const message =
     channelErrorMessage(error) ??
-    (error instanceof ChatbotXException ? error.message : undefined)
+    (error instanceof salesmanChatbotException ? error.message : undefined)
   if (!message || QUERY_DUMP_REGEX.test(message)) {
     return fallback
   }
   return sanitizePublicText(message) || fallback
 }
 
-export class ChatbotXException extends Error {
+export class salesmanChatbotException extends Error {
   field?: string
   code = "systemError"
   httpStatusCode = 400
@@ -174,7 +174,7 @@ export class ChatbotXException extends Error {
     }
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ChatbotXException)
+      Error.captureStackTrace(this, salesmanChatbotException)
     }
   }
 }
@@ -200,14 +200,14 @@ export class WorkspacePurgeIncompleteError extends Error {
 }
 
 export const workspaceDeletionStartedException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "Workspace deletion is already in progress",
     "workspaceDeletionStarted",
     409,
   )
 
 export const notFoundException = (message: string) =>
-  new ChatbotXException(message, "notFound", 404)
+  new salesmanChatbotException(message, "notFound", 404)
 
 /**
  * A field-scoped validation failure raised from inside a service. The
@@ -221,7 +221,7 @@ export const validationException = (
   message: string,
   data?: Record<string, string | number>,
 ) => {
-  const error = new ChatbotXException(message, "validation", 422)
+  const error = new salesmanChatbotException(message, "validation", 422)
   error.field = field
   error.data = data
   return error
@@ -246,7 +246,7 @@ export const broadcastPlanLimitException = (
     planName: string | null
   },
 ) => {
-  const error = new ChatbotXException(
+  const error = new salesmanChatbotException(
     broadcastPlanLimitMessages[reason](ctx.policy),
     BROADCAST_PLAN_LIMIT_CODE,
     403,
@@ -265,7 +265,7 @@ export const broadcastPlanLimitException = (
 }
 
 export const channelDuplicatedException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This account is already connected to another workspace.",
     "channelDuplicated",
   )
@@ -273,13 +273,13 @@ export const channelDuplicatedException = () =>
 /**
  * The workspace's platform owner has no configured credential (Meta app,
  * WhatsApp Business app, etc.) for the channel being connected. Kept
- * distinct from a generic `ChatbotXException` so `toConnectSessionError`
+ * distinct from a generic `salesmanChatbotException` so `toConnectSessionError`
  * (`packages/business/src/inbox/connect-outcome.ts`) can map it to the
  * `credentialMissing` session-error code without every call site having to
  * remember the exact code string.
  */
 export const credentialMissingException = (message: string) =>
-  new ChatbotXException(message, "credentialMissing")
+  new salesmanChatbotException(message, "credentialMissing")
 
 /**
  * A connect flow's session (the `ConnectSession` row for Messenger/Instagram,
@@ -299,7 +299,7 @@ export const connectSessionExpiredException = (
   code:
     | "connectSessionExpired"
     | "signupSessionExpired" = "connectSessionExpired",
-) => new ChatbotXException(message, code)
+) => new salesmanChatbotException(message, code)
 
 /**
  * The acting user resolved a workspace id that they are not a member of.
@@ -308,14 +308,14 @@ export const connectSessionExpiredException = (
  * "not found".
  */
 export const notWorkspaceMemberException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "You are not a member of this workspace.",
     "notWorkspaceMember",
     403,
   )
 
 export const channelLimitReachedException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "Channel limit reached for this plan",
     "channelLimitReached",
   )
@@ -328,14 +328,14 @@ export const channelLimitReachedException = () =>
  * a hard failure.
  */
 export const summaryAlreadyGeneratingException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "A summary is already being generated for this call.",
     "summaryAlreadyGenerating",
     409,
   )
 
 export const workspaceLimitReachedException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "Workspace limit reached for this plan",
     "workspaceLimitReached",
   )
@@ -346,7 +346,7 @@ export const workspaceLimitReachedException = () =>
  * own precondition in `transitionConnection` (`state.ts`).
  */
 export const connectionInactiveException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This connection is not active.",
     "connectionInactive",
     409,
@@ -355,17 +355,17 @@ export const connectionInactiveException = () =>
 /**
  * `refresh`/`verify` cannot run when a provider has no satellite store.
  * This is an expected unsupported operation for built-in connections such as
- * `chatbotx`, so clients receive a request error instead of a server failure.
+ * `salesmanchatbot`, so clients receive a request error instead of a server failure.
  */
 export const connectionNotConfiguredException = (provider: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `Connection provider "${provider}" is not configured.`,
     "connectionNotConfigured",
     400,
   )
 
 export const connectionNotRefreshableException = (provider: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `Connection provider "${provider}" does not support refresh.`,
     "connectionNotRefreshable",
     400,
@@ -373,7 +373,7 @@ export const connectionNotRefreshableException = (provider: string) =>
 
 /** This provider is already connected in this workspace — a fresh `connectFromCredentials`/OAuth-connect call would collide with the unique `(workspaceId, provider, sourceId)` key. */
 export const connectionAlreadyConnectedException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This provider is already connected in this workspace.",
     "connectionAlreadyConnected",
     409,
@@ -381,7 +381,7 @@ export const connectionAlreadyConnectedException = () =>
 
 /** Another request currently owns the short-lived lease for this target's connect attempt. */
 export const connectionInProgressException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "A connection attempt for this target is already in progress.",
     "connectionInProgress",
     409,
@@ -389,7 +389,7 @@ export const connectionInProgressException = () =>
 
 /** `connectFromCredentials` called against a provider whose `strategy` isn't `token`/`api_key`/`self_serve` (or one that never declared `fromCredentials`). */
 export const connectionWrongStrategyException = (provider: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `Connection provider "${provider}" does not accept direct credentials.`,
     "connectionWrongStrategy",
     400,
@@ -397,13 +397,13 @@ export const connectionWrongStrategyException = (provider: string) =>
 
 /** `provider.fromCredentials` rejected the supplied config with a live validation call (e.g. an invalid API key). */
 export const connectionCredentialsRejectedException = (message: string) =>
-  new ChatbotXException(message, "connectionCredentialsRejected", 400)
+  new salesmanChatbotException(message, "connectionCredentialsRejected", 400)
 
 /** A provider could not complete a connect request due to a transient upstream or transport failure. */
 export const connectionProviderUnavailableException = (
   httpStatusCode: 502 | 503,
 ) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "The provider is temporarily unavailable. Please try again.",
     "connectionProviderUnavailable",
     httpStatusCode,
@@ -411,7 +411,7 @@ export const connectionProviderUnavailableException = (
 
 /** `startSession`/`completeAuthorization` called against a provider with no `authorizeUrl`/`exchangeCode` handler — not an OAuth-strategy provider. */
 export const connectionNotOAuthException = (provider: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `Connection provider "${provider}" does not support an OAuth connect flow.`,
     "connectionNotOAuth",
     400,
@@ -419,7 +419,7 @@ export const connectionNotOAuthException = (provider: string) =>
 
 /** The OAuth callback's `sessionId`/nonce did not resolve to a matching `ConnectSession` — a forged, stale, or already-consumed `state` parameter. */
 export const connectionStateMismatchException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This connect session could not be verified. Please start the connection again.",
     "connectionStateMismatch",
     400,
@@ -427,7 +427,7 @@ export const connectionStateMismatchException = () =>
 
 /** `listCandidates`/`describe` returned nothing selectable after a successful code exchange. */
 export const connectionNoCandidatesException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "No connectable accounts were found for this authorization.",
     "connectionNoCandidates",
     400,
@@ -435,7 +435,7 @@ export const connectionNoCandidatesException = () =>
 
 /** `reconnect`'s completion: the re-authorized account does not match the `Connection` being reconnected (user picked/granted the wrong account). */
 export const connectionIdentityMismatchException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "The reauthorized account does not match the connection being reconnected.",
     "connectionIdentityMismatch",
     400,
@@ -443,7 +443,7 @@ export const connectionIdentityMismatchException = () =>
 
 /** API-driven `POST /v1/connections` for a channel provider hidden by the tenant's channel-visibility policy (not already connected in this workspace) — a deliberate tightening for an unattended caller; the interactive builder UI grandfathers an already-connected channel instead of hiding it. */
 export const channelHiddenException = (channel: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `The "${channel}" channel is not available for this workspace.`,
     "channelHidden",
     403,

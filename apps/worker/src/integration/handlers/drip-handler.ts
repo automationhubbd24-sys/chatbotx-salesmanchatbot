@@ -1,15 +1,15 @@
 import { createHash } from "node:crypto"
-import { buildContext, integrationDripService } from "@chatbotx.io/business"
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { DripSubscribeSubscriberSchema } from "@chatbotx.io/flow-config"
+import { buildContext, integrationDripService } from "@salesmanchatbot.io/business"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { DripSubscribeSubscriberSchema } from "@salesmanchatbot.io/flow-config"
 import {
   DRIP_HTTP_TIMEOUT_MS,
   type DripAuthValue,
   dripAuthSchema,
   integration as integrationDrip,
-} from "@chatbotx.io/integration-drip"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-drip"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 import { getContactFieldMap } from "./contact-field-map"

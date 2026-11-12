@@ -1,12 +1,12 @@
-import { commentAutomationAnalyticsService } from "@chatbotx.io/analytics"
-import { logProviderError } from "@chatbotx.io/business"
+import { commentAutomationAnalyticsService } from "@salesmanchatbot.io/analytics"
+import { logProviderError } from "@salesmanchatbot.io/business"
 import type {
   CommentAutomationReplyChannel,
   CommentReply,
   CommentReplyType,
-} from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
-import type { ErrorLogProvider } from "@chatbotx.io/utils/error-log"
+} from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
+import type { ErrorLogProvider } from "@salesmanchatbot.io/utils/error-log"
 import { logger } from "../../../lib/logger"
 import { willSendReply } from "./automation-matching"
 import type { CommentAutomationChannelType } from "./channel-type"

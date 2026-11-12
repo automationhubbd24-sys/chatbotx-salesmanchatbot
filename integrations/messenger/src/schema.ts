@@ -4,7 +4,7 @@ import type {
   IncomingAttachment,
   Oauth2AuthValue,
   Oauth2Config,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import type {
   CloneMessengerTemplateProps,
@@ -14,7 +14,7 @@ import type {
 } from "./apis/message-templates"
 import type { FacebookPostDetails } from "./apis/post"
 
-export const MESSENGER_MESSAGE_METADATA = "SENT_FROM_CHATBOTX"
+export const MESSENGER_MESSAGE_METADATA = "SENT_FROM_SALESMANCHATBOT"
 /**
  * `message.app_id` values Meta stamps on a `message_echoes` event when the
  * message was sent from a Meta first-party surface rather than a third-party

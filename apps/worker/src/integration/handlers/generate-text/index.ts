@@ -1,11 +1,11 @@
-import { helpTexts, processStreamingText, toolPrefixes } from "@chatbotx.io/ai"
+import { helpTexts, processStreamingText, toolPrefixes } from "@salesmanchatbot.io/ai"
 import {
   getAIToolset,
   McpClient,
   normalizeMcpContent,
-} from "@chatbotx.io/ai/server"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
-import type { AIGenerateTextSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/ai/server"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
+import type { AIGenerateTextSchema } from "@salesmanchatbot.io/flow-config"
 import { APICallError, streamText } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"

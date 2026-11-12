@@ -1,12 +1,12 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { Loader2Icon, RefreshCwIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

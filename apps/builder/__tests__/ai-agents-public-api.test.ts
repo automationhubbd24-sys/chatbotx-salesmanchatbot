@@ -54,14 +54,14 @@ const aiAgentService = {
   updateAIAgent: vi.fn(),
   delete: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ aiAgentService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ aiAgentService }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),

@@ -1,4 +1,4 @@
-import type { AdsConversionJobData } from "@chatbotx.io/worker-config"
+import type { AdsConversionJobData } from "@salesmanchatbot.io/worker-config"
 import { handleEvaluateConversionTrigger } from "./evaluate-conversion-trigger"
 import { handleEvaluateTemplateSent } from "./evaluate-template-sent"
 import { handleSendConversionEvent } from "./send-conversion-event"

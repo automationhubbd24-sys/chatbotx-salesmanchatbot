@@ -4,7 +4,7 @@ import {
   type SetCustomFieldStepSchema,
   setCustomFieldStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { act, type ButtonHTMLAttributes, type ReactNode } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -133,7 +133,7 @@ vi.mock("@/components/tiptap/plain-text-editor-field", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button type="button" {...props}>
       {children}
@@ -141,7 +141,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: { children: ReactNode }) => <>{children}</>,
   DialogContent: ({ children }: { children: ReactNode }) => <>{children}</>,
   DialogDescription: ({ children }: { children?: ReactNode }) => (
@@ -152,7 +152,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTrigger: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", async () => {
   const { FormProvider } = await import("react-hook-form")
   return { Form: FormProvider }
 })

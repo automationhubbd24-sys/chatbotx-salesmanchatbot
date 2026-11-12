@@ -1,4 +1,4 @@
-import { createId, zodBigintAsString } from "@chatbotx.io/utils"
+import { createId, zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { addMilliseconds } from "date-fns"
 import { z } from "zod"
 import { stepTypes } from "./step-action"

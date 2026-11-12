@@ -26,18 +26,18 @@ const mocks = vi.hoisted(() => ({
   logProviderError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: {
     record: (...args: unknown[]) => mocks.recordAuditLog(...args),
   },
 }))
 
 // Mocked so the `queueAdd` assertions stay about the sync-continuation
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (...args: unknown[]) => mocks.logProviderError(...args),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationMetaCatalogService: {
     findByWorkspaceIdOrFail: (...args: unknown[]) =>
       mocks.findConnection(...args),
@@ -93,7 +93,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   metaCatalogItemRepository: {
     findByRetailerIds: (...args: unknown[]) => mocks.findLinkedItems(...args),
     findByProductIds: (...args: unknown[]) =>
@@ -101,7 +101,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-meta-catalog", () => ({
+vi.mock("@salesmanchatbot.io/integration-meta-catalog", () => ({
   CATALOG_BATCH_SIZE: 1000,
   concurrencyForUsage: (...args: unknown[]) =>
     mocks.concurrencyForUsage(...args),
@@ -125,7 +125,7 @@ vi.mock("@chatbotx.io/integration-meta-catalog", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: {
     checkMetaCatalogSync: "checkMetaCatalogSync",
   },

@@ -1,4 +1,4 @@
-import type { PurchaseContentItem } from "@chatbotx.io/utils/meta-capi"
+import type { PurchaseContentItem } from "@salesmanchatbot.io/utils/meta-capi"
 import { sql } from "drizzle-orm"
 import {
   check,

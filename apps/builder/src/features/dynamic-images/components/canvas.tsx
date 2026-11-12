@@ -3,8 +3,8 @@
 import type {
   DynamicImageDocument,
   DynamicImageElement,
-} from "@chatbotx.io/database/partials"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { Rnd } from "react-rnd"
 import { DynamicImageImageLayerPreview } from "./elements/image-layer"
 import { DynamicImageQrCodeLayerPreview } from "./elements/qr-code-layer"

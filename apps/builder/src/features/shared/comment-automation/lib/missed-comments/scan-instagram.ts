@@ -1,11 +1,11 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
 import {
   type InstagramMediaComment,
   listMediaComments as listInstagramLoginMediaComments,
-} from "@chatbotx.io/integration-instagram/apis/comment"
-import type { InstagramAuthValue } from "@chatbotx.io/integration-instagram/schema"
-import type { InstagramAuthValue as InstagramFacebookAuthValue } from "@chatbotx.io/integration-instagram-facebook"
-import { listMediaComments as listInstagramFacebookMediaComments } from "@chatbotx.io/integration-instagram-facebook/apis/comment"
+} from "@salesmanchatbot.io/integration-instagram/apis/comment"
+import type { InstagramAuthValue } from "@salesmanchatbot.io/integration-instagram/schema"
+import type { InstagramAuthValue as InstagramFacebookAuthValue } from "@salesmanchatbot.io/integration-instagram-facebook"
+import { listMediaComments as listInstagramFacebookMediaComments } from "@salesmanchatbot.io/integration-instagram-facebook/apis/comment"
 import { collectCommentsSince, parseGraphTime, toEpochSeconds } from "./paging"
 import {
   MissedCommentsIntegrationNotFoundError,

@@ -1,8 +1,8 @@
-import { connectionStateService } from "@chatbotx.io/business"
-import { connectSessionService } from "@chatbotx.io/business/connect-session"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { connectionService } from "@chatbotx.io/connections"
-import type { WorkspaceApiTokenScope } from "@chatbotx.io/database/partials"
+import { connectionStateService } from "@salesmanchatbot.io/business"
+import { connectSessionService } from "@salesmanchatbot.io/business/connect-session"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { connectionService } from "@salesmanchatbot.io/connections"
+import type { WorkspaceApiTokenScope } from "@salesmanchatbot.io/database/partials"
 import {
   possibleErrorsOnCancelingConnectSession,
   possibleErrorsOnConnectingSessionTargets,

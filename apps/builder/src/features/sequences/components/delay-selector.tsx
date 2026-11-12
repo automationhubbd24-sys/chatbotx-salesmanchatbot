@@ -1,14 +1,14 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import { RotateCcwIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { memo, useEffect, useState } from "react"

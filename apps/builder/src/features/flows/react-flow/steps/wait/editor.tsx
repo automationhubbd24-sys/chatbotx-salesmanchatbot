@@ -1,6 +1,6 @@
 "use client"
 
-import { waitStepDelayTypes } from "@chatbotx.io/flow-config"
+import { waitStepDelayTypes } from "@salesmanchatbot.io/flow-config"
 import { useWatch } from "react-hook-form"
 import { DateDelayEditor } from "./components/date-delay-editor"
 import DelayTypeSelect from "./components/delay-type-select"

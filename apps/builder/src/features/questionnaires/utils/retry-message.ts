@@ -1,4 +1,4 @@
-import type { SupportedQuestionnaireQuestionType } from "@chatbotx.io/database/partials"
+import type { SupportedQuestionnaireQuestionType } from "@salesmanchatbot.io/database/partials"
 import type { useTranslations } from "next-intl"
 
 const defaultRetryMessageKeyByType = {

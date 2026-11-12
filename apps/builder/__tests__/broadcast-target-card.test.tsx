@@ -9,7 +9,7 @@ vi.mock("next-intl", () => ({
 }))
 
 // Deterministic seeds so the assertions read the exact params the card wrote.
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   extractTemplateParams: () => ({ body: [{ type: "text", text: "" }] }),
   extractMessengerTemplateParams: () => ({ body: [] }),
   extractMessengerFlowButtons: () => [{ id: "btn-1", label: "Go" }],
@@ -67,7 +67,7 @@ vi.mock(
 
 // A native select bound to the form so a change event drives the real
 // react-hook-form state the card reacts to.
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({
     name,
     options,

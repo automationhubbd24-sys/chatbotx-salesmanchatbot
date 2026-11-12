@@ -1,5 +1,5 @@
-import { templateCategories } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { templateCategories } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

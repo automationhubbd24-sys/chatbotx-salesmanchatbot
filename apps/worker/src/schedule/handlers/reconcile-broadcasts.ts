@@ -1,10 +1,10 @@
-import { broadcastService } from "@chatbotx.io/business"
-import { distributedLock } from "@chatbotx.io/redis"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import {
   broadcastSendJobId,
   ScheduleJobData,
   scheduleQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 
 const LOCK_KEY = "schedule:reconcile-broadcasts"
 const LOCK_TTL_SECONDS = 55

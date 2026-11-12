@@ -1,15 +1,15 @@
 {
-  "name": "@chatbotx.io/integration-messenger",
+  "name": "@salesmanchatbot.io/integration-messenger",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@chatbotx.io/business": "workspace:*",
-    "@chatbotx.io/database": "workspace:*",
-    "@chatbotx.io/flow-config": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/sdk": "workspace:*",
-    "@chatbotx.io/utils": "workspace:*",
+    "@salesmanchatbot.io/business": "workspace:*",
+    "@salesmanchatbot.io/database": "workspace:*",
+    "@salesmanchatbot.io/flow-config": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/sdk": "workspace:*",
+    "@salesmanchatbot.io/utils": "workspace:*",
     "@types/node": "^24.10.4",
     "cross-fetch": "^4.1.0",
     "image-size": "^2.0.3",
@@ -18,8 +18,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "msw": "^2.7.3",
     "typescript": "^5",
     "vitest": "^4.1.0"

@@ -1,21 +1,21 @@
-import { type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   productCategoryRepository,
   productRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   productAddonModel,
   productVariantModel,
   productVariantOptionModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ProductAddonModel,
   ProductModel,
   ProductVariantModel,
   ProductVariantOptionModel,
-} from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 import { logger } from "../logger"

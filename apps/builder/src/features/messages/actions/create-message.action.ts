@@ -1,6 +1,6 @@
 "use server"
-import { conversationService, messageService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { conversationService, messageService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { createMessageWithRoutingBypassRequest } from "../schema/mutation"
 export const createMessageAction = workspaceActionClient

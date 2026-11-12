@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { baseStepSchema } from "./base"
 import type { ButtonStepProps } from "./button"

@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { mediaLibraryService } from "@chatbotx.io/business"
+import { mediaLibraryService } from "@salesmanchatbot.io/business"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // Every media-library action is a one-line `workspaceActionClient
@@ -19,7 +19,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   mediaLibraryService: {
     createFolder: vi.fn(),
     renameFolder: vi.fn(),

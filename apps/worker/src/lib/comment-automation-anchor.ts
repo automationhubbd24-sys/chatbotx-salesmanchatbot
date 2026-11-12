@@ -1,5 +1,5 @@
-import { commentAutomationAnalyticsService } from "@chatbotx.io/analytics"
-import type { CommentAutomationReplyChannel } from "@chatbotx.io/database/partials"
+import { commentAutomationAnalyticsService } from "@salesmanchatbot.io/analytics"
+import type { CommentAutomationReplyChannel } from "@salesmanchatbot.io/database/partials"
 import { logger } from "./logger"
 
 /**

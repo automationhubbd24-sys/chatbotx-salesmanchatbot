@@ -21,7 +21,7 @@ const { resolveWorkspaceAccess } = await import(
   "../src/workspace-support-access/resolve-access"
 )
 
-const user = { id: "user-1", email: "admin@chatbotx.io" }
+const user = { id: "user-1", email: "admin@salesmanchatbot.io" }
 
 beforeEach(() => {
   vi.clearAllMocks()

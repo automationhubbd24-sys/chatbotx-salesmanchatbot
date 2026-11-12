@@ -56,7 +56,7 @@ const editContactNote = vi.fn()
 
 const deleteContactNote = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { resolveIdByIdentifier: resolveContactId },
   contactNoteService: {
     ...contactNoteService,

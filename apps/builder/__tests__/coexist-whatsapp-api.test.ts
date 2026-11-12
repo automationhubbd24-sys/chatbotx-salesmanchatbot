@@ -7,7 +7,7 @@ import viMessages from "../messages/vi.json"
 
 // ---- mock: business service (the route now delegates entirely) -----------
 const mockSetCoexist = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: { setCoexist: mockSetCoexist },
   isWorkspaceScheduledForDeletion: vi.fn(() => false),
   workspaceMemberService: {
@@ -29,7 +29,7 @@ vi.mock("@chatbotx.io/business", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       workspaceMemberModel: {
@@ -45,7 +45,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
 
 // ---- mock: smb_app_data trigger (Meta API) --------------------------------
 const mockTriggerSmbAppDataSync = vi.fn()
-vi.mock("@chatbotx.io/integration-whatsapp/api/coexists", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/coexists", () => ({
   triggerSmbAppDataSync: mockTriggerSmbAppDataSync,
 }))
 
@@ -62,7 +62,7 @@ vi.mock("@/lib/auth/auth", () => ({
 }))
 
 // ---- mock: logger (prevent pino init) ------------------------------------
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     error: vi.fn(),
     info: vi.fn(),

@@ -1,9 +1,9 @@
-import { toLogSafeError } from "@chatbotx.io/logger"
-import { ChatbotXException } from "../errors"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
+import { salesmanChatbotException } from "../errors"
 import { logger } from "../logger"
 
 export const courierProviderUnavailableException = (provider: string) =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     `Courier provider "${provider}" is not available.`,
     "courierProviderUnavailable",
     503,

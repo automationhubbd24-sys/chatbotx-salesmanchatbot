@@ -1,4 +1,4 @@
-import type { HandleRequestProps } from "@chatbotx.io/sdk"
+import type { HandleRequestProps } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { TiktokMissingScopesError } from "../src/exception"
 import {

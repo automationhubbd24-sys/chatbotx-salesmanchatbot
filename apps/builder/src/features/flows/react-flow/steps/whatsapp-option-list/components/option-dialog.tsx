@@ -6,10 +6,10 @@ import {
   type WhatsappOptionListItem,
   type WhatsappOptionListOptionFormValues,
   whatsappOptionListOptionFormSchema,
-} from "@chatbotx.io/flow-config"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -18,7 +18,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslations } from "next-intl"
 import { memo } from "react"

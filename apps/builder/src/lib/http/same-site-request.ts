@@ -1,4 +1,4 @@
-import { getRawPublicHostFromRequest } from "@chatbotx.io/utils"
+import { getRawPublicHostFromRequest } from "@salesmanchatbot.io/utils"
 
 /**
  * Guards plain `app/api/*` handlers, which unlike Server Actions get no

@@ -1,5 +1,5 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
 import type {
   ChannelSendErrorContext,
   ChannelSendErrorReconciler,

@@ -2,7 +2,7 @@ import {
   orderSystemFunctionIds,
   systemFunctionCatalog,
   systemFunctionGroupIds,
-} from "@chatbotx.io/ai"
+} from "@salesmanchatbot.io/ai"
 import { createStore } from "zustand/vanilla"
 import type { ListAIFilesResponse } from "@/features/ai-files/schema"
 import type { ListAIFunctionsResponse } from "@/features/ai-functions/schema"

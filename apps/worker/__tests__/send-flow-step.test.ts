@@ -143,16 +143,16 @@ const {
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {},
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   botMessageFallbackReasons: {
     enum: {
       button_not_found: "button_not_found",
@@ -175,13 +175,13 @@ vi.mock("@chatbotx.io/analytics", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   messageModel: { id: "id", sourceId: "sourceId" },
   contactInboxModel: { id: "id" },
   conversationModel: { id: "id", lastActivityAt: "lastActivityAt" },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentCalendarService: {
     findByPublicLinkSlug: mockFindAppointmentCalendarBySlug,
   },
@@ -205,33 +205,33 @@ vi.mock("@chatbotx.io/business", () => ({
   resolveMediaUrl: mockResolveMediaUrl,
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   signAppointmentWebviewToken: mockSignAppointmentWebviewToken,
 }))
 
 // Its own subpath, not the barrel: `node:crypto` modules stay out of
-// `@chatbotx.io/encryption`'s index so the builder's Edge bundle can load it.
-// Only the HMAC is stubbed here — `@chatbotx.io/business/open-link` runs for
+// `@salesmanchatbot.io/encryption`'s index so the builder's Edge bundle can load it.
+// Only the HMAC is stubbed here — `@salesmanchatbot.io/business/open-link` runs for
 // real, so the exemptions it decides (same origin, self channel) stay covered.
-vi.mock("@chatbotx.io/encryption/open-link-token", () => ({
+vi.mock("@salesmanchatbot.io/encryption/open-link-token", () => ({
   signOpenLinkUrl: vi.fn(() => "open-link-signature"),
   verifyOpenLinkUrl: vi.fn(() => true),
 }))
 
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getPublicFileUrl: vi.fn((path: string, base: string) => `${base}/${path}`),
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/sdk")>()
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()
   return {
     ...actual,
     parseSdkError: vi.fn().mockResolvedValue({ message: "sdk error" }),
@@ -239,22 +239,22 @@ vi.mock("@chatbotx.io/sdk", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "test-id") }
 })
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   resolveContactVariablesDeep: mockResolveContactVariables,
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploadFileFromUrl: mockUploadFileFromUrl,
 }))
 
-vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/flow-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/flow-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/flow-config")>()
   return { ...actual }
 })
 
@@ -291,7 +291,7 @@ vi.mock("../src/chat/handlers/send-whatsapp-template", () => ({
 // Import after mocks
 // ---------------------------------------------------------------------------
 
-import type { ChatJobSendFlowStep } from "@chatbotx.io/worker-config"
+import type { ChatJobSendFlowStep } from "@salesmanchatbot.io/worker-config"
 
 const { sendChatMessage, sendFlowStep } = await import(
   "../src/chat/handlers/send-flow-step"
@@ -969,7 +969,7 @@ describe("sendFlowStep", () => {
           beforeStep: {
             id: "before-1",
             stepType: "openWebsite",
-            url: "https://builder.chatbotx.online/booking/public-slug",
+            url: "https://builder.salesmanchatbot.online/booking/public-slug",
             browserSize: 100,
           },
           steps: [],

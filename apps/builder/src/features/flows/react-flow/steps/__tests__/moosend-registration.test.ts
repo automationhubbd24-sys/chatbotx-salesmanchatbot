@@ -3,7 +3,7 @@ import {
   moosendCreateContactDefaultFn,
   moosendCreateContactSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 describe("moosendCreateContact step registration", () => {

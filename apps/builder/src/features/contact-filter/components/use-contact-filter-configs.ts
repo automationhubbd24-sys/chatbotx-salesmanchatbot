@@ -1,6 +1,6 @@
 "use client"
 
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useCouponTopicOptions } from "@/features/coupons/provider/use-coupon-topic-options"

@@ -31,10 +31,10 @@ const mocks = vi.hoisted(() => ({
 
 const TX = { tx: true }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.transaction },
 }))
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   aiHandoverBulkRunRepository: {
     createForRevision: mocks.createForRevision,
     findByRevision: mocks.findByRevision,
@@ -68,7 +68,7 @@ vi.mock("../src/ai-handover-settings/service", () => ({
     invalidate: mocks.invalidate,
   },
 }))
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { aiHandoverBulkToggle: "aiHandoverBulkToggle" },
   integrationQueue: { add: mocks.queueAdd, getJob: mocks.getJob },
   buildAiHandoverBulkJobId: ({
@@ -79,13 +79,13 @@ vi.mock("@chatbotx.io/worker-config", () => ({
     chunkSeq: number
   }) => `ai-handover-bulk-${runId}-chunk-${chunkSeq}`,
 }))
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     error: mocks.loggerError,
     warn: mocks.loggerWarn,
   }),
 }))
-vi.mock("@chatbotx.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
 
 const { aiHandoverBulkRunService } = await import(
   "../src/ai-handover-bulk-run/service"

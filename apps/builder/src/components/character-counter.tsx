@@ -1,7 +1,7 @@
 "use client"
 
-import { countMessageCharacters } from "@chatbotx.io/flow-config"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { countMessageCharacters } from "@salesmanchatbot.io/flow-config"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 type CharacterCounterProps = {
   value: string | null | undefined

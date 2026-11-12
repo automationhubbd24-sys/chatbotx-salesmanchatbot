@@ -6,28 +6,28 @@ import {
   inArray,
   ne,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type ChannelType,
   channelTypes,
   type InboxDisconnectReason,
   inboxStatuses,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   aiHandoverBulkRunRepository,
   aiHandoverSettingsRepository,
   type InboxChannelOption,
   inboxRepository,
-} from "@chatbotx.io/database/repositories"
-import { inboxModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import { inboxModel } from "@salesmanchatbot.io/database/schema"
 import type {
   InboxModel,
   InboxWithIntegrations,
   IntegrationMessengerModel,
   IntegrationWhatsappModel,
-} from "@chatbotx.io/database/types"
-import { getPaginationWithDefaults } from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { getPaginationWithDefaults } from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { channelLimitReachedException, notFoundException } from "../errors"
 import { logger } from "../logger"
@@ -413,7 +413,7 @@ class InboxService extends BaseService {
   /**
    * `skipQuota` bypasses this method's own `tryConsume`/`increment` for a
    * brand-new inbox — used only by `ConnectionService.connectTargets`
-   * (`@chatbotx.io/connections`), which activates the Connection through
+   * (`@salesmanchatbot.io/connections`), which activates the Connection through
    * `connectionStateService.transition` right after this call: `transition`
    * owns the quota edge for that path, so consuming here too would charge
    * the workspace twice for one new channel. Every other caller leaves it

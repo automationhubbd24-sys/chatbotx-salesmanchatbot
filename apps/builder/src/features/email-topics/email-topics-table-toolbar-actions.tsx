@@ -1,7 +1,7 @@
 "use client"
 
-import type { EmailTopicModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { EmailTopicModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import type { Table } from "@tanstack/react-table"
 import { FolderUpIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

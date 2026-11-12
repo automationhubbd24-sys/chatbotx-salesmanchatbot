@@ -27,31 +27,31 @@ vi.mock("../src/workspace-usage/service", () => ({
   workspaceUsageService: { decrement: mocks.decrement },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ and: args }),
   db: makeClient(),
   eq: (...args: unknown[]) => ({ eq: args }),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   workspaceMemberRoles: { enum: { owner: "owner" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceMemberModel: {
     id: "workspaceMember.id",
     workspaceId: "workspaceMember.workspaceId",
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   workspaceMemberRepository: {
     listPermissionsByUserIds: mocks.listPermissionsByUserIds,
     markOnlineBulk: mocks.markOnlineBulk,
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn(),
 }))
 

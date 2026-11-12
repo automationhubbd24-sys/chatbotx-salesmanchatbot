@@ -1,8 +1,8 @@
 "use server"
 
-import { adsConversionService } from "@chatbotx.io/business"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { adsConversionService } from "@salesmanchatbot.io/business"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClient } from "@/lib/safe-action"
 import {

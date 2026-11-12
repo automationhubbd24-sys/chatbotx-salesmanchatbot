@@ -85,7 +85,7 @@ const {
   mockAssertSuperAdmin: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mockAuditRecord },
   withAuditContext: mockWithAuditContext,
 }))
@@ -94,7 +94,7 @@ vi.mock("@/lib/auth/assert-workspace-super-admin", () => ({
   assertWorkspaceSuperAdmin: mockAssertSuperAdmin,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findByIdForWorkspace: mockFindMessengerIntegration,
     updateAuth: vi.fn(),
@@ -126,18 +126,18 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business/connect-session", () => ({
+vi.mock("@salesmanchatbot.io/business/connect-session", () => ({
   connectSessionService: {
     findByNonce: vi.fn(),
     fail: vi.fn(),
   },
 }))
 
-vi.mock("@chatbotx.io/connections", () => ({
+vi.mock("@salesmanchatbot.io/connections", () => ({
   connectionService: {
     completeAuthorization: vi.fn(),
     connectTargets: vi.fn(),
@@ -145,49 +145,49 @@ vi.mock("@chatbotx.io/connections", () => ({
   CONNECTION_REGISTRY: {},
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationGoogleSheetsModel: {},
   integrationModel: {},
   ROOT_TENANT_ID: "1",
 }))
 
-vi.mock("@chatbotx.io/integration-facebook-ads", () => ({
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", () => ({
   exchangeCodeForToken: mockExchangeFacebookAdsCode,
   exchangeLongLivedToken: mockExchangeFacebookAdsLongLivedToken,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   exchangeCodeForToken: vi.fn(),
   getInstagramAccount: vi.fn(),
   subscribePageToInstagramWebhook: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   exchangeCodeForToken: vi.fn(),
   getFacebookUser: vi.fn(),
   getUserInstagramAccounts: vi.fn(),
   subscribePageToInstagramWebhook: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   exchangeCodeForToken: mockExchangeMessengerCode,
   getFacebookUser: mockGetMessengerFacebookUser,
   getUserPages: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   exchangeLongLivedToken: vi.fn(),
   subscribePageToAppWebhook: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/sdk")>()),
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()),
   AuthType: { oauth2: "oauth2", custom: "custom" },
   SdkException: class SdkException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     getPublicUrlFromRequest: (request: { url: string }) => request.url,

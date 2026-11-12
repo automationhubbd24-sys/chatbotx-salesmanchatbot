@@ -1,6 +1,6 @@
 "use client"
 
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { Loader2Icon } from "lucide-react"
 import type { ReactElement } from "react"
 import { SettingRow } from "@/components/setting-row"

@@ -14,16 +14,16 @@ const {
   mockFindDraft: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { query: { flowModel: { findMany: mockFlowModelFindMany } } },
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   rootFolderId: "0",
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   flowVersionModel: { table: "FlowVersion" },
 }))
 

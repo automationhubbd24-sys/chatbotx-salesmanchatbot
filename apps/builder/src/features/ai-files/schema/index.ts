@@ -1,7 +1,7 @@
-import type { AIFileWithEmbeddingStatus } from "@chatbotx.io/business"
-import { aiEmbeddingStatuses } from "@chatbotx.io/database/partials"
-import { aiFileModel, createSelectSchema } from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import type { AIFileWithEmbeddingStatus } from "@salesmanchatbot.io/business"
+import { aiEmbeddingStatuses } from "@salesmanchatbot.io/database/partials"
+import { aiFileModel, createSelectSchema } from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 export const aiFileResource = createSelectSchema(aiFileModel, {

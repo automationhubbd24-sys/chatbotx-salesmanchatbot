@@ -1,11 +1,11 @@
-import { messengerIntegrationService } from "@chatbotx.io/business"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
 import {
   type FacebookPostListItem,
   listAdsPosts,
   listPublishedPosts,
   listReelsPosts,
-} from "@chatbotx.io/integration-messenger/apis/post"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
+} from "@salesmanchatbot.io/integration-messenger/apis/post"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
 import { collectSettled } from "@/lib/collect-settled"
 
 export type FacebookPostsForAutomation = {

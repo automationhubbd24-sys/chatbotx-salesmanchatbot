@@ -1,4 +1,4 @@
-import { waTemplateParamsSchema } from "@chatbotx.io/flow-config"
+import { waTemplateParamsSchema } from "@salesmanchatbot.io/flow-config"
 import { z } from "zod"
 
 const capabilitiesChannelPolicySchema = z.object({

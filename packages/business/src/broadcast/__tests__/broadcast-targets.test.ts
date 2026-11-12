@@ -19,11 +19,11 @@ const mocks = vi.hoisted(() => ({
   dispatchAuditRecord: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   broadcastAnalyticsService: { getContacts: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ invalidateCacheByTags: vi.fn() }))
 
 vi.mock("../../inbox/service", () => ({
   inboxService: { resolveBroadcastInboxIds: mocks.resolveBroadcastInboxIds },
@@ -45,7 +45,7 @@ vi.mock("../plan-policy.service", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   broadcastModel: {
     id: "Broadcast.id",
     workspaceId: "Broadcast.workspaceId",
@@ -83,7 +83,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const tx = {
     insert: () => ({
       // Awaitable on its own (a plain insert) and chainable to `.returning()`.
@@ -159,13 +159,13 @@ vi.mock("@chatbotx.io/database/client", () => {
   }
 })
 
-vi.mock("@chatbotx.io/database/queries", () => ({
+vi.mock("@salesmanchatbot.io/database/queries", () => ({
   buildContactInboxContactFilterSQL: vi.fn(),
   contactInboxInteractedWithin24hSQL: vi.fn(),
   pruneEmailPhoneFilterConditions: (contactFilter: unknown) => contactFilter,
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   chunkById: vi.fn(),
   likeContains: vi.fn(),
 }))

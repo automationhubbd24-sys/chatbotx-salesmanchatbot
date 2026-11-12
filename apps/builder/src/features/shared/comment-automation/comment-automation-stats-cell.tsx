@@ -1,6 +1,6 @@
 "use client"
 
-import type { CommentAutomationEventType } from "@chatbotx.io/analytics/schemas"
+import type { CommentAutomationEventType } from "@salesmanchatbot.io/analytics/schemas"
 import { useFormatter } from "next-intl"
 import { memo, useCallback, useState } from "react"
 import { CommentAutomationContactsDialog } from "./comment-automation-contacts-dialog"

@@ -1,4 +1,4 @@
-import { integrationOpenaiCompatibleService } from "@chatbotx.io/business"
+import { integrationOpenaiCompatibleService } from "@salesmanchatbot.io/business"
 import {
   type IntegrationOpenaiCompatibleResource,
   mapIntegrationOpenaiCompatibleResource,

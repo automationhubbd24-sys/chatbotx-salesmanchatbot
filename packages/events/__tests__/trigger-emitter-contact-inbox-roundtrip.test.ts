@@ -13,7 +13,7 @@ const mocks = vi.hoisted(() => ({
   hasActiveTriggers: vi.fn(async () => true),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   triggerQueue: { add: (...args: unknown[]) => mocks.triggerQueueAdd(...args) },
 }))
 

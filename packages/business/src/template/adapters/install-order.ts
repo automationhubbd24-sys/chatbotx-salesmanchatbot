@@ -1,4 +1,4 @@
-import type { TemplateCategory } from "@chatbotx.io/database/partials"
+import type { TemplateCategory } from "@salesmanchatbot.io/database/partials"
 import { templateAdapterRegistry } from "./registry"
 
 /**

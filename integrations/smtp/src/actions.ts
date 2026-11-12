@@ -1,4 +1,4 @@
-import type { Context } from "@chatbotx.io/sdk"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import nodemailer from "nodemailer"
 import type { SmtpAuthValue } from "./schema"
 

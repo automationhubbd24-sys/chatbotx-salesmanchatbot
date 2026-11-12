@@ -1,15 +1,15 @@
-import { and, type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { and, type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   userQuotaModel,
   workspaceMemberModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   type BloomFilter,
   bloomFilter,
   cacheConnections,
   distributedStore,
-} from "@chatbotx.io/redis"
-import { liveKeyFor, USER_QUOTA_LABEL } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/redis"
+import { liveKeyFor, USER_QUOTA_LABEL } from "@salesmanchatbot.io/utils"
 import { logger } from "../lib/logger"
 import {
   anchoredPeriod,

@@ -1,13 +1,13 @@
 // @vitest-environment node
 
-import { broadcastPlanLimitException } from "@chatbotx.io/business/errors"
-import { TRIAL_BROADCAST_PLAN_POLICY } from "@chatbotx.io/database/partials"
+import { broadcastPlanLimitException } from "@salesmanchatbot.io/business/errors"
+import { TRIAL_BROADCAST_PLAN_POLICY } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // Mirrors analytics-public-api.test.ts: stub the real db client so the
 // feature's transitive imports (queries -> broadcastService -> db) don't
 // open a real pg.Pool at module load.
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -84,7 +84,7 @@ const broadcastService = {
   softDeleteBroadcasts: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService,
 }))
 

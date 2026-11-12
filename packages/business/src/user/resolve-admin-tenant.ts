@@ -1,5 +1,5 @@
-import { ROOT_TENANT_ID } from "@chatbotx.io/database/schema"
-import type { UserModel } from "@chatbotx.io/database/types"
+import { ROOT_TENANT_ID } from "@salesmanchatbot.io/database/schema"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { tenantService } from "../enterprise/tenant/service"
 import { isCloud, keys } from "../keys"
 

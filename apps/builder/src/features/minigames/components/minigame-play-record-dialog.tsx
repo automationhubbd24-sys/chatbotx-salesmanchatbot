@@ -1,13 +1,13 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
 import { useLocale, useTranslations } from "next-intl"
 import type { getMinigamePlaysAction } from "../actions/get-minigame-plays.action"
 

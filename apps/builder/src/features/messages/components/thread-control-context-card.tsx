@@ -1,8 +1,8 @@
 "use client"
 
-import type { ThreadControlHistoryItem } from "@chatbotx.io/sdk"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ThreadControlHistoryItem } from "@salesmanchatbot.io/sdk"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { format } from "date-fns"
 import { SparklesIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

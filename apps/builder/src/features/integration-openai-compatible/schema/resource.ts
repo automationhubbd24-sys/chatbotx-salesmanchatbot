@@ -1,5 +1,5 @@
-import type { OpenaiCompatibleProviderPreset } from "@chatbotx.io/ai"
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
+import type { OpenaiCompatibleProviderPreset } from "@salesmanchatbot.io/ai"
+import type { IntegrationOpenaiCompatibleModel } from "@salesmanchatbot.io/database/types"
 
 export type IntegrationOpenaiCompatibleResource = Pick<
   IntegrationOpenaiCompatibleModel,

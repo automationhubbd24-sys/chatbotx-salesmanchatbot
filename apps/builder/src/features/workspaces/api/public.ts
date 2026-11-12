@@ -1,10 +1,10 @@
-import { resolveTenantSettings, workspaceService } from "@chatbotx.io/business"
+import { resolveTenantSettings, workspaceService } from "@salesmanchatbot.io/business"
 import {
   defaultReplyFrequencies,
   isSmartResponseDelayOption,
   SMART_RESPONSE_DELAY_OPTIONS,
-} from "@chatbotx.io/database/partials"
-import { getPublicFileUrl, zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { getPublicFileUrl, zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import {
   possibleErrorsOnFindingResource,

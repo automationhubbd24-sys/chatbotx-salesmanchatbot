@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -10,12 +10,12 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.transaction },
   isUniqueViolationError: vi.fn().mockReturnValue(false),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {},
 }))
 

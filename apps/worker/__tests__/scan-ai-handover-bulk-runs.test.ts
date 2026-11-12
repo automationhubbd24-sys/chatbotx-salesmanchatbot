@@ -16,7 +16,7 @@ const mocks = vi.hoisted(() => ({
   error: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiHandoverBulkRunService: {
     pickDue: mocks.pickDue,
     markMaxAttemptsFailed: mocks.markMaxAttemptsFailed,
@@ -26,7 +26,7 @@ vi.mock("@chatbotx.io/business", () => ({
     reconcile: mocks.reconcile,
   },
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
   distributedStore: {
     exists: mocks.lockExists,
@@ -35,7 +35,7 @@ vi.mock("@chatbotx.io/redis", () => ({
     delete: mocks.storeDelete,
   },
 }))
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     info: vi.fn(),
     warn: mocks.warn,

@@ -11,14 +11,14 @@ import {
   ne,
   notInArray,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type SmartDelayStatus,
   type SmartDelayType,
   smartDelayStatuses,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
-import { contactOnSmartDelayModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import { contactOnSmartDelayModel } from "@salesmanchatbot.io/database/schema"
 import { BaseService } from "../base.service"
 
 /**

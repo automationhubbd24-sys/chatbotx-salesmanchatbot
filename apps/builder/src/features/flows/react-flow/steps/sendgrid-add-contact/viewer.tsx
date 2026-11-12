@@ -1,7 +1,7 @@
 "use client"
 
-import type { SendGridAddContactSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { SendGridAddContactSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { MailIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BaseStateViewer } from "../../states/viewer"

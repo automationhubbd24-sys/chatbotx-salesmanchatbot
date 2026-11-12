@@ -1,5 +1,5 @@
 import { createHmac } from "node:crypto"
-import type { HandleRequestProps } from "@chatbotx.io/sdk"
+import type { HandleRequestProps } from "@salesmanchatbot.io/sdk"
 import {
   beforeEach,
   describe,

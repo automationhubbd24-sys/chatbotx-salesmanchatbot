@@ -1,4 +1,4 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -17,7 +17,7 @@ const {
   recordExecution: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   triggerService: {
     listActiveWithConditionsPage,
     listExecutedPairs,
@@ -25,7 +25,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   listContactCustomFieldsForDateTimeSweep,
   listContactCustomFieldsForDateTimeSweepContacts,
 }))
@@ -37,7 +37,7 @@ const redis = {
   del: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getRedisConnection: () => redis,
 }))
 

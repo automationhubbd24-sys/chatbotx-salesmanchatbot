@@ -1,7 +1,7 @@
 "use client"
 
-import type { TemplateModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TemplateModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,10 +10,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { CopyIcon, Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

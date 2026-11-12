@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { type CouponStepSchema, stepTypes } from "@chatbotx.io/flow-config"
+import { type CouponStepSchema, stepTypes } from "@salesmanchatbot.io/flow-config"
 import {
   act,
   type ComponentType,
@@ -17,7 +17,7 @@ vi.mock("@/features/coupons/provider/use-coupon-topic-options", () => ({
   useCouponTopicOptions: () => useCouponTopicOptionsMock(),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/card", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/card", () => ({
   Card: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   CardContent: ({ children }: { children: ReactNode }) => <div>{children}</div>,
 }))

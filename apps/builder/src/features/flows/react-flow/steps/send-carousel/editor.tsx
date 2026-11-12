@@ -1,12 +1,12 @@
 "use client"
 
-import { cardLayouts } from "@chatbotx.io/database/partials"
-import { sendCardStepDefaultFn } from "@chatbotx.io/flow-config"
+import { cardLayouts } from "@salesmanchatbot.io/database/partials"
+import { sendCardStepDefaultFn } from "@salesmanchatbot.io/flow-config"
 import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
-} from "@chatbotx.io/ui/components/carousel-snap"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/carousel-snap"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Carousel,
   type CarouselApi,
@@ -14,8 +14,8 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@chatbotx.io/ui/components/ui/carousel"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/carousel"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   PlusIcon,
   RectangleHorizontalIcon,

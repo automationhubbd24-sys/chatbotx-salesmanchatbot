@@ -1,8 +1,8 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { tagChannelRepository } from "@chatbotx.io/database/repositories"
-import type { TagChannelModel } from "@chatbotx.io/database/types"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { tagChannelRepository } from "@salesmanchatbot.io/database/repositories"
+import type { TagChannelModel } from "@salesmanchatbot.io/database/types"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
 
 const SYNC_TAG_BULK_CHUNK_SIZE = 1000

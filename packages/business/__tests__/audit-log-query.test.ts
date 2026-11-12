@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   relationsFilterToSQL: vi.fn((_model: unknown, where: unknown) => where),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       auditLogModel: {
@@ -19,11 +19,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
     mocks.relationsFilterToSQL(model, where),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   auditLogModel: { id: "id", createdAt: "createdAt" },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: () => ({ limit: 10, offset: 0 }),
   likeContains: (value: string) => `%${value}%`,
   parseOrderByAsObject: () => ({ createdAt: "desc" }),

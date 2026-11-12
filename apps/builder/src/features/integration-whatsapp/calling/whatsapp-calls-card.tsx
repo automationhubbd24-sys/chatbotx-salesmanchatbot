@@ -1,21 +1,21 @@
 "use client"
 
-import type { WhatsappCallingSettings } from "@chatbotx.io/integration-whatsapp/api/calling"
+import type { WhatsappCallingSettings } from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { AlertCircleIcon, Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

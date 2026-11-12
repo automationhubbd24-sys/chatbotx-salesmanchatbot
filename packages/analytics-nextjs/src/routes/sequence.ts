@@ -1,9 +1,9 @@
-import { sequenceAnalyticsService } from "@chatbotx.io/analytics"
+import { sequenceAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   getSequenceStepStatsRequest,
   getSequenceStepStatsResponse,
-} from "@chatbotx.io/analytics/schemas"
-import { withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { withCache } from "@salesmanchatbot.io/redis"
 import { os } from "@orpc/server"
 import { logger } from "../lib/log"
 

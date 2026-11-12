@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   findMany: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: {
     listWithDefinitionByContact: mocks.findMany,
   },

@@ -4,7 +4,7 @@ import {
   defaultWorkerOptions,
   getQueueConnection,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { ensureBootstrapped } from "../lib/bootstrap"
 import { isBlockedWorkspace } from "../lib/is-blocked-workspace"

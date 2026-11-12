@@ -1,10 +1,10 @@
-import { type DatabaseClient, db } from "@chatbotx.io/database/client"
-import type { OrderSource, OrderType } from "@chatbotx.io/database/partials"
-import { orderIntakeSessionRepository } from "@chatbotx.io/database/repositories"
+import { type DatabaseClient, db } from "@salesmanchatbot.io/database/client"
+import type { OrderSource, OrderType } from "@salesmanchatbot.io/database/partials"
+import { orderIntakeSessionRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   OrderConversationSessionModel,
   OrderModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { type CountryCode, parsePhoneNumberFromString } from "libphonenumber-js"
 import { notFoundException, validationException } from "../errors"
 import { orderService } from "../order"

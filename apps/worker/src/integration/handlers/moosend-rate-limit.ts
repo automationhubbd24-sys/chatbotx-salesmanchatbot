@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto"
-import { cacheConnections } from "@chatbotx.io/redis"
+import { cacheConnections } from "@salesmanchatbot.io/redis"
 import { z } from "zod"
 
 export const MOOSEND_SUBSCRIBE_LIMIT = 10

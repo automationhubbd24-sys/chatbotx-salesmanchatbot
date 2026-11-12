@@ -1,10 +1,10 @@
 "use client"
 
-import type { AIEditImageSchema } from "@chatbotx.io/flow-config"
+import type { AIEditImageSchema } from "@salesmanchatbot.io/flow-config"
 import {
   aiEditImageDefaultFn,
   aiEditImageSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import { AIEditImageEditor } from "./editor"
 import { AIEditImageViewer } from "./viewer"

@@ -1,5 +1,5 @@
-import { AuthException } from "@chatbotx.io/sdk"
-import { oauthCredential } from "@chatbotx.io/vitest-config/test-utils"
+import { AuthException } from "@salesmanchatbot.io/sdk"
+import { oauthCredential } from "@salesmanchatbot.io/vitest-config/test-utils"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type * as CalendarsModule from "../src/apis/calendars"
 import type * as ClientModule from "../src/client"

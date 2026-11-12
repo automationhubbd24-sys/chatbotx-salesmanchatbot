@@ -1,10 +1,10 @@
 "use server"
 
-import { workspaceService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { invitationModel, userModel } from "@chatbotx.io/database/schema"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+import { workspaceService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { invitationModel, userModel } from "@salesmanchatbot.io/database/schema"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 
 export async function findInvitation({ code }: { code: string }) {
   const invitation = await findOrFail({
@@ -15,7 +15,7 @@ export async function findInvitation({ code }: { code: string }) {
     message: "Invitation not found",
   })
   if (invitation.expiresAt < new Date()) {
-    throw new ChatbotXException("Invitation expired")
+    throw new salesmanChatbotException("Invitation expired")
   }
 
   const user = await findOrFail({

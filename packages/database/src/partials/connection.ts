@@ -1,5 +1,5 @@
 /**
- * `Connection`'s enums are defined in `@chatbotx.io/utils/connection` (same
+ * `Connection`'s enums are defined in `@salesmanchatbot.io/utils/connection` (same
  * rationale as `channelTypes` in `./channel.ts`) so packages that cannot
  * depend on the database layer can still reference these values. Re-exported
  * here as the conventional database-layer import site.
@@ -22,4 +22,4 @@ export {
   connectSessionStatuses,
   INACTIVE_CONNECTION_STATUSES,
   TERMINAL_CONNECT_SESSION_STATUSES,
-} from "@chatbotx.io/utils/connection"
+} from "@salesmanchatbot.io/utils/connection"

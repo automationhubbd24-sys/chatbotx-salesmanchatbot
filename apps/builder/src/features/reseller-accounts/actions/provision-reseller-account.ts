@@ -1,6 +1,6 @@
 "use server"
 
-import { provisionResellerAccount } from "@chatbotx.io/auth/provisioning"
+import { provisionResellerAccount } from "@salesmanchatbot.io/auth/provisioning"
 import { z } from "zod"
 import { platformAdminActionClient } from "@/lib/safe-action"
 

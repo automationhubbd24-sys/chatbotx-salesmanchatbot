@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationGetResponseService } from "@chatbotx.io/business"
+import { integrationGetResponseService } from "@salesmanchatbot.io/business"
 import {
   GetResponseApiError,
   integration as getResponseIntegration,
-} from "@chatbotx.io/integration-get-response"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-get-response"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

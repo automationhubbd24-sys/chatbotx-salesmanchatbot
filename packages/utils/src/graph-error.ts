@@ -20,7 +20,7 @@ export type GraphErrorSource = {
 }
 
 /**
- * `UNKNOWN_ERROR` in `@chatbotx.io/sdk` uses -1 for "no code", and an
+ * `UNKNOWN_ERROR` in `@salesmanchatbot.io/sdk` uses -1 for "no code", and an
  * `SdkException` built without one reports -1 too. Printing `(#-1 - -1)` would
  * dress up an absent code as a real one.
  */

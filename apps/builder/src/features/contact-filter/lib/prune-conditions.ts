@@ -1,4 +1,4 @@
-import type { ContactFilterField } from "@chatbotx.io/database/partials"
+import type { ContactFilterField } from "@salesmanchatbot.io/database/partials"
 import type { ContactFilterCondition } from "../schema"
 
 export const pruneExcludedConditions = (

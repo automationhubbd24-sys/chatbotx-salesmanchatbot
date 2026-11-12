@@ -1,18 +1,18 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import {
   and,
   db,
   eq,
   findOrFail,
   isDatabaseError,
-} from "@chatbotx.io/database/client"
-import { integrationTypes } from "@chatbotx.io/database/partials"
-import { integrationTelegramModel } from "@chatbotx.io/database/schema"
-import type { IntegrationTelegramModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { integrationTypes } from "@salesmanchatbot.io/database/partials"
+import { integrationTelegramModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationTelegramModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { connectChannelIntegration } from "../inbox/connect-channel"
 import { workspaceService } from "../workspace"
 
@@ -132,7 +132,7 @@ class TelegramIntegrationService extends BaseService {
         isDatabaseError(error) &&
         error.cause.code === UNIQUE_VIOLATION_CODE
       ) {
-        throw new ChatbotXException("Bot already connected")
+        throw new salesmanChatbotException("Bot already connected")
       }
       throw error
     }

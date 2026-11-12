@@ -1,20 +1,20 @@
 ---
-name: chatbotx-basecode
+name: salesmanchatbot-basecode
 description: >-
-  Understand and audit the ChatbotX base code before making changes. Use when
+  Understand and audit the salesmanChatbot base code before making changes. Use when
   asked to scan the project, check architecture, locate ownership boundaries,
   onboard to the repository, or decide which project-specific skill should
   handle a task.
 ---
 
-# ChatbotX Basecode
+# salesmanChatbot Basecode
 
 Use this skill as the first pass for broad or ambiguous requests. It is a map,
 not a replacement for reading adjacent code.
 
 ## Project Shape
 
-ChatbotX is a pnpm workspace + Turborepo monorepo. The authoritative layout table is
+salesmanChatbot is a pnpm workspace + Turborepo monorepo. The authoritative layout table is
 **`AGENTS.md` → "Repository layout"** — read it there rather than trusting a second copy.
 To see what actually exists right now:
 
@@ -52,7 +52,7 @@ Two routing notes that table does not spell out:
 
 ## Non-Negotiable Invariants
 
-- New app/integration code must not import `db` from `@chatbotx.io/database/client`.
+- New app/integration code must not import `db` from `@salesmanchatbot.io/database/client`.
 - User-facing builder strings must use `useTranslations()` and message JSON keys.
 - Next.js app pages use Promise `params` / `searchParams`.
 - Public unauthenticated builder routes must be registered in `apps/builder/src/proxy.ts`.
@@ -67,7 +67,7 @@ Prefer targeted checks first, then broader checks when the blast radius grows:
 
 ```bash
 pnpm --filter builder check-types
-pnpm --filter @chatbotx.io/database check-types
+pnpm --filter @salesmanchatbot.io/database check-types
 pnpm --filter worker test
 pnpm lint
 pnpm build

@@ -1,4 +1,4 @@
-import type { ErrorLogModel } from "@chatbotx.io/database/types"
+import type { ErrorLogModel } from "@salesmanchatbot.io/database/types"
 
 /**
  * Columns that are developer-only and must never cross the network: a stack

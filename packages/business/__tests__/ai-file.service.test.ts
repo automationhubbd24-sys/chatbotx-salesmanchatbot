@@ -5,7 +5,7 @@ vi.mock("../src/broadcast/plan-policy.service", () => ({
   broadcastPlanPolicyService: {},
 }))
 
-import { ChatbotXException } from "../src/errors"
+import { salesmanChatbotException } from "../src/errors"
 
 const {
   mockAssertPublicUrl,
@@ -47,7 +47,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       aiFileModel: {
@@ -66,12 +66,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   aiFileModel: { id: "id", workspaceId: "workspaceId", createdAt: "createdAt" },
   aiEmbeddingModel: { id: "id", aiFileId: "aiFileId" },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => "file-1",
 }))
 
@@ -82,7 +82,7 @@ class MockUploadValidationError extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {
     getPresignedDownload: mockGetPresignedDownload,
     deleteObject: mockDeleteObject,
@@ -92,13 +92,13 @@ vi.mock("@chatbotx.io/filesystem", () => ({
   UploadValidationError: MockUploadValidationError,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   HeavyJobAction: { processAIFile: "processAIFile" },
   getHeavyJobOptions: () => ({}),
   heavyQueue: { add: mockQueueAdd },
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     debug: vi.fn(),
     error: vi.fn(),
@@ -248,14 +248,14 @@ describe("aiFileService.create", () => {
       .create(workspaceId, { url: "http://169.254.169.254/latest" })
       .catch((caught: unknown) => caught)
 
-    expect(error).toBeInstanceOf(ChatbotXException)
-    expect((error as ChatbotXException).code).toBe("businessError")
+    expect(error).toBeInstanceOf(salesmanChatbotException)
+    expect((error as salesmanChatbotException).code).toBe("businessError")
     // The guard's own message (which echoes the submitted URL) must never
     // reach the caller — it is replaced with a safe, generic message.
-    expect((error as ChatbotXException).message).toBe(
+    expect((error as salesmanChatbotException).message).toBe(
       "The provided URL is not allowed",
     )
-    expect((error as ChatbotXException).message).not.toContain(
+    expect((error as salesmanChatbotException).message).not.toContain(
       "169.254.169.254",
     )
   })
@@ -269,11 +269,11 @@ describe("aiFileService.create", () => {
       .create(workspaceId, { url: "https://example.com/manual.pdf" })
       .catch((caught: unknown) => caught)
 
-    expect(error).toBeInstanceOf(ChatbotXException)
-    expect((error as ChatbotXException).code).toBe("systemError")
-    expect((error as ChatbotXException).httpStatusCode).toBe(502)
-    expect((error as ChatbotXException).message).not.toContain("ECONNREFUSED")
-    expect((error as ChatbotXException).message).not.toContain("10.0.4.12")
+    expect(error).toBeInstanceOf(salesmanChatbotException)
+    expect((error as salesmanChatbotException).code).toBe("systemError")
+    expect((error as salesmanChatbotException).httpStatusCode).toBe(502)
+    expect((error as salesmanChatbotException).message).not.toContain("ECONNREFUSED")
+    expect((error as salesmanChatbotException).message).not.toContain("10.0.4.12")
   })
 
   test("rejects when neither OpenAI nor Gemini is configured", async () => {
@@ -289,9 +289,9 @@ describe("aiFileService.create", () => {
       })
       .catch((caught: unknown) => caught)
 
-    expect(error).toBeInstanceOf(ChatbotXException)
-    expect((error as ChatbotXException).code).toBe("noEmbeddingProvider")
-    expect((error as ChatbotXException).message).toContain(
+    expect(error).toBeInstanceOf(salesmanChatbotException)
+    expect((error as salesmanChatbotException).code).toBe("noEmbeddingProvider")
+    expect((error as salesmanChatbotException).message).toContain(
       "No embedding provider configured",
     )
     expect(mockInsert).not.toHaveBeenCalled()

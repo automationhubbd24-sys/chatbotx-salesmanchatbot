@@ -1,11 +1,11 @@
-import type { AIProvider } from "@chatbotx.io/ai"
+import type { AIProvider } from "@salesmanchatbot.io/ai"
 import {
   aiIntegrationService,
   createAIModelInstance,
   createOpenaiCompatibleModelInstance,
-} from "@chatbotx.io/ai/server"
-import { integrationOpenaiCompatibleService } from "@chatbotx.io/business"
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/ai/server"
+import { integrationOpenaiCompatibleService } from "@salesmanchatbot.io/business"
+import type { IntegrationOpenaiCompatibleModel } from "@salesmanchatbot.io/database/types"
 import type { LanguageModel } from "ai"
 
 type NativeFlowAIProvider = AIProvider

@@ -1,7 +1,7 @@
 import {
   type FormFieldType,
   formFieldTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   CustomFieldValueInputConfig,
   CustomFieldValueInputKind,

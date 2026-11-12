@@ -54,7 +54,7 @@ const {
   mockZaloHandleRequest: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   resolveTenantSettings: mockResolveTenantSettings,
   messengerIntegrationService: {
     findByIdForWorkspace: mockFindMessengerIntegration,
@@ -70,7 +70,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   debugToken: mockDebugMessengerToken,
   exchangeCodeForToken: mockExchangeMessengerCode,
   getFacebookUser: mockGetMessengerFacebookUser,
@@ -78,25 +78,25 @@ vi.mock("@chatbotx.io/integration-messenger", () => ({
   toAppAccessToken: mockToMessengerAppAccessToken,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   ensureMessengerWhitelistedDomain: mockEnsureMessengerWhitelistedDomain,
   exchangeLongLivedToken: mockExchangeMessengerLongLivedToken,
   scopesToPageSubscribeFields: mockScopesToPageSubscribeFields,
   subscribePageToAppWebhook: mockSubscribePageToAppWebhook,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   getInstagramAccount: mockGetInstagramAccount,
   subscribePageToInstagramWebhook: mockSubscribeInstagramWebhook,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   getFacebookUser: mockGetInstagramFacebookUser,
   getUserInstagramAccounts: mockGetUserInstagramAccounts,
   subscribePageToInstagramWebhook: mockSubscribeInstagramFacebookWebhook,
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   AuthType: { oauth2: "oauth2" },
 }))
 

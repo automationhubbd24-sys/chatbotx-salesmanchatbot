@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   listForExport: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   orderService: { listForExport: mocks.listForExport },
 }))
 

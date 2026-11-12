@@ -1,16 +1,16 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

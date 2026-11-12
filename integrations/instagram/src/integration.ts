@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   oauth2Auth,
   probeVerify,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { exchangeCodeForToken, fetchInstagramAccount } from "./apis/auth"
 import {
   refreshLongLivedToken,

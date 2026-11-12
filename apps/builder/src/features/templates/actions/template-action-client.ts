@@ -1,4 +1,4 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { workspaceActionClient } from "@/lib/safe-action"
 
@@ -13,7 +13,7 @@ import { workspaceActionClient } from "@/lib/safe-action"
 export const templateActionClient = workspaceActionClient.use(
   ({ ctx, next }) => {
     if (!hasWorkspacePermission(ctx.workspaceMemberPermissions, "superAdmin")) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You need to be a super admin to manage templates",
         "templateSuperAdminRequired",
         403,

@@ -28,7 +28,7 @@ export * from "./contact"
 // and conversation/service imports the ./contact barrel — re-exporting it there
 // would widen conversation/service's module graph into those heavy deps. The
 // worker consumers (contact-scan engine, coexist shim) import it from the
-// top-level "@chatbotx.io/business" barrel, so this placement serves them fine.
+// top-level "@salesmanchatbot.io/business" barrel, so this placement serves them fine.
 export * from "./contact/bulk-import-channel-contacts"
 // Same placement reason: it pulls in the broadcast/inbox/sequence/reflink/tag/
 // member/inbox-team services, which the ./contact barrel (imported by
@@ -113,7 +113,7 @@ export * from "./qr-code"
 export * from "./questionnaire"
 export * from "./quota-enforcement"
 // The fail-closed live-counter parser, so the reconcile workers read the same
-// way the services do. The key builders themselves live in `@chatbotx.io/utils`
+// way the services do. The key builders themselves live in `@salesmanchatbot.io/utils`
 // (single source of truth shared with `packages/analytics`).
 export { parseLiveCount } from "./quota-shared/live-counter-store"
 export * from "./referral"
@@ -124,7 +124,7 @@ export * from "./saved-reply"
 // This barrel is traced into the builder's Edge Runtime bundle, where a Node
 // built-in is a hard compile error — see edge-safe-import-graph.test.ts and
 // the same pattern for `contact-sequence`. Import from
-// `@chatbotx.io/business/sequence` instead.
+// `@salesmanchatbot.io/business/sequence` instead.
 export * from "./smart-delay"
 export * from "./spreadsheet"
 export * from "./tag"

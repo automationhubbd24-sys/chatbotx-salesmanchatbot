@@ -1,31 +1,31 @@
 "use client"
 
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import type { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontalIcon, PencilIcon, Trash2Icon } from "lucide-react"
 import Link from "next/link"

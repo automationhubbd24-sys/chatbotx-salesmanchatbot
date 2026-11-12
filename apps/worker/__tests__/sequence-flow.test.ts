@@ -6,13 +6,13 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // not at import time), so vi.hoisted is not needed.
 const removeFromScheduleSpy = vi.fn()
 
-vi.mock("@chatbotx.io/scheduler", () => ({
+vi.mock("@salesmanchatbot.io/scheduler", () => ({
   SchedulerClient: class MockSchedulerClient {
     removeFromSchedule = removeFromScheduleSpy
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   sequenceConnections: {
     useExisting: vi.fn().mockResolvedValue({}),
   },
@@ -21,7 +21,7 @@ vi.mock("@chatbotx.io/redis", () => ({
 // ---------- sequence-scheduler spies ----------
 const advanceEnrollmentSpy = vi.fn()
 
-vi.mock("@chatbotx.io/sequence-scheduler", () => ({
+vi.mock("@salesmanchatbot.io/sequence-scheduler", () => ({
   advanceEnrollment: (...args: unknown[]) => advanceEnrollmentSpy(...args),
 }))
 
@@ -34,7 +34,7 @@ const markCompletedSpy = vi.fn()
 const markCanceledSpy = vi.fn()
 const markFailedSpy = vi.fn()
 
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: {
     findRunningDispatch: (...args: unknown[]) => findRunningSpy(...args),
     markDispatchCompleted: (...args: unknown[]) => markCompletedSpy(...args),

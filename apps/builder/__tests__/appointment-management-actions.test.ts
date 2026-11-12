@@ -28,7 +28,7 @@ vi.mock("@/lib/safe-action", () => ({
   workspaceActionClientAllowExpired: mocks.allowExpiredChain,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: {
     cancelAppointmentById: mocks.cancelAppointmentById,
     deleteAppointmentById: mocks.deleteAppointmentById,

@@ -1,14 +1,14 @@
 "use client"
 
-import type { TemplateModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TemplateModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { CopyIcon, Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

@@ -1,14 +1,14 @@
 "use client"
 
-import type { MinigameOutcomeMessage } from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import type { MinigameOutcomeMessage } from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@chatbotx.io/ui/components/ui/radio-group"
+} from "@salesmanchatbot.io/ui/components/ui/radio-group"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

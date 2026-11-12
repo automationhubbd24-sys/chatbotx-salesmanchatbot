@@ -1,4 +1,4 @@
-import { isWorkspaceScheduledForDeletion } from "@chatbotx.io/business"
+import { isWorkspaceScheduledForDeletion } from "@salesmanchatbot.io/business"
 import { redirect } from "next/navigation"
 import { getOriginUrlFromHeader } from "@/lib/domain"
 import { WORKSPACE_DELETION_PENDING_PARAM } from "./deletion-pending-param"

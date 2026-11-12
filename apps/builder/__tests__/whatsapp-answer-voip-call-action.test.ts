@@ -93,11 +93,11 @@ const {
   canSendAudio: actualCanSendAudio,
   diagnoseAnswerShape: actualDiagnoseAnswerShape,
   summarizeIceCandidates: actualSummarizeIceCandidates,
-} = await vi.importActual<typeof import("@chatbotx.io/business")>(
-  "@chatbotx.io/business",
+} = await vi.importActual<typeof import("@salesmanchatbot.io/business")>(
+  "@salesmanchatbot.io/business",
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   canCallConversation: canCallConversationMock,
   whatsappCallLifecycleService: {
     markRecordingArrangement: markRecordingArrangementMock,
@@ -129,17 +129,17 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: {
     whatsappCallClaimedElsewhere: "whatsappCallClaimedElsewhere",
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     findByInboxIdForWorkspace: findByInboxIdForWorkspaceMock,
   },
@@ -148,7 +148,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/calling", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/calling", () => ({
   preAcceptCall: preAcceptCallMock,
   acceptCall: acceptCallMock,
   terminateCall: terminateCallMock,
@@ -156,7 +156,7 @@ vi.mock("@chatbotx.io/integration-whatsapp/api/calling", () => ({
     input && SUPPORTED_ANNOUNCEMENT_LANGUAGES.has(input) ? input : "en_US",
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/exception", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/exception", () => ({
   WhatsappException: FakeWhatsappException,
 }))
 

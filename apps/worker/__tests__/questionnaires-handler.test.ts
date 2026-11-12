@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   loggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     updateChallenge: mocks.updateChallenge,
   },

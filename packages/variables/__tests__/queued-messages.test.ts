@@ -2,7 +2,7 @@ import type {
   ContactInboxModel,
   ContactModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { ContactVariableContext } from "../src/schema"
 
@@ -10,7 +10,7 @@ const { mockListIncomingTextsByContactInbox } = vi.hoisted(() => ({
   mockListIncomingTextsByContactInbox: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messageService: {
     listIncomingTextsByContactInbox: mockListIncomingTextsByContactInbox,
   },

@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { folderResource } from "@/features/folders/schema/resource"
 import { createFolderSchema } from "./action"

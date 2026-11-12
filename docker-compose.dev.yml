@@ -1,4 +1,4 @@
-name: chatbotx
+name: salesmanchatbot
 
 x-service-common: &service-common
   platform: linux/amd64
@@ -8,7 +8,7 @@ x-service-common: &service-common
   extra_hosts:
     - "host.docker.internal:host-gateway"
   networks:
-    - chatbotx-network
+    - salesmanchatbot-network
 
 x-worker-common: &worker-common
   <<: *service-common
@@ -17,7 +17,7 @@ x-worker-common: &worker-common
     dockerfile: apps/worker/docker/Dockerfile
 
 x-rustfs-environment: &rustfs-environment
-  RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-chatbotx}
+  RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-salesmanchatbot}
   RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:-secretkey}
   RUSTFS_API_CORS_ALLOW_ORIGIN: ${RUSTFS_API_CORS_ALLOW_ORIGIN:-*}
 
@@ -29,8 +29,8 @@ services:
       - db-data:/home/postgres/pgdata
     command: [ "postgres", "-c", "log_statement=${POSTGRES_LOG_STATEMENT:-none}" ]
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-chatbotx}
-      POSTGRES_USER: ${POSTGRES_USER:-chatbotx}
+      POSTGRES_DB: ${POSTGRES_DB:-salesmanchatbot}
+      POSTGRES_USER: ${POSTGRES_USER:-salesmanchatbot}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secretkey}
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
@@ -39,13 +39,13 @@ services:
       retries: 5
       start_period: 20s
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
 
   mailhog:
     image: mailhog/mailhog
     restart: unless-stopped
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
 
   filesystem:
     image: rustfs/rustfs:latest
@@ -62,7 +62,7 @@ services:
       retries: 3
       start_period: 40s
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
 
   filesystem-init:
     image: rustfs/rc:latest
@@ -73,9 +73,9 @@ services:
     environment:
       <<: *rustfs-environment
     entrypoint: >
-      /bin/sh -c "rc alias set local http://filesystem:9000 $${RUSTFS_ACCESS_KEY} $${RUSTFS_SECRET_KEY}; rc mb local/chatbotx --ignore-existing; touch /tmp/empty && rc cp /tmp/empty local/chatbotx/public/; rc anonymous set public local/chatbotx/public;"
+      /bin/sh -c "rc alias set local http://filesystem:9000 $${RUSTFS_ACCESS_KEY} $${RUSTFS_SECRET_KEY}; rc mb local/salesmanchatbot --ignore-existing; touch /tmp/empty && rc cp /tmp/empty local/salesmanchatbot/public/; rc anonymous set public local/salesmanchatbot/public;"
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
 
   redis:
     image: redis:8-alpine
@@ -88,7 +88,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
 
   builder:
     <<: *service-common
@@ -115,7 +115,7 @@ services:
   worker:
     <<: *worker-common
     networks:
-      - chatbotx-network
+      - salesmanchatbot-network
       - javascript-executor-network
     depends_on:
       postgres:
@@ -168,7 +168,7 @@ services:
       dockerfile: apps/realtime/docker/Dockerfile
 
 networks:
-  chatbotx-network:
+  salesmanchatbot-network:
     driver: bridge
   javascript-executor-network:
     driver: bridge

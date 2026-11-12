@@ -1,4 +1,4 @@
-import { broadcastStatuses } from "@chatbotx.io/database/partials"
+import { broadcastStatuses } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import {
   BROADCAST_ROW_ACTION_VARIANTS,

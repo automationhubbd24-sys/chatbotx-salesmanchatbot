@@ -1,4 +1,4 @@
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useFormatter } from "next-intl"
 import { quotaUsageState } from "@/lib/quota-metrics"
 

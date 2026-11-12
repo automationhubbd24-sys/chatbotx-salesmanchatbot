@@ -1,4 +1,4 @@
-import type { ContactHandlers } from "@chatbotx.io/sdk"
+import type { ContactHandlers } from "@salesmanchatbot.io/sdk"
 import { assignLabelToUser, removeLabelFromUser } from "../apis/label"
 import { getPostDetails, toChannelPostDetails } from "../apis/post"
 import {

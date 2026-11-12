@@ -5,9 +5,9 @@ import {
   magicLinkAnalyticsService,
   refLinkAnalyticsService,
   sequenceAnalyticsService,
-} from "@chatbotx.io/analytics"
-import type { FlowEvenTypeMap } from "@chatbotx.io/event-bus"
-import { flowEventTypeSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/analytics"
+import type { FlowEvenTypeMap } from "@salesmanchatbot.io/event-bus"
+import { flowEventTypeSchema } from "@salesmanchatbot.io/flow-config"
 
 export const flowListeners: Partial<FlowEvenTypeMap> = {
   [flowEventTypeSchema.enum["flow:clicked"]]: [

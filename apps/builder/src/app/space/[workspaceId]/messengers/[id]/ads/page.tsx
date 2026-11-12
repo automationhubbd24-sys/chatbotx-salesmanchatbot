@@ -2,12 +2,12 @@ import {
   metaConversionsService,
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   debugToken,
   hasPageEventsScope,
   toAppAccessToken,
-} from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/integration-messenger"
 import { notFound } from "next/navigation"
 import { MessengerCapiTab } from "@/features/integration-messenger/components/messenger-capi-tab"
 import { findIntegrationMessenger } from "@/features/integration-messenger/queries"

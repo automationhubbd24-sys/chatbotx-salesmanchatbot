@@ -5,7 +5,7 @@
  * test today — `apps/builder/__tests__/disconnect-whatsapp-action.test.ts`
  * fakes the whole method instead of exercising the real one ("Mirrors
  * `integrationWhatsappService.disconnect`'s real transaction body ... rather
- * than mocking `@chatbotx.io/business` transitively"), so NEITHER the
+ * than mocking `@salesmanchatbot.io/business` transitively"), so NEITHER the
  * legacy `inboxService.disconnect` fallback NOR the `connectionStateService
  * .transition` FSM path it writes through today is ever exercised against
  * the real implementation. This file only overrides the handful of calls
@@ -25,9 +25,9 @@ const mocks = vi.hoisted(() => ({
   disconnectInbox: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/database/repositories", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@chatbotx.io/database/repositories")
+    typeof import("@salesmanchatbot.io/database/repositories")
   >()),
   connectionRepository: { findByInboxId: mocks.findByInboxId },
   metaCapiEventRepository: { deleteByIntegration: mocks.deleteByIntegration },

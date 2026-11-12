@@ -1,4 +1,4 @@
-import { whatsappCarouselCardLimits } from "@chatbotx.io/flow-config"
+import { whatsappCarouselCardLimits } from "@salesmanchatbot.io/flow-config"
 import type { ClientMessage } from "whatsapp-api-js/types"
 import type { InteractiveCarouselMessage } from "../../../schema"
 import { buildInteractiveCarouselMessages } from "./interactive-carousel"

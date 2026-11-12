@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { sendTextStepSchema } from "../steps/send-text"
 import type { ChannelValidatorMap } from "./channel-validator"
 import { refineSendTextLengthForChannel } from "./send-text-length-rules"

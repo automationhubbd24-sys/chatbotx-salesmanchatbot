@@ -5,14 +5,14 @@ import {
   eq,
   ilike,
   inArray,
-} from "@chatbotx.io/database/client"
-import type { MessengerTemplateStatus } from "@chatbotx.io/database/partials"
-import { messengerMessageTemplateModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/client"
+import type { MessengerTemplateStatus } from "@salesmanchatbot.io/database/partials"
+import { messengerMessageTemplateModel } from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 type MessengerMessageTemplateListWhere = {

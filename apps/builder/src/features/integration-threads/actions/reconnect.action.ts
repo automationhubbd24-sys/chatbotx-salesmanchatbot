@@ -3,10 +3,10 @@
 import {
   integrationThreadsService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { generateAuthUrl } from "@chatbotx.io/integration-threads"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { generateAuthUrl } from "@salesmanchatbot.io/integration-threads"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { redirect } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { getOriginUrlFromHeader } from "@/lib/domain"
@@ -25,7 +25,7 @@ export const reconnectThreadsAction = workspaceActionClient
           workspaceId,
         })
       if (!integrationThreads) {
-        throw new ChatbotXException(t("channels.reconnect.errors.notFound"))
+        throw new salesmanChatbotException(t("channels.reconnect.errors.notFound"))
       }
 
       const credential = await platformCredentialService.resolveForOwner({
@@ -33,7 +33,7 @@ export const reconnectThreadsAction = workspaceActionClient
         type: "threads",
       })
       if (!credential) {
-        throw new ChatbotXException(t("messages.needToAddSettings"))
+        throw new salesmanChatbotException(t("messages.needToAddSettings"))
       }
 
       const referer = new URL(

@@ -1,4 +1,4 @@
-import preset from "@chatbotx.io/vitest-config/node"
+import preset from "@salesmanchatbot.io/vitest-config/node"
 import { mergeConfig, type ViteUserConfig } from "vitest/config"
 
 /**

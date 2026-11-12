@@ -1,5 +1,5 @@
-import type { RefLinkStatModel } from "@chatbotx.io/database/types"
-import type { RefLinkPayload } from "@chatbotx.io/flow-config"
+import type { RefLinkStatModel } from "@salesmanchatbot.io/database/types"
+import type { RefLinkPayload } from "@salesmanchatbot.io/flow-config"
 import { startOfSecond } from "date-fns"
 import { toDate } from "../lib/date"
 import {

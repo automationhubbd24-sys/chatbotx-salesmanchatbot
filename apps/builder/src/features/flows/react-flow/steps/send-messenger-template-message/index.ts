@@ -2,7 +2,7 @@ import {
   type SendMessengerTemplateMessageStepSchema,
   sendMessengerTemplateMessageStepDefaultFn,
   sendMessengerTemplateMessageStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SendMessengerTemplateMessageStepEditor from "./editor"
 import { SendMessengerTemplateMessageStepViewer } from "./viewer"

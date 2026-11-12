@@ -4,7 +4,7 @@ import {
   type Context,
   customAuthSchema,
   type Handler,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 
 export type MoosendConfig = BaseConfig

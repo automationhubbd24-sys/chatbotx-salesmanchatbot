@@ -1,5 +1,5 @@
-import { contactService, tagService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { contactService, tagService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicTagResource } from "@/features/tags/schema/resource"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"

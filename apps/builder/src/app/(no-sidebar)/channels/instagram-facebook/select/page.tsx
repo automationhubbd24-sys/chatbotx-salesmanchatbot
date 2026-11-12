@@ -1,11 +1,11 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import { getUserInstagramAccounts } from "@chatbotx.io/integration-instagram-facebook"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import { getUserInstagramAccounts } from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import Image from "next/image"
 import { redirect } from "next/navigation"
 import { getTranslations } from "next-intl/server"

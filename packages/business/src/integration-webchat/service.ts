@@ -1,15 +1,15 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import {
   and,
   db,
   eq,
   findOrFail,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
-import { integrationWebchatModel } from "@chatbotx.io/database/schema"
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
-import { parsePagination } from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { integrationWebchatModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
+import { parsePagination } from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { dispatchAuditRecord } from "../audit/dispatcher"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"

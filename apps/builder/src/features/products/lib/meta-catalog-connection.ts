@@ -1,4 +1,4 @@
-import type { integrationMetaCatalogService } from "@chatbotx.io/business"
+import type { integrationMetaCatalogService } from "@salesmanchatbot.io/business"
 
 type MetaCatalogConnection = NonNullable<
   Awaited<ReturnType<typeof integrationMetaCatalogService.findByWorkspaceId>>

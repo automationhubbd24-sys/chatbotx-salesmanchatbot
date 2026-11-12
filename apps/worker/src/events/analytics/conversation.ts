@@ -1,5 +1,5 @@
-import { conversationAnalyticsService } from "@chatbotx.io/analytics"
-import type { AnalyticsDashboardEvent } from "@chatbotx.io/event-bus"
+import { conversationAnalyticsService } from "@salesmanchatbot.io/analytics"
+import type { AnalyticsDashboardEvent } from "@salesmanchatbot.io/event-bus"
 
 type ConversationAnalyticsPayload = Extract<
   AnalyticsDashboardEvent,

@@ -1,13 +1,13 @@
 "use client"
 
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
 import {
   DatePickerField,
   DateTimePickerField,
-} from "@chatbotx.io/ui/components/form/date-picker-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
+} from "@salesmanchatbot.io/ui/components/form/date-picker-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
 import { useTranslations } from "next-intl"
 
 type BotFieldValueInputProps = {

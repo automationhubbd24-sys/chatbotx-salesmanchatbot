@@ -1,6 +1,6 @@
 "use server"
 
-import { minigameContactService } from "@chatbotx.io/business/minigame"
+import { minigameContactService } from "@salesmanchatbot.io/business/minigame"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { getMinigamePlaysRequest } from "../schema/action"

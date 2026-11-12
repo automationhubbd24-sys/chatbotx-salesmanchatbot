@@ -1,10 +1,10 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { beforeEach, expect, test, vi } from "vitest"
-// Deep relative import on purpose: `@chatbotx.io/database` publishes no
+// Deep relative import on purpose: `@salesmanchatbot.io/database` publishes no
 // `./relations` subpath, and `InboxWithIntegrations` is a type (erased at
 // runtime), so the relation definitions are the only executable source of
 // "which integrations an inbox can actually carry". `packages/business`'s
@@ -43,7 +43,7 @@ const {
   mockSystemFieldCreate: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     findRecentByContactId: mockFindRecentByContactId,
   },
@@ -54,32 +54,32 @@ vi.mock("@chatbotx.io/business", () => ({
   resolveWorkspaceAppUrl: mockResolveWorkspaceAppUrl,
 }))
 
-vi.mock("@chatbotx.io/business/contact-locale", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-locale", () => ({
   normalizeStoredTimezone: (value: string) => value,
 }))
 
-vi.mock("@chatbotx.io/business/system-field", () => ({
+vi.mock("@salesmanchatbot.io/business/system-field", () => ({
   systemFieldService: { create: mockSystemFieldCreate },
 }))
 
-vi.mock("@chatbotx.io/encryption/link-signature", () => ({
+vi.mock("@salesmanchatbot.io/encryption/link-signature", () => ({
   signMeLink: mockSignMeLink,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   getPostDetails: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/channel-registry/registry", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/registry", () => ({
   resolveIntegrationContextFromContactInbox: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   getPostDetails: vi.fn(),
   getUserInboxLink: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, resolve: () => Promise<unknown>) =>
     resolve(),
   ),

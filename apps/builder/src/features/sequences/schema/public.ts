@@ -1,8 +1,8 @@
 import {
   sequenceStepContactResource,
   sequenceStepEventTypes,
-} from "@chatbotx.io/analytics/schemas"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicListRequest } from "@/lib/public-api/list"
 

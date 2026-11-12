@@ -7,7 +7,7 @@ import {
 } from "../../client"
 import { orderConversationSessionModel } from "../../schema"
 import type { OrderConversationSessionState } from "../../partials"
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export const orderIntakeSessionRepository = {
   async createForIntent(

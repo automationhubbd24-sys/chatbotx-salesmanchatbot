@@ -53,7 +53,7 @@ const qrCodeService = {
   update: vi.fn(),
   deleteMany: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ qrCodeService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ qrCodeService }))
 
 vi.mock("@/features/qr-codes/schema/public", async () => {
   const { z } = await import("zod")

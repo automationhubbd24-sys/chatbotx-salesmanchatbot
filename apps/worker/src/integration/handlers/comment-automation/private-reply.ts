@@ -1,35 +1,35 @@
 import {
   conversationService,
   recordDeliveredPrivateReply,
-} from "@chatbotx.io/business"
-import type { CommentReply } from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
-import { COMMENT_AUTOMATION_PAYLOAD_TYPE } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import type { CommentReply } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
+import { COMMENT_AUTOMATION_PAYLOAD_TYPE } from "@salesmanchatbot.io/flow-config"
 import {
   type InstagramAuthValue,
   sendPrivateReply as sendInstagramLoginPrivateReply,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import {
   type InstagramAuthValue as InstagramFacebookAuthValue,
   sendPrivateReply as sendInstagramFacebookPrivateReply,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   type MessengerAuthValue,
   sendPrivateReply,
-} from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/integration-messenger"
 import {
   sendPrivateReply as sendTiktokPrivateReply,
   type TiktokAuthValue,
-} from "@chatbotx.io/integration-tiktok"
-import { applySpintax } from "@chatbotx.io/utils/spintax"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/integration-tiktok"
+import { applySpintax } from "@salesmanchatbot.io/utils/spintax"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import {
   AIJobAction,
   aiAgentQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { emitBotMessageSentEvents } from "../../../chat/handlers/send-message"
 import { logger } from "../../../lib/logger"
 import { TIKTOK_HIGH_INTENT_ATTRIBUTE } from "../tiktok-high-intent-comment"
@@ -218,7 +218,7 @@ export const PRIVATE_REPLY_TEXT_SENDERS: Record<
  * reply moves the lifetime counters (`countsTowardStats`) and cannot import
  * this module — it would pull every Meta integration into the analytics
  * package — so the capability is duplicated as
- * `commentAutomationChannelSupportsPrivateReply` in `@chatbotx.io/database/partials`.
+ * `commentAutomationChannelSupportsPrivateReply` in `@salesmanchatbot.io/database/partials`.
  * `comment-automation.test.ts` asserts the two agree for every channel: let
  * them drift and a channel's replies are dispatched one way and counted the
  * other.

@@ -1,5 +1,5 @@
-import type { SendCarouselStepSchema } from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+import type { SendCarouselStepSchema } from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import { chunk } from "remeda"
 import type { InstagramAuthValue } from "../../../schema"
 import { getButtonTemplate } from "./send-button"

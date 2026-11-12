@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import { useQuery } from "@tanstack/react-query"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"

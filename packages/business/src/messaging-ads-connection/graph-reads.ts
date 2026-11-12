@@ -1,4 +1,4 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 import {
   type AdAccountDetails,
   type FacebookAdAccount,
@@ -6,7 +6,7 @@ import {
   getGraphErrorCode,
   type MessagingAdInsight,
   type MetaAd,
-} from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/integration-facebook-ads"
 import { buildMessagingAdsContext } from "./context"
 import { getOrRevalidate, messagingAdsCacheTag } from "./graph-cache"
 import { messagingAdsConnectionService } from "./service"

@@ -3,29 +3,29 @@ import {
   sendToWorkspaceMember,
   whatsappVoipCallService,
   whatsappVoipSignalingService,
-} from "@chatbotx.io/business"
-import type { WhatsappCallHoursSnapshot } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { WhatsappCallHoursSnapshot } from "@salesmanchatbot.io/database/partials"
 import {
   integrationLookupRepository,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   rejectCall,
   terminateCall,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 import {
   RealtimeEventType,
   type RealtimeEventWhatsappCallOutboundAnswer,
   type RealtimeEventWhatsappCallTransportEnded,
   type RealtimeEventWhatsappCallTransportIncoming,
-} from "@chatbotx.io/partysocket-config"
-import { isWithinCallHours } from "@chatbotx.io/utils/whatsapp-call-hours"
+} from "@salesmanchatbot.io/partysocket-config"
+import { isWithinCallHours } from "@salesmanchatbot.io/utils/whatsapp-call-hours"
 import {
   WhatsappVoipSignalingJobAction,
   type WhatsappVoipSignalingJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { integrationService } from "../../services/integrations"
 import { finalizeCallSideEffects } from "./shared/whatsapp-call-finalize"

@@ -1,11 +1,11 @@
 "use server"
 
-import { automatedResponseService } from "@chatbotx.io/business"
+import { automatedResponseService } from "@salesmanchatbot.io/business"
 import {
   type AutomatedResponseType,
   automatedResponseTypes,
-} from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { workspaceActionClient } from "@/lib/safe-action"
 

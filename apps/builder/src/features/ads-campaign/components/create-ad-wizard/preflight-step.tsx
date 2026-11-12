@@ -1,7 +1,7 @@
 "use client"
 
-import { messagingAdConfigByChannel } from "@chatbotx.io/integration-facebook-ads"
-import { Alert, AlertDescription } from "@chatbotx.io/ui/components/ui/alert"
+import { messagingAdConfigByChannel } from "@salesmanchatbot.io/integration-facebook-ads"
+import { Alert, AlertDescription } from "@salesmanchatbot.io/ui/components/ui/alert"
 import { AlertTriangleIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFormContext, useWatch } from "react-hook-form"

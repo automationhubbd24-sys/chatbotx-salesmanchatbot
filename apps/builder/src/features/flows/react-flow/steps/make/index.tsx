@@ -2,7 +2,7 @@ import {
   type MakeStepSchema,
   makeStepDefaultFn,
   makeStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import MakeStepEditor from "./editor"
 import MakeStepViewer from "./viewer"

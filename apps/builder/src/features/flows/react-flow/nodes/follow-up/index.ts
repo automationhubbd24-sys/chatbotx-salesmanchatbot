@@ -2,7 +2,7 @@ import {
   followUpNodeDefaultFn,
   followUpNodeSchema,
   nodeTypeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { AlarmClockCheckIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { followUpMenus } from "./menu"

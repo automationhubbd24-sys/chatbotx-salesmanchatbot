@@ -1,6 +1,6 @@
 "use server"
 
-import { folderService } from "@chatbotx.io/business"
+import { folderService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

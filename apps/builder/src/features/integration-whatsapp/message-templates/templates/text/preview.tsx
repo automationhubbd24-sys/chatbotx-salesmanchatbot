@@ -1,4 +1,4 @@
-import { CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { memo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"
 import { ButtonGroupPreview } from "../button/preview"

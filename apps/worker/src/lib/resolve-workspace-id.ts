@@ -1,10 +1,10 @@
-import { conversationService } from "@chatbotx.io/business"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
 import {
   createAiWorkspaceScopeRepository,
   importRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import { integrationService } from "../services/integrations"
 
 const aiWorkspaceScopeRepository = createAiWorkspaceScopeRepository()

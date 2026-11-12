@@ -10,25 +10,25 @@ import {
   ChevronRightIcon,
 } from "lucide-react"
 
-import { useIsMobile } from "@chatbotx.io/ui/hooks/use-mobile"
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+import { useIsMobile } from "@salesmanchatbot.io/ui/hooks/use-mobile"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@chatbotx.io/ui/components/ui/sheet"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/sheet"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

@@ -1,4 +1,4 @@
-import { DEEP_LINK_APPS } from "@chatbotx.io/flow-config"
+import { DEEP_LINK_APPS } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { labelKeyByAppId } from "@/features/open-link/components/open-link-button"
 import en from "../messages/en.json"

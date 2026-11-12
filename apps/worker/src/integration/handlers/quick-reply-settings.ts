@@ -1,15 +1,15 @@
-import { conversationService } from "@chatbotx.io/business"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
 import {
   type ConversationAttributes,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
-import type { ConversationModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { ConversationModel } from "@salesmanchatbot.io/database/types"
 import {
   computeQuickReplyFollowUpTriggerAt,
   type MetadataPayload,
   resolveActiveQuickReplySettings,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { logger } from "../../lib/logger"
 import { scheduleSmartDelayResume } from "./smart-delay"
 

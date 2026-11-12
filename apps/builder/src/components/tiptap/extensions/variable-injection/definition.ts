@@ -1,4 +1,4 @@
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 
 export type PromptVariableOption = SelectOption & {
   group?: string

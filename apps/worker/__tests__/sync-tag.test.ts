@@ -25,7 +25,7 @@ const queryResults = {
 const tagServiceFindById = vi.fn(async () => queryResults.tag)
 const tagServiceHardDeleteSoftDeleted = vi.fn(async () => undefined)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async () => fakeCtx),
   tagService: {
     findById: (...args: unknown[]) => tagServiceFindById(...args),
@@ -104,7 +104,7 @@ const integrationMessengerFindById = vi.fn(
   async () => queryResults.messengerIntegration,
 )
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   tagChannelRepository: {
     findByTagAndIntegration: (...args: unknown[]) =>
       tagChannelFindByTagAndIntegration(...args),
@@ -134,7 +134,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
 // `chunkById` — single-chunk default: run the query once, invoke the
 // callback if there are rows, then stop (mirrors the shared repo test
 // helper pattern used elsewhere in this suite).
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   chunkById: async (
     queryBuilder: (lastId: string | null) => Promise<{ id: string }[]>,
     options: { callback: (rows: { id: string }[]) => Promise<unknown> },
@@ -151,12 +151,12 @@ vi.mock("@chatbotx.io/database/utils", () => ({
 // ---------------------------------------------------------------------------
 
 const messengerRunChannelHandler = vi.fn(async () => ({ id: "label-ext-123" }))
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: { runChannelHandler: messengerRunChannelHandler },
 }))
 
 const zaloRunAction = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   integration: { runAction: zaloRunAction },
 }))
 
@@ -166,7 +166,7 @@ vi.mock("@chatbotx.io/integration-zalo", () => ({
 
 const logProviderError = vi.fn(async () => undefined)
 const logProviderErrorForChannel = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (...args: unknown[]) => logProviderError(...args),
   logProviderErrorForChannel: (...args: unknown[]) =>
     logProviderErrorForChannel(...args),
@@ -179,7 +179,7 @@ vi.mock("@chatbotx.io/business/error-log", () => ({
 const runExclusive = vi.fn(async ({ fn }: { fn: () => Promise<unknown> }) =>
   fn(),
 )
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive },
 }))
 

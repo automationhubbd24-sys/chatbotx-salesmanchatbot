@@ -2,7 +2,7 @@ import {
   type ProductImportColumnMap,
   type ProductImportField,
   productImportFields,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export const normalizeProductHeader = (raw: string): string =>
   raw

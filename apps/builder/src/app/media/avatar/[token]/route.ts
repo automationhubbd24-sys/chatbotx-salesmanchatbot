@@ -4,10 +4,10 @@ import {
   isNoAvatarSentinelFresh,
   parseNoAvatarSentinel,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
-import { resolveFreshContactAvatarUrl } from "@chatbotx.io/channel-registry/media-hydration"
-import { toLogSafeError } from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/business"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
+import { resolveFreshContactAvatarUrl } from "@salesmanchatbot.io/channel-registry/media-hydration"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
 import { type NextRequest, NextResponse } from "next/server"
 import { httpLogger } from "@/lib/log"
 import {

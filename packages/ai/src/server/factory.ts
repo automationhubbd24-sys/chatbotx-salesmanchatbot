@@ -1,4 +1,4 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import type {
   IntegrationClaudeModel,
   IntegrationDeepseekModel,
@@ -6,8 +6,8 @@ import type {
   IntegrationOpenAIModel,
   IntegrationOpenaiCompatibleModel,
   IntegrationOpenrouterModel,
-} from "@chatbotx.io/database/types"
-import { secretTextAuthSchema } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/types"
+import { secretTextAuthSchema } from "@salesmanchatbot.io/sdk"
 import type { ImageModel } from "ai"
 import { providerSdkFactories } from "../core/factory"
 import { type AIProvider, aiProviders } from "../schemas"

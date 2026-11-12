@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
 import { NextIntlClientProvider } from "next-intl"
 import type { ReactNode } from "react"
 import { renderToStaticMarkup } from "react-dom/server"

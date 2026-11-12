@@ -1,9 +1,9 @@
-import { aiMcpServerAuth } from "@chatbotx.io/database/partials"
+import { aiMcpServerAuth } from "@salesmanchatbot.io/database/partials"
 import {
   aiMCPServerModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 export const aiMcpServerResource = createSelectSchema(aiMCPServerModel, {

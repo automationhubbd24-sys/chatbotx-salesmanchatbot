@@ -3,7 +3,7 @@
 import { describe, expect, test, vi } from "vitest"
 
 // Same rationale as public-spec-operations.test.ts: importing the real
-// contacts public router transitively pulls in `@chatbotx.io/database/client`
+// contacts public router transitively pulls in `@salesmanchatbot.io/database/client`
 // (opens a real `pg.Pool`) and `@/orpc`'s `authorizedAPI` chain (boots the
 // full better-auth stack via `@/middlewares/auth`). Neither is reachable from
 // this test — it only inspects which scope each submodule registered its
@@ -13,7 +13,7 @@ vi.mock("@/middlewares/auth", () => ({
   workspaceAuthorizedMidddleware: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })

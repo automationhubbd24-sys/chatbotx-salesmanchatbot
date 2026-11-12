@@ -2,10 +2,10 @@ import "server-only"
 import {
   resolveTenantByDomain,
   resolveTenantOwnerId,
-} from "@chatbotx.io/auth/tenant"
-import { workspaceService } from "@chatbotx.io/business"
-import { ROOT_TENANT_ID } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/auth/tenant"
+import { workspaceService } from "@salesmanchatbot.io/business"
+import { ROOT_TENANT_ID } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import { cache } from "react"
 import { isCloud } from "@/env"
 import { getDomainFromHeader } from "@/lib/domain"

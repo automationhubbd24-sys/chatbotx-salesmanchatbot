@@ -1,4 +1,4 @@
-import type { TrackingResponseType } from "@chatbotx.io/analytics"
+import type { TrackingResponseType } from "@salesmanchatbot.io/analytics"
 
 export interface BotResponseTrackingContext {
   aiProvider: string

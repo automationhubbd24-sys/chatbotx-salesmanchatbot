@@ -3,7 +3,7 @@
 import type * as React from "react"
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function Progress({
   className,

@@ -4,7 +4,7 @@ import type {
   AdsAnalyticsData,
   AdsAnalyticsTimeseriesRow,
   CapiDeliverySummary,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act, type ReactNode } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -51,7 +51,7 @@ vi.mock("@/features/ads/components/ads-performance-chart", () => ({
   AdsPerformanceChart: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({
     children,
     open,
@@ -67,7 +67,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTitle: ({ children }: { children: ReactNode }) => children,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dropdown-menu", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dropdown-menu", () => ({
   DropdownMenu: ({ children }: { children: ReactNode }) => children,
   DropdownMenuContent: ({ children }: { children: ReactNode }) => children,
   DropdownMenuGroup: ({ children }: { children: ReactNode }) => children,
@@ -85,7 +85,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dropdown-menu", () => ({
   }) => render ?? children,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({ children }: { children: ReactNode }) => children,
   SelectContent: ({ children }: { children: ReactNode }) => children,
   SelectItem: ({ children }: { children: ReactNode }) => children,
@@ -93,7 +93,7 @@ vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
   SelectValue: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => children,
   TooltipContent: ({ children }: { children: ReactNode }) => children,
   TooltipTrigger: ({

@@ -1,7 +1,7 @@
 "use client"
 
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
 import { CopyIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useTenantSettings } from "@/features/tenant"
@@ -30,7 +30,7 @@ export function EmbedCodeDialog({ webchat, children }: EmbedCodeDialogProps) {
   const baseUrl =
     appUrl || (typeof window === "undefined" ? "" : window.location.origin)
 
-  const embedCode = `<!-- ChatbotX Widget -->
+  const embedCode = `<!-- salesmanChatbot Widget -->
 <script src="${baseUrl}/chat-widget/plugin.js" crossorigin="anonymous" async
   type="module" onload="window.csmChatWidget?.init({
     webchatId: '${webchat.id}',

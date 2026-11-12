@@ -1,15 +1,15 @@
-import { connectionStateService } from "@chatbotx.io/business"
+import { connectionStateService } from "@salesmanchatbot.io/business"
 import type {
   ChannelType,
   ConnectionKind,
   ConnectionStatus,
   ConnectSessionOutcome,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ConnectionModel,
   ConnectSessionModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { toConnectSessionResource } from "./connect-session-resource"
 import { toConnectionResource } from "./resolve-provider"
 

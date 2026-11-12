@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   listExportSegmentRows: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   adsConversionEventRepository: {
     listExportSegmentRows: mocks.listExportSegmentRows,
   },
@@ -13,7 +13,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   integrationWhatsappRepository: {},
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { sendConversionEvent: "sendConversionEvent" },
   enqueueIntegrationJob: vi.fn(),
 }))

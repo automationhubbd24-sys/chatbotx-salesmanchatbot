@@ -17,7 +17,7 @@
  *
  * Reads nothing and writes nothing: every case runs against a literal
  * timestamp. Skipped unless `DATABASE_URL` points at a reachable database; run
- * it with `pnpm --filter @chatbotx.io/database test:db`.
+ * it with `pnpm --filter @salesmanchatbot.io/database test:db`.
  */
 
 import { PgDialect } from "drizzle-orm/pg-core"

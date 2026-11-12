@@ -1,3 +1,3 @@
-import { getResponseCredentialSchema } from "@chatbotx.io/integration-get-response"
+import { getResponseCredentialSchema } from "@salesmanchatbot.io/integration-get-response"
 
 export const connectGetResponseSchema = getResponseCredentialSchema

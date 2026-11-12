@@ -1,4 +1,4 @@
-import { instagramPersistentMenuTypes } from "@chatbotx.io/database/partials"
+import { instagramPersistentMenuTypes } from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 
 /**

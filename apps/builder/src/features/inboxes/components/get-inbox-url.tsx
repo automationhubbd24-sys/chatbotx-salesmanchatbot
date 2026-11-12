@@ -1,15 +1,15 @@
-import type { ListInboxesResponse, RefConfig } from "@chatbotx.io/business"
-import { buildInboxLink } from "@chatbotx.io/business/utils"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import type { InboxWithIntegrations } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ListInboxesResponse, RefConfig } from "@salesmanchatbot.io/business"
+import { buildInboxLink } from "@salesmanchatbot.io/business/utils"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import type { InboxWithIntegrations } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { useTranslations } from "next-intl"
 import { InboxIcon } from "@/features/inboxes/components/inbox-icon"
 import { useInboxList } from "@/features/inboxes/provider/inbox-hook"

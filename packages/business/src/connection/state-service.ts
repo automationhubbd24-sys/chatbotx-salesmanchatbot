@@ -1,20 +1,20 @@
-import { and, type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { and, type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   CONNECTION_TO_INBOX_DISCONNECT_REASON,
   type ConnectionStatus,
   type ConnectionStatusReason,
   type IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   aiHandoverBulkRunRepository,
   aiHandoverSettingsRepository,
   type ConnectionListInput,
   connectionRepository,
-} from "@chatbotx.io/database/repositories"
-import { type connectionModel, inboxModel } from "@chatbotx.io/database/schema"
-import type { ConnectionModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/repositories"
+import { type connectionModel, inboxModel } from "@salesmanchatbot.io/database/schema"
+import type { ConnectionModel } from "@salesmanchatbot.io/database/types"
 import { BaseService } from "../base.service"
-import { ChatbotXException, channelLimitReachedException } from "../errors"
+import { salesmanChatbotException, channelLimitReachedException } from "../errors"
 import { inboxService } from "../inbox/service"
 import { logger } from "../logger"
 import { quotaEnforcementService } from "../quota-enforcement/service"
@@ -25,7 +25,7 @@ import {
   transitionConnection,
 } from "./state"
 
-class ConnectionNotFoundException extends ChatbotXException {
+class ConnectionNotFoundException extends salesmanChatbotException {
   constructor(id: string) {
     super(`Connection ${id} not found`, "notFound", 404)
   }
@@ -46,7 +46,7 @@ export type ConnectionQuotaConsumption =
 /**
  * DB-backed reads/writes over the `Connection` table plus its `Inbox`
  * legacy-status mirror. Deliberately **registry-free** — it never imports
- * `@chatbotx.io/connections` — so it stays safe to call from `markOffline`
+ * `@salesmanchatbot.io/connections` — so it stays safe to call from `markOffline`
  * hooks and webhook handlers that must not pull in the full provider
  * registry's module graph. Registry-aware orchestration (provider
  * `disconnect`/`webhook.unsubscribe` calls and store-binding CRUD) lives in

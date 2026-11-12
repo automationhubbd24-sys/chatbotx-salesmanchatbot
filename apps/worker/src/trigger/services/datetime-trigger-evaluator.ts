@@ -1,10 +1,10 @@
-import { triggerService } from "@chatbotx.io/business"
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerService } from "@salesmanchatbot.io/business"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import {
   listContactCustomFieldsForDateTimeSweep,
   listContactCustomFieldsForDateTimeSweepContacts,
-} from "@chatbotx.io/database/repositories"
-import { getRedisConnection } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/repositories"
+import { getRedisConnection } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import {
   allDateTimeConditionsMatch,

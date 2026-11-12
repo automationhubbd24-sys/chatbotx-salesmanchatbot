@@ -5,7 +5,7 @@ const LEADING_SLASHES_RE = /^\/+/
  *
  * `new URL(path, base)` is deceptively fragile here: a leading slash on `path`,
  * or a missing trailing slash on `base`, silently drops the base's own path
- * segment — e.g. the bucket in `https://cdn.example.com/chatbotx/`. Normalizing
+ * segment — e.g. the bucket in `https://cdn.example.com/salesmanchatbot/`. Normalizing
  * both sides keeps the base (bucket prefix included) intact.
  *
  * An already-absolute `path` (http/https) is returned unchanged.

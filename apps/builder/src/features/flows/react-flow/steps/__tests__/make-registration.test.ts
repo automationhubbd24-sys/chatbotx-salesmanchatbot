@@ -4,7 +4,7 @@ import {
   makeStepDefaultFn,
   makeStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 describe("make step registration", () => {

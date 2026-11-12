@@ -1,10 +1,10 @@
-import { aiProviders, aiTimeouts } from "@chatbotx.io/ai"
+import { aiProviders, aiTimeouts } from "@salesmanchatbot.io/ai"
 import {
   aiIntegrationService,
   createAIImageModelInstance,
-} from "@chatbotx.io/ai/server"
-import { resolveTenantSettings } from "@chatbotx.io/business"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
+} from "@salesmanchatbot.io/ai/server"
+import { resolveTenantSettings } from "@salesmanchatbot.io/business"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
 import {
   AI_EDIT_IMAGE_FALLBACK_OPENAI_MODEL,
   type AIEditImageSchema,
@@ -12,7 +12,7 @@ import {
   IMAGE_BASE64_ENCODING,
   IMAGE_DEFAULT_EXTENSION,
   IMAGE_DEFAULT_MIME_TYPE,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { generateImage, type ImageModel } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { env } from "../../env"

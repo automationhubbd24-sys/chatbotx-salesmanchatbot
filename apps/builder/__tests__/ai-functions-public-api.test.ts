@@ -55,14 +55,14 @@ const aiFunctionService = {
   updateAIFunction: vi.fn(),
   deleteAIFunction: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ aiFunctionService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ aiFunctionService }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),
@@ -76,7 +76,7 @@ vi.mock("@chatbotx.io/database/schema", () => {
 })
 
 // Deferred until after `vi.mock` calls above are hoisted, so the router
-// module picks up the mocked `@/orpc`/`@chatbotx.io/business` bindings.
+// module picks up the mocked `@/orpc`/`@salesmanchatbot.io/business` bindings.
 await import("@/features/ai-functions/api/public")
 
 const findProcedure = (method: string, path: string) => {

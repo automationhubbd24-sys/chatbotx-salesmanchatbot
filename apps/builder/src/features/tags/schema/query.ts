@@ -1,6 +1,6 @@
-import type { TagModel } from "@chatbotx.io/database/types"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import type { TagModel } from "@salesmanchatbot.io/database/types"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import {
   createSearchParamsCache,
   parseAsInteger,

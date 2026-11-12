@@ -1,24 +1,24 @@
-import { type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   type MeSystemFieldPayload,
   meSystemFieldPayload,
   type SystemFieldPayload,
   type SystemFieldRowType,
-} from "@chatbotx.io/database/partials"
-import { systemFieldModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import { systemFieldModel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ContactModel,
   ConversationModel,
   SystemFieldModel,
   TagModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   type MeLinkParams,
   verifyMeLink,
-} from "@chatbotx.io/encryption/link-signature"
-import { uploader } from "@chatbotx.io/filesystem"
-import { normalizeGender } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/encryption/link-signature"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { normalizeGender } from "@salesmanchatbot.io/sdk"
 import { BaseService } from "../base.service"
 import { contactService } from "../contact/service"
 import { contactCustomFieldService } from "../contact-custom-field/service"

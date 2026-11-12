@@ -2,16 +2,16 @@ import {
   type DatabaseClient,
   db,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
-import type { ChannelType } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import {
   INSTAGRAM_IG_ID_UNIQUE_CONSTRAINT,
   type inboxModel,
   MESSENGER_PAGE_ID_UNIQUE_CONSTRAINT,
   THREADS_USER_ID_UNIQUE_CONSTRAINT,
   WHATSAPP_PHONE_NUMBER_UNIQUE_CONSTRAINT,
-} from "@chatbotx.io/database/schema"
-import type { InboxModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
 import { dispatchAuditRecordSafely } from "../audit/dispatcher"
 import { channelDuplicatedException } from "../errors"
 import { inboxService } from "./service"

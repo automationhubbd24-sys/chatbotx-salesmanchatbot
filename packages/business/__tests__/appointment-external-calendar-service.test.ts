@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   disconnectProvider: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-google-calendar", () => ({
+vi.mock("@salesmanchatbot.io/integration-google-calendar", () => ({
   googleCalendarAuthSchema: {
     parse: (...args: unknown[]) => mocks.parseAuth(...args),
   },

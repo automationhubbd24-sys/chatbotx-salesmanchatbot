@@ -10,7 +10,7 @@
  * is always rolled back, so no real row is read or written.
  *
  * Skipped unless `DATABASE_URL` points at a reachable database; run it with
- * `pnpm --filter @chatbotx.io/database test:db`.
+ * `pnpm --filter @salesmanchatbot.io/database test:db`.
  */
 
 import { and } from "drizzle-orm"

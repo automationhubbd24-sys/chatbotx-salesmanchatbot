@@ -4,31 +4,31 @@ import {
   type FormFieldType,
   type PostTrackingChannel,
   supportsPostTracking,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
 import {
   SelectField,
   type SelectOption,
-} from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   isValidDateTimeFilterValue,
   valueContainsVariablePlaceholder,
-} from "@chatbotx.io/utils/contact-filter-value-format"
+} from "@salesmanchatbot.io/utils/contact-filter-value-format"
 import {
   canonicalBooleanLiteral,
   operatorTypes,
-} from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/utils/custom-field"
 import { SiInstagram, SiMessenger } from "@icons-pack/react-simple-icons"
 import { useTranslations } from "next-intl"
 import { type ReactNode, useCallback, useMemo } from "react"

@@ -7,7 +7,7 @@ import {
   flowEventSchemas,
   type MessageEventMap,
   messageEventSchemas,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { dashboardEventBus } from "./dashboard"
 import { errorLogEventBus } from "./error-log"
 import { flowEventBus } from "./flow"
@@ -20,7 +20,7 @@ export {
   type EventBusMessageMetadata,
   type EventHandlerResult,
   type InferEventMap,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 export * from "./dashboard"
 export * from "./error-log"
 export * from "./event-bus"

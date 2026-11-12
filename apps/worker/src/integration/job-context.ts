@@ -1,5 +1,5 @@
-import { runWithWebhookExecutionContext } from "@chatbotx.io/events/context"
-import type { IntegrationJobData } from "@chatbotx.io/worker-config"
+import { runWithWebhookExecutionContext } from "@salesmanchatbot.io/events/context"
+import type { IntegrationJobData } from "@salesmanchatbot.io/worker-config"
 import { UnrecoverableError } from "bullmq"
 import { logger } from "../lib/logger"
 import {

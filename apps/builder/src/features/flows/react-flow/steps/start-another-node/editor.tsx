@@ -1,6 +1,6 @@
 "use client"
 
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import { useNodes } from "@xyflow/react"
 import { SkipForwardIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

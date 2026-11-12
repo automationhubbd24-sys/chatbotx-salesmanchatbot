@@ -1,12 +1,12 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   AI_HANDOVER_BULK_LIVE_STATUSES,
   type AiHandoverBulkAction,
   type AiHandoverChannel,
   inboxStatuses,
   parseAiHandoverChannel,
-} from "@chatbotx.io/database/partials"
-import type { BulkEligibilityInput } from "@chatbotx.io/database/queries"
+} from "@salesmanchatbot.io/database/partials"
+import type { BulkEligibilityInput } from "@salesmanchatbot.io/database/queries"
 import {
   type AiHandoverBulkRunGuard,
   type AiHandoverBulkRunInboxRef,
@@ -15,25 +15,25 @@ import {
   aiHandoverSettingsRepository,
   contactInboxRepository,
   type FinishAiHandoverBulkRunInput,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   AiHandoverBulkRunModel,
   AiHandoverSettingsModel,
   InboxModel,
-} from "@chatbotx.io/database/types"
-import { getChildLogger } from "@chatbotx.io/logger"
-import { AI_HANDOVER_CHANNEL_POLICIES } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/database/types"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
+import { AI_HANDOVER_CHANNEL_POLICIES } from "@salesmanchatbot.io/utils/channel"
 import {
   buildAiHandoverBulkJobId,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   aiHandoverSettingsService,
   type SaveAiHandoverSettingsInput,
 } from "../ai-handover-settings/service"
 import { BaseService } from "../base.service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { inboxService } from "../inbox/service"
 import {
   AI_HANDOVER_BULK_ERROR_CODES,
@@ -130,7 +130,7 @@ const QUEUED_JOB_STATES: string[] = [
 ]
 
 const bulkException = (code: string, message: string) =>
-  new ChatbotXException(message, code, 422)
+  new salesmanChatbotException(message, code, 422)
 
 class AiHandoverBulkRunService extends BaseService {
   /**
@@ -224,7 +224,7 @@ class AiHandoverBulkRunService extends BaseService {
         // would keep going: make the cancel stick (own transaction) so the
         // caller's retry finds the Page free.
         if (
-          error instanceof ChatbotXException &&
+          error instanceof salesmanChatbotException &&
           error.code === AI_HANDOVER_BULK_ERROR_CODES.runNotStartable
         ) {
           await this.cancelLiveForInbox(ref)

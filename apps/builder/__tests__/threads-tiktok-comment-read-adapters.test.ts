@@ -10,7 +10,7 @@ const commentAutomationService = {
   getTiktokAutomation: vi.fn(),
   listTiktokAutomations: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ commentAutomationService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ commentAutomationService }))
 vi.mock("@/lib/auth/utils", () => ({
   assertCurrentUserCanAccessChatbot: vi.fn().mockResolvedValue(undefined),
 }))

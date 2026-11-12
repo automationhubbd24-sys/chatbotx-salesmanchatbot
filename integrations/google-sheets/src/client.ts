@@ -1,4 +1,4 @@
-import type { Oauth2AuthValue } from "@chatbotx.io/sdk"
+import type { Oauth2AuthValue } from "@salesmanchatbot.io/sdk"
 import { OAuth2Client } from "google-auth-library"
 import { google } from "googleapis"
 import { GOOGLE_SHEETS_SCOPES } from "./constants"

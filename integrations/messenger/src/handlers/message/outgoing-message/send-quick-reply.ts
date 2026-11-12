@@ -4,8 +4,8 @@ import {
   extractMetadata,
   type MetadataPayload,
   type SendQuickReplyStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import type {
   FacebookMessage,
   FacebookMessageAttachment,

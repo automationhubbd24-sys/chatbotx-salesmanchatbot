@@ -1,7 +1,7 @@
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 
 // Kept apart from the reconciler registry so each reconciler can import the
 // contract without importing the registry that imports it (no module cycle).

@@ -6,12 +6,12 @@ import {
   db,
   eq,
   or,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   productCategoryModel,
   productModel,
-} from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 
 /**
  * A product filed under a sub-category also belongs to that sub-category's

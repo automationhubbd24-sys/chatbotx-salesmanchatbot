@@ -1,8 +1,8 @@
 "use server"
 
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
-import { isUniqueViolationError } from "@chatbotx.io/database/client"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
+import { isUniqueViolationError } from "@salesmanchatbot.io/database/client"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceActionClient } from "@/lib/safe-action"

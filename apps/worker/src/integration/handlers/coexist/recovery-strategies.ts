@@ -1,7 +1,7 @@
 import type {
   CoexistChannel,
   PickedCoexistRun,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import { recoverWhatsappRuns } from "./whatsapp-recovery"
 
 /**

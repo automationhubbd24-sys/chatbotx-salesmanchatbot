@@ -1,10 +1,10 @@
-import { resolveOpenLinkDestination } from "@chatbotx.io/business/open-link"
+import { resolveOpenLinkDestination } from "@salesmanchatbot.io/business/open-link"
 import {
   buildAppLinkTargets,
   matchDeepLinkApp,
   resolveDeepLinkNavigation,
-} from "@chatbotx.io/flow-config"
-import { getIdFromParams } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import type { Metadata } from "next"
 import type { SearchParams } from "next/dist/server/request/search-params"
 import { headers } from "next/headers"

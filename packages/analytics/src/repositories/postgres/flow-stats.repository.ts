@@ -1,16 +1,16 @@
-import { and, count, db, eq, inArray, sql } from "@chatbotx.io/database/client"
+import { and, count, db, eq, inArray, sql } from "@salesmanchatbot.io/database/client"
 import {
   conversationModel,
   flowAnalyticsSessionModel,
   flowNodeStatModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   type FlowNode,
   messageEventTypeSchema,
   nodeTypeSchema,
   type SendMessageNodeSchema,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { ContactEventData } from "../../schemas/common"
 import type {
   FlowNodeEventType,

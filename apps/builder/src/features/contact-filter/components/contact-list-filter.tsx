@@ -1,14 +1,14 @@
 "use client"
 
-import type { ContactFilterField } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import type { ContactFilterField } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { CalendarDaysIcon, FilterIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"

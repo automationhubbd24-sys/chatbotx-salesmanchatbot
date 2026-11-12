@@ -27,29 +27,29 @@ const db = {
     flowModel: { findFirst: findFirstFlow },
   },
 }
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db,
   and: vi.fn(),
   eq: vi.fn((field: unknown, value: unknown) => ({ field, value })),
   isNull: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceModel: {},
   workspaceUsageModel: { workspaceId: "workspaceId-column" },
   ROOT_TENANT_ID: "1",
 }))
-// `workspace/service.ts` doesn't use `@chatbotx.io/database/repositories`, but
-// vitest's SSR deps optimizer bundles the whole `@chatbotx.io/database`
+// `workspace/service.ts` doesn't use `@salesmanchatbot.io/database/repositories`, but
+// vitest's SSR deps optimizer bundles the whole `@salesmanchatbot.io/database`
 // package graph together once any subpath is imported, which otherwise pulls
 // in `contactRepository`'s real contact-filter query graph (needs the real
 // schema, conflicting with the narrow mock above).
-vi.mock("@chatbotx.io/database/repositories", () => ({}))
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({}))
 
 const tenantService = { findByOwner: vi.fn(async () => undefined as unknown) }
 vi.mock("../src/enterprise/tenant/service", () => ({ tenantService }))
-vi.mock("@chatbotx.io/database/partials", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/partials", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/partials")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/partials")>()
   return {
     ...actual,
     workspaceMemberRoles: { enum: { owner: "owner" } },
@@ -59,7 +59,7 @@ const invalidateCacheByTags = vi.fn(async () => undefined)
 const runExclusive = vi.fn(async ({ fn }: { key: string; fn: () => unknown }) =>
   fn(),
 )
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags,
   withCache: vi.fn(async (_key: string, fn: () => unknown) => fn()),
   distributedLock: { runExclusive },
@@ -67,8 +67,8 @@ vi.mock("@chatbotx.io/redis", () => ({
 }))
 const isCommunity = vi.fn(() => false)
 vi.mock("../src/keys", () => ({ isCommunity }))
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: () => "usage-1",
@@ -103,7 +103,7 @@ const anchoredPeriod = vi.fn(() => ({
   start: new Date("2026-05-01T00:00:00.000Z"),
   end: new Date("2026-06-01T00:00:00.000Z"),
 }))
-vi.mock("@chatbotx.io/analytics", () => ({ macRepository, anchoredPeriod }))
+vi.mock("@salesmanchatbot.io/analytics", () => ({ macRepository, anchoredPeriod }))
 
 const logger = { info: vi.fn(), warn: vi.fn(), error: vi.fn() }
 vi.mock("../src/logger", () => ({ logger }))

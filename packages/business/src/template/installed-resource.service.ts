@@ -1,8 +1,8 @@
-import { db } from "@chatbotx.io/database/client"
-import { ChatbotXException } from "../errors"
+import { db } from "@salesmanchatbot.io/database/client"
+import { salesmanChatbotException } from "../errors"
 
 export const templateAllowDeleteViolationException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This resource was installed from a template that disallows deletion",
     "templateAllowDeleteViolation",
   )

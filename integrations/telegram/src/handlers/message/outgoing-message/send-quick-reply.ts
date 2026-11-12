@@ -1,5 +1,5 @@
-import type { SendQuickReplyStepSchema } from "@chatbotx.io/flow-config"
-import type { MessageHandlers } from "@chatbotx.io/sdk"
+import type { SendQuickReplyStepSchema } from "@salesmanchatbot.io/flow-config"
+import type { MessageHandlers } from "@salesmanchatbot.io/sdk"
 import { MAX_INLINE_BUTTONS_PER_ROW } from "../../../constants"
 import type {
   TelegramAuthValue,

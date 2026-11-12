@@ -1,4 +1,4 @@
-import { botFieldModel, createSelectSchema } from "@chatbotx.io/database/schema"
+import { botFieldModel, createSelectSchema } from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const botFieldResource = createSelectSchema(botFieldModel, {

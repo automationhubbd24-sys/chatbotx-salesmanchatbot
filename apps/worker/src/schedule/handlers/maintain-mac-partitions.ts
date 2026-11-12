@@ -2,7 +2,7 @@ import {
   addUtcMonths,
   createContactActiveHourlyPartition,
   createContactActiveMonthlyPartition,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import { logger } from "../../lib/logger"
 
 // Keeps the MAC partition trees ahead of incoming data. `ContactActiveMonthly`

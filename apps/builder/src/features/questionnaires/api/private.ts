@@ -1,4 +1,4 @@
-import { questionnaireService } from "@chatbotx.io/business"
+import { questionnaireService } from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import {

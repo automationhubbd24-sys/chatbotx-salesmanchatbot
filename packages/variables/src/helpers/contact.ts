@@ -2,7 +2,7 @@ import {
   contactInboxService,
   contactNoteService,
   tagService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 export const listContactTagsString = async (
   contactId: string,

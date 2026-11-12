@@ -4,19 +4,19 @@ import {
   buildContext,
   messengerIntegrationService,
   tagSyncService,
-} from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
 import {
   getUserPages,
   integration as integrationMessenger,
   logMessengerWelcomeProfile,
-} from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/integration-messenger"
 import {
   exchangeLongLivedToken,
   subscribePageToAppWebhook,
-} from "@chatbotx.io/integration-messenger/apis/page"
-import { AuthType } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-messenger/apis/page"
+import { AuthType } from "@salesmanchatbot.io/sdk"
 import type { ResolvedConnectSession } from "@/features/channel-connect/lib/resolve-connect-session"
 import {
   type ConnectCandidateLookup,

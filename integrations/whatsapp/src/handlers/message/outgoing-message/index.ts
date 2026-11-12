@@ -9,7 +9,7 @@ import {
   type WhatsappCallButtonStepSchema,
   type WhatsappFlowStepSchema,
   type WhatsappOptionListStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   contentTypes,
   getWhatsappCallPermissionRequest,
@@ -17,7 +17,7 @@ import {
   type MessageButtonTemplate,
   type MessageHandlers,
   type OutgoingMessage,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { Audio, Document, Image, Text, Video } from "whatsapp-api-js/messages"
 import type {
   ClientMessage,

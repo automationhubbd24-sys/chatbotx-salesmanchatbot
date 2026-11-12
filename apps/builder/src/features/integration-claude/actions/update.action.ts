@@ -1,8 +1,8 @@
 "use server"
 
-import { aiProviders } from "@chatbotx.io/ai"
-import { aiIntegrationService } from "@chatbotx.io/ai/server"
-import { integrationClaudeService } from "@chatbotx.io/business"
+import { aiProviders } from "@salesmanchatbot.io/ai"
+import { aiIntegrationService } from "@salesmanchatbot.io/ai/server"
+import { integrationClaudeService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

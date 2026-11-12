@@ -1,10 +1,10 @@
-import { connectSessionService } from "@chatbotx.io/business/connect-session"
+import { connectSessionService } from "@salesmanchatbot.io/business/connect-session"
 import {
   authExpiresAtOf,
   type ConnectionQuotaConsumption,
   connectionStateService,
   isActiveConnectionStatus,
-} from "@chatbotx.io/business/connection"
+} from "@salesmanchatbot.io/business/connection"
 import {
   connectionCredentialsRejectedException,
   connectionIdentityMismatchException,
@@ -16,26 +16,26 @@ import {
   connectSessionExpiredException,
   notFoundException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
-import { db } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business/errors"
+import { db } from "@salesmanchatbot.io/database/client"
 import type {
   ConnectSessionPurpose,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
-import { connectionRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { connectionRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   ConnectionModel,
   ConnectSessionModel,
-} from "@chatbotx.io/database/types"
-import { encryptUtils } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/database/types"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
 import type {
   AuthValue,
   ConnectionCandidate,
   ConnectionCredential,
   ConnectionDescriptor,
   ConnectSessionNextAction,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { failSession } from "./connect-targets"
 import {
   encryptedAuthorizationSchema,

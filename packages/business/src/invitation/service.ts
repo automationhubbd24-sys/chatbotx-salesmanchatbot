@@ -1,5 +1,5 @@
-import { db } from "@chatbotx.io/database/client"
-import type { InvitationModel } from "@chatbotx.io/database/types"
+import { db } from "@salesmanchatbot.io/database/client"
+import type { InvitationModel } from "@salesmanchatbot.io/database/types"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 

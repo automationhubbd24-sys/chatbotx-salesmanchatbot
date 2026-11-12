@@ -17,13 +17,13 @@ vi.mock("next-intl/server", () => ({
   getTranslations: vi.fn(async () => (key: string) => key),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: {
     findById: mocks.findById,
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   verifyUserDataWebviewToken: mocks.verifyUserDataWebviewToken,
 }))
 

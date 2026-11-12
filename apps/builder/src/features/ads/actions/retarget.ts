@@ -3,8 +3,8 @@
 import {
   adsRetargetService,
   startRetargetAudienceSyncShape,
-} from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClient } from "@/lib/safe-action"
 

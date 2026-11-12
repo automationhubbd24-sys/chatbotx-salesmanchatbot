@@ -60,7 +60,7 @@ vi.mock("bullmq", () => {
   return { Worker: WorkerMock }
 })
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => ({
   ...(await importOriginal()),
   defaultWorkerOptions: {},
   getRedisConnection: () => ({}),
@@ -69,24 +69,24 @@ vi.mock("@chatbotx.io/worker-config", async (importOriginal) => ({
   TriggerJobAction: { evaluateTriggers: "evaluateTriggers" },
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => ({
   ...(await importOriginal()),
   SdkException: class SdkException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   runWithWebhookExecutionContext: (...args: [unknown, () => unknown]) =>
     state.runWithWebhookExecutionContext(...args),
 }))
 
 // extractContactInboxId is the real implementation (re-declared here rather
-// than importActual'd, to avoid pulling @chatbotx.io/events' full barrel —
+// than importActual'd, to avoid pulling @salesmanchatbot.io/events' full barrel —
 // TriggerEventEmitter/WebhookEventEmitter — into this narrow worker-seam
 // test). Its own behavior is covered exhaustively by
 // packages/events/__tests__/contact-inbox-context.test.ts; this test only
 // needs the exact same key contract to prove the worker wires it correctly.
 const CONTACT_INBOX_METADATA_KEY = "contactInboxId"
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   extractContactInboxId: (eventData: Record<string, unknown> | undefined) => {
     const value = eventData?.[CONTACT_INBOX_METADATA_KEY]
     return typeof value === "string" && value.length > 0 ? value : undefined

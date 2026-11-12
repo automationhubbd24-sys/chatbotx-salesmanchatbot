@@ -1,7 +1,7 @@
 import {
   type TriggerEventType,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export const EMITTED_EVENT_TYPES = [
   triggerEventTypes.enum.tagApplied,

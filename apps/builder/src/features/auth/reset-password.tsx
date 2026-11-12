@@ -1,13 +1,13 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2Icon } from "lucide-react"
 import Link from "next/link"

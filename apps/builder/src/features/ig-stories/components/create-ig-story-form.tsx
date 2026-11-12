@@ -1,6 +1,6 @@
 "use client"
 
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { useRouter } from "next/navigation"

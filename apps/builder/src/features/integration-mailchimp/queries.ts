@@ -1,6 +1,6 @@
-import { integrationMailchimpService } from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import { mailchimpAuthSchema } from "@chatbotx.io/integration-mailchimp"
+import { integrationMailchimpService } from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import { mailchimpAuthSchema } from "@salesmanchatbot.io/integration-mailchimp"
 
 export const getMailchimpAuth = async (workspaceId: string) => {
   const row =

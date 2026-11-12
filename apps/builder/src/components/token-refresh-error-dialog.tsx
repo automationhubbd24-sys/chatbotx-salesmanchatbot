@@ -1,8 +1,8 @@
 "use client"
 
-import type { TokenRefreshErrorIntegration } from "@chatbotx.io/business"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TokenRefreshErrorIntegration } from "@salesmanchatbot.io/business"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useState } from "react"

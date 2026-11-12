@@ -6,14 +6,14 @@ const mocks = vi.hoisted(() => ({
   resolveIntegrationContextFromContactInbox: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findLastIncomingMessageSourceId: mocks.findLastIncomingMessageSourceId,
   },
   contactInboxService: {},
   contactService: {},
 }))
-vi.mock("@chatbotx.io/database/client", () => ({ db: {}, eq: vi.fn() }))
+vi.mock("@salesmanchatbot.io/database/client", () => ({ db: {}, eq: vi.fn() }))
 vi.mock("../src/services/integrations", () => ({
   allIntegrations: { messenger: {}, whatsapp: {} },
   resolveIntegrationContextFromContactInbox:

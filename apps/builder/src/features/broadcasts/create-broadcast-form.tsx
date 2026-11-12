@@ -10,21 +10,21 @@ import {
   type ChannelType,
   findBroadcastChannelCapability,
   isTemplateBroadcastSubaction,
-} from "@chatbotx.io/database/partials"
-import { stepTypes } from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { DateTimePickerField } from "@chatbotx.io/ui/components/form/date-picker-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { stepTypes } from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { DateTimePickerField } from "@salesmanchatbot.io/ui/components/form/date-picker-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { useDebouncedCallback } from "@chatbotx.io/ui/hooks/use-debounced-callback"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { useDebouncedCallback } from "@salesmanchatbot.io/ui/hooks/use-debounced-callback"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { add } from "date-fns"

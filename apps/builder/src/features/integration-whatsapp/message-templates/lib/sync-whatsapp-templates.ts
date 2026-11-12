@@ -1,9 +1,9 @@
 import {
   buildContext,
   whatsappMessageTemplateService,
-} from "@chatbotx.io/business"
-import type { IntegrationWhatsappModel } from "@chatbotx.io/database/types"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/business"
+import type { IntegrationWhatsappModel } from "@salesmanchatbot.io/database/types"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import { integrations } from "@/integration"
 
 /** Pulls the number's templates and their approval status from Meta into the local table. */

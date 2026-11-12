@@ -1,6 +1,6 @@
 "use client"
 
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { useParams } from "next/navigation"
 
 export const useWorkspaceId = () => {

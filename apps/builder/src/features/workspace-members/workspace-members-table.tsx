@@ -1,27 +1,27 @@
 "use client"
 
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import {
   CheckCircle2Icon,

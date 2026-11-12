@@ -1,6 +1,6 @@
 "use client"
 
-import type { DynamicImageElement } from "@chatbotx.io/database/partials"
+import type { DynamicImageElement } from "@salesmanchatbot.io/database/partials"
 import { DynamicImageImageLayerEditForm } from "./elements/image-layer"
 import { DynamicImageQrCodeLayerEditForm } from "./elements/qr-code-layer"
 import { DynamicImageTextLayerEditForm } from "./elements/text-layer"

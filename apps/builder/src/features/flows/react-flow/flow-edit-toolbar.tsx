@@ -1,6 +1,6 @@
 "use client"
 
-import type { FlowModel } from "@chatbotx.io/database/types"
+import type { FlowModel } from "@salesmanchatbot.io/database/types"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,9 +10,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,12 +20,12 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { type Edge, MarkerType, type Node, useReactFlow } from "@xyflow/react"
 import {
   ChartNoAxesCombinedIcon,

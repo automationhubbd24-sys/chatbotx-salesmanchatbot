@@ -1,4 +1,4 @@
-import { sql } from "@chatbotx.io/database/client"
+import { sql } from "@salesmanchatbot.io/database/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -28,7 +28,7 @@ const mocks = vi.hoisted(() => ({
   cancelQuickReplyFollowUps: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       conversationModel: {
@@ -65,7 +65,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
 // Plain object stubs only — importing the real schema opens a database
 // connection through the sharding client. The extra models come from
 // `contactService`, now in `conversationService`'s import chain.
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactInboxModel: {},
   workspaceUsageModel: {},
   userQuotaModel: {},
@@ -80,29 +80,29 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   inboxModel: {},
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   // Identity passthrough: just calls the loader, so `findByOrFail`/`findBy`
   // hit `conversationFindFirst` directly without exercising real caching.
   withCache: vi.fn((_key: string, loader: () => unknown) => loader()),
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mocks.createMessageRepository,
   getSafeSinceTime: mocks.getSafeSinceTime,
   assignUserIfUnassigned: mocks.assignUserIfUnassigned,
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     notificationQueue: { addBulk: vi.fn() },
   }
 })
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: {
     conversationCreated: "conversationCreated",
     conversationUpdated: "conversationUpdated",
@@ -118,17 +118,17 @@ vi.mock("../../platform/realtime-broadcast", () => ({
 // `conversationService` now imports `contactService` (for the location write
 // inside `recordInboundActivity`), which pulls the analytics package into the
 // import chain; its MAC tracking service reads `bloomFilter` off
-// `@chatbotx.io/redis` at module scope. Stub analytics rather than partially
+// `@salesmanchatbot.io/redis` at module scope. Stub analytics rather than partially
 // mocking redis — matches the contact-service tests' convention.
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   macAnalyticsService: {},
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitConversationArchived: vi.fn(),
   emitConversationAssigned: vi.fn(),
   emitConversationFollowUp: vi.fn(),
@@ -167,11 +167,11 @@ vi.mock("../../smart-delay/service", () => ({
 }))
 
 const { conversationService } = await import("../service")
-const { emit } = await import("@chatbotx.io/event-bus")
+const { emit } = await import("@salesmanchatbot.io/event-bus")
 const { emitConversationAssigned, emitConversationTransferredToHuman } =
-  await import("@chatbotx.io/events")
-const { invalidateCacheByTags } = await import("@chatbotx.io/redis")
-const { notificationQueue } = await import("@chatbotx.io/worker-config")
+  await import("@salesmanchatbot.io/events")
+const { invalidateCacheByTags } = await import("@salesmanchatbot.io/redis")
+const { notificationQueue } = await import("@salesmanchatbot.io/worker-config")
 
 const WORKSPACE_ID = "ws-1"
 
@@ -574,7 +574,7 @@ describe("ConversationService.updateAssignment", () => {
   // The unassign branch (`assignedUserId`/`assignedInboxTeamId` both
   // null) had zero coverage — pin it alongside the assign branch above.
   test("publishes emitConversationUnassigned (not emitConversationAssigned) when unassigning", async () => {
-    const { emitConversationUnassigned } = await import("@chatbotx.io/events")
+    const { emitConversationUnassigned } = await import("@salesmanchatbot.io/events")
     mocks.updateReturning.mockResolvedValue([
       { id: "conv-1", contactId: "contact-1" },
     ])

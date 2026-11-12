@@ -12,16 +12,16 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@chatbotx.io/javascript-sandbox": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
+    "@salesmanchatbot.io/javascript-sandbox": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
     "dotenv": "^17.4.2",
     "isolated-vm": "^7.0.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "24.x",
     "dotenv-cli": "^11.0.0",
     "tsdown": "0.22.3",

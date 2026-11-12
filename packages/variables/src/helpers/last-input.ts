@@ -1,7 +1,7 @@
-import { messageService } from "@chatbotx.io/business"
-import { contentTypes } from "@chatbotx.io/database/partials"
-import type { MessageWithAttachments } from "@chatbotx.io/database/repositories"
-import type { ConversationModel } from "@chatbotx.io/database/types"
+import { messageService } from "@salesmanchatbot.io/business"
+import { contentTypes } from "@salesmanchatbot.io/database/partials"
+import type { MessageWithAttachments } from "@salesmanchatbot.io/database/repositories"
+import type { ConversationModel } from "@salesmanchatbot.io/database/types"
 import { resolveContactMessageWindow } from "./message-window"
 import { toPublicStorageUrl } from "./storage-url"
 

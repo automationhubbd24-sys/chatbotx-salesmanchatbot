@@ -1,13 +1,13 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   type ButtonStepProps,
   readStrandedCarouselLinkButton,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
-// Moved into `@chatbotx.io/flow-config/channel-rules` so the worker's import
+// Moved into `@salesmanchatbot.io/flow-config/channel-rules` so the worker's import
 // validation can share it. Re-exported here so this step's `index.ts` is
 // unchanged.
-export { sendCarouselValidator } from "@chatbotx.io/flow-config"
+export { sendCarouselValidator } from "@salesmanchatbot.io/flow-config"
 
 /**
  * Channels on which a carousel card can reach WhatsApp, and so lose a link

@@ -13,7 +13,7 @@ vi.mock("@/env", () => ({ isCommunity: mockIsCommunity }))
 
 vi.mock("@/features/tenant/utils", () => ({
   getTenantSettings: vi.fn(async () => ({
-    appUrl: "https://app.chatbotx.io",
+    appUrl: "https://app.salesmanchatbot.io",
   })),
 }))
 
@@ -31,7 +31,7 @@ vi.mock("@/lib/auth/permission-routes", () => ({
   hasWorkspacePermission: mockHasWorkspacePermission,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   inboxService: {
     updateMarkReadOnOutbound: mockUpdateMarkReadOnOutbound,
   },
@@ -41,7 +41,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/branding", () => ({
+vi.mock("@salesmanchatbot.io/business/branding", () => ({
   ensureBrandingMenuEntry: vi.fn((menus: unknown) => menus),
 }))
 

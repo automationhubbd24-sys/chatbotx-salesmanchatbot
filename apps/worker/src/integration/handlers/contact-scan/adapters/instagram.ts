@@ -1,13 +1,13 @@
 import {
   inboxService,
   instagramIntegrationService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   InboxModel,
   IntegrationInstagramModel,
-} from "@chatbotx.io/database/types"
-import { listInstagramConversations } from "@chatbotx.io/integration-instagram/apis/sync"
-import { listInstagramFacebookConversations } from "@chatbotx.io/integration-instagram-facebook/apis/sync"
+} from "@salesmanchatbot.io/database/types"
+import { listInstagramConversations } from "@salesmanchatbot.io/integration-instagram/apis/sync"
+import { listInstagramFacebookConversations } from "@salesmanchatbot.io/integration-instagram-facebook/apis/sync"
 import { z } from "zod"
 import {
   findCustomerParticipant,
@@ -91,9 +91,9 @@ const buildContextByProviderType: Record<
 /**
  * Lists one page of conversations from the correct underlying Graph API —
  * native Instagram Login reads from the IG user node
- * (`@chatbotx.io/integration-instagram`), Facebook-linked Instagram reads from
+ * (`@salesmanchatbot.io/integration-instagram`), Facebook-linked Instagram reads from
  * the Page node with `?platform=instagram`
- * (`@chatbotx.io/integration-instagram-facebook`) — mirroring the dispatch
+ * (`@salesmanchatbot.io/integration-instagram-facebook`) — mirroring the dispatch
  * `instagram-sync.ts`'s `instagramCoexistProvidersByType` does for coexist.
  * Takes the already-narrowed flat fields (not the union `context` object) so
  * no per-branch type narrowing/casting is needed.

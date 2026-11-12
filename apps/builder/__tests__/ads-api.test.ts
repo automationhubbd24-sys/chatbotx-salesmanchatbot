@@ -78,14 +78,14 @@ vi.mock("@/lib/auth/assert-workspace-super-admin", () => ({
   assertWorkspaceSuperAdmin: mocks.assertWorkspaceSuperAdmin,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   adsConversionService: {
     list: mocks.listRules,
   },
   resolveChannelAdAccountSources: mocks.resolveChannelAdAccountSources,
 }))
 
-vi.mock("@chatbotx.io/integration-facebook-ads", () => ({
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", () => ({
   facebookAdAccountSchema: {},
 }))
 

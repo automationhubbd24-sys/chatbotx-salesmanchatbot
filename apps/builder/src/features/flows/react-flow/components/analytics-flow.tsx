@@ -1,4 +1,4 @@
-import type { FlowNodeStatsResponse } from "@chatbotx.io/analytics"
+import type { FlowNodeStatsResponse } from "@salesmanchatbot.io/analytics"
 import { useEffect, useState } from "react"
 import { client } from "@/lib/orpc/orpc"
 import type { FlowResource } from "../../schema/resource"

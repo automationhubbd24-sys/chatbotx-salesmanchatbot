@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -15,7 +15,7 @@ const CODES = vi.hoisted(() => ({
   nothingToRetry: "aiHandoverBulkNothingToRetry",
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   AI_HANDOVER_BULK_ERROR_CODES: CODES,
   aiHandoverBulkRunService: {
     setApplyToAll: mocks.setApplyToAll,
@@ -126,14 +126,14 @@ describe("setApplyToAllAction", () => {
     [CODES.pageNotConnected, "aiHandover.bulk.errors.pageNotConnected"],
   ])("shows the service error %s translated", async (code, key) => {
     mocks.setApplyToAll.mockRejectedValue(
-      new ChatbotXException("raw", code, 422),
+      new salesmanChatbotException("raw", code, 422),
     )
 
     await expect(setWith(ON)).rejects.toMatchObject({ message: key, code })
   })
 
   test("rethrows an error it has no copy for unchanged", async () => {
-    const unknown = new ChatbotXException("bad", "validation", 422)
+    const unknown = new salesmanChatbotException("bad", "validation", 422)
     mocks.setApplyToAll.mockRejectedValue(unknown)
     await expect(setWith(ON)).rejects.toBe(unknown)
 
@@ -166,7 +166,7 @@ describe("retryApplyToAllAction", () => {
 
   test("shows 'nothing to retry' translated and rethrows anything else", async () => {
     mocks.retry.mockRejectedValue(
-      new ChatbotXException("raw", CODES.nothingToRetry, 422),
+      new salesmanChatbotException("raw", CODES.nothingToRetry, 422),
     )
     await expect(retryWith()).rejects.toMatchObject({
       message: "aiHandover.bulk.errors.nothingToRetry",

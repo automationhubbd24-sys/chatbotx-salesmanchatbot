@@ -1,5 +1,5 @@
-import type { BroadcastModel } from "@chatbotx.io/database/types"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
 import { createSearchParamsCache, parseAsInteger } from "nuqs/server"
 import z from "zod"
 import type { BroadcastFilterStatus } from "../lib/broadcast-status"

@@ -1,8 +1,8 @@
-import { customFieldTypes } from "@chatbotx.io/database/partials"
+import { customFieldTypes } from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   customFieldModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const customFieldResource = createSelectSchema(customFieldModel, {

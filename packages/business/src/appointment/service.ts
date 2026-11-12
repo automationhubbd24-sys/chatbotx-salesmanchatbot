@@ -1,22 +1,22 @@
-import { type DatabaseClient, db, sql } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db, sql } from "@salesmanchatbot.io/database/client"
 import {
   type AppointmentListTab,
   appointmentRepository,
   contactInboxRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   type AppointmentWebviewPayload,
   signAppointmentCancelToken,
   signAppointmentScheduleToken,
-} from "@chatbotx.io/encryption"
-import type { MetadataPayload } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/encryption"
+import type { MetadataPayload } from "@salesmanchatbot.io/flow-config"
 import {
   DefaultJobAction,
   defaultQueue,
   IntegrationJobAction,
   integrationQueue,
   syncExternalCalendarEventJobId,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { formatInTimeZone } from "date-fns-tz"
 import { normalizeError } from "universal-error-normalizer"
 import {
@@ -28,17 +28,17 @@ import { appointmentReminderService } from "../appointment-reminder"
 import { BaseService } from "../base.service"
 import { type ContactAccessScope, contactService } from "../contact"
 import { conversationService } from "../conversation"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { logger } from "../logger"
 import { resolveTenantSettings } from "../platform/settings"
 
-export class SlotUnavailableException extends ChatbotXException {
+export class SlotUnavailableException extends salesmanChatbotException {
   constructor() {
     super("Appointment slot is unavailable", "slotUnavailable", 409)
   }
 }
 
-export class AppointmentAvailabilityChangedException extends ChatbotXException {
+export class AppointmentAvailabilityChangedException extends salesmanChatbotException {
   constructor() {
     super(
       "Appointment calendar availability changed. Please try again.",
@@ -48,7 +48,7 @@ export class AppointmentAvailabilityChangedException extends ChatbotXException {
   }
 }
 
-export class AppointmentAlreadyScheduledException extends ChatbotXException {
+export class AppointmentAlreadyScheduledException extends salesmanChatbotException {
   constructor() {
     super(
       "Contact already has a scheduled appointment for this calendar",
@@ -58,7 +58,7 @@ export class AppointmentAlreadyScheduledException extends ChatbotXException {
   }
 }
 
-export class AmbiguousCancelException extends ChatbotXException {
+export class AmbiguousCancelException extends salesmanChatbotException {
   constructor(count: number) {
     super(
       `Expected exactly one future appointment to cancel, found ${count}`,
@@ -392,7 +392,7 @@ class AppointmentService extends BaseService {
           tx,
         )
         if (!contactInbox) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             "Appointment contact inbox does not belong to the contact",
             "invalidAppointmentContactInbox",
             400,
@@ -701,7 +701,7 @@ class AppointmentService extends BaseService {
         tx,
       )
       if (row.status !== "scheduled" || row.startAt <= new Date()) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Appointment cannot be cancelled",
           "appointmentNotCancellable",
           409,
@@ -754,7 +754,7 @@ class AppointmentService extends BaseService {
         appointment.status === "scheduled" &&
         appointment.startAt > new Date()
       ) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Cancel upcoming appointments before deleting them",
           "appointmentDeleteBlocked",
           409,

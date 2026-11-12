@@ -2,7 +2,7 @@ import {
   type QuestionnairesStepSchema,
   questionnairesStepDefaultFn,
   questionnairesStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import { QuestionnairesActionEditor } from "./editor"
 import { QuestionnairesActionViewer } from "./viewer"

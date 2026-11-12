@@ -1,5 +1,5 @@
-import { openaiModels } from "@chatbotx.io/ai"
-import type { IntegrationOpenAIModel } from "@chatbotx.io/database/types"
+import { openaiModels } from "@salesmanchatbot.io/ai"
+import type { IntegrationOpenAIModel } from "@salesmanchatbot.io/database/types"
 import { z } from "zod"
 
 export type IntegrationOpenAIResource = IntegrationOpenAIModel

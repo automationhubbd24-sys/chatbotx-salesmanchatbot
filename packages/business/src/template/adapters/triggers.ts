@@ -1,7 +1,7 @@
-import { db } from "@chatbotx.io/database/client"
-import { triggerModel } from "@chatbotx.io/database/schema"
-import { remapReferences } from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+import { db } from "@salesmanchatbot.io/database/client"
+import { triggerModel } from "@salesmanchatbot.io/database/schema"
+import { remapReferences } from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import { insertWithNameRetry } from "./naming"
 import type {
   PatchTask,

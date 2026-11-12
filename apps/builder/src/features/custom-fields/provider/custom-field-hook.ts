@@ -3,9 +3,9 @@ import {
   type CustomFieldType,
   type SystemFieldType,
   systemFieldTypes,
-} from "@chatbotx.io/database/partials"
-import { formatBotFieldReference } from "@chatbotx.io/flow-config"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/database/partials"
+import { formatBotFieldReference } from "@salesmanchatbot.io/flow-config"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import {
   CalendarClockIcon,

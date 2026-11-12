@@ -12,7 +12,7 @@
  * is left behind.
  *
  * Skipped unless `DATABASE_URL` points at a reachable database, or when it has
- * no workspace yet; run it with `pnpm --filter @chatbotx.io/database test:db`.
+ * no workspace yet; run it with `pnpm --filter @salesmanchatbot.io/database test:db`.
  */
 
 import { sql } from "drizzle-orm"

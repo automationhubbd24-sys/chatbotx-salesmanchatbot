@@ -1,20 +1,20 @@
-import { coexistService } from "@chatbotx.io/business/coexist"
+import { coexistService } from "@salesmanchatbot.io/business/coexist"
 import {
   COEXIST_HISTORY_DECLINED_ERROR,
   isWhatsappHistoryTerminal,
-} from "@chatbotx.io/business/coexist/history"
-import { logProviderError } from "@chatbotx.io/business/error-log"
+} from "@salesmanchatbot.io/business/coexist/history"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import {
   integrationWhatsappRepository,
   whatsappCoexistStagingRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCoexistStagingModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCoexistStagingModel } from "@salesmanchatbot.io/database/types"
 import {
   buildCoexistPageJobId,
   IntegrationJobAction,
   type IntegrationJobCoexistWhatsappFlush,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { bulkImportHistorical } from "./bulk-historical-import"
 import { enqueueAttachmentDownloadJobs } from "./enqueue-attachment-downloads"

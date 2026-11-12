@@ -20,13 +20,13 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: {
     findByIdOrFail: findByIdOrFailSpy,
   },
 }))
 
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: {
     updateContactSequences: updateContactSequencesSpy,
   },

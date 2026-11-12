@@ -68,7 +68,7 @@ vi.mock("@/features/broadcasts/hooks/use-broadcast-page-templates", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({
     name,
     options,

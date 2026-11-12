@@ -4,8 +4,8 @@ import {
   type FileType,
   type IncomingAttachment,
   SdkException,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import fetch from "cross-fetch"
 import imageSize from "image-size"
 import type { WhatsAppAPI } from "whatsapp-api-js"

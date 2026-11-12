@@ -1,7 +1,7 @@
 "use server"
 
 import { randomUUID } from "node:crypto"
-import { orderService } from "@chatbotx.io/business"
+import { orderService } from "@salesmanchatbot.io/business"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
 import { orderIdRequest } from "../schema/action"

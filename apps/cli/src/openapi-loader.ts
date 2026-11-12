@@ -131,7 +131,7 @@ const V1_PREFIX_RE = /^\/v1\//
 const LEADING_SLASH_RE = /^\//
 
 function getTtlSeconds(): number {
-  const raw = process.env.CHATBOTX_SPEC_CACHE_TTL_SECONDS
+  const raw = process.env.SALESMANCHATBOT_SPEC_CACHE_TTL_SECONDS
   if (!raw) {
     return DEFAULT_TTL_SECONDS
   }

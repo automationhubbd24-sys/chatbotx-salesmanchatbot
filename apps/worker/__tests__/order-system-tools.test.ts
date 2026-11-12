@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   recordDetails: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   systemFunctionNames: {
     cancelOrderDraft: "cancel_order_draft",
     confirmOrder: "confirm_order",
@@ -18,7 +18,7 @@ vi.mock("@chatbotx.io/ai", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   orderIntakeSessionService: {
     get: mocks.get,
     recordDetails: mocks.recordDetails,
@@ -29,7 +29,7 @@ vi.mock("@chatbotx.io/business", () => ({
 const { createOrderExecutors } = await import(
   "../src/integration/handlers/automated-response/system-tools/orders"
 )
-const { validationException } = await import("@chatbotx.io/business/errors")
+const { validationException } = await import("@salesmanchatbot.io/business/errors")
 
 describe("order system tool executors", () => {
   test("returns field-scoped validation failures without exposing unexpected errors", async () => {

@@ -1,5 +1,5 @@
 {
-  "extends": "@chatbotx.io/typescript-config/base.json",
+  "extends": "@salesmanchatbot.io/typescript-config/base.json",
   "include": ["src/**/*.ts", "scripts/**/*.ts"],
   "compilerOptions": {
     "strictNullChecks": true

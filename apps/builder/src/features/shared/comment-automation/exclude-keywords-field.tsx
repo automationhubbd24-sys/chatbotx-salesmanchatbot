@@ -1,13 +1,13 @@
 "use client"
 
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
 import {
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
-import { TagsInputField } from "@chatbotx.io/ui/components/ui/muhammada86/tags-input-field"
+} from "@salesmanchatbot.io/ui/components/ui/form"
+import { TagsInputField } from "@salesmanchatbot.io/ui/components/ui/muhammada86/tags-input-field"
 import { useTranslations } from "next-intl"
 import { useFormContext } from "react-hook-form"
 

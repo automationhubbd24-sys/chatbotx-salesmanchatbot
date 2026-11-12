@@ -4,7 +4,7 @@ import {
   orderSources,
   orderStatuses,
   orderTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { publicListRequest } from "@/lib/public-api/list"
 

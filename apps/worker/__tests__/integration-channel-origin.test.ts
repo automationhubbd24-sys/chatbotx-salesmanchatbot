@@ -1,8 +1,8 @@
-import { isWebhookContext } from "@chatbotx.io/events/context"
+import { isWebhookContext } from "@salesmanchatbot.io/events/context"
 import {
   IntegrationJobAction,
   type IntegrationJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { describe, expect, test, vi } from "vitest"
 import { isChannelOriginatedJob } from "../src/integration/channel-origin"
 import { runIntegrationJobWithWebhookContext } from "../src/integration/job-context"

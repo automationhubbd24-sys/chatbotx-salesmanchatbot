@@ -1,6 +1,6 @@
-import type { MinigamePlayResult } from "@chatbotx.io/business/minigame"
-import type { MinigamePrizeSettings } from "@chatbotx.io/database/partials"
-import type { LuckyWheelSegment } from "@chatbotx.io/minigame-ui"
+import type { MinigamePlayResult } from "@salesmanchatbot.io/business/minigame"
+import type { MinigamePrizeSettings } from "@salesmanchatbot.io/database/partials"
+import type { LuckyWheelSegment } from "@salesmanchatbot.io/minigame-ui"
 
 const NON_WINNING_SEGMENT_ID = "__nonWinning__"
 

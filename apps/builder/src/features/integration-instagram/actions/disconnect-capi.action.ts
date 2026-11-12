@@ -3,9 +3,9 @@
 import {
   instagramIntegrationService,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
@@ -27,7 +27,7 @@ export const disconnectInstagramCapiAction = workspaceActionClientAllowExpired
           workspaceId,
         })
       if (integration?.type !== "facebook") {
-        throw new ChatbotXException(t("instagramNotFound"))
+        throw new salesmanChatbotException(t("instagramNotFound"))
       }
 
       await metaConversionsService.disconnectCapi({

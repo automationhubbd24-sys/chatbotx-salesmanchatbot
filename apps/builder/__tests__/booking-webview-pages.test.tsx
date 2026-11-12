@@ -18,14 +18,14 @@ vi.mock("next/script", () => ({
   default: () => null,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentCalendarService: {
     findByOrFail: mocks.findCalendarByOrFail,
     resolveAvailableSlotsForListing: mocks.resolveAvailableSlotsForListing,
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   verifyAppointmentWebviewToken: mocks.verifyAppointmentWebviewToken,
 }))
 

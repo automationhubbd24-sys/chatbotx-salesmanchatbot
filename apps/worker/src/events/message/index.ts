@@ -1,4 +1,4 @@
-import { messageEventBus } from "@chatbotx.io/event-bus"
+import { messageEventBus } from "@salesmanchatbot.io/event-bus"
 import { messageListeners } from "./listener"
 
 export default {

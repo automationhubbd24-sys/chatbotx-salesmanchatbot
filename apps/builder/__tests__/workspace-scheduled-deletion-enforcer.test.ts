@@ -13,7 +13,7 @@ vi.mock("next/navigation", () => ({
   redirect: mockRedirect,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isWorkspaceScheduledForDeletion: (workspace: {
     scheduledDeletionAt: Date | string | null
   }) => workspace.scheduledDeletionAt != null,

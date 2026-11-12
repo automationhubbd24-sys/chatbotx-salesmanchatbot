@@ -1,6 +1,6 @@
 "use client"
 
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { useRouter } from "next/navigation"
 import { useAction } from "next-safe-action/hooks"
 import { toast } from "sonner"

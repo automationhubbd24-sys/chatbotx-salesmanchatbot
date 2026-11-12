@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 const REF_LINK_NAME_REGEX = /^[a-zA-Z0-9]+$/

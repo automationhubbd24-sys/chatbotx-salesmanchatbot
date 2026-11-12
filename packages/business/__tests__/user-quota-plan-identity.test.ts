@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   findFirstQuota: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: { userQuotaModel: { findFirst: mocks.findFirstQuota } },
   },
@@ -20,7 +20,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sum: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: {},
   inboxModel: {},
   ROOT_TENANT_ID: "1",
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   workspaceModel: {},
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   cacheConnections: { useExisting: vi.fn() },
   distributedStore: {},
   invalidateCacheByTags: vi.fn(),

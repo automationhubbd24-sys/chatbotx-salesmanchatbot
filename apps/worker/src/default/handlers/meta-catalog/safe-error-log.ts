@@ -1,4 +1,4 @@
-import { toPublicErrorMessage } from "@chatbotx.io/business/errors"
+import { toPublicErrorMessage } from "@salesmanchatbot.io/business/errors"
 
 const SAFE_FB_TRACE_ID_REGEX = /^[A-Za-z0-9_-]{1,128}$/
 

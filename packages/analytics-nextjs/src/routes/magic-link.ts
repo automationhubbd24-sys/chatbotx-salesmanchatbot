@@ -4,7 +4,7 @@ import {
   magicLinkContactStatsSchema,
   magicLinkStatsSchema,
   refLinkTimeseriesRow,
-} from "@chatbotx.io/analytics"
+} from "@salesmanchatbot.io/analytics"
 import { os } from "@orpc/server"
 import { z } from "zod"
 import { logger } from "../lib/log"

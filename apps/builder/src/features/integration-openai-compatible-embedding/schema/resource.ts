@@ -1,4 +1,4 @@
-import type { IntegrationOpenaiCompatibleEmbeddingModel } from "@chatbotx.io/database/types"
+import type { IntegrationOpenaiCompatibleEmbeddingModel } from "@salesmanchatbot.io/database/types"
 
 export type IntegrationOpenaiCompatibleEmbeddingResource = Pick<
   IntegrationOpenaiCompatibleEmbeddingModel,

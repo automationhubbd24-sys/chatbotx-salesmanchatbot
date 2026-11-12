@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import type { AdsAnalyticsTimeseriesRow } from "@chatbotx.io/business"
+import type { AdsAnalyticsTimeseriesRow } from "@salesmanchatbot.io/business"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

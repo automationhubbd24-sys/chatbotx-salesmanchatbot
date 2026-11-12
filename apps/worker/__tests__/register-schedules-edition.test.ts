@@ -18,7 +18,7 @@ class FakeQueue {
 
 vi.mock("bullmq", () => ({ Queue: FakeQueue }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   PURGE_WORKSPACES_INTERVAL_MINUTES: 10,
   PURGE_BROADCASTS_INTERVAL_MINUTES: 5,
   ScheduleJobData: {

@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -8,17 +8,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@chatbotx.io/ui/components/ui/tabs"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tabs"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { SiFacebook } from "@icons-pack/react-simple-icons"
 import { Loader2Icon } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"

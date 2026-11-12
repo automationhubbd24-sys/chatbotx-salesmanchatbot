@@ -1,6 +1,6 @@
 "use server"
 
-import { integrationSmtpService } from "@chatbotx.io/business"
+import { integrationSmtpService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { IntegrationSmtpResource } from "../schema/resource"
 

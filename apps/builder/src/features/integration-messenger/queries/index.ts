@@ -1,7 +1,7 @@
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { integrationMessengerModel } from "@chatbotx.io/database/schema"
-import type { IntegrationMessengerModel } from "@chatbotx.io/database/types"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { integrationMessengerModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationMessengerModel } from "@salesmanchatbot.io/database/types"
 
 export const findIntegrationMessenger = async (
   input: Partial<Pick<IntegrationMessengerModel, "id" | "workspaceId">>,

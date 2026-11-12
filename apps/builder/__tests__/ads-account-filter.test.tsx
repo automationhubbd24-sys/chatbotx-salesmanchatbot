@@ -16,7 +16,7 @@ vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({ children }: { children: ReactNode }) => children,
   SelectContent: ({ children }: { children: ReactNode }) => children,
   SelectItem: ({ children }: { children: ReactNode }) => (

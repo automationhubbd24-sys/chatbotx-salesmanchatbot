@@ -2,7 +2,7 @@ import {
   ProfileSnapshotJobAction,
   profileSnapshotJobId,
   profileSnapshotQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 
 export const enqueueProfileSnapshotJobs = async (input: {
   contactInboxIds: Iterable<string>

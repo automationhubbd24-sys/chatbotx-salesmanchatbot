@@ -48,7 +48,7 @@ const mocks = vi.hoisted(() => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   metaCapiEventRepository: {
     findPendingBySourceKey: mocks.findPendingBySourceKey,
     findWorkspaceEvent: mocks.findWorkspaceEvent,
@@ -92,7 +92,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     sendMetaCapiEvent: "sendMetaCapiEvent",
   },
@@ -120,11 +120,11 @@ vi.mock("../src/integration-whatsapp/service", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mocks.invalidateCacheByTags,
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: mocks.encryptedDataParse },
   encryptUtils: {
     decryptObject: mocks.decryptObject,

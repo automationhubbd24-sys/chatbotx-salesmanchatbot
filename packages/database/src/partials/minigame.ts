@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { uploadModes } from "./shared"
 
@@ -381,7 +381,7 @@ const DEFAULT_MINIGAME_OUTCOME_MESSAGE: z.infer<
  *
  * It lives here rather than beside either renderer because the two cannot
  * import each other: the dialog is a client component and the outcome-message
- * renderer sits in `@chatbotx.io/business`, which would drag the whole package
+ * renderer sits in `@salesmanchatbot.io/business`, which would drag the whole package
  * into the browser bundle. This schema module is the one place both already
  * depend on.
  */

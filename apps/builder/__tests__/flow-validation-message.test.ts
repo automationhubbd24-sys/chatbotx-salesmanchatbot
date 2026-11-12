@@ -1,4 +1,4 @@
-import { flowValidationCodes } from "@chatbotx.io/flow-config"
+import { flowValidationCodes } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { z } from "zod"
 import { resolveFlowValidationMessageKey } from "@/features/flows/react-flow/flow-validation-message"

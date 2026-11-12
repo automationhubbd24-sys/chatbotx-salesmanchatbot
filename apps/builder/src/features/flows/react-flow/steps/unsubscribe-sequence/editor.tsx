@@ -1,6 +1,6 @@
 "use client"
 
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { Layers2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useSequenceOptions } from "@/features/sequences/provider/sequence-hook"

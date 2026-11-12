@@ -2,7 +2,7 @@ import {
   aiHandoverBulkRunService,
   aiHandoverSettingsService,
   inboxService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { notFound } from "next/navigation"
 
 import { AiHandoverSettingsCard } from "@/features/integration-ai-handover/components/ai-handover-settings-card"

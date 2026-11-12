@@ -4,8 +4,8 @@ import type {
   SpreadsheetGetRandomRowSchema,
   SpreadsheetGetRowSchema,
   SpreadsheetUpdateRowSchema,
-} from "@chatbotx.io/flow-config"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/flow-config"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import type { ExecuteStepProps } from "./flow"
 
 type SpreadsheetLookupStepSchema =

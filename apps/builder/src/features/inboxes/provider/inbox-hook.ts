@@ -1,6 +1,6 @@
-import type { ListInboxesResponse } from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import type { ListInboxesResponse } from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import {
   type QueryStatus,
   useQuery,
@@ -145,7 +145,7 @@ export const useInboxOptionsByChannel = (
  * Generalises `useInboxOptionsByChannel` for a caller that supports a FIXED
  * SET of channels rather than a single one (e.g. the Automatic Customer Scan
  * dialog, whose eligible channels come from `CONTACT_SCAN_CHANNELS`
- * `@chatbotx.io/utils/channel`). `useInboxOptionsByChannel` stays as-is for
+ * `@salesmanchatbot.io/utils/channel`). `useInboxOptionsByChannel` stays as-is for
  * its existing single-channel callers.
  */
 export const useInboxOptionsForChannels = (

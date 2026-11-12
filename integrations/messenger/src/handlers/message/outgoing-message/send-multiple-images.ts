@@ -1,5 +1,5 @@
-import type { SendMultipleImagesStepSchema } from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+import type { SendMultipleImagesStepSchema } from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../../lib/logger"
 import type { MessengerAuthValue } from "../../../schema"
 import { convertCanonicalQuickReplies } from "./canonical-quick-replies"

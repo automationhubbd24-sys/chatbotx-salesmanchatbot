@@ -9,17 +9,17 @@ const mocks = vi.hoisted(() => ({
   update: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { update: mocks.update },
   eq: vi.fn(),
   findOrFail: mocks.findOrFail,
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   aiEmbeddingStatuses: { enum: { success: "success" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   aiEmbeddingModel: {},
 }))
 

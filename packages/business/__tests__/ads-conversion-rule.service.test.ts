@@ -26,7 +26,7 @@ const mocks = vi.hoisted(() => ({
   withCache: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   adsConversionEventRepository: {
     findAttributionByContactInbox: mocks.findAttributionByContactInbox,
     findAttributionByCtwaClid: mocks.findAttributionByCtwaClid,
@@ -63,7 +63,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mocks.invalidateCacheByTags,
   withCache: (_key: string, fn: () => Promise<unknown>, _options?: unknown) => {
     mocks.withCache(_key, _options)
@@ -72,10 +72,10 @@ vi.mock("@chatbotx.io/redis", () => ({
   createRedisConnection: vi.fn(() => ({ on: vi.fn() })),
 }))
 
-vi.mock("@chatbotx.io/worker-config", async () => {
+vi.mock("@salesmanchatbot.io/worker-config", async () => {
   const actual = await vi.importActual<
-    typeof import("@chatbotx.io/worker-config")
-  >("@chatbotx.io/worker-config")
+    typeof import("@salesmanchatbot.io/worker-config")
+  >("@salesmanchatbot.io/worker-config")
   return {
     ...actual,
     enqueueIntegrationJob: mocks.adsConversionQueueAdd,

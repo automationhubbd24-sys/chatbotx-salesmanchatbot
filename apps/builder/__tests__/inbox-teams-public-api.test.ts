@@ -55,7 +55,7 @@ const inboxTeamService = {
   removeMembers: vi.fn(),
   removeMembersByUserIds: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ inboxTeamService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ inboxTeamService }))
 
 const listInboxTeams = vi.fn()
 vi.mock("../src/enterprise/features/inbox-teams/queries", () => ({

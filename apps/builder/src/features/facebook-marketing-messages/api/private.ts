@@ -1,5 +1,5 @@
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { getMarketingMessagesAdAccounts } from "@chatbotx.io/integration-facebook-ads"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { getMarketingMessagesAdAccounts } from "@salesmanchatbot.io/integration-facebook-ads"
 import { z } from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

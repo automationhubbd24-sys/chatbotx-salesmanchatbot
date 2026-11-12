@@ -1,4 +1,4 @@
-import type { FlowNode, NodeType, StepType } from "@chatbotx.io/flow-config"
+import type { FlowNode, NodeType, StepType } from "@salesmanchatbot.io/flow-config"
 import {
   buttonStepDefaultFn,
   disabledCopyActionTypes,
@@ -6,25 +6,25 @@ import {
   MAX_QUICK_REPLIES,
   stepTypes,
   upgradeNodeSteps,
-} from "@chatbotx.io/flow-config"
-import { TriggerFormInitially } from "@chatbotx.io/ui/components/form/form-trigger-initially"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { TriggerFormInitially } from "@salesmanchatbot.io/ui/components/form/form-trigger-initially"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   Sortable,
   SortableContent,
   SortableItem,
   SortableItemHandle,
-} from "@chatbotx.io/ui/components/ui/sortable"
-import { createDebouncedFn } from "@chatbotx.io/ui/hooks/create-debounced-fn"
-import { useCallbackRef } from "@chatbotx.io/ui/hooks/use-callback-ref"
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/sortable"
+import { createDebouncedFn } from "@salesmanchatbot.io/ui/hooks/create-debounced-fn"
+import { useCallbackRef } from "@salesmanchatbot.io/ui/hooks/use-callback-ref"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useReactFlow } from "@xyflow/react"
 import { CopyIcon, MoveVerticalIcon, PlusIcon, XIcon } from "lucide-react"

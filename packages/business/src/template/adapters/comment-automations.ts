@@ -1,6 +1,6 @@
-import { db } from "@chatbotx.io/database/client"
-import { commentAutomationModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+import { db } from "@salesmanchatbot.io/database/client"
+import { commentAutomationModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 import type {
   PatchTask,
   ResourceAdapter,

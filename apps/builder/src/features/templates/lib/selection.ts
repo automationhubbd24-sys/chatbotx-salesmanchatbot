@@ -1,4 +1,4 @@
-import type { TemplateCategory } from "@chatbotx.io/database/partials"
+import type { TemplateCategory } from "@salesmanchatbot.io/database/partials"
 
 /**
  * `"all"` stays a sentinel in the form — it is expanded server-side at save

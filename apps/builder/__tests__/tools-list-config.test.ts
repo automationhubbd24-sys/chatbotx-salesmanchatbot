@@ -1,4 +1,4 @@
-import type { WorkspaceMemberPermissions } from "@chatbotx.io/database/partials"
+import type { WorkspaceMemberPermissions } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { buildMessagingAdsToolPath } from "@/features/ads-campaign/lib/tool-path"
 import { canShowTool, TOOLS_CONFIG } from "@/features/tools/tools-list"

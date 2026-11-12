@@ -1,25 +1,25 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import {
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
-} from "@chatbotx.io/integration-facebook-ads"
-import { ChatbotXException } from "../errors"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { salesmanChatbotException } from "../errors"
 import { makeAuthStoreForTable } from "../integration-context/auth-store"
 import { buildContextWithAuthStore } from "../integration-context/build-context"
 import { messagingAdsConnectionService } from "./service"
 
 // Deliberately NOT re-exported here as `facebookAdsIntegration` — `../
 // integration-facebook-ads/graph-reads.ts` already re-exports it under that
-// name, and both modules are re-exported from the `@chatbotx.io/business`
+// name, and both modules are re-exported from the `@salesmanchatbot.io/business`
 // barrel; a second same-named re-export would make it ambiguous through the
 // barrel. Callers that need the dispatcher import `integration` directly
-// from `@chatbotx.io/integration-facebook-ads` (see `./graph-reads.ts`).
+// from `@salesmanchatbot.io/integration-facebook-ads` (see `./graph-reads.ts`).
 
 const MESSAGING_ADS_CONNECTION_TABLE = "MessagingAdsConnection"
 
 /** Thrown when a box has no connection, an inactive one, or a stored auth blob that failed to decrypt/parse — the box renders its "reconnect needed" state on this (HTTP 409: the request is well-formed, the connection state is what's wrong). */
-export class MessagingAdsReconnectRequiredException extends ChatbotXException {
+export class MessagingAdsReconnectRequiredException extends salesmanChatbotException {
   constructor(message = "This connection needs to be reconnected.") {
     super(message, "messagingAdsReconnectRequired", 409)
   }

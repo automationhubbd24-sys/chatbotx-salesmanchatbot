@@ -1,4 +1,4 @@
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { mockSendComment } = vi.hoisted(() => ({

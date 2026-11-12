@@ -1,4 +1,4 @@
-import { questionnaireService } from "@chatbotx.io/business"
+import { questionnaireService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 
 export async function listQuestionnairesForFlow(input: {

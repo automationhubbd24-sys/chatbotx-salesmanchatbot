@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { PhoneIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useWorkspaceId } from "@/hooks/routing"

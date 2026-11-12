@@ -1,12 +1,12 @@
-import { broadcastAnalyticsService } from "@chatbotx.io/analytics"
+import { broadcastAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   getBroadcastStatsResponse,
   listBroadcastContactsRequest,
   listBroadcastContactsResponse,
-} from "@chatbotx.io/analytics/schemas"
-import { broadcastService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { channelTypes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

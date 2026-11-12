@@ -1,5 +1,5 @@
-import type { ListInboxesResponse } from "@chatbotx.io/business"
-import { stepTypes } from "@chatbotx.io/flow-config"
+import type { ListInboxesResponse } from "@salesmanchatbot.io/business"
+import { stepTypes } from "@salesmanchatbot.io/flow-config"
 import { MessageSquareIcon } from "lucide-react"
 import type { MenuData, MenuItem, TranslationFn } from "../../types"
 

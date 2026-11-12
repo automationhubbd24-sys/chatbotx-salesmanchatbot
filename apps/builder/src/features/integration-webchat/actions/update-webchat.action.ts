@@ -1,7 +1,7 @@
 "use server"
 
-import { inboxService, integrationWebchatService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { inboxService, integrationWebchatService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTenantSettings } from "@/features/tenant/utils"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { workspaceActionClient } from "@/lib/safe-action"

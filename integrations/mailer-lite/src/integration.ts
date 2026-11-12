@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   isUnauthorizedStatusError,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { mailerLiteRequest } from "./client"
 import {
   MAILER_LITE_FIELDS_PATH,

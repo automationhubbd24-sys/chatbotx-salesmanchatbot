@@ -1,5 +1,5 @@
-import { workspaceService } from "@chatbotx.io/business"
-import { verifyUserDataWebviewToken } from "@chatbotx.io/encryption"
+import { workspaceService } from "@salesmanchatbot.io/business"
+import { verifyUserDataWebviewToken } from "@salesmanchatbot.io/encryption"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Script from "next/script"

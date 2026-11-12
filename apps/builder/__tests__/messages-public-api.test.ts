@@ -54,12 +54,12 @@ const messageService = {
   findByIdWithUrls: vi.fn(),
   createOutgoing: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService,
   messageService,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))

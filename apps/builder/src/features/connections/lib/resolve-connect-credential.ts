@@ -1,8 +1,8 @@
 import "server-only"
 
-import { platformCredentialService } from "@chatbotx.io/business"
-import { CONNECTION_REGISTRY } from "@chatbotx.io/connections"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
+import { CONNECTION_REGISTRY } from "@salesmanchatbot.io/connections"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
 import { buildProviderCallbackUrl } from "@/lib/provider-origin"
 
 /**

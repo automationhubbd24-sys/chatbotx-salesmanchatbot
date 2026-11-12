@@ -16,7 +16,7 @@ const state = {
   findOrFailError: null as Error | null,
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     delete: vi.fn(() => mockDeleteBuilder),
   },
@@ -31,7 +31,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: (col: unknown, vals: unknown) => ({ inArray: [col, vals] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: {
     id: "contactModel.id",
     workspaceId: "contactModel.workspaceId",
@@ -43,7 +43,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
 }))
 
 const emitTagRemoved = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitTagRemoved,
   emitTagApplied: vi.fn(async () => undefined),
 }))
@@ -78,7 +78,7 @@ vi.mock("../src/contact", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
   withCache: async (_key: string, callback: () => Promise<unknown>) =>
     await callback(),

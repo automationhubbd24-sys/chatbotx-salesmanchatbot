@@ -1,4 +1,4 @@
-import { AIJobAction, aiAgentQueue } from "@chatbotx.io/worker-config"
+import { AIJobAction, aiAgentQueue } from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "./lib/logger"
 

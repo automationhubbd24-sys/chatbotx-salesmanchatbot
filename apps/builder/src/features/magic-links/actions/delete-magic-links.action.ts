@@ -1,7 +1,7 @@
 "use server"
 
-import { and, db, eq, inArray } from "@chatbotx.io/database/client"
-import { magicLinkModel } from "@chatbotx.io/database/schema"
+import { and, db, eq, inArray } from "@salesmanchatbot.io/database/client"
+import { magicLinkModel } from "@salesmanchatbot.io/database/schema"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

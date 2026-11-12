@@ -1,4 +1,4 @@
-import type { Context } from "@chatbotx.io/sdk"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import { DEFAULT_API_VERSION } from "../constants"
 import { InstagramAPIException, rescue } from "../exception"
 import { instagramGraphClient } from "../lib/http-client"
@@ -156,7 +156,7 @@ export const takeThreadControl = async (
         },
         json: {
           recipient: { id: recipientId },
-          metadata: "ChatbotX handover: send refused with 2534037",
+          metadata: "salesmanChatbot handover: send refused with 2534037",
         },
         retry: 0,
       },

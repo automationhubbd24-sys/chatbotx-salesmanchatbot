@@ -1,1 +1,1 @@
-export { default } from "@chatbotx.io/vitest-config/react"
+export { default } from "@salesmanchatbot.io/vitest-config/react"

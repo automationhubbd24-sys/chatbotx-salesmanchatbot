@@ -270,7 +270,7 @@ UI-তে Draft Orders এবং Active Orders আলাদা tab থাকব�
 
 ## Assumptions & Decisions
 
-- Planটি current main folder `d:\Downloads\chatbotx-salesmanchatbot-main\chatbotx-salesmanchatbot-main`-এর জন্য; খোলা `push` folder-এর Messenger file scope-এর বাইরে।
+- Planটি current main folder `d:\Downloads\salesmanchatbot-salesmanchatbot-main\salesmanchatbot-salesmanchatbot-main`-এর জন্য; খোলা `push` folder-এর Messenger file scope-এর বাইরে।
 - “Diamond” বলতে আসল diamond business ধরা হয়েছে; game diamond/top-up নয়।
 - প্রথম delivery scope হলো e-commerce Orders page + AI draft/confirm lifecycle + website/landing-page import contract + courier/risk integration-ready foundation। Appointment এবং diamond একই generic transaction model ব্যবহার করবে, কিন্তু তাদের আলাদা validation/service থাকবে।
 - Active Order মানে final customer-confirmed বা fulfillment-started order; Draft Order মানে incomplete/awaiting-confirmation order। এগুলো আলাদা table নয়, status-derived views।

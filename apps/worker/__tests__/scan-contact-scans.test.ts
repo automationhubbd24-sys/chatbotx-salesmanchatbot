@@ -20,18 +20,18 @@ const {
   info: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactScanService: {
     pickDue: mockPickDue,
     markMaxAttemptsFailed: mockMarkMaxAttemptsFailed,
   },
 }))
 
-vi.mock("@chatbotx.io/business/contact-scan", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-scan", () => ({
   CONTACT_SCAN_MAX_ATTEMPTS: 5,
 }))
 
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
@@ -40,11 +40,11 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info, warn, error, debug: vi.fn() }),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   buildContactScanJobId: ({
     runId,
     attempts,

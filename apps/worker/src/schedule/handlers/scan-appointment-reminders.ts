@@ -1,6 +1,6 @@
-import { appointmentReminderService } from "@chatbotx.io/business"
-import { distributedLock } from "@chatbotx.io/redis"
-import { scheduleJobScanAppointmentRemindersDataSchema } from "@chatbotx.io/worker-config"
+import { appointmentReminderService } from "@salesmanchatbot.io/business"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import { scheduleJobScanAppointmentRemindersDataSchema } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 
 const LOCK_TTL_SECONDS = 55

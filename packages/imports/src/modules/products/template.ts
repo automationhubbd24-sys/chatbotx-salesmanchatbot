@@ -1,4 +1,4 @@
-import type { ProductImportField } from "@chatbotx.io/database/partials"
+import type { ProductImportField } from "@salesmanchatbot.io/database/partials"
 import ExcelJS from "exceljs"
 
 export type ProductTemplateLabels = Record<ProductImportField, string>

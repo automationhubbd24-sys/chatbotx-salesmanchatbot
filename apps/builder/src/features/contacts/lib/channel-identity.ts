@@ -1,5 +1,5 @@
-import { type ChannelType, channelTypes } from "@chatbotx.io/database/partials"
-import { isSourceUserIdKeyedIdentity } from "@chatbotx.io/sdk"
+import { type ChannelType, channelTypes } from "@salesmanchatbot.io/database/partials"
+import { isSourceUserIdKeyedIdentity } from "@salesmanchatbot.io/sdk"
 import type { ContactInboxResource } from "../../contact-inboxes/schema/resource"
 
 /**

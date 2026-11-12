@@ -24,7 +24,7 @@ const runAction = vi.fn(async (action: string) =>
 const runExclusive = vi.fn(async (props: LockProps) => await props.fn())
 const errorLog = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async ({ integration }: { integration: unknown }) => ({
     auth: state.auth,
     integration,
@@ -34,20 +34,20 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: vi.fn((value: unknown) => value) },
   encryptUtils: {
     decryptObject: vi.fn(async () => state.auth),
   },
 }))
 
-vi.mock("@chatbotx.io/integration-active-campaign", () => ({
+vi.mock("@salesmanchatbot.io/integration-active-campaign", () => ({
   ACTIVE_CAMPAIGN_HTTP_TIMEOUT_MS: 15_000,
   activeCampaignAuthSchema: {},
   integration: { runAction },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive },
 }))
 

@@ -1,6 +1,6 @@
 "use server"
 
-import { igStoryAutomationService } from "@chatbotx.io/business"
+import { igStoryAutomationService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

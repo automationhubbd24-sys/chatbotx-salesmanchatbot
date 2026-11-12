@@ -1,7 +1,7 @@
 "use client"
 
-import type { SendMetaCapiEventSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { SendMetaCapiEventSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { MegaphoneIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { getMetaCapiEventSummaryLines } from "@/features/meta-conversions/lib/event-summary"

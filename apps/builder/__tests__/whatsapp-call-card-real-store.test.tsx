@@ -1,4 +1,4 @@
-import type { MessageWhatsappCallEntity } from "@chatbotx.io/sdk"
+import type { MessageWhatsappCallEntity } from "@salesmanchatbot.io/sdk"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

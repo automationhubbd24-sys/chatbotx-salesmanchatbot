@@ -1,8 +1,8 @@
 import {
   contactNoteModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 
 export const contactNoteResource = createSelectSchema(contactNoteModel, {
   id: zodBigintAsString(),

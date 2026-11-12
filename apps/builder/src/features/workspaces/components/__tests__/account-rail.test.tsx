@@ -52,7 +52,7 @@ vi.mock("../edit-profile-dialog", () => ({
 }))
 
 // Severs the server-action import chain (refresh action → @/lib/safe-action →
-// @chatbotx.io/business → database/client), which otherwise touches a
+// @salesmanchatbot.io/business → database/client), which otherwise touches a
 // server-only env var at import time and crashes the whole file before any
 // test body runs.
 vi.mock("../refresh-all-channel-tokens-button", () => ({

@@ -3,36 +3,36 @@ import {
   inboxService,
   resolveTenantSettings,
   resolveWorkspaceAppUrl,
-} from "@chatbotx.io/business"
-import { normalizeStoredTimezone } from "@chatbotx.io/business/contact-locale"
-import { systemFieldService } from "@chatbotx.io/business/system-field"
-import { resolveIntegrationContextFromContactInbox } from "@chatbotx.io/channel-registry/registry"
+} from "@salesmanchatbot.io/business"
+import { normalizeStoredTimezone } from "@salesmanchatbot.io/business/contact-locale"
+import { systemFieldService } from "@salesmanchatbot.io/business/system-field"
+import { resolveIntegrationContextFromContactInbox } from "@salesmanchatbot.io/channel-registry/registry"
 import type {
   ChannelType,
   SystemFieldType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   channelTypes,
   supportsProfileSnapshot,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
   InboxWithIntegrations,
-} from "@chatbotx.io/database/types"
-import { signMeLink } from "@chatbotx.io/encryption/link-signature"
+} from "@salesmanchatbot.io/database/types"
+import { signMeLink } from "@salesmanchatbot.io/encryption/link-signature"
 import {
   getPostDetails as getInstagramPostDetails,
   type InstagramAuthValue,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import {
   getPostDetails as getMessengerPostDetails,
   getUserInboxLink,
   type MessengerAuthValue,
-} from "@chatbotx.io/integration-messenger"
-import { toLogSafeError } from "@chatbotx.io/logger"
-import { withCache } from "@chatbotx.io/redis"
-import type { ContactProfileSnapshot } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-messenger"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
+import { withCache } from "@salesmanchatbot.io/redis"
+import type { ContactProfileSnapshot } from "@salesmanchatbot.io/sdk"
 import { logger } from "../logger"
 
 type IntegrationFieldKey = Extract<

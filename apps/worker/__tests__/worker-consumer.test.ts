@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const setSpy = vi.fn<(values: Record<string, unknown>) => unknown>()
 const whereSpy = vi.fn<(arg: unknown) => Promise<unknown>>()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: () => ({
       set: (values: Record<string, unknown>) => {
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (c: unknown, v: unknown) => ({ __eq: [c, v] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   sequenceDispatchModel: {
     id: { __column: "id" },
     workspaceId: { __column: "workspaceId" },

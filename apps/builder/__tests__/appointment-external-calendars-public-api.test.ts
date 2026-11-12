@@ -51,7 +51,7 @@ const appointmentExternalCalendarService = {
   listWithConnectedCount: vi.fn(),
   disconnect: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ appointmentExternalCalendarService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ appointmentExternalCalendarService }))
 
 await import("@/features/external-calendars/api/public")
 

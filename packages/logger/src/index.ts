@@ -2,7 +2,7 @@ import pino, { type Logger } from "pino"
 import { redactSecrets, scrubSecretsInString } from "./redact"
 
 // Re-export the reusable log-safety helpers so a single import from
-// `@chatbotx.io/logger` covers safe diagnostic logging end to end:
+// `@salesmanchatbot.io/logger` covers safe diagnostic logging end to end:
 // `logDiagnostic` (level promotion) + `redactSecrets` / `capText` (safe payload).
 export {
   capText,

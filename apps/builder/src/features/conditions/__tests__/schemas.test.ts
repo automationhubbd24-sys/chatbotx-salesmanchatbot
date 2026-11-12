@@ -2,7 +2,7 @@ import {
   dateTimeTriggerTypes,
   operatorTypes,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { customFieldValueChanged } from "../schema/custom-field-value-changed"
 import { dateTimeBasedTrigger } from "../schema/date-time-based-trigger"

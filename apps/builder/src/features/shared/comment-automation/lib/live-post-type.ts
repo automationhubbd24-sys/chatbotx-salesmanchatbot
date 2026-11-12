@@ -1,4 +1,4 @@
-import type { CommentPost } from "@chatbotx.io/database/partials"
+import type { CommentPost } from "@salesmanchatbot.io/database/partials"
 
 /**
  * The `?postType=live` a create page receives from the "Select post type"

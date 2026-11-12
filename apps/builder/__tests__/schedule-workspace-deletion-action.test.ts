@@ -24,7 +24,7 @@ vi.mock("@/lib/auth/permission-routes", () => ({
   hasWorkspacePermission: mockHasWorkspacePermission,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceLifecycleService: {
     freezeWorkspaceRuntime: mockFreezeWorkspaceRuntime,
   },

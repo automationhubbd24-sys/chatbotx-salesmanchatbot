@@ -1,5 +1,5 @@
-import { resolveBroadcastSecret } from "@chatbotx.io/business"
-import { signMemberConnectToken } from "@chatbotx.io/partysocket-config/auth"
+import { resolveBroadcastSecret } from "@salesmanchatbot.io/business"
+import { signMemberConnectToken } from "@salesmanchatbot.io/partysocket-config/auth"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

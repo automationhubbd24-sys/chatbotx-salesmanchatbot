@@ -26,7 +26,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/ai", async () => {
+vi.mock("@salesmanchatbot.io/ai", async () => {
   const { z } = await import("zod")
   return {
     aiProviders: z.enum([
@@ -39,19 +39,19 @@ vi.mock("@chatbotx.io/ai", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   generateCallSummary: mocks.generateCallSummary,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappCallTranscriptService: {
     getTranscriptTextForCall: mocks.getTranscriptTextForCall,
   },
   whatsappCallSummaryService: { attachSummary: mocks.attachSummary },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
 vi.mock(

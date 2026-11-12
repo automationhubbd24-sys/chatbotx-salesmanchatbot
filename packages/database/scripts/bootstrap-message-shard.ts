@@ -3,7 +3,7 @@
  * and registers the shard in the main database.
  *
  * Usage:
- *   pnpm --filter @chatbotx.io/database db:bootstrap-message-shard -- --port 5434
+ *   pnpm --filter @salesmanchatbot.io/database db:bootstrap-message-shard -- --port 5434
  *
  * Optional flags:
  *   --init                  Register the main DB itself as an inactive archive shard
@@ -13,8 +13,8 @@
  *                           ISO 8601 date string, e.g. 2026-01-01 or 2026-01-01T00:00:00Z
  *   --port <number>         Host port to expose on the machine (default 5434)
  *   --host <hostname>       Host stored in MessageShard (default host.docker.internal)
- *   --database <name>       Shard database name (default chatbotx_shard_<port>)
- *   --user <name>           Postgres user (default chatbotx)
+ *   --database <name>       Shard database name (default salesmanchatbot_shard_<port>)
+ *   --user <name>           Postgres user (default salesmanchatbot)
  *   --password <value>      Postgres password (default secretkey)
  *   --service-name <name>   Compose service name (default message-shard-<port>)
  *   --delete                Remove the shard service and matching MessageShard row
@@ -25,7 +25,7 @@ import { execFileSync } from "node:child_process"
 import { mkdir, writeFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { Pool } from "pg"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -71,7 +71,7 @@ const SHARD_TABLE_WAIT_INTERVAL_MS = 2000
 function usage(): never {
   console.error(
     [
-      "Usage: pnpm --filter @chatbotx.io/database db:bootstrap-message-shard -- [options]",
+      "Usage: pnpm --filter @salesmanchatbot.io/database db:bootstrap-message-shard -- [options]",
       "",
       "Options:",
       "  --port <number>         Host port to expose (default 5434)",
@@ -251,7 +251,7 @@ function getExpectedServiceName(port: number): string {
 
 function buildComposeYaml(spec: ShardSpec): string {
   return [
-    `name: chatbotx-local-shard-${spec.port}`,
+    `name: salesmanchatbot-local-shard-${spec.port}`,
     "",
     "include:",
     "  - ../docker-compose.yml",
@@ -264,7 +264,7 @@ function buildComposeYaml(spec: ShardSpec): string {
     "  extra_hosts:",
     '    - "host.docker.internal:host-gateway"',
     "  networks:",
-    "    - chatbotx-network",
+    "    - salesmanchatbot-network",
     "",
     "services:",
     `  ${spec.name}:`,

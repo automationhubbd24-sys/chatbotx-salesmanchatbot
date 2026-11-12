@@ -1,10 +1,10 @@
-import { workspaceSupportAccessService } from "@chatbotx.io/business"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { workspaceSupportAccessService } from "@salesmanchatbot.io/business"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 import {
   distributedLock,
   distributedStore,
   isLockAcquisitionError,
-} from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/redis"
 
 const LOCK_KEY = "schedule:clear-expired-support-access"
 const log = getChildLogger("clear-expired-support-access")

@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/utils/channel"
+import type { ChannelType } from "@salesmanchatbot.io/utils/channel"
 import { type StepType, stepTypes } from "../../steps/step-action"
 
 export const CHANNEL_POLICY_VERSION = 1

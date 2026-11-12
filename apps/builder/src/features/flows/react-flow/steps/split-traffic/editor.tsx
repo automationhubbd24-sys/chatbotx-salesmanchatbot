@@ -1,9 +1,9 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { Slider } from "@chatbotx.io/ui/components/ui/slider"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { Slider } from "@salesmanchatbot.io/ui/components/ui/slider"
 import { PlusIcon, XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import {

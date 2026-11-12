@@ -1,4 +1,4 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   type CommentAutomationEventStatus,
   type CommentAutomationMissReason,
@@ -7,17 +7,17 @@ import {
   type CommentReplyType,
   commentAutomationChannelSupportsPrivateReply,
   commentAutomationTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   CommentAutomationEventInsert,
   CommentAutomationMissInsert,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type {
   FlowClickedPayload,
   MessageSeenPayload,
-} from "@chatbotx.io/flow-config"
-import { logDiagnostic } from "@chatbotx.io/logger"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { logDiagnostic } from "@salesmanchatbot.io/logger"
+import { createId } from "@salesmanchatbot.io/utils"
 import { toDate } from "../lib/date"
 import { logger } from "../lib/logger"
 import {

@@ -1,4 +1,4 @@
-import { externalRequestStepDefaultFn } from "@chatbotx.io/flow-config"
+import { externalRequestStepDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   setValues: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   externalRequestService: {
     execute: mocks.execute,
     executeAndMap: mocks.executeAndMap,
@@ -17,7 +17,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   resolveContactVariablesDeep: vi.fn(
     async (_contactId: string, value: unknown, _source: unknown) => value,
   ),
@@ -47,11 +47,11 @@ vi.mock("@chatbotx.io/variables", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {},
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCustomFieldChanged: vi.fn(),
 }))
 
@@ -59,7 +59,7 @@ const { externalRequest } = await import(
   "../src/integration/handlers/tool-handler"
 )
 const { contactVariableService, resolveContactVariablesDeep } = await import(
-  "@chatbotx.io/variables"
+  "@salesmanchatbot.io/variables"
 )
 
 const createProps = () =>

@@ -48,7 +48,7 @@ const conversationService = {
   updateReadStatus: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   AVATAR_HYDRATION_CHANNELS: new Set(["messenger", "instagram"]),
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
@@ -59,13 +59,13 @@ vi.mock("@chatbotx.io/business", () => ({
   resolveTenantSettings,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn().mockResolvedValue({
     findLastByConversation: vi.fn().mockResolvedValue([]),
   }),
 }))
 
-vi.mock("@chatbotx.io/business/ads-conversion/channel-fields", () => ({
+vi.mock("@salesmanchatbot.io/business/ads-conversion/channel-fields", () => ({
   resolveAdReferral: () => null,
 }))
 

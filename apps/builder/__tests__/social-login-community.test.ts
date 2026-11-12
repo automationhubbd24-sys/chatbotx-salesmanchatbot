@@ -28,12 +28,12 @@ const {
   mockResolveTenantOwnerId: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/auth/server", () => ({
+vi.mock("@salesmanchatbot.io/auth/server", () => ({
   createAuth: mockCreateAuth,
   SOCIAL_PROVIDERS,
 }))
 
-vi.mock("@chatbotx.io/auth/tenant", () => ({
+vi.mock("@salesmanchatbot.io/auth/tenant", () => ({
   resolveTenantByDomain: mockResolveTenantByDomain,
   resolveTenantOwnerId: mockResolveTenantOwnerId,
 }))
@@ -42,14 +42,14 @@ vi.mock("@/lib/auth/on-user-created", () => ({
   onUserCreated: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: {
     findDecryptedPlatform: mockFindDecryptedPlatform,
     resolveForOwner: mockResolveForOwner,
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   ROOT_TENANT_ID,
 }))
 

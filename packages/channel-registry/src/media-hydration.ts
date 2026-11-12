@@ -10,33 +10,33 @@ import {
   isPendingOriginPath,
   parseNoAvatarSentinel,
   WA_MEDIA_PREFIX,
-} from "@chatbotx.io/business"
-import { db } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   type AttachmentLookupRow,
   createMessageRepository,
   type IMessageRepository,
   type MessageWithAttachments,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   AttachmentModel,
   ContactInboxModel,
   ContactModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   getWhatsappClient,
   type WhatsappAuthValue,
-} from "@chatbotx.io/integration-whatsapp"
-import { getChildLogger, toLogSafeError } from "@chatbotx.io/logger"
-import { distributedLock } from "@chatbotx.io/redis"
-import { IntegrationException, SdkException } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-whatsapp"
+import { getChildLogger, toLogSafeError } from "@salesmanchatbot.io/logger"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import { IntegrationException, SdkException } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   cancelBodyQuietly,
   MediaEmptyBodyError,
   MediaTooLargeError,
   readBodyWithCap as readBodyWithCapPrimitive,
-} from "@chatbotx.io/utils/media-download"
+} from "@salesmanchatbot.io/utils/media-download"
 import imageSize from "image-size"
 import {
   type IntegrationRow,

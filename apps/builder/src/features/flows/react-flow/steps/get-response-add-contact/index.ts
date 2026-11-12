@@ -2,7 +2,7 @@ import {
   type GetResponseAddContactSchema,
   getResponseAddContactDefaultFn,
   getResponseAddContactSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import GetResponseAddContactEditor from "./editor"
 import GetResponseAddContactViewer from "./viewer"

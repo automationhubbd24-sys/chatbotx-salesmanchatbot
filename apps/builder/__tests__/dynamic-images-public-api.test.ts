@@ -57,12 +57,12 @@ const dynamicImageService = {
   setEnabled: vi.fn(),
   resolveBackgroundUrls: vi.fn(),
 }
-vi.mock("@chatbotx.io/business/dynamic-image", () => ({ dynamicImageService }))
+vi.mock("@salesmanchatbot.io/business/dynamic-image", () => ({ dynamicImageService }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {},
 }))
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy = new Proxy(Object.create(null), {
     get: () => proxy,
   })

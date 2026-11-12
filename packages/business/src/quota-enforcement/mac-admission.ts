@@ -1,11 +1,11 @@
-import { macTrackingService } from "@chatbotx.io/analytics"
+import { macTrackingService } from "@salesmanchatbot.io/analytics"
 import {
   db,
   type StatementTimeout,
   setLocalStatementTimeout,
   type Transaction,
-} from "@chatbotx.io/database/client"
-import type { UserQuotaModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/client"
+import type { UserQuotaModel } from "@salesmanchatbot.io/database/types"
 import type { MacAdmissionStrategy } from "./keys"
 
 /**

@@ -1,6 +1,6 @@
 "use server"
 
-import type { UserModel } from "@chatbotx.io/database/types"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { authActionClient } from "@/lib/safe-action"
 import {
   type ConnectWhatsappResult,

@@ -21,12 +21,12 @@ vi.mock("@/env", () => ({
 // package and the workspace-lifecycle subpath, used by the nested
 // WorkspaceStatusSwitch); the full package pulls in the database client,
 // which throws outside a real server runtime.
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isWorkspaceScheduledForDeletion: (workspace: {
     scheduledDeletionAt?: Date | string | null
   }) => workspace.scheduledDeletionAt !== null,
 }))
-vi.mock("@chatbotx.io/business/workspace-lifecycle/predicates", () => ({
+vi.mock("@salesmanchatbot.io/business/workspace-lifecycle/predicates", () => ({
   isWorkspaceScheduledForDeletion: (workspace: {
     scheduledDeletionAt?: Date | string | null
   }) => workspace.scheduledDeletionAt !== null,

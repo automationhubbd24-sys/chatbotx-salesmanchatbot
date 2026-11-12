@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   resolveByNames: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   productCategoryService: {
     listOptions: (...args: unknown[]) => mocks.listOptions(...args),
     resolveByNames: (...args: unknown[]) => mocks.resolveByNames(...args),

@@ -1,9 +1,9 @@
-import { commentAutomationService } from "@chatbotx.io/business"
-import { commentAutomationModel } from "@chatbotx.io/database/schema"
+import { commentAutomationService } from "@salesmanchatbot.io/business"
+import { commentAutomationModel } from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
+} from "@salesmanchatbot.io/database/utils"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListThreadsCommentsRequest,

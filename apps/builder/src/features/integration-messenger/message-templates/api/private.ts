@@ -1,4 +1,4 @@
-import { messengerMessageTemplateService } from "@chatbotx.io/business"
+import { messengerMessageTemplateService } from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import {

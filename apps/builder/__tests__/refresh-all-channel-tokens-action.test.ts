@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   updateMessengerAuth: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: {
     findForTokenRefreshByWorkspaceIds: mocks.emptyList(),
     findFacebookForTokenRefreshByWorkspaceIds: mocks.emptyList(),
@@ -33,41 +33,41 @@ vi.mock("@chatbotx.io/business", () => ({
   zaloIntegrationService: { findAllByWorkspaceIds: mocks.emptyList() },
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mocks.auditRecord },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   integration: {},
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   integration: {},
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: { refreshAuth: mocks.refreshMessengerAuth },
   logMessengerWelcomeProfile: mocks.logMessengerWelcomeProfile,
 }))
 
-vi.mock("@chatbotx.io/integration-tiktok/apis/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok/apis/auth", () => ({
   refreshAccessToken: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-tiktok/lib/token-utils", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok/lib/token-utils", () => ({
   buildTokenTimestamps: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp", () => ({
   integration: {},
 }))
 
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   calculateExpiresAt: vi.fn(),
   refreshAccessToken: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: async ({ fn }: { fn: () => Promise<unknown> }) => {
       mocks.lock.held = true

@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test } from "vitest"
 import { sendPrivateReply } from "../src/apis/comment"
 import { API_URL, DEFAULT_API_VERSION } from "../src/constants"
@@ -36,7 +36,7 @@ describe("sendPrivateReply", () => {
             recipient: { comment_id: COMMENT_ID },
             message: {
               text: "Hello from Instagram via Facebook",
-              metadata: "SENT_FROM_CHATBOTX",
+              metadata: "SENT_FROM_SALESMANCHATBOT",
             },
           })
           return HttpResponse.json({ recipient_id: "recipient-1" })

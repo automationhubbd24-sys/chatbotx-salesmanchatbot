@@ -1,6 +1,6 @@
 "use client"
 
-import type { TenantSettings } from "@chatbotx.io/business"
+import type { TenantSettings } from "@salesmanchatbot.io/business"
 import { createContext, type ReactNode, useContext, useEffect } from "react"
 
 const TenantSettingsContext = createContext<TenantSettings | null>(null)

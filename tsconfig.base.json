@@ -20,6 +20,6 @@
   },
   "include": ["src/**/*.ts"],
   "paths": {
-    "@chatbotx.io/utils": ["./packages/utils/src/index.ts"]
+    "@salesmanchatbot.io/utils": ["./packages/utils/src/index.ts"]
   }
 }

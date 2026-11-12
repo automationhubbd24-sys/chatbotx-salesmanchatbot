@@ -160,7 +160,7 @@ describe("isCallAnnouncementValidationError", () => {
 
   test("is true for a WhatsappException-shaped 4xx", async () => {
     const { WhatsappException } = await import(
-      "@chatbotx.io/integration-whatsapp/exception"
+      "@salesmanchatbot.io/integration-whatsapp/exception"
     )
     const error = new WhatsappException("bad purpose", 400)
     expect(isCallAnnouncementValidationError(error)).toBe(true)
@@ -168,7 +168,7 @@ describe("isCallAnnouncementValidationError", () => {
 
   test("is false for a WhatsappException-shaped 5xx", async () => {
     const { WhatsappException } = await import(
-      "@chatbotx.io/integration-whatsapp/exception"
+      "@salesmanchatbot.io/integration-whatsapp/exception"
     )
     const error = new WhatsappException("Meta is down", 502)
     expect(isCallAnnouncementValidationError(error)).toBe(false)
@@ -188,7 +188,7 @@ describe("isCallAnnouncementValidationError", () => {
     401, 403, 429,
   ])("is false for a WhatsappException with httpStatusCode %s (auth/permission/rate-limit, never announcement-related)", async (httpStatusCode) => {
     const { WhatsappException } = await import(
-      "@chatbotx.io/integration-whatsapp/exception"
+      "@salesmanchatbot.io/integration-whatsapp/exception"
     )
     const error = new WhatsappException("rejected", httpStatusCode)
     expect(isCallAnnouncementValidationError(error)).toBe(false)
@@ -196,7 +196,7 @@ describe("isCallAnnouncementValidationError", () => {
 
   test("is false for the local whatsappCallAnnouncementPurposeTooLong validation error", async () => {
     const { WhatsappException } = await import(
-      "@chatbotx.io/integration-whatsapp/exception"
+      "@salesmanchatbot.io/integration-whatsapp/exception"
     )
     const error = new WhatsappException(
       "purpose too long",
@@ -208,7 +208,7 @@ describe("isCallAnnouncementValidationError", () => {
 
   test("is still true for an unrelated 400 error (e.g. bad SDP), so it retries once", async () => {
     const { WhatsappException } = await import(
-      "@chatbotx.io/integration-whatsapp/exception"
+      "@salesmanchatbot.io/integration-whatsapp/exception"
     )
     const error = new WhatsappException("bad sdp", 400, "invalidParameter")
     expect(isCallAnnouncementValidationError(error)).toBe(true)

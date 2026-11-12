@@ -1,16 +1,16 @@
-import { isWorkspaceScheduledForDeletion } from "@chatbotx.io/business"
+import { isWorkspaceScheduledForDeletion } from "@salesmanchatbot.io/business"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { CrownIcon, PlusCircleIcon } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"

@@ -1,18 +1,18 @@
-import { type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import type {
   FolderType,
   TemplateCategory,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   templateInstallationModel,
   templateInstalledResourceModel,
-} from "@chatbotx.io/database/schema"
-import { updateTriggerCache } from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/database/schema"
+import { updateTriggerCache } from "@salesmanchatbot.io/events"
 import type {
   TemplateExport,
   TemplateFolderManifestEntry,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import { aiAgentService } from "../ai-agent/service"
 import { automatedResponseService } from "../automated-response/service"
 import { botFieldService } from "../bot-field/service"

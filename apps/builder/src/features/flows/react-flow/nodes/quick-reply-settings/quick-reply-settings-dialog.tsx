@@ -7,18 +7,18 @@ import {
   type QuickReplySettingsDelayUnit,
   quickReplySettingsDefaultFn,
   quickReplySettingsDelayUnits,
-} from "@chatbotx.io/flow-config"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { SettingsIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo, useState } from "react"

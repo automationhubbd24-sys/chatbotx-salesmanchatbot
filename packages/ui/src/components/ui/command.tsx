@@ -5,14 +5,14 @@ import { Command as CommandPrimitive } from "cmdk-base"
 
 import { SearchIcon } from "lucide-react"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 
 function Command({
   className,

@@ -1,4 +1,4 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { normalizeError } from "universal-error-normalizer"
 import z from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
@@ -28,7 +28,7 @@ export const aiMcpServersAuthenticatedAPI = {
         return await validateAIMcpServer({ parsedInput: input })
       } catch (err) {
         const error = normalizeError(err)
-        throw new ChatbotXException(error.message, error.code)
+        throw new salesmanChatbotException(error.message, error.code)
       }
     }),
 

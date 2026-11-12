@@ -1,21 +1,21 @@
-import { aiTimeouts } from "@chatbotx.io/ai"
-import { aiIntegrationService, getAIModel } from "@chatbotx.io/ai/server"
+import { aiTimeouts } from "@salesmanchatbot.io/ai"
+import { aiIntegrationService, getAIModel } from "@salesmanchatbot.io/ai/server"
 import {
   callRecordingService,
   contactInboxService,
   whatsappCallLifecycleService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   integrationWhatsappRepository,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
 import {
   emitCallTranscribed,
   setWebhookExecutionContext,
-} from "@chatbotx.io/events"
-import { transcribesCalls } from "@chatbotx.io/utils/whatsapp-call"
-import type { CallTranscriptionJobTranscribeCall } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/events"
+import { transcribesCalls } from "@salesmanchatbot.io/utils/whatsapp-call"
+import type { CallTranscriptionJobTranscribeCall } from "@salesmanchatbot.io/worker-config"
 import { experimental_transcribe as transcribe } from "ai"
 import ky from "ky"
 import { normalizeError } from "universal-error-normalizer"

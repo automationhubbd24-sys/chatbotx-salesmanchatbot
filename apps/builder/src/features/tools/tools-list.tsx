@@ -1,9 +1,9 @@
 "use client"
 
-import type { WorkspaceMemberPermissions } from "@chatbotx.io/database/partials"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import type { WorkspaceMemberPermissions } from "@salesmanchatbot.io/database/partials"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   SiFacebook,
   SiInstagram,

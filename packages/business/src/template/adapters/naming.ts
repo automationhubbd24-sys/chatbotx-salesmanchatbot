@@ -1,5 +1,5 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { isUniqueViolationError } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { isUniqueViolationError } from "@salesmanchatbot.io/database/client"
 
 const MAX_RETRY_ATTEMPTS = 20
 

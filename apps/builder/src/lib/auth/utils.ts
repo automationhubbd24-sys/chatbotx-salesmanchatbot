@@ -3,13 +3,13 @@
 import {
   resolveWorkspaceAccess,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import type {
   UserModel,
   WorkspaceMemberModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { headers } from "next/headers"
 import { cache } from "react"
 import { getTenantSettings } from "@/features/tenant/utils"
@@ -17,7 +17,7 @@ import { auth } from "./auth"
 
 // `tenantId` is the white-label tenant key. It is deliberately never returned by
 // the auth session (see `additionalFields.tenantId.returned = false` in
-// `@chatbotx.io/auth/server`), so the session-derived user never carries it.
+// `@salesmanchatbot.io/auth/server`), so the session-derived user never carries it.
 export type SessionUser = Omit<UserModel, "tenantId">
 
 export const getCurrentUserId = async (): Promise<string | null> => {
@@ -49,7 +49,7 @@ export const assertCurrentUserCanAccessChatbot = async (
   const userAndWorkspaces = await getCurrentUserAndTargetWorkspace(workspaceId)
 
   if (!userAndWorkspaces) {
-    throw new ChatbotXException("User is not associated with this workspace")
+    throw new salesmanChatbotException("User is not associated with this workspace")
   }
 }
 

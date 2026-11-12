@@ -9,28 +9,28 @@ const mockChatQueueAdd = vi.fn()
 const mockResolveTenantSettings = vi.fn()
 const mockBroadcastToWorkspaceParty = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
   mediaLibraryFileRepository: { findByPath: vi.fn(), findById: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   guessFileTypeFromMimeType: vi.fn(() => "image"),
   pathJoin: (...parts: string[]) => parts.join("/"),
   uploader: { copyObject: vi.fn(), getPresignedDownload: vi.fn() },
   uploadMultipleFiles: vi.fn(async () => []),
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: () => "generated-id" }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: {
     broadcastEvent: "broadcastEvent",
     sendChannelMessage: "sendChannelMessage",

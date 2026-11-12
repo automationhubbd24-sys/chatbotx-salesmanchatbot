@@ -7,7 +7,7 @@ import type { MessagingAdsConnectionModel } from "../../types"
 /**
  * At most one of these three is set on any real call — the caller resolves
  * `channel` -> the matching FK field (`perChannelIntegrationIdsOrNull` in
- * `@chatbotx.io/business/ads-conversion/channel-fields`, the same helper
+ * `@salesmanchatbot.io/business/ads-conversion/channel-fields`, the same helper
  * `messagingAdOperationRepository` callers use). The DB CHECK constraint
  * guarantees a stored row never has more than one set; `workspaceId` is
  * REQUIRED on every lookup — the integration FK alone does not prove the

@@ -13,13 +13,13 @@ const mocks = vi.hoisted(() => ({
   fetcherFactory: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { findByIdOrFail: mocks.findByIdOrFail },
   contactInboxService: { findByUncached: mocks.findContactInboxByUncached },
   contactProfileRefreshService: { refresh: mocks.refresh },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: (message: string) => new Error(message),
 }))
 

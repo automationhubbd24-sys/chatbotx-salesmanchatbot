@@ -1,11 +1,11 @@
-import { db, relationsFilterToSQL } from "@chatbotx.io/database/client"
-import { auditLogModel } from "@chatbotx.io/database/schema"
-import type { AuditLogModel, UserModel } from "@chatbotx.io/database/types"
+import { db, relationsFilterToSQL } from "@salesmanchatbot.io/database/client"
+import { auditLogModel } from "@salesmanchatbot.io/database/schema"
+import type { AuditLogModel, UserModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
+} from "@salesmanchatbot.io/database/utils"
 
 type ListAuditLogsInput = {
   workspaceId: string

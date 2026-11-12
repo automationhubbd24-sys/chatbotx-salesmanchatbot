@@ -23,14 +23,14 @@ vi.mock("next-intl", () => ({
     },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/input-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-field", () => ({
   InputField: ({ name, ...props }: { name: string }) => {
     const { field } = useController({ name })
     return <input {...field} {...props} />
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options = [],
@@ -60,7 +60,7 @@ vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({
     name,
     options = [],
@@ -96,7 +96,7 @@ vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: React.ComponentProps<"button">) => (
     <button {...props}>{children}</button>
   ),

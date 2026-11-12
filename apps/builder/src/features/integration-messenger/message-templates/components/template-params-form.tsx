@@ -1,10 +1,10 @@
 "use client"
 
-import type { ParameterInfo } from "@chatbotx.io/flow-config"
+import type { ParameterInfo } from "@salesmanchatbot.io/flow-config"
 import {
   extractMessengerParameterInfos,
   type MessengerTemplateComponent,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { useEffect, useMemo } from "react"
 import { useFormContext } from "react-hook-form"
 import { TiptapEditorField } from "@/components/tiptap/tiptap-editor-field"

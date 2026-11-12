@@ -4,7 +4,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,13 +13,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@chatbotx.io/ui/components/ui/sidebar"
+} from "@salesmanchatbot.io/ui/components/ui/sidebar"
 import { CreditCard, Crown, Settings2, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

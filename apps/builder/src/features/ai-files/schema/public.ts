@@ -1,5 +1,5 @@
-import { AI_FILE_MAX_UPLOAD_BYTES } from "@chatbotx.io/business"
-import { aiEmbeddingStatuses } from "@chatbotx.io/database/partials"
+import { AI_FILE_MAX_UPLOAD_BYTES } from "@salesmanchatbot.io/business"
+import { aiEmbeddingStatuses } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { aiFileResource } from "./index"
 

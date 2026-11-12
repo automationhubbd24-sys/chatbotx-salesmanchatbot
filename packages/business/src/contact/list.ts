@@ -1,15 +1,15 @@
 import {
   type ChannelType,
   requiresRecentInteractionWindow,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactFilterCriteriaInput,
   ContactInboxScope,
-} from "@chatbotx.io/database/queries"
-import { contactRepository } from "@chatbotx.io/database/repositories"
-import type { ContactModel } from "@chatbotx.io/database/types"
-import { getPaginationWithDefaults } from "@chatbotx.io/database/utils"
-import type { BroadcastSubaction } from "@chatbotx.io/utils/broadcast"
+} from "@salesmanchatbot.io/database/queries"
+import { contactRepository } from "@salesmanchatbot.io/database/repositories"
+import type { ContactModel } from "@salesmanchatbot.io/database/types"
+import { getPaginationWithDefaults } from "@salesmanchatbot.io/database/utils"
+import type { BroadcastSubaction } from "@salesmanchatbot.io/utils/broadcast"
 import { inboxService } from "../inbox/service"
 import { logger } from "../logger"
 import type { ContactAccessScope } from "./service"

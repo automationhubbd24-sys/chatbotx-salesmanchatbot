@@ -29,20 +29,20 @@ type InputSchema = {
 }
 
 const NO_API_KEY_MESSAGE =
-  "No workspace token configured. Set CHATBOTX_API_KEY in the server environment or pass the token via the ?workspace_token= URL query parameter."
+  "No workspace token configured. Set SALESMANCHATBOT_API_KEY in the server environment or pass the token via the ?workspace_token= URL query parameter."
 
 export const createMcpServer = (
   options?: CreateMcpServerOptions,
 ): McpServer => {
   const mcpServer = new McpServer(
     {
-      name: env.CHATBOTX_MCP_SERVER_NAME ?? packageName,
+      name: env.SALESMANCHATBOT_MCP_SERVER_NAME ?? packageName,
       version: packageVersion,
     },
-    { instructions: env.CHATBOTX_MCP_SERVER_INSTRUCTIONS },
+    { instructions: env.SALESMANCHATBOT_MCP_SERVER_INSTRUCTIONS },
   )
 
-  const getApiKey = (): string => options?.getApiKey?.() || env.CHATBOTX_API_KEY
+  const getApiKey = (): string => options?.getApiKey?.() || env.SALESMANCHATBOT_API_KEY
 
   // Bypass McpServer's high-level tool API to support raw JSON Schema from
   // the OpenAPI spec. We register handlers on the underlying low-level server.

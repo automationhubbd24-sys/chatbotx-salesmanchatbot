@@ -1,10 +1,10 @@
-import type { FileType } from "@chatbotx.io/sdk"
+import type { FileType } from "@salesmanchatbot.io/sdk"
 import {
   type Context,
   guessFileTypeFromMimeType,
   type IncomingAttachment,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import fetch from "cross-fetch"
 import imageSize from "image-size"
 import { rescue } from "../exception"

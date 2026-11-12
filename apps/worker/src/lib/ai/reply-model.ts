@@ -4,13 +4,13 @@ import {
   createOpenaiCompatibleModelInstance,
   getAIIntegrationInDB,
   getOpenaiCompatibleAutoReplyIntegrationInDB,
-} from "@chatbotx.io/ai/server"
-import { integrationOpenaiCompatibleService } from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/ai/server"
+import { integrationOpenaiCompatibleService } from "@salesmanchatbot.io/business"
 import type {
   AIAgentModelConfig,
   AIAgentOpenaiCompatibleProviderModel,
   AIAgentProvider,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type { LanguageModel } from "ai"
 import { logger } from "../logger"
 

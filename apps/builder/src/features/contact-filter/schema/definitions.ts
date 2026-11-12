@@ -1,5 +1,5 @@
-import type { ContactFilterField } from "@chatbotx.io/database/partials"
-import { contactFilterFields } from "@chatbotx.io/database/partials"
+import type { ContactFilterField } from "@salesmanchatbot.io/database/partials"
+import { contactFilterFields } from "@salesmanchatbot.io/database/partials"
 import { staticFieldFilter } from "./static-field-filter"
 
 /**

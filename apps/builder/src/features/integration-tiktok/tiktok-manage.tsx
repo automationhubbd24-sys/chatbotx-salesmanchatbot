@@ -7,12 +7,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { TriangleAlertIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { use } from "react"

@@ -22,7 +22,7 @@ const {
   mockReviveWaitingRuns: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   coexistJobStrategies: {
     messenger: { mode: "pull", action: "coexistMessengerSync" },
     instagram: { mode: "pull", action: "coexistInstagramSync" },
@@ -40,7 +40,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   // Mirrors the real builders; they are pinned by
   // `packages/worker-config/__tests__/coexist-job-ids.test.ts`.
   buildCoexistRunJobId: ({
@@ -61,7 +61,7 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   integrationQueue: { add: mockQueueAdd },
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     debug: vi.fn(),
     info: vi.fn(),

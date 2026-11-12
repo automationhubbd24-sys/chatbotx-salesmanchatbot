@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappCallLifecycleService: {
     attachRecording: mocks.attachRecording,
     releaseRecordingStamp: mocks.releaseRecordingStamp,
@@ -29,7 +29,7 @@ vi.mock("@chatbotx.io/business", () => ({
   callRecordingService: { getRecordingSignedUrl: mocks.getRecordingSignedUrl },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappCallRepository: {
     findById: mocks.findById,
   },
@@ -42,12 +42,12 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   })),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCallRecorded: mocks.emitCallRecorded,
   setWebhookExecutionContext: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   callTranscriptionJobId: (callId: string) => `transcribe-${callId}`,
   callTranscriptionQueue: { add: mocks.callTranscriptionAdd },
 }))

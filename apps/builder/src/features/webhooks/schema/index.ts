@@ -1,4 +1,4 @@
-import type { WebhookModel } from "@chatbotx.io/database/types"
+import type { WebhookModel } from "@salesmanchatbot.io/database/types"
 import type { ContactResource } from "@/features/contacts/schema/resource"
 import type { UserResource } from "@/features/users/schema/resource"
 

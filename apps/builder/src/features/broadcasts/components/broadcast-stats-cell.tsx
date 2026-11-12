@@ -1,7 +1,7 @@
 "use client"
 
-import type { GetBroadcastStatsResponse } from "@chatbotx.io/analytics/schemas"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+import type { GetBroadcastStatsResponse } from "@salesmanchatbot.io/analytics/schemas"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { useParams } from "next/navigation"
 import { useFormatter } from "next-intl"
 import { memo, useCallback, useState } from "react"

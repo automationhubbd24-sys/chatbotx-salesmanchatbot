@@ -4,8 +4,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { BotIcon } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import {

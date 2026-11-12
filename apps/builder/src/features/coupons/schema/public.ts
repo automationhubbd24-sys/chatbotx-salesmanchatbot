@@ -1,8 +1,8 @@
 import {
   couponIssueStatuses,
   couponUsageStatuses,
-} from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { basePaginationRequest } from "@/lib/pagination"
 import { withPublicPaging } from "@/lib/public-api/list"

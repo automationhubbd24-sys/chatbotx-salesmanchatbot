@@ -4,7 +4,7 @@ const findManyDispatchMock = vi.fn()
 const returningUpdateMock = vi.fn()
 const whereUpdateMock = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   // db is not used directly in sequence-dispatch.ts; only the helpers are
   db: {},
   and: (...a: unknown[]) => ({ __and: a }),
@@ -12,7 +12,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: (c: unknown, v: unknown) => ({ __inArray: [c, v] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   sequenceDispatchModel: {
     id: { __col: "sequenceDispatchModel.id" },
     status: { __col: "sequenceDispatchModel.status" },

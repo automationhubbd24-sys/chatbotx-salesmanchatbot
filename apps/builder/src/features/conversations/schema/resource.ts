@@ -1,12 +1,12 @@
 import {
   threadControlEvents,
   threadControlStates,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   conversationModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { inboxTeamResource } from "@/enterprise/features/inbox-teams/schema/resource"
 import { contactInboxResource } from "@/features/contact-inboxes/schema/resource"
@@ -22,7 +22,7 @@ export const conversationResource = createSelectSchema(conversationModel, {
 export type ConversationResource = z.infer<typeof conversationResource>
 
 // Compact ad-attribution summary derived server-side from `ContactInbox.
-// referral` (see `resolveAdReferral` in `@chatbotx.io/business/ads-conversion/
+// referral` (see `resolveAdReferral` in `@salesmanchatbot.io/business/ads-conversion/
 // channel-fields`) — never the raw referral jsonb, which carries an arbitrary
 // webhook payload and must not leave the server.
 export const adReferralResource = z.object({

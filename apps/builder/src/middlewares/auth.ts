@@ -2,8 +2,8 @@ import {
   isWorkspaceScheduledForDeletion,
   resolveWorkspaceAccess,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { withAuditContext } from "@chatbotx.io/business/audit"
+} from "@salesmanchatbot.io/business"
+import { withAuditContext } from "@salesmanchatbot.io/business/audit"
 import { ORPCError } from "@orpc/server"
 import { auth } from "@/lib/auth/auth"
 import { getGuestClientIp } from "@/lib/rate-limit/guest-rate-limit"

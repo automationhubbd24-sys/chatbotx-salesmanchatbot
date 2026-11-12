@@ -11,7 +11,7 @@ import { ShardedMessageRepository } from "../src/sharding/message/repository/sha
 // getShardsForRange wraps shard lookups in withCache(); the read path also needs
 // distributedLock from the constructor default. Stub the redis module so cache
 // reads call straight through to the factory and no real Redis is touched.
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, factory: () => unknown) => factory()),
   invalidateCacheByTags: vi.fn().mockResolvedValue(undefined),
   distributedLock: { runExclusive: vi.fn() },

@@ -1,7 +1,7 @@
 "use client"
 
-import type { SendCardStepSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { SendCardStepSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import Image from "next/image"
 import { DynamicImagePreviewPlaceholder } from "@/features/dynamic-images/components/preview-placeholder"
 import { useDynamicImagePreview } from "@/features/dynamic-images/hooks/use-dynamic-image-preview"

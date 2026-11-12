@@ -1,8 +1,8 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   integrationModel,
   integrationOpenaiModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { BaseService } from "../base.service"
 import {
   type ConnectAiProviderInput,

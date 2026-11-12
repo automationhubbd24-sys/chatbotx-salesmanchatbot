@@ -1,5 +1,5 @@
-import type { RegistrationOutcome } from "@chatbotx.io/business"
-import type { RegisterPhoneNumberResult } from "@chatbotx.io/integration-whatsapp"
+import type { RegistrationOutcome } from "@salesmanchatbot.io/business"
+import type { RegisterPhoneNumberResult } from "@salesmanchatbot.io/integration-whatsapp"
 
 export const toRegistrationOutcome = (
   result: RegisterPhoneNumberResult,

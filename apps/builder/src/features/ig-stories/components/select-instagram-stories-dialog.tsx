@@ -1,25 +1,25 @@
 "use client"
 
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@chatbotx.io/ui/components/ui/tabs"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tabs"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { CheckIcon, X } from "lucide-react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"

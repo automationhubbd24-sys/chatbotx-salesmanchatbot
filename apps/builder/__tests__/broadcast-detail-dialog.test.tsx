@@ -27,7 +27,7 @@ vi.mock("@/lib/orpc/orpc", () => ({
 
 vi.mock("@/hooks/routing", () => ({ useWorkspaceId: () => "ws-1" }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => {
   const Passthrough = ({ children }: { children?: ReactNode }) => (
     <div>{children}</div>
   )

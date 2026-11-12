@@ -1,7 +1,7 @@
 import type {
   AdReferralChannelType,
   adsEligibleChannelTypes,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import {
   and,
   type DatabaseClient,
@@ -103,7 +103,7 @@ type AdEligibleInboxChannelConfig = {
  * Per-channel query config for `listAdEligibleInboxesByContacts` — mirrors
  * the `integrationInboxModelFactoryByChannel` factory-map pattern in
  * `ctwa-retarget.ts`: a LAZY `model` factory (not a precomputed table
- * reference) so a mocked `@chatbotx.io/database/schema` missing one of the
+ * reference) so a mocked `@salesmanchatbot.io/database/schema` missing one of the
  * three tables in tests doesn't fail to import this module.
  */
 const ctwaReferralCondition = (): SQL =>

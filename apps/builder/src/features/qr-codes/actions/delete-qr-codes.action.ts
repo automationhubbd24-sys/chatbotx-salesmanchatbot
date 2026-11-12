@@ -1,6 +1,6 @@
 "use server"
 
-import { qrCodeService } from "@chatbotx.io/business"
+import { qrCodeService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

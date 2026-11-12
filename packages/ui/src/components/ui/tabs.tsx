@@ -3,7 +3,7 @@
 import type * as React from "react"
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function Tabs({
   className,

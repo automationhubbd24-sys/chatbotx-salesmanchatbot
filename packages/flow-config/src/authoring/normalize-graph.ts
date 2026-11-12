@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { DEFAULT_NODE_MEASURED } from "../nodes/base"
 import type { EdgeSchema } from "../nodes/index"
 import { FlowAuthoringException } from "./errors"

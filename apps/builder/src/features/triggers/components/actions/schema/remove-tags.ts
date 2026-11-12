@@ -1,4 +1,4 @@
-import { triggerActions } from "@chatbotx.io/database/partials"
+import { triggerActions } from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 
 export const removeTags = z.object({

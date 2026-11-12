@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   eval: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getRedisConnection: () => ({ eval: mocks.eval }),
 }))
 

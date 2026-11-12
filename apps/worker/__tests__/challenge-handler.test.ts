@@ -1,4 +1,4 @@
-import type { IntegrationJobRunChallenge } from "@chatbotx.io/worker-config"
+import type { IntegrationJobRunChallenge } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -11,11 +11,11 @@ const mocks = vi.hoisted(() => ({
   SdkException: class SdkException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mocks.emit,
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   initVariables: mocks.initVariables,
   SdkException: mocks.SdkException,
   // Mirror of the real pure helper — the module is fully mocked here.

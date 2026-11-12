@@ -4,8 +4,8 @@ import {
   type PageElementSchema,
   type PageElementType,
   pageElementTypes,
-} from "@chatbotx.io/flow-config"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+} from "@salesmanchatbot.io/flow-config"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import Image from "next/image"
 import { useParams } from "next/navigation"
 import { useTranslations } from "next-intl"

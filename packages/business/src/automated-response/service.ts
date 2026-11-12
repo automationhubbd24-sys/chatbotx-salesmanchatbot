@@ -6,21 +6,21 @@ import {
   inArray,
   relationsFilterToSQL,
   sql,
-} from "@chatbotx.io/database/client"
-import type { AutomatedResponseType } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import type { AutomatedResponseType } from "@salesmanchatbot.io/database/partials"
 import {
   automatedResponseFolderTypeByType,
   rootFolderId,
-} from "@chatbotx.io/database/partials"
-import { automatedResponseModel } from "@chatbotx.io/database/schema"
-import type { AutomatedResponseModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import { automatedResponseModel } from "@salesmanchatbot.io/database/schema"
+import type { AutomatedResponseModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
-import { invalidateCacheKeys } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { invalidateCacheKeys } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { notFoundException, validationException } from "../errors"
 import { flowService } from "../flow/service"

@@ -1,4 +1,4 @@
-import { createSelectSchema, triggerModel } from "@chatbotx.io/database/schema"
+import { createSelectSchema, triggerModel } from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 // Real shapes instead of `z.any()` so the published OpenAPI spec documents

@@ -1,5 +1,5 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { CREATABLE_CHANNELS } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { CREATABLE_CHANNELS } from "@salesmanchatbot.io/database/partials"
 import { resolveChannelPolicy } from "@/lib/workspace/resolve-visible-channels"
 
 /**

@@ -58,15 +58,15 @@ const {
 // Mocks
 // ---------------------------------------------------------------------------
 
-// `findOrFail` is still imported from `@chatbotx.io/database/client` directly
+// `findOrFail` is still imported from `@salesmanchatbot.io/database/client` directly
 // by messenger-sync.ts for the Inbox lookup — keep this mock minimal (plain
 // stub, no schema importOriginal) per the hard rule against opening a real DB
 // connection.
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   findOrFail: mockFindOrFail,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   extractContactInfo: vi.fn(() => ({})),
   messengerIntegrationService: {
     findById: mockFindByIdMessenger,
@@ -90,11 +90,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     coexistWhatsappBuffer: "coexistWhatsappBuffer",
     coexistWhatsappFlush: "coexistWhatsappFlush",
@@ -116,16 +116,16 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   inboxModel: {},
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/sync", () => ({
   listConversations: mockListConversations,
   listMessages: mockListMessages,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/usage", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/usage", () => ({
   concurrencyForUsage: mockConcurrencyForUsage,
 }))
 

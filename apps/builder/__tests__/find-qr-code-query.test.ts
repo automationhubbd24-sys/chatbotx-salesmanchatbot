@@ -7,13 +7,13 @@ const mocks = vi.hoisted(() => ({
   withCache: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   qrCodeService: { find: mocks.find },
   qrCodeWorkspaceCacheTag: (workspaceId: string) =>
     `workspaces:${workspaceId}#qr-codes`,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: mocks.withCache,
 }))
 

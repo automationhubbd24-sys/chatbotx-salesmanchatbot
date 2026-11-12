@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   list: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappCallHistoryService: { list: mocks.list },
 }))
 
@@ -109,14 +109,14 @@ describe("listWhatsappCalls — request adapter", () => {
   })
 
   // LOW fix: a tampered cursor is a translated client 4xx, not a generic 500
-  // — `InvalidWhatsappCallCursorError` must be a `ChatbotXException` so
+  // — `InvalidWhatsappCallCursorError` must be a `salesmanChatbotException` so
   // `actionClient.handleServerError` (@/lib/safe-action) warn-logs it and
   // returns its message instead of `DEFAULT_SERVER_ERROR_MESSAGE`.
-  test("InvalidWhatsappCallCursorError is a ChatbotXException with code invalidCursor and a 400 status", async () => {
-    const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+  test("InvalidWhatsappCallCursorError is a salesmanChatbotException with code invalidCursor and a 400 status", async () => {
+    const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
     const error = new InvalidWhatsappCallCursorError()
 
-    expect(error).toBeInstanceOf(ChatbotXException)
+    expect(error).toBeInstanceOf(salesmanChatbotException)
     expect(error.code).toBe("invalidCursor")
     expect(error.httpStatusCode).toBe(400)
   })

@@ -1,8 +1,8 @@
 "use client"
 
-import { buildPostLink } from "@chatbotx.io/business/utils"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
+import { buildPostLink } from "@salesmanchatbot.io/business/utils"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
 import Image from "next/image"
 import Link from "next/link"
 import { useLocale, useTranslations } from "next-intl"

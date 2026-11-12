@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: mocks.and,
   db: { transaction: mocks.transaction },
   eq: mocks.eq,

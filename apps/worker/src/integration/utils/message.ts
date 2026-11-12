@@ -1,14 +1,14 @@
-import { isImageUrl } from "@chatbotx.io/ai"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { conversationModel } from "@chatbotx.io/database/schema"
-import type { MetadataPayload } from "@chatbotx.io/flow-config"
+import { isImageUrl } from "@salesmanchatbot.io/ai"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { conversationModel } from "@salesmanchatbot.io/database/schema"
+import type { MetadataPayload } from "@salesmanchatbot.io/flow-config"
 import {
   type BotResponseTrackingContext,
   ChatJobAction,
   chatQueue,
   getQueueConnection,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { QueueEvents } from "bullmq"
 import { env } from "../../env"
 import { logger } from "../../lib/logger"

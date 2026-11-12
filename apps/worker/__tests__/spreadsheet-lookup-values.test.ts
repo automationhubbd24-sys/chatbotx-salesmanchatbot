@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   replaceAll: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: mocks.getAll,
     replaceAll: mocks.replaceAll,

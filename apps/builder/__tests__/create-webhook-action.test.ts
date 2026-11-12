@@ -4,11 +4,11 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const mockCreate = vi.fn()
 const mockGetTranslations = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   webhookService: { create: (...args: unknown[]) => mockCreate(...args) },
 }))
 
-class FakeChatbotXException extends Error {
+class FakesalesmanChatbotException extends Error {
   code: string
   field?: string
   data?: Record<string, string | number>
@@ -25,11 +25,11 @@ class FakeChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: FakeChatbotXException,
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: FakesalesmanChatbotException,
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   folderTypes: { enum: { webhook: "webhook" } },
 }))
 
@@ -87,7 +87,7 @@ describe("createWebhookAction", () => {
 
   test("localizes a maxItemsReached validation error via getTranslations", async () => {
     mockCreate.mockRejectedValue(
-      new FakeChatbotXException(
+      new FakesalesmanChatbotException(
         "validation.maxItemsReached",
         "validation",
         "_",

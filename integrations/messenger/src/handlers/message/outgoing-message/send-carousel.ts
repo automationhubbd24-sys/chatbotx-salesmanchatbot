@@ -2,8 +2,8 @@ import {
   cardLayouts,
   type SendCardStepSchema,
   type SendCarouselStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import { chunk } from "remeda"
 import type {
   FacebookImageAspectRatio,

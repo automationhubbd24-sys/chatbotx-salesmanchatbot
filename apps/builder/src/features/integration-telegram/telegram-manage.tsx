@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Table,
   TableBody,
@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import { PlusCircleIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { use } from "react"

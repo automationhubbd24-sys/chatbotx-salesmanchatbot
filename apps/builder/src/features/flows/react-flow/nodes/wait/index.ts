@@ -2,7 +2,7 @@ import {
   nodeTypeSchema,
   waitNodeDefaultFn,
   waitNodeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { ClockIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { waitMenus } from "./menu"

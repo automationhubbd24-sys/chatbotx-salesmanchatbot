@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { z } from "zod"
 import { countMessageCharacters } from "../channel-rules/characters"
 import { BUTTON_LABEL_MAX } from "../steps/button"

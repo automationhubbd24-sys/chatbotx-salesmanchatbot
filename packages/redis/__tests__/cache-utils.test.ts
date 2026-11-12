@@ -33,7 +33,7 @@ vi.mock("../src/index.ts", () => ({
   distributedStore: mocks.distributedStore,
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   default: { debug: vi.fn() },
 }))
 

@@ -1,6 +1,6 @@
 "use server"
 
-import { savedReplyService } from "@chatbotx.io/business"
+import { savedReplyService } from "@salesmanchatbot.io/business"
 import { workspaceIdAndIdRequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 

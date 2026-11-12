@@ -9,15 +9,15 @@ import {
   or,
   relationsFilterToSQL,
   sql,
-} from "@chatbotx.io/database/client"
-import { inventoryPolicyTypes } from "@chatbotx.io/database/partials"
-import { productModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/client"
+import { inventoryPolicyTypes } from "@salesmanchatbot.io/database/partials"
+import { productModel } from "@salesmanchatbot.io/database/schema"
 import {
   likeContains,
   parseOrderByAsObject,
   parsePagination,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type ProductListInput = {
   workspaceId: string

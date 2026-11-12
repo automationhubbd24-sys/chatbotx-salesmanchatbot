@@ -1,5 +1,5 @@
-import { workspaceService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { workspaceService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { redirect } from "next/navigation"
 import type { MessageKey } from "@/features/channel-connect/lib/message-key"
 
@@ -7,7 +7,7 @@ import type { MessageKey } from "@/features/channel-connect/lib/message-key"
 const CREATE_CHANNEL_ERROR_PARAM = "error"
 
 /**
- * Known failures keyed by `ChatbotXException.code` or connect-flow error code
+ * Known failures keyed by `salesmanChatbotException.code` or connect-flow error code
  * → the copy `/channels/create` shows for them. Any other error keeps
  * propagating, so an unexpected failure is never dressed up as a known error.
  */
@@ -37,7 +37,7 @@ function createChannelErrorPath(code: CreateChannelErrorCode): string {
 /** The `/channels/create` path for a known plan-limit failure, or `null` when the error must keep propagating. */
 function createChannelErrorPathFor(error: unknown): string | null {
   if (
-    error instanceof ChatbotXException &&
+    error instanceof salesmanChatbotException &&
     isCreateChannelErrorCode(error.code)
   ) {
     return createChannelErrorPath(error.code)

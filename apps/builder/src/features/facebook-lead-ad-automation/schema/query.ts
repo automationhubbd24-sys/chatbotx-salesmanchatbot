@@ -1,5 +1,5 @@
-import type { FacebookLeadAdsAutomationModel } from "@chatbotx.io/database/types"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
+import type { FacebookLeadAdsAutomationModel } from "@salesmanchatbot.io/database/types"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
 import {
   createSearchParamsCache,
   parseAsInteger,

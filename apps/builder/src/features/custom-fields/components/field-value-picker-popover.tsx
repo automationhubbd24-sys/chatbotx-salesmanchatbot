@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
-import { TimePicker } from "@chatbotx.io/ui/components/ui/date-picker"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
+import { TimePicker } from "@salesmanchatbot.io/ui/components/ui/date-picker"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
 import { format, parse } from "date-fns"
 import { useTranslations } from "next-intl"
 import { type ReactNode, useMemo, useRef, useState } from "react"

@@ -2,14 +2,14 @@ import {
   contactInboxService,
   conversationService,
   publishToWorkspaceParty,
-} from "@chatbotx.io/business"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import type { messageModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import type { messageModel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   bindWaTemplateQuickReplyButtons,
   extractTemplateParams,
@@ -19,23 +19,23 @@ import {
   type SendWaTemplateMessageStepSchema,
   stepTypes,
   type TemplateComponent,
-} from "@chatbotx.io/flow-config"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/flow-config"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
 import {
   ChannelError,
   ChannelErrorCategory,
   type MessageTemplateEntity,
   parseSdkError,
   shouldAddressBySourceUserId,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { resolveStackFrames } from "@chatbotx.io/utils/error-log"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { resolveStackFrames } from "@salesmanchatbot.io/utils/error-log"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import type {
   BotResponseTrackingContext,
   ChatJobSendWhatsappTemplateMessage,
   ChatJobSendWhatsappTemplateToConversation,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   replaceWhatsappTemplateVariables,
   validateWhatsappTemplate,

@@ -1,7 +1,7 @@
 import {
   aiHandoverBulkRunService,
   aiHandoverSettingsService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnApplyingAiHandover,
   possibleErrorsOnFindingResource,

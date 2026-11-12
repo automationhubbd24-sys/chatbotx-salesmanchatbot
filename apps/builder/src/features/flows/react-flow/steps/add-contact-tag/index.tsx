@@ -2,7 +2,7 @@ import {
   type AddContactTagStepSchema,
   addContactTagStepDefaultFn,
   addContactTagStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import AddContactTagStepEditor from "./editor"
 import AddContactTagStepViewer from "./viewer"

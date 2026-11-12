@@ -6,7 +6,7 @@ import {
   type IncomingMessage,
   messageTypes,
   type ReceivedMessageResult,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 
 /**

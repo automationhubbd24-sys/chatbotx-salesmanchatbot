@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import {
   type ActionHandler,
@@ -46,7 +46,7 @@ vi.mock("@/lib/provider-origin", () => ({
 vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   checkWorkspaceOwnerAccess: mocks.checkWorkspaceOwnerAccessMock,
   workspaceAccessDenialException: (reason: string) =>
-    new ChatbotXException(reason, reason, 403),
+    new salesmanChatbotException(reason, reason, 403),
 }))
 
 vi.mock("@/features/workspaces/actions/upload-logo", () => ({
@@ -61,7 +61,7 @@ vi.mock("@/lib/log", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: mocks.buildContextMock,
   integrationWhatsappService: {
     connectPhoneNumber: mocks.connectPhoneNumberMock,
@@ -88,14 +88,14 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp", () => ({
   addSystemUser: mocks.addSystemUserMock,
   integration: { name: "whatsapp" },
   registerPhoneNumber: mocks.registerPhoneNumberMock,
   shareCreditLine: mocks.shareCreditLineMock,
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/auth", () => ({
   appAccessToken: (settings: { clientId: string; clientSecret: string }) =>
     `${settings.clientId}|${settings.clientSecret}`,
   debugToken: mocks.debugTokenMock,
@@ -106,11 +106,11 @@ vi.mock("@chatbotx.io/integration-whatsapp/api/auth", () => ({
   exchangeAccessToken: mocks.exchangeAccessTokenMock,
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/waba-owner", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/waba-owner", () => ({
   resolveOwningWabaId: mocks.resolveOwningWabaIdMock,
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/waba-candidates", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/waba-candidates", () => ({
   resolveBusinessAppCandidates: mocks.resolveBusinessAppCandidatesMock,
 }))
 
@@ -118,28 +118,28 @@ vi.mock("next-intl/server", () => ({
   getTranslations: vi.fn(async () => (key: string) => key),
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/phone-number", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/phone-number", () => ({
   getCoexistEligibility: mocks.getCoexistEligibilityMock,
   listPhoneNumbers: mocks.listPhoneNumbersMock,
   normalizeWhatsappDisplayPhoneNumber: (phone: string) =>
     phone.replace(/\D/g, ""),
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/waba", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/waba", () => ({
   findWaba: mocks.findWabaMock,
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/webhook", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/webhook", () => ({
   subscribeWebhook: mocks.subscribeWebhookMock,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.distributedLockRunExclusiveMock },
   invalidateCacheByTags: mocks.invalidateCacheByTagsMock,
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: mocks.createIdMock }
 })
 

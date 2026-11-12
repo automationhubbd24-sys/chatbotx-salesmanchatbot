@@ -8,8 +8,8 @@ import {
   isLiveCommentAutomation,
   liveCommentCapabilities,
   resolveReplyTexts,
-} from "@chatbotx.io/database/partials"
-import type { CommentAutomationModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { CommentAutomationModel } from "@salesmanchatbot.io/database/types"
 
 const RANDOM_DELAY_MINUTES: Record<string, number> = {
   randomWithin3Minutes: 3,

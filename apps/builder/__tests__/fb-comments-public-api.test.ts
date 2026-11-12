@@ -53,7 +53,7 @@ const commentAutomationService = {
   updateMessenger: vi.fn(),
   deleteMessenger: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ commentAutomationService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ commentAutomationService }))
 
 const listFacebookPostsForAutomation = vi.fn()
 vi.mock("@/features/fb-comments/lib/facebook-posts", () => ({

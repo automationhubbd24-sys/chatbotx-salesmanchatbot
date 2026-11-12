@@ -1,7 +1,7 @@
 "use server"
 
-import { whatsappCallTranscriptService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { whatsappCallTranscriptService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { assertCanReadCallArtifactOrThrow } from "@/features/integration-whatsapp/calling/actions/assert-call-access"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"

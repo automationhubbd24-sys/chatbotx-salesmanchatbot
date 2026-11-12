@@ -5,15 +5,15 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // stored messages: text = title, buttons in contentAttributes (type "template",
 // templateType "button") so the inbox renders text + buttons.
 //
-// Mock the Graph sync API + break the @chatbotx.io/business pino import chain.
+// Mock the Graph sync API + break the @salesmanchatbot.io/business pino import chain.
 // ---------------------------------------------------------------------------
 
 const { mockListMessages } = vi.hoisted(() => ({ mockListMessages: vi.fn() }))
-vi.mock("@chatbotx.io/integration-messenger/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/sync", () => ({
   listMessages: mockListMessages,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   extractContactInfo: () => ({}),
 }))
 

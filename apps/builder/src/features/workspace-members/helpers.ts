@@ -1,8 +1,8 @@
-import { FULL_WORKSPACE_MEMBER_PERMISSIONS } from "@chatbotx.io/business/workspace-member/permissions"
+import { FULL_WORKSPACE_MEMBER_PERMISSIONS } from "@salesmanchatbot.io/business/workspace-member/permissions"
 import type {
   WorkspaceMemberNotificationTypes,
   WorkspaceMemberPermissions,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export function getSuperAdminPermissions(): WorkspaceMemberPermissions {
   return { ...FULL_WORKSPACE_MEMBER_PERMISSIONS }

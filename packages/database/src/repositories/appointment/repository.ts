@@ -12,17 +12,17 @@ import {
   lte,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   appointmentCalendarModel,
   appointmentModel,
   contactModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type AppointmentListTab = "next" | "past"
 

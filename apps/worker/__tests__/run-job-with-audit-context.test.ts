@@ -1,4 +1,4 @@
-import { getAuditActor, SYSTEM_ACTOR } from "@chatbotx.io/business/audit"
+import { getAuditActor, SYSTEM_ACTOR } from "@salesmanchatbot.io/business/audit"
 import { describe, expect, test } from "vitest"
 import { runJobWithAuditContext } from "../src/lib/run-job-with-audit-context"
 

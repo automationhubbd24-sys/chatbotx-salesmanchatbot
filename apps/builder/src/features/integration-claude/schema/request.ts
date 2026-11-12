@@ -1,4 +1,4 @@
-import { claudeModels } from "@chatbotx.io/ai"
+import { claudeModels } from "@salesmanchatbot.io/ai"
 import { z } from "zod"
 
 export const connectClaudeSchema = z.object({

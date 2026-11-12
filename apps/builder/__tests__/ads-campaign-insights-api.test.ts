@@ -6,7 +6,7 @@ import { describe, expect, test, vi } from "vitest"
 // conversations started/cost-per-conversation), never joined into
 // `listMessagingAds`. Mirrors `ads-api.test.ts`'s approach of faking the
 // `authorizedAPI` procedure builder so `.route()`/`.use()`/`.handler()` wiring
-// is asserted without a real oRPC runtime, and mocking `@chatbotx.io/business`
+// is asserted without a real oRPC runtime, and mocking `@salesmanchatbot.io/business`
 // at the module boundary so no DB/Redis is touched.
 // ---------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ vi.mock("@/lib/auth/assert-workspace-super-admin", () => ({
   assertWorkspaceSuperAdmin: mocks.assertWorkspaceSuperAdmin,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   getCachedMessagingAdAccountDetails: vi.fn(),
   listCachedMessagingAdAccounts: vi.fn(),
   messagingAdCampaignService: {
@@ -111,8 +111,8 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
 vi.mock("../lib/facebook-ads-runner", () => ({

@@ -7,8 +7,8 @@ import type {
   MinigamePrizeSettings,
   MinigameType,
   MinigameWinningMessageSettings,
-} from "@chatbotx.io/database/partials"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   CoinsIcon,
   DicesIcon,

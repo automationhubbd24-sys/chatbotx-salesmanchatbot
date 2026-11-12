@@ -2,7 +2,7 @@ import {
   type FacebookCustomAudienceSchema,
   facebookCustomAudienceDefaultFn,
   facebookCustomAudienceSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import FacebookCustomAudienceStepEditor from "./editor"
 import FacebookCustomAudienceViewer from "./viewer"

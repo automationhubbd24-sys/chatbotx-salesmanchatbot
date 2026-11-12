@@ -3,7 +3,7 @@
 import {
   sendMessageNodeDefaultFn,
   sendVideoStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { afterEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => ({
   insert: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mocks.insert,
     query: { flowModel: { findFirst: vi.fn() } },
@@ -23,12 +23,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({ rootFolderId: "0" }))
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({ rootFolderId: "0" }))
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   flowRepository: { listIdsByIds: vi.fn(), listPublishedOptions: vi.fn() },
   whatsappMessageTemplateRepository: { listIdsByIntegration: vi.fn() },
 }))
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   flowAnalyticsSessionModel: {},
   flowModel: {},
   flowVersionModel: {},

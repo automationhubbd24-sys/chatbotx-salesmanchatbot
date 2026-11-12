@@ -12,7 +12,7 @@ vi.mock("../src/lib/http-client", () => ({
   facebookGraphClient: { get: mockGet },
 }))
 
-vi.mock("@chatbotx.io/utils/media-download", () => ({
+vi.mock("@salesmanchatbot.io/utils/media-download", () => ({
   fetchMediaWithLimits: vi.fn(async () => ({
     bytes: new Uint8Array([1, 2, 3]),
     mimeType: "image/jpeg",

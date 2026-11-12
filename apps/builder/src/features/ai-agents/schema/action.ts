@@ -5,11 +5,11 @@ import {
   geminiModels,
   openaiModels,
   openrouterModels,
-} from "@chatbotx.io/ai"
+} from "@salesmanchatbot.io/ai"
 import {
   aiAgentActionRulesSchema,
   aiMessageRoles,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { MAX_WEB_SEARCH_AUTHORIZED_DOMAINS } from "../lib/web-search-tool"
 

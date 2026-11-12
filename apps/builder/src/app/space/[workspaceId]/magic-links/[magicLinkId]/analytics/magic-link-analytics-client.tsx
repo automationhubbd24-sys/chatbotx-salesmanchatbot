@@ -1,6 +1,6 @@
 "use client"
 
-import { MagicLinkAnalytics } from "@chatbotx.io/analytics-nextjs/components/magic-link-analytics"
+import { MagicLinkAnalytics } from "@salesmanchatbot.io/analytics-nextjs/components/magic-link-analytics"
 
 export function MagicLinkAnalyticsClient({
   workspaceId,

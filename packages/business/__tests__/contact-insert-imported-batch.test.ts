@@ -90,25 +90,25 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     transaction: (fn: (tx: unknown) => unknown) => fn(tx),
   },
   inArray: (a: unknown, b: unknown) => ({ inArray: [a, b] }),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   contactSources: { enum: { imported: "imported" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: CONTACT_MODEL,
   contactInboxModel: CONTACT_INBOX_MODEL,
   contactsToTagsModel: CONTACTS_TO_TAGS_MODEL,
   conversationModel: CONVERSATION_MODEL,
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({ createId: vi.fn(() => "generated-id") }))
+vi.mock("@salesmanchatbot.io/utils", () => ({ createId: vi.fn(() => "generated-id") }))
 
 vi.mock("../src/contact-custom-field/service", () => ({
   contactCustomFieldService: {

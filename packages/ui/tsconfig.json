@@ -1,5 +1,5 @@
 {
-  "extends": "@chatbotx.io/typescript-config/nextjs.json",
+  "extends": "@salesmanchatbot.io/typescript-config/nextjs.json",
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "plugins": [
@@ -8,7 +8,7 @@
       }
     ],
     "paths": {
-      "@chatbotx.io/ui/*": ["./src/*"]
+      "@salesmanchatbot.io/ui/*": ["./src/*"]
     },
     "strictNullChecks": true
   },

@@ -1,4 +1,4 @@
-import { workspaceApiTokenScopes } from "@chatbotx.io/database/partials"
+import { workspaceApiTokenScopes } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import {
   orderedWorkspaceApiTokenScopes,

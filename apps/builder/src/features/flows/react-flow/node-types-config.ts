@@ -1,6 +1,6 @@
 "use client"
 
-import { nodeTypeSchema } from "@chatbotx.io/flow-config"
+import { nodeTypeSchema } from "@salesmanchatbot.io/flow-config"
 import ButtonEdge from "./edges/button-edge"
 import { NodeAnalyticsViewer } from "./nodes/analytics-viewer"
 

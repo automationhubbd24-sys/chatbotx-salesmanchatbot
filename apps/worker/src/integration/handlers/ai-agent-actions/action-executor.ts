@@ -10,17 +10,17 @@ import {
   normalizeCustomFieldValueForStorage,
   tagService,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { isWorkspaceAdminMember } from "@chatbotx.io/business/workspace-member/predicates"
+} from "@salesmanchatbot.io/business"
+import { isWorkspaceAdminMember } from "@salesmanchatbot.io/business/workspace-member/predicates"
 import type {
   AIAgentAction,
   CustomFieldType,
-} from "@chatbotx.io/database/partials"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/database/partials"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import { handoffExecutorService } from "../../../trigger/services/handoff-executor.service"

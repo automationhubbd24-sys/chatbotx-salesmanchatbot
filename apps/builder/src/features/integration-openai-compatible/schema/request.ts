@@ -1,7 +1,7 @@
 import {
   openaiCompatiblePresetConfigs,
   openaiCompatibleProviderPresets,
-} from "@chatbotx.io/ai"
+} from "@salesmanchatbot.io/ai"
 import { z } from "zod"
 
 const defaultModelSchema = z.string().trim().min(1).max(255)

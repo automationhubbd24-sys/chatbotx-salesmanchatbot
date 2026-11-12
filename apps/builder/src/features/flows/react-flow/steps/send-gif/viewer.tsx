@@ -1,6 +1,6 @@
 "use client"
 
-import type { SendGifStepSchema } from "@chatbotx.io/flow-config"
+import type { SendGifStepSchema } from "@salesmanchatbot.io/flow-config"
 import Image from "next/image"
 
 type SendGifStepViewerProps = {

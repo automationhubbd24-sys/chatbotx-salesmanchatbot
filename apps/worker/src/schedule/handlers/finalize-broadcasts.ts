@@ -1,11 +1,11 @@
-import { broadcastService } from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import type { BroadcastTerminalStatus } from "@chatbotx.io/database/partials"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import type { BroadcastTerminalStatus } from "@salesmanchatbot.io/database/partials"
 import {
   isBroadcastOutcomeGraceElapsed,
   resolveBroadcastTerminalStatus,
-} from "@chatbotx.io/database/partials"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/partials"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { logger } from "../../lib/logger"
 
 const LOCK_KEY = "schedule:finalize-broadcasts"

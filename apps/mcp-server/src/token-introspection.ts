@@ -64,14 +64,14 @@ export async function introspectToken(
 
   try {
     const response = await fetchWithTimeout(
-      `${env.CHATBOTX_API_URL}/v1/token`,
+      `${env.SALESMANCHATBOT_API_URL}/v1/token`,
       {
         headers: {
           Accept: "application/json",
           Authorization: `Bearer ${apiKey}`,
         },
       },
-      env.CHATBOTX_HTTP_TIMEOUT_MS,
+      env.SALESMANCHATBOT_HTTP_TIMEOUT_MS,
     )
     if (!response.ok) {
       return cacheIntrospectionResult(apiKey, null, NEGATIVE_CACHE_TTL_MS)
@@ -86,7 +86,7 @@ export async function introspectToken(
     return cacheIntrospectionResult(
       apiKey,
       parsed.data,
-      env.CHATBOTX_SPEC_TTL_MS,
+      env.SALESMANCHATBOT_SPEC_TTL_MS,
     )
   } catch (error) {
     console.error(

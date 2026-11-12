@@ -1,6 +1,6 @@
 "use client"
 
-import type { FollowUpStepSchema } from "@chatbotx.io/flow-config"
+import type { FollowUpStepSchema } from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 
 type FollowUpStepViewerProps = {

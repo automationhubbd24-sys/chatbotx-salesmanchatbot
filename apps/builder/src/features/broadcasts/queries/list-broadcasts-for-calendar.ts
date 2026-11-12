@@ -1,8 +1,8 @@
 import {
   type BroadcastCalendarRow,
   broadcastService,
-} from "@chatbotx.io/business"
-import type { BroadcastStatus } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { BroadcastStatus } from "@salesmanchatbot.io/database/partials"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import {
   type CalendarRange,

@@ -4,17 +4,17 @@ import {
   createAuth,
   type SocialAuthCredential,
   type SocialProvider,
-} from "@chatbotx.io/auth/server"
+} from "@salesmanchatbot.io/auth/server"
 import {
   resolveTenantByDomain,
   resolveTenantOwnerId,
-} from "@chatbotx.io/auth/tenant"
+} from "@salesmanchatbot.io/auth/tenant"
 import {
   customDomainService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import type { CredentialType } from "@chatbotx.io/database/partials"
-import { ROOT_TENANT_ID } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import type { CredentialType } from "@salesmanchatbot.io/database/partials"
+import { ROOT_TENANT_ID } from "@salesmanchatbot.io/database/schema"
 import { isCommunity } from "@/env"
 import { getBrokerOrigin } from "@/lib/oauth-broker"
 import { onUserCreated } from "./on-user-created"

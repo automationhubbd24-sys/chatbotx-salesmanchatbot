@@ -43,7 +43,7 @@ vi.mock("@/lib/auth/assert-workspace-super-admin", () => ({
   assertWorkspaceSuperAdmin: mockAssertWorkspaceSuperAdmin,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   capiDatasetResourceType: (channel: "messenger" | "instagram" | "whatsapp") =>
     ({ messenger: "page", instagram: "igUser", whatsapp: "waba" })[channel],
   integrationWhatsappService: {
@@ -56,11 +56,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/integration-meta-conversions", () => ({
+vi.mock("@salesmanchatbot.io/integration-meta-conversions", () => ({
   getDataset: mockGetDataset,
   ensureDataset: mockEnsureDataset,
   buildDatasetName: (name: string) =>

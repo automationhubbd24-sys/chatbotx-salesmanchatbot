@@ -1,4 +1,4 @@
-import { DOCX_MIME_TYPES, PDF_MIME_TYPES } from "@chatbotx.io/sdk"
+import { DOCX_MIME_TYPES, PDF_MIME_TYPES } from "@salesmanchatbot.io/sdk"
 
 export const SUPPORTED_DOCUMENT_MIME_TYPES = new Set<string>([
   ...PDF_MIME_TYPES,

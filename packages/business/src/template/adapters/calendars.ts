@@ -1,11 +1,11 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import type {
   AppointmentLocationType,
   AppointmentReminderTimingUnit,
   AppointmentScheduleWindowType,
-} from "@chatbotx.io/database/partials"
-import { appointmentCalendarRepository } from "@chatbotx.io/database/repositories"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { appointmentCalendarRepository } from "@salesmanchatbot.io/database/repositories"
+import { createId } from "@salesmanchatbot.io/utils"
 import type {
   PatchTask,
   ResourceAdapter,

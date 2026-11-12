@@ -1,6 +1,6 @@
-import { db, eq, type PgTable, sql } from "@chatbotx.io/database/client"
-import { cacheConnections, distributedStore } from "@chatbotx.io/redis"
-import { cacheKeyFor, liveKeyFor } from "@chatbotx.io/utils"
+import { db, eq, type PgTable, sql } from "@salesmanchatbot.io/database/client"
+import { cacheConnections, distributedStore } from "@salesmanchatbot.io/redis"
+import { cacheKeyFor, liveKeyFor } from "@salesmanchatbot.io/utils"
 import type { PgColumn } from "drizzle-orm/pg-core"
 import { logger } from "../logger"
 

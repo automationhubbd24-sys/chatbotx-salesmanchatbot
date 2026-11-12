@@ -40,8 +40,8 @@ import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import * as React from "react";
 
-import { useComposedRefs } from "@chatbotx.io/ui/lib/compose-refs";
-import { cn } from "@chatbotx.io/ui/lib/utils";
+import { useComposedRefs } from "@salesmanchatbot.io/ui/lib/compose-refs";
+import { cn } from "@salesmanchatbot.io/ui/lib/utils";
 import * as ReactDOM from "react-dom";
 
 const orientationConfig = {

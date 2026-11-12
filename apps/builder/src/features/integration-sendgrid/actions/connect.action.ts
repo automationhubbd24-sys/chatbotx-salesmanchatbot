@@ -1,12 +1,12 @@
 "use server"
 
-import { integrationSendGridService } from "@chatbotx.io/business"
+import { integrationSendGridService } from "@salesmanchatbot.io/business"
 import {
   SendGridApiError,
   SendGridMissingScopesError,
   integration as sendGridIntegration,
-} from "@chatbotx.io/integration-sendgrid"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-sendgrid"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

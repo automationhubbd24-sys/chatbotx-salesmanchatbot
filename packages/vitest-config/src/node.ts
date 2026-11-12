@@ -9,7 +9,7 @@ const COVERAGE_THRESHOLD = 80
  *
  * Spread into a suite's own `setupFiles` alongside the preset's defaults:
  *
- *     import preset, { mswSetupFiles } from "@chatbotx.io/vitest-config/node"
+ *     import preset, { mswSetupFiles } from "@salesmanchatbot.io/vitest-config/node"
  *     import { mergeConfig } from "vitest/config"
  *
  *     export default mergeConfig(preset, {
@@ -64,7 +64,7 @@ function resolveWorkerPool(): { maxWorkers?: number; minWorkers?: number } {
  *
  * Workspaces consume this via:
  *
- *     import preset from "@chatbotx.io/vitest-config/node"
+ *     import preset from "@salesmanchatbot.io/vitest-config/node"
  *     export default preset
  *
  * To extend, callers can `mergeConfig(preset, defineConfig({...}))`.

@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
-import type { MetaCapiEventFieldsSchema } from "@chatbotx.io/flow-config"
+import type { MetaCapiEventFieldsSchema } from "@salesmanchatbot.io/flow-config"
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/form"
 import type { ReactElement, ReactNode } from "react"
 import { act, createContext, useContext, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -39,7 +39,7 @@ const DialogCtx = createContext<DialogCtxValue>({
   setOpen: () => undefined,
 })
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", async () => {
   const react = await import("react")
   const Pass = ({ children }: { children?: ReactNode }) => <>{children}</>
   return {
@@ -89,7 +89,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", async () => {
 
 // Base UI's Tooltip only mounts its popup once actually opened; not relevant
 // to this test's assertions.
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: ReactNode }) => <>{children}</>,
   TooltipTrigger: ({ render }: { render: ReactNode }) => render,
   TooltipContent: ({ children }: { children: ReactNode }) => (
@@ -98,7 +98,7 @@ vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
 }))
 
 // Collapsible: a minimal controlled stand-in, default closed.
-vi.mock("@chatbotx.io/ui/components/ui/collapsible", () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/collapsible", () => {
   const CollapsibleCtx = createContext<{
     open: boolean
     setOpen: (next: boolean) => void
@@ -178,7 +178,7 @@ const flattenOptions = (options: GroupedOption[]): SelectLikeOption[] =>
 // SelectField: flat native `<select>` bound the same way the real component
 // binds — `field.onChange` then `triggerValueChange` — so
 // `MetaCapiEventFields`'s action-source reset logic still runs.
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options,
@@ -224,7 +224,7 @@ vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
 // preserving the real component's "field.onChange then triggerValueChange"
 // order so the custom-event-sentinel handling in `MetaCapiEventFields` runs
 // exactly as it does with the real Base UI combobox.
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({
     name,
     options,

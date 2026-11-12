@@ -1,7 +1,7 @@
 import {
   type AdsEligibleChannelType,
   channelTypes,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import { type AnyColumn, eq, gte, lte, type SQL, sql } from "drizzle-orm"
 import type { AdEligibleInboxChannel } from "../../repositories/contact-inbox/repository"
 import {
@@ -24,7 +24,7 @@ import {
 // (not a module-scope object of table references): dereferencing
 // `integrationWhatsappModel`/`integrationMessengerModel`/
 // `integrationInstagramModel` eagerly at import time crashes test suites
-// whose `@chatbotx.io/database/schema` mock doesn't export all three —
+// whose `@salesmanchatbot.io/database/schema` mock doesn't export all three —
 // keeping each entry a function defers that dereference to call time, when
 // only the branch actually taken resolves (same reasoning as
 // `getConflictTarget` in the ads-conversion-event repository).

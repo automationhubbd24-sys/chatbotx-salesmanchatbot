@@ -17,7 +17,7 @@
  * exists to surface where the ranker loses a non-English intent.
  *
  * Usage:
- *   pnpm --filter chatbotx-mcp eval:search --spec <absolute-spec-path> \
+ *   pnpm --filter salesmanchatbot-mcp eval:search --spec <absolute-spec-path> \
  *     [--min-top1 0.65] [--min-top3 0.85] [--verbose]
  *     [--corpus business|multilingual] [--report-only]
  */
@@ -40,7 +40,7 @@ type CliOptions = {
 }
 
 const usage =
-  "Usage:\n  pnpm --filter chatbotx-mcp eval:search --spec <absolute-spec-path> [--min-top1 0.65] [--min-top3 0.85] [--verbose] [--corpus business|multilingual] [--report-only]"
+  "Usage:\n  pnpm --filter salesmanchatbot-mcp eval:search --spec <absolute-spec-path> [--min-top1 0.65] [--min-top3 0.85] [--verbose] [--corpus business|multilingual] [--report-only]"
 
 const DEFAULT_MIN_TOP1 = 0.65
 const DEFAULT_MIN_TOP3 = 0.85

@@ -19,14 +19,14 @@ import {
   sendVideoStepDefaultFn,
   sendVideoStepSchema,
   uploadModes,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   type BotResponseTrackingContext,
   ChatJobAction,
   chatQueue,
   type RichButtonPayloadEntry,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import type {

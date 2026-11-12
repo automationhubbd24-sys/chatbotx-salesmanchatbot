@@ -1,10 +1,10 @@
-import type { systemFunctionNames } from "@chatbotx.io/ai"
+import type { systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   GetProductDetailsInput,
   SearchProductsInput,
   SystemToolExecutors,
-} from "@chatbotx.io/ai/server"
-import { productService } from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/ai/server"
+import { productService } from "@salesmanchatbot.io/business"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../../lib/logger"
 

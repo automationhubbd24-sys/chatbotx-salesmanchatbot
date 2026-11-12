@@ -2,8 +2,8 @@ import {
   type BulkThreadControlResult,
   ChannelError,
   ChannelErrorCategory,
-} from "@chatbotx.io/sdk"
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+} from "@salesmanchatbot.io/sdk"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { DEFAULT_API_VERSION } from "../src/constants"
 import { conversationHandlers } from "../src/handlers/conversation"

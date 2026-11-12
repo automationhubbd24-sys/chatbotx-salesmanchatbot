@@ -1,6 +1,6 @@
 "use client"
 
-import type { FacebookMarketingMessageModel } from "@chatbotx.io/database/types"
+import type { FacebookMarketingMessageModel } from "@salesmanchatbot.io/database/types"
 import type { MarketingMessagesGrant } from "../lib/grant"
 import { GrantPanel } from "./grant-panel"
 import { MarketingMessagesTable } from "./marketing-messages-table"

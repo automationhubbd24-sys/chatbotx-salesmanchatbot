@@ -1,5 +1,5 @@
 import type { Readable } from "node:stream"
-import type { ImportFormat } from "@chatbotx.io/database/partials"
+import type { ImportFormat } from "@salesmanchatbot.io/database/partials"
 import { createImportCsvParser } from "./csv"
 import { createImportXlsxParser } from "./xlsx"
 

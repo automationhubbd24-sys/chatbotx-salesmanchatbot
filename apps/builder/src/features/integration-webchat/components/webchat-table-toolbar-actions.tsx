@@ -1,6 +1,6 @@
 "use client"
 
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
 import type { Table } from "@tanstack/react-table"
 import { useTranslations } from "next-intl"
 import { AddChannelButton } from "@/features/inboxes/components/add-channel-button"

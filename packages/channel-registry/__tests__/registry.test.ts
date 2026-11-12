@@ -1,14 +1,14 @@
 import {
   postTrackingChannels,
   profileSnapshotChannels,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
   buildContext: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: mocks.buildContext,
   inboxService: { find: vi.fn() },
   integrationThreadsService: {

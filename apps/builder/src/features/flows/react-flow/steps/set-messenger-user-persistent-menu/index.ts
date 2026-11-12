@@ -2,7 +2,7 @@ import {
   type SetMessengerUserPersistentMenuStepSchema,
   setMessengerUserPersistentMenuStepDefaultFn,
   setMessengerUserPersistentMenuStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SetMessengerUserPersistentMenuStepEditor from "./editor"
 import SetMessengerUserPersistentMenuStepViewer from "./viewer"

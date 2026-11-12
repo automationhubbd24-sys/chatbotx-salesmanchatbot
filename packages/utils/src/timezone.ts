@@ -16,7 +16,7 @@
  * .resolvedOptions().timeZone` answers `"Asia/Saigon"`, the exact reverse of
  * IANA. So neither name can be assumed correct from the Node side; both are
  * offered to PostgreSQL, which picks the one it actually knows (see
- * `zonedDateKey` in `@chatbotx.io/database/queries`).
+ * `zonedDateKey` in `@salesmanchatbot.io/database/queries`).
  *
  * Only entries a browser realistically reports are listed — this is a
  * best-effort accuracy aid, never a correctness gate: an unmapped name still

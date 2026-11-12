@@ -26,7 +26,7 @@ const mocks = vi.hoisted(() => ({
   contactFindByIdOrFail: vi.fn(),
   selectWorkspace: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     transaction: mocks.transaction,
     select: () => ({
@@ -42,7 +42,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
     mocks.isUniqueViolationError(...args),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   couponTopicStatuses: { enum: { active: "active", archived: "archived" } },
   fileStatuses: {
     enum: { uploaded: "uploaded" },
@@ -50,7 +50,7 @@ vi.mock("@chatbotx.io/database/partials", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   couponRepository: {
     lockTopic: (...args: unknown[]) => mocks.lockTopic(...args),
     countTopicCoupons: (...args: unknown[]) => mocks.countTopicCoupons(...args),
@@ -75,15 +75,15 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceModel: {},
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { headObject: (...args: unknown[]) => mocks.headObject(...args) },
 }))
 

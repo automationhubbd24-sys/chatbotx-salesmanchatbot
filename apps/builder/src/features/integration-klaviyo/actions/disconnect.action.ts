@@ -1,6 +1,6 @@
 "use server"
 
-import { integrationKlaviyoService } from "@chatbotx.io/business"
+import { integrationKlaviyoService } from "@salesmanchatbot.io/business"
 import { createDisconnectAction } from "@/lib/integration-actions"
 
 export const disconnectKlaviyoAction = createDisconnectAction(

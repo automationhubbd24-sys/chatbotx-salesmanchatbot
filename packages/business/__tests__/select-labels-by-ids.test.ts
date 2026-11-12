@@ -7,14 +7,14 @@ const { whereMock, selectMock } = vi.hoisted(() => {
   return { whereMock, selectMock: vi.fn(() => ({ from: fromMock })) }
 })
 
-vi.mock("@chatbotx.io/database/client", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/database/client")>()),
+vi.mock("@salesmanchatbot.io/database/client", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/database/client")>()),
   db: { select: selectMock },
 }))
 
 const { selectLabelsByIds } = await import("../src/select-labels-by-ids")
-const { sequenceModel } = await import("@chatbotx.io/database/schema")
-const { eq } = await import("@chatbotx.io/database/client")
+const { sequenceModel } = await import("@salesmanchatbot.io/database/schema")
+const { eq } = await import("@salesmanchatbot.io/database/client")
 
 describe("selectLabelsByIds", () => {
   beforeEach(() => {

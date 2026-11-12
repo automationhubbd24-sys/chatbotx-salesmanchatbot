@@ -1,8 +1,8 @@
 import {
   type BaseEventListener,
   EVENT_BUS_MESSAGE_ID,
-} from "@chatbotx.io/flow-config"
-import type { Redis } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/flow-config"
+import type { Redis } from "@salesmanchatbot.io/redis"
 import type { z } from "zod"
 import { deadLetterLogger, logger } from "./logger"
 
@@ -60,7 +60,7 @@ export class BaseEventBus<
    * no side effects. The bus singletons are module-scope, and the root barrel
    * re-exports every one of them, so eagerly calling `getRedisConnection("hot")`
    * would open connections merely because something imported `emit` — which
-   * broke any consumer's test that did not also mock `@chatbotx.io/redis`.
+   * broke any consumer's test that did not also mock `@salesmanchatbot.io/redis`.
    * `getRedisConnection` memoizes, so deferring changes nothing else.
    */
   constructor(redis: Redis | (() => Redis), config: EventBusConfig<TEventMap>) {

@@ -1,7 +1,7 @@
 import {
   createSelectSchema,
   questionnaireModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const questionnaireResource = createSelectSchema(questionnaireModel, {

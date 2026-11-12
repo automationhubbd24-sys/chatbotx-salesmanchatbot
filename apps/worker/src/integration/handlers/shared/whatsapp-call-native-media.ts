@@ -1,4 +1,4 @@
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import {

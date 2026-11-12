@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { contactAppointmentResource } from "./resource"

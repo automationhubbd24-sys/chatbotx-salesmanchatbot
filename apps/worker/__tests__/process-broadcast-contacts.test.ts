@@ -1,4 +1,4 @@
-import { broadcastChannelCapabilities } from "@chatbotx.io/database/partials"
+import { broadcastChannelCapabilities } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ── service spies (replace direct db.* calls in the handler) ─────────────────
@@ -32,7 +32,7 @@ const markContactSentIfSending = vi.fn()
 const claimDispatchWindow = vi.fn()
 
 // ── mocks ─────────────────────────────────────────────────────────────────────
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   withBlockedOwnerGuard: async (
     workspaceId: unknown,
     fn: () => Promise<unknown>,
@@ -58,15 +58,15 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () =>
-  vi.importActual("@chatbotx.io/database/partials"),
+vi.mock("@salesmanchatbot.io/database/partials", async () =>
+  vi.importActual("@salesmanchatbot.io/database/partials"),
 )
 
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   BROADCAST_PAYLOAD_TYPE: "broadcast",
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   BROADCAST_SEND_PRIORITY: 5,
   chatQueue: {
     add: (...args: unknown[]) => chatAddSpy(...args),

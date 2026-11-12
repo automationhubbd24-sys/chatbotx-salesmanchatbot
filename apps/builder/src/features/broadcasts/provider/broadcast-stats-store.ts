@@ -1,4 +1,4 @@
-import type { GetBatchBroadcastStatsResponse } from "@chatbotx.io/analytics/schemas"
+import type { GetBatchBroadcastStatsResponse } from "@salesmanchatbot.io/analytics/schemas"
 import { createStore } from "zustand/vanilla"
 import { getClientErrorMessage } from "@/lib/orpc/client-error"
 import { client } from "@/lib/orpc/orpc"

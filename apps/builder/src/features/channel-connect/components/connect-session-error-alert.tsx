@@ -1,11 +1,11 @@
 "use client"
 
-import type { ConnectSessionErrorCode } from "@chatbotx.io/business/inbox/connect-outcome-types"
+import type { ConnectSessionErrorCode } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import {

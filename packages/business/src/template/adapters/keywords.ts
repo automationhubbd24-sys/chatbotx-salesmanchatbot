@@ -1,5 +1,5 @@
-import { db } from "@chatbotx.io/database/client"
-import type { AutomatedResponseType } from "@chatbotx.io/database/partials"
+import { db } from "@salesmanchatbot.io/database/client"
+import type { AutomatedResponseType } from "@salesmanchatbot.io/database/partials"
 import { automatedResponseService } from "../../automated-response/service"
 import type {
   PatchTask,

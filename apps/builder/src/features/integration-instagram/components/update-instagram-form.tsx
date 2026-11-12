@@ -1,27 +1,27 @@
 "use client"
 
-import { channelTypes } from "@chatbotx.io/database/partials"
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { DialogFooter } from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { DialogFooter } from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon, PlusIcon, TrashIcon } from "lucide-react"

@@ -2,7 +2,7 @@ import {
   type EnableBotStepSchema,
   enableBotStepDefaultFn,
   enableBotStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import EnableBotStepEditor from "./editor"
 import EnableBotStepViewer from "./viewer"

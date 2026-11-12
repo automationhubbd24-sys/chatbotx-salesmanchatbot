@@ -1,4 +1,4 @@
-import { requiresSpecialAdCategoryCountry } from "@chatbotx.io/integration-facebook-ads/messaging-ads/constants"
+import { requiresSpecialAdCategoryCountry } from "@salesmanchatbot.io/integration-facebook-ads/messaging-ads/constants"
 import { z } from "zod"
 
 export type WizardMessagingAdChannel = "messenger" | "instagram" | "whatsapp"
@@ -99,7 +99,7 @@ const wizardObjectSchema = z.object({
   mediaKind: z.enum(["", "image", "video"]),
   // The S3 key + minted `File` row id from the presigned upload — never a
   // Meta `image_hash` (that is derived transiently at create time, see
-  // `resolveStoredImageBytes` in `@chatbotx.io/business`).
+  // `resolveStoredImageBytes` in `@salesmanchatbot.io/business`).
   imageKey: z.string().trim(),
   fileId: z.string().trim(),
   imageMimeType: z.string().trim(),

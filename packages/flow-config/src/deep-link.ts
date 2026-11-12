@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/utils/channel"
+import type { ChannelType } from "@salesmanchatbot.io/utils/channel"
 
 /**
  * Links a Meta in-app webview cannot follow, and the native app each belongs to.

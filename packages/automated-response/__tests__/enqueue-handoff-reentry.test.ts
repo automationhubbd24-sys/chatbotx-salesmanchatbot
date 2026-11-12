@@ -5,7 +5,7 @@ const { addMock, errorMock } = vi.hoisted(() => ({
   errorMock: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   AIJobAction: { processHandoffReentry: "processHandoffReentry" },
   aiAgentQueue: { add: addMock },
 }))

@@ -1,15 +1,15 @@
-import { automatedResponseService } from "@chatbotx.io/automated-response"
-import { broadcastService } from "@chatbotx.io/business"
-import { and, db, eq } from "@chatbotx.io/database/client"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import { contactsOnBroadcastsModel } from "@chatbotx.io/database/schema"
+import { automatedResponseService } from "@salesmanchatbot.io/automated-response"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { and, db, eq } from "@salesmanchatbot.io/database/client"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import { contactsOnBroadcastsModel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
   FlowVersionModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   type BaseStepSchema,
   BROADCAST_PAYLOAD_TYPE,
@@ -25,15 +25,15 @@ import {
   resolveFlowActionTarget,
   type StepType,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { logDiagnostic } from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/flow-config"
+import { logDiagnostic } from "@salesmanchatbot.io/logger"
 import {
   type CommentAnchor,
   initVariables,
   SdkException,
   type Variables,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   type BotResponseTrackingContext,
   IntegrationJobAction,
@@ -42,7 +42,7 @@ import {
   type IntegrationJobSendFlowQuickReply,
   integrationQueue,
   type NodeVisits,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   detectConversationAndContactInbox,
   detectFlowVersion,

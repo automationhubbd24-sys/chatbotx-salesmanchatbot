@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   resolveTenantSettings: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: { listByContactIds: mocks.listByContactIds },
   resolveTenantSettings: mocks.resolveTenantSettings,
   // Mirrors the real resolver: a real key goes through `finalize`.

@@ -1,29 +1,29 @@
-import { commentAutomationAnalyticsService } from "@chatbotx.io/analytics"
+import { commentAutomationAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   commentAutomationService,
   contactInboxService,
   contactService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   CommentAutomationMissReason,
   CommentReply,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   CommentAutomationMissInsert,
   CommentAutomationModel,
   ConversationModel,
   MessageModel,
-} from "@chatbotx.io/database/types"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   ChatJobAction,
   chatQueue,
   type IntegrationJobProcessCommentAutomation,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { integrationService } from "../../../services/integrations"
 import {

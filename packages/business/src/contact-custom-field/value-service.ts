@@ -1,4 +1,4 @@
-import { type DatabaseClient, db } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db } from "@salesmanchatbot.io/database/client"
 
 class ContactCustomFieldValueService {
   async findValue(input: {

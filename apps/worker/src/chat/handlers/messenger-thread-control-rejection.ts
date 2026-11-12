@@ -1,11 +1,11 @@
 import {
   type ThreadControlSnapshot,
   threadControlService,
-} from "@chatbotx.io/business"
-import { syncThreadOwner } from "@chatbotx.io/channel-registry/thread-control"
-import { toThreadControlTimestamp } from "@chatbotx.io/database/partials"
-import { isThreadControlRejection } from "@chatbotx.io/integration-messenger"
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business"
+import { syncThreadOwner } from "@salesmanchatbot.io/channel-registry/thread-control"
+import { toThreadControlTimestamp } from "@salesmanchatbot.io/database/partials"
+import { isThreadControlRejection } from "@salesmanchatbot.io/integration-messenger"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../lib/logger"
 import type { ChannelSendErrorContext } from "./channel-send-error-types"
 

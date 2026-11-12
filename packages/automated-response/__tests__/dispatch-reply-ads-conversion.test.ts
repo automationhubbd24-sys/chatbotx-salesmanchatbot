@@ -7,14 +7,14 @@ const { mockEnqueueKeywordMatchedEvaluation, mockChatQueueAdd } = vi.hoisted(
   }),
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   adsConversionService: {
     enqueueKeywordMatchedEvaluation: mockEnqueueKeywordMatchedEvaluation,
     isEligibleChannel: (channel: unknown) => channel === "whatsapp",
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       flowModel: {
@@ -24,18 +24,18 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: vi.fn(() => "webhook"),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn().mockResolvedValue({}),
     replaceAll: vi.fn(async ({ text }: { text: string }) => text),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   IntegrationJobAction: { sendFlow: "sendFlow" },
   chatQueue: { add: mockChatQueueAdd },

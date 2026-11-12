@@ -1,8 +1,8 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   minigameContactService,
   minigameService,
-} from "@chatbotx.io/business/minigame"
+} from "@salesmanchatbot.io/business/minigame"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListMinigameHistoryRequest,
@@ -40,7 +40,7 @@ export async function findMinigame(where: {
   try {
     return minigameResource.parse(await minigameService.find(where))
   } catch (error) {
-    if (error instanceof ChatbotXException && error.code === "notFound") {
+    if (error instanceof salesmanChatbotException && error.code === "notFound") {
       return
     }
     throw error

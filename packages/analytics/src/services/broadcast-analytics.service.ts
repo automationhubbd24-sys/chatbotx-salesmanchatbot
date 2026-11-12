@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   BROADCAST_PAYLOAD_TYPE,
   type BroadcastMetadataPayload,
@@ -7,7 +7,7 @@ import {
   type MessageFailedPayload,
   type MessageSeenPayload,
   type MessageSentPayload,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { toDate } from "../lib/date"
 import { broadcastStatsRepository } from "../repositories/postgres"
 import type {

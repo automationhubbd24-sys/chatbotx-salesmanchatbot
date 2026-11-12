@@ -34,9 +34,9 @@
 ## Docker Images
 
 ```
-ghcr.io/ahachatai/chatbotx-builder:VERSION
-ghcr.io/ahachatai/chatbotx-worker:VERSION
-ghcr.io/ahachatai/chatbotx-realtime:VERSION
+ghcr.io/ahachatai/salesmanchatbot-builder:VERSION
+ghcr.io/ahachatai/salesmanchatbot-worker:VERSION
+ghcr.io/ahachatai/salesmanchatbot-realtime:VERSION
 ```
 
 ## Upgrade Notes

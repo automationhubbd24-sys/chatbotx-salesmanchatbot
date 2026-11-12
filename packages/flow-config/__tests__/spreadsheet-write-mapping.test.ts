@@ -9,7 +9,7 @@ import {
   toSpreadsheetStepVersion,
   upgradeNodeSteps,
   upgradeSpreadsheetWriteStep,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 const lookup = (customFieldId: string) =>

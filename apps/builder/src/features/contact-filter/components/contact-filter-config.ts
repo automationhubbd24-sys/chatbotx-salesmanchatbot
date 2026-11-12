@@ -2,7 +2,7 @@ import {
   contactLanguageOptions,
   contactLocaleOptions,
   contactTimezoneOptions,
-} from "@chatbotx.io/business/contact-locale"
+} from "@salesmanchatbot.io/business/contact-locale"
 import {
   type ContactFilterField,
   type ContactInfoFilterValue,
@@ -16,8 +16,8 @@ import {
   lastUserInputTypes,
   type OperatorType,
   operatorTypes,
-} from "@chatbotx.io/database/partials"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/database/partials"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { languageOptions } from "@/features/integration-whatsapp/message-templates/type"
 import {
   allContinentOptions,

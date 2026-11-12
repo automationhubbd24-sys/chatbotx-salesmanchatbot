@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { apiFlowPolicy } from "./api"
 import type { ChannelFlowPolicy, ChannelFlowPolicyMap } from "./define"
 import { instagramFlowPolicy } from "./instagram"

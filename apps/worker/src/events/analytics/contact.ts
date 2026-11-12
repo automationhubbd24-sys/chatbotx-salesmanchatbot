@@ -1,9 +1,9 @@
-import { contactAnalyticsService } from "@chatbotx.io/analytics"
+import { contactAnalyticsService } from "@salesmanchatbot.io/analytics"
 import type {
   ContactBlockedEventPayload,
   ContactCreatedEventPayload,
   ContactDeletedEventPayload,
-} from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/event-bus"
 
 export function handleContactCreated(
   payloads: ContactCreatedEventPayload[],

@@ -5,10 +5,10 @@ import {
   eq,
   findOrFail,
   sql,
-} from "@chatbotx.io/database/client"
-import { integrationThreadsModel } from "@chatbotx.io/database/schema"
-import type { IntegrationThreadsModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { integrationThreadsModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationThreadsModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"

@@ -1,4 +1,4 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -15,7 +15,7 @@ const {
   markWebhookExecuted: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   cleanupOldWebhookExecutions,
   listActiveDateTimeWebhooks,
   listContactCustomFieldsForDateTimeSweep,
@@ -31,7 +31,7 @@ const redis = {
 }
 const webhookQueueAdd = vi.fn()
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   getRedisConnection: () => redis,
   WebhookJobAction: { evaluateWebhooks: "evaluateWebhooks" },
   webhookQueue: { add: webhookQueueAdd },

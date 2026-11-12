@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import type { ThreadControlChannel } from "@chatbotx.io/utils/channel"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import type { ThreadControlChannel } from "@salesmanchatbot.io/utils/channel"
 import {
   HandIcon,
   Loader2Icon,

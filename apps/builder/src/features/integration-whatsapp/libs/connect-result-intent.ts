@@ -1,4 +1,4 @@
-import type { ConnectSessionErrorCode } from "@chatbotx.io/business/inbox/connect-outcome-types"
+import type { ConnectSessionErrorCode } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import type { MessageKey } from "@/features/channel-connect/lib/message-key"
 import {
   CONNECT_WHATSAPP_RESULT_TYPES,

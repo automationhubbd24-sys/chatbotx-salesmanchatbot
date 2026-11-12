@@ -1,14 +1,14 @@
-import { fileService, resolveTenantSettings } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { fileContextTypes } from "@chatbotx.io/database/partials"
-import { uploader } from "@chatbotx.io/filesystem"
+import { fileService, resolveTenantSettings } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { fileContextTypes } from "@salesmanchatbot.io/database/partials"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import {
   buildMessagingAdCreativeStoragePrefix,
   MAX_MESSAGING_AD_IMAGE_BYTES,
   MESSAGING_AD_CREATIVE_UPLOAD_KIND,
   MESSAGING_AD_IMAGE_MIME_ALLOWLIST,
-} from "@chatbotx.io/integration-facebook-ads"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { createId } from "@salesmanchatbot.io/utils"
 
 const EXTENSIONS_BY_MIME: Record<string, readonly string[]> = {
   "image/jpeg": [".jpg", ".jpeg"],
@@ -51,13 +51,13 @@ export async function createAdsCreativeImageUpload(input: {
     : undefined
   const extension = extensionOf(input.fileName)
   if (!allowedExtensions?.includes(extension)) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Unsupported ad image: ${input.fileName} (${input.mimeType}). Use JPEG, PNG, GIF or WebP.`,
       "adsCreativeUnsupportedImage",
     )
   }
   if (input.fileSize > MAX_MESSAGING_AD_IMAGE_BYTES) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Ad images are limited to ${MAX_MESSAGING_AD_IMAGE_BYTES} bytes.`,
       "adsCreativeImageTooLarge",
     )

@@ -16,26 +16,26 @@ import {
   whatsappAuthForCapiScopeSchema,
   withBlockedOwnerGuard,
   workspaceService,
-} from "@chatbotx.io/business"
-import { logProviderError } from "@chatbotx.io/business/error-log"
-import type { AdsConversionEventModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
+import type { AdsConversionEventModel } from "@salesmanchatbot.io/database/types"
 import {
   buildDatasetName,
   ensureDataset as ensureMetaConversionsDataset,
   type MetaCapiEventName,
   type MetaConversionEventInput,
   sendConversionEvent as sendMetaConversionEvent,
-} from "@chatbotx.io/integration-meta-conversions"
+} from "@salesmanchatbot.io/integration-meta-conversions"
 import {
   ensureDataset as ensureWhatsappConversionsDataset,
   sendConversionEvent as sendWhatsappConversionEvent,
-} from "@chatbotx.io/integration-whatsapp/api/conversions"
-import type { ErrorLogProvider } from "@chatbotx.io/utils/error-log"
+} from "@salesmanchatbot.io/integration-whatsapp/api/conversions"
+import type { ErrorLogProvider } from "@salesmanchatbot.io/utils/error-log"
 import type {
   HashedCapiUserData,
   PurchaseContentItem,
-} from "@chatbotx.io/utils/meta-capi"
-import type { AdsConversionJobSendConversionEvent } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/utils/meta-capi"
+import type { AdsConversionJobSendConversionEvent } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import {
   findEventIntegration,
@@ -372,7 +372,7 @@ async function handleSendWhatsappConversionEvent(
 
 /**
  * Messenger/Instagram CAPI send branch (Phase 3): uses the generic
- * `@chatbotx.io/integration-meta-conversions` client (the same one
+ * `@salesmanchatbot.io/integration-meta-conversions` client (the same one
  * `send-meta-capi-event.ts`'s LeadSubmitted pipeline uses) instead of the
  * WhatsApp-native client — identity comes from the integration row
  * (`pageId`/`igId`) plus `ContactInbox.sourceId` (PSID/IGSID). Scope-check

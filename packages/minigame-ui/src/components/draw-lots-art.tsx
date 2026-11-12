@@ -10,7 +10,7 @@ type DrawLotsArtProps = {
   phase?: DrawLotsPhase
 }
 
-// Intentionally not `@chatbotx.io/ui`'s `hexToRgb`, mirroring
+// Intentionally not `@salesmanchatbot.io/ui`'s `hexToRgb`, mirroring
 // `jackpot-machine-art.tsx`/`gashapon-machine-art.tsx`: this fallback tuple
 // keeps malformed input a visible lacquer-red instead of silently rendering
 // black.

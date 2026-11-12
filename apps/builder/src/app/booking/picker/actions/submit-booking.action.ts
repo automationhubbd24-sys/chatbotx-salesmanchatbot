@@ -7,13 +7,13 @@ import {
   appointmentService,
   contactCustomFieldService,
   SlotUnavailableException,
-} from "@chatbotx.io/business"
-import { verifyAppointmentWebviewToken } from "@chatbotx.io/encryption"
-import { APPOINTMENT_WEBVIEW_SELECTION_PAYLOAD_TYPE } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import { verifyAppointmentWebviewToken } from "@salesmanchatbot.io/encryption"
+import { APPOINTMENT_WEBVIEW_SELECTION_PAYLOAD_TYPE } from "@salesmanchatbot.io/flow-config"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import type { z } from "zod"
 import { submitBookingRequestSchema } from "@/features/booking-webview/schema/action"

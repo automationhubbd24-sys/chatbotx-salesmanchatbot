@@ -6,7 +6,7 @@ const { mockDistinctConnectedChannels } = vi.hoisted(() => ({
   mockDistinctConnectedChannels: vi.fn(async () => [] as string[]),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   inboxService: {
     distinctConnectedChannels: mockDistinctConnectedChannels,
   },

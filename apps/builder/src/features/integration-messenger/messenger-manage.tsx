@@ -1,7 +1,7 @@
 "use client"
 
-import type { MessengerCredentialPublic } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { MessengerCredentialPublic } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { use } from "react"

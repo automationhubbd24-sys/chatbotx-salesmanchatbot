@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   updateValues: [] as Record<string, unknown>[],
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: () => ({
       set: (values: Record<string, unknown>) => {
@@ -28,7 +28,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   importService: {
     markProcessing: vi.fn(() => {
       mocks.updateValues.push({ status: "processing" })
@@ -66,23 +66,23 @@ vi.mock("@chatbotx.io/business", () => ({
 }))
 
 const recordAuditLog = vi.fn()
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: (...args: unknown[]) => recordAuditLog(...args) },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   importModel: {},
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {
     headObject: (...args: unknown[]) => mocks.headObject(...args),
     getObjectStream: (...args: unknown[]) => mocks.getObjectStream(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/imports", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@chatbotx.io/imports")>()
+vi.mock("@salesmanchatbot.io/imports", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@salesmanchatbot.io/imports")>()
   return {
     ...original,
     getImportEntry: () => ({
@@ -95,7 +95,7 @@ vi.mock("@chatbotx.io/imports", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/imports/parsers", () => ({
+vi.mock("@salesmanchatbot.io/imports/parsers", () => ({
   cleanText: (value: unknown, maxLength: number) =>
     String(value ?? "")
       .trim()

@@ -1,11 +1,11 @@
-import { aiContextStore } from "@chatbotx.io/ai/server"
-import { conversationService } from "@chatbotx.io/business"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
+import { aiContextStore } from "@salesmanchatbot.io/ai/server"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
 import {
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import type { AIDeleteMessageHistorySchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/repositories"
+import type { AIDeleteMessageHistorySchema } from "@salesmanchatbot.io/flow-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import type { ExecuteStepProps } from "../flow"

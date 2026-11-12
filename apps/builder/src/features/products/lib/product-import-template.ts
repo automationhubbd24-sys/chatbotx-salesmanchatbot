@@ -1,7 +1,7 @@
 import {
   createProductImportTemplate,
   type ProductTemplateLabels,
-} from "@chatbotx.io/imports"
+} from "@salesmanchatbot.io/imports"
 import { getTranslations } from "next-intl/server"
 
 export type ProductImportTemplateLocale = "en" | "vi"

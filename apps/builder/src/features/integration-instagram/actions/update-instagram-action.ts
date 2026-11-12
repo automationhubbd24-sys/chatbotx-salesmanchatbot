@@ -4,29 +4,29 @@ import {
   buildContext,
   inboxService,
   instagramIntegrationService,
-} from "@chatbotx.io/business"
-import { moveBrandingMenuLast } from "@chatbotx.io/business/branding"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { db, findOrFail } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { moveBrandingMenuLast } from "@salesmanchatbot.io/business/branding"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { db, findOrFail } from "@salesmanchatbot.io/database/client"
 import {
   type InstagramConversationStarter,
   type InstagramPersistentMenu,
   instagramPersistentMenuTypes,
-} from "@chatbotx.io/database/partials"
-import { flowVersionModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import { flowVersionModel } from "@salesmanchatbot.io/database/schema"
 import type {
   IntegrationInstagramModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
-import { encodeButtonPayload } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/types"
+import { encodeButtonPayload } from "@salesmanchatbot.io/flow-config"
 import {
   type IceBreaker,
   type InstagramAuthValue,
   type InstagramButton,
   type InstagramProfileRequest,
   integration as integrationInstagram,
-} from "@chatbotx.io/integration-instagram"
-import { integration as integrationInstagramFacebook } from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram"
+import { integration as integrationInstagramFacebook } from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   type WorkspaceIdAndIdRequestParams,
   workspaceIdAndIdRequestParams,
@@ -133,7 +133,7 @@ export const updateInstagramAction = workspaceActionClient
         }
       } catch (error) {
         logger.error({ err: error }, "Failed to update Instagram integration")
-        throw new ChatbotXException("Failed to update Instagram integration")
+        throw new salesmanChatbotException("Failed to update Instagram integration")
       }
     },
   )

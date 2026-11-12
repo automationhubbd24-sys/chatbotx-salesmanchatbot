@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const sendDispatch = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentReminderService: {
     sendDispatch,
   },

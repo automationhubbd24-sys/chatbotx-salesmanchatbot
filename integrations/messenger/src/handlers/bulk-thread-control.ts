@@ -7,7 +7,7 @@ import {
   type OutgoingContact,
   SdkException,
   threadControlRoles,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   GRAPH_BATCH_MAX_ITEMS,
   type GraphBatchRequest,

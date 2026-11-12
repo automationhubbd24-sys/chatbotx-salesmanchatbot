@@ -1,6 +1,6 @@
 import "server-only"
 
-import type { CredentialType } from "@chatbotx.io/database/partials"
+import type { CredentialType } from "@salesmanchatbot.io/database/partials"
 import type { ConnectActionResultWire } from "../schema"
 import {
   connectedOutcome,

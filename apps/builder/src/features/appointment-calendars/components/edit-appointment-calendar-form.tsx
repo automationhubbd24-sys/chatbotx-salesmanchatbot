@@ -9,54 +9,54 @@ import {
   appointmentScheduleWindowTypes,
   defaultAppointmentExternalEventAttendeesTemplate,
   defaultAppointmentExternalEventTitleTemplate,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { DatePickerField } from "@chatbotx.io/ui/components/form/date-picker-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { DatePickerField } from "@salesmanchatbot.io/ui/components/form/date-picker-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
 import {
   SelectField,
   type SelectOption,
-} from "@chatbotx.io/ui/components/form/select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
+} from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Command,
   CommandEmpty,
   CommandInput,
   CommandItem,
   CommandList,
-} from "@chatbotx.io/ui/components/ui/command"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { NumberInput } from "@chatbotx.io/ui/components/ui/input-number"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/command"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { NumberInput } from "@salesmanchatbot.io/ui/components/ui/input-number"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import {

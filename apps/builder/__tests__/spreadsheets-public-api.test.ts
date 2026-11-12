@@ -63,7 +63,7 @@ const spreadsheetService = {
   findByWorkspaceIdOrFail: vi.fn(),
   deleteMany: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ spreadsheetService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ spreadsheetService }))
 
 const { listWorksheets, listWorksheetHeaders } = vi.hoisted(() => ({
   listWorksheets: vi.fn(),

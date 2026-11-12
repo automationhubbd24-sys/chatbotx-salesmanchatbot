@@ -5,12 +5,12 @@ import {
   flowService,
   isRichSystemContactField,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/business"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import { handoffExecutorService } from "../../../trigger/services/handoff-executor.service"

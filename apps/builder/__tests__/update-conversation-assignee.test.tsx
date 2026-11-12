@@ -31,7 +31,7 @@ vi.mock("@/features/users/provider/user-hook", () => ({
     contactAssigneeOptionsMock(props),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/skeleton", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/skeleton", () => ({
   Skeleton: () => <span data-testid="assignee-loading" />,
 }))
 vi.mock(

@@ -1,4 +1,4 @@
-import { tenantService, userQuotaService } from "@chatbotx.io/business"
+import { tenantService, userQuotaService } from "@salesmanchatbot.io/business"
 import { logger } from "../../lib/logger"
 
 /**

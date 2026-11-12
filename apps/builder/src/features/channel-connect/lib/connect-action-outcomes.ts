@@ -3,8 +3,8 @@ import "server-only"
 import {
   toConnectItemFailure,
   toConnectSessionError,
-} from "@chatbotx.io/business/inbox/connect-outcome"
-import type { ConnectWarning } from "@chatbotx.io/business/inbox/connect-outcome-types"
+} from "@salesmanchatbot.io/business/inbox/connect-outcome"
+import type { ConnectWarning } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import { logger } from "@/lib/log"
 import type { ConnectActionResultWire } from "../schema"
 
@@ -18,7 +18,7 @@ import type { ConnectActionResultWire } from "../schema"
  * to each action since that part genuinely differs per channel.
  *
  * Server-only: `toConnectSessionError`/`toConnectItemFailure` pull in
- * `ChatbotXException`/`SdkException`, and `logger` pulls in Pino — neither
+ * `salesmanChatbotException`/`SdkException`, and `logger` pulls in Pino — neither
  * belongs in a client bundle.
  */
 

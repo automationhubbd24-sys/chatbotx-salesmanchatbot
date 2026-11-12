@@ -1,5 +1,5 @@
-import type { AdsEligibleChannelType } from "@chatbotx.io/utils/channel"
-import { PAID_AD_REFERRAL_SOURCE } from "@chatbotx.io/utils/referral"
+import type { AdsEligibleChannelType } from "@salesmanchatbot.io/utils/channel"
+import { PAID_AD_REFERRAL_SOURCE } from "@salesmanchatbot.io/utils/referral"
 import { type SQL, sql } from "drizzle-orm"
 import { contactInboxModel } from "../schema"
 
@@ -12,7 +12,7 @@ import { contactInboxModel } from "../schema"
 
 // Every table reference below is dereferenced INSIDE a function, never at
 // module scope. `queries/index.ts` re-exports this file, so importing any
-// query pulls it in — and a suite that mocks `@chatbotx.io/database/schema`
+// query pulls it in — and a suite that mocks `@salesmanchatbot.io/database/schema`
 // narrowly (only the tables it needs) would crash on import if the column were
 // read eagerly. Same reasoning as `conflictTargetFactoryByChannel` in the
 // ads-conversion-event repository.

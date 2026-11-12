@@ -1,8 +1,8 @@
-import { integrationThreadsService } from "@chatbotx.io/business"
+import { integrationThreadsService } from "@salesmanchatbot.io/business"
 import {
   buildThreadsAuthValue,
   getThreadsProfile,
-} from "@chatbotx.io/integration-threads"
+} from "@salesmanchatbot.io/integration-threads"
 import type { ReconnectResult } from "@/lib/channel-reconnect"
 import { logger } from "@/lib/log"
 

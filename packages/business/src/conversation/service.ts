@@ -10,18 +10,18 @@ import {
   or,
   type SQL,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import type {
   ConversationAttributes,
   ConversationQuickReplyChallenge,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   assignUserIfUnassigned,
   contactInboxOperationalColumns,
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { conversationModel, inboxModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import { conversationModel, inboxModel } from "@salesmanchatbot.io/database/schema"
 import type {
   AttachmentModel,
   ContactCustomFieldModel,
@@ -36,8 +36,8 @@ import type {
   SequenceModel,
   TagModel,
   UserModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   emitConversationArchived,
   emitConversationAssigned,
@@ -45,14 +45,14 @@ import {
   emitConversationTransferredToBot,
   emitConversationTransferredToHuman,
   emitConversationUnassigned,
-} from "@chatbotx.io/events"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/events"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   NotificationJobAction,
   notificationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import type { PgUpdateSetSource } from "drizzle-orm/pg-core"
 import { BaseService } from "../base.service"
 import { contactService } from "../contact"
@@ -62,7 +62,7 @@ import type {
 } from "../contact-inbox/service"
 import { contactInboxService } from "../contact-inbox/service"
 import { inboxTeamService } from "../enterprise/inbox-team/service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { logger } from "../logger"
 import { publishToWorkspaceParty } from "../platform/realtime-broadcast"
 import { smartDelayService } from "../smart-delay/service"
@@ -948,7 +948,7 @@ class ConversationService extends BaseService {
       if (workspaceMember) {
         updatedData.assignedUserId = workspaceMember.userId
       } else if (onInvalid === "throw") {
-        throw new ChatbotXException("User is not valid", "invalidAssignee", 400)
+        throw new salesmanChatbotException("User is not valid", "invalidAssignee", 400)
       }
     } else if (assignedId?.startsWith("t_")) {
       const inboxTeamId = assignedId.slice(2)
@@ -970,7 +970,7 @@ class ConversationService extends BaseService {
     } else if (assignedId != null && onInvalid === "throw") {
       // Schema validation should already reject this shape, but guard here too
       // so a caller can never silently unassign via an unrecognized prefix.
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "assignedId must start with 'u_' or 't_'",
         "invalidAssignee",
         400,

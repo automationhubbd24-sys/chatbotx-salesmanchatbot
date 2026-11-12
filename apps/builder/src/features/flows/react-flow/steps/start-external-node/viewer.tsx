@@ -1,6 +1,6 @@
 "use client"
 
-import type { StartExternalNodeStepSchema } from "@chatbotx.io/flow-config"
+import type { StartExternalNodeStepSchema } from "@salesmanchatbot.io/flow-config"
 import { ExternalLinkIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"

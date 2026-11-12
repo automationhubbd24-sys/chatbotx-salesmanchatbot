@@ -1,7 +1,7 @@
 "use server"
 
-import { userService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { userService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { APIError } from "better-auth"
 import { headers } from "next/headers"
 import { auth } from "@/lib/auth/auth"
@@ -27,7 +27,7 @@ export const forceChangePasswordAction = actionClient
   .action(async ({ parsedInput }) => {
     const userId = await getCurrentUserId()
     if (!userId) {
-      throw new ChatbotXException("Not authenticated", "unauthorized", 401)
+      throw new salesmanChatbotException("Not authenticated", "unauthorized", 401)
     }
 
     const requestHeaders = await headers()
@@ -43,7 +43,7 @@ export const forceChangePasswordAction = actionClient
       })
     } catch (error) {
       if (error instanceof APIError) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           error.body?.message ?? "Failed to change password",
           "changePasswordFailed",
           400,

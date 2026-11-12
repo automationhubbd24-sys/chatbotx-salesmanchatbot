@@ -1,14 +1,14 @@
-import { conversationService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   requestConversationThreadControl,
   syncConversationThreadOwner,
-} from "@chatbotx.io/channel-registry/thread-control"
+} from "@salesmanchatbot.io/channel-registry/thread-control"
 import {
   channelTypes,
   conversationBotCategories,
   conversationStatuses,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 import { successResponse } from "@/features/common/schema"
 import { contactFilterCriteriaSchema } from "@/features/contact-filter"
@@ -450,7 +450,7 @@ export const conversationsPublicRouter = {
         })
         return { status: "applied" as const, snapshot }
       } catch (error) {
-        if (error instanceof ChatbotXException && error.code === "notFound") {
+        if (error instanceof salesmanChatbotException && error.code === "notFound") {
           throw error
         }
         const refusal = mapThreadControlError(

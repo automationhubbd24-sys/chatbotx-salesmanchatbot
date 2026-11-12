@@ -2,7 +2,7 @@ import {
   appointmentOrderDetailsSchema,
   diamondQuoteDetailsSchema,
   orderTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { importExternalOrderPublicRequest } from "../schema/public"
 

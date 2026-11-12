@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   findByIdWithUrls: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messageService: {
     listForConversation: mocks.listForConversation,
     findByIdWithUrls: mocks.findByIdWithUrls,

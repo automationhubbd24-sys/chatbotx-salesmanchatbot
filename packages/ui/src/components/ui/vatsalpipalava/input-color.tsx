@@ -2,12 +2,12 @@
 
 // Locally patched for RTL; reapply after refreshing from the upstream shadcn registry.
 
-import { Button } from "@chatbotx.io/ui/components/ui/button";
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover";
+} from "@salesmanchatbot.io/ui/components/ui/popover";
 import { HexColorPicker, HexAlphaColorPicker } from "react-colorful";
 import {
   Select,
@@ -15,9 +15,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select";
-import { Input } from "@chatbotx.io/ui/components/ui/input";
-import { Label } from "@chatbotx.io/ui/components/ui/label";
+} from "@salesmanchatbot.io/ui/components/ui/select";
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input";
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label";
 import { Loader2, PipetteIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
@@ -29,9 +29,9 @@ import {
   rgbaToHex,
   rgbaToHsla,
   hslaToRgba,
-} from "@chatbotx.io/ui/components/ui/vatsalpipalava/color-converter";
+} from "@salesmanchatbot.io/ui/components/ui/vatsalpipalava/color-converter";
 import { z } from "zod";
-import { cn } from "@chatbotx.io/ui/lib/utils";
+import { cn } from "@salesmanchatbot.io/ui/lib/utils";
 
 export const colorSchema = z
   .string()

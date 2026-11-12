@@ -1,4 +1,4 @@
-import { createId, zodUrlWithVariables } from "@chatbotx.io/utils"
+import { createId, zodUrlWithVariables } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { baseStepSchema } from "./base"
 import { stepTypes } from "./step-action"

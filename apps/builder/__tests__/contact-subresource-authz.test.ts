@@ -74,17 +74,17 @@ vi.mock("@/middlewares/auth", () => ({ workspaceAuthorizedMidddleware }))
 vi.mock("@/lib/auth/utils", () => ({
   getCurrentUserAndTargetWorkspace: vi.fn(),
 }))
-vi.mock("@chatbotx.io/business/contact-utils", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-utils", () => ({
   maskContactEmailAndPhone: vi.fn((contact: unknown) => contact),
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: {
     listContactAppointments: mocks.listContactAppointments,
   },
   contactNoteService: { listByContactId: mocks.listContactNotes },
   couponService: { listIssuedCouponsForContact: mocks.listContactCoupons },
 }))
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: {
     listByContactId: mocks.listContactSequences,
   },

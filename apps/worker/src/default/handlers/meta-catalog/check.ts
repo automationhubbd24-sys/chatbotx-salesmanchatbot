@@ -3,22 +3,22 @@ import {
   metaCatalogSyncRunService,
   productService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { logProviderError } from "@chatbotx.io/business/error-log"
-import type { MetaCatalogBatchHandle } from "@chatbotx.io/database/partials"
-import { metaCatalogItemRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
+import type { MetaCatalogBatchHandle } from "@salesmanchatbot.io/database/partials"
+import { metaCatalogItemRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   checkItemsBatch,
   fingerprintMetaItem,
   isInvalidMetaTokenError,
   toMetaItem,
-} from "@chatbotx.io/integration-meta-catalog"
+} from "@salesmanchatbot.io/integration-meta-catalog"
 import {
   DefaultJobAction,
   defaultQueue,
   type JobCheckMetaCatalogSync,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { safeMetaCatalogErrorLog } from "./safe-error-log"
 

@@ -76,24 +76,24 @@ export const setAllowSelfSignedCert = (allowSelfSignedCert: boolean): void => {
 export const getConfig = (overrides?: ConfigOptions): CliConfig => {
   const stored = readStoredConfig()
 
-  const apiKey = overrides?.apiKey ?? env.CHATBOTX_API_KEY ?? stored.apiKey
+  const apiKey = overrides?.apiKey ?? env.SALESMANCHATBOT_API_KEY ?? stored.apiKey
 
-  const apiUrl = overrides?.apiUrl ?? env.CHATBOTX_API_URL ?? stored.apiUrl
+  const apiUrl = overrides?.apiUrl ?? env.SALESMANCHATBOT_API_URL ?? stored.apiUrl
 
   const allowSelfSignedCert =
     overrides?.allowSelfSignedCert ??
-    parseBooleanEnv(env.CHATBOTX_ALLOW_SELF_SIGNED_CERT) ??
+    parseBooleanEnv(env.SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT) ??
     stored.allowSelfSignedCert
 
   if (!apiKey) {
     throw new Error(
-      "Missing API key. Run: chatbotx config set --apiKey your_api_key",
+      "Missing API key. Run: salesmanchatbot config set --apiKey your_api_key",
     )
   }
 
   if (!apiUrl) {
     throw new Error(
-      "Missing API URL. Run: chatbotx config set --apiUrl your_api_url",
+      "Missing API URL. Run: salesmanchatbot config set --apiUrl your_api_url",
     )
   }
 

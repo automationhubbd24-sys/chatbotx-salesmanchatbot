@@ -52,7 +52,7 @@ const DialogCtx = createContext<DialogCtxValue>({
   setOpen: () => undefined,
 })
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", async () => {
   const react = await import("react")
   const Pass = ({ children }: { children?: ReactNode }) => <>{children}</>
   return {

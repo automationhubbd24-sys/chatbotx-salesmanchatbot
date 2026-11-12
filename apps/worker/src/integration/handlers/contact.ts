@@ -3,9 +3,9 @@ import {
   contactNoteService,
   contactService,
   tagService,
-} from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
-import { emitContactUnsubscribed } from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
+import { emitContactUnsubscribed } from "@salesmanchatbot.io/events"
 import type {
   AddContactNotesStepSchema,
   AddContactTagStepSchema,
@@ -19,9 +19,9 @@ import type {
   SubscribeSequenceStepSchema,
   UnsubscribeBroadcastStepSchema,
   UnsubscribeSequenceStepSchema,
-} from "@chatbotx.io/flow-config"
-import { TemporalInputParsing } from "@chatbotx.io/utils/datetime"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/flow-config"
+import { TemporalInputParsing } from "@salesmanchatbot.io/utils/datetime"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow"
 

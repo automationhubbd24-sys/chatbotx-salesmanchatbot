@@ -1,6 +1,6 @@
 "use client"
 
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"
 import { useEffect, useRef, useState } from "react"

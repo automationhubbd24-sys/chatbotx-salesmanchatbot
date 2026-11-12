@@ -5,13 +5,13 @@ import {
   hasWorkspaceAccess,
   integrationApiService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   generateApiChannelToken,
   generateSigningSecret,
-} from "@chatbotx.io/business/workspace-api-token/credentials"
-import type { ApiAuthValue } from "@chatbotx.io/integration-api"
+} from "@salesmanchatbot.io/business/workspace-api-token/credentials"
+import type { ApiAuthValue } from "@salesmanchatbot.io/integration-api"
 import { authActionClient } from "@/lib/safe-action"
 import { createApiRequest } from "../schema/mutation"
 
@@ -27,7 +27,7 @@ export const createApiAction = authActionClient
 
     if (workspaceId) {
       if (!(await hasWorkspaceAccess({ workspaceId, user: ctx.user }))) {
-        throw new ChatbotXException("Workspace not found", "notFound", 404)
+        throw new salesmanChatbotException("Workspace not found", "notFound", 404)
       }
       const workspace = await workspaceService.findOrFail({
         where: { id: workspaceId },

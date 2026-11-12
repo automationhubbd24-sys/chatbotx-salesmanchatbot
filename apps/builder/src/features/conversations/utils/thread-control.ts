@@ -8,11 +8,11 @@ import {
   type ThreadControlRole,
   type ThreadControlState,
   threadControlEvents,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   isThreadControlChannel,
   type ThreadControlChannel,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import type { useTranslations } from "next-intl"
 import { THREAD_CONTROL_CHANNEL_UI } from "@/features/messages/lib/thread-control-channel-ui"
 import type { ConversationContactInboxResource } from "../schema/resource"

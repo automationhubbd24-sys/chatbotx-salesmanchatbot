@@ -1,7 +1,7 @@
 "use server"
 
-import { reflinkService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { reflinkService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { returnValidationErrors } from "next-safe-action"
 import { isValidationException } from "@/lib/errors/validation-exception"
 import { workspaceActionClient } from "@/lib/safe-action"

@@ -8,13 +8,13 @@ const mocks = vi.hoisted(() => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: { create: mocks.mockWorkspaceCreate },
 }))
 vi.mock("next/navigation", () => ({ redirect: mocks.mockRedirect }))
 
-const { ChatbotXException, workspaceLimitReachedException } = await import(
-  "@chatbotx.io/business/errors"
+const { salesmanChatbotException, workspaceLimitReachedException } = await import(
+  "@salesmanchatbot.io/business/errors"
 )
 const {
   CREATE_CHANNEL_ERROR_MESSAGE_KEYS,
@@ -73,12 +73,12 @@ describe("create-first-workspace", () => {
     )
   })
 
-  test("rethrows any other failure untouched, including unlisted ChatbotXException codes", async () => {
+  test("rethrows any other failure untouched, including unlisted salesmanChatbotException codes", async () => {
     mocks.mockWorkspaceCreate.mockRejectedValueOnce(new Error("db down"))
     await expect(createFirstWorkspace("user-1")).rejects.toThrow("db down")
 
     mocks.mockWorkspaceCreate.mockRejectedValueOnce(
-      new ChatbotXException("boom", "systemError"),
+      new salesmanChatbotException("boom", "systemError"),
     )
     await expect(createFirstWorkspace("user-1")).rejects.toThrow("boom")
 

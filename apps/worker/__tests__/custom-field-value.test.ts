@@ -1,4 +1,4 @@
-import { validateCustomFieldValue } from "@chatbotx.io/business/javascript-execution"
+import { validateCustomFieldValue } from "@salesmanchatbot.io/business/javascript-execution"
 import { describe, expect, it } from "vitest"
 
 describe("validateCustomFieldValue", () => {
@@ -48,7 +48,7 @@ describe("validateCustomFieldValue", () => {
       ["1.5e2", "150"],
       // Widened from the old hand-rolled NUMERIC_RE regex to everything JS
       // `Number()` accepts — same shared canonicalizer (`canonicalNumberLiteral`)
-      // the runtime-coercion write path uses; see @chatbotx.io/utils/custom-field.
+      // the runtime-coercion write path uses; see @salesmanchatbot.io/utils/custom-field.
       ["+1", "1"],
       ["1.", "1"],
       ["0x10", "16"],
@@ -71,7 +71,7 @@ describe("validateCustomFieldValue", () => {
   describe("boolean", () => {
     // Widened from the old true/false/1/0 allowlist to the full Postgres
     // boolean-literal vocabulary shared with the SQL filter guard and the
-    // runtime coercion normalizer — see @chatbotx.io/utils/custom-field.
+    // runtime coercion normalizer — see @salesmanchatbot.io/utils/custom-field.
     it.each([
       ["true", "true"],
       ["TRUE", "true"],

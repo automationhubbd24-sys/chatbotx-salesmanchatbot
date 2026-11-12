@@ -2,9 +2,9 @@ import { createHash } from "node:crypto"
 import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import { createOpenAI } from "@ai-sdk/openai"
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
-import { type DatabaseClient, db } from "@chatbotx.io/database/client"
-import { productEmbeddingRepository } from "@chatbotx.io/database/repositories"
-import { secretTextAuthSchema } from "@chatbotx.io/sdk"
+import { type DatabaseClient, db } from "@salesmanchatbot.io/database/client"
+import { productEmbeddingRepository } from "@salesmanchatbot.io/database/repositories"
+import { secretTextAuthSchema } from "@salesmanchatbot.io/sdk"
 import { type EmbeddingModel, embed } from "ai"
 
 export const PRODUCT_EMBEDDING_DIMENSIONS = 3072

@@ -25,7 +25,7 @@ function makeSendGridActionResult(action: string) {
   return { job_id: "job-secret" }
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async ({ integration }: { integration: unknown }) => ({
     auth: state.auth,
     integration,
@@ -35,12 +35,12 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: vi.fn((value: unknown) => value) },
   encryptUtils: { decryptObject: vi.fn(async () => state.auth) },
 }))
 
-vi.mock("@chatbotx.io/integration-sendgrid", () => ({
+vi.mock("@salesmanchatbot.io/integration-sendgrid", () => ({
   SendGridApiError: class extends Error {},
   sendGridAuthSchema: {},
   integration: { runAction },

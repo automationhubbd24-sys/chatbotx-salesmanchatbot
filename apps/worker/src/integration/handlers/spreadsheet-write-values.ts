@@ -1,7 +1,7 @@
 import {
   botFieldService,
   contactCustomFieldService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   FieldReferenceKind,
   parseFieldReference,
@@ -11,8 +11,8 @@ import {
   type SpreadsheetUpdateRowSchema,
   spreadsheetStepVersions,
   toSpreadsheetStepVersion,
-} from "@chatbotx.io/flow-config"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/flow-config"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import type { ExecuteStepProps } from "./flow"
 
 type SpreadsheetWriteStepSchema =

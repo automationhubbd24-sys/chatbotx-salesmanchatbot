@@ -39,7 +39,7 @@ vi.mock("@/features/inboxes/provider/inbox-hook", () => ({
 // No portal/open-state machinery — always renders every menu item, which is
 // exactly what this test needs to assert on (unlike the trigger interaction,
 // menu-content presence/wiring is not base-ui behavior under test here).
-vi.mock("@chatbotx.io/ui/components/ui/dropdown-menu", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dropdown-menu", () => ({
   DropdownMenu: ({ children }: { children: ReactNode }) => (
     <div>{children}</div>
   ),

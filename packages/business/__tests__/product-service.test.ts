@@ -26,7 +26,7 @@ const tx = {
   insert: mocks.insert,
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     transaction: mocks.transaction,
     query: {
@@ -38,7 +38,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (column: unknown, value: unknown) => ({ column, value }),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   productCategoryRepository: {
     find: (...args: unknown[]) => mocks.categoryFind(...args),
   },
@@ -57,7 +57,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: { refreshProductEmbedding: "refreshProductEmbedding" },
   defaultQueue: { add: mocks.queueAdd },
 }))
@@ -69,13 +69,13 @@ vi.mock("../src/product/embedding", () => ({
   searchProductEmbeddings: mocks.searchProductEmbeddings,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   productAddonModel: { productId: "addon-product-id" },
   productVariantModel: { productId: "variant-product-id" },
   productVariantOptionModel: { productId: "option-product-id" },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 

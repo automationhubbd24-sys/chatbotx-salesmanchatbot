@@ -3,11 +3,11 @@
 import {
   platformCredentialService,
   zaloIntegrationService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { generateAuthUrl } from "@chatbotx.io/integration-zalo"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { generateAuthUrl } from "@salesmanchatbot.io/integration-zalo"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { redirect } from "next/navigation"
 import { getOriginUrlFromHeader } from "@/lib/domain"
 import { resolveOwnerForWorkspace } from "@/lib/platform-credential-owner"
@@ -41,7 +41,7 @@ export const reconnectZaloAction = workspaceActionClient
         type: "zalo",
       })
       if (!zaloCredential) {
-        throw new ChatbotXException("Zalo App settings not found")
+        throw new salesmanChatbotException("Zalo App settings not found")
       }
 
       // Must match the redirect_uri used at authorize time — the tenant's

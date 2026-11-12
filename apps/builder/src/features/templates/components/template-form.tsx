@@ -1,19 +1,19 @@
 "use client"
 
-import type { TemplateCategory } from "@chatbotx.io/database/partials"
-import type { TemplateModel } from "@chatbotx.io/database/types"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TemplateCategory } from "@salesmanchatbot.io/database/partials"
+import type { TemplateModel } from "@salesmanchatbot.io/database/types"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

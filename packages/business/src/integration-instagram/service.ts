@@ -5,15 +5,15 @@ import {
   eq,
   findOrFail,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import type {
   InstagramPersistentMenu,
   IntegrationUserInfo,
-} from "@chatbotx.io/database/partials"
-import { integrationInstagramRepository } from "@chatbotx.io/database/repositories"
-import { integrationInstagramModel } from "@chatbotx.io/database/schema"
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { integrationInstagramRepository } from "@salesmanchatbot.io/database/repositories"
+import { integrationInstagramModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import {
   auditChannelConnected,

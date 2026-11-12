@@ -2,7 +2,7 @@ import {
   type AddNotesStepSchema,
   addNotesNodeSchema,
   addNotesStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import AddNotesStepEditor from "./editor"
 import AddNotesStepViewer from "./viewer"

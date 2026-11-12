@@ -1,7 +1,7 @@
 // @vitest-environment node
 
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
-import type { WhatsappCallPermissionsResponse } from "@chatbotx.io/integration-whatsapp/api/calling"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
+import type { WhatsappCallPermissionsResponse } from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -18,21 +18,21 @@ const {
   loggerInfoMock: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/calling", async () => {
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/calling", async () => {
   // The real `canPerformCallAction` — this module's whole job is reading the
   // right key out of Meta's response, so stubbing it would test nothing.
   const actual = await vi.importActual<
-    typeof import("@chatbotx.io/integration-whatsapp/api/calling")
-  >("@chatbotx.io/integration-whatsapp/api/calling")
+    typeof import("@salesmanchatbot.io/integration-whatsapp/api/calling")
+  >("@salesmanchatbot.io/integration-whatsapp/api/calling")
   return {
     canPerformCallAction: actual.canPerformCallAction,
     getCallPermissions: getCallPermissionsMock,
   }
 })
 
-vi.mock("@chatbotx.io/redis", () => ({ withCache: withCacheMock }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ withCache: withCacheMock }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   callPermissionStatuses: {
     permanent: "permanent",
     temporary: "temporary",

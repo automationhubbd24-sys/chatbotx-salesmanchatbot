@@ -1,6 +1,6 @@
 "use client"
 
-import { ReflinkAnalytics } from "@chatbotx.io/analytics-nextjs/components/reflink-analytics"
+import { ReflinkAnalytics } from "@salesmanchatbot.io/analytics-nextjs/components/reflink-analytics"
 
 export function ReflinkAnalyticsClient({
   workspaceId,

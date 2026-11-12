@@ -2,7 +2,7 @@ import {
   type WhatsappOptionListStepSchema,
   whatsappOptionListStepDefaultFn,
   whatsappOptionListStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import WhatsappOptionListStepEditor from "./editor"
 import WhatsappOptionListStepViewer from "./viewer"

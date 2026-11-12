@@ -3,7 +3,7 @@ import type {
   MetaCapiContentType,
   metaCapiBusinessMessagingEventNames,
   metaPixelStandardEventNames,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import type { useTranslations } from "next-intl"
 
 type MetaCapiTranslator = ReturnType<typeof useTranslations>

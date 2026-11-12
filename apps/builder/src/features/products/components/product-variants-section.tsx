@@ -1,8 +1,8 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardAction,
@@ -10,9 +10,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
-import { TagsInputField } from "@chatbotx.io/ui/components/ui/muhammada86/tags-input-field"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
+import { TagsInputField } from "@salesmanchatbot.io/ui/components/ui/muhammada86/tags-input-field"
 import { PlusIcon, TrashIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useEffect } from "react"

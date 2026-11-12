@@ -3,9 +3,9 @@
 import {
   messengerIntegrationService,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
@@ -27,7 +27,7 @@ export const disconnectMessengerCapiAction = workspaceActionClientAllowExpired
           workspaceId,
         })
       if (!integration) {
-        throw new ChatbotXException(t("messengerNotFound"))
+        throw new salesmanChatbotException(t("messengerNotFound"))
       }
 
       await metaConversionsService.disconnectCapi({

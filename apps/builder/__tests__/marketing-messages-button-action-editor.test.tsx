@@ -33,7 +33,7 @@ vi.mock("@/features/flows/provider/flow-hook", () => ({
  * matters here — writing the field then calling `triggerValueChange`, exactly
  * as `select-field.tsx` does — and exposes one button per option.
  */
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options,

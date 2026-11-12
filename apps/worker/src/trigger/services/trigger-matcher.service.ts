@@ -1,7 +1,7 @@
-import { triggerService, workspaceService } from "@chatbotx.io/business"
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { matchableConditionTypesFor } from "@chatbotx.io/events"
+import { triggerService, workspaceService } from "@salesmanchatbot.io/business"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { matchableConditionTypesFor } from "@salesmanchatbot.io/events"
 import type { TriggerEventData, TriggerWithConditions } from "../types"
 import { ConditionEvaluator } from "./condition-evaluator"
 

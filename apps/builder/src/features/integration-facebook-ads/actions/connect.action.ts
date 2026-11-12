@@ -1,6 +1,6 @@
 "use server"
 
-import type { UserModel, WorkspaceModel } from "@chatbotx.io/database/types"
+import type { UserModel, WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClient } from "@/lib/safe-action"

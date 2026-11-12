@@ -1,4 +1,4 @@
-import type { ThreadControlState } from "@chatbotx.io/database/partials"
+import type { ThreadControlState } from "@salesmanchatbot.io/database/partials"
 import { BotIcon, CircleDashedIcon, HeadsetIcon } from "lucide-react"
 
 /**

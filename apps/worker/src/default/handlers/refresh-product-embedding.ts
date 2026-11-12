@@ -2,7 +2,7 @@ import {
   isProductEmbeddingConfigurationError,
   productService,
   refreshProductEmbedding as refreshEmbedding,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { logger } from "../../lib/logger"
 
 export async function refreshProductEmbedding(input: {

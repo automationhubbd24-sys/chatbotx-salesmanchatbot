@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
   decrement: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   connectionRepository: {
     findById: mocks.findById,
     findByIdForWorkspace: mocks.findByIdForWorkspace,
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   aiHandoverBulkRunRepository: { cancelLive: mocks.cancelLive },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mocks.inboxUpdate,
     transaction: vi.fn(async (fn: (tx: unknown) => unknown) =>
@@ -55,7 +55,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: vi.fn((column, value) => ({ column, value })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   inboxModel: { id: "id", workspaceId: "workspaceId" },
   workspaceUsageModel: {},
 }))

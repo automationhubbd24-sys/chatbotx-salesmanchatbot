@@ -1,3 +1,3 @@
-import { createClient } from "@chatbotx.io/auth/client"
+import { createClient } from "@salesmanchatbot.io/auth/client"
 
 export const authClient = createClient()

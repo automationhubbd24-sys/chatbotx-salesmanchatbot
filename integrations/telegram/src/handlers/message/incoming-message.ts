@@ -8,8 +8,8 @@ import {
   type IncomingMessage,
   messageTypes,
   type ReceivedMessageResult,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { getTelegramFileUrl } from "../../apis/bot"
 import { TelegramException } from "../../exception"
 import { logger } from "../../lib/logger"

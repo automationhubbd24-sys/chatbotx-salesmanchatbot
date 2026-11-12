@@ -1,20 +1,20 @@
-import { startRetargetAudienceSyncShape } from "@chatbotx.io/business"
+import { startRetargetAudienceSyncShape } from "@salesmanchatbot.io/business"
 import {
   adsConversionExportSegments,
   adsConversionRuleResource,
-} from "@chatbotx.io/business/ads-conversion/schema"
+} from "@salesmanchatbot.io/business/ads-conversion/schema"
 import {
   adsConversionCapiStatusSchema,
   adsConversionChannelSchema,
   adsConversionEventSourceSchema,
   adsConversionEventTypeSchema,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   facebookAdAccountSchema,
   facebookCustomAudienceSchema,
-} from "@chatbotx.io/integration-facebook-ads"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { adsEligibleChannelTypes } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { adsEligibleChannelTypes } from "@salesmanchatbot.io/utils/channel"
 import { z } from "zod"
 import { withPublicPaging } from "@/lib/public-api/list"
 import {
@@ -62,7 +62,7 @@ export const listAdsConversionRulesPublicRequest = withPublicPaging(
 
 // ─────────────────────────────────────────────────────────────────────────
 // Funnel / CAPI delivery / export — `getCtwaFunnelInput` and the export
-// input schemas in `@chatbotx.io/business/ads-conversion/schema` are
+// input schemas in `@salesmanchatbot.io/business/ads-conversion/schema` are
 // `ZodEffects` (wrapped in `.refine()`), not plain `ZodObject`s, so they
 // cannot be `.omit()`-ed. Rebuilt here from their underlying shape, minus
 // `workspaceId`, with the same `since <= until` ordering re-applied plus an
@@ -85,7 +85,7 @@ const dateRangeShape = z.object({
 })
 
 // Mirrors `withOrderedDateRange` in
-// `@chatbotx.io/business/ads-conversion/schema` — constrained to a concrete
+// `@salesmanchatbot.io/business/ads-conversion/schema` — constrained to a concrete
 // base shape (not a fully generic `z.ZodRawShape`) so the refine callback
 // below can see `since`/`until` at all; a bare generic loses those fields to
 // the mapped-type projection zod v4 produces for an arbitrary shape.

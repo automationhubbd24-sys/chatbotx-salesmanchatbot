@@ -1,4 +1,4 @@
-import { aiMcpServerAuthTypes } from "@chatbotx.io/database/partials"
+import { aiMcpServerAuthTypes } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { aiMcpServerResource } from "./resource"
 

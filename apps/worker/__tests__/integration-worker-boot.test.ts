@@ -1,5 +1,5 @@
-import { getAuditActor } from "@chatbotx.io/business/audit"
-import type { AdsConversionJobData } from "@chatbotx.io/worker-config"
+import { getAuditActor } from "@salesmanchatbot.io/business/audit"
+import type { AdsConversionJobData } from "@salesmanchatbot.io/worker-config"
 import { describe, expect, test, vi } from "vitest"
 
 // Boots the real `src/integration/worker.ts` (starts itself on import) and
@@ -52,7 +52,7 @@ vi.mock("bullmq", () => {
   return { Worker: WorkerMock }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   AIJobAction: {
     commentAIReply: "commentAIReply",
     processAutomatedResponse: "processAutomatedResponse",
@@ -91,14 +91,14 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: {
     enqueue: vi.fn(),
     enqueueHandoffReentry: vi.fn(),
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(),
   conversationService: { ensureActive: vi.fn() },
   withBlockedOwnerGuard: vi.fn(
@@ -106,12 +106,12 @@ vi.mock("@chatbotx.io/business", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/sdk")>()),
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()),
   getStoryReply: workerState.getStoryReply,
 }))
 
@@ -320,7 +320,7 @@ describe("integration worker process boot", () => {
   // gates the handler for one job type proves it for all of them,
   // including the ring path.
   test("withBlockedOwnerGuard deciding a workspace is frozen prevents handleWhatsappVoipSignalingJob (and therefore any ring) from ever running", async () => {
-    const { withBlockedOwnerGuard } = await import("@chatbotx.io/business")
+    const { withBlockedOwnerGuard } = await import("@salesmanchatbot.io/business")
     const { handleWhatsappVoipSignalingJob } = await import(
       "../src/integration/handlers/whatsapp-voip-signaling"
     )
@@ -353,7 +353,7 @@ describe("integration worker process boot", () => {
   })
 
   test("resolveVoipSignalingWorkspaceId resolves the workspace via the integration lookup, and the guard receives THAT resolved id", async () => {
-    const { withBlockedOwnerGuard } = await import("@chatbotx.io/business")
+    const { withBlockedOwnerGuard } = await import("@salesmanchatbot.io/business")
     vi.mocked(withBlockedOwnerGuard).mockClear()
     identifyInboxAndIntegrationAuthFromIdentifier.mockReset()
     identifyInboxAndIntegrationAuthFromIdentifier.mockResolvedValue({
@@ -380,7 +380,7 @@ describe("integration worker process boot", () => {
   })
 
   test("a failed integration lookup resolves the workspace as undefined, so the guard runs FAIL-OPEN (existing, documented behaviour — resolveVoipSignalingWorkspaceId's own doc comment; not changed here)", async () => {
-    const { withBlockedOwnerGuard } = await import("@chatbotx.io/business")
+    const { withBlockedOwnerGuard } = await import("@salesmanchatbot.io/business")
     vi.mocked(withBlockedOwnerGuard).mockClear()
     identifyInboxAndIntegrationAuthFromIdentifier.mockReset()
     identifyInboxAndIntegrationAuthFromIdentifier.mockRejectedValue(

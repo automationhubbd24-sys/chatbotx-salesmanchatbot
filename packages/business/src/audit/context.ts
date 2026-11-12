@@ -11,14 +11,14 @@ export type AuditActor = {
 }
 
 const globalForAudit = globalThis as typeof globalThis & {
-  __chatbotxAuditStorage?: AsyncLocalStorage<AuditActor>
+  __salesmanchatbotAuditStorage?: AsyncLocalStorage<AuditActor>
 }
 
-if (!globalForAudit.__chatbotxAuditStorage) {
-  globalForAudit.__chatbotxAuditStorage = new AsyncLocalStorage<AuditActor>()
+if (!globalForAudit.__salesmanchatbotAuditStorage) {
+  globalForAudit.__salesmanchatbotAuditStorage = new AsyncLocalStorage<AuditActor>()
 }
 
-const auditStorage = globalForAudit.__chatbotxAuditStorage
+const auditStorage = globalForAudit.__salesmanchatbotAuditStorage
 
 export function withAuditContext<T>(actor: AuditActor, fn: () => T): T {
   return auditStorage.run(actor, fn)

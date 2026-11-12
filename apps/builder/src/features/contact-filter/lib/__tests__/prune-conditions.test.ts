@@ -1,4 +1,4 @@
-import { contactFilterFields } from "@chatbotx.io/database/partials"
+import { contactFilterFields } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import type { ContactFilterCondition } from "../../schema"
 import { pruneExcludedConditions } from "../prune-conditions"

@@ -1,11 +1,11 @@
-import type { ErrorLogRecordedPayload } from "@chatbotx.io/event-bus"
+import type { ErrorLogRecordedPayload } from "@salesmanchatbot.io/event-bus"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const onConflictDoNothing = vi.fn()
 const values = vi.fn(() => ({ onConflictDoNothing }))
 const insert = vi.fn(() => ({ values }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     get insert() {
       return insert
@@ -26,7 +26,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   errorLogModel: { _: "ErrorLog" },
 }))
 
@@ -34,11 +34,11 @@ vi.mock("@chatbotx.io/database/schema", () => ({
 // against the mocked `insert`/`values` above, matching
 // `packages/database/src/repositories/error-log/repository.ts` verbatim —
 // rather than the real repositories barrel: vitest's SSR deps optimizer
-// bundles the whole `@chatbotx.io/database` package graph together once any
+// bundles the whole `@salesmanchatbot.io/database` package graph together once any
 // subpath is imported, which otherwise pulls in `contactRepository`'s real
 // contact-filter query graph (needs the real schema, conflicting with the
 // narrow mock above).
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   insertErrorLogs: (rows: unknown[]) =>
     insert().values(rows).onConflictDoNothing(),
 }))

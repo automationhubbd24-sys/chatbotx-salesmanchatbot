@@ -1,14 +1,14 @@
-import { flushAllPendingWorkspaceBroadcasts } from "@chatbotx.io/business"
-import { extractContactInboxId } from "@chatbotx.io/events"
-import { runWithWebhookExecutionContext } from "@chatbotx.io/events/context"
-import { SdkException } from "@chatbotx.io/sdk"
+import { flushAllPendingWorkspaceBroadcasts } from "@salesmanchatbot.io/business"
+import { extractContactInboxId } from "@salesmanchatbot.io/events"
+import { runWithWebhookExecutionContext } from "@salesmanchatbot.io/events/context"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import {
   defaultWorkerOptions,
   getQueueConnection,
   queueNames,
   TriggerJobAction,
   type TriggerJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { ensureBootstrapped } from "../lib/bootstrap"
 import { isBlockedWorkspace } from "../lib/is-blocked-workspace"

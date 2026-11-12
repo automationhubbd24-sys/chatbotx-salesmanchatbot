@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationActiveCampaignService } from "@chatbotx.io/business"
+import { integrationActiveCampaignService } from "@salesmanchatbot.io/business"
 import {
   ActiveCampaignApiError,
   integration as activeCampaignIntegration,
-} from "@chatbotx.io/integration-active-campaign"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-active-campaign"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

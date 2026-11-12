@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { logger } from "../../../logger"
 import type { CreateMessageInput } from "../../../repositories/message/message-repository"
 import { withShardRetry } from "../../shared/retry"

@@ -2,7 +2,7 @@
  * Re-encrypts all Credential rows from the previous key to the current key.
  *
  * Usage:
- *   pnpm --filter @chatbotx.io/database rotate:encryption-key [--dry-run]
+ *   pnpm --filter @salesmanchatbot.io/database rotate:encryption-key [--dry-run]
  *
  * Required env vars:
  *   ENCRYPTION_KEY      — the new (target) key hex
@@ -16,7 +16,7 @@
  *   4. Run this script (--dry-run first to see row counts)
  *   5. Once complete, remove ENCRYPTION_KEY_PREV from env
  */
-import { encryptUtils } from "@chatbotx.io/encryption"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
 import { eq } from "drizzle-orm"
 import type { z } from "zod"
 import { db } from "../src/client"

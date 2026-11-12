@@ -4,9 +4,9 @@ import {
   WHATSAPP_CALL_BUTTON_LABEL_MAX,
   type WhatsappCallButtonLabelFormValues,
   whatsappCallButtonLabelFormSchema,
-} from "@chatbotx.io/flow-config"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -15,7 +15,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { PhoneIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

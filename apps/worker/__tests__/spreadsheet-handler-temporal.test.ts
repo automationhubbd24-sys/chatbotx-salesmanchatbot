@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   runAction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: mocks.buildContext,
   contactCustomFieldService: {
     listValues: mocks.listValues,
@@ -25,15 +25,15 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { query: { contactCustomFieldModel: { findFirst: vi.fn() } } },
 }))
 
-vi.mock("@chatbotx.io/integration-google-sheets", () => ({
+vi.mock("@salesmanchatbot.io/integration-google-sheets", () => ({
   integration: { runAction: mocks.runAction },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn(),
     replaceAll: vi.fn(),

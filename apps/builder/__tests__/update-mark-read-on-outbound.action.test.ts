@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockUpdateMarkReadOnOutbound = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   inboxService: {
     updateMarkReadOnOutbound: (...args: unknown[]) =>
       mockUpdateMarkReadOnOutbound(...args),

@@ -7,7 +7,7 @@ import {
   messengerIntegrationService,
   messengerMessageTemplateService,
   whatsappMessageTemplateService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { listAutomatedResponses } from "@/features/automated-response/queries"
 import type { AutomatedResponseResource } from "@/features/automated-response/schema/resource"
 import type { ListMessengerMessageTemplatesResponse } from "@/features/integration-messenger/message-templates/schema/query"

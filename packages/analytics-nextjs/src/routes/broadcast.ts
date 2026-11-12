@@ -1,9 +1,9 @@
-import { broadcastAnalyticsService } from "@chatbotx.io/analytics"
+import { broadcastAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   getBroadcastStatsRequest,
   getBroadcastStatsResponse,
-} from "@chatbotx.io/analytics/schemas"
-import { withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { withCache } from "@salesmanchatbot.io/redis"
 import { os } from "@orpc/server"
 import { logger } from "../lib/log"
 

@@ -8,10 +8,10 @@ export type {
   ContactDeletedEventPayload,
   HumanMessageSentEventPayload,
   MessageBotReceivedEventPayload,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 export {
   analyticsDashboardEventSchema,
   analyticsDashboardEventSchemas,
   analyticsDashboardEventTypeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 export * from "./event-bus"

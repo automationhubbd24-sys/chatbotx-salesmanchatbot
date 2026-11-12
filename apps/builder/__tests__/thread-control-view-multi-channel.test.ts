@@ -3,9 +3,9 @@ import { describe, expect, test, vi } from "vitest"
 // Only WhatsApp is routing-capable today; a second routing channel is stubbed
 // so the selection between two routing-capable inboxes is pinned before a
 // second adapter ships.
-vi.mock("@chatbotx.io/utils/channel", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/utils/channel", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/utils/channel")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/utils/channel")>()
   return {
     ...actual,
     isThreadControlChannel: (channel: string | null | undefined): boolean =>

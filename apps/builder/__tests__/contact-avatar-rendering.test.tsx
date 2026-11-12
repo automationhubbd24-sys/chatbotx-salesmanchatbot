@@ -1,11 +1,11 @@
-import type { TenantSettings } from "@chatbotx.io/business"
+import type { TenantSettings } from "@salesmanchatbot.io/business"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { ContactNameCell } from "@/features/contacts/components/contact-name-cell"
 import { TenantProvider } from "@/features/tenant/tenant-settings-provider"
 
-vi.mock("@chatbotx.io/ui/components/ui/avatar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/avatar", () => ({
   Avatar: ({ children }: { children: React.ReactNode }) => (
     <span data-slot="avatar">{children}</span>
   ),
@@ -25,7 +25,7 @@ vi.mock("@chatbotx.io/ui/components/ui/avatar", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   TooltipContent: ({ children }: { children: React.ReactNode }) => (
     <span>{children}</span>
@@ -38,7 +38,7 @@ vi.mock("@/features/inboxes/components/inbox-icon", () => ({
 }))
 
 const tenantSettings = {
-  storageUrl: "https://filesystem.example.com/chatbotx/",
+  storageUrl: "https://filesystem.example.com/salesmanchatbot/",
 } as unknown as TenantSettings
 
 let container: HTMLDivElement | null = null
@@ -75,7 +75,7 @@ describe("ContactNameCell avatar rendering", () => {
     const el = renderContact("public/space/1/avatar/contact-1.jpg")
 
     expect(el.querySelector("img")?.getAttribute("src")).toBe(
-      "https://filesystem.example.com/chatbotx/public/space/1/avatar/contact-1.jpg",
+      "https://filesystem.example.com/salesmanchatbot/public/space/1/avatar/contact-1.jpg",
     )
   })
 

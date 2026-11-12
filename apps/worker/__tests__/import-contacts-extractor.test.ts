@@ -1,4 +1,4 @@
-import type { ContactImportColumnMap } from "@chatbotx.io/database/partials"
+import type { ContactImportColumnMap } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, it } from "vitest"
 import { extractRowData } from "../src/default/handlers/imports/handler/contacts/extractor"
 

@@ -1,4 +1,4 @@
-import { appointmentCalendarService } from "@chatbotx.io/business"
+import { appointmentCalendarService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListAppointmentCalendarsRequest } from "../schema/query"
 

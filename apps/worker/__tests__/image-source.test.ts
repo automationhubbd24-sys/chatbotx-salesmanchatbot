@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   findAttachmentsByConversation: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createConversationSourceRepository: () => ({
     findAttachmentsByConversation: mocks.findAttachmentsByConversation,
   }),

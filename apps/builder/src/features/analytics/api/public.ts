@@ -11,11 +11,11 @@ import {
   messageAnalyticsService,
   refLinkAnalyticsService,
   sequenceAnalyticsService,
-} from "@chatbotx.io/analytics"
-import { flowService, smartDelayService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import type { FlowNode } from "@chatbotx.io/flow-config"
-import { invalidateCacheByTags, withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/analytics"
+import { flowService, smartDelayService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
+import { invalidateCacheByTags, withCache } from "@salesmanchatbot.io/redis"
 import type { z } from "zod"
 import { buildSmartDelayNodeStats } from "@/features/flows/analytics/smart-delay-node-stats"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"

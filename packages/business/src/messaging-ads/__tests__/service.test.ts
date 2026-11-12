@@ -39,7 +39,7 @@ const mocks = vi.hoisted(() => ({
   deleteObject: vi.fn(() => Promise.resolve()),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   messagingAdOperationRepository: {
     create: mocks.createOp,
     findByIdForWorkspace: mocks.findByIdForWorkspace,
@@ -51,18 +51,18 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: mocks.createId }
 })
 
 // Real `buildPromotedObject`/`META_STATUS`/`messagingAdConfigByChannel` are
 // pure and exercised for real; only the Graph dispatcher (`integration`) and
 // `getGraphErrorCode` are mocked.
-vi.mock("@chatbotx.io/integration-facebook-ads", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", async (importOriginal) => {
   const actual =
     await importOriginal<
-      typeof import("@chatbotx.io/integration-facebook-ads")
+      typeof import("@salesmanchatbot.io/integration-facebook-ads")
     >()
   return {
     ...actual,
@@ -88,7 +88,7 @@ vi.mock("../media-preflight", () => ({
   resolveStoredImageBytes: mocks.resolveStoredImageBytes,
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { deleteObject: mocks.deleteObject },
 }))
 

@@ -1,5 +1,5 @@
-import { db, sql } from "@chatbotx.io/database/client"
-import { aiEmbeddingStatuses } from "@chatbotx.io/database/partials"
+import { db, sql } from "@salesmanchatbot.io/database/client"
+import { aiEmbeddingStatuses } from "@salesmanchatbot.io/database/partials"
 import { embed } from "ai"
 import { z } from "zod"
 import { logger } from "../logger"

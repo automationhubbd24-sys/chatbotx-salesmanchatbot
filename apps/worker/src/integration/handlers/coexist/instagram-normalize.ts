@@ -1,9 +1,9 @@
-import { extractContactInfo } from "@chatbotx.io/business"
+import { extractContactInfo } from "@salesmanchatbot.io/business"
 import {
   guessFileTypeFromMimeType,
   type IncomingAttachment,
   type IncomingContact,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import type { HistoricalMessage } from "./bulk-historical-import"
 import type { AppUsageSignal } from "./pull-adapter"
 

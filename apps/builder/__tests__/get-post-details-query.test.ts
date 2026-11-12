@@ -10,7 +10,7 @@ const mocks = vi.hoisted(() => ({
   cacheOptions: [] as Record<string, unknown>[],
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   // The cache is transparent here: every test wants the resolver to run. The
   // key and options are recorded because workspace isolation and the degraded
   // TTL both live in them.
@@ -25,7 +25,7 @@ vi.mock("@chatbotx.io/redis", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(),
   instagramIntegrationService: {
     findByInboxIdForWorkspace: mocks.findInstagramByInboxIdForWorkspace,
@@ -41,8 +41,8 @@ vi.mock("@chatbotx.io/business", () => ({
     `tiktok-post-details:${inboxId}`,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
 vi.mock("@/integration", () => ({

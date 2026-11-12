@@ -201,28 +201,28 @@ const {
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
   contactInboxRepository: {
     findWithContact: mockFindContactInbox,
   },
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: {
     enqueueFlowAction: mockAutomatedResponseEnqueueFlowAction,
   },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { putObject: mockUploaderPutObject },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   isUniqueViolationError: mockIsUniqueViolationError,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   CONTACT_INBOX_SOURCE_ID_KEY: "ContactInbox_inboxId_sourceId_key",
   CONTACT_INBOX_SOURCE_PARENT_USER_ID_KEY:
     "ContactInbox_inboxId_sourceParentUserId_key",
@@ -244,15 +244,15 @@ vi.mock("@chatbotx.io/database/schema", () => ({
 // Mirror of the real capability table
 // (packages/business/src/contact/profile-refresh/rules.ts) — pure, so
 // re-implemented here rather than partially importing the real (heavy)
-// `@chatbotx.io/business` barrel, matching this file's existing convention
-// for `@chatbotx.io/sdk`'s pure helpers above.
+// `@salesmanchatbot.io/business` barrel, matching this file's existing convention
+// for `@salesmanchatbot.io/sdk`'s pure helpers above.
 //
-// Tried switching to `vi.mock("@chatbotx.io/business", async (importOriginal)
+// Tried switching to `vi.mock("@salesmanchatbot.io/business", async (importOriginal)
 // => ...)` (as done in contact-profile-refresh.test.ts, which has no
-// `@chatbotx.io/database/schema` mock to conflict with) — it breaks here: the
+// `@salesmanchatbot.io/database/schema` mock to conflict with) — it breaks here: the
 // real barrel's module graph reaches `ads-conversion/schema.ts`, which calls
-// `createSelectSchema` from `@chatbotx.io/database/schema` at import time,
-// and this file's `@chatbotx.io/database/schema` mock above is deliberately
+// `createSelectSchema` from `@salesmanchatbot.io/database/schema` at import time,
+// and this file's `@salesmanchatbot.io/database/schema` mock above is deliberately
 // minimal (a handful of table shapes) and has no such export. Keeping the
 // mirror here rather than widening that mock (and whatever else the real
 // barrel transitively touches) to stay a small, scoped fix.
@@ -274,7 +274,7 @@ const CONTACT_PROFILE_NAME_CAPABILITIES: Record<
 
 const mockReserveLiveCommentWindow = vi.hoisted(() => vi.fn())
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   commentAutomationService: {
     reserveLiveCommentWindow: mockReserveLiveCommentWindow,
   },
@@ -366,7 +366,7 @@ vi.mock("@chatbotx.io/business", () => ({
     message.contentAttributes?.threadControlPromoted === undefined,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mockDistributedLockRunExclusive },
   isLockAcquisitionError: () => false,
   // `resolveLiveComment` remembers Facebook live posts here; no post is known
@@ -377,20 +377,20 @@ vi.mock("@chatbotx.io/redis", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: vi.fn().mockResolvedValue(undefined),
   setWebhookExecutionContext: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   contentTypes: { enum: { text: "text", location: "location" } },
   // Mirror of the real pure helper — the module is fully mocked here.
   resolveSourceScopedIdentityMatch: async <T>(
@@ -455,23 +455,23 @@ vi.mock("@chatbotx.io/sdk", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "test-id") }
 })
 
-vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/flow-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/flow-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/flow-config")>()
   return { ...actual }
 })
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   parseAppointmentCancelPostback: mockParseAppointmentCancelPostback,
   verifyAppointmentCancelPostback: mockVerifyAppointmentCancelPostback,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   // `logProviderError` short-circuits on this, as `defaultQueue` does.
   isNoRedisEnv: () => true,
   ChatJobAction: {
@@ -587,7 +587,7 @@ vi.mock(
 
 const { metaReferralToContactSource, receiveComment, receiveMessage } =
   await import("../src/integration/handlers/received-message")
-const { encodeButtonPayload } = await import("@chatbotx.io/flow-config")
+const { encodeButtonPayload } = await import("@salesmanchatbot.io/flow-config")
 const { logger } = await import("../src/lib/logger")
 const { allIntegrations, integrationService } = await import(
   "../src/services/integrations"
@@ -601,7 +601,7 @@ const fakeInbox = {
   id: "inbox-1",
   workspaceId: "ws-1",
   channel: "messenger",
-} as unknown as import("@chatbotx.io/database/types").InboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").InboxModel
 
 const fakeIntegrationRow = {
   id: "integration-1",
@@ -616,19 +616,19 @@ const fakeContactInbox = {
   sourceId: "psid-123",
   channel: "messenger",
   source: "messenger",
-} as unknown as import("@chatbotx.io/database/types").ContactInboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactInboxModel
 
 const fakeContact = {
   id: "contact-1",
   workspaceId: "ws-1",
   blockedAt: new Date("2026-01-01T00:00:00Z"),
-} as unknown as import("@chatbotx.io/database/types").ContactModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactModel
 
 const fakeConversation = {
   id: "conv-1",
   workspaceId: "ws-1",
   contactId: "contact-1",
-} as unknown as import("@chatbotx.io/database/types").ConversationModel
+} as unknown as import("@salesmanchatbot.io/database/types").ConversationModel
 
 const baseIncomingMessage = {
   sourceId: "msg-src-1",
@@ -1273,7 +1273,7 @@ describe("receiveMessage — message repository branch", () => {
 
   test("skips activity and mark-read for matching text with no provider source id", async () => {
     const matchingOwnSend = {
-      id: "msg-chatbotx-send",
+      id: "msg-salesmanchatbot-send",
       sourceId: null,
       text: fakeCreatedMessage.text,
     }
@@ -1858,7 +1858,7 @@ describe("receiveMessage — new contact MAC gate", () => {
     // Threads the freshly-created ContactInbox id — not merely the contact
     // id — so a Trigger action reacting to newContact attributes to THIS
     // channel instead of falling back to most-recent-inbox.
-    const { emitContactCreated } = await import("@chatbotx.io/events")
+    const { emitContactCreated } = await import("@salesmanchatbot.io/events")
     expect(emitContactCreated).toHaveBeenCalledWith(
       "ws-1",
       "contact-new",
@@ -5421,7 +5421,7 @@ describe("receiveMessage — outbound automated response on message echoes", () 
     )
   })
 
-  test("skips the check when the echo duplicates a message ChatbotX itself sent", async () => {
+  test("skips the check when the echo duplicates a message salesmanChatbot itself sent", async () => {
     // A sourceId dedupe miss: our own row is already there, so the echo was
     // inserted a second time. Running keyword automation over it would let an
     // outbound rule match the bot's own reply.

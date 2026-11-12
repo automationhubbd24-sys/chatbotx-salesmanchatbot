@@ -1,7 +1,7 @@
 "use client"
 
-import { FormFieldWrapper } from "@chatbotx.io/ui/components/form/field-wrapper"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { FormFieldWrapper } from "@salesmanchatbot.io/ui/components/form/field-wrapper"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 
 type PurchaseNumberFieldProps = {
   name: string

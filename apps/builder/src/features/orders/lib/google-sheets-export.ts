@@ -3,8 +3,8 @@ import {
   integrationGoogleSheetService,
   orderService,
   spreadsheetService,
-} from "@chatbotx.io/business"
-import type { GoogleSheetsAuthValue } from "@chatbotx.io/integration-google-sheets"
+} from "@salesmanchatbot.io/business"
+import type { GoogleSheetsAuthValue } from "@salesmanchatbot.io/integration-google-sheets"
 import { integrations } from "@/integration"
 import type { ExportOrdersRequest } from "../schema/action"
 import { serializeOrderExportValue } from "./export-orders"

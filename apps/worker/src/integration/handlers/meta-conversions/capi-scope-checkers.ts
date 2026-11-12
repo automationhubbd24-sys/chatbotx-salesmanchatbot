@@ -9,19 +9,19 @@ import {
   platformCredentialService,
   WHATSAPP_CAPI_SCOPE,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   debugToken as debugInstagramFacebookToken,
   hasInstagramManageEventsScope,
   toAppAccessToken as toInstagramFacebookAppAccessToken,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   debugToken as debugMessengerToken,
   hasPageEventsScope,
   toAppAccessToken as toMessengerAppAccessToken,
-} from "@chatbotx.io/integration-messenger"
-import { debugTokenOrThrow } from "@chatbotx.io/integration-whatsapp/api/auth"
-import { grantedScopesForWaba } from "@chatbotx.io/integration-whatsapp/api/granted-scopes"
+} from "@salesmanchatbot.io/integration-messenger"
+import { debugTokenOrThrow } from "@salesmanchatbot.io/integration-whatsapp/api/auth"
+import { grantedScopesForWaba } from "@salesmanchatbot.io/integration-whatsapp/api/granted-scopes"
 
 /**
  * Shared CAPI dataset resource type + integration resolvers + scope
@@ -31,7 +31,7 @@ import { grantedScopesForWaba } from "@chatbotx.io/integration-whatsapp/api/gran
  *
  * NOTE (deviation from the plan text): the plan called for moving these into
  * `packages/business/src/meta-conversions/`, but `integrations/messenger`
- * and `integrations/instagram-facebook` both depend on `@chatbotx.io/business`
+ * and `integrations/instagram-facebook` both depend on `@salesmanchatbot.io/business`
  * — moving code that imports those integration packages INTO business would
  * create a circular dependency. Both worker handlers already live in
  * `apps/worker`, so a shared module at this layer gets the same "don't

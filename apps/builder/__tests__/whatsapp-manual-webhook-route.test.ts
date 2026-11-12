@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { NextRequest } from "next/server"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 

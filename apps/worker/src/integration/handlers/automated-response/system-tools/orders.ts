@@ -9,12 +9,12 @@ import {
   type SystemToolExecutors,
   type UpdateOrderDraftInput,
   type UpdateOrderIntakeInput,
-} from "@chatbotx.io/ai/server"
-import { systemFunctionNames } from "@chatbotx.io/ai"
-import { orderIntakeSessionService, orderService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { OrderType } from "@chatbotx.io/database/partials"
-import type { OrderConversationSessionModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/ai/server"
+import { systemFunctionNames } from "@salesmanchatbot.io/ai"
+import { orderIntakeSessionService, orderService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { OrderType } from "@salesmanchatbot.io/database/partials"
+import type { OrderConversationSessionModel } from "@salesmanchatbot.io/database/types"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../../lib/logger"
 
@@ -81,7 +81,7 @@ function executor<T extends keyof SystemToolExecutors>(name: T, run: (args: Para
     try { return await run(args as Parameters<NonNullable<SystemToolExecutors[T]>>[0], context) }
     catch (error) {
       logger.error({ err: normalizeError(error), workspaceId: context.workspaceId, conversationId: context.conversationId }, `[orders] ${name} failed`)
-      if (error instanceof ChatbotXException && error.code === "validation") {
+      if (error instanceof salesmanChatbotException && error.code === "validation") {
         return {
           order: null,
           error: error.message,

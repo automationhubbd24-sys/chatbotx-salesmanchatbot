@@ -1,11 +1,11 @@
 "use client"
 
-import { systemFunctionGroupIds, systemFunctionNames } from "@chatbotx.io/ai"
+import { systemFunctionGroupIds, systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   AIFileModel,
   AIFunctionModel,
   AIMCPServerModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type { LucideIcon } from "lucide-react"
 import {
   FileIcon,

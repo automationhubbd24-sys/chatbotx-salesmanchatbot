@@ -1,6 +1,6 @@
-import { aiFileService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { aiFileService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"
 import {

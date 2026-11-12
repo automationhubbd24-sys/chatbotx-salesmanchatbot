@@ -1,7 +1,7 @@
 "use client"
 
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useQuery } from "@tanstack/react-query"
 import { MegaphoneIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

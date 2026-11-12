@@ -1,4 +1,4 @@
-import { ChatJobAction, IntegrationJobAction } from "@chatbotx.io/worker-config"
+import { ChatJobAction, IntegrationJobAction } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { parseRichResponse } from "../src/integration/handlers/rich-response"
 import { executeRichActions } from "../src/integration/handlers/rich-response/action-executor"
@@ -34,9 +34,9 @@ const handoffExecuteMock = vi.hoisted(() => vi.fn(async () => undefined))
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     chatQueue: { addBulk: chatQueueAddBulk },
@@ -44,8 +44,8 @@ vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/business", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/business")>()
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/business")>()
   return {
     ...actual,
     contactService: {

@@ -3,7 +3,7 @@
 import {
   isMediaButtonsDropped,
   isMediaStepUnsupported,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { TriangleAlertIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useWatch } from "react-hook-form"

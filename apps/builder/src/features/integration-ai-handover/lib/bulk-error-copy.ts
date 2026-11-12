@@ -1,4 +1,4 @@
-import { AI_HANDOVER_BULK_ERROR_CODES } from "@chatbotx.io/business"
+import { AI_HANDOVER_BULK_ERROR_CODES } from "@salesmanchatbot.io/business"
 
 /**
  * Service error code → i18n key, one table so the actions never branch on

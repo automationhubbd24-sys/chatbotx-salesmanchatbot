@@ -8,7 +8,7 @@ import {
   aiGenerateImageSchema,
   aiSpeechToTextSchema,
   aiTextToSpeechSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   getHeavyJobCompletionWaitTimeoutMs,
   getHeavyJobOptions,
@@ -20,7 +20,7 @@ import {
   heavyQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"
 import { env } from "../../env"

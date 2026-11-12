@@ -3,7 +3,7 @@
 import {
   type RealtimeEventData,
   RealtimeEventType,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import usePartySocket from "partysocket/react"
 import type { MessageResource } from "../messages/schema/resource"
 import { useTenantSettings } from "../tenant"

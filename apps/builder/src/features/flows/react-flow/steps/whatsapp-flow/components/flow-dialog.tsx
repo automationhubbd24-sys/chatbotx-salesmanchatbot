@@ -5,13 +5,13 @@ import {
   type WhatsappFlowDialogFormValues,
   type WhatsappFlowFieldMapping,
   whatsappFlowDialogFormSchema,
-} from "@chatbotx.io/flow-config"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
+} from "@salesmanchatbot.io/flow-config"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
 import {
   SelectField,
   type SelectOption,
-} from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -20,8 +20,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslations } from "next-intl"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"

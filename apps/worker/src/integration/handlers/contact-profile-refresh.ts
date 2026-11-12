@@ -5,10 +5,10 @@ import {
   contactProfileRefreshService,
   hasEmptyProfileName,
   resolveInboundProfileNameSource,
-} from "@chatbotx.io/business"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import type { ContactInboxModel, InboxModel } from "@chatbotx.io/database/types"
-import type { IncomingContact, IncomingMessage } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel, InboxModel } from "@salesmanchatbot.io/database/types"
+import type { IncomingContact, IncomingMessage } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../lib/logger"
 import { resolveIntegrationContextFromContactInbox } from "../../services/integrations"
 

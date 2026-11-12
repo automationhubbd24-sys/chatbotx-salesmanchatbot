@@ -57,7 +57,7 @@ vi.mock(
 )
 
 const resolveLabels = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   resolveContactFilterValueLabels: resolveLabels,
 }))
 

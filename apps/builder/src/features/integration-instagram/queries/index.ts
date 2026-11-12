@@ -1,7 +1,7 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { integrationInstagramModel } from "@chatbotx.io/database/schema"
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { integrationInstagramModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
 
 export const findIntegrationInstagram = async (where: {
   workspaceId: string

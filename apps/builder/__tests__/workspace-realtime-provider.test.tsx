@@ -2,11 +2,11 @@ import {
   REALTIME_EVENT_TOPICS,
   type RealtimeTopic,
   serializeRealtimeSubscriptionMessage,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import {
   PRESENCE_REPORT_INTERVAL_MS,
   serializePresencePingMessage,
-} from "@chatbotx.io/partysocket-config/presence"
+} from "@salesmanchatbot.io/partysocket-config/presence"
 import { act, StrictMode } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

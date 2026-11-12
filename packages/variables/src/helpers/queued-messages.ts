@@ -1,4 +1,4 @@
-import { messageService } from "@chatbotx.io/business"
+import { messageService } from "@salesmanchatbot.io/business"
 import type { ContactVariableContext } from "../schema"
 
 export const getQueuedMessages = async (

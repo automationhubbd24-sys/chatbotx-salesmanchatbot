@@ -7,12 +7,12 @@ import {
   inArray,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   productEmbeddingModel,
   productModel,
-} from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type ProductEmbeddingUpsertInput = {
   productId: string

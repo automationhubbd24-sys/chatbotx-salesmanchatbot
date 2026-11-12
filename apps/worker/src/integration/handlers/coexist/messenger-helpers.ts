@@ -1,17 +1,17 @@
-import { extractContactInfo } from "@chatbotx.io/business"
+import { extractContactInfo } from "@salesmanchatbot.io/business"
 import {
   listMessages,
   type MessengerConversation,
   type MessengerHistoryAttachment,
   type MessengerHistoryMessage,
-} from "@chatbotx.io/integration-messenger/apis/sync"
-import type { BucUsage } from "@chatbotx.io/integration-messenger/apis/usage"
+} from "@salesmanchatbot.io/integration-messenger/apis/sync"
+import type { BucUsage } from "@salesmanchatbot.io/integration-messenger/apis/usage"
 import {
   guessFileTypeFromMimeType,
   type IncomingAttachment,
   type MessageButtonTemplate,
   type MessageTemplateEntity,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import { logger } from "../../../lib/logger"
 import { isRetryable } from "../shared/http-retry"

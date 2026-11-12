@@ -5,7 +5,7 @@ const mockFindByOrFail = vi.fn()
 const mockResolveContactInboxForConversation = vi.fn()
 const mockCreateOutgoing = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findByOrFail: (...args: unknown[]) => mockFindByOrFail(...args),
     resolveContactInboxForConversation: (...args: unknown[]) =>

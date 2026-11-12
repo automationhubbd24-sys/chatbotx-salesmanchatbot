@@ -13,7 +13,7 @@ import {
   ne,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type CouponImportMeta,
   type CouponIssueStatus,
@@ -27,18 +27,18 @@ import {
   importFormats,
   importStatuses,
   importTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   couponModel,
   couponTopicModel,
   fileModel,
   importModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type CouponTopicListInput = {
   workspaceId: string

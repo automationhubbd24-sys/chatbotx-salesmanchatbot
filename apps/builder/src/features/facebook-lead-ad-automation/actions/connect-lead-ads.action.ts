@@ -1,9 +1,9 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { UserModel, WorkspaceModel } from "@chatbotx.io/database/types"
-import { generateLeadAdsAuthUrl } from "@chatbotx.io/integration-messenger"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { UserModel, WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { generateLeadAdsAuthUrl } from "@salesmanchatbot.io/integration-messenger"
 import { redirect } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { workspaceIdrequestParams } from "@/features/common/schema"
@@ -29,7 +29,7 @@ export const connectLeadAdsAction = workspaceActionClient
         })
       if (!messengerCredential) {
         const t = await getTranslations()
-        throw new ChatbotXException(t("facebookAds.errors.invalidAppSettings"))
+        throw new salesmanChatbotException(t("facebookAds.errors.invalidAppSettings"))
       }
 
       // Only the Messenger callback is registered as a redirect_uri with the

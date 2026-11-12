@@ -1,5 +1,5 @@
-import { conversationService, messageService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
+import { conversationService, messageService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
 import { z } from "zod"
 import {
   ENGLISH_CALL_PERMISSION_MESSAGES,

@@ -1,5 +1,5 @@
-import type { PullCoexistChannel } from "@chatbotx.io/database/repositories"
-import type { IncomingContact } from "@chatbotx.io/sdk"
+import type { PullCoexistChannel } from "@salesmanchatbot.io/database/repositories"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
 import type { HistoricalMessage } from "./bulk-historical-import"
 
 export type AppUsageSignal = {

@@ -1,5 +1,5 @@
-import { db, eq } from "@chatbotx.io/database/client"
-import { aiFunctionModel } from "@chatbotx.io/database/schema"
+import { db, eq } from "@salesmanchatbot.io/database/client"
+import { aiFunctionModel } from "@salesmanchatbot.io/database/schema"
 import { aiFunctionService } from "../../ai-function/service"
 import type {
   PatchTask,

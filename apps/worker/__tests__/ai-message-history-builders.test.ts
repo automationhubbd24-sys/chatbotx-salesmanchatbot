@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   getSafeSinceTime: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mocks.createMessageRepository,
   findConversationAIContextState: mocks.findConversationAIContextState,
   getSafeSinceTime: mocks.getSafeSinceTime,

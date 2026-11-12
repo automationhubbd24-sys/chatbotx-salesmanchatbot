@@ -1,8 +1,8 @@
 "use client"
 
-import { FilterMode, Operator } from "@chatbotx.io/flow-config"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { FilterMode, Operator } from "@salesmanchatbot.io/flow-config"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { TrashIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFieldArray, useFormContext } from "react-hook-form"

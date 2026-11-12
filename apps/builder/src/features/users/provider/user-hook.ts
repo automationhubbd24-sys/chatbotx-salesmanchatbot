@@ -1,5 +1,5 @@
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
-import type { MultiSelectGroup } from "@chatbotx.io/ui/components/ui/sersavan/multi-select"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
+import type { MultiSelectGroup } from "@salesmanchatbot.io/ui/components/ui/sersavan/multi-select"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useCallback, useMemo } from "react"
 import { useWorkspaceId } from "@/hooks/routing"

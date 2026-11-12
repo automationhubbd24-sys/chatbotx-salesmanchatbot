@@ -1,4 +1,4 @@
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import { OpenaiCompatibleEmbeddingManage } from "@/features/integration-openai-compatible-embedding/openai-compatible-embedding-manage"
 import { findIntegrationOpenaiCompatibleEmbedding } from "@/features/integration-openai-compatible-embedding/queries"

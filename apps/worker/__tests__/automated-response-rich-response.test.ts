@@ -2,7 +2,7 @@ import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { type ModelMessage, streamText } from "ai"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { replyByAI } from "../src/integration/handlers/automated-response/replies"
@@ -62,7 +62,7 @@ const richResponseFormatMock = vi.hoisted(() =>
 // Module mocks
 // ---------------------------------------------------------------------------
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiProviders: { openai: "openai" },
   aiTimeouts: { aiTotal: 30_000, aiStep: 10_000, aiChunk: 5000 },
   helpTexts: {
@@ -88,7 +88,7 @@ vi.mock("@chatbotx.io/ai", () => ({
   appendUnavailableWebSearchPolicy: (p: string) => p,
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: { appendHistory: appendHistoryMock },
   appendAIAgentActionToolProtocol: (p: string) => p,
   appendFabricationGuard: (p: string) => p,
@@ -109,7 +109,7 @@ vi.mock("@chatbotx.io/ai/server", () => ({
   normalizeMcpContent: vi.fn((c: unknown) => c),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationOpenaiCompatibleService: {
     findByWorkspaceIdAndId: findOpenaiCompatibleMock,
   },
@@ -163,16 +163,16 @@ vi.mock("../src/integration/handlers/automated-response/utils/message", () => ({
   sendMessageAndWait: sendMessageAndWaitMock,
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn(async () => []),
     replaceAll: vi.fn(async ({ text }: { text: string }) => text),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     integrationQueue: { add: vi.fn(async () => undefined) },
@@ -188,7 +188,7 @@ vi.mock("../src/lib/logger", () => ({
   logger: { warn: warnMock, error: errorMock, info: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: emitMock,
 }))
 

@@ -6,13 +6,13 @@ import {
   eq,
   inArray,
   or,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   automatedResponseTypeByFolderType,
   type FolderType,
   folderTypes,
   rootFolderId,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   automatedResponseModel,
   commentAutomationModel,
@@ -25,11 +25,11 @@ import {
   tagModel,
   triggerModel,
   webhookModel,
-} from "@chatbotx.io/database/schema"
-import type { FolderModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { FolderModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 
 type ListFoldersInput = {
   workspaceId: string
@@ -142,7 +142,7 @@ class FolderService extends BaseService {
         },
       })
       if (!parentFolder) {
-        throw new ChatbotXException("Parent folder does not exist!")
+        throw new salesmanChatbotException("Parent folder does not exist!")
       }
       paths = [...parentFolder.paths, parentFolder.id]
     }
@@ -233,7 +233,7 @@ class FolderService extends BaseService {
       .where(scopeConditions)
 
     if (!resources || resources.length === 0) {
-      throw new ChatbotXException("Resource not found")
+      throw new salesmanChatbotException("Resource not found")
     }
 
     const resolvedFolderId =
@@ -274,7 +274,7 @@ class FolderService extends BaseService {
       case folderTypes.enum.igStory:
         return igStoryAutomationModel
       default:
-        throw new ChatbotXException("Invalid folder type")
+        throw new salesmanChatbotException("Invalid folder type")
     }
   }
 }

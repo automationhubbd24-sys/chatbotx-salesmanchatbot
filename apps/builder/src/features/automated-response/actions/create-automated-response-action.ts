@@ -1,8 +1,8 @@
 "use server"
 
-import { automatedResponseService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { automatedResponseTypes } from "@chatbotx.io/database/partials"
+import { automatedResponseService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { automatedResponseTypes } from "@salesmanchatbot.io/database/partials"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -27,7 +27,7 @@ export const createAutomatedResponseAction = workspaceActionClient
       })
     } catch (error) {
       if (
-        error instanceof ChatbotXException &&
+        error instanceof salesmanChatbotException &&
         error.code === "validation" &&
         error.field
       ) {

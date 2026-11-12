@@ -1,1 +1,1 @@
-export { resolveEmbeddingModel } from "@chatbotx.io/ai/server"
+export { resolveEmbeddingModel } from "@salesmanchatbot.io/ai/server"

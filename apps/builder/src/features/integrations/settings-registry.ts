@@ -4,7 +4,7 @@ import type { ComponentType } from "react"
 
 /**
  * Ordered registry of the workspace-settings integration providers, following
- * the `CHANNEL_CAPABILITIES` pattern in `@chatbotx.io/utils`.
+ * the `CHANNEL_CAPABILITIES` pattern in `@salesmanchatbot.io/utils`.
  *
  * `slug` is the single source of truth for BOTH the route directory name
  * (`settings/integrations/<slug>/page.tsx`) and the accordion's active-segment

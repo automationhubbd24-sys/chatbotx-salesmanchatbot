@@ -1,6 +1,6 @@
 "use client"
 
-import type { FacebookMarketingMessageModel } from "@chatbotx.io/database/types"
+import type { FacebookMarketingMessageModel } from "@salesmanchatbot.io/database/types"
 import { useTranslations } from "next-intl"
 import { updateMarketingMessageAction } from "../actions/update.action"
 import { toMajorUnits } from "../lib/currency"

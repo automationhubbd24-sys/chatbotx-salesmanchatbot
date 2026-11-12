@@ -1,7 +1,7 @@
 "use client"
 
 import "@xyflow/react/dist/style.css"
-import type { FlowNodeStatsResponse } from "@chatbotx.io/analytics/schemas"
+import type { FlowNodeStatsResponse } from "@salesmanchatbot.io/analytics/schemas"
 import type { FlowVersionResource } from "@/features/flow-versions/schema/resource"
 import type { SmartDelayNodeStats } from "../analytics/smart-delay-node-stats"
 import type { FlowResource } from "../schema/resource"

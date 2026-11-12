@@ -1,14 +1,14 @@
-import type { FlowVersionModel } from "@chatbotx.io/database/types"
+import type { FlowVersionModel } from "@salesmanchatbot.io/database/types"
 import type {
   BaseStepSchema,
   ButtonStepProps,
   EdgeSchema,
   FlowNode,
   StepType,
-} from "@chatbotx.io/flow-config"
-import { encodeButtonPayload, stepTypes } from "@chatbotx.io/flow-config"
-import { SdkException } from "@chatbotx.io/sdk"
-import type { IntegrationJobRunFlowNode } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/flow-config"
+import { encodeButtonPayload, stepTypes } from "@salesmanchatbot.io/flow-config"
+import { SdkException } from "@salesmanchatbot.io/sdk"
+import type { IntegrationJobRunFlowNode } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, type Mock, test, vi } from "vitest"
 
 // --- mocks ---
@@ -20,7 +20,7 @@ const detectFlowVersion = vi.fn()
 const findSendableBroadcast = vi.fn()
 const resetContactForResume = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: {
     findSendableBroadcast: (...args: unknown[]) =>
       findSendableBroadcast(...args),
@@ -29,9 +29,9 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     IntegrationJobAction: {
@@ -46,7 +46,7 @@ vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { query: {}, update: vi.fn(), insert: vi.fn() },
   eq: vi.fn(),
 }))
@@ -54,19 +54,19 @@ vi.mock("@chatbotx.io/database/client", () => ({
 // Any action carrying a button ID goes through the rich-response fallback
 // before the flow is consulted, so it has to resolve to "no rich response".
 const findRichResponseByButton = vi.fn(async () => null)
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: async () => ({ findRichResponseByButton }),
 }))
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: { enqueue: vi.fn(async () => undefined) },
 }))
 
 // Passthrough the real schema: a transitive dependency imports `createSelectSchema`
 // from this barrel at module load, so an empty mock breaks the import graph. The
 // schema is pure table/zod definitions (no DB connection), safe to load for real.
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/schema")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>()
   return { ...actual }
 })
 const armQuickReplySettings = vi.fn(async (..._args: unknown[]) => undefined)
@@ -90,12 +90,12 @@ vi.mock("../src/lib/db", () => ({
   detectConversationAndContactInbox,
   detectFlowVersion,
 }))
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(async () => undefined),
 }))
-vi.mock("@chatbotx.io/events", () => ({}))
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/sdk")>()
+vi.mock("@salesmanchatbot.io/events", () => ({}))
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()
   return {
     ...actual,
     initVariables: vi.fn(() => ({ conversation: {} })),

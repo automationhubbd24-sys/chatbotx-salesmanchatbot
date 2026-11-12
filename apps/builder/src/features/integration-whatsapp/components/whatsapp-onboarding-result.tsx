@@ -1,8 +1,8 @@
 "use client"
 
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { CopyIcon } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

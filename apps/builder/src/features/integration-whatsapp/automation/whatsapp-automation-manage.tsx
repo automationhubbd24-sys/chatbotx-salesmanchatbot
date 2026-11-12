@@ -1,13 +1,13 @@
 "use client"
 
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import {
   Table,
   TableBody,
   TableCell,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { use, useEffect } from "react"

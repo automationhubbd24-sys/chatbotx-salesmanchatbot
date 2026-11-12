@@ -2,7 +2,7 @@ import {
   nodeTypeSchema,
   startFlowNodeDefaultFn,
   startFlowNodeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { ExternalLinkIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 

@@ -17,7 +17,7 @@ import { selectPageRequest } from "../schema/action"
  * token still come ONLY from the pending-auth cookie, read server-side by
  * `resolveConnectSession`, never from the request body. Every failure,
  * session-level or per-page, is a typed outcome in the 200 response: this
- * route must not turn a `ChatbotXException` into a 500 the batch cannot
+ * route must not turn a `salesmanChatbotException` into a 500 the batch cannot
  * classify (`connectMessengerPage` catches through `toConnectActionFailure`).
  */
 export const integrationMessengerConnectAPIs = {

@@ -1,6 +1,6 @@
 "use client"
 
-import type { AIAnalyzeImageSchema } from "@chatbotx.io/flow-config"
+import type { AIAnalyzeImageSchema } from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 import { getAiProviderLabelKey } from "@/features/ai-agents/lib/ai-provider-label"
 import { useFlowTemplate } from "../../stores/flow-template-store-provider"

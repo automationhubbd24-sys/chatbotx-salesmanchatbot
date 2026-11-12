@@ -1,6 +1,6 @@
-import { resolveFreshMediaUrl } from "@chatbotx.io/channel-registry/media-hydration"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import { uploader } from "@chatbotx.io/filesystem"
+import { resolveFreshMediaUrl } from "@salesmanchatbot.io/channel-registry/media-hydration"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import { type NextRequest, NextResponse } from "next/server"
 import { httpLogger } from "@/lib/log"
 import {

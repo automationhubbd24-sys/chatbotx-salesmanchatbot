@@ -6,20 +6,20 @@ import {
   inArray,
   type RelationsFieldFilter,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type AIAgentActionRule,
   aiAgentActionRulesSchema,
-} from "@chatbotx.io/database/partials"
-import { aiAgentModel } from "@chatbotx.io/database/schema"
-import type { AIAgentModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import { aiAgentModel } from "@salesmanchatbot.io/database/schema"
+import type { AIAgentModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { isSameJsonValue } from "../audit/diff"
 import { BaseService } from "../base.service"
 import { customFieldService } from "../custom-field/service"

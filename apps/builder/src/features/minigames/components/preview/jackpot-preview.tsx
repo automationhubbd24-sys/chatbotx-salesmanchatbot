@@ -3,9 +3,9 @@
 import type {
   MinigameAppearance,
   MinigamePrizeSettings,
-} from "@chatbotx.io/database/partials"
-import { JackpotMachineArt, JackpotStartButton } from "@chatbotx.io/minigame-ui"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { JackpotMachineArt, JackpotStartButton } from "@salesmanchatbot.io/minigame-ui"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { Share2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { MinigamePreviewLayout } from "./minigame-preview-layout"

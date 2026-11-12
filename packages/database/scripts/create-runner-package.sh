@@ -41,14 +41,14 @@ fi
 case "$cmd" in
   migrate)
     jq -n --indent 2 \
-      --arg name "@chatbotx.io/database-migrate-runner" \
+      --arg name "@salesmanchatbot.io/database-migrate-runner" \
       --arg drizzle "$drizzle" \
       --arg pg "$pgver" \
       '{name: $name, private: true, type: "module", dependencies: {"drizzle-orm": $drizzle, pg: $pg}}'
     ;;
   seed)
     jq -n --indent 2 \
-      --arg name "@chatbotx.io/database-seed-runner" \
+      --arg name "@salesmanchatbot.io/database-seed-runner" \
       --arg pg "$pgver" \
       '{name: $name, private: true, type: "module", dependencies: {pg: $pg}}'
     ;;

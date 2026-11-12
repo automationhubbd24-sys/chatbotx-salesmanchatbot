@@ -1,6 +1,6 @@
 import "dotenv/config"
 import { pathToFileURL } from "node:url"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 import { env } from "./env"
 import { startJavascriptExecutor } from "./lifecycle"
 import { createServer } from "./server"

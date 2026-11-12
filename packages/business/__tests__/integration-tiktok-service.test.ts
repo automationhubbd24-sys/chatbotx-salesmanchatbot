@@ -34,7 +34,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     delete: mockDelete,
     transaction: mockTransaction,
@@ -45,19 +45,19 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: vi.fn((field: unknown, values: unknown[]) => ({ field, values })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationTiktokModel: { id: "id", openId: "openId" },
 }))
 
-// Partial: the service now pulls in `@chatbotx.io/integration-tiktok` for
+// Partial: the service now pulls in `@salesmanchatbot.io/integration-tiktok` for
 // `getPostDetails`, and that graph reads other helpers (`zodBigintAsString`)
 // from this module. Only `createId` needs to be deterministic here.
-vi.mock("@chatbotx.io/utils", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/utils")>()),
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/utils")>()),
   createId: () => "integration-1",
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   // Defaults to "no Connection row" so the existing disconnect test below
   // (written before the Connection-row integration) keeps exercising the
   // legacy `inboxService.disconnect` fallback unchanged.

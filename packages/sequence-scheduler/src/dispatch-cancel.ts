@@ -5,10 +5,10 @@ import {
   eq,
   inArray,
   type Transaction,
-} from "@chatbotx.io/database/client"
-import { sequenceDispatchModel } from "@chatbotx.io/database/schema"
-import { sequenceConnections } from "@chatbotx.io/redis"
-import { SchedulerClient } from "@chatbotx.io/scheduler"
+} from "@salesmanchatbot.io/database/client"
+import { sequenceDispatchModel } from "@salesmanchatbot.io/database/schema"
+import { sequenceConnections } from "@salesmanchatbot.io/redis"
+import { SchedulerClient } from "@salesmanchatbot.io/scheduler"
 
 /**
  * Cancellation lives apart from `dispatch-manager` by responsibility: creating a

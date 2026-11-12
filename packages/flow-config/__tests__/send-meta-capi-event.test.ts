@@ -3,7 +3,7 @@ import {
   metaCapiBusinessMessagingEventNames,
   metaCapiContentTypeValues,
   metaPixelStandardEventNames,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import { describe, expect, test } from "vitest"
 import {
   actionSteps,

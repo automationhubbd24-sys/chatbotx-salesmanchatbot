@@ -1,10 +1,10 @@
-import type { FlowNode } from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { useReactFlow } from "@xyflow/react"
 import { CopyIcon, Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"

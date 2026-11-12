@@ -2,8 +2,8 @@ import {
   broadcastEventType,
   commentAutomationEventType,
   sequenceStepEventTypes,
-} from "@chatbotx.io/analytics/schemas"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { tagResource } from "@/features/tags/schema/resource"
 

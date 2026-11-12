@@ -9,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
 import { Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

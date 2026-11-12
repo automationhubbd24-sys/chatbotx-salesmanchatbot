@@ -17,7 +17,7 @@ const { findActiveByDomain, listActiveDomains, dbLimit, tenantFindById } =
 // resolveTenantFromOAuthState). Tenant lookups go through the (mocked)
 // `tenantService.findById`, so no `db.query` stub is needed. Avoids any real
 // Postgres connection.
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const chain = {
     from: () => chain,
     where: () => chain,
@@ -32,16 +32,16 @@ vi.mock("@chatbotx.io/database/client", () => {
 })
 
 // The root tenant sentinel must match the real schema value.
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   ROOT_TENANT_ID: "1",
   tenantModel: {},
   verificationModel: {},
 }))
 
-// `@chatbotx.io/business` is fully stubbed so importing the auth modules never
+// `@salesmanchatbot.io/business` is fully stubbed so importing the auth modules never
 // pulls the real service graph. Only `customDomainService.findActiveByDomain` is
 // exercised (via `resolveTenantByDomain`).
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customDomainService: { findActiveByDomain, listActiveDomains },
   tenantService: { findById: tenantFindById },
   platformCredentialService: {

@@ -2,7 +2,7 @@ import {
   type SetMessengerPersonaStepSchema,
   setMessengerPersonaStepDefaultFn,
   setMessengerPersonaStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SetMessengerPersonaStepEditor from "./editor"
 import SetMessengerPersonaStepViewer from "./viewer"

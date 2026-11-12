@@ -1,5 +1,5 @@
-import { contactService, tagService } from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
+import { contactService, tagService } from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
 import { possibleErrorsOnCreatingResource } from "@/lib/orpc/orpc-error-helper"
 import { workspaceTokenAuthAPIForScope } from "@/orpc"
 import {

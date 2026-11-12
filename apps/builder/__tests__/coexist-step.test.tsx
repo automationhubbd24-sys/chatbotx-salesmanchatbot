@@ -80,7 +80,7 @@ const { CoexistStep } = await import(
 )
 const { CoexistPopup } = await import("@/features/shared/coexist-popup")
 const { Dialog, DialogContent } = await import(
-  "@chatbotx.io/ui/components/ui/dialog"
+  "@salesmanchatbot.io/ui/components/ui/dialog"
 )
 
 const singleTarget = { integrationId: "int-1", name: "Page One" }

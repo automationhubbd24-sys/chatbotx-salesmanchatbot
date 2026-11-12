@@ -50,11 +50,11 @@ const {
 
 const mockSettleEvent = vi.fn().mockResolvedValue(undefined)
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   commentAutomationAnalyticsService: { settleEvent: mockSettleEvent },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     recordOutboundMessageSent: mockRecordOutboundMessageSent,
     recordSendFailure: mockRecordSendFailure,
@@ -74,28 +74,28 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockDbUpdate,
   },
   eq: vi.fn((col: unknown, val: unknown) => ({ __eq: [col, val] })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   messageModel: { id: "id", sourceId: "sourceId" },
   whatsappFlowModel: { id: "id", sourceId: "sourceId" },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/sdk", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/sdk")>()
+vi.mock("@salesmanchatbot.io/sdk", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/sdk")>()
   return {
     ...actual,
     parseSdkError: vi.fn().mockResolvedValue({ message: "sdk error" }),
@@ -112,7 +112,7 @@ vi.mock("../src/services/integrations", () => ({
     mockResolveIntegrationContextFromContactInbox,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { broadcastEvent: "broadcastEvent" },
   chatQueue: { add: mockChatQueueAdd },
 }))
@@ -120,7 +120,7 @@ vi.mock("@chatbotx.io/worker-config", () => ({
 const { sendFlowStepToChannel, sendMessageToChannel } = await import(
   "../src/chat/handlers/send-message"
 )
-const { ChannelError, ChannelErrorCategory } = await import("@chatbotx.io/sdk")
+const { ChannelError, ChannelErrorCategory } = await import("@salesmanchatbot.io/sdk")
 const { logger } = await import("../src/lib/logger")
 
 const conversation = {

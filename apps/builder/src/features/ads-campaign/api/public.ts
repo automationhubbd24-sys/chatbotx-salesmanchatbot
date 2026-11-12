@@ -3,9 +3,9 @@ import {
   listCachedMessagingAdAccounts,
   messagingAdCampaignService,
   messagingAdsConnectionService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { facebookAdAccountSchema } from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { facebookAdAccountSchema } from "@salesmanchatbot.io/integration-facebook-ads"
 import { ORPCError } from "@orpc/server"
 import { z } from "zod"
 import {
@@ -412,7 +412,7 @@ export const adsCampaignPublicRouter = {
     .errors(possibleErrorsOnListingResource)
     .handler(async ({ context, input }) => {
       if (input.channel !== "whatsapp") {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Messenger pages are only listed for the WhatsApp channel",
           "invalidRequest",
           400,

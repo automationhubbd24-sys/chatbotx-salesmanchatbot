@@ -2,29 +2,29 @@ import {
   AI_MESSAGE_HISTORY_LOOKBACK_MS,
   MAX_CONVERSATION_HISTORY,
   systemFunctionNames,
-} from "@chatbotx.io/ai"
-import { aiContextService } from "@chatbotx.io/ai/server"
-import { automatedResponseService, getAutomatedResponseKey } from "@chatbotx.io/automated-response"
-import { aiAgentService, workspaceService } from "@chatbotx.io/business"
-import { simpleQueue } from "@chatbotx.io/redis"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
+} from "@salesmanchatbot.io/ai"
+import { aiContextService } from "@salesmanchatbot.io/ai/server"
+import { automatedResponseService, getAutomatedResponseKey } from "@salesmanchatbot.io/automated-response"
+import { aiAgentService, workspaceService } from "@salesmanchatbot.io/business"
+import { simpleQueue } from "@salesmanchatbot.io/redis"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
 import {
   aiAgentProviderModels,
   aiMessageRoles,
   defaultReplyFrequencies,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   findConversationAIContextState,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/repositories"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   DOCX_MIME_TYPES,
   IMAGE_MIME_TYPES,
   PDF_MIME_TYPES,
-} from "@chatbotx.io/sdk"
-import type { AIJobProcessAutomatedResponse } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import type { AIJobProcessAutomatedResponse } from "@salesmanchatbot.io/worker-config"
 import type { ModelMessage } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { sendTypingToChannel } from "../../../chat/handlers/send-message"

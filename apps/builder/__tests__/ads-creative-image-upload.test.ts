@@ -7,14 +7,14 @@ const mocks = vi.hoisted(() => ({
   resolveTenantSettings: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { getPresignedUpload: mocks.getPresignedUpload },
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   fileService: { createPending: mocks.createPending },
   resolveTenantSettings: mocks.resolveTenantSettings,
 }))
-vi.mock("@chatbotx.io/utils", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   createId: () => "gen-id",
 }))

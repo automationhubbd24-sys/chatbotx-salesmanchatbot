@@ -1,4 +1,4 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -19,7 +19,7 @@ const {
   workspaceFind: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceService: {
     find: workspaceFind,
   },

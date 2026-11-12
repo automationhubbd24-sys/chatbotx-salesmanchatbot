@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { useSearchParams } from "next/navigation"
 import { useAction } from "next-safe-action/hooks"
 import { useEffect, useState } from "react"

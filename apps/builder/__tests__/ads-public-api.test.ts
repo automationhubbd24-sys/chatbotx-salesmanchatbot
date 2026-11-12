@@ -4,10 +4,10 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // Mirrors `analytics-public-api.test.ts`: several ads business services are
 // imported transitively by modules that open a real `pg.Pool` via
-// `@chatbotx.io/database/client` at module load. Never reached by these
+// `@salesmanchatbot.io/database/client` at module load. Never reached by these
 // handler-only tests, but the import chain must not try to open a
 // connection.
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -106,7 +106,7 @@ const adsRetargetService = {
   startAudienceSync: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", async () => {
+vi.mock("@salesmanchatbot.io/business", async () => {
   const { z } = await import("zod")
   const startRetargetAudienceSyncShape = z.object({
     workspaceId: z.string(),
@@ -140,10 +140,10 @@ vi.mock("@chatbotx.io/business", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/integration-facebook-ads", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", async (importOriginal) => {
   const actual =
     await importOriginal<
-      typeof import("@chatbotx.io/integration-facebook-ads")
+      typeof import("@salesmanchatbot.io/integration-facebook-ads")
     >()
   return {
     ...actual,

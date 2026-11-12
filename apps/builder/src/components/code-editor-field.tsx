@@ -1,6 +1,6 @@
 "use client"
 
-import { FormFieldWrapper } from "@chatbotx.io/ui/components/form/field-wrapper"
+import { FormFieldWrapper } from "@salesmanchatbot.io/ui/components/form/field-wrapper"
 import { css } from "@codemirror/lang-css"
 import { html } from "@codemirror/lang-html"
 import { javascript } from "@codemirror/lang-javascript"

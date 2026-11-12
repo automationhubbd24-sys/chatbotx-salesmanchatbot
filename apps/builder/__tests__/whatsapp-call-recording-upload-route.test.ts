@@ -23,9 +23,9 @@ const {
   checkWorkspaceOwnerAccess: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@chatbotx.io/business")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/business")>()
   return {
     ...original,
     callRecordingService: { uploadRecording },
@@ -33,8 +33,8 @@ vi.mock("@chatbotx.io/business", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     httpStatusCode = 403
   },
 }))
@@ -53,14 +53,14 @@ vi.mock(
   },
 )
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappCallRepository: { findById },
   integrationWhatsappRepository: { findByInboxIdForWorkspace },
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const original =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...original,
     integrationQueue: { add: integrationQueueAdd },
@@ -267,7 +267,7 @@ describe("POST /api/whatsapp-call-recording", () => {
 
   test("rejects a cross-workspace membership check", async () => {
     assertCurrentUserCanAccessChatbot.mockRejectedValue(
-      new (await import("@chatbotx.io/business/errors")).ChatbotXException(
+      new (await import("@salesmanchatbot.io/business/errors")).salesmanChatbotException(
         "not a member",
       ),
     )

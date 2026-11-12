@@ -5,7 +5,7 @@ import { Menubar as MenubarPrimitive } from "@base-ui/react/menubar"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function Menubar({
   className,

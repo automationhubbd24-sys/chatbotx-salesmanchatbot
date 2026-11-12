@@ -6,7 +6,7 @@ import {
   channelTypes,
   contactFilterFields,
   requiresRecentInteractionWindow,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { EMAIL_PHONE_RESTRICTED_FILTER_FIELDS } from "@/features/contact-filter/lib/restricted-fields"
 
 const CHANNEL_SCOPED_EXCLUDED_FIELDS = [

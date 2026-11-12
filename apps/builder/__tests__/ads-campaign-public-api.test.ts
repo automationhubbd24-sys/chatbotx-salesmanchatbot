@@ -2,7 +2,7 @@
 
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -71,7 +71,7 @@ const listCachedMessagingAdAccounts = vi.fn()
 const getCachedMessagingAdAccountDetails = vi.fn()
 const buildMessagingAdsContext = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messagingAdCampaignService,
   messagingAdsConnectionService,
   listCachedMessagingAdAccounts,
@@ -79,10 +79,10 @@ vi.mock("@chatbotx.io/business", () => ({
   buildMessagingAdsContext,
 }))
 
-vi.mock("@chatbotx.io/integration-facebook-ads", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", async (importOriginal) => {
   const actual =
     await importOriginal<
-      typeof import("@chatbotx.io/integration-facebook-ads")
+      typeof import("@salesmanchatbot.io/integration-facebook-ads")
     >()
   return {
     ...actual,

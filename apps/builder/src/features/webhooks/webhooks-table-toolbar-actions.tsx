@@ -1,8 +1,8 @@
 "use client"
 
-import type { WebhookModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+import type { WebhookModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { Table } from "@tanstack/react-table"
 import { FolderUpIcon } from "lucide-react"
 import { useRouter } from "next/navigation"

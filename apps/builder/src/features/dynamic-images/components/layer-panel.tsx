@@ -1,19 +1,19 @@
 "use client"
 
-import type { DynamicImageElement } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { DynamicImageElement } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
 import {
   Sortable,
   SortableContent,
   SortableItem,
   SortableItemHandle,
-} from "@chatbotx.io/ui/components/ui/sortable"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/sortable"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   GripVerticalIcon,
   ImageIcon,

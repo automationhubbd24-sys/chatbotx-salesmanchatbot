@@ -1,5 +1,5 @@
-import { callRecordingService } from "@chatbotx.io/business"
-import { whatsappCallRepository } from "@chatbotx.io/database/repositories"
+import { callRecordingService } from "@salesmanchatbot.io/business"
+import { whatsappCallRepository } from "@salesmanchatbot.io/database/repositories"
 import { logger } from "../logger"
 
 /**

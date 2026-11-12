@@ -1,22 +1,22 @@
 "use client"
 
-import type { TagModel } from "@chatbotx.io/database/types"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+import type { TagModel } from "@salesmanchatbot.io/database/types"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import {
   EllipsisVerticalIcon,

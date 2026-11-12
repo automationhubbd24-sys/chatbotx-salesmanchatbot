@@ -1,16 +1,16 @@
 "use client"
 
-import type { ImportStatus } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ImportStatus } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Progress } from "@chatbotx.io/ui/components/ui/progress"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Progress } from "@salesmanchatbot.io/ui/components/ui/progress"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { format } from "date-fns"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

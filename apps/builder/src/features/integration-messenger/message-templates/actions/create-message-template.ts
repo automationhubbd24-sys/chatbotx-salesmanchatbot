@@ -1,8 +1,8 @@
 "use server"
 
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { SdkException } from "@chatbotx.io/sdk"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { SdkException } from "@salesmanchatbot.io/sdk"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { createMessengerMessageTemplate } from "../lib/message-template-operations"
 import { createMessengerMessageTemplateRequest } from "../schema/mutation"

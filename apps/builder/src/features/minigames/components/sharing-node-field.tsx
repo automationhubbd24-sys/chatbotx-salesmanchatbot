@@ -1,6 +1,6 @@
 "use client"
 
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import { useTranslations } from "next-intl"
 import { useEffect, useMemo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

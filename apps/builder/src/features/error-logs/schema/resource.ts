@@ -1,4 +1,4 @@
-import { createSelectSchema, errorLogModel } from "@chatbotx.io/database/schema"
+import { createSelectSchema, errorLogModel } from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 /**

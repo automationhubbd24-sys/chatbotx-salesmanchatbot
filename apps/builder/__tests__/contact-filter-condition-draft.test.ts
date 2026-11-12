@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { formFieldTypes, operatorTypes } from "@chatbotx.io/database/partials"
+import { formFieldTypes, operatorTypes } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import {
   buildConditionDraft,

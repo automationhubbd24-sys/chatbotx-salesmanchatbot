@@ -1,16 +1,16 @@
 import type { PassThrough } from "node:stream"
-import { couponService } from "@chatbotx.io/business"
+import { couponService } from "@salesmanchatbot.io/business"
 import {
   couponIssueStatuses,
   fileStatuses,
-} from "@chatbotx.io/database/partials"
-import { couponRepository } from "@chatbotx.io/database/repositories"
-import { chunkById } from "@chatbotx.io/database/utils"
-import { createUpload } from "@chatbotx.io/filesystem/node-upload"
+} from "@salesmanchatbot.io/database/partials"
+import { couponRepository } from "@salesmanchatbot.io/database/repositories"
+import { chunkById } from "@salesmanchatbot.io/database/utils"
+import { createUpload } from "@salesmanchatbot.io/filesystem/node-upload"
 import {
   type JobExportCoupons,
   loopableItemsCount,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 
 type ExportData = JobExportCoupons["data"]
 

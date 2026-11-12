@@ -1,4 +1,4 @@
-import type { MessageReferral } from "@chatbotx.io/sdk"
+import type { MessageReferral } from "@salesmanchatbot.io/sdk"
 import { deriveAdSourcePlatform } from "./ad-source-platform"
 
 /**

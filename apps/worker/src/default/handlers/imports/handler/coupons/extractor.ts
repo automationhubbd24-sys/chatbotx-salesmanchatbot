@@ -1,4 +1,4 @@
-import { cleanText } from "@chatbotx.io/imports/parsers"
+import { cleanText } from "@salesmanchatbot.io/imports/parsers"
 
 const COUPON_HEADER = "coupon"
 const COUPON_CODE_HEADER = "couponcode"
