@@ -1,0 +1,89 @@
+name: salesmanchatbot-infra
+
+x-rustfs-environment: &rustfs-environment
+  RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-salesmanchatbot}
+  RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:-secretkey}
+  RUSTFS_API_CORS_ALLOW_ORIGIN: ${RUSTFS_API_CORS_ALLOW_ORIGIN:-*}
+
+services:
+  postgres:
+    image: timescale/timescaledb-ha:pg18-all
+    restart: unless-stopped
+    command: ["postgres", "-c", "log_statement=${POSTGRES_LOG_STATEMENT:-none}"]
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-salesmanchatbot}
+      POSTGRES_USER: ${POSTGRES_USER:-salesmanchatbot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db-data:/home/postgres/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - salesmanchatbot-network
+
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - cache-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - salesmanchatbot-network
+
+  filesystem:
+    image: rustfs/rustfs:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      <<: *rustfs-environment
+    volumes:
+      - filesystem-data:/data
+    healthcheck:
+      test: ["CMD", "sh", "-c", "curl -f http://127.0.0.1:9000/health && curl -f http://127.0.0.1:9001/rustfs/console/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - salesmanchatbot-network
+
+  filesystem-init:
+    image: rustfs/rc:latest
+    restart: "no"
+    depends_on:
+      filesystem:
+        condition: service_healthy
+    environment:
+      <<: *rustfs-environment
+    entrypoint: >
+      /bin/sh -c "rc alias set local http://filesystem:9000 $${RUSTFS_ACCESS_KEY} $${RUSTFS_SECRET_KEY}; rc mb local/salesmanchatbot --ignore-existing; touch /tmp/empty && rc cp /tmp/empty local/salesmanchatbot/public/; rc anonymous set public local/salesmanchatbot/public;"
+    networks:
+      - salesmanchatbot-network
+
+  mailhog:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    networks:
+      - salesmanchatbot-network
+
+networks:
+  salesmanchatbot-network:
+    external: true
+    name: salesmanchatbot-network
+
+volumes:
+  db-data:
+    name: salesmanchatbot-postgres-data
+  cache-data:
+    name: salesmanchatbot-redis-data
+  filesystem-data:
+    name: salesmanchatbot-filesystem-data
