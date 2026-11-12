@@ -9,8 +9,8 @@ import {
   type SQL,
   sql,
   sum,
-} from "@chatbotx.io/database/client"
-import { planStatuses } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { planStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   contactModel,
   inboxModel,
@@ -19,10 +19,10 @@ import {
   workspaceMacModel,
   workspaceMemberModel,
   workspaceModel,
-} from "@chatbotx.io/database/schema"
-import type { UserQuotaModel } from "@chatbotx.io/database/types"
-import { cacheConnections, distributedStore } from "@chatbotx.io/redis"
-import { USER_QUOTA_LABEL } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { UserQuotaModel } from "@salesmanchatbot.io/database/types"
+import { cacheConnections, distributedStore } from "@salesmanchatbot.io/redis"
+import { USER_QUOTA_LABEL } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { isCloud } from "../keys"
 import { logger } from "../logger"

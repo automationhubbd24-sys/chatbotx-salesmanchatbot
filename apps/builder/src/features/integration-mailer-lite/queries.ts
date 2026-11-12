@@ -1,6 +1,6 @@
-import { integrationMailerLiteService } from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import { mailerLiteAuthSchema } from "@chatbotx.io/integration-mailer-lite"
+import { integrationMailerLiteService } from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import { mailerLiteAuthSchema } from "@salesmanchatbot.io/integration-mailer-lite"
 
 export const getMailerLiteAuth = async (workspaceId: string) => {
   const row =

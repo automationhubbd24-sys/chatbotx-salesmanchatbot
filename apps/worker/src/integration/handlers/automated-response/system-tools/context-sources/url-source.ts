@@ -1,17 +1,17 @@
 import {
   aiConversationSourceStatuses,
   aiConversationSourceTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createConversationEmbeddingRepository,
   createConversationSourceRepository,
-} from "@chatbotx.io/database/repositories"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   AIJobAction,
   type AIJobData,
   aiAgentQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { embed } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"

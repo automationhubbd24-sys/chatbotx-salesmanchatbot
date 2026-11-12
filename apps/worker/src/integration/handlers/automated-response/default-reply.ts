@@ -1,15 +1,15 @@
-import { defaultReplyThrottleService, flowService } from "@chatbotx.io/business"
-import type { DefaultReplyFrequency } from "@chatbotx.io/database/partials"
+import { defaultReplyThrottleService, flowService } from "@salesmanchatbot.io/business"
+import type { DefaultReplyFrequency } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   type BotResponseTrackingContext,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 
 /**

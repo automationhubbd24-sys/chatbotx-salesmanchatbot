@@ -2,7 +2,7 @@ import {
   type ExternalRequestStepSchema,
   externalRequestStepDefaultFn,
   externalRequestStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import ExternalRequestStepEditor from "./editor"
 import ExternalRequestStepViewer from "./viewer"

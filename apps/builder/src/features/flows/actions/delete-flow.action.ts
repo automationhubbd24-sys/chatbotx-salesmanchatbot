@@ -1,6 +1,6 @@
 "use server"
 
-import { flowService } from "@chatbotx.io/business"
+import { flowService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

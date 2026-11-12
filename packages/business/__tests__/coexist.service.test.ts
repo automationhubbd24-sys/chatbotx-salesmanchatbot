@@ -9,13 +9,13 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     transaction: mocks.transaction,
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   coexistSyncRunRepository: {
     claimRunWithNewToken: vi.fn(),
     createRun: mocks.createRun,
@@ -34,11 +34,11 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     coexistInstagramSync: "coexistInstagramSync",
     coexistMessengerSync: "coexistMessengerSync",

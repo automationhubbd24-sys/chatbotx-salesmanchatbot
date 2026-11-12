@@ -1,5 +1,5 @@
-import { callRecordingService } from "@chatbotx.io/business"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { callRecordingService } from "@salesmanchatbot.io/business"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 
 const log = getChildLogger("purge-expired-call-recordings")
 const BATCH_SIZE = 500

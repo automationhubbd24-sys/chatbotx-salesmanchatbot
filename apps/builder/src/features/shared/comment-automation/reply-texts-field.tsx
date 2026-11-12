@@ -1,9 +1,9 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { COMMENT_REPLY_MAX_TEXTS } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { FormLabel } from "@chatbotx.io/ui/components/ui/form"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { COMMENT_REPLY_MAX_TEXTS } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { FormLabel } from "@salesmanchatbot.io/ui/components/ui/form"
 import { PlusIcon, TrashIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect } from "react"

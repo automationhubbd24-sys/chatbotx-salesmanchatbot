@@ -1,4 +1,4 @@
-import { timezoneCandidates } from "@chatbotx.io/utils/timezone"
+import { timezoneCandidates } from "@salesmanchatbot.io/utils/timezone"
 import { type SQL, sql } from "drizzle-orm"
 import type { PgColumn } from "drizzle-orm/pg-core"
 

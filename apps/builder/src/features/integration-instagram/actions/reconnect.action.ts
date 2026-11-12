@@ -3,12 +3,12 @@
 import {
   instagramIntegrationService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { generateAuthUrl as generateInstagramAuthUrl } from "@chatbotx.io/integration-instagram"
-import { generateAuthUrl as generateInstagramFacebookAuthUrl } from "@chatbotx.io/integration-instagram-facebook"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { generateAuthUrl as generateInstagramAuthUrl } from "@salesmanchatbot.io/integration-instagram"
+import { generateAuthUrl as generateInstagramFacebookAuthUrl } from "@salesmanchatbot.io/integration-instagram-facebook"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { redirect } from "next/navigation"
 import { getOriginUrlFromHeader } from "@/lib/domain"
 import { resolveOwnerForWorkspace } from "@/lib/platform-credential-owner"
@@ -38,7 +38,7 @@ export const reconnectInstagramAction = workspaceActionClient
           workspaceId,
         })
       if (!integrationInstagram) {
-        throw new ChatbotXException("Integration Instagram not found")
+        throw new salesmanChatbotException("Integration Instagram not found")
       }
 
       const connectedWithFacebookLogin =
@@ -49,7 +49,7 @@ export const reconnectInstagramAction = workspaceActionClient
           type: connectedWithFacebookLogin ? "instagramFacebook" : "instagram",
         })
       if (!instagramCredential) {
-        throw new ChatbotXException("Instagram App settings not found")
+        throw new salesmanChatbotException("Instagram App settings not found")
       }
 
       const redirectUrl = await buildProviderCallbackUrl(

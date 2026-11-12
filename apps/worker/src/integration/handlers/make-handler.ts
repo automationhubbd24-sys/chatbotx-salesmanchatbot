@@ -4,9 +4,9 @@ import {
   externalRequestService,
   externalWebhookService,
   tagService,
-} from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
-import type { MakeStepSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
+import type { MakeStepSchema } from "@salesmanchatbot.io/flow-config"
 import type { ExecuteStepProps } from "./flow"
 import type { ExecuteStepResult } from "./step"
 

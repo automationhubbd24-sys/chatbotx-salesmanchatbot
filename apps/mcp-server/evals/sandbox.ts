@@ -12,7 +12,7 @@ import {
   flowSpecSchema,
   flowVersionSchema,
   refineStepsByChannel,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { AjvJsonSchemaValidator } from "@modelcontextprotocol/sdk/validation/ajv"
 import type { JsonSchemaType } from "@modelcontextprotocol/sdk/validation/types"
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4"

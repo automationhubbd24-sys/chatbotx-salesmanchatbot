@@ -36,7 +36,7 @@ const {
 const customFieldModel = { table: "CustomField" }
 const NUMERIC_ID_PATTERN = /^\d+$/
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: mockDb,
   and: vi.fn(),
   eq: vi.fn(),
@@ -44,30 +44,30 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   rootFolderId: "root",
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   customFieldModel,
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   likeContains: vi.fn(),
   parseOrderByAsObject: vi.fn(),
   parsePagination: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: (_key: string, fn: () => unknown) => fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: mockCreateId,
   isNumericId: (value: string) => NUMERIC_ID_PATTERN.test(value),
 }))
 
-vi.mock("@chatbotx.io/utils/custom-field", () => ({
+vi.mock("@salesmanchatbot.io/utils/custom-field", () => ({
   customFieldResolutionKey: (field: { name: string; type: string }) =>
     `${field.type}:${field.name.trim().toLowerCase()}`,
 }))

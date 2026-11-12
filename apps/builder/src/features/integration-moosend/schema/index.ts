@@ -1,3 +1,3 @@
-import { moosendCredentialSchema } from "@chatbotx.io/integration-moosend"
+import { moosendCredentialSchema } from "@salesmanchatbot.io/integration-moosend"
 
 export const connectMoosendSchema = moosendCredentialSchema

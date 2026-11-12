@@ -1,4 +1,4 @@
-import { aiEditImageQuality } from "@chatbotx.io/flow-config"
+import { aiEditImageQuality } from "@salesmanchatbot.io/flow-config"
 import { z } from "zod"
 
 export const editImageInputSchema = z.object({

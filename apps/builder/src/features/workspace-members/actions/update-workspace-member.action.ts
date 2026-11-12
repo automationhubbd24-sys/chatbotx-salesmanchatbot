@@ -1,9 +1,9 @@
 "use server"
 
 import { isDeepStrictEqual } from "node:util"
-import { userService, workspaceMemberService } from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { userService, workspaceMemberService } from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { isCommunity } from "@/env"
 import { workspaceIdAndIdRequestParams } from "@/features/common/schema"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
@@ -27,7 +27,7 @@ export const updateWorkspaceMemberAction = workspaceActionClient
     const currentUserAndTargetChatbot =
       await getCurrentUserAndTargetWorkspace(workspaceId)
     if (!currentUserAndTargetChatbot) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to update this workspace member",
       )
     }
@@ -35,7 +35,7 @@ export const updateWorkspaceMemberAction = workspaceActionClient
     const permissions =
       currentUserAndTargetChatbot.targetWorkspaceMember.permissions
     if (!hasWorkspacePermission(permissions, "superAdmin")) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to update this workspace member. You need to be a super admin to do this.",
       )
     }

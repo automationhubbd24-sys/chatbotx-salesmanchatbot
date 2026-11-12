@@ -5,8 +5,8 @@ import {
   buildMessagingAdCreativeStoragePrefix,
   requiresSpecialAdCategoryCountry,
   specialAdCategories,
-} from "@chatbotx.io/integration-facebook-ads/messaging-ads/constants"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-facebook-ads/messaging-ads/constants"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 export const messagingAdChannelSchema = z.enum([
@@ -392,7 +392,7 @@ export const checkPrerequisitesRequest = z.object({
 /**
  * Meta `date_preset` values the box's Ads Insights panel selector offers —
  * mirrors `MESSAGING_ADS_INSIGHTS_DATE_PRESETS`
- * (`@chatbotx.io/integration-facebook-ads`); duplicated as a literal tuple
+ * (`@salesmanchatbot.io/integration-facebook-ads`); duplicated as a literal tuple
  * here (rather than imported) so this request schema stays a pure Zod
  * definition with no cross-package runtime import, matching every other
  * schema in this file.
@@ -415,7 +415,7 @@ const MAX_INSIGHTS_AD_IDS = 500
 /**
  * Insights are ALWAYS scoped to one ad account (Meta's `/insights` endpoint
  * requires `act_{adAccountId}`) — see the doc comment on
- * `listCachedMessagingAdsInsights` (`@chatbotx.io/business`) for why this
+ * `listCachedMessagingAdsInsights` (`@salesmanchatbot.io/business`) for why this
  * cannot be inferred server-side from `(channel, integrationId)` alone. A
  * box whose ads span more than one ad account calls this endpoint once per
  * distinct ad account.

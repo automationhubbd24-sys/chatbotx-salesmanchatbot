@@ -1,14 +1,14 @@
 "use client"
 
-import { isSupportAccessEnabled } from "@chatbotx.io/business/workspace-member/predicates"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { isSupportAccessEnabled } from "@salesmanchatbot.io/business/workspace-member/predicates"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
 import { useRouter } from "next/navigation"
 import { useLocale, useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

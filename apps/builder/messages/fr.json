@@ -875,7 +875,13 @@
       "anyConditions": "L’une des conditions ci-dessous.",
       "label": "Filtre de contacts",
       "onlyContactsMatch": "Uniquement les contacts qui correspondent à",
-      "moreOptions": "Plus d’options"
+      "moreOptions": "Plus d’options",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Note du contact"
@@ -1349,7 +1355,9 @@
         "documentReader": "Lecteur de documents",
         "imageReader": "Lecteur d’images",
         "urlContext": "Lecteur d’URL",
-        "webSearch": "Recherche Web"
+        "webSearch": "Recherche Web",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2586,7 +2594,7 @@
     "title": "Général"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Cela supprime la campagne uniquement de ChatbotX. La campagne de messages Meta continue — mettez-la en pause ou supprimez-la dans le Gestionnaire de publicités.",
+    "deleteWarning": "Cela supprime la campagne uniquement de salesmanChatbot. La campagne de messages Meta continue — mettez-la en pause ou supprimez-la dans le Gestionnaire de publicités.",
     "title": "Facebook Marketing Messages",
     "description": "Stimulez l'engagement et les ventes avec des messages promotionnels personnalisés sur Messenger.",
     "create": "Créer",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "{feature} déconnecté",
     "reply": "Répondre",
     "privateReply": "Réponse privée",
+    "replyingTo": "Réponse à",
+    "replyPreview": "{sender} a répondu à {recipient}",
+    "you": "Vous",
     "viewMessage": "Afficher le message",
     "changeLikeState": "Modifier l’état J’aime",
     "changeHideState": "Modifier l’état masqué",
@@ -3730,6 +3741,10 @@
       "description": "Autoriser ce fournisseur pour les réponses automatiques par IA.",
       "label": "Réponse automatique par IA"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Connectez des fournisseurs compatibles avec OpenAI comme modèles de secours des agents IA.",
       "label": "Fournisseurs compatibles avec OpenAI"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "URL de base",
       "defaultModel": "Modèle par défaut",
+      "embeddingModel": "Modèle d’intégration",
       "enabled": "Activé"
     },
     "provider": "Fournisseur d’IA",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "L’URL de base n’est pas valide ou n’est pas autorisée.",
       "presetAlreadyConnected": "Ce préréglage est déjà connecté à cet espace de travail."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "Éligibilité aux appels",
         "appSubscriptionMissing": "Configurez d'abord le webhook WhatsApp de cette application dans le tableau de bord des applications Meta, puis réessayez.",
         "appSubscriptionFailed": "Impossible de vérifier l'abonnement au webhook 'calls' de l'application. Réessayez dans un instant.",
-        "callsNotSubscribed": "Cette application n'est pas abonnée au champ webhook 'calls', donc les événements d'appel ne peuvent pas atteindre ChatbotX (erreur Meta 138018 : les conditions techniques préalables ne sont pas remplies — assurez-vous qu'au moins une application abonnée au WABA dispose également du champ webhook d'appels).",
+        "callsNotSubscribed": "Cette application n'est pas abonnée au champ webhook 'calls', donc les événements d'appel ne peuvent pas atteindre salesmanChatbot (erreur Meta 138018 : les conditions techniques préalables ne sont pas remplies — assurez-vous qu'au moins une application abonnée au WABA dispose également du champ webhook d'appels).",
         "fixButton": "Corriger",
         "fixSuccess": "L'application est désormais abonnée aux webhooks d'appel WhatsApp.",
         "manualIntegrationNotice": "Ce numéro a été connecté manuellement et ne dispose d'aucun identifiant d'application ici. Abonnez le champ webhook 'calls' de votre application dans le tableau de bord des applications Meta.",
@@ -5687,7 +5720,109 @@
     "unknown": "Inconnu"
   },
   "orders": {
-    "title": "Commandes"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Produits",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Source de l'action",

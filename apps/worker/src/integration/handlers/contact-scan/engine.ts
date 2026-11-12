@@ -3,22 +3,22 @@ import {
   contactScanService,
   quotaEnforcementService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   CONTACT_SCAN_ERRORS,
   CONTACT_SCAN_MAX_PAGES,
-} from "@chatbotx.io/business/contact-scan"
-import { logProviderError } from "@chatbotx.io/business/error-log"
-import { sanitizePublicText } from "@chatbotx.io/business/errors"
-import { supportsProfileSnapshot } from "@chatbotx.io/database/partials"
-import type { CoexistRunWriteGuard } from "@chatbotx.io/database/repositories"
-import { isContactScanChannel } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/business/contact-scan"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
+import { sanitizePublicText } from "@salesmanchatbot.io/business/errors"
+import { supportsProfileSnapshot } from "@salesmanchatbot.io/database/partials"
+import type { CoexistRunWriteGuard } from "@salesmanchatbot.io/database/repositories"
+import { isContactScanChannel } from "@salesmanchatbot.io/utils/channel"
 import {
   buildContactScanPageJobId,
   IntegrationJobAction,
   type IntegrationJobContactScan,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { filterConversationWindow } from "../coexist/conversation-window"
 import {

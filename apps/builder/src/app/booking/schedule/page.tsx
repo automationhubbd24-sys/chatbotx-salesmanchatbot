@@ -1,9 +1,9 @@
-import { appointmentService } from "@chatbotx.io/business"
+import { appointmentService } from "@salesmanchatbot.io/business"
 import {
   signAppointmentCancelToken,
   verifyAppointmentScheduleToken,
-} from "@chatbotx.io/encryption"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+} from "@salesmanchatbot.io/encryption"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import type { ReactNode } from "react"

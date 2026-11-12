@@ -65,12 +65,12 @@ const mediaLibraryService = {
   moveFiles: vi.fn(),
 }
 const mediaLibraryFileService = { list: vi.fn() }
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   mediaLibraryFileService,
   mediaLibraryService,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),

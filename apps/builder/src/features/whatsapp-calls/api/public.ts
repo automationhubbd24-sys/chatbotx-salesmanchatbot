@@ -3,9 +3,9 @@ import {
   whatsappCallHistoryService,
   whatsappCallSummaryService,
   whatsappCallTranscriptService,
-} from "@chatbotx.io/business"
-import { whatsappCallAiSummarySchema } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { whatsappCallAiSummarySchema } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import {
   possibleErrorsOnFindingResource,

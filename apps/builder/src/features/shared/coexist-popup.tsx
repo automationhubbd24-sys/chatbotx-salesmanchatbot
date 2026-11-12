@@ -1,6 +1,6 @@
 "use client"
 
-import { Dialog, DialogContent } from "@chatbotx.io/ui/components/ui/dialog"
+import { Dialog, DialogContent } from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { useRef } from "react"
 import {
   type CoexistFlowTarget,

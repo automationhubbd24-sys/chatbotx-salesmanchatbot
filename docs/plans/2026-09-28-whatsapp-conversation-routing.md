@@ -181,7 +181,7 @@ Idle is **computed**, never written by a cron (no job, no scan). A `released` ev
 
 - `handoverResumeFlowId bigintAsString NULL REFERENCES Flow(id)`, copying `welcomeFlowId` exactly (same `onDelete`, constraint naming, index).
 
-No new table. The transition history is the activity messages (§3.6), which the inbox already shows. `pnpm --filter @chatbotx.io/database make:migration conversation-routing` generates the SQL. **It is not applied without owner approval.** `db:check-drift` must pass.
+No new table. The transition history is the activity messages (§3.6), which the inbox already shows. `pnpm --filter @salesmanchatbot.io/database make:migration conversation-routing` generates the SQL. **It is not applied without owner approval.** `db:check-drift` must pass.
 
 ### 3.3 Data access
 

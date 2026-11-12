@@ -1,7 +1,7 @@
 "use client"
 
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -9,9 +9,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { CheckCircle2Icon, Loader2, XCircleIcon } from "lucide-react"

@@ -1,4 +1,4 @@
-import type { RichButtonPayloadEntry } from "@chatbotx.io/worker-config"
+import type { RichButtonPayloadEntry } from "@salesmanchatbot.io/worker-config"
 import { z } from "zod"
 import { type RichAction, richActionSchema } from "."
 

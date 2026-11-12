@@ -1,5 +1,5 @@
-import { channelTypes, genderTypes } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { channelTypes, genderTypes } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { contactFilterCriteriaSchema } from "@/features/contact-filter/schema"
 import type { ContactResource } from "./resource"

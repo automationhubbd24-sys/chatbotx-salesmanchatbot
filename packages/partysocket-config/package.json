@@ -1,16 +1,16 @@
 {
-  "name": "@chatbotx.io/partysocket-config",
+  "name": "@salesmanchatbot.io/partysocket-config",
   "version": "0.1.0",
   "type": "module",
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "^24.10.4",
     "typescript": "^5",
     "vitest": "^4.1.0"
   },
   "dependencies": {
-    "@chatbotx.io/logger": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
     "@t3-oss/env-core": "^0.13.11",
     "jose": "^6.2.3",
     "ky": "^2.0.2",

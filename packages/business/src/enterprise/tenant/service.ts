@@ -1,11 +1,11 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   type ChannelType,
   CREATABLE_CHANNELS,
   ROOT_TENANT_ID,
-} from "@chatbotx.io/database/partials"
-import { tenantModel } from "@chatbotx.io/database/schema"
-import { invalidateCacheByTags, withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/partials"
+import { tenantModel } from "@salesmanchatbot.io/database/schema"
+import { invalidateCacheByTags, withCache } from "@salesmanchatbot.io/redis"
 import type { EmailTemplate } from "../../platform/settings"
 import { userQuotaService } from "../../user-quota/service"
 import { workspaceLifecycleService } from "../../workspace-lifecycle/service"

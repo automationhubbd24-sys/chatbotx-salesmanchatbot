@@ -1,4 +1,4 @@
-import { MessageShardUnavailableError } from "@chatbotx.io/database/errors"
+import { MessageShardUnavailableError } from "@salesmanchatbot.io/database/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -11,19 +11,19 @@ const mocks = vi.hoisted(() => ({
   updateMarker: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextStore: {
     delete: mocks.cacheDelete,
     runExclusive: mocks.runExclusive,
   },
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findDMByContact: mocks.findDMByContact,
     updateAIContextLastMessageId: mocks.updateMarker,
   },
 }))
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mocks.createMessageRepository,
   getSafeSinceTime: vi.fn((value: Date | null) =>
     value ? new Date("2026-06-01T00:00:00.000Z") : undefined,

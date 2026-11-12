@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto"
-import type { HandleRequestProps } from "@chatbotx.io/sdk"
-import { SdkException } from "@chatbotx.io/sdk"
+import type { HandleRequestProps } from "@salesmanchatbot.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { WhatsappConfig } from "../src/schema"
 

@@ -1,5 +1,5 @@
-import { BROADCAST_PLAN_LIMIT_CODE } from "@chatbotx.io/business/errors"
-import { broadcastPlanLimitDataSchema } from "@chatbotx.io/database/partials"
+import { BROADCAST_PLAN_LIMIT_CODE } from "@salesmanchatbot.io/business/errors"
+import { broadcastPlanLimitDataSchema } from "@salesmanchatbot.io/database/partials"
 import type { ErrorMap } from "@orpc/server"
 import { z } from "zod"
 import { DENIAL_MESSAGES } from "@/lib/workspace/authorize-workspace-access"
@@ -85,7 +85,7 @@ export const commonApiErrors = {
     status: 422,
     data: z.looseObject({ issues: z.array(validationIssue) }),
   },
-  /** Business-level validation, via `validationException` in @chatbotx.io/business. */
+  /** Business-level validation, via `validationException` in @salesmanchatbot.io/business. */
   validation: {
     message: "Validation error",
     status: 422,
@@ -319,7 +319,7 @@ export const possibleErrorsOnDeletingResource = {
 } satisfies ErrorMap
 
 /**
- * Booking/cancel/delete on appointments can throw five `ChatbotXException`
+ * Booking/cancel/delete on appointments can throw five `salesmanChatbotException`
  * codes at status 409 that no other route set covers — `slotUnavailable`,
  * `appointmentAvailabilityChanged`, `appointmentAlreadyScheduled` (booking),
  * `appointmentNotCancellable` (cancel), `appointmentDeleteBlocked` (delete).
@@ -384,7 +384,7 @@ export const possibleErrorsOnDisconnectingExternalCalendar = {
 
 /**
  * Appointment calendar create/update/rename/duplicate can throw two more
- * `ChatbotXException` codes at 409 — `nameAlreadyExists`
+ * `salesmanChatbotException` codes at 409 — `nameAlreadyExists`
  * (`throwMappedUniqueError` in
  * `packages/business/src/appointment-calendar/service.ts`) and
  * `duplicateReminder` (same file, `update`, on a duplicate reminder
@@ -417,7 +417,7 @@ export const possibleErrorsOnMutatingAppointmentCalendar = {
 
 /**
  * `ContactScanService.schedule` (packages/business/src/contact-scan/service.ts) throws six
- * distinct `ChatbotXException` codes, two of them 409 — same declare-or-vanish rule as
+ * distinct `salesmanChatbotException` codes, two of them 409 — same declare-or-vanish rule as
  * `possibleErrorsOnBookingAppointment` above.
  */
 export const possibleErrorsOnSchedulingContactScan = {
@@ -499,14 +499,14 @@ export const possibleErrorsOnMutatingEmailTopic = {
 /**
  * `refresh`/`verify` on a `Connection` whose status is not `connected`/
  * `degraded` throws `connectionInactive` (409) — see `ConnectionService` in
- * `@chatbotx.io/connections`.
+ * `@salesmanchatbot.io/connections`.
  */
 const connectionInactive = {
   message: "This connection is not active",
   status: 409,
 }
 
-/** `refresh`/`verify`/connect called against a provider with no `ConnectionAdapter`/store binding — an expected unsupported operation (e.g. a built-in connection with no satellite store), not a server failure. See `connectionNotConfiguredException` in `@chatbotx.io/business/errors`. */
+/** `refresh`/`verify`/connect called against a provider with no `ConnectionAdapter`/store binding — an expected unsupported operation (e.g. a built-in connection with no satellite store), not a server failure. See `connectionNotConfiguredException` in `@salesmanchatbot.io/business/errors`. */
 const connectionNotConfigured = {
   message: "This connection provider is not configured",
   status: 400,
@@ -540,7 +540,7 @@ export const possibleErrorsOnVerifyingConnection = {
   ...possibleIdempotencyErrors,
 } satisfies ErrorMap
 
-/** `connectFromCredentials`'s config-validation/live-check failures — see `ConnectionService` in `@chatbotx.io/connections`. */
+/** `connectFromCredentials`'s config-validation/live-check failures — see `ConnectionService` in `@salesmanchatbot.io/connections`. */
 const connectionWrongStrategy = {
   message: "This connection provider does not accept direct credentials",
   status: 400,
@@ -556,7 +556,7 @@ const connectionNotOAuth = {
   status: 400,
 }
 
-/** The provider's OAuth code exchange or live credential-check failed with a transient upstream/transport error — see `connectionProviderUnavailableException` in `@chatbotx.io/business/errors`, thrown by `packages/connections`'s `credentials.ts` and `connect-session-flow.ts`. The exception itself carries either 502 or 503; this map documents the common 502 case. */
+/** The provider's OAuth code exchange or live credential-check failed with a transient upstream/transport error — see `connectionProviderUnavailableException` in `@salesmanchatbot.io/business/errors`, thrown by `packages/connections`'s `credentials.ts` and `connect-session-flow.ts`. The exception itself carries either 502 or 503; this map documents the common 502 case. */
 const connectionProviderUnavailable = {
   message: "The provider is temporarily unavailable. Please try again.",
   status: 502,

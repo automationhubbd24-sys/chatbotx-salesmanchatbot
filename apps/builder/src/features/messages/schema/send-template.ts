@@ -1,5 +1,5 @@
-import { waTemplateParamsSchema } from "@chatbotx.io/flow-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { waTemplateParamsSchema } from "@salesmanchatbot.io/flow-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 /**

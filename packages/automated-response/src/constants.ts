@@ -11,6 +11,8 @@ export const getKey = (props: {
 }) =>
   `automated-response:${props.conversationId}-${props.contactInboxId}:messages`
 
+export const getAutomatedResponseKey = getKey
+
 export const getFlowActionKey = (props: {
   conversationId: FlowActionKeyEntity
   contactInboxId: FlowActionKeyEntity

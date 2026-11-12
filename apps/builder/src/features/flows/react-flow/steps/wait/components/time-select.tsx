@@ -1,4 +1,4 @@
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useTranslations } from "next-intl"
 
 type TimeSelectProps = {

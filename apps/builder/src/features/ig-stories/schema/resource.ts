@@ -2,11 +2,11 @@ import {
   commentIncludeKeywordsSchema,
   commentReplySchema,
   igStoryTargetSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   igStoryAutomationModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 export const igStoryResource = createSelectSchema(igStoryAutomationModel, {

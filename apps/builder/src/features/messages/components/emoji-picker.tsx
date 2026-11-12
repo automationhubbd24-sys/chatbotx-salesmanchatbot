@@ -1,10 +1,10 @@
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { SmileIcon } from "lucide-react"
 import dynamic from "next/dynamic"
 import "./emoji.picker.css"

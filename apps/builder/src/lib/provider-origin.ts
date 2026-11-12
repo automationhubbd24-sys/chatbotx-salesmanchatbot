@@ -1,5 +1,5 @@
 import "server-only"
-import { customDomainService, tenantService } from "@chatbotx.io/business"
+import { customDomainService, tenantService } from "@salesmanchatbot.io/business"
 import { cache } from "react"
 import { isCloud } from "@/env"
 import { getBrokerOrigin } from "@/lib/oauth-broker"

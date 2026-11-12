@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   isUnauthorizedStatusError,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { sendGridRequest } from "./client"
 import {
   SENDGRID_API_BASE_URL,

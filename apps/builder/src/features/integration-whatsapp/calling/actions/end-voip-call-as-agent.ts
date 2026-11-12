@@ -1,22 +1,22 @@
 import {
   whatsappVoipCallService,
   whatsappVoipSignalingService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   resolveWhatsappCallOutcome,
   resolveWhatsappCallTerminalOutcomePair,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   integrationWhatsappRepository,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   rejectCall,
   terminateCall,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
-import { CALL_CANCELED_BY_BUSINESS_LAST_ERROR } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
+import { CALL_CANCELED_BY_BUSINESS_LAST_ERROR } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { logger } from "@/lib/log"
 
@@ -41,7 +41,7 @@ export async function endVoipCallAsAgent(
 
   const call = await whatsappCallRepository.findById(input.whatsappCallId)
   if (!call || call.workspaceId !== input.workspaceId) {
-    throw new ChatbotXException(t("whatsapp.calls.errors.callNotFound"))
+    throw new salesmanChatbotException(t("whatsapp.calls.errors.callNotFound"))
   }
 
   // The agent ended an outbound call before it connected — mark it so the
@@ -58,7 +58,7 @@ export async function endVoipCallAsAgent(
 
   if (!call.wacid) {
     if (!isCallOwner) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         t("whatsapp.calls.errors.voipNotReservedAgent"),
       )
     }
@@ -83,7 +83,7 @@ export async function endVoipCallAsAgent(
     ? control.reservedUserId === input.userId
     : isCallOwner
   if (!isReservedAgent) {
-    throw new ChatbotXException(t("whatsapp.calls.errors.voipNotReservedAgent"))
+    throw new salesmanChatbotException(t("whatsapp.calls.errors.voipNotReservedAgent"))
   }
 
   const ended = control
@@ -99,7 +99,7 @@ export async function endVoipCallAsAgent(
       inboxId: call.inboxId,
     })
   if (!integration) {
-    throw new ChatbotXException(t("whatsapp.calls.errors.notFound"))
+    throw new salesmanChatbotException(t("whatsapp.calls.errors.notFound"))
   }
 
   const graphCall = ended.graphAction === "reject" ? rejectCall : terminateCall

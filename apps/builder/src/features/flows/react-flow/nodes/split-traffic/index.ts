@@ -2,7 +2,7 @@ import {
   nodeTypeSchema,
   splitTrafficNodeDefaultFn,
   splitTrafficNodeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { ShuffleIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { splitTrafficEditorMenus } from "./menu"

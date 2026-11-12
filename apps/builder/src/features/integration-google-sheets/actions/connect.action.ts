@@ -1,9 +1,9 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { UserModel, WorkspaceModel } from "@chatbotx.io/database/types"
-import { HandleRequestType } from "@chatbotx.io/sdk"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { UserModel, WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { HandleRequestType } from "@salesmanchatbot.io/sdk"
 import { redirect } from "next/navigation"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { integrations } from "@/integration"
@@ -35,7 +35,7 @@ export const connectGoogleSheets = workspaceActionClient
         type: "google",
       })
       if (!googleCredential) {
-        throw new ChatbotXException("Google Sheets App settings is not valid")
+        throw new salesmanChatbotException("Google Sheets App settings is not valid")
       }
 
       const originUrl = await getOriginUrlFromHeader()

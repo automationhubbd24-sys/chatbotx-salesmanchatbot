@@ -4,7 +4,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import type { MenuItem } from "../nodes/types"
 
 function MenuRow({ menuItem }: { menuItem: MenuItem }) {

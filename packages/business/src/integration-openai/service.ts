@@ -1,13 +1,14 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   integrationModel,
   integrationOpenaiModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { BaseService } from "../base.service"
 import {
   type ConnectAiProviderInput,
   connectAiProviderIntegration,
 } from "../integration-ai-provider/connect"
+import { productService } from "../product"
 
 export type UpdateOpenAIInput = { autoReply?: boolean }
 
@@ -38,6 +39,11 @@ class IntegrationOpenAIService extends BaseService {
         ? "updated the OpenAI integration configuration"
         : "connected a new OpenAI integration",
     )
+    if (!existing) {
+      await productService.scheduleEmbeddingRefreshPage({
+        workspaceId: input.workspaceId,
+      })
+    }
   }
 
   async update(

@@ -1,6 +1,6 @@
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
-import { contactModel, createSelectSchema } from "@chatbotx.io/database/schema"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
+import { contactModel, createSelectSchema } from "@salesmanchatbot.io/database/schema"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import type { LucideIcon } from "lucide-react"
 import { z } from "zod"
 

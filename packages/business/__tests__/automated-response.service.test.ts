@@ -47,8 +47,8 @@ vi.mock("../src/template/installed-resource.service", () => ({
 }))
 
 // This suite doesn't exercise `create` (which needs `flowService.exists`),
-// but the real `flow/service.ts` transitively needs `@chatbotx.io/flow-config`
-// (needs the real `zodBigintAsString` from `@chatbotx.io/utils`, conflicting
+// but the real `flow/service.ts` transitively needs `@salesmanchatbot.io/flow-config`
+// (needs the real `zodBigintAsString` from `@salesmanchatbot.io/utils`, conflicting
 // with the narrow mock below).
 vi.mock("../src/flow/service", () => ({
   flowService: { exists: mocks.flowExists },
@@ -58,7 +58,7 @@ vi.mock("../src/folder/service", () => ({
   folderService: { ensureExists: mocks.ensureExists },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ and: args }),
   db: makeClient(),
   eq: (...args: unknown[]) => ({ eq: args }),
@@ -67,12 +67,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   automatedResponseFolderTypeByType: { keyword: "automatedResponse" },
   rootFolderId: "root",
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   automatedResponseModel: {
     id: "automatedResponse.id",
     workspaceId: "automatedResponse.workspaceId",
@@ -80,17 +80,17 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(),
   likeContains: vi.fn(),
   parseOrderByAsObject: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheKeys: mocks.invalidateCacheKeys,
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: vi.fn(() => "generated-id"),
 }))
 

@@ -4,9 +4,9 @@ import type {
   BroadcastEventType,
   CommentAutomationEventType,
   SequenceStepEventType,
-} from "@chatbotx.io/analytics/schemas"
-import { tagService } from "@chatbotx.io/business"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { tagService } from "@salesmanchatbot.io/business"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

@@ -2,7 +2,7 @@ import {
   botFieldService,
   customFieldService,
   tagService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   CONTACT_FILTER_FIELD_DEFINITIONS,
   convertCustomFieldTypeToConditionType,

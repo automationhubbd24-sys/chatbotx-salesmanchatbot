@@ -1,6 +1,6 @@
 "use server"
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { returnValidationErrors } from "next-safe-action"
 import {
   type WorkspaceIdRequestParams,
@@ -36,7 +36,7 @@ export const createSpreadsheetAction = workspaceActionClient
           messages,
         })
       } catch (error) {
-        if (error instanceof ChatbotXException && error.code === "validation") {
+        if (error instanceof salesmanChatbotException && error.code === "validation") {
           // Key on the field the service tagged so a validation added on any
           // other field stops mis-rendering under the URL input.
           return returnValidationErrors(createSpreadsheetRequest, {

@@ -1,8 +1,8 @@
 import type {
   SendImageStepSchema,
   SendVideoStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { SendFlowStepProps } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { SendFlowStepProps } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../../lib/logger"
 import type { InstagramAuthValue, InstagramSendMessage } from "../../../schema"
 import { withQuickReplies } from "./canonical-quick-replies"

@@ -34,7 +34,7 @@ vi.mock("@/lib/locale", () => ({
   setUserLocale: localeAction.setUserLocale,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     disabled,
@@ -46,7 +46,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/popover", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/popover", () => ({
   Popover: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   PopoverContent: ({
     children,
@@ -55,7 +55,7 @@ vi.mock("@chatbotx.io/ui/components/ui/popover", () => ({
   PopoverTrigger: ({ render }: { render: ReactNode }) => <>{render}</>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/command", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/command", () => ({
   Command: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   CommandEmpty: ({ children }: { children: ReactNode }) => (
     <div>{children}</div>

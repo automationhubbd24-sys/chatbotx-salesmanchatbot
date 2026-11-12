@@ -34,7 +34,7 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findManyQuery: mocks.findManyQuery,
     findWithFullRelations: mocks.findWithFullRelations,
@@ -42,11 +42,11 @@ vi.mock("@chatbotx.io/business", () => ({
   resolveContactAvatarUrl: mocks.resolveContactAvatarUrl,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: mocks.notFoundException,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxOperationalColumns: { sourceIdentityHistory: false },
   createMessageRepository: mocks.createMessageRepository,
   getSafeSinceTime: mocks.getSafeSinceTime,

@@ -1,7 +1,7 @@
-import { aiAgentService, workspaceService } from "@chatbotx.io/business"
-import { isSmartResponseDelayOption } from "@chatbotx.io/database/partials"
-import { simpleQueue } from "@chatbotx.io/redis"
-import { AIJobAction, aiAgentQueue } from "@chatbotx.io/worker-config"
+import { aiAgentService, workspaceService } from "@salesmanchatbot.io/business"
+import { isSmartResponseDelayOption } from "@salesmanchatbot.io/database/partials"
+import { simpleQueue } from "@salesmanchatbot.io/redis"
+import { AIJobAction, aiAgentQueue } from "@salesmanchatbot.io/worker-config"
 import { getKey } from "./constants"
 import { matchesAnyKeywordRule } from "./keyword-match"
 import { logger } from "./lib/logger"
@@ -65,6 +65,7 @@ export const enqueueMessage = async (props: {
             conversationId: props.conversationId,
             contactInboxId: props.contactInboxId,
             messageId: props.messageId,
+            triggerMessageIds: [props.messageId],
           },
         },
         {

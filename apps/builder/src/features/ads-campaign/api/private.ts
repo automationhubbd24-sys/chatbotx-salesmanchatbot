@@ -3,9 +3,9 @@ import {
   listCachedMessagingAdAccounts,
   messagingAdCampaignService,
   messagingAdsConnectionService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { facebookAdAccountSchema } from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { facebookAdAccountSchema } from "@salesmanchatbot.io/integration-facebook-ads"
 import { z } from "zod"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
@@ -141,7 +141,7 @@ export const adsCampaignAuthenticatedAPI = {
       method: "GET",
       path: "/workspaces/{workspaceId}/ads-campaign/messaging-ads",
       summary:
-        "List messaging ads created from ChatbotX for one channel integration, with Meta's live effective_status",
+        "List messaging ads created from salesmanChatbot for one channel integration, with Meta's live effective_status",
       tags: ["AdsCampaign"],
     })
     .input(
@@ -296,7 +296,7 @@ export const adsCampaignAuthenticatedAPI = {
       // for the CTWA wizard step) — it must never build a Facebook Ads
       // context, and is only meaningful for the WhatsApp box.
       if (input.channel !== "whatsapp") {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Messenger pages are only listed for the WhatsApp channel",
           "invalidRequest",
           400,

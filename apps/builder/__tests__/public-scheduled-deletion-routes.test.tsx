@@ -30,11 +30,11 @@ vi.mock("@/lib/workspace/load-servable-workspace", () => ({
   loadServableWorkspace: mockLoadServableWorkspace,
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: {
     unsubscribeEmail: mockContactUnsubscribeEmail,
   },
@@ -51,18 +51,18 @@ vi.mock("@chatbotx.io/business", () => ({
   verifyUnsubscribeToken: mockVerifyUnsubscribeToken,
 }))
 
-vi.mock("@chatbotx.io/business/system-field", () => ({
+vi.mock("@salesmanchatbot.io/business/system-field", () => ({
   systemFieldService: {
     getMePrivacyData: mockSystemGetMePrivacyData,
   },
 }))
 
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getInboxLinks: vi.fn(() => []),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     getIdFromParams: (params: Record<string, string>, key: string) =>

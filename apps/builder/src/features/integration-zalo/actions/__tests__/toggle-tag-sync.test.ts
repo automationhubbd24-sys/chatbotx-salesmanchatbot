@@ -30,17 +30,17 @@ vi.mock("@/features/workspace-members/queries", () => ({
 }))
 
 // ---------------------------------------------------------------------------
-// Mock @chatbotx.io/database/client — findOrFail is still reached by the
+// Mock @salesmanchatbot.io/database/client — findOrFail is still reached by the
 // workspaceActionClient auth chain, even though the action itself no longer
 // calls `db` directly.
 // ---------------------------------------------------------------------------
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   findOrFail: vi.fn(),
   isDatabaseError: vi.fn(() => false),
 }))
 
 // ---------------------------------------------------------------------------
-// Mock @chatbotx.io/business (isPlatformAdmin, zaloIntegrationService) and errors
+// Mock @salesmanchatbot.io/business (isPlatformAdmin, zaloIntegrationService) and errors
 //
 // This factory mock enumerates exports, so it must cover everything
 // `workspaceActionClient` reaches — not just what this action calls directly.
@@ -55,7 +55,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
 // ---------------------------------------------------------------------------
 const updateTagSync = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isPlatformAdmin: vi.fn(async () => false),
   isWorkspaceScheduledForDeletion: vi.fn(() => false),
   resolveWorkspaceAccess: vi.fn(({ realMember, workspaceId }) => {
@@ -71,21 +71,21 @@ vi.mock("@chatbotx.io/business", () => ({
   zaloIntegrationService: { updateTagSync },
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   getAuditActor: vi.fn(() => undefined),
   withAuditContext: vi.fn(
     async (_ctx: unknown, fn: () => Promise<unknown>) => await fn(),
   ),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
 // ---------------------------------------------------------------------------
-// Mock @chatbotx.io/sdk (SdkException referenced in safe-action error handler)
+// Mock @salesmanchatbot.io/sdk (SdkException referenced in safe-action error handler)
 // ---------------------------------------------------------------------------
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   SdkException: class SdkException extends Error {},
 }))
 
@@ -100,8 +100,8 @@ vi.mock("@/lib/log", () => ({
 // Lazy imports — must come after all vi.mock() calls
 // ---------------------------------------------------------------------------
 const { toggleZaloTagSyncAction } = await import("../toggle-tag-sync.action")
-const { ChatbotXException } = await import("@chatbotx.io/business/errors")
-const { findOrFail } = await import("@chatbotx.io/database/client")
+const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
+const { findOrFail } = await import("@salesmanchatbot.io/database/client")
 const { getCurrentUserId } = await import("@/lib/auth/utils")
 const { getAllWorkspaceMembers } = await import(
   "@/features/workspace-members/queries"
@@ -178,7 +178,7 @@ describe("toggleZaloTagSyncAction", () => {
   describe("unknown integration id", () => {
     test("surfaces the service's notFound error as serverError", async () => {
       updateTagSync.mockRejectedValue(
-        new ChatbotXException("Zalo channel not found"),
+        new salesmanChatbotException("Zalo channel not found"),
       )
 
       const result = await invokeAction(true)

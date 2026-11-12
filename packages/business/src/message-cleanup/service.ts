@@ -8,15 +8,15 @@ import {
   liftDecompressionLimit,
   lte,
   sql,
-} from "@chatbotx.io/database/client"
-import { messageCleanupStatuses } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { messageCleanupStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   attachmentModel,
   messageCleanupModel,
   messageModel,
-} from "@chatbotx.io/database/schema"
-import type { MessageCleanupModel } from "@chatbotx.io/database/types"
-import { uploader } from "@chatbotx.io/filesystem"
+} from "@salesmanchatbot.io/database/schema"
+import type { MessageCleanupModel } from "@salesmanchatbot.io/database/types"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import { BaseService } from "../base.service"
 import { logger } from "../logger"
 import { messageService } from "../message/service"

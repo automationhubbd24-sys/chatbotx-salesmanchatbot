@@ -1,4 +1,4 @@
-import { tagService } from "@chatbotx.io/business"
+import { tagService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListTagsRequest, ListTagsResponse } from "../schema/query"
 export const listTagsRSC = async (

@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from "node:async_hooks"
-import { MISSED_COMMENT_REPLAY_PRIORITY } from "@chatbotx.io/worker-config"
+import { MISSED_COMMENT_REPLAY_PRIORITY } from "@salesmanchatbot.io/worker-config"
 import type { JobsOptions } from "bullmq"
 
 /**

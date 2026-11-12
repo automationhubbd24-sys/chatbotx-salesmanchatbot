@@ -32,7 +32,7 @@ const enterpriseFeatureRequired = () =>
     httpStatusCode: 403,
   })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertEnterpriseFeatures: mockAssertEnterpriseFeatures,
   isPlatformAdmin: mockIsPlatformAdmin,
   isSuperAdmin: mockIsSuperAdmin,
@@ -42,13 +42,13 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   ROOT_TENANT_ID: "1",
   auditLogModel: {},
   errorLogModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: { auditLogModel: { findMany: mockDbFindMany } },
     $count: mockDbCount,
@@ -56,12 +56,12 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: vi.fn(() => ({ limit: 10, offset: 0 })),
   parseOrderByAsObject: vi.fn(() => undefined),
 }))
 
-vi.mock("@chatbotx.io/mail/preview", () => ({
+vi.mock("@salesmanchatbot.io/mail/preview", () => ({
   compileEmailPreview: mockCompileEmailPreview,
 }))
 

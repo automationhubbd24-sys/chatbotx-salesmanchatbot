@@ -4,15 +4,15 @@ import {
   listPurgeableBroadcasts,
   type PurgeStopReason,
   purgeBroadcastRecipients,
-} from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 import {
   distributedLock,
   distributedStore,
   isLockAcquisitionError,
-} from "@chatbotx.io/redis"
-import { mapWithConcurrency } from "@chatbotx.io/utils"
-import { PURGE_BROADCAST_CONCURRENCY } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/redis"
+import { mapWithConcurrency } from "@salesmanchatbot.io/utils"
+import { PURGE_BROADCAST_CONCURRENCY } from "@salesmanchatbot.io/worker-config"
 
 const LOCK_KEY = "schedule:purge-broadcasts"
 const log = getChildLogger("purge-broadcasts")

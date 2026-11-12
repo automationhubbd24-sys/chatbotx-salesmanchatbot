@@ -2,7 +2,7 @@
 
 import { describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/business/contact-utils", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-utils", () => ({
   maskContactEmailAndPhone: vi.fn((contact: unknown) => contact),
 }))
 

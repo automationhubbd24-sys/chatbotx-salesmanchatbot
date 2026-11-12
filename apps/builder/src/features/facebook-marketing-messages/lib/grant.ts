@@ -3,14 +3,14 @@ import "server-only"
 import {
   facebookMarketingMessagesService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   debugToken,
   hasMarketingMessages,
   toAppAccessToken,
-} from "@chatbotx.io/integration-messenger/apis/auth"
+} from "@salesmanchatbot.io/integration-messenger/apis/auth"
 import { getTranslations } from "next-intl/server"
 import { resolveOwnerForWorkspace } from "@/lib/platform-credential-owner"
 
@@ -98,7 +98,7 @@ export async function requireValidGrant(
   const grant = await resolveMarketingMessagesGrant(workspace)
   if (grant.state !== "valid") {
     const t = await getTranslations()
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("facebookMarketingMessages.errors.notGranted"),
     )
   }

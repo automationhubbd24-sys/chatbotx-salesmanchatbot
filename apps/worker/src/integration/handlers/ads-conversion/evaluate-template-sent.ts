@@ -1,4 +1,4 @@
-import type { AdsConversionJobEvaluateTemplateSent } from "@chatbotx.io/worker-config"
+import type { AdsConversionJobEvaluateTemplateSent } from "@salesmanchatbot.io/worker-config"
 
 type EvaluateTemplateSentData = AdsConversionJobEvaluateTemplateSent["data"]
 
@@ -21,7 +21,7 @@ export function handleEvaluateTemplateSent(
 // import {
 //   adsConversionService,
 //   withBlockedOwnerGuard,
-// } from "@chatbotx.io/business"
+// } from "@salesmanchatbot.io/business"
 //
 // export async function handleEvaluateTemplateSent(
 //   data: EvaluateTemplateSentData,

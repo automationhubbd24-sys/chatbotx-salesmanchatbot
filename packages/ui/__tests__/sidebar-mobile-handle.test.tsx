@@ -1,4 +1,4 @@
-import { setViewportWidth } from "@chatbotx.io/vitest-config/setup-dom"
+import { setViewportWidth } from "@salesmanchatbot.io/vitest-config/setup-dom"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test } from "vitest"

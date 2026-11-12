@@ -78,7 +78,7 @@ const mocks = vi.hoisted(() => ({
   cancelSession: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   connectionStateService: {
     list: mocks.list,
     getForWorkspace: mocks.getForWorkspace,
@@ -87,7 +87,7 @@ vi.mock("@chatbotx.io/business", () => ({
   platformCredentialService: { resolveForOwner: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business/connect-session", () => ({
+vi.mock("@salesmanchatbot.io/business/connect-session", () => ({
   connectSessionService: {
     findByIdForWorkspace: mocks.findSessionByIdForWorkspace,
     cancel: mocks.cancelSession,
@@ -104,7 +104,7 @@ const connectionServiceMocks = vi.hoisted(() => ({
   connectTargets: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/connections", () => ({
+vi.mock("@salesmanchatbot.io/connections", () => ({
   connectionService: connectionServiceMocks,
   isCredentialStrategy: (strategy: string) =>
     strategy === "token" || strategy === "api_key" || strategy === "self_serve",
@@ -117,7 +117,7 @@ vi.mock("@chatbotx.io/connections", () => ({
   },
 }))
 
-class MockChatbotXException extends Error {
+class MocksalesmanChatbotException extends Error {
   code: string
   constructor(message: string, code: string) {
     super(message)
@@ -125,15 +125,15 @@ class MockChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
-  ChatbotXException: MockChatbotXException,
+  salesmanChatbotException: MocksalesmanChatbotException,
   notFoundException: (message: string) =>
-    new MockChatbotXException(message, "notFound"),
+    new MocksalesmanChatbotException(message, "notFound"),
   channelHiddenException: (channel: string) =>
-    new MockChatbotXException(`${channel} hidden`, "channelHidden"),
+    new MocksalesmanChatbotException(`${channel} hidden`, "channelHidden"),
   connectionNotConfiguredException: (provider: string) =>
-    new MockChatbotXException(
+    new MocksalesmanChatbotException(
       `${provider} not configured`,
       "connectionNotConfigured",
     ),
@@ -357,7 +357,7 @@ describe("POST /v1/connections/{id}/refresh — provider error propagation", () 
       provider: "messenger",
     })
     connectionServiceMocks.refresh.mockRejectedValueOnce(
-      new MockChatbotXException(
+      new MocksalesmanChatbotException(
         "This connection is not active.",
         "connectionInactive",
       ),

@@ -1,27 +1,27 @@
 import {
   BROADCAST_PLAN_LIMIT_CODE,
-  ChatbotXException,
-} from "@chatbotx.io/business/errors"
+  salesmanChatbotException,
+} from "@salesmanchatbot.io/business/errors"
 
 /**
  * Narrows a caught error to a service-thrown, field-scoped validation
  * failure (`validationException` in `packages/business/src/errors.ts`).
  * Prefer this over a duck-typed `"code" in error` check — a driver or
  * runtime error can carry an unrelated `code` property, and only a real
- * `ChatbotXException` is guaranteed to carry `field`/`message` safe to show
+ * `salesmanChatbotException` is guaranteed to carry `field`/`message` safe to show
  * a user.
  */
 export function isValidationException(
   error: unknown,
-): error is ChatbotXException & { code: "validation" } {
-  return error instanceof ChatbotXException && error.code === "validation"
+): error is salesmanChatbotException & { code: "validation" } {
+  return error instanceof salesmanChatbotException && error.code === "validation"
 }
 
 export function isBroadcastPlanLimitException(
   error: unknown,
-): error is ChatbotXException & { code: "broadcastPlanLimit" } {
+): error is salesmanChatbotException & { code: "broadcastPlanLimit" } {
   return (
-    error instanceof ChatbotXException &&
+    error instanceof salesmanChatbotException &&
     error.code === BROADCAST_PLAN_LIMIT_CODE
   )
 }
@@ -34,6 +34,6 @@ export function isBroadcastPlanLimitException(
  */
 export function isNotFoundException(
   error: unknown,
-): error is ChatbotXException & { code: "notFound" } {
-  return error instanceof ChatbotXException && error.code === "notFound"
+): error is salesmanChatbotException & { code: "notFound" } {
+  return error instanceof salesmanChatbotException && error.code === "notFound"
 }

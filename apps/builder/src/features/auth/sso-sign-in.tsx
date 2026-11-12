@@ -1,7 +1,7 @@
 "use client"
 
-import type { SocialProvider } from "@chatbotx.io/auth/server"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { SocialProvider } from "@salesmanchatbot.io/auth/server"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { authClient } from "@/lib/auth/auth-client"

@@ -1,4 +1,4 @@
-import { whatsappTemplateCategories } from "@chatbotx.io/database/partials"
+import { whatsappTemplateCategories } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import {
   languageOptions,

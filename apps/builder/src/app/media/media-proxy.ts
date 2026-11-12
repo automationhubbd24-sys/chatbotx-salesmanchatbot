@@ -1,20 +1,20 @@
 export {
   isFailedOriginPath,
   isPendingOriginPath,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 import {
   resolveIntegrationForAttachment,
   TerminalMediaError,
-} from "@chatbotx.io/channel-registry/media-hydration"
-import type { MediaTokenPayload } from "@chatbotx.io/encryption"
-import { verifyMediaToken } from "@chatbotx.io/encryption"
-import { getPublicOriginFromRequest } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/channel-registry/media-hydration"
+import type { MediaTokenPayload } from "@salesmanchatbot.io/encryption"
+import { verifyMediaToken } from "@salesmanchatbot.io/encryption"
+import { getPublicOriginFromRequest } from "@salesmanchatbot.io/utils"
 import {
   LowJobAction,
   type LowJobCoexistAttachmentDownload,
   lowQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type NextRequest, NextResponse } from "next/server"
 import { httpLogger } from "@/lib/log"
 import {

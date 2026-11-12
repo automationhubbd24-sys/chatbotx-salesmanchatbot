@@ -4,19 +4,19 @@ import { z } from "zod"
 const enqueueDuePending = vi.fn()
 const runExclusive = vi.fn((input: { fn: () => unknown }) => input.fn())
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentReminderService: {
     enqueueDuePending,
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive,
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   scheduleJobScanAppointmentRemindersDataSchema: z.object({
     triggeredAt: z.string().optional(),
   }),

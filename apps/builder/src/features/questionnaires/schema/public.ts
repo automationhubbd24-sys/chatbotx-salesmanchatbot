@@ -2,8 +2,8 @@ import {
   questionnaireQuestionImageSchema,
   questionnaireQuestionTypes,
   questionnaireSubmissionStatuses,
-} from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicListRequest, publicListResponse } from "@/lib/public-api/list"
 import {

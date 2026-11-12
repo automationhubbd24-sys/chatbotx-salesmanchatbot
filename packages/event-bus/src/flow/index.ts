@@ -4,9 +4,9 @@ export type {
   FlowEventListener,
   FlowEventMap,
   FlowPayload,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 export {
   clickedPayloadSchema,
   flowEventSchemas,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 export * from "./event-bus"

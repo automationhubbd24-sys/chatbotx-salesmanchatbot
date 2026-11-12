@@ -1,7 +1,7 @@
 import {
   encodeTemplateFlowToken,
   TemplateFlowOrigin,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const findBroadcastByIdForResponse = vi.fn()
@@ -10,7 +10,7 @@ const detectConversationAndContactInbox = vi.fn()
 const detectFlowVersion = vi.fn()
 const loggerWarn = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: {
     findByIdForResponse: (...args: unknown[]) =>
       findBroadcastByIdForResponse(...args),

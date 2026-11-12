@@ -7,7 +7,7 @@ import {
   vi,
 } from "vitest"
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       inboxModel: { findFirst: vi.fn() },
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     // Echo a fixed resolved value so tests focus on parameter_name wiring.
     replaceAll: vi.fn(() => Promise.resolve("John")),
@@ -25,7 +25,7 @@ vi.mock("@chatbotx.io/variables", () => ({
 
 const { validateWhatsappTemplate, replaceWhatsappTemplateVariables } =
   await import("../src/integration/handlers/wa-template-handler")
-const { db } = await import("@chatbotx.io/database/client")
+const { db } = await import("@salesmanchatbot.io/database/client")
 
 const mockInboxFindFirst = db.query.inboxModel.findFirst as MockInstance
 const mockTemplateFindFirst = db.query.whatsappMessageTemplateModel

@@ -1,4 +1,4 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import {
   type AdEligibleInboxByContactRow,
   type AdEligibleInboxChannel,
@@ -11,27 +11,27 @@ import {
   integrationInstagramRepository,
   integrationMessengerRepository,
   integrationWhatsappRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   AdsConversionCapiStatus,
   AdsConversionChannel,
   AdsConversionEventType,
   adsConversionEventModel,
   adsConversionRuleModel,
-} from "@chatbotx.io/database/schema"
-import { adsConversionChannelSchema } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
+import { adsConversionChannelSchema } from "@salesmanchatbot.io/database/schema"
 import type {
   AdsConversionEventModel,
   AdsConversionRuleModel,
-} from "@chatbotx.io/database/types"
-import { invalidateCacheByTags, withCache } from "@chatbotx.io/redis"
-import { DEFAULT_ADS_CONVERSION_CHANNEL } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/database/types"
+import { invalidateCacheByTags, withCache } from "@salesmanchatbot.io/redis"
+import { DEFAULT_ADS_CONVERSION_CHANNEL } from "@salesmanchatbot.io/utils/channel"
 import {
   enqueueIntegrationJob,
   IntegrationJobAction,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { formatUtcDay } from "../lib/date"
 import { logger } from "../logger"
 import {
@@ -181,7 +181,7 @@ function assertIntegrationConsistency(input: RuleIntegrationInput) {
     return
   }
 
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     "Ads conversion rule integration must match the selected channel",
   )
 }
@@ -266,7 +266,7 @@ async function assertIntegrationOwnership(
     return
   }
 
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     "Ads conversion rule integration was not found in this workspace",
   )
 }
@@ -278,7 +278,7 @@ function parseTrigger(trigger: unknown) {
 // Channel × trigger-type allowlist (Phase 5 / Amendment A1 server-side
 // guard — "never trust the client"): whatsapp/facebook/messenger allow every
 // currently-supported trigger type; instagram excludes `templateSent`
-// because no template entity/step exists for Instagram in ChatbotX or
+// because no template entity/step exists for Instagram in salesmanChatbot or
 // Meta's IG messaging surface (see Amendment A1). Checked in ADDITION to
 // `supportedRuleTriggerTypes` above, not instead of it.
 const supportedTriggerTypesByChannel: Record<
@@ -300,7 +300,7 @@ function assertSupportedTrigger(
   if (
     !supportedRuleTriggerTypes.has(trigger.type as SupportedRuleTriggerType)
   ) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Ads conversion trigger type "${trigger.type}" is not supported yet`,
     )
   }
@@ -310,7 +310,7 @@ function assertSupportedTrigger(
       trigger.type as SupportedRuleTriggerType,
     )
   ) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Ads conversion trigger type "${trigger.type}" is not supported for channel "${channel}"`,
     )
   }
@@ -347,7 +347,7 @@ function parseUnixTimestamp(timestamp: number | string): Date {
   const seconds =
     typeof timestamp === "number" ? timestamp : Number.parseFloat(timestamp)
   if (!Number.isFinite(seconds)) {
-    throw new ChatbotXException("Invalid automatic conversion event timestamp")
+    throw new salesmanChatbotException("Invalid automatic conversion event timestamp")
   }
 
   return new Date(seconds * 1000)
@@ -835,7 +835,7 @@ class AdsConversionService extends BaseService {
     const parsed = removeAdsConversionRuleInput.parse(input)
     const rule = await adsConversionRuleRepository.findWorkspaceRule(parsed, tx)
     if (!rule) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion rule not found",
         "notFound",
         404,
@@ -868,7 +868,7 @@ class AdsConversionService extends BaseService {
       tx,
     )
     if (!existing) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion rule not found",
         "notFound",
         404,
@@ -913,7 +913,7 @@ class AdsConversionService extends BaseService {
       tx,
     )
     if (!updated) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion rule not found",
         "notFound",
         404,
@@ -938,7 +938,7 @@ class AdsConversionService extends BaseService {
       tx,
     )
     if (!updated) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion rule not found",
         "notFound",
         404,
@@ -956,7 +956,7 @@ class AdsConversionService extends BaseService {
     const parsed = removeAdsConversionRuleInput.parse(input)
     const deleted = await adsConversionRuleRepository.delete(parsed, tx)
     if (!deleted) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion rule not found",
         "notFound",
         404,
@@ -1157,7 +1157,7 @@ class AdsConversionService extends BaseService {
     if (!evaluate) {
       // instagram: no template entity/step exists (Amendment A1).
       // facebook: dead channel, no template concept either.
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         `Ads conversion templateSent trigger is not supported for channel "${parsed.channel}"`,
       )
     }
@@ -1885,7 +1885,7 @@ class AdsConversionService extends BaseService {
       tx,
     )
     if (!event) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Ads conversion event not found",
         "notFound",
         404,

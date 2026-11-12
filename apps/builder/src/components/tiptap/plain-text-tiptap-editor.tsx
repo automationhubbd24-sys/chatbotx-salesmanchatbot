@@ -15,14 +15,14 @@ import {
 } from "./extensions/variable-injection/mention"
 import variableInjectionSuggestion from "./extensions/variable-injection/suggestion"
 import "./tiptap-editor.css"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import EmojiPicker, { type EmojiClickData } from "emoji-picker-react"
 import { CodeXml, Smile } from "lucide-react"
 import { useCallback, useEffect, useRef, useState } from "react"

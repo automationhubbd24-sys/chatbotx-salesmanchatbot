@@ -1,8 +1,8 @@
 "use server"
-import { aiProviders } from "@chatbotx.io/ai"
-import { aiIntegrationService } from "@chatbotx.io/ai/server"
-import { integrationClaudeService } from "@chatbotx.io/business"
-import { verifyAiProviderApiKey } from "@chatbotx.io/business/integration-ai-provider/verify"
+import { aiProviders } from "@salesmanchatbot.io/ai"
+import { aiIntegrationService } from "@salesmanchatbot.io/ai/server"
+import { integrationClaudeService } from "@salesmanchatbot.io/business"
+import { verifyAiProviderApiKey } from "@salesmanchatbot.io/business/integration-ai-provider/verify"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import {

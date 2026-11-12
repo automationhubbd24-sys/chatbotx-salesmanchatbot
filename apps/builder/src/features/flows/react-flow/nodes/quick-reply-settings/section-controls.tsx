@@ -1,7 +1,7 @@
 "use client"
 
-import { FormFieldWrapper } from "@chatbotx.io/ui/components/form/field-wrapper"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { FormFieldWrapper } from "@salesmanchatbot.io/ui/components/form/field-wrapper"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { getProperty } from "dot-prop"
 import { useTranslations } from "next-intl"
 import type { ReactNode } from "react"

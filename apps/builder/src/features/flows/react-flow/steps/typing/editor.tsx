@@ -1,6 +1,6 @@
 "use client"
 
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
 import { useTranslations } from "next-intl"
 
 type TypingStepEditorProps = {

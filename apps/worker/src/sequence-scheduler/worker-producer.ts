@@ -1,11 +1,11 @@
-import { sequenceDispatchRepository } from "@chatbotx.io/database/repositories"
-import { sequenceConnections } from "@chatbotx.io/redis"
-import { SchedulerClient } from "@chatbotx.io/scheduler"
+import { sequenceDispatchRepository } from "@salesmanchatbot.io/database/repositories"
+import { sequenceConnections } from "@salesmanchatbot.io/redis"
+import { SchedulerClient } from "@salesmanchatbot.io/scheduler"
 import {
   getSequenceSchedulerQueue,
   type SequenceSchedulerJobData,
   type SequenceSchedulerQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { ensureBootstrapped } from "../lib/bootstrap"
 import { logger } from "../lib/logger"
 

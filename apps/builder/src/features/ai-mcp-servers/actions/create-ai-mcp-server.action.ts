@@ -1,7 +1,7 @@
 "use server"
 
-import { aiMcpServerService } from "@chatbotx.io/business"
-import { resolveBotFieldVariableText } from "@chatbotx.io/variables"
+import { aiMcpServerService } from "@salesmanchatbot.io/business"
+import { resolveBotFieldVariableText } from "@salesmanchatbot.io/variables"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceIdrequestParams } from "@/features/common/schema"

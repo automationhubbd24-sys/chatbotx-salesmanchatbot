@@ -1,6 +1,6 @@
 "use client"
 
-import { type QuickReplyNextStep, stepTypes } from "@chatbotx.io/flow-config"
+import { type QuickReplyNextStep, stepTypes } from "@salesmanchatbot.io/flow-config"
 import { useReactFlow } from "@xyflow/react"
 import { useEffect } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

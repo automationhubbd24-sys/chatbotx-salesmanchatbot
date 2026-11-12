@@ -1,4 +1,4 @@
-import { type ConversationHandlers, SdkException } from "@chatbotx.io/sdk"
+import { type ConversationHandlers, SdkException } from "@salesmanchatbot.io/sdk"
 import { sendChatAction } from "../apis/bot"
 import type { TelegramAuthValue } from "../schema"
 

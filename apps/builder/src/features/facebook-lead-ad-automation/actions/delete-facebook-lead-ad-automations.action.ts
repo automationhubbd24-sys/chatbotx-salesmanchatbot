@@ -1,6 +1,6 @@
 "use server"
 
-import { facebookLeadAdsAutomationService } from "@chatbotx.io/business"
+import { facebookLeadAdsAutomationService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

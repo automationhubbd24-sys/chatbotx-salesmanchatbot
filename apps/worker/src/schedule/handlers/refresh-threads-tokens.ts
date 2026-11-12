@@ -1,13 +1,13 @@
 import {
   integrationThreadsService,
   THREADS_TOKEN_REFRESH_THRESHOLD_DAYS,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   refreshAccessToken,
   type ThreadsAuthValue,
-} from "@chatbotx.io/integration-threads"
-import { getChildLogger } from "@chatbotx.io/logger"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-threads"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 
 const log = getChildLogger("refresh-threads-tokens")
 const LOCK_TTL_SECONDS = 30 * 60

@@ -4,13 +4,13 @@ import {
   broadcastToWorkspaceParty,
   contactInboxService,
   conversationService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import { getImageDimensions, uploader } from "@chatbotx.io/filesystem"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { createId, zodBigintAsString } from "@chatbotx.io/utils"
-import { ChatJobAction, chatQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import { getImageDimensions, uploader } from "@salesmanchatbot.io/filesystem"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { createId, zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { ChatJobAction, chatQueue } from "@salesmanchatbot.io/worker-config"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { type EditMessageRequest, editMessageRequest } from "../schema/mutation"
 
@@ -45,18 +45,18 @@ export const editMessage = async (props: {
   })
 
   if (!message || message.conversationId !== conversationId) {
-    throw new ChatbotXException("Comment not found")
+    throw new salesmanChatbotException("Comment not found")
   }
 
   if (message.messageType !== "outgoing" || message.type !== "comment") {
-    throw new ChatbotXException("Message is not an editable comment")
+    throw new salesmanChatbotException("Message is not an editable comment")
   }
 
   const contactInbox = await contactInboxService.findBy({
     where: { id: message.contactInboxId },
   })
   if (!contactInbox) {
-    throw new ChatbotXException("Inbox not found")
+    throw new salesmanChatbotException("Inbox not found")
   }
   await repository.updateMessageText(
     messageId,

@@ -1,8 +1,8 @@
 import {
   contactNoteModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import type { ContactNoteModel, UserModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { ContactNoteModel, UserModel } from "@salesmanchatbot.io/database/types"
 import z from "zod"
 
 export const contactNoteResource = createSelectSchema(contactNoteModel, {

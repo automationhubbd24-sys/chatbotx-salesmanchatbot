@@ -2,7 +2,7 @@ import {
   type SubscribeBroadcastStepSchema,
   subscribeBroadcastStepDefaultFn,
   subscribeBroadcastStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SubscribeBroadcastStepEditor from "./editor"
 import SubscribeBroadcastStepViewer from "./viewer"

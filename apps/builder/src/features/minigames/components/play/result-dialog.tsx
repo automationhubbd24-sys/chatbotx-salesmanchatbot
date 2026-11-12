@@ -1,9 +1,9 @@
 "use client"
 
-import type { MinigamePlayResult } from "@chatbotx.io/business/minigame"
-import { MINIGAME_PRIZE_NAME_TOKEN } from "@chatbotx.io/database/partials"
-import type { MinigameModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { MinigamePlayResult } from "@salesmanchatbot.io/business/minigame"
+import { MINIGAME_PRIZE_NAME_TOKEN } from "@salesmanchatbot.io/database/partials"
+import type { MinigameModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -12,8 +12,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { applySpintax } from "@chatbotx.io/utils/spintax"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { applySpintax } from "@salesmanchatbot.io/utils/spintax"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 

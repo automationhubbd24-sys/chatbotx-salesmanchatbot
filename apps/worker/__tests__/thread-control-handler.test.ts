@@ -1,5 +1,5 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -27,7 +27,7 @@ const mocks = vi.hoisted(() => ({
   enqueueTakeBack: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: mocks.buildContext,
   aiHandoverSettingsService: { findActive: mocks.findActiveAiHandoverSettings },
   conversationService: {
@@ -41,12 +41,12 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   requestThreadControlAction: mocks.requestThreadControlAction,
   syncThreadOwner: mocks.syncThreadOwner,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   IntegrationJobAction: { sendFlow: "sendFlow" },
   chatQueue: { add: mocks.chatQueueAdd },
@@ -67,7 +67,7 @@ vi.mock(
   }),
 )
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   resolveContactVariablesDeep: vi.fn(async (_contactId, value) => value),
 }))
 
@@ -856,7 +856,7 @@ describe("releaseOwnedThread (archive auto-release)", () => {
 
   test("an unsupported channel or missing contact inbox is not retried", async () => {
     mocks.requestThreadControlAction.mockRejectedValue(
-      new ChatbotXException("gone", "notFound", 404),
+      new salesmanChatbotException("gone", "notFound", 404),
     )
 
     await expect(releaseOwnedThread(data)).resolves.toBeUndefined()

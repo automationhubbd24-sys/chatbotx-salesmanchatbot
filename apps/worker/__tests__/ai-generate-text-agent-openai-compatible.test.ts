@@ -2,8 +2,8 @@ import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import type { AIGenerateTextAgentSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/types"
+import type { AIGenerateTextAgentSchema } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const findAgentMock = vi.hoisted(() => vi.fn())
@@ -11,15 +11,15 @@ const getOrInitContextMock = vi.hoisted(() => vi.fn())
 const runAIAgentRunnerMock = vi.hoisted(() => vi.fn())
 const saveResultToCustomFieldMock = vi.hoisted(() => vi.fn())
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiTimeouts: { aiTotal: 30_000 },
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: { getOrInitContext: getOrInitContextMock },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       aiAgentModel: {
@@ -29,7 +29,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/errors", () => ({
+vi.mock("@salesmanchatbot.io/database/errors", () => ({
   isMessageStorageError: vi.fn(() => false),
 }))
 

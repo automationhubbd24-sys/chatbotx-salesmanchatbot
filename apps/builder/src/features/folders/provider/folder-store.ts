@@ -1,4 +1,4 @@
-import type { FolderType } from "@chatbotx.io/database/partials"
+import type { FolderType } from "@salesmanchatbot.io/database/partials"
 import { createStore } from "zustand/vanilla"
 import { getClientErrorMessage } from "@/lib/orpc/client-error"
 import { client } from "@/lib/orpc/orpc"

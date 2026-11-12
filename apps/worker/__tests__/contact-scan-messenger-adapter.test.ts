@@ -7,7 +7,7 @@ const { mockFindByIdForWorkspace, mockFindInbox, mockListConversations } =
     mockListConversations: vi.fn(),
   }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findByIdForWorkspace: mockFindByIdForWorkspace,
   },
@@ -17,11 +17,11 @@ vi.mock("@chatbotx.io/business", () => ({
   extractContactInfo: vi.fn(() => ({})),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/sync", () => ({
   listConversations: mockListConversations,
 }))
 
-import { MessengerAPIException } from "@chatbotx.io/integration-messenger/exception"
+import { MessengerAPIException } from "@salesmanchatbot.io/integration-messenger/exception"
 import { messengerContactScanAdapter } from "../src/integration/handlers/contact-scan/adapters/messenger"
 
 const workspaceId = "ws-1"
@@ -225,7 +225,7 @@ describe("messengerContactScanAdapter", () => {
   })
 
   describe("classifyError", () => {
-    // `rescue()` (`@chatbotx.io/integration-messenger/exception`) wraps every
+    // `rescue()` (`@salesmanchatbot.io/integration-messenger/exception`) wraps every
     // Graph failure `listConversations` can throw into a `MessengerAPIException`
     // (`extends SdkException`) — a *flat* `httpStatusCode`/`code`/`type`, never
     // the raw, nested `{ response: { status } }` / `{ response: { error } }`

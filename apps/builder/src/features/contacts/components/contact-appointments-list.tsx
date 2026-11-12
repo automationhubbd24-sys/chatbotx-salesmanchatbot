@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import { CalendarClockIcon } from "lucide-react"
 import { useFormatter, useTranslations } from "next-intl"
 import type { ContactAppointmentResource } from "@/features/appointments/schema/resource"

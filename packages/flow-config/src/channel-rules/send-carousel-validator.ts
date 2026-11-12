@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { sendCarouselStepSchema } from "../steps/send-carousel"
 import { refineWhatsappCarouselStep } from "../steps/whatsapp-carousel-rules"
 import type { ChannelValidatorMap } from "./channel-validator"

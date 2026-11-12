@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   signMediaToken: vi.fn(async () => "signed-media-token"),
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   signMediaToken: mocks.signMediaToken,
 }))
 

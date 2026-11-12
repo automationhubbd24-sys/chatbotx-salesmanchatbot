@@ -1,25 +1,25 @@
-import { contactInboxService } from "@chatbotx.io/business"
+import { contactInboxService } from "@salesmanchatbot.io/business"
 import {
   buildBrandingUrl,
   moveBrandingMenuLast,
-} from "@chatbotx.io/business/branding"
+} from "@salesmanchatbot.io/business/branding"
 import type {
   MessengerPersistentMenu,
   MessengerPersona,
-} from "@chatbotx.io/database/partials"
-import { findUserPersistentMenuById } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { findUserPersistentMenuById } from "@salesmanchatbot.io/database/repositories"
 import type {
   DisableMessengerComposerStepSchema,
   EnableMessengerComposerStepSchema,
   SetMessengerPersonaStepSchema,
   SetMessengerUserPersistentMenuStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   findRegisteredPersona,
   messengerMenusToCallToActions,
-} from "@chatbotx.io/integration-messenger"
-import type { FacebookButton } from "@chatbotx.io/integration-messenger/schema"
-import type { UserCustomSettings } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-messenger"
+import type { FacebookButton } from "@salesmanchatbot.io/integration-messenger/schema"
+import type { UserCustomSettings } from "@salesmanchatbot.io/sdk"
 import { env } from "../../env"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow-utils"

@@ -1,4 +1,4 @@
-import type { BroadcastSubaction } from "@chatbotx.io/database/partials"
+import type { BroadcastSubaction } from "@salesmanchatbot.io/database/partials"
 
 export const templateHydrationDecisions = [
   /** This effect does not own the current subaction, or no template is selected. */

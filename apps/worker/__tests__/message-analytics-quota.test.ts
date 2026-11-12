@@ -7,10 +7,10 @@ const mocks = vi.hoisted(() => ({
   findById: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   messageAnalyticsService: { recordEvents: mocks.recordEvents },
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   quotaEnforcementService: { incrementBy: mocks.incrementBy },
   workspaceService: { findById: mocks.findById },
   workspaceUsageService: { increment: mocks.incrementUsage },

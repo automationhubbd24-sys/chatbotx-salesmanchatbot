@@ -1,6 +1,6 @@
 "use client"
 
-import { DialogFooter } from "@chatbotx.io/ui/components/ui/dialog"
+import { DialogFooter } from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { useTranslations } from "next-intl"
 import type { ReactNode, RefObject } from "react"
 import { useCallback, useEffect, useRef, useState } from "react"

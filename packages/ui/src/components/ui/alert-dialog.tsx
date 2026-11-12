@@ -3,8 +3,8 @@
 import type * as React from "react"
 import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 
 function AlertDialog({
   ...props

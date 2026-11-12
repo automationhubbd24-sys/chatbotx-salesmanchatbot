@@ -21,7 +21,7 @@ const info = vi.fn()
 const warn = vi.fn()
 const error = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   listPurgeableBroadcasts: (...args: unknown[]) =>
     listPurgeableBroadcasts(...args),
   purgeBroadcastRecipients: (...args: unknown[]) =>
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
     hasBroadcastRecipients(...args),
   hardDeleteBroadcast: (...args: unknown[]) => hardDeleteBroadcast(...args),
 }))
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
@@ -38,7 +38,7 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
     distributedStore: { exists: lockExists },
   }
 })
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info, warn, error }),
 }))
 

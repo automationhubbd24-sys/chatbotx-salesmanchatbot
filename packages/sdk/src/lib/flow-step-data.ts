@@ -14,7 +14,7 @@ import type {
   WhatsappCallButtonStepSchema,
   WhatsappFlowStepSchema,
   WhatsappOptionListStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
 export type SendFlowStepData =
   | SendTextStepSchema

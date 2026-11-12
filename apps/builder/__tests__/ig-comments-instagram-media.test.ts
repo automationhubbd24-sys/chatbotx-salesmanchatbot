@@ -12,17 +12,17 @@ const {
   mockLoggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: {
     findByWorkspaceId: mockFindInstagramIntegrationsByWorkspaceId,
   },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   listInstagramMedia: mockListInstagramLoginMedia,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   listInstagramMedia: mockListInstagramFacebookMedia,
 }))
 

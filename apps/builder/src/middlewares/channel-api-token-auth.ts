@@ -2,8 +2,8 @@ import {
   inboxService,
   isWorkspaceScheduledForDeletion,
   workspaceService,
-} from "@chatbotx.io/business"
-import { hashToken } from "@chatbotx.io/business/workspace-api-token/credentials"
+} from "@salesmanchatbot.io/business"
+import { hashToken } from "@salesmanchatbot.io/business/workspace-api-token/credentials"
 import { ORPCError } from "@orpc/server"
 import { findIntegrationApiByTokenHash } from "@/features/integration-api/queries/find-by-token-hash"
 import { base } from "./context"

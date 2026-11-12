@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { ImportHandler } from "../../types"
 import { replaceTemplate } from "../../utils"
 

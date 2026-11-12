@@ -1,4 +1,4 @@
-import { parseEnvBool } from "@chatbotx.io/utils"
+import { parseEnvBool } from "@salesmanchatbot.io/utils"
 import { keys } from "../../keys"
 
 const ENV_PREFIX = "env://"

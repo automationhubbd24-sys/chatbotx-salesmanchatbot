@@ -43,18 +43,18 @@ const mocks = vi.hoisted(() => ({
   transcript: vi.fn(),
   summary: vi.fn(),
 }))
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   whatsappCallHistoryService: { list: mocks.list },
   callRecordingService: { getRecordingUrlForCall: mocks.recordingUrl },
   whatsappCallTranscriptService: { getTranscriptForCall: mocks.transcript },
   whatsappCallSummaryService: { getSummaryForCall: mocks.summary },
 }))
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },

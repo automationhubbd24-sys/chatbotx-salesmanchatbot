@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 
 /** A 429 (rate limit) or any 5xx is worth retrying; anything else is not. */
 const isRetryableStatus = (status: number): boolean =>

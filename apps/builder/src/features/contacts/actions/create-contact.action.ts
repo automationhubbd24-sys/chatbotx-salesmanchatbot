@@ -1,6 +1,6 @@
 "use server"
-import { contactService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { contactService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -18,7 +18,7 @@ export const createContactAction = workspaceActionClient
       return contact
     } catch (error) {
       if (
-        error instanceof ChatbotXException &&
+        error instanceof salesmanChatbotException &&
         error.code === "validation" &&
         error.field
       ) {

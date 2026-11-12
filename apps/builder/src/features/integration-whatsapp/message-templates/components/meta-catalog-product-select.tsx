@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -8,13 +8,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@chatbotx.io/ui/components/ui/command"
+} from "@salesmanchatbot.io/ui/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { useDebouncedCallback } from "@chatbotx.io/ui/hooks/use-debounced-callback"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { useDebouncedCallback } from "@salesmanchatbot.io/ui/hooks/use-debounced-callback"
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import { Check, ChevronsUpDown, PackageSearch } from "lucide-react"
 import Image from "next/image"

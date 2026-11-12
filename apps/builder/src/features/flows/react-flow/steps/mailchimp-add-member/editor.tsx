@@ -3,13 +3,13 @@
 import {
   type MailchimpAddMemberSchema,
   mailchimpAddMemberSchema,
-} from "@chatbotx.io/flow-config"
-import { isSupportedMailchimpMergeFieldType } from "@chatbotx.io/integration-mailchimp"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { isSupportedMailchimpMergeFieldType } from "@salesmanchatbot.io/integration-mailchimp"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -18,14 +18,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQuery } from "@tanstack/react-query"
 import { ArrowRightIcon, CircleHelpIcon, MailIcon, XIcon } from "lucide-react"

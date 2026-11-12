@@ -1,9 +1,9 @@
-import { contactInboxService } from "@chatbotx.io/business"
+import { contactInboxService } from "@salesmanchatbot.io/business"
 import {
   dynamicImageService,
   getDynamicElementIds,
-} from "@chatbotx.io/business/dynamic-image"
-import { resolveContactVariablesDeep } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/business/dynamic-image"
+import { resolveContactVariablesDeep } from "@salesmanchatbot.io/variables"
 import { type NextRequest, NextResponse } from "next/server"
 import { loadServableWorkspace } from "@/lib/workspace/load-servable-workspace"
 

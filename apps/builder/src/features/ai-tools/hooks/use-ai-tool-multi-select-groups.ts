@@ -1,11 +1,11 @@
 "use client"
 
-import { systemFunctionNames } from "@chatbotx.io/ai"
+import { systemFunctionGroupIds, systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   AIFileModel,
   AIFunctionModel,
   AIMCPServerModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type { LucideIcon } from "lucide-react"
 import {
   FileIcon,
@@ -106,6 +106,7 @@ export const useAIToolMultiSelectGroups = ({
           mcp: t("fields.mcpServer.label"),
           sys: t("fields.systemFunction.label"),
           systemFunctions: {
+            [systemFunctionGroupIds.orderTools]: t("orders.title"),
             [systemFunctionNames.connectUserToHuman]: t(
               "fields.systemFunction.names.connectUserToHuman",
             ),
@@ -114,6 +115,12 @@ export const useAIToolMultiSelectGroups = ({
             ),
             [systemFunctionNames.imageReader]: t(
               "fields.systemFunction.names.imageReader",
+            ),
+            [systemFunctionNames.searchProducts]: t(
+              "fields.systemFunction.names.searchProducts",
+            ),
+            [systemFunctionNames.getProductDetails]: t(
+              "fields.systemFunction.names.getProductDetails",
             ),
             [systemFunctionNames.urlContext]: t(
               "fields.systemFunction.names.urlContext",

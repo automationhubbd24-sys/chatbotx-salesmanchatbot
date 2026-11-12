@@ -15,26 +15,26 @@ const runExclusiveMock = vi.fn(
   async ({ fn }: { fn: () => Promise<void> }) => await fn(),
 )
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   purgeStaleAutomationThrottles: purgeStaleAutomationThrottlesMock,
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: runExclusiveMock },
 }))
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info }),
 }))
 // Avoid pulling in the real worker-config barrel (queue construction opens a
 // live Redis connection at import time) — this test only needs the
 // `ScheduleJobData` string constant.
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ScheduleJobData: { purgeAutomationThrottle: "purgeAutomationThrottle" },
 }))
 
 const { purgeAutomationThrottle } = await import(
   "../src/schedule/handlers/purge-automation-throttle"
 )
-const { ScheduleJobData } = await import("@chatbotx.io/worker-config")
+const { ScheduleJobData } = await import("@salesmanchatbot.io/worker-config")
 
 beforeEach(() => {
   vi.clearAllMocks()

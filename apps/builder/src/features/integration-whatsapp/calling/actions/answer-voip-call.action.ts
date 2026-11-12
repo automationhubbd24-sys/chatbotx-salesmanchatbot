@@ -10,22 +10,22 @@ import {
   isAnswerDeadlineExpired,
   summarizeIceCandidates,
   whatsappVoipCallService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   integrationWhatsappRepository,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   acceptCall,
   preAcceptCall,
   terminateCall,
   type WhatsappCallAnnouncementOptions,
   type WhatsappCallSdpAnswerInput,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { logger } from "@/lib/log"
@@ -117,7 +117,7 @@ async function resolveCallAndAuth(input: {
   const t = await getTranslations()
   const call = await whatsappCallRepository.findById(input.whatsappCallId)
   if (!call || call.workspaceId !== input.workspaceId || !call.wacid) {
-    throw new ChatbotXException(t("whatsapp.calls.errors.callNotFound"))
+    throw new salesmanChatbotException(t("whatsapp.calls.errors.callNotFound"))
   }
 
   const integration =
@@ -126,7 +126,7 @@ async function resolveCallAndAuth(input: {
       inboxId: call.inboxId,
     })
   if (!integration) {
-    throw new ChatbotXException(t("whatsapp.calls.errors.notFound"))
+    throw new salesmanChatbotException(t("whatsapp.calls.errors.notFound"))
   }
 
   const contactLocale = await resolveContactLocale(call.contactInboxId)
@@ -347,7 +347,7 @@ export const answerWhatsappVoipCallAction = callingActionClient
               "WhatsApp VoIP call: releaseClaim after accept failure failed",
             )
           })
-        throw new ChatbotXException(t("whatsapp.calls.errors.voipAnswerFailed"))
+        throw new salesmanChatbotException(t("whatsapp.calls.errors.voipAnswerFailed"))
       }
 
       const committed = await whatsappVoipCallService.commitAccepted({

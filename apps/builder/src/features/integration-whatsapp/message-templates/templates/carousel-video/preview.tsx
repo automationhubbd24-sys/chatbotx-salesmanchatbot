@@ -1,17 +1,17 @@
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Carousel,
   type CarouselApi,
   CarouselContent,
   CarouselItem,
-} from "@chatbotx.io/ui/components/ui/carousel"
+} from "@salesmanchatbot.io/ui/components/ui/carousel"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import {
   ArrowLeft,
   ArrowRight,

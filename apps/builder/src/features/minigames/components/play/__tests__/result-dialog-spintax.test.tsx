@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
-import type { MinigamePlayResult } from "@chatbotx.io/business/minigame"
-import type { MinigameModel } from "@chatbotx.io/database/types"
+import type { MinigamePlayResult } from "@salesmanchatbot.io/business/minigame"
+import type { MinigameModel } from "@salesmanchatbot.io/database/types"
 import { act, type ComponentProps, type ReactElement } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import { ResultDialog } from "../result-dialog"
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: ComponentProps<"div">) => <div>{children}</div>,
   DialogClose: ({ render }: { render: ReactElement }) => render,
   DialogContent: ({ children }: ComponentProps<"div">) => <div>{children}</div>,
@@ -20,7 +20,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ComponentProps<"button">) => (
     <button {...props}>{children}</button>
   ),

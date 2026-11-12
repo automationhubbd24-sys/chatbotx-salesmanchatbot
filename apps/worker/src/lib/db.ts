@@ -1,15 +1,15 @@
-import { flowService, flowVersionService } from "@chatbotx.io/business"
-import { findOrFail } from "@chatbotx.io/database/client"
+import { flowService, flowVersionService } from "@salesmanchatbot.io/business"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
 import {
   contactInboxModel,
   conversationModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
   FlowVersionModel,
-} from "@chatbotx.io/database/types"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/types"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 
 export async function detectConversationAndContactInbox(props: {
   conversationId: string | ConversationModel

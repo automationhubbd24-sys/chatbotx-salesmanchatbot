@@ -9,7 +9,7 @@ vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...props
@@ -18,7 +18,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/command", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/command", () => ({
   Command: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/ui/components/ui/command", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/popover", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/popover", () => ({
   Popover: ({
     children,
     onOpenChange,

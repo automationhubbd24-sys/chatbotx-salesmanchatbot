@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   findByWorkspaceIdInstagram: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: {
     listByWorkspaceId: mocks.listByWorkspaceId,
   },

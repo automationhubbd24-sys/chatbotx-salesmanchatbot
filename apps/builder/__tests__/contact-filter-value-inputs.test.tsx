@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { formFieldTypes, operatorTypes } from "@chatbotx.io/database/partials"
+import { formFieldTypes, operatorTypes } from "@salesmanchatbot.io/database/partials"
 import { act, type ButtonHTMLAttributes, type ReactNode } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { useFormContext } from "react-hook-form"
@@ -13,7 +13,7 @@ import type {
   FieldConfig,
 } from "@/features/contact-filter/components/contact-filter-config"
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({
     name,
     options,
@@ -35,7 +35,7 @@ vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/input-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-field", () => ({
   InputField: ({
     name,
     type,
@@ -63,7 +63,7 @@ vi.mock("@chatbotx.io/ui/components/form/input-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/multi-select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/multi-select-field", () => ({
   MultiSelectField: ({
     name,
     options,
@@ -89,7 +89,7 @@ vi.mock("@chatbotx.io/ui/components/form/multi-select-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options,
@@ -111,13 +111,13 @@ vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button {...props}>{children}</button>
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: { children: ReactNode }) => <div>{children}</div>,
   DialogContent: ({ children }: { children: ReactNode }) => (
     <div>{children}</div>
@@ -129,7 +129,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTitle: ({ children }: { children: ReactNode }) => <h1>{children}</h1>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", async () => {
   const { FormProvider } = await import("react-hook-form")
   return { Form: FormProvider }
 })

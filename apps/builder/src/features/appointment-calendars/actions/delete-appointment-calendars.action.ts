@@ -1,6 +1,6 @@
 "use server"
 
-import { appointmentCalendarService } from "@chatbotx.io/business"
+import { appointmentCalendarService } from "@salesmanchatbot.io/business"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

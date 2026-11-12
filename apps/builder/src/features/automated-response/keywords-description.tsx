@@ -1,7 +1,7 @@
 "use client"
 
-import type { AutomatedResponseType } from "@chatbotx.io/database/partials"
-import { Alert, AlertDescription } from "@chatbotx.io/ui/components/ui/alert"
+import type { AutomatedResponseType } from "@salesmanchatbot.io/database/partials"
+import { Alert, AlertDescription } from "@salesmanchatbot.io/ui/components/ui/alert"
 import { TriangleAlertIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 

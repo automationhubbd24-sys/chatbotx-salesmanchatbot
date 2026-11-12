@@ -1,6 +1,6 @@
 "use client"
 
-import type { ThreadControlAction } from "@chatbotx.io/database/partials"
+import type { ThreadControlAction } from "@salesmanchatbot.io/database/partials"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"

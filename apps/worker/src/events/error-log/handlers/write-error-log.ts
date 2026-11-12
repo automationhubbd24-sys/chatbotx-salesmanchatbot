@@ -1,14 +1,14 @@
 import {
   isDatabaseError,
   isForeignKeyViolationError,
-} from "@chatbotx.io/database/client"
-import type { ErrorLogInsert } from "@chatbotx.io/database/repositories"
-import { insertErrorLogs } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/client"
+import type { ErrorLogInsert } from "@salesmanchatbot.io/database/repositories"
+import { insertErrorLogs } from "@salesmanchatbot.io/database/repositories"
 import type {
   ErrorLogRecordedPayload,
   EventBusMessageMetadata,
-} from "@chatbotx.io/event-bus"
-import { EVENT_BUS_MESSAGE_ID } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/event-bus"
+import { EVENT_BUS_MESSAGE_ID } from "@salesmanchatbot.io/event-bus"
 import { logger } from "../../../lib/logger"
 
 type ErrorLogPayload = ErrorLogRecordedPayload & EventBusMessageMetadata

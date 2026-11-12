@@ -1,14 +1,14 @@
 "use server"
 
-import { tiktokIntegrationService } from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { tiktokIntegrationService } from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   getTiktokDirectReplyStatus,
   type TiktokAuthValue,
   type TiktokDirectReplyStatus,
   updateTiktokDirectReplyStatus,
-} from "@chatbotx.io/integration-tiktok"
+} from "@salesmanchatbot.io/integration-tiktok"
 import { z } from "zod"
 import {
   type WorkspaceIdAndIdRequestParams,
@@ -81,7 +81,7 @@ export const toggleTiktokCommentToMessageAction = workspaceActionClient
           { err: error, id, workspaceId },
           "Failed to update TikTok Comment-to-Message",
         )
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           error instanceof Error
             ? error.message
             : "Failed to update TikTok Comment-to-Message",
@@ -132,7 +132,7 @@ export const refreshTiktokCommentToMessageAction = workspaceActionClient
           { err: error, id, workspaceId },
           "Failed to read the TikTok Comment-to-Message setting",
         )
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           error instanceof Error
             ? error.message
             : "Failed to read the TikTok Comment-to-Message setting",

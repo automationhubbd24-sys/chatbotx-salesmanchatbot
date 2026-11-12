@@ -2,7 +2,7 @@
 // the Edge-safe `packages/business/src/index.ts` barrel never statically
 // import `./service` (which pulls `./context`'s `node:async_hooks` via
 // AsyncLocalStorage). `./service` wires the real implementation into
-// `globalForAudit.__chatbotxAuditRecord` as a side effect of module
+// `globalForAudit.__salesmanchatbotAuditRecord` as a side effect of module
 // evaluation — see the bottom of `service.ts`.
 //
 // The `../logger` import below is fine here: it's already imported by many
@@ -26,20 +26,20 @@ type AuditRecordDispatcher = (
 ) => Promise<void> | void
 
 const globalForAudit = globalThis as typeof globalThis & {
-  __chatbotxAuditRecord?: AuditRecordDispatcher
+  __salesmanchatbotAuditRecord?: AuditRecordDispatcher
 }
 
 export function dispatchAuditRecord(
   input: AuditRecordDispatcherInput,
 ): Promise<void> | void {
-  const dispatcher = globalForAudit.__chatbotxAuditRecord
+  const dispatcher = globalForAudit.__salesmanchatbotAuditRecord
   if (dispatcher) {
     return dispatcher(input)
   }
 
   if (process.env.NODE_ENV !== "production") {
     throw new Error(
-      'Audit recorder is not registered. Import "@chatbotx.io/business/audit" before dispatching explicit audit records.',
+      'Audit recorder is not registered. Import "@salesmanchatbot.io/business/audit" before dispatching explicit audit records.',
     )
   }
 }

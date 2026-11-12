@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test } from "vitest"
 import { getPostDetails, listThreadsPosts } from "../src/apis/post"
 import { API_URL } from "../src/constants"
@@ -8,7 +8,7 @@ const auth = {
   tokens: { accessToken: "threads-token" },
   metadata: {
     threadsUserId: "threads-user-1",
-    username: "chatbotx",
+    username: "salesmanchatbot",
     version: "v1.0",
   },
 } as ThreadsAuthValue

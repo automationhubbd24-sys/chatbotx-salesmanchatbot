@@ -1,5 +1,5 @@
-import { appointmentCalendarService } from "@chatbotx.io/business"
-import { verifyAppointmentWebviewToken } from "@chatbotx.io/encryption"
+import { appointmentCalendarService } from "@salesmanchatbot.io/business"
+import { verifyAppointmentWebviewToken } from "@salesmanchatbot.io/encryption"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { getTranslations } from "next-intl/server"

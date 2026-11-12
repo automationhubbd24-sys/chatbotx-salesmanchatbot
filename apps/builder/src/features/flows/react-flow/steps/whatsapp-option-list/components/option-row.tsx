@@ -1,7 +1,7 @@
 "use client"
 
-import type { WhatsappOptionListItem } from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { WhatsappOptionListItem } from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { XIcon } from "lucide-react"
 import { memo, useCallback } from "react"
 

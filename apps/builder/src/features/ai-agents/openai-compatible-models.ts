@@ -1,5 +1,5 @@
-import { openaiCompatiblePresetConfigs } from "@chatbotx.io/ai"
-import type { AIAgentProviderModels } from "@chatbotx.io/database/partials"
+import { openaiCompatiblePresetConfigs } from "@salesmanchatbot.io/ai"
+import type { AIAgentProviderModels } from "@salesmanchatbot.io/database/partials"
 import { sortOpenaiCompatibleIntegrations } from "@/features/integration-openai-compatible/model-options"
 import type { IntegrationOpenaiCompatibleResource } from "@/features/integration-openai-compatible/schema/resource"
 

@@ -1,7 +1,7 @@
 "use server"
 
-import { workspaceSupportAccessService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { workspaceSupportAccessService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { workspaceActionClientAllowScheduledDeletion } from "@/lib/safe-action"
@@ -16,7 +16,7 @@ export const toggleSupportAccessAction =
         if (
           !hasWorkspacePermission(ctx.workspaceMemberPermissions, "superAdmin")
         ) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             "You need to be a super admin to change platform support access",
           )
         }
@@ -26,7 +26,7 @@ export const toggleSupportAccessAction =
         // let the platform super admin renew their own time-boxed window
         // indefinitely — the caller must hold a *real* membership row.
         if (ctx.isSupportSession) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             "Platform support access cannot be changed from within a support session",
           )
         }

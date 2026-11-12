@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { describe, expect, test } from "vitest"
 import { refineStepsByChannel } from "../src/channel-rules/channel-step-refinement"
 import { resolveMediaStepSupport } from "../src/channel-rules/media-step-rules"

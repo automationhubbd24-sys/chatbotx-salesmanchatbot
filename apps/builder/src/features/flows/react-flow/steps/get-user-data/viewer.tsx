@@ -4,8 +4,8 @@ import {
   type GetUserDataStepSchema,
   ReplyFormat,
   stateTypes,
-} from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import { BaseStateViewer } from "../../states/viewer"
 

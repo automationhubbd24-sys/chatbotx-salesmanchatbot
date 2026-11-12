@@ -1,5 +1,5 @@
 "use server"
-import { contactCustomFieldService } from "@chatbotx.io/business"
+import { contactCustomFieldService } from "@salesmanchatbot.io/business"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { requireContactPermissionScope } from "../permissions"

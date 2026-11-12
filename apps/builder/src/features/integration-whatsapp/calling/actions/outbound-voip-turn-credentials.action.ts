@@ -1,9 +1,9 @@
 "use server"
 
-import { voipTurnCredentialService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { distributedStore } from "@chatbotx.io/redis"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { voipTurnCredentialService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { distributedStore } from "@salesmanchatbot.io/redis"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { env } from "@/env"
@@ -57,7 +57,7 @@ async function assertTurnMintNotRateLimited(
 
   if (count > TURN_MINT_LIMIT_PER_WINDOW) {
     const t = await getTranslations()
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("whatsapp.calls.errors.voipTurnCredentialsRateLimited"),
       "tooManyRequests",
       429,

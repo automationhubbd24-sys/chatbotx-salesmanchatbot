@@ -1,4 +1,4 @@
-import { channelPostService } from "@chatbotx.io/business"
+import { channelPostService } from "@salesmanchatbot.io/business"
 import { z } from "zod"
 import { possibleErrorsOnListingResource } from "@/lib/orpc/orpc-error-helper"
 import { workspaceTokenAuthAPIForScope } from "@/orpc"

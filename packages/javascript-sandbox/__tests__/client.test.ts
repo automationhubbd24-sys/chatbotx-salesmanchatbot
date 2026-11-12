@@ -3,7 +3,7 @@ import {
   HttpResponse,
   http,
   server,
-} from "@chatbotx.io/vitest-config/msw"
+} from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test } from "vitest"
 import {
   createJavascriptExecutorClient,

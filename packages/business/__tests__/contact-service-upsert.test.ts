@@ -31,7 +31,7 @@ const makeInsert = () => ({
   },
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ __and: args }),
   db: {
     query: {
@@ -47,25 +47,25 @@ vi.mock("@chatbotx.io/database/client", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags,
   withCache: vi.fn((_key: string, fn: () => unknown) => fn()),
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploadFileFromUrl: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
 
   return {
     ...original,
@@ -86,7 +86,7 @@ vi.mock("../src/quota-enforcement/service", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   macAnalyticsService: {},
 }))
 
@@ -101,8 +101,8 @@ vi.mock("../src/workspace/service", () => ({
 }))
 
 const { contactService } = await import("../src/contact/service")
-const { contactSources } = await import("@chatbotx.io/database/partials")
-const { emitContactCreated } = await import("@chatbotx.io/events")
+const { contactSources } = await import("@salesmanchatbot.io/database/partials")
+const { emitContactCreated } = await import("@salesmanchatbot.io/events")
 
 describe("contactService.upsertByIdentifier", () => {
   beforeEach(() => {

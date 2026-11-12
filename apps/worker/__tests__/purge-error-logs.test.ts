@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const execute = vi.fn()
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { execute: (...args: unknown[]) => execute(...args) },
   sql: Object.assign(
     (strings: TemplateStringsArray, ...values: unknown[]) => ({
@@ -14,7 +14,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
 
 const info = vi.fn()
 const warn = vi.fn()
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info, warn, error: vi.fn() }),
 }))
 

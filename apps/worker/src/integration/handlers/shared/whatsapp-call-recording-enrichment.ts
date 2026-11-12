@@ -1,4 +1,4 @@
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
 import { enrichCallActivityMessage } from "./whatsapp-call-finalize"
 
 /**
@@ -7,7 +7,7 @@ import { enrichCallActivityMessage } from "./whatsapp-call-finalize"
  * put on the message. Shared by browserWhisper and Meta-native transcription
  * paths; kept in its own module so importing it doesn't pull in
  * `whatsapp-call-transcribe.ts`'s browserWhisper-only AI deps (`ai`, `ky`,
- * `@chatbotx.io/ai`).
+ * `@salesmanchatbot.io/ai`).
  */
 export const enrichRecordingMessageWithTranscript = async (props: {
   call: Pick<

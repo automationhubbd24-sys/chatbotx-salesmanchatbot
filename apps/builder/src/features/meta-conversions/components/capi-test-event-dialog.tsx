@@ -1,7 +1,7 @@
 "use client"
 
-import type { MetaConversionsChannel } from "@chatbotx.io/business"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { MetaConversionsChannel } from "@salesmanchatbot.io/business"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,13 +10,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   CAPI_TEST_MESSAGING_ID_MAX_LENGTH,
   capiTestMessagingIdSchema,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import { Loader2Icon, SendIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useId, useState } from "react"

@@ -2,13 +2,13 @@ import {
   type FlowNode,
   type NodeType,
   shouldShowDefaultContinue,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { NodeToolbar, Position } from "@xyflow/react"
 import { PlayCircleIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

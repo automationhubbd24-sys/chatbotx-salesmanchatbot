@@ -4,16 +4,16 @@ import {
   integrationFacebookAdsService,
   withBlockedOwnerGuard,
   workspaceService,
-} from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import {
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
   GRAPH_ERROR_CODE_INVALID_TOKEN,
   getGraphErrorCode,
   integration as integrationFacebookAds,
-} from "@chatbotx.io/integration-facebook-ads"
-import type { AdsConversionJobSyncRetargetAudience } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import type { AdsConversionJobSyncRetargetAudience } from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 

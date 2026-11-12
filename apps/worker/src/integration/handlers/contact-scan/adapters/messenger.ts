@@ -1,9 +1,9 @@
 import {
   inboxService,
   messengerIntegrationService,
-} from "@chatbotx.io/business"
-import type { InboxModel } from "@chatbotx.io/database/types"
-import { listConversations } from "@chatbotx.io/integration-messenger/apis/sync"
+} from "@salesmanchatbot.io/business"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
+import { listConversations } from "@salesmanchatbot.io/integration-messenger/apis/sync"
 import {
   messengerAuthSchema,
   participantSourceId,

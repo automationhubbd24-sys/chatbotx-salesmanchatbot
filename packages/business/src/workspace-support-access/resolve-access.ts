@@ -1,9 +1,9 @@
-import type { WorkspaceMemberPermissions } from "@chatbotx.io/database/partials"
+import type { WorkspaceMemberPermissions } from "@salesmanchatbot.io/database/partials"
 import type {
   UserModel,
   WorkspaceMemberModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { workspaceService } from "../workspace/service"
 import { workspaceMemberService } from "../workspace-member/service"
 import { resolveWorkspaceMembership } from "../workspace-member/synthetic"

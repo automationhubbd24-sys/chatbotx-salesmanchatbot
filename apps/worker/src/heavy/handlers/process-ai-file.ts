@@ -1,11 +1,11 @@
 import { createHash } from "node:crypto"
-import { createAiFileEmbeddingRepository } from "@chatbotx.io/database/repositories"
-import { distributedLock } from "@chatbotx.io/redis"
+import { createAiFileEmbeddingRepository } from "@salesmanchatbot.io/database/repositories"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import {
   AIJobAction,
   aiAgentQueue,
   type HeavyJobProcessAIFile,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { resolveEmbeddingModel } from "../../ai-agent/lib/embedding-model"
 import { extractTextFromFile } from "../../ai-agent/lib/text-extractor"
 import { env } from "../../env"

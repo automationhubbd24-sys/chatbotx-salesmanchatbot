@@ -13,11 +13,11 @@ const findByIdForIntegration = vi.fn()
 // authorization can be exercised directly.
 let cloneHandler: ((props: unknown) => Promise<unknown>) | null = null
 
-vi.mock("@chatbotx.io/integration-messenger/apis/upload", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/upload", () => ({
   resumableUploadImage,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertPublicUrl: (...args: unknown[]) => assertPublicUrl(...args),
   buildContext: vi.fn(),
   messengerIntegrationService: {
@@ -32,12 +32,12 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/message-templates", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/message-templates", () => ({
   createPageMessageTemplate: (...args: unknown[]) =>
     createPageMessageTemplate(...args),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
@@ -92,7 +92,7 @@ describe("prepareComponentsForClone", () => {
     await expect(
       prepareComponentsForClone(components, {} as never),
     ).rejects.toMatchObject({
-      name: "ChatbotXException",
+      name: "salesmanChatbotException",
       message: expect.stringContaining("ssrf-guard"),
     })
     expect(assertPublicUrl).toHaveBeenCalledWith(
@@ -363,7 +363,7 @@ describe("createMessengerMessageTemplate header image", () => {
         },
       }),
     ).rejects.toMatchObject({
-      name: "ChatbotXException",
+      name: "salesmanChatbotException",
       message: expect.stringContaining("must be an image file"),
     })
     expect(createPageMessageTemplate).not.toHaveBeenCalled()

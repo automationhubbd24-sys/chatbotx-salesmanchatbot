@@ -3,7 +3,7 @@ import {
   couponTopicStatuses,
   couponUsageStatuses,
   fileStatuses,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 export const couponTopicResource = z.object({

@@ -1,4 +1,4 @@
-import { AuthType, type Oauth2AuthValue } from "@chatbotx.io/sdk"
+import { AuthType, type Oauth2AuthValue } from "@salesmanchatbot.io/sdk"
 import { DEFAULT_API_VERSION, THREADS_SCOPES } from "../constants"
 import { rescue } from "../exception"
 import { threadsGraphClient } from "../lib/http-client"

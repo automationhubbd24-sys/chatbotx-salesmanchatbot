@@ -1,4 +1,4 @@
-import { planStatuses } from "@chatbotx.io/database/partials"
+import { planStatuses } from "@salesmanchatbot.io/database/partials"
 
 export type QuotaMetricKey =
   | "contacts"

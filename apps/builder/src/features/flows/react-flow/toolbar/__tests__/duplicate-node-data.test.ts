@@ -14,7 +14,7 @@ import {
   startAnotherNodeStepDefaultFn,
   startExternalFlowStepDefaultFn,
   whatsappOptionListStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { updateFlowVersionSchema } from "../../../schema/action"
 import {

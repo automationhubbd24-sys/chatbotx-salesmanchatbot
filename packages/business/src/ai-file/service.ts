@@ -3,28 +3,28 @@ import {
   eq,
   findOrFail,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
-import type { AIEmbeddingStatus } from "@chatbotx.io/database/partials"
-import { aiEmbeddingModel, aiFileModel } from "@chatbotx.io/database/schema"
-import type { AIFileModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/client"
+import type { AIEmbeddingStatus } from "@salesmanchatbot.io/database/partials"
+import { aiEmbeddingModel, aiFileModel } from "@salesmanchatbot.io/database/schema"
+import type { AIFileModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
+} from "@salesmanchatbot.io/database/utils"
 import {
   UploadValidationError,
   uploader,
   uploadFile,
   uploadFileFromUrl,
-} from "@chatbotx.io/filesystem"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/filesystem"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   getHeavyJobOptions,
   HeavyJobAction,
   heavyQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { integrationGeminiService } from "../integration-gemini/service"
 import { integrationOpenAIService } from "../integration-openai/service"
 import { logger } from "../logger"
@@ -160,7 +160,7 @@ class AiFileService extends BaseService {
       // "businessError") so the private create action can catch it and
       // surface a translated message via next-intl — see
       // apps/builder/src/features/ai-files/actions/create-ai-file.action.ts.
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "No embedding provider configured. AI file embeddings require OpenAI or Gemini integration. DeepSeek and Claude do not support embedding models.",
         "noEmbeddingProvider",
         400,
@@ -224,10 +224,10 @@ class AiFileService extends BaseService {
       resolved = await this.resolveUpload(workspaceId, input)
     } catch (error) {
       if (error instanceof UploadValidationError) {
-        throw new ChatbotXException(error.message, "businessError", 400)
+        throw new salesmanChatbotException(error.message, "businessError", 400)
       }
       logger.error({ err: error }, "Failed to store AI file")
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Failed to store AI file. Please try again later.",
         "systemError",
         502,

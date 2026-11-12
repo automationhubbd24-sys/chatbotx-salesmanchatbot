@@ -1,4 +1,4 @@
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
 import { BaseCache } from "../base-cache"
 
 class TriggerCache extends BaseCache {

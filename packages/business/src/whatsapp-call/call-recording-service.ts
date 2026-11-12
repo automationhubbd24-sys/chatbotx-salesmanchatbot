@@ -1,9 +1,9 @@
-import { whatsappCallRepository } from "@chatbotx.io/database/repositories"
-import { uploader } from "@chatbotx.io/filesystem"
+import { whatsappCallRepository } from "@salesmanchatbot.io/database/repositories"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import {
   ALLOWED_RECORDING_CONTENT_TYPES,
   type RecordingContentType,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { notFoundException } from "../errors"
 
 const RECORDING_SIGNED_URL_TTL_SECONDS = 15 * 60
@@ -11,11 +11,11 @@ const PURGE_BATCH_SIZE_DEFAULT = 500
 
 /**
  * Re-exported for backward compatibility with existing importers —
- * @chatbotx.io/sdk's recording-content-type.ts is the single source of truth;
+ * @salesmanchatbot.io/sdk's recording-content-type.ts is the single source of truth;
  * this module never redefines the map.
  */
-export type { RecordingContentType } from "@chatbotx.io/sdk"
-export { ALLOWED_RECORDING_CONTENT_TYPES } from "@chatbotx.io/sdk"
+export type { RecordingContentType } from "@salesmanchatbot.io/sdk"
+export { ALLOWED_RECORDING_CONTENT_TYPES } from "@salesmanchatbot.io/sdk"
 
 /** Meta-native recordings are Ogg/Opus; used whenever a caller does not name a type. */
 export const DEFAULT_RECORDING_CONTENT_TYPE: RecordingContentType = "audio/ogg"

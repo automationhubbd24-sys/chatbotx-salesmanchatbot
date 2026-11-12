@@ -1,17 +1,17 @@
 "use client"
 
-import type { TemplateModel } from "@chatbotx.io/database/types"
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { TemplateModel } from "@salesmanchatbot.io/database/types"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import { format } from "date-fns"
 import {

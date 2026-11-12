@@ -1,4 +1,4 @@
-import { type ButtonType, buttonTypes } from "@chatbotx.io/flow-config"
+import { type ButtonType, buttonTypes } from "@salesmanchatbot.io/flow-config"
 import {
   LinkIcon,
   type LucideIcon,

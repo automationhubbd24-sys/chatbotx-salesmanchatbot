@@ -2,22 +2,22 @@ import "server-only"
 import {
   contactInboxService,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { sanitizePublicText } from "@chatbotx.io/business/errors"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { sanitizePublicText } from "@salesmanchatbot.io/business/errors"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   mapToChannelError,
   type WhatsappAuthValue,
-} from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/integration-whatsapp"
 import {
   getAppWebhookSubscriptions,
   WHATSAPP_APP_SUBSCRIPTION_OBJECT,
   WHATSAPP_APP_WEBHOOK_FIELDS,
-} from "@chatbotx.io/integration-whatsapp/api/app-subscriptions"
-import { getCallPermissions } from "@chatbotx.io/integration-whatsapp/api/calling"
-import { findPhoneNumberDetail } from "@chatbotx.io/integration-whatsapp/api/phone-number"
-import { UNKNOWN_ERROR } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-whatsapp/api/app-subscriptions"
+import { getCallPermissions } from "@salesmanchatbot.io/integration-whatsapp/api/calling"
+import { findPhoneNumberDetail } from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
+import { UNKNOWN_ERROR } from "@salesmanchatbot.io/sdk"
 import { logger } from "@/lib/log"
 import { resolveOwnerForWorkspace } from "@/lib/platform-credential-owner"
 import { resolveDialIdentity } from "./actions/outbound-dial-target"

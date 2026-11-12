@@ -1,4 +1,4 @@
-import { maxLimit } from "@chatbotx.io/database/utils"
+import { maxLimit } from "@salesmanchatbot.io/database/utils"
 import { z } from "zod"
 
 // The public per-page cap can never exceed the DB-level clamp

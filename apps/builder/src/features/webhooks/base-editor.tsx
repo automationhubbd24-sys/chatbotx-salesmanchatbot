@@ -3,14 +3,14 @@ import {
   type TriggerEventType,
   triggerActions,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { type ReactNode, useMemo } from "react"

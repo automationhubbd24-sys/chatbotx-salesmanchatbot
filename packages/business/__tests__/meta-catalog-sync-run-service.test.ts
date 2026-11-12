@@ -18,7 +18,7 @@ const transactionClient = {
   update: (...args: unknown[]) => mocks.update(...args),
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       metaCatalogSyncRunModel: {
@@ -34,7 +34,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   metaCatalogItemRepository: {},
   productCategoryRepository: {},
   productRepository: {
@@ -42,7 +42,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   metaCatalogSyncRunModel: {
     handles: "handles",
     id: "id",

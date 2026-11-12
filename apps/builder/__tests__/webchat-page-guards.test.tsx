@@ -31,7 +31,7 @@ vi.mock("next/navigation", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isWorkspaceScheduledForDeletion: (
     workspace:
       | { scheduledDeletionAt?: Date | string | null }
@@ -48,7 +48,7 @@ vi.mock("@/lib/domain", () => ({
 
 vi.mock("@/features/tenant/utils", () => ({
   getTenantSettings: vi.fn().mockResolvedValue({
-    appUrl: "https://app.chatbotx.io",
+    appUrl: "https://app.salesmanchatbot.io",
     storageUrl: "https://storage.example.com/",
   }),
 }))
@@ -124,7 +124,7 @@ describe("WebchatPage", () => {
     mockIsCommunity.mockReturnValue(false)
     mockFindFirst.mockResolvedValue(targetWebchat)
     mockWorkspaceFind.mockResolvedValue({ scheduledDeletionAt: null })
-    mockGetDomainFromHeader.mockResolvedValue("app.chatbotx.io")
+    mockGetDomainFromHeader.mockResolvedValue("app.salesmanchatbot.io")
   })
 
   test("renders the chat for a direct open with no referer, even with authorizedDomains configured", async () => {
@@ -141,7 +141,7 @@ describe("WebchatPage", () => {
   })
 
   test("renders the chat for a first-party referer matching the app host", async () => {
-    setReferer("https://app.chatbotx.io/some/path")
+    setReferer("https://app.salesmanchatbot.io/some/path")
 
     const element = await WebchatPage({
       searchParams: Promise.resolve(searchParams),
@@ -236,16 +236,16 @@ describe("WebchatPage", () => {
     ).props.config
     expect(config.persistentMenus).toHaveLength(2)
     expect(config.persistentMenus.at(-1)).toEqual({
-      label: "⚡ Built with chatbotx.io",
+      label: "⚡ Built with salesmanchatbot.io",
       type: "url",
-      url: "https://app.chatbotx.io/?ref=selfhosted&channel=webchat",
+      url: "https://app.salesmanchatbot.io/?ref=selfhosted&channel=webchat",
     })
   })
 
   test("community render keeps an existing branding entry untouched", async () => {
     mockIsCommunity.mockReturnValue(true)
     const brandingUrl =
-      "https://app.chatbotx.io/?ref=selfhosted&channel=webchat"
+      "https://app.salesmanchatbot.io/?ref=selfhosted&channel=webchat"
     mockFindFirst.mockResolvedValue({
       ...targetWebchat,
       authorizedDomains: [],

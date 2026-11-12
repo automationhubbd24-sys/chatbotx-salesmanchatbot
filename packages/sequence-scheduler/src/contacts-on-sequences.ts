@@ -1,5 +1,5 @@
-import { type DatabaseClient, db } from "@chatbotx.io/database/client"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
+import { type DatabaseClient, db } from "@salesmanchatbot.io/database/client"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
 
 export const contactsOnSequencesUtils = {
   getAllSequenceIds: async (

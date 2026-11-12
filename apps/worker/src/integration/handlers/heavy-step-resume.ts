@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto"
-import type { IntegrationJobResumeHeavyStep } from "@chatbotx.io/worker-config"
+import type { IntegrationJobResumeHeavyStep } from "@salesmanchatbot.io/worker-config"
 import { runFlowNode } from "./flow"
 import {
   claimHeavyStepResume,

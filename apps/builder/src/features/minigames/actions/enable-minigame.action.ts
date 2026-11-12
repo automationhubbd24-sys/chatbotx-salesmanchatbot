@@ -1,7 +1,7 @@
 "use server"
 
-import { minigameService } from "@chatbotx.io/business/minigame"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { minigameService } from "@salesmanchatbot.io/business/minigame"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { workspaceActionClient } from "@/lib/safe-action"
 

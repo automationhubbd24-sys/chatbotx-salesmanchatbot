@@ -1,10 +1,10 @@
 "use server"
 
-import { facebookMarketingMessagesService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { UserModel, WorkspaceModel } from "@chatbotx.io/database/types"
-import { updateMessageCampaign } from "@chatbotx.io/integration-facebook-ads"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { facebookMarketingMessagesService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { UserModel, WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { updateMessageCampaign } from "@salesmanchatbot.io/integration-facebook-ads"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { buildCampaignBudget } from "../lib/campaign-payload"
@@ -40,7 +40,7 @@ export async function updateMarketingMessage({
   })
   if (!existing) {
     const t = await getTranslations()
-    throw new ChatbotXException(t("facebookMarketingMessages.errors.notFound"))
+    throw new salesmanChatbotException(t("facebookMarketingMessages.errors.notFound"))
   }
 
   const grant = await requireValidGrant(workspace)

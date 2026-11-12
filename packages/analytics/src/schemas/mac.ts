@@ -1,7 +1,7 @@
 import {
   MAC_EVENT_TYPE,
   type MacEventType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 export const macEventTypeSchema = z.enum([

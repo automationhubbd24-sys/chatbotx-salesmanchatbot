@@ -1,4 +1,4 @@
-import { parseBigIntId } from "@chatbotx.io/utils"
+import { parseBigIntId } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import { CreateSequenceForm } from "@/features/sequences/create-sequence-form"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"

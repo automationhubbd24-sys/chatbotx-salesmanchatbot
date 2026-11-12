@@ -1,4 +1,4 @@
-import type { IntegrationJobReceiveComment } from "@chatbotx.io/worker-config"
+import type { IntegrationJobReceiveComment } from "@salesmanchatbot.io/worker-config"
 
 /** How far back a run looks. Matches Meta's private-reply window. */
 export const MISSED_COMMENTS_SCAN_DAYS = 7

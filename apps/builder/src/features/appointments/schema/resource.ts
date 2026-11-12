@@ -1,4 +1,4 @@
-import { appointmentStatuses } from "@chatbotx.io/database/partials"
+import { appointmentStatuses } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 export const contactAppointmentResource = z.object({

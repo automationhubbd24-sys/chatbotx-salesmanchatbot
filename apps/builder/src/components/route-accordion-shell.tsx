@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
 import type { ReactNode } from "react"

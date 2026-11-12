@@ -4,8 +4,8 @@ import {
   type FlowRouteUpdate,
   nodeTypeSchema,
   sendMessageNodeDefaultFn,
-} from "@chatbotx.io/flow-config"
-import { useDebouncedCallback } from "@chatbotx.io/ui/hooks/use-debounced-callback"
+} from "@salesmanchatbot.io/flow-config"
+import { useDebouncedCallback } from "@salesmanchatbot.io/ui/hooks/use-debounced-callback"
 import {
   Background,
   type Connection,
@@ -50,7 +50,7 @@ import ZoomInButton from "./panel-buttons/zoom-in-button"
 import ZoomOutButton from "./panel-buttons/zoom-out-button"
 import { duplicateFlowNode } from "./toolbar/duplicate-node-data"
 import "./react-flow-wrapper.css"
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { FlowVersionResource } from "@/features/flow-versions/schema/resource"
 import { serializeFlowContent } from "../flow-version-content"
 import {

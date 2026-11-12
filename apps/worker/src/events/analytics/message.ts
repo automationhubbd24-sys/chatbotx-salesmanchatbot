@@ -1,13 +1,13 @@
-import { messageAnalyticsService } from "@chatbotx.io/analytics"
+import { messageAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   quotaEnforcementService,
   workspaceService,
   workspaceUsageService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   BotMessageSentEventPayload,
   HumanMessageSentEventPayload,
-} from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/event-bus"
 import { logger } from "../../lib/logger"
 
 export function handleHumanMessageSent(

@@ -1,6 +1,6 @@
 "use client"
 
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import { useParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useFormContext } from "react-hook-form"

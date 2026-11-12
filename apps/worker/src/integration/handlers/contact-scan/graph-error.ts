@@ -1,12 +1,12 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { isRetryable, readOriginError } from "../shared/http-retry"
 import type { ContactScanErrorClassification } from "./adapter"
 
 /**
  * Flat instance fields every Graph SDK exception carries —
- * `MessengerAPIException` (`@chatbotx.io/integration-messenger/exception`)
- * and `InstagramAPIException` (`@chatbotx.io/integration-instagram`'s and
- * `@chatbotx.io/integration-instagram-facebook`'s, both `extends
+ * `MessengerAPIException` (`@salesmanchatbot.io/integration-messenger/exception`)
+ * and `InstagramAPIException` (`@salesmanchatbot.io/integration-instagram`'s and
+ * `@salesmanchatbot.io/integration-instagram-facebook`'s, both `extends
  * InstagramException`) all `extends SdkException`. Each package's own
  * `rescue()` already normalizes the raw Graph error body into these fields
  * at throw time — see `integrations/messenger/src/exception.ts`'s

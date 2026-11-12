@@ -17,7 +17,7 @@ type ScratchOffArtProps = {
   revealLabel?: string
 }
 
-// Intentionally not `@chatbotx.io/ui`'s `hexToRgb`, mirroring the other
+// Intentionally not `@salesmanchatbot.io/ui`'s `hexToRgb`, mirroring the other
 // `*-art.tsx` components: this fallback tuple keeps malformed input a
 // visible gray instead of silently rendering black.
 const FALLBACK_RGB: [number, number, number] = [150, 150, 158]

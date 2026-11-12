@@ -1,4 +1,4 @@
-import { messageService } from "@chatbotx.io/business"
+import { messageService } from "@salesmanchatbot.io/business"
 import { decodeCursor, encodeCursor } from "@/lib/pagination/cursor-pagination"
 import type {
   FindMessageRequest,

@@ -4,11 +4,11 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const listByWorkspaceMock = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tiktokIntegrationService: { listByWorkspace: listByWorkspaceMock },
 }))
 
-vi.mock("@chatbotx.io/integration-tiktok", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok", () => ({
   tiktokNeedsReauthorization: vi.fn(() => false),
 }))
 

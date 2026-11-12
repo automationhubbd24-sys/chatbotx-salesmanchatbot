@@ -1,5 +1,5 @@
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
-import type { Context } from "@chatbotx.io/sdk"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
+import type { Context } from "@salesmanchatbot.io/sdk"
 import { integrations } from "@/integration"
 import type { CreateMessageTemplateRequest } from "../schema/mutation"
 import type { TemplateDocumentSchema } from "../templates/document/schema"

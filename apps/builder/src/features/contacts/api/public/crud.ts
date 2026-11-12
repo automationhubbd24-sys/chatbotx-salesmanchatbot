@@ -1,6 +1,6 @@
-import { contactService, importService, UNSCOPED } from "@chatbotx.io/business"
-import { getAuditActor } from "@chatbotx.io/business/audit"
-import { contactSources, genderTypes } from "@chatbotx.io/database/partials"
+import { contactService, importService, UNSCOPED } from "@salesmanchatbot.io/business"
+import { getAuditActor } from "@salesmanchatbot.io/business/audit"
+import { contactSources, genderTypes } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { mcpSpec } from "@/lib/orpc/mcp-annotations"
 import {

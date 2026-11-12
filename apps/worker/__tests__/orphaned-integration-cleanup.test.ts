@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   unsubscribeMessenger: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: {
     existsByPageId: mocks.instagramIntegrationExistsByPageId,
   },
@@ -18,11 +18,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   unsubscribePageFromInstagramWebhook: mocks.unsubscribeInstagram,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/page", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/page", () => ({
   unsubscribePageFromAppWebhook: mocks.unsubscribeMessenger,
 }))
 

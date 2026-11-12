@@ -1,5 +1,5 @@
-import { createSelectSchema, messageModel } from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { createSelectSchema, messageModel } from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { attachmentResource } from "@/features/attachments/schema/resource"
 import { contactResource } from "@/features/contacts/schema/resource"
@@ -17,6 +17,17 @@ export const messageResource = createSelectSchema(messageModel, {
 )
 export type MessageResource = z.infer<typeof messageResource>
 
+export const parentPreviewResource = createSelectSchema(messageModel, {
+  id: z.string(),
+  sourceId: z.string().nullable(),
+  text: z.string().nullable(),
+  contentType: z.string(),
+  messageType: z.string(),
+  senderType: z.string(),
+  deletedAt: z.date().nullable(),
+  type: z.string(),
+}).and(z.object({ attachments: z.array(attachmentResource).optional() }))
+
 export const messageResourceWithRelations = messageResource.and(
   z.object({
     attachmentCount: z.number().optional(),
@@ -24,6 +35,7 @@ export const messageResourceWithRelations = messageResource.and(
     user: userResource.optional(),
     contact: contactResource.optional(),
     clientId: zodBigintAsString().optional(),
+    parent: parentPreviewResource.nullable().optional(),
   }),
 )
 export type MessageResourceWithRelations = z.infer<

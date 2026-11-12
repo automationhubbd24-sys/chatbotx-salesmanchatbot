@@ -1,4 +1,4 @@
-import { resolveContactFilterValueLabels } from "@chatbotx.io/business"
+import { resolveContactFilterValueLabels } from "@salesmanchatbot.io/business"
 import { FILTER_VALUE_LABELS_TOKEN_PATH } from "@/features/contact-filter/lib/api-paths"
 import { listContactFilterFieldsForAPI } from "@/features/contact-filter/lib/list-contact-filter-fields"
 import { listContactFilterFieldsPublicResponse } from "@/features/contact-filter/schema/public"

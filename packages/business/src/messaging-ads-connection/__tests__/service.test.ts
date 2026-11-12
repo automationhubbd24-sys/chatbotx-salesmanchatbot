@@ -21,7 +21,7 @@ const mocks = vi.hoisted(() => ({
   isDatabaseError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   messagingAdsConnectionRepository: {
     findForIntegration: mocks.findForIntegration,
     listForChannel: mocks.listForChannel,
@@ -32,16 +32,16 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   isDatabaseError: mocks.isDatabaseError,
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptUtils: { encryptObject: mocks.encryptObject },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: mocks.createId }
 })
 

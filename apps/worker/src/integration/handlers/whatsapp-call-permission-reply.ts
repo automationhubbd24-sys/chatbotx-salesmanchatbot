@@ -1,6 +1,6 @@
-import { whatsappCallPermissionService } from "@chatbotx.io/business"
-import type { MessageModel } from "@chatbotx.io/database/types"
-import { getWhatsappCallPermissionReply } from "@chatbotx.io/sdk"
+import { whatsappCallPermissionService } from "@salesmanchatbot.io/business"
+import type { MessageModel } from "@salesmanchatbot.io/database/types"
+import { getWhatsappCallPermissionReply } from "@salesmanchatbot.io/sdk"
 
 /**
  * Records a contact's answer to a WhatsApp call-permission request. It is

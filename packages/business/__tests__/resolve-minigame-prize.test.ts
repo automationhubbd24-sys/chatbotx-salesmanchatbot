@@ -1,4 +1,4 @@
-import type { MinigamePrizeSettings } from "@chatbotx.io/database/partials"
+import type { MinigamePrizeSettings } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { resolveMinigamePrize } from "../src/minigame/resolve-prize"
 

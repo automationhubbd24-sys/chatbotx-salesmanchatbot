@@ -5,7 +5,7 @@ import { RadioGroup as RadioGroupPrimitive } from "@base-ui/react/radio-group"
 import { Radio } from "@base-ui/react/radio"
 import { CircleIcon } from "lucide-react"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function RadioGroup({
   className,

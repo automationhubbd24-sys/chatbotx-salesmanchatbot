@@ -1,9 +1,9 @@
 import type {
   AuthOAuthAccount,
   AuthOAuthAccountPatch,
-} from "@chatbotx.io/auth/server"
-import { MESSENGER_SCOPES } from "@chatbotx.io/integration-messenger"
-import { exchangeLongLivedToken } from "@chatbotx.io/integration-messenger/apis/page"
+} from "@salesmanchatbot.io/auth/server"
+import { MESSENGER_SCOPES } from "@salesmanchatbot.io/integration-messenger"
+import { exchangeLongLivedToken } from "@salesmanchatbot.io/integration-messenger/apis/page"
 import { logger } from "@/lib/log"
 
 /**

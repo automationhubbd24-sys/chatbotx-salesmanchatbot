@@ -35,12 +35,12 @@ vi.mock("@/env", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   voipTurnCredentialService: { issueCredentials: issueCredentialsMock },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code?: string
     httpStatusCode?: number
     constructor(message: string, code?: string, httpStatusCode?: number) {
@@ -51,7 +51,7 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedStore: { incrWithWindow: incrWithWindowMock },
 }))
 

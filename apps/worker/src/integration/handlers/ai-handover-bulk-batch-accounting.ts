@@ -1,9 +1,9 @@
-import type { BulkAiContactInboxRow } from "@chatbotx.io/database/repositories"
+import type { BulkAiContactInboxRow } from "@salesmanchatbot.io/database/repositories"
 import {
   type BulkThreadControlItemResult,
   ChannelError,
   ChannelErrorCategory,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 
 // The pure rules of how a batch's channel results are read and counted: no I/O,
 // so the accounting that decides what is never sent twice is testable alone.

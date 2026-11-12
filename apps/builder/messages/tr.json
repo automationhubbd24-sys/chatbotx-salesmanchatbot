@@ -1020,7 +1020,13 @@
       "anyConditions": "Aşağıdaki koşullardan herhangi biri.",
       "label": "Kişi filtresi",
       "onlyContactsMatch": "Yalnızca şununla eşleşen kişiler",
-      "moreOptions": "Daha Fazla Seçenek"
+      "moreOptions": "Daha Fazla Seçenek",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kişi Notu"
@@ -1494,7 +1500,9 @@
         "documentReader": "Belge Okuyucu",
         "imageReader": "Görsel Okuyucu",
         "urlContext": "URL Okuyucu",
-        "webSearch": "Web araması"
+        "webSearch": "Web araması",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2731,7 +2739,7 @@
     "title": "Genel"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Bu, kampanyayı yalnızca ChatbotX'ten kaldırır. Meta mesaj kampanyası çalışmaya devam eder — Reklam Yöneticisi'nde duraklatın veya silin.",
+    "deleteWarning": "Bu, kampanyayı yalnızca salesmanChatbot'ten kaldırır. Meta mesaj kampanyası çalışmaya devam eder — Reklam Yöneticisi'nde duraklatın veya silin.",
     "title": "Facebook Pazarlama Mesajları",
     "description": "Messenger'da kişiselleştirilmiş tanıtım mesajlarıyla etkileşimi ve satışları artırın.",
     "create": "Yeni Oluştur",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "{feature} bağlantısı başarıyla kesildi",
     "reply": "Yanıtla",
     "privateReply": "Özel yanıt",
+    "replyingTo": "Yanıtlanıyor",
+    "replyPreview": "{sender}, {recipient} kişisine yanıt verdi",
+    "you": "Siz",
     "viewMessage": "Mesajı görüntüle",
     "changeLikeState": "Beğeni durumunu değiştir",
     "changeHideState": "Gizleme durumunu değiştir",
@@ -3730,6 +3741,10 @@
       "description": "Bu sağlayıcının otomatik AI yanıtları için kullanılmasına izin ver.",
       "label": "AI Otomatik Yanıt"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AI Aracısı yedek modelleri için OpenAI uyumlu sağlayıcıları bağlayın.",
       "label": "OpenAI uyumlu sağlayıcılar"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "Temel URL",
       "defaultModel": "Varsayılan model",
+      "embeddingModel": "Gömme modeli",
       "enabled": "Etkin"
     },
     "provider": "AI Sağlayıcısı",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "Temel URL geçersiz veya izin verilmiyor.",
       "presetAlreadyConnected": "Bu ön ayar bu çalışma alanı için zaten bağlı."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "Arama uygunluğu",
         "appSubscriptionMissing": "Önce Meta Uygulama Panosunda bu uygulama için WhatsApp webhook'unu yapılandırın, ardından tekrar deneyin.",
         "appSubscriptionFailed": "Uygulamanın 'calls' webhook aboneliği doğrulanamadı. Kısa süre sonra tekrar deneyin.",
-        "callsNotSubscribed": "Bu uygulama 'calls' webhook alanına abone değil, bu nedenle arama olayları ChatbotX'e ulaşamıyor (Meta hatası 138018: teknik ön koşullar karşılanmıyor — WABA'ya abone olan en az bir uygulamanın arama webhook alanına da sahip olduğundan emin olun).",
+        "callsNotSubscribed": "Bu uygulama 'calls' webhook alanına abone değil, bu nedenle arama olayları salesmanChatbot'e ulaşamıyor (Meta hatası 138018: teknik ön koşullar karşılanmıyor — WABA'ya abone olan en az bir uygulamanın arama webhook alanına da sahip olduğundan emin olun).",
         "fixButton": "Düzelt",
         "fixSuccess": "Uygulama artık WhatsApp arama webhook'larına abone.",
         "manualIntegrationNotice": "Bu numara manuel olarak bağlandı ve burada uygulama kimlik bilgisi yok. Meta Uygulama Panosunda uygulamanız için 'calls' webhook alanına abone olun.",
@@ -5687,7 +5720,109 @@
     "unknown": "Bilinmiyor"
   },
   "orders": {
-    "title": "Siparişler"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Ürünler",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Eylem kaynağı",

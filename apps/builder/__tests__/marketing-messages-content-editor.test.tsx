@@ -20,7 +20,7 @@ vi.mock("next-intl", () => ({
  * open, so it cannot be driven from jsdom. This stub keeps the part under test
  * — the `triggerValueChange` contract — and exposes one button per option.
  */
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options,

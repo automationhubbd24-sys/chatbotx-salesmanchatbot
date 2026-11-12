@@ -1,14 +1,14 @@
 "use client"
 
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"

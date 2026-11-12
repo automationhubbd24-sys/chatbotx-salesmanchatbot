@@ -2,7 +2,7 @@ import {
   appointmentCalendarService,
   appointmentService,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnCreatingAppointmentCalendar,
   possibleErrorsOnDeletingResource,

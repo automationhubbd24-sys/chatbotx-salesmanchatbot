@@ -1,7 +1,7 @@
 "use client"
 
-import type { MePrivacyData } from "@chatbotx.io/business/system-field"
-import { normalizeGender } from "@chatbotx.io/sdk"
+import type { MePrivacyData } from "@salesmanchatbot.io/business/system-field"
+import { normalizeGender } from "@salesmanchatbot.io/sdk"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -11,20 +11,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Table,
   TableBody,
@@ -32,7 +32,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import {
   AtSign,
   Clock,

@@ -14,7 +14,7 @@ const insertReturning = vi.fn()
 const deleteWhere = vi.fn()
 const invalidateCacheByTags = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       tagModel: {
@@ -46,7 +46,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: (strings: TemplateStringsArray) => ({ sql: strings.join("?") }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactInboxModel: {
     id: "ContactInbox.id",
     contactId: "ContactInbox.contactId",
@@ -68,7 +68,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitTagApplied: vi.fn(),
   emitTagRemoved: vi.fn(),
 }))
@@ -79,7 +79,7 @@ vi.mock("../src/ads-conversion/service", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: (...args: unknown[]) => invalidateCacheByTags(...args),
   withCache: async (_key: string, callback: () => Promise<unknown>) =>
     await callback(),

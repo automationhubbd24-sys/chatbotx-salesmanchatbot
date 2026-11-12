@@ -1,4 +1,4 @@
-import { type HandleRequestProps, SdkException } from "@chatbotx.io/sdk"
+import { type HandleRequestProps, SdkException } from "@salesmanchatbot.io/sdk"
 import { getClient } from "../client"
 import { googleSheetsTokensToAuth } from "../connection-auth"
 import { handleError } from "../error"

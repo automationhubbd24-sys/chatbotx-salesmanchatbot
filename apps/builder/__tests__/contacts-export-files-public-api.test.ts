@@ -48,7 +48,7 @@ vi.mock("@/orpc", () => ({ workspaceTokenAuthAPIForScope }))
 
 const getExportFileForAPI = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactExportService: { getFile: getExportFileForAPI },
 }))
 

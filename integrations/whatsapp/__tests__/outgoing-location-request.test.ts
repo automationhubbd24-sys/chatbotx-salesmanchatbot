@@ -1,4 +1,4 @@
-import { WHATSAPP_NATIVE_LOCATION_REQUEST } from "@chatbotx.io/sdk"
+import { WHATSAPP_NATIVE_LOCATION_REQUEST } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { mockApiFetch, mockSendMessage, mockGetWhatsappClient } = vi.hoisted(

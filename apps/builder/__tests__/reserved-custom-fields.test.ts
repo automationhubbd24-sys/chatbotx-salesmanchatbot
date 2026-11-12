@@ -1,4 +1,4 @@
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import enMessages from "../messages/en.json"
 import viMessages from "../messages/vi.json"

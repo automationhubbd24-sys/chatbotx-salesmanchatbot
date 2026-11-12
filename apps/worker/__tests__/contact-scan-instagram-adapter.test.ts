@@ -12,7 +12,7 @@ const {
   mockListInstagramFacebookConversations: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: {
     findByIdForWorkspace: mockFindByIdForWorkspace,
   },
@@ -22,11 +22,11 @@ vi.mock("@chatbotx.io/business", () => ({
   extractContactInfo: vi.fn(() => ({})),
 }))
 
-vi.mock("@chatbotx.io/integration-instagram/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram/apis/sync", () => ({
   listInstagramConversations: mockListInstagramConversations,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook/apis/sync", () => ({
   listInstagramFacebookConversations: mockListInstagramFacebookConversations,
 }))
 
@@ -34,11 +34,11 @@ vi.mock("@chatbotx.io/integration-instagram-facebook/apis/sync", () => ({
 // helpers (FIX 4). That module also imports `listMessages` from this
 // package — stubbed here (unused by these tests) purely to keep the module
 // graph hermetic instead of pulling in the real Graph HTTP client.
-vi.mock("@chatbotx.io/integration-messenger/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/sync", () => ({
   listMessages: vi.fn(),
 }))
 
-import { InstagramAPIException } from "@chatbotx.io/integration-instagram/exception"
+import { InstagramAPIException } from "@salesmanchatbot.io/integration-instagram/exception"
 import { instagramContactScanAdapter } from "../src/integration/handlers/contact-scan/adapters/instagram"
 
 const workspaceId = "ws-1"
@@ -369,8 +369,8 @@ describe("instagramContactScanAdapter", () => {
   })
 
   describe("classifyError", () => {
-    // Both `@chatbotx.io/integration-instagram` and
-    // `@chatbotx.io/integration-instagram-facebook` wrap every Graph failure
+    // Both `@salesmanchatbot.io/integration-instagram` and
+    // `@salesmanchatbot.io/integration-instagram-facebook` wrap every Graph failure
     // into their own `InstagramAPIException` (extends `InstagramException`
     // extends `SdkException`) before it escapes
     // `listInstagramConversations`/`listInstagramFacebookConversations` — a

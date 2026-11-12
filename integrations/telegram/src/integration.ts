@@ -3,7 +3,7 @@ import {
   Integration,
   type IntegrationDefinition,
   probeVerify,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { connect, deleteWebhook, getMe, registerWebhook } from "./apis/bot"
 import { TelegramAPIException } from "./exception"
 import { contactHandlers } from "./handlers/contact"

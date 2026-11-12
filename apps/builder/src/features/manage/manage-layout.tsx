@@ -5,7 +5,7 @@ import {
   SidebarMobileHandle,
   SidebarProvider,
   SidebarTrigger,
-} from "@chatbotx.io/ui/components/ui/sidebar"
+} from "@salesmanchatbot.io/ui/components/ui/sidebar"
 import { usePathname } from "next/navigation"
 import { type ReactNode, useEffect, useState } from "react"
 

@@ -1,4 +1,4 @@
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
+import type { IntegrationOpenaiCompatibleModel } from "@salesmanchatbot.io/database/types"
 import { describe, expect, test, vi } from "vitest"
 
 const providerModelMock = vi.hoisted(() => vi.fn((modelId: string) => modelId))

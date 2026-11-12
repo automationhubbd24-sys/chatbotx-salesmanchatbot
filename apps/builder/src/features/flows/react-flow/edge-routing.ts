@@ -1,4 +1,4 @@
-import type { FlowRouteUpdate } from "@chatbotx.io/flow-config"
+import type { FlowRouteUpdate } from "@salesmanchatbot.io/flow-config"
 import { addEdge, type Connection, type Edge } from "@xyflow/react"
 
 type NextButtonEdge = Connection & Partial<Pick<Edge, "id" | "type">>

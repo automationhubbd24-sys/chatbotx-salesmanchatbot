@@ -1,4 +1,4 @@
-import { aiAgentModelConfig } from "@chatbotx.io/database/partials"
+import { aiAgentModelConfig } from "@salesmanchatbot.io/database/partials"
 import {
   aiEditImageSchema,
   aiGenerateImageSchema,
@@ -6,8 +6,8 @@ import {
   aiTextToSpeechSchema,
   type FlowActionTargetType,
   metadataSchema,
-} from "@chatbotx.io/flow-config"
-import type { CommentAnchor } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { CommentAnchor } from "@salesmanchatbot.io/sdk"
 import { type JobsOptions, Queue } from "bullmq"
 import { z } from "zod"
 import {

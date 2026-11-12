@@ -4,13 +4,13 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import { CONNECT_PICKER_CARD_CLASS } from "@/features/channel-connect/components/connect-picker-card"
 import type { MessengerPickerItem } from "@/features/integration-messenger/components/messenger-pages"

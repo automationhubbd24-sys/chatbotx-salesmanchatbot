@@ -1,9 +1,9 @@
-import { and, asc, db, eq, gt } from "@chatbotx.io/database/client"
+import { and, asc, db, eq, gt } from "@salesmanchatbot.io/database/client"
 import {
   contactsOnSequenceModel,
   sequenceStepModel,
-} from "@chatbotx.io/database/schema"
-import type { SchedulerClient } from "@chatbotx.io/scheduler"
+} from "@salesmanchatbot.io/database/schema"
+import type { SchedulerClient } from "@salesmanchatbot.io/scheduler"
 import { calculateNextRunAtFromStep } from "./calculate-next-run-at"
 import { getContactInboxes } from "./contacts-on-sequences"
 import { createDispatch } from "./dispatch-manager"

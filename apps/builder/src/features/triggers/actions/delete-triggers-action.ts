@@ -1,6 +1,6 @@
 "use server"
 
-import { triggerService } from "@chatbotx.io/business"
+import { triggerService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

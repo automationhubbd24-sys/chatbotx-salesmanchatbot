@@ -3,24 +3,24 @@ import {
   coexistService,
   messengerIntegrationService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { logProviderError } from "@chatbotx.io/business/error-log"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { inboxModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { inboxModel } from "@salesmanchatbot.io/database/schema"
 import {
   listConversations,
   type MessengerConversation,
-} from "@chatbotx.io/integration-messenger/apis/sync"
+} from "@salesmanchatbot.io/integration-messenger/apis/sync"
 import {
   type BucUsage,
   concurrencyForUsage,
-} from "@chatbotx.io/integration-messenger/apis/usage"
-import type { IncomingContact } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-messenger/apis/usage"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
 import {
   IntegrationJobAction,
   type IntegrationJobCoexistMessengerSync,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import pLimit from "p-limit"
 import { logger } from "../../../lib/logger"
 import {

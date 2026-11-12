@@ -1,4 +1,4 @@
-import type { FlowNode } from "@chatbotx.io/flow-config"
+import type { FlowNode } from "@salesmanchatbot.io/flow-config"
 import type { ReactFlowState } from "@xyflow/react"
 
 // Select only the selected node from the store

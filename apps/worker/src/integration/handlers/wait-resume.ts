@@ -1,12 +1,12 @@
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
 import {
   smartDelayStatuses,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   IntegrationJobAction,
   type IntegrationJobResumeWait,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import type { Job } from "bullmq"
 import { runFlowNode } from "./flow"
 import { buildSendFlowResumeJob, requeueClaimedRunOrLog } from "./smart-delay"

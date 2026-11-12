@@ -1,9 +1,9 @@
-import { contactService } from "@chatbotx.io/business"
+import { contactService } from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
-} from "@chatbotx.io/business/errors"
-import type { WorkspaceMemberPermissions } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business/errors"
+import type { WorkspaceMemberPermissions } from "@salesmanchatbot.io/database/partials"
 import {
   hasContactsAccess,
   hasWorkspacePermission,
@@ -12,8 +12,8 @@ import { getCurrentUserAndTargetWorkspace } from "@/lib/auth/utils"
 
 type Permissions = WorkspaceMemberPermissions | Record<string, unknown>
 
-export { maskContactEmailAndPhone } from "@chatbotx.io/business/contact-utils"
-export { stripContactPIIFields } from "@chatbotx.io/worker-config/contact-pii"
+export { maskContactEmailAndPhone } from "@salesmanchatbot.io/business/contact-utils"
+export { stripContactPIIFields } from "@salesmanchatbot.io/worker-config/contact-pii"
 
 export type ContactPermissionScope = {
   canViewEmailAndPhone: boolean
@@ -111,9 +111,9 @@ export async function requireContactPermissionScope(
   // access — so re-check membership here only to pick the right message.
   const userAndWorkspace = await getCurrentUserAndTargetWorkspace(workspaceId)
   if (!userAndWorkspace) {
-    throw new ChatbotXException("User is not associated with this workspace")
+    throw new salesmanChatbotException("User is not associated with this workspace")
   }
-  throw new ChatbotXException("User is not authorized to access contacts")
+  throw new salesmanChatbotException("User is not authorized to access contacts")
 }
 
 /**

@@ -1,4 +1,4 @@
-import { appointmentReminderService } from "@chatbotx.io/business"
+import { appointmentReminderService } from "@salesmanchatbot.io/business"
 import { possibleErrorsOnListingResource } from "@/lib/orpc/orpc-error-helper"
 import { publicListResponse } from "@/lib/public-api/list"
 import { workspaceTokenAuthAPIForScope } from "@/orpc"

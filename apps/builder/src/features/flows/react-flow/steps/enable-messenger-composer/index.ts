@@ -2,7 +2,7 @@ import {
   type EnableMessengerComposerStepSchema,
   enableMessengerComposerStepDefaultFn,
   enableMessengerComposerStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import EnableMessengerComposerStepEditor from "./editor"
 import EnableMessengerComposerStepViewer from "./viewer"

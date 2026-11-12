@@ -2,7 +2,7 @@ import { createEnv } from "@t3-oss/env-core"
 import { z } from "zod"
 
 const defaultMcpInstructions = [
-  "Use tools for ChatbotX workspace data and actions; users do not need API names.",
+  "Use tools for salesmanChatbot workspace data and actions; users do not need API names.",
   "Call a suitable listed tool directly. Search hidden or unlisted capabilities with search_tools using one action plus one resource in English or supported Vietnamese, Spanish, French, or Chinese; inspect the returned inputSchema before call_tool.",
   "Split workflows into goals. Resolve names through filtered lists, pagination, and counts; use a user-provided stable ID, email, or phone when the schema accepts it. Ask for an observed disambiguator when names match more than once; do not select the first row or fabricate an empty result.",
   "For each requested create, modify, send, schedule, publish, or book action, wait for the result. A plan, schema lookup, validation, or natural-language answer is not completion.",
@@ -16,17 +16,17 @@ const defaultMcpInstructions = [
 
 export const env = createEnv({
   server: {
-    CHATBOTX_API_KEY: z.string().trim().default(""),
-    CHATBOTX_API_URL: z.url().default("https://app.chatbotx.io/api"),
-    CHATBOTX_ALLOW_SELF_SIGNED_CERT: z.enum(["true", "false"]).optional(),
-    CHATBOTX_MCP_TRANSPORT: z.enum(["stdio", "sse", "both"]).default("both"),
-    CHATBOTX_MCP_HOST: z.string().default("0.0.0.0"),
-    CHATBOTX_MCP_PORT: z.coerce.number().int().positive().default(3333),
-    CHATBOTX_MCP_SSE_PATH: z.string().default("/sse"),
-    CHATBOTX_MCP_MESSAGES_PATH: z.string().default("/messages"),
-    CHATBOTX_MCP_CORS_ORIGIN: z.string().default("*"),
-    CHATBOTX_MCP_SERVER_NAME: z.string().optional(),
-    CHATBOTX_MCP_SERVER_INSTRUCTIONS: z
+    SALESMANCHATBOT_API_KEY: z.string().trim().default(""),
+    SALESMANCHATBOT_API_URL: z.url().default("https://app.salesmanchatbot.io/api"),
+    SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT: z.enum(["true", "false"]).optional(),
+    SALESMANCHATBOT_MCP_TRANSPORT: z.enum(["stdio", "sse", "both"]).default("both"),
+    SALESMANCHATBOT_MCP_HOST: z.string().default("0.0.0.0"),
+    SALESMANCHATBOT_MCP_PORT: z.coerce.number().int().positive().default(3333),
+    SALESMANCHATBOT_MCP_SSE_PATH: z.string().default("/sse"),
+    SALESMANCHATBOT_MCP_MESSAGES_PATH: z.string().default("/messages"),
+    SALESMANCHATBOT_MCP_CORS_ORIGIN: z.string().default("*"),
+    SALESMANCHATBOT_MCP_SERVER_NAME: z.string().optional(),
+    SALESMANCHATBOT_MCP_SERVER_INSTRUCTIONS: z
       .string()
       .default(defaultMcpInstructions),
     // How long the fetched OpenAPI spec (and the tool list derived from it) is
@@ -34,8 +34,8 @@ export const env = createEnv({
     // re-fetch. Previously loaded once at process boot and never refreshed —
     // a new/changed public endpoint never appeared without restarting the
     // server.
-    CHATBOTX_SPEC_TTL_MS: z.coerce.number().int().positive().default(300_000),
-    CHATBOTX_HTTP_TIMEOUT_MS: z.coerce
+    SALESMANCHATBOT_SPEC_TTL_MS: z.coerce.number().int().positive().default(300_000),
+    SALESMANCHATBOT_HTTP_TIMEOUT_MS: z.coerce
       .number()
       .int()
       .positive()

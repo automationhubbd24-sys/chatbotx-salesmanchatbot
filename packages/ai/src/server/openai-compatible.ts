@@ -1,6 +1,9 @@
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
-import { secretTextAuthSchema } from "@chatbotx.io/sdk"
+import type {
+  IntegrationOpenaiCompatibleEmbeddingModel,
+  IntegrationOpenaiCompatibleModel,
+} from "@salesmanchatbot.io/database/types"
+import { secretTextAuthSchema } from "@salesmanchatbot.io/sdk"
 
 class InvalidOpenaiCompatibleAuthError extends Error {
   constructor() {
@@ -9,11 +12,9 @@ class InvalidOpenaiCompatibleAuthError extends Error {
   }
 }
 
-export function createOpenaiCompatibleModelInstance(props: {
-  integration: IntegrationOpenaiCompatibleModel
-  modelId: string
-}) {
-  const { integration, modelId } = props
+function createOpenaiCompatibleProvider(
+  integration: IntegrationOpenaiCompatibleModel,
+) {
   const authParsed = secretTextAuthSchema.safeParse(integration.auth)
   if (integration.auth !== null && !authParsed.success) {
     throw new InvalidOpenaiCompatibleAuthError()
@@ -27,12 +28,32 @@ export function createOpenaiCompatibleModelInstance(props: {
         }
       : undefined
 
-  const provider = createOpenAICompatible({
+  return createOpenAICompatible({
     name: integration.preset || "openai-compatible",
     baseURL: integration.baseURL,
     apiKey,
     ...(transformRequestBody ? { transformRequestBody } : {}),
   })
+}
 
-  return provider(modelId)
+export function createOpenaiCompatibleModelInstance(props: {
+  integration: IntegrationOpenaiCompatibleModel
+  modelId: string
+}) {
+  return createOpenaiCompatibleProvider(props.integration)(props.modelId)
+}
+
+export function createOpenaiCompatibleTextEmbeddingModelInstance(props: {
+  integration: IntegrationOpenaiCompatibleEmbeddingModel
+}) {
+  const authParsed = secretTextAuthSchema.safeParse(props.integration.auth)
+  if (!authParsed.success) {
+    throw new InvalidOpenaiCompatibleAuthError()
+  }
+
+  return createOpenAICompatible({
+    name: "openai-compatible-embedding",
+    baseURL: props.integration.baseURL,
+    apiKey: authParsed.data.secretText,
+  }).embeddingModel(props.integration.embeddingModel)
 }

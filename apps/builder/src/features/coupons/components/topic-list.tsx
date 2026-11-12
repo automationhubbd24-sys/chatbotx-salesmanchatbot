@@ -10,16 +10,16 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Table,
   TableBody,
@@ -27,7 +27,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import {
   ArchiveIcon,
   ChevronLeftIcon,

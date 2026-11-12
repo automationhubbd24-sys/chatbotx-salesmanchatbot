@@ -24,7 +24,7 @@ const mocks = vi.hoisted(() => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   connectSessionRepository: {
     countActiveByWorkspaceId: mocks.countActiveByWorkspaceId,
     insert: mocks.insert,

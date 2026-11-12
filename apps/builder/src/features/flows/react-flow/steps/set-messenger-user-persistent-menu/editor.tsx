@@ -5,14 +5,14 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import { SiMessenger } from "@icons-pack/react-simple-icons"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

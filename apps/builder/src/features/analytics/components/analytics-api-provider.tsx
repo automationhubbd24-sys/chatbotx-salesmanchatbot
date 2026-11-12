@@ -1,6 +1,6 @@
 "use client"
 
-import { AnalyticsApiProvider as BaseAnalyticsApiProvider } from "@chatbotx.io/analytics-nextjs/provider/analytics-api-context"
+import { AnalyticsApiProvider as BaseAnalyticsApiProvider } from "@salesmanchatbot.io/analytics-nextjs/provider/analytics-api-context"
 import type { ReactNode } from "react"
 import { client } from "@/lib/orpc/orpc"
 

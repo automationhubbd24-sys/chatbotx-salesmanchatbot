@@ -35,7 +35,7 @@ vi.mock("@/features/common/schema", () => ({
   workspaceIdrequestParams: [],
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationClaudeService: { connect: mocks.connectClaude },
   integrationDeepSeekService: { connect: mocks.connectDeepSeek },
   integrationGeminiService: { connect: mocks.connectGemini },
@@ -43,8 +43,8 @@ vi.mock("@chatbotx.io/business", () => ({
   integrationOpenRouterService: { connect: mocks.connectOpenRouter },
 }))
 
-vi.mock("@chatbotx.io/ai", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/ai")>()
+vi.mock("@salesmanchatbot.io/ai", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/ai")>()
   return {
     ...actual,
     aiProviders: {
@@ -59,7 +59,7 @@ vi.mock("@chatbotx.io/ai", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiIntegrationService: { invalidateCache: mocks.invalidateCache },
 }))
 
@@ -71,7 +71,7 @@ vi.mock("next-safe-action", () => ({
   returnValidationErrors: mocks.returnValidationErrors,
 }))
 
-vi.mock("@chatbotx.io/business/integration-ai-provider/verify", () => ({
+vi.mock("@salesmanchatbot.io/business/integration-ai-provider/verify", () => ({
   verifyAiProviderApiKey: mocks.verifyAiProviderApiKey,
 }))
 // Dynamic imports are required here (not a static-import violation): the

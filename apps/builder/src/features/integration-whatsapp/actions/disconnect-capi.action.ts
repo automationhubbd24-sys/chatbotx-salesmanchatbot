@@ -3,9 +3,9 @@
 import {
   integrationWhatsappService,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
@@ -28,7 +28,7 @@ export const disconnectWhatsappCapiAction = workspaceActionClientAllowExpired
         },
       )
       if (!integration) {
-        throw new ChatbotXException(t("whatsappNotFound"))
+        throw new salesmanChatbotException(t("whatsappNotFound"))
       }
 
       await metaConversionsService.disconnectCapi({

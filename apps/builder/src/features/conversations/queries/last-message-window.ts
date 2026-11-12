@@ -1,4 +1,4 @@
-import { getSafeSinceTime } from "@chatbotx.io/database/repositories"
+import { getSafeSinceTime } from "@salesmanchatbot.io/database/repositories"
 
 /**
  * Full-history lower bound used when no usable anchor is available.

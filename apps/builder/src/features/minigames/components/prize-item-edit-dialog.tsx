@@ -1,10 +1,10 @@
 "use client"
 
-import { fileTypes } from "@chatbotx.io/database/partials"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { fileTypes } from "@salesmanchatbot.io/database/partials"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Dialog,
   DialogClose,
@@ -12,8 +12,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { useTranslations } from "next-intl"
 import { DirectUploadOrInsertLink } from "@/components/direct-upload"
 

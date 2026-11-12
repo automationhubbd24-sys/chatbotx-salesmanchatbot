@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -8,11 +8,11 @@ const mocks = vi.hoisted(() => ({
   requireContactAccessForMember: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: { findByOrFail: mocks.findByOrFail },
 }))
 
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   syncConversationThreadOwner: mocks.syncThreadOwner,
 }))
 
@@ -97,7 +97,7 @@ describe("syncThreadOwnerAction", () => {
 
   test("refuses a caller outside the contact's scope without touching the channel", async () => {
     mocks.requireContactAccessForMember.mockRejectedValue(
-      new ChatbotXException("Contact not found", "notFound", 404),
+      new salesmanChatbotException("Contact not found", "notFound", 404),
     )
 
     await expect(run()).rejects.toThrow("Contact not found")
@@ -106,7 +106,7 @@ describe("syncThreadOwnerAction", () => {
 
   test("shows a translated not-found for a contact inbox of another contact", async () => {
     mocks.syncThreadOwner.mockRejectedValue(
-      new ChatbotXException("Contact inbox not found", "notFound", 404),
+      new salesmanChatbotException("Contact inbox not found", "notFound", 404),
     )
 
     await expect(run("ci-foreign")).rejects.toThrow(

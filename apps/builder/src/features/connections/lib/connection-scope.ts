@@ -1,9 +1,9 @@
-import { CONNECTION_REGISTRY } from "@chatbotx.io/connections"
+import { CONNECTION_REGISTRY } from "@salesmanchatbot.io/connections"
 import type {
   ConnectionKind,
   IntegrationType,
   WorkspaceApiTokenScope,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { ORPCError } from "@orpc/server"
 
 /** The resource-area scope a connection of this kind falls under — `channel` connections are gated by `channels`, everything else (`integration`) by `integrations`. */

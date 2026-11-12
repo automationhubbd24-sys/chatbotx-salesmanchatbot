@@ -1,4 +1,4 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { getTranslations } from "next-intl/server"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { getCurrentUserAndTargetWorkspace } from "@/lib/auth/utils"
@@ -19,6 +19,6 @@ export async function assertWorkspaceSuperAdmin(
       )
     )
   ) {
-    throw new ChatbotXException(t("errors.superAdminRequired"))
+    throw new salesmanChatbotException(t("errors.superAdminRequired"))
   }
 }

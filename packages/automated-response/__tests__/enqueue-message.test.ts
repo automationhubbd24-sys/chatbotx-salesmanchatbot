@@ -16,7 +16,7 @@ const {
   mockWorkspaceFindById: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiAgentService: {
     findDefault: mockAiAgentFindDefault,
   },
@@ -31,13 +31,13 @@ vi.mock("../src/utils", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   simpleQueue: {
     enqueue: mockSimpleQueueEnqueue,
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   AIJobAction: {
     processAutomatedResponse: "processAutomatedResponse",
   },
@@ -97,6 +97,7 @@ describe("enqueueMessage", () => {
           conversationId: "conversation-1",
           contactInboxId: "contact-inbox-1",
           messageId: "message-1",
+          triggerMessageIds: ["message-1"],
         },
       },
       {

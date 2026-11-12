@@ -2,7 +2,7 @@ import {
   ChannelError,
   ChannelErrorCategory,
   UNKNOWN_ERROR,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   type ChannelErrorSource,
   InstagramException,

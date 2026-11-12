@@ -3,7 +3,7 @@
  * (CAPI) — for both Business Messaging and Pixel/server events. Depends
  * only on zod, like `utils/variables.ts`. Lives here (not `packages/business`)
  * so `integrations/meta-conversions` — which deliberately does NOT depend on
- * `@chatbotx.io/business` — can still import these shapes, and so
+ * `@salesmanchatbot.io/business` — can still import these shapes, and so
  * `packages/database`'s `AdsConversionEvent.contents` / `MetaCapiEvent.*`
  * columns can use the same types their writers do.
  */
@@ -130,11 +130,11 @@ export const eventNamesByCatalog: Record<
 }
 
 /**
- * Meta's `action_source` values offered by ChatbotX
+ * Meta's `action_source` values offered by salesmanChatbot
  * (https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters/server-event#action_source).
  * `website` and `app` are excluded: `event_source_url` and
  * `client_user_agent` are each "required for website events", and `app_data`
- * is "Required for app events" — none of which ChatbotX's messaging-driven
+ * is "Required for app events" — none of which salesmanChatbot's messaging-driven
  * flow/trigger steps can supply.
  */
 export const metaCapiActionSourceValues = [

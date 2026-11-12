@@ -1,19 +1,19 @@
 import {
   aiHandoverSettingsService,
   threadControlService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { requestThreadControlAction } from "@chatbotx.io/channel-registry/thread-control"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { requestThreadControlAction } from "@salesmanchatbot.io/channel-registry/thread-control"
 import {
   parseAiHandoverChannel,
   threadControlRoles,
-} from "@chatbotx.io/database/partials"
-import { ChannelError } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import { ChannelError } from "@salesmanchatbot.io/sdk"
 import {
   IntegrationJobAction,
   type IntegrationJobAiHandoverTakeBack,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 
 type TakeBackJobData = IntegrationJobAiHandoverTakeBack["data"]
@@ -94,7 +94,7 @@ const replayJobId = (messageId: string): string =>
  */
 export const isPermanentThreadControlFailure = (err: unknown): boolean =>
   (err instanceof ChannelError && err.isPermanent) ||
-  err instanceof ChatbotXException
+  err instanceof salesmanChatbotException
 
 /**
  * After a customer message was stored from a standby delivery: queues the

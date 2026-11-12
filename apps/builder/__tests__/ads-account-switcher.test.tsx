@@ -36,7 +36,7 @@ vi.mock("sonner", () => ({
   toast: { error: vi.fn(), success: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({
     items,
     onValueChange,

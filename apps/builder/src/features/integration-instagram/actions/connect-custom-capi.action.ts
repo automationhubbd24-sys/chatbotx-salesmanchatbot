@@ -3,10 +3,10 @@
 import {
   instagramIntegrationService,
   metaConversionsService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { getDataset } from "@chatbotx.io/integration-meta-conversions"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { getDataset } from "@salesmanchatbot.io/integration-meta-conversions"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
@@ -37,7 +37,7 @@ export const connectInstagramCustomCapiAction = workspaceActionClient
           workspaceId,
         })
       if (integration?.type !== "facebook") {
-        throw new ChatbotXException(t("instagramNotFound"))
+        throw new salesmanChatbotException(t("instagramNotFound"))
       }
 
       try {
@@ -49,7 +49,7 @@ export const connectInstagramCustomCapiAction = workspaceActionClient
           validate: getDataset,
         })
       } catch {
-        throw new ChatbotXException(t("invalidToken"))
+        throw new salesmanChatbotException(t("invalidToken"))
       }
 
       return { success: true }

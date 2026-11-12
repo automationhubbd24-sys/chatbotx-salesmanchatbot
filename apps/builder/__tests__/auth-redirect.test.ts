@@ -23,8 +23,8 @@ vi.mock("@/lib/oauth-referer", () => ({
 
 // The proxy sets these from the forwarded headers; here we derive them from the
 // request host so each case can drive the public host directly.
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     getPublicHostFromRequest: (request: Request) => new URL(request.url).host,

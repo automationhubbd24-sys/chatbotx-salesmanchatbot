@@ -4,15 +4,15 @@ import type {
   ChannelType,
   CustomFieldType,
   SystemFieldType,
-} from "@chatbotx.io/database/partials"
-import { FieldOperationType } from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
+} from "@salesmanchatbot.io/database/partials"
+import { FieldOperationType } from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import {
   SelectField,
   type SelectOption,
-} from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { FormItem, FormLabel } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { FormItem, FormLabel } from "@salesmanchatbot.io/ui/components/ui/form"
 import { useTranslations } from "next-intl"
 import { useCallback, useMemo } from "react"
 import { useWorkspaceId } from "@/hooks/routing"

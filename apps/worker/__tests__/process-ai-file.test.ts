@@ -12,18 +12,18 @@ const mocks = vi.hoisted(() => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createAiFileEmbeddingRepository: () => ({
     findFileOrFail: mocks.findFileOrFail,
     reconcilePendingChunks: mocks.reconcilePendingChunks,
   }),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   AIJobAction: { processPendingEmbedding: "processPendingEmbedding" },
   aiAgentQueue: { addBulk: mocks.addBulk },
 }))

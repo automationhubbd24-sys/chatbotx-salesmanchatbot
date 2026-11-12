@@ -1,5 +1,5 @@
-import type { TiktokAuthValue } from "@chatbotx.io/integration-tiktok"
-import { listTiktokComments } from "@chatbotx.io/integration-tiktok/apis/comment"
+import type { TiktokAuthValue } from "@salesmanchatbot.io/integration-tiktok"
+import { listTiktokComments } from "@salesmanchatbot.io/integration-tiktok/apis/comment"
 import { logger } from "../../lib/logger"
 
 export type TiktokCommenterIdentity = {

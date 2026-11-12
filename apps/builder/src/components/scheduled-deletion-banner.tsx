@@ -2,7 +2,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
 import { AlertTriangleIcon } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 

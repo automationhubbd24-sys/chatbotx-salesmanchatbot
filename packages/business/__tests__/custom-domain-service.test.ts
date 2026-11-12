@@ -20,7 +20,7 @@ const { mockFindFirst, mockWithCache } = vi.hoisted(() => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       customDomainModel: {
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: mockWithCache,
 }))
 

@@ -1,8 +1,8 @@
-import { triggerActions } from "@chatbotx.io/database/partials"
+import { triggerActions } from "@salesmanchatbot.io/database/partials"
 import {
   metaCapiEventFieldsSchema,
   withMetaCapiEventRefinements,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import z from "zod"
 
 export const sendMetaCapiEvent = withMetaCapiEventRefinements(

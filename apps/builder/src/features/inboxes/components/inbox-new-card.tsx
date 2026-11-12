@@ -1,12 +1,12 @@
 "use client"
 
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { PlusCircleIcon } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

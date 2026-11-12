@@ -10,8 +10,8 @@ import {
   resolveSendRateOverride,
   TRIAL_BROADCAST_PLAN_POLICY,
   UNRESTRICTED_BROADCAST_PLAN_POLICY,
-} from "@chatbotx.io/database/partials"
-import { channelTypes } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { describe, expect, test } from "vitest"
 
 describe("broadcast plan policy", () => {

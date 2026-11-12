@@ -5,10 +5,10 @@ import {
   telegramIntegrationService,
   userQuotaService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { UserModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { redirect } from "next/navigation"
 import { isCloud } from "@/env"
 import { integrations } from "@/integration"
@@ -42,7 +42,7 @@ export const connectTelegramAction = authActionClient
         let ownerId = ctx.user.id
         if (workspaceId) {
           if (!(await hasWorkspaceAccess({ workspaceId, user: ctx.user }))) {
-            throw new ChatbotXException("Workspace not found", "notFound", 404)
+            throw new salesmanChatbotException("Workspace not found", "notFound", 404)
           }
           const workspace = await workspaceService.findOrFail({
             where: { id: workspaceId },
@@ -56,12 +56,12 @@ export const connectTelegramAction = authActionClient
           )
           if (blocked) {
             throw reason === "mac"
-              ? new ChatbotXException(
+              ? new salesmanChatbotException(
                   "Monthly active contact limit reached",
                   "macLimitReached",
                   403,
                 )
-              : new ChatbotXException("Trial expired", "trialExpired", 403)
+              : new salesmanChatbotException("Trial expired", "trialExpired", 403)
           }
         }
 
@@ -103,7 +103,7 @@ export const connectTelegramAction = authActionClient
 
         return { workspaceId: result.workspaceId }
       } catch (error) {
-        if (error instanceof ChatbotXException) {
+        if (error instanceof salesmanChatbotException) {
           if (error.code === "channelDuplicated" && parsedInput.workspaceId) {
             redirect(
               `/space/${parsedInput.workspaceId}/settings/channels?channel=telegram&error=duplicated`,
@@ -113,7 +113,7 @@ export const connectTelegramAction = authActionClient
         }
 
         logger.error(error, "Failed to connect Telegram bot")
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Failed to connect Telegram. Please check the bot token and try again.",
         )
       }

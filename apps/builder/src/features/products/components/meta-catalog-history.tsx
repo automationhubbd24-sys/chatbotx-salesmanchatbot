@@ -1,5 +1,5 @@
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   ArrowDownToLineIcon,
   ArrowUpFromLineIcon,

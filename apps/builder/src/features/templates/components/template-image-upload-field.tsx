@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { DirectUploadButton } from "@chatbotx.io/ui/components/uploader/direct-upload-button"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { DirectUploadButton } from "@salesmanchatbot.io/ui/components/uploader/direct-upload-button"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { ImageIcon } from "lucide-react"
 import { useRef } from "react"
 import { toast } from "sonner"

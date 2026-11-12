@@ -4,21 +4,21 @@ import {
   db,
   eq,
   inArray,
-} from "@chatbotx.io/database/client"
-import { inboxTeamMemberRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/client"
+import { inboxTeamMemberRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   inboxTeamMemberModel,
   inboxTeamModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   InboxTeamMemberModel,
   InboxTeamModel,
   UserModel,
-} from "@chatbotx.io/database/types"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../../base.service"
-import { ChatbotXException, notFoundException } from "../../errors"
+import { salesmanChatbotException, notFoundException } from "../../errors"
 import { type IdLabel, selectLabelsByIds } from "../../select-labels-by-ids"
 import { workspaceMemberService } from "../../workspace-member/service"
 
@@ -100,7 +100,7 @@ class InboxTeamService extends BaseService {
     // through alongside them.
     const existingUserIds = new Set(existing.map((member) => member.userId))
     if (existingUserIds.size !== new Set(userIds).size) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "One or more userIds are not members of this workspace",
         "invalidTeamMember",
         400,
@@ -128,7 +128,7 @@ class InboxTeamService extends BaseService {
         })
         .returning()
       if (!created) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Failed to create inbox team",
           "createFailed",
           500,

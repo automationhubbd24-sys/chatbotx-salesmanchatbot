@@ -18,6 +18,7 @@ function createIntegration(
     enabled: true,
     name: "Local Gateway",
     preset: "custom",
+    streaming: true,
     updatedAt: new Date("2026-01-01T00:00:00Z"),
     workspaceId: "workspace-1",
     ...overrides,
@@ -80,7 +81,7 @@ describe("OpenAI-compatible model options", () => {
   })
 
   test("uses dedicated NIM vision models for analyze image", async () => {
-    const { openaiCompatiblePresetConfigs } = await import("@chatbotx.io/ai")
+    const { openaiCompatiblePresetConfigs } = await import("@salesmanchatbot.io/ai")
     const nimConfig = openaiCompatiblePresetConfigs.nim
 
     expect(
@@ -104,7 +105,7 @@ describe("OpenAI-compatible model options", () => {
   })
 
   test("uses dedicated provider vision models for analyze image", async () => {
-    const { openaiCompatiblePresetConfigs } = await import("@chatbotx.io/ai")
+    const { openaiCompatiblePresetConfigs } = await import("@salesmanchatbot.io/ai")
 
     expect(
       buildOpenaiCompatibleModelOptions(

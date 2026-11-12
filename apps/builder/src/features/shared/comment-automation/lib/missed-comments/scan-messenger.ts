@@ -1,9 +1,9 @@
-import { messengerIntegrationService } from "@chatbotx.io/business"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
 import {
   type FacebookPostComment,
   listPostComments,
-} from "@chatbotx.io/integration-messenger/apis/comment"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
+} from "@salesmanchatbot.io/integration-messenger/apis/comment"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
 import { collectCommentsSince, parseGraphTime, toEpochSeconds } from "./paging"
 import {
   MissedCommentsIntegrationNotFoundError,

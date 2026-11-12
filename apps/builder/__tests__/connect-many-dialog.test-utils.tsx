@@ -1,4 +1,4 @@
-import { DialogTitle } from "@chatbotx.io/ui/components/ui/dialog"
+import { DialogTitle } from "@salesmanchatbot.io/ui/components/ui/dialog"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act, type RefObject } from "react"
 import type { Root } from "react-dom/client"

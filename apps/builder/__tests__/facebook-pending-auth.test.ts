@@ -9,7 +9,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // schema-shaped payload: a missing cookie, an expired one, a tampered
 // ciphertext, or a decrypted-but-malformed JSON object (a future field
 // rename/drop, or an outright forged cookie). This exercises the real
-// `@chatbotx.io/encryption` primitives (ENCRYPTION_KEY is seeded by the
+// `@salesmanchatbot.io/encryption` primitives (ENCRYPTION_KEY is seeded by the
 // vitest-config node preset's `setup-env.ts`) rather than mocking them, so
 // the tamper-detection case is a genuine AES-GCM auth-tag failure.
 // ---------------------------------------------------------------------------

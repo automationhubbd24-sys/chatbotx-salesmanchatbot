@@ -1,7 +1,7 @@
 import {
   type AdsEligibleChannel,
   isAdsEligibleChannel,
-} from "@chatbotx.io/business/ads-conversion/channel-fields"
+} from "@salesmanchatbot.io/business/ads-conversion/channel-fields"
 
 // Minimal structural shape this helper needs — deliberately NOT the full
 // `ConversationContactInboxResource`, so extending `adReferral` with more

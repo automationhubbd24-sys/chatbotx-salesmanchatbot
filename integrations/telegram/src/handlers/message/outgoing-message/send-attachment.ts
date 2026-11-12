@@ -4,8 +4,8 @@ import type {
   SendImageStepSchema,
   SendMultipleImagesStepSchema,
   SendVideoStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { MessageHandlers } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { MessageHandlers } from "@salesmanchatbot.io/sdk"
 import { MAX_INLINE_BUTTONS_PER_ROW } from "../../../constants"
 import type {
   TelegramAuthValue,

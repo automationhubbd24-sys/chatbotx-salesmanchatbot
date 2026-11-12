@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 
 // Per-channel wording for a broadcast's pages, shared by the create form's
 // page picker and the broadcast detail dialog so both name them the same way.

@@ -24,8 +24,8 @@ PR is explicitly approved ("implement PR-A" etc.).
 ## 2. Root cause (from production investigation; numbers deliberately kept
 out of commits and PRs)
 
-- Echoes of ChatbotX's own sends are already dropped at the webhook
-  (`metadata: "SENT_FROM_CHATBOTX"`,
+- Echoes of salesmanChatbot's own sends are already dropped at the webhook
+  (`metadata: "SENT_FROM_SALESMANCHATBOT"`,
   `integrations/messenger/src/handlers/webhook.ts:279-285`). They cost
   nothing.
 - The remaining echoes are third-party template broadcasts to recipients

@@ -1,8 +1,8 @@
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   getCallingSettings,
   type WhatsappCallingSettings,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 import { notFound } from "next/navigation"
 import { getWhatsappCallingPreflight } from "@/features/integration-whatsapp/calling/get-whatsapp-calling-preflight"
 import { resolveEffectiveCallingSettings } from "@/features/integration-whatsapp/calling/lib/effective-calling-settings"

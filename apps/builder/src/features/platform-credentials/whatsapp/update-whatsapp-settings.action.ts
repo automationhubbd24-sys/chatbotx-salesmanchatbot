@@ -1,10 +1,10 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import {
   type WhatsappCredential,
   whatsappCredentialUpdateSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { getTranslations } from "next-intl/server"
 import { ensureWhatsappCallsWebhookSubscribed } from "@/features/integration-whatsapp/libs/ensure-calls-webhook-subscribed"
 import { logger } from "@/lib/log"

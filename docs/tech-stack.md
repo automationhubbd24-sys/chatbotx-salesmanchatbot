@@ -30,7 +30,7 @@ Key components of the project's tech stack.
 ### Database
 
 - [Drizzle ORM](https://orm.drizzle.team/) + **PostgreSQL** (with **pgvector** for vector search)
-- Package: `packages/database` (`@chatbotx.io/database`)
+- Package: `packages/database` (`@salesmanchatbot.io/database`)
 
 ### Authentication
 
@@ -47,7 +47,7 @@ Key components of the project's tech stack.
 - The cache/lock role requires bloom-filter commands (`BF.RESERVE`/`BF.ADD` for MAC
   counting) — Dragonfly, `redis:8`, or Valkey with `valkey-bloom`, never plain Valkey
 - Push notifications via the **Expo Push Service** (`notification` queue/worker)
-- Package: `packages/worker-config` (`@chatbotx.io/worker-config`)
+- Package: `packages/worker-config` (`@salesmanchatbot.io/worker-config`)
 - See `docs/adr/0004-messaging-substrate-scaling-path.md` and
   `docs/scaling-messaging.md` for the substrate matrix and scaling triggers
 

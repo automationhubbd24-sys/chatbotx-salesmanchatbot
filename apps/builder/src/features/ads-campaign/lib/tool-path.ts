@@ -1,4 +1,4 @@
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 
 /**
  * Query param name for the selected integration on the Click to Message Ads

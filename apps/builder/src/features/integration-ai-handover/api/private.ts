@@ -1,7 +1,7 @@
 import {
   aiHandoverBulkRunService,
   aiHandoverSettingsService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { possibleErrorsOnFindingResource } from "@/lib/orpc/orpc-error-helper"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

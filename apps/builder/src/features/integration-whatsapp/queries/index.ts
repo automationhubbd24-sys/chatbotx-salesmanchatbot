@@ -1,12 +1,12 @@
-import type { IntegrationWhatsappResource } from "@chatbotx.io/business"
-import { db, eq, findOrFail } from "@chatbotx.io/database/client"
-import { integrationWhatsappRepository } from "@chatbotx.io/database/repositories"
-import { integrationWhatsappModel } from "@chatbotx.io/database/schema"
+import type { IntegrationWhatsappResource } from "@salesmanchatbot.io/business"
+import { db, eq, findOrFail } from "@salesmanchatbot.io/database/client"
+import { integrationWhatsappRepository } from "@salesmanchatbot.io/database/repositories"
+import { integrationWhatsappModel } from "@salesmanchatbot.io/database/schema"
 import type {
   InboxModel,
   IntegrationWhatsappModel,
-} from "@chatbotx.io/database/types"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/database/types"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import type { PaginatedResponse } from "@/features/common/schema/pagination"
 
 type IntegrationWhatsappWithInbox = IntegrationWhatsappResource & {

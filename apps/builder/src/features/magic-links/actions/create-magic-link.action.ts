@@ -1,7 +1,7 @@
 "use server"
 
-import { magicLinkService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { magicLinkService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { returnValidationErrors } from "next-safe-action"
 import {
   type WorkspaceIdRequestParams,
@@ -27,7 +27,7 @@ export const createMagicLinkAction = workspaceActionClient
       try {
         await magicLinkService.create({ workspaceId, data: parsedInput })
       } catch (error) {
-        if (error instanceof ChatbotXException && error.code === "validation") {
+        if (error instanceof salesmanChatbotException && error.code === "validation") {
           return returnValidationErrors(createMagicLinkRequest, {
             _errors: ["Validation Exception"],
             name: { _errors: ["Name is already taken"] },

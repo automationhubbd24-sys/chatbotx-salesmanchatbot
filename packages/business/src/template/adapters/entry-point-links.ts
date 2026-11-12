@@ -1,7 +1,7 @@
-import { db } from "@chatbotx.io/database/client"
-import type { QrStyles, ReflinkType } from "@chatbotx.io/database/partials"
-import { reflinkModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+import { db } from "@salesmanchatbot.io/database/client"
+import type { QrStyles, ReflinkType } from "@salesmanchatbot.io/database/partials"
+import { reflinkModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 import { insertWithNameRetry } from "./naming"
 import type {
   PatchTask,

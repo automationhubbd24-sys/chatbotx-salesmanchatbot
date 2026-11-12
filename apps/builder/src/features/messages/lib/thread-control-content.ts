@@ -2,8 +2,8 @@ import {
   parseThreadControlRole,
   type ThreadControlEvent,
   threadControlEvents,
-} from "@chatbotx.io/database/partials"
-import { threadControlContextSchema } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import { threadControlContextSchema } from "@salesmanchatbot.io/sdk"
 import type { useTranslations } from "next-intl"
 import { z } from "zod"
 import { resolveThreadOwnerLabel } from "@/features/conversations/utils/thread-control"

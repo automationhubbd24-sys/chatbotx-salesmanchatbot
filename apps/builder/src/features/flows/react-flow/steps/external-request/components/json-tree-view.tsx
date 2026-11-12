@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"

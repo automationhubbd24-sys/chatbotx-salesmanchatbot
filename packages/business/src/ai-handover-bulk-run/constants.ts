@@ -15,7 +15,7 @@ export const AI_HANDOVER_BULK_MAX_PAUSE_MS = 6 * 60 * 60 * 1000
 export const AI_HANDOVER_BULK_SETTLE_CONCURRENCY = 10
 
 /**
- * Codes a caller maps to its own localized message (`ChatbotXException.code`).
+ * Codes a caller maps to its own localized message (`salesmanChatbotException.code`).
  * One lookup table so the builder's `aiHandover.bulk.errors.<code>` keys and
  * the service cannot drift.
  */

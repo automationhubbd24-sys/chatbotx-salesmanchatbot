@@ -1,5 +1,5 @@
-import { db, sql } from "@chatbotx.io/database/client"
-import { aiEmbeddingStatuses } from "@chatbotx.io/database/partials"
+import { db, sql } from "@salesmanchatbot.io/database/client"
+import { aiEmbeddingStatuses } from "@salesmanchatbot.io/database/partials"
 import { embed } from "ai"
 import { z } from "zod"
 import { logger } from "../logger"
@@ -46,6 +46,7 @@ export type FileSearchConfig = {
 
 export const embeddingSimilarityThresholds = {
   openai: 0.7,
+  openaiCompatibleEmbedding: 0.7,
   gemini: 0.55,
 } as const satisfies Record<EmbeddingProvider, number>
 

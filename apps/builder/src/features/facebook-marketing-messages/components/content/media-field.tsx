@@ -1,6 +1,6 @@
 "use client"
 
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useTranslations } from "next-intl"
 import { useFormContext, useWatch } from "react-hook-form"
 import { MediaLibraryOrInsertLink } from "@/components/media-library-or-insert-link"

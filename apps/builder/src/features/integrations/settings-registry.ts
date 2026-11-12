@@ -4,7 +4,7 @@ import type { ComponentType } from "react"
 
 /**
  * Ordered registry of the workspace-settings integration providers, following
- * the `CHANNEL_CAPABILITIES` pattern in `@chatbotx.io/utils`.
+ * the `CHANNEL_CAPABILITIES` pattern in `@salesmanchatbot.io/utils`.
  *
  * `slug` is the single source of truth for BOTH the route directory name
  * (`settings/integrations/<slug>/page.tsx`) and the accordion's active-segment
@@ -39,6 +39,11 @@ export const INTEGRATION_SETTINGS_REGISTRY: readonly IntegrationSettingsEntry[] 
     {
       slug: "openai-compatible",
       titleKey: "openaiCompatible.title",
+      icon: BotIcon,
+    },
+    {
+      slug: "openai-compatible-text-embedding",
+      titleKey: "openaiCompatibleTextEmbedding.title",
       icon: BotIcon,
     },
     { slug: "google-sheets", titleKey: "googleSheets.title", icon: TableIcon },

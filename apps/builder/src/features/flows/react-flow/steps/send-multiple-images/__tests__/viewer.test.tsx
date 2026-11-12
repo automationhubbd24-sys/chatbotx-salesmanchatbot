@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { sendMultipleImagesItemDefaultFn } from "@chatbotx.io/flow-config"
+import { sendMultipleImagesItemDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

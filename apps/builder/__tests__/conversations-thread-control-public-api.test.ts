@@ -1,10 +1,10 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   ChannelError,
   ChannelErrorCategory,
   ThreadControlTakeRefusedError,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 type CapturedProcedure = {
@@ -41,7 +41,7 @@ const mocks = vi.hoisted(() => ({
   requestConversationThreadControl: vi.fn(),
   syncConversationThreadOwner: vi.fn(),
 }))
-vi.mock("@chatbotx.io/business", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => {
   const actual = await importOriginal<Record<string, unknown>>()
   class ThreadControlUnsupportedError extends Error {}
   return {
@@ -53,7 +53,7 @@ vi.mock("@chatbotx.io/business", async (importOriginal) => {
     },
   }
 })
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   requestConversationThreadControl: mocks.requestConversationThreadControl,
   syncConversationThreadOwner: mocks.syncConversationThreadOwner,
 }))
@@ -61,11 +61,11 @@ vi.mock("@/features/conversations/queries/list-conversations.query", () => ({
   findConversation: vi.fn(),
   listConversations: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },
@@ -151,7 +151,7 @@ describe("POST /v1/conversations/{id}/thread-control", () => {
 
   test("a contact inbox of another contact stays a 404", async () => {
     mocks.requestConversationThreadControl.mockRejectedValue(
-      new ChatbotXException("Contact inbox not found", "notFound", 404),
+      new salesmanChatbotException("Contact inbox not found", "notFound", 404),
     )
 
     await expect(run()).rejects.toMatchObject({ code: "notFound" })
@@ -159,7 +159,7 @@ describe("POST /v1/conversations/{id}/thread-control", () => {
 
   test("a conversation outside the workspace is refused before the channel", async () => {
     mocks.findByOrFail.mockRejectedValue(
-      new ChatbotXException("Conversation not found", "notFound", 404),
+      new salesmanChatbotException("Conversation not found", "notFound", 404),
     )
 
     await expect(run()).rejects.toMatchObject({ code: "notFound" })

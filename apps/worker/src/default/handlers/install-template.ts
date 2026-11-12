@@ -1,5 +1,5 @@
-import { templateInstallService, templateService } from "@chatbotx.io/business"
-import { parseTemplateExport } from "@chatbotx.io/flow-config"
+import { templateInstallService, templateService } from "@salesmanchatbot.io/business"
+import { parseTemplateExport } from "@salesmanchatbot.io/flow-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 

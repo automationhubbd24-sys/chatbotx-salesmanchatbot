@@ -1,6 +1,6 @@
-import { createConversationSourceRepository } from "@chatbotx.io/database/repositories"
-import type { AttachmentModel } from "@chatbotx.io/database/types"
-import { IMAGE_MIME_TYPES } from "@chatbotx.io/sdk"
+import { createConversationSourceRepository } from "@salesmanchatbot.io/database/repositories"
+import type { AttachmentModel } from "@salesmanchatbot.io/database/types"
+import { IMAGE_MIME_TYPES } from "@salesmanchatbot.io/sdk"
 import type { ResolveConversationSourceInput } from "./types"
 
 const SUPPORTED_IMAGE_MIME_TYPES = new Set<string>(IMAGE_MIME_TYPES)
@@ -16,9 +16,19 @@ export function isSupportedImageMimeType(mimeType: string): boolean {
   return SUPPORTED_IMAGE_MIME_TYPES.has(normalizeMimeType(mimeType))
 }
 
+export type ImageAttachmentResolution =
+  | { attachment: AttachmentModel; status: "selected" }
+  | { attachments: AttachmentModel[]; status: "selected_batch" }
+  | {
+      candidateCount: number
+      context: "conversation"
+      status: "ambiguous"
+    }
+  | { status: "not_found" }
+
 export async function resolveImageAttachment(
   input: ResolveConversationSourceInput,
-): Promise<AttachmentModel | null> {
+): Promise<ImageAttachmentResolution> {
   const allAttachments = await sourceRepo.findAttachmentsByConversation({
     workspaceId: input.workspaceId,
     conversationId: input.conversationId,
@@ -28,14 +38,44 @@ export async function resolveImageAttachment(
   const attachments = allAttachments.filter((attachment) =>
     isSupportedImageMimeType(attachment.mimeType),
   )
+  const triggerMessageIds = input.triggerMessageIds?.length
+    ? input.triggerMessageIds
+    : input.messageId
+      ? [input.messageId]
+      : []
+  const triggerAttachments = triggerMessageIds.flatMap((messageId) =>
+    attachments.filter((attachment) => attachment.messageId === messageId),
+  )
 
-  if (attachments.length === 0) {
-    return null
+  if (triggerAttachments.length === 1) {
+    return { attachment: triggerAttachments[0], status: "selected" }
   }
 
-  const triggerMessageAttachment = input.messageId
-    ? attachments.find((attachment) => attachment.messageId === input.messageId)
-    : null
+  if (triggerAttachments.length > 1) {
+    return { attachments: triggerAttachments, status: "selected_batch" }
+  }
 
-  return triggerMessageAttachment ?? attachments[0] ?? null
+  const parentAttachments = input.parentMessageId
+    ? attachments.filter((attachment) => attachment.messageId === input.parentMessageId)
+    : []
+  if (parentAttachments.length === 1) {
+    return { attachment: parentAttachments[0], status: "selected" }
+  }
+  if (parentAttachments.length > 1) {
+    return { attachments: parentAttachments, status: "selected_batch" }
+  }
+
+  if (attachments.length === 1) {
+    return { attachment: attachments[0], status: "selected" }
+  }
+
+  if (attachments.length > 1) {
+    return {
+      candidateCount: attachments.length,
+      context: "conversation",
+      status: "ambiguous",
+    }
+  }
+
+  return { status: "not_found" }
 }

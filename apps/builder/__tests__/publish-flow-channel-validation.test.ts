@@ -7,7 +7,7 @@ import {
   sendCarouselStepDefaultFn,
   sendMessageNodeDefaultFn,
   waitNodeDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { publishFlowSchema } from "@/features/flows/schema/action"
 

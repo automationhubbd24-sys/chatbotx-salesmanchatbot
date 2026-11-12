@@ -1,10 +1,10 @@
-import { toLogSafeError } from "@chatbotx.io/logger"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
 import {
   AuthType,
   type ConnectionProvider,
   ConnectionProviderRejectedError,
   type SecretTextAuthValue,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import ky, { isHTTPError, isNetworkError, isTimeoutError } from "ky"
 import {
   type AiKeyProvider,

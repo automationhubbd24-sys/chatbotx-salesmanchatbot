@@ -1,8 +1,8 @@
-import type { systemFunctionNames } from "@chatbotx.io/ai"
+import type { systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   SystemToolExecutors,
   UrlContextInput,
-} from "@chatbotx.io/ai/server"
+} from "@salesmanchatbot.io/ai/server"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../../lib/logger"
 import { getContextSourceAdapter } from "./context-sources/registry"

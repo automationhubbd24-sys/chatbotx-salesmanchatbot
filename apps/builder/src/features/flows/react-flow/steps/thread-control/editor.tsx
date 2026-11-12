@@ -1,7 +1,7 @@
 "use client"
 
-import { threadControlStepActions } from "@chatbotx.io/flow-config"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
+import { threadControlStepActions } from "@salesmanchatbot.io/flow-config"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
 import { ArrowRightLeftIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useTenantSettings } from "@/features/tenant/tenant-settings-provider"

@@ -1,4 +1,4 @@
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import { useTenantSettings } from "@/features/tenant"
 
 export function getUserAvatarUrl(

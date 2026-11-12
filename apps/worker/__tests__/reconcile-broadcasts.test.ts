@@ -10,14 +10,14 @@ const scheduleAddSpy = vi.fn()
 const runExclusiveSpy = vi.fn()
 
 // ── mocks ─────────────────────────────────────────────────────────────────────
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: {
     listSendingAwaitingHandoff: (...args: unknown[]) =>
       listSendingAwaitingHandoff(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: (opts: {
       key: string
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/redis", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   broadcastSendJobId: (broadcastId: string) => `broadcast-send-${broadcastId}`,
   ScheduleJobData: {
     sendBroadcast: "sendBroadcast",

@@ -1,6 +1,6 @@
 "use client"
 
-import type { IntegrationZaloResource } from "@chatbotx.io/business"
+import type { IntegrationZaloResource } from "@salesmanchatbot.io/business"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

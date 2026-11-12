@@ -1,4 +1,4 @@
-import type { ConversationHandlers } from "@chatbotx.io/sdk"
+import type { ConversationHandlers } from "@salesmanchatbot.io/sdk"
 import { postSignedEnvelope } from "../lib/delivery"
 import type { ApiAuthValue } from "../schema"
 

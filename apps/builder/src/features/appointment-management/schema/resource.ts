@@ -1,4 +1,4 @@
-import type { appointmentService } from "@chatbotx.io/business"
+import type { appointmentService } from "@salesmanchatbot.io/business"
 
 export type AppointmentManagementListItem = Awaited<
   ReturnType<typeof appointmentService.list>

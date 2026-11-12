@@ -1,16 +1,16 @@
-import { MessageShardUnavailableError } from "@chatbotx.io/database/errors"
+import { MessageShardUnavailableError } from "@salesmanchatbot.io/database/errors"
 import type {
   ContentType,
   ConversationAttributes,
   FileType,
-} from "@chatbotx.io/database/partials"
-import { getSafeSinceTime } from "@chatbotx.io/database/repositories"
-import { verifyUserDataWebviewToken } from "@chatbotx.io/encryption"
-import type { GetUserDataStepSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/partials"
+import { getSafeSinceTime } from "@salesmanchatbot.io/database/repositories"
+import { verifyUserDataWebviewToken } from "@salesmanchatbot.io/encryption"
+import type { GetUserDataStepSchema } from "@salesmanchatbot.io/flow-config"
 import {
   GET_USER_DATA_WEBVIEW_SELECTION_PAYLOAD_TYPE,
   ReplyFormat,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { ExecuteStepProps } from "../src/integration/handlers/flow"
 
@@ -37,7 +37,7 @@ const resolveTenantSettings = vi.fn(async () => ({
   appUrl: "https://app.example.com",
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: {
     setValueByKey: contactCustomFieldSetValueByKey,
   },
@@ -57,7 +57,7 @@ vi.mock("@chatbotx.io/business", () => ({
 
 // Attachment values are stored as a public URL; mirror getPublicFileUrl's join
 // without loading the real module.
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getPublicFileUrl: (path: string, base: string) => {
     let key = path
     if (key.startsWith("/")) {
@@ -70,7 +70,7 @@ vi.mock("@chatbotx.io/business/utils", () => ({
 // validateUserData reads the last message via the shard-aware repository, not
 // db.query. Return the test-configured `lastMessage.current` as a 1-element
 // array (findLastByConversation's contract).
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn(async () => ({
     findLastByConversation: vi.fn(() => {
       if (repositoryError.current) {
@@ -82,18 +82,18 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   getSafeSinceTime: vi.fn(() => new Date(0)),
 }))
 
-vi.mock("@chatbotx.io/database/partials", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/partials", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/partials")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/partials")>()
   return { ...actual }
 })
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCustomFieldChanged: vi.fn(),
 }))
 
 const chatQueueAdd = vi.fn(async () => ({ id: "job-1" }))
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   BROADCAST_SEND_PRIORITY: 5,
   ChatJobAction: {
     sendChatMessage: "sendChatMessage",
@@ -105,7 +105,7 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   getRedisConnection: vi.fn(() => ({})),
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: vi.fn(() => undefined),
 }))
 
@@ -114,8 +114,8 @@ vi.mock("../src/integration/utils/message", () => ({
   waitForChatJobCompletion,
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: vi.fn(() => "test-id"),

@@ -1,4 +1,4 @@
-import { broadcastService } from "@chatbotx.io/business"
+import { broadcastService } from "@salesmanchatbot.io/business"
 import type { PaginatedResponse } from "@/features/common/schema/pagination"
 import type { GetBroadcastsSchema } from "../schema/query"
 import type { BroadcastResourceWithRelations } from "../schema/resource"

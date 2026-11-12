@@ -4,16 +4,16 @@ import type {
   WhatsappEntityCanSendMessage,
   WhatsappHealthEntity,
   WhatsappPhoneNumberDetail,
-} from "@chatbotx.io/integration-whatsapp/api/phone-number"
-import type { WhatsappWabaMMLite } from "@chatbotx.io/integration-whatsapp/api/waba"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
+import type { WhatsappWabaMMLite } from "@salesmanchatbot.io/integration-whatsapp/api/waba"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import { CheckCircle2Icon, InfoIcon, XCircle } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"

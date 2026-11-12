@@ -1,14 +1,14 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import type { CALL_ACTIVITY_CHIPS } from "./schema/query"
 

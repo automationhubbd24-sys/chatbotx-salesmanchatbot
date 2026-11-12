@@ -12,7 +12,7 @@ const eqMock = vi.fn((field: unknown, value: unknown) => ({
   value,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...conditions: unknown[]) => andMock(...conditions),
   db: {
     update: (...args: unknown[]) => updateMock(...(args as [])),

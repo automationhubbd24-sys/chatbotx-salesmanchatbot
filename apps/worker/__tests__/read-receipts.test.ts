@@ -24,7 +24,7 @@ const {
   mockRunChannelHandler: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: mockBuildContext,
   contactInboxService: {
     findByUncached: mockFindContactInbox,
@@ -35,7 +35,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
   getSafeSinceTime: vi.fn((date: Date | null) => date ?? new Date(0)),
   contactInboxRepository: {
@@ -43,11 +43,11 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   SdkException: class SdkException extends Error {},
   // Mirror of the real pure helper — the module is fully mocked here.
   resolveSourceScopedIdentityMatch: async <T>(
@@ -71,7 +71,7 @@ vi.mock("@chatbotx.io/sdk", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   messageEventTypeSchema: {
     enum: {
       "message:delivered": "message:delivered",
@@ -83,7 +83,7 @@ vi.mock("@chatbotx.io/flow-config", () => ({
   UPDATE_STATUS_PAYLOAD_TYPE: "update_status",
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { messageStatus: "messageStatus" },
 }))
 

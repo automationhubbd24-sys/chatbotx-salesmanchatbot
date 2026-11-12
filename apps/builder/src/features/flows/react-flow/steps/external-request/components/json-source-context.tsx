@@ -1,6 +1,6 @@
 "use client"
 
-import type { ExternalRequestFieldsSchema } from "@chatbotx.io/flow-config"
+import type { ExternalRequestFieldsSchema } from "@salesmanchatbot.io/flow-config"
 import { useAction } from "next-safe-action/hooks"
 import {
   createContext,

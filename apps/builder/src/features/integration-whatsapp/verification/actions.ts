@@ -3,17 +3,17 @@
 import {
   integrationWhatsappService,
   type RegistrationOutcome,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { IntegrationWhatsappRegistrationError } from "@chatbotx.io/database/schema"
-import type { IntegrationWhatsappModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { IntegrationWhatsappRegistrationError } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationWhatsappModel } from "@salesmanchatbot.io/database/types"
 import {
   registerPhoneNumber,
   requestVerificationCode,
   verifyCode,
   type WhatsappAuthValue,
-} from "@chatbotx.io/integration-whatsapp"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-whatsapp"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { revalidatePath } from "next/cache"
 import { getTranslations } from "next-intl/server"
 import { logger } from "@/lib/log"
@@ -67,7 +67,7 @@ async function getWorkspaceIntegration(input: {
   })
 
   if (!integration) {
-    throw new ChatbotXException(input.notFoundMessage)
+    throw new salesmanChatbotException(input.notFoundMessage)
   }
 
   return integration
@@ -103,7 +103,7 @@ async function retryRegistration(input: {
     })
 
   if (outcome.status !== "registered") {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       buildActionErrorMessage(registrationError, input.fallbackMessage),
     )
   }
@@ -131,7 +131,7 @@ export const requestWhatsappVerificationCodeAction = workspaceActionClient
       })
 
       if (slot.status === "not_found") {
-        throw new ChatbotXException(t("integrationNotFound"))
+        throw new salesmanChatbotException(t("integrationNotFound"))
       }
 
       if (slot.status === "cooldown") {

@@ -1289,7 +1289,7 @@
     "unknown": "Okänt"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Detta tar bara bort kampanjen från ChatbotX. Meta-meddelandekampanjen fortsätter — pausa eller ta bort den i Annonshanteraren.",
+    "deleteWarning": "Detta tar bara bort kampanjen från salesmanChatbot. Meta-meddelandekampanjen fortsätter — pausa eller ta bort den i Annonshanteraren.",
     "title": "Facebook Marketing Messages",
     "description": "Öka engagemang och försäljning med personliga kampanjmeddelanden på Messenger.",
     "create": "Skapa ny",
@@ -1869,7 +1869,13 @@
       "anyConditions": "Något av villkoren nedan.",
       "label": "Kontaktfilter",
       "moreOptions": "Fler alternativ",
-      "onlyContactsMatch": "Endast kontakter som matchar"
+      "onlyContactsMatch": "Endast kontakter som matchar",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactId": {
       "label": "Kontakt-ID"
@@ -2861,7 +2867,9 @@
         "documentReader": "Dokumentläsare",
         "imageReader": "Bildläsare",
         "urlContext": "URL-läsare",
-        "webSearch": "Webbsökning"
+        "webSearch": "Webbsökning",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "systemUserId": {
@@ -4330,6 +4338,9 @@
     "poweredBy": "Drivs av {name}",
     "publishVersionSuccess": "En ny version har publicerats",
     "privateReply": "Privat svar",
+    "replyingTo": "Svarar på",
+    "replyPreview": "{sender} svarade {recipient}",
+    "you": "Du",
     "redoHistoryCleared": "Historiken för Gör om har rensats",
     "refreshTokenSuccessfully": "Token för {feature} har uppdaterats",
     "repliedToStory": "Svarade på din story",
@@ -4631,6 +4642,10 @@
       "description": "Tillåt att denna leverantör används för automatiska AI-svar.",
       "label": "Automatiskt AI-svar"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Anslut OpenAI-kompatibla leverantörer som reservmodeller för AI-agenter.",
       "label": "OpenAI-kompatibla leverantörer"
@@ -4639,6 +4654,7 @@
     "fields": {
       "baseURL": "Bas-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Inbäddningsmodell",
       "enabled": "Aktiverad"
     },
     "provider": "AI-leverantör",
@@ -4646,6 +4662,23 @@
     "validation": {
       "invalidBaseURL": "Bas-URL:en är ogiltig eller inte tillåten.",
       "presetAlreadyConnected": "Den här förinställningen är redan ansluten för den här arbetsytan."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "openrouter": {
@@ -4660,7 +4693,109 @@
     "title": "OpenRouter"
   },
   "orders": {
-    "title": "Beställningar"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "placesNearMe": {
     "description": "Hitta platser nära dina kontakter.",
@@ -5845,7 +5980,7 @@
         "title": "Samtalsbehörighet",
         "appSubscriptionMissing": "Konfigurera först WhatsApp-webhooken för denna app i Meta App Dashboard och försök sedan igen.",
         "appSubscriptionFailed": "Kunde inte verifiera appens prenumeration på 'calls'-webhooken. Försök igen om en stund.",
-        "callsNotSubscribed": "Denna app prenumererar inte på webhookfältet 'calls', så samtalshändelser kan inte nå ChatbotX (Meta-fel 138018: tekniska förutsättningar är inte uppfyllda — se till att minst en app som prenumererar på WABA:n också har webhookfältet för samtal).",
+        "callsNotSubscribed": "Denna app prenumererar inte på webhookfältet 'calls', så samtalshändelser kan inte nå salesmanChatbot (Meta-fel 138018: tekniska förutsättningar är inte uppfyllda — se till att minst en app som prenumererar på WABA:n också har webhookfältet för samtal).",
         "fixButton": "Åtgärda",
         "fixSuccess": "Appen prenumererar nu på WhatsApp-samtalswebhooks.",
         "manualIntegrationNotice": "Detta nummer anslöts manuellt och har inga appuppgifter här. Prenumerera på webhookfältet 'calls' för din app i Meta App Dashboard.",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Åtgärdskälla",

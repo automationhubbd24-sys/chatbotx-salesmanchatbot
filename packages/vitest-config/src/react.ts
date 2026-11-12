@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url"
-import nodeConfig from "@chatbotx.io/vitest-config/node"
+import nodeConfig from "@salesmanchatbot.io/vitest-config/node"
 import react from "@vitejs/plugin-react"
 import { mergeConfig, type ViteUserConfig } from "vitest/config"
 

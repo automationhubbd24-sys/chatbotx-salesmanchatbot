@@ -46,7 +46,7 @@ vi.mock("@/features/broadcasts/actions/delete-broadcasts.action", () => ({
   deleteBroadcastsAction: { bind: () => ({}) },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ open, children }: { open: boolean; children: React.ReactNode }) =>
     open ? <div data-testid="dialog">{children}</div> : null,
   DialogClose: ({ render }: { render: React.ReactElement }) => render,
@@ -67,7 +67,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

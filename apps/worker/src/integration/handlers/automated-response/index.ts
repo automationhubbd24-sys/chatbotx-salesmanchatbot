@@ -2,28 +2,29 @@ import {
   AI_MESSAGE_HISTORY_LOOKBACK_MS,
   MAX_CONVERSATION_HISTORY,
   systemFunctionNames,
-} from "@chatbotx.io/ai"
-import { aiContextService } from "@chatbotx.io/ai/server"
-import { automatedResponseService } from "@chatbotx.io/automated-response"
-import { aiAgentService, workspaceService } from "@chatbotx.io/business"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
+} from "@salesmanchatbot.io/ai"
+import { aiContextService } from "@salesmanchatbot.io/ai/server"
+import { automatedResponseService, getAutomatedResponseKey } from "@salesmanchatbot.io/automated-response"
+import { aiAgentService, workspaceService } from "@salesmanchatbot.io/business"
+import { simpleQueue } from "@salesmanchatbot.io/redis"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
 import {
   aiAgentProviderModels,
   aiMessageRoles,
   defaultReplyFrequencies,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   findConversationAIContextState,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/repositories"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   DOCX_MIME_TYPES,
   IMAGE_MIME_TYPES,
   PDF_MIME_TYPES,
-} from "@chatbotx.io/sdk"
-import type { AIJobProcessAutomatedResponse } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import type { AIJobProcessAutomatedResponse } from "@salesmanchatbot.io/worker-config"
 import type { ModelMessage } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { sendTypingToChannel } from "../../../chat/handlers/send-message"
@@ -74,17 +75,45 @@ export async function processAutomatedResponse(
     defaultReplyFrequencies.enum.allTime
 
   const repo = await createMessageRepository()
-  const triggerMessage = await repo.findTriggerMessage({
-    id: messageId,
-    conversationId: conversation.id,
-    workspaceId: conversation.workspaceId,
-    sinceTime:
-      getSafeSinceTime(
-        contactInbox.lastMessageAt ?? contactInbox.createdAt,
-        TRIGGER_MESSAGE_LOOKBACK_MS,
-      ) ?? new Date(0),
-    requireCompleteResults: true,
-  })
+  const triggerSinceTime =
+    getSafeSinceTime(
+      contactInbox.lastMessageAt ?? contactInbox.createdAt,
+      TRIGGER_MESSAGE_LOOKBACK_MS,
+    ) ?? new Date(0)
+  const queuedMessageIds = await simpleQueue.getAll(
+    getAutomatedResponseKey({
+      conversationId: conversation.id,
+      contactInboxId: contactInbox.id,
+    }),
+  )
+  const candidateTriggerIds = [...new Set([...queuedMessageIds, ...(props.triggerMessageIds ?? [])])]
+  const candidateTriggers = await Promise.all(
+    candidateTriggerIds.map((id) =>
+      repo.findTriggerMessage({
+        id,
+        conversationId: conversation.id,
+        workspaceId: conversation.workspaceId,
+        sinceTime: triggerSinceTime,
+        requireCompleteResults: true,
+      }),
+    ),
+  )
+  const orderedTriggers = candidateTriggers
+    .filter((trigger): trigger is NonNullable<typeof trigger> => trigger !== null)
+    .sort(
+      (left, right) =>
+        left.createdAt.getTime() - right.createdAt.getTime() ||
+        left.id.localeCompare(right.id),
+    )
+  const triggerMessage =
+    orderedTriggers.find((trigger) => trigger.id === messageId) ??
+    (await repo.findTriggerMessage({
+      id: messageId,
+      conversationId: conversation.id,
+      workspaceId: conversation.workspaceId,
+      sinceTime: triggerSinceTime,
+      requireCompleteResults: true,
+    }))
   if (!triggerMessage) {
     logger.warn(
       {
@@ -96,11 +125,43 @@ export async function processAutomatedResponse(
       "Automated response trigger message was not found",
     )
   }
-  const triggerAttachments = triggerMessage?.attachments ?? []
+  const isImageOnlyContactTrigger = (trigger: NonNullable<typeof triggerMessage>) =>
+    trigger.senderType === "contact" &&
+    !trigger.text &&
+    trigger.attachments.length > 0 &&
+    trigger.attachments.every(
+      (attachment) =>
+        isSupportedImageMimeType(attachment.mimeType) ||
+        attachment.fileType === "image" ||
+        attachment.fileType === "gif",
+    )
+  const orderedImageBatchTriggers = [...orderedTriggers]
+    .sort(
+      (left, right) =>
+        left.createdAt.getTime() - right.createdAt.getTime() ||
+        left.id.localeCompare(right.id),
+    )
+    .filter(isImageOnlyContactTrigger)
+  // Merge only a contiguous all-image, file-only burst. A text/non-image event
+  // in the debounce queue deliberately leaves the primary trigger unchanged.
+  const triggerMessageIds =
+    orderedTriggers.length > 1 &&
+    orderedTriggers.every(isImageOnlyContactTrigger) &&
+    orderedImageBatchTriggers.some((trigger) => trigger.id === messageId)
+      ? orderedImageBatchTriggers.map((trigger) => trigger.id)
+      : triggerMessage
+        ? [triggerMessage.id]
+        : []
+  const triggerMessages = triggerMessageIds.length
+    ? orderedImageBatchTriggers.filter((trigger) =>
+        triggerMessageIds.includes(trigger.id),
+      )
+    : triggerMessage
+      ? [triggerMessage]
+      : []
+  const triggerAttachments = triggerMessages.flatMap((trigger) => trigger.attachments)
   const isFileOnlyTrigger =
-    triggerMessage?.senderType === "contact" &&
-    !triggerMessage.text &&
-    triggerAttachments.length > 0
+    triggerMessages.length > 0 && triggerMessages.every(isImageOnlyContactTrigger)
   const hasTriggerImage = triggerAttachments.some(
     (attachment) =>
       isSupportedImageMimeType(attachment.mimeType) ||
@@ -110,6 +171,25 @@ export async function processAutomatedResponse(
   const hasTriggerDocument = triggerAttachments.some((attachment) =>
     isSupportedDocumentMimeType(attachment.mimeType),
   )
+  const parentTriggerMessage = triggerMessage?.parentId
+    ? await repo.findTriggerMessage({
+        id: triggerMessage.parentId,
+        conversationId: conversation.id,
+        workspaceId: conversation.workspaceId,
+        sinceTime: new Date(0),
+        requireCompleteResults: true,
+      })
+    : null
+  const isParentImageReply =
+    triggerAttachments.length === 0 &&
+    Boolean(
+      parentTriggerMessage?.attachments.some(
+        (attachment) =>
+          isSupportedImageMimeType(attachment.mimeType) ||
+          attachment.fileType === "image" ||
+          attachment.fileType === "gif",
+      ),
+    )
 
   const repliedByAutomatedResponse = await automatedResponseService.process({
     conversation,
@@ -254,6 +334,26 @@ export async function processAutomatedResponse(
       messages = aiContextService.mapContextToModelMessages(aiHistory)
     }
 
+    if (parentTriggerMessage?.text && triggerMessage?.text) {
+      messages.push({
+        role: aiMessageRoles.enum.user,
+        content: `The customer replied to this earlier message: "${parentTriggerMessage.text}"\n\nCurrent customer message: "${triggerMessage.text}"`,
+      })
+    } else if (triggerMessage?.text) {
+      messages.push({
+        role: aiMessageRoles.enum.user,
+        content: `CURRENT CUSTOMER MESSAGE (highest priority; answer this message, not an earlier product request):\n"${triggerMessage.text}"`,
+      })
+    }
+
+    if (isParentImageReply) {
+      messages.push({
+        role: aiMessageRoles.enum.user,
+        content:
+          "The customer replied to an earlier image. Inspect that replied-to image to answer the customer's current question.",
+      })
+    }
+
     if (isFileOnlyTrigger) {
       messages.push({
         role: aiMessageRoles.enum.user,
@@ -290,13 +390,17 @@ export async function processAutomatedResponse(
         messages,
         aiAgent,
         triggerMessageId: messageId,
+        triggerMessageIds,
+        parentMessageId: parentTriggerMessage?.id ?? null,
         fileOnlyTrigger: isFileOnlyTrigger,
         allowedSystemFunctionIds: isFileOnlyTrigger
           ? getFileOnlySystemFunctionIds({
               hasDocument: hasTriggerDocument,
               hasImage: hasTriggerImage,
             })
-          : undefined,
+          : isParentImageReply
+            ? [systemFunctionNames.imageReader]
+            : undefined,
         summary,
         defaultReplyFlowId: workspace.defaultReply,
         defaultReplyFrequency,

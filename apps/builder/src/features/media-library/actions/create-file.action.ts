@@ -1,6 +1,6 @@
 "use server"
 
-import { mediaLibraryService } from "@chatbotx.io/business"
+import { mediaLibraryService } from "@salesmanchatbot.io/business"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { createFileInputSchema } from "../schema"

@@ -10,8 +10,8 @@ import {
   connectSessionStatuses,
   connectSessionTargetSchema,
   integrationTypes,
-} from "@chatbotx.io/database/partials"
-import type { ConnectionStrategy } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import type { ConnectionStrategy } from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 
 /** Single source for the `strategy` enum shared by `connectionResource` and `connectionProviderResource` — kept in lockstep with the SDK's `ConnectionStrategy` via `satisfies`. */

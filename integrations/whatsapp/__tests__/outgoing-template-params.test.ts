@@ -1,4 +1,4 @@
-import type { TemplateComponent } from "@chatbotx.io/flow-config"
+import type { TemplateComponent } from "@salesmanchatbot.io/flow-config"
 import {
   bindWaTemplateQuickReplyButtons,
   buttonStepDefaultFn,
@@ -8,8 +8,8 @@ import {
   extractTemplateParams,
   seedWaTemplateStepButtons,
   TemplateFlowOrigin,
-} from "@chatbotx.io/flow-config"
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { readTemplateButtonReply } from "../src/handlers/message/incoming-reply"
 

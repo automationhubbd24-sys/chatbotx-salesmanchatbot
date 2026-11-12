@@ -1,7 +1,7 @@
 "use server"
 
-import { externalRequestService } from "@chatbotx.io/business"
-import { externalRequestFieldsSchema } from "@chatbotx.io/flow-config"
+import { externalRequestService } from "@salesmanchatbot.io/business"
+import { externalRequestFieldsSchema } from "@salesmanchatbot.io/flow-config"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

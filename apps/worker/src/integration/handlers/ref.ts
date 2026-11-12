@@ -1,31 +1,31 @@
-import { decodeRef, encodeRef, type RefConfig } from "@chatbotx.io/business"
+import { decodeRef, encodeRef, type RefConfig } from "@salesmanchatbot.io/business"
 import {
   isMinigameWithinPlayWindow,
   minigameContactService,
   minigameService,
-} from "@chatbotx.io/business/minigame"
-import { findOrFail } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business/minigame"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
 import {
   flowModel,
   flowVersionModel,
   reflinkModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   emitContactReferredANewContact,
   emitContactReferredExistingContact,
-} from "@chatbotx.io/events"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
-import { flowEventTypeSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/events"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
+import { flowEventTypeSchema } from "@salesmanchatbot.io/flow-config"
 import {
   IntegrationJobAction,
   type IntegrationJobRunRef,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { detectConversationAndContactInbox } from "../../lib/db"
 import { logger } from "../../lib/logger"
 import { saveResultToCustomField } from "../utils/contact"

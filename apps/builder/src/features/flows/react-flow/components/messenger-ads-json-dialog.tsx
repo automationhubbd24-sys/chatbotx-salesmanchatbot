@@ -8,8 +8,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -17,8 +17,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
 import { useQuery } from "@tanstack/react-query"
 import { CopyIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

@@ -1,4 +1,4 @@
-import { MetaCatalogException } from "@chatbotx.io/integration-meta-catalog"
+import { MetaCatalogException } from "@salesmanchatbot.io/integration-meta-catalog"
 import { describe, expect, test } from "vitest"
 import { safeMetaCatalogErrorLog } from "../safe-error-log"
 

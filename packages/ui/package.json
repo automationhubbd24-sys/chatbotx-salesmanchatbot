@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/ui",
+  "name": "@salesmanchatbot.io/ui",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -24,8 +24,8 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/color": "^4.2.1",
     "@types/mime-types": "^3.0.1",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@chatbotx.io/logger": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
     "@diceui/combobox": "^1.2.2",
     "@diceui/listbox": "^0.2.0",
     "@diceui/tags-input": "^0.7.2",

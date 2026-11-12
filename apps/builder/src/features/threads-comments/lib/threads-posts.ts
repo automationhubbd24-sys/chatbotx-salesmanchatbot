@@ -1,8 +1,8 @@
-import { integrationThreadsService } from "@chatbotx.io/business"
+import { integrationThreadsService } from "@salesmanchatbot.io/business"
 import {
   listThreadsPosts,
   type ThreadsAuthValue,
-} from "@chatbotx.io/integration-threads"
+} from "@salesmanchatbot.io/integration-threads"
 import { resolvePostPreviewImage } from "@/features/shared/comment-automation/lib/post-preview-image"
 import { collectSettled } from "@/lib/collect-settled"
 

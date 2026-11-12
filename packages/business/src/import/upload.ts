@@ -1,10 +1,10 @@
 import {
   fileContextTypes,
   type ImportType,
-} from "@chatbotx.io/database/partials"
-import { uploader } from "@chatbotx.io/filesystem"
-import { getImportEntry, resolveImportFileFormat } from "@chatbotx.io/imports"
-import { ChatbotXException } from "../errors"
+} from "@salesmanchatbot.io/database/partials"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { getImportEntry, resolveImportFileFormat } from "@salesmanchatbot.io/imports"
+import { salesmanChatbotException } from "../errors"
 import { fileService } from "../file/service"
 import { resolveTenantSettings } from "../platform/settings"
 
@@ -42,13 +42,13 @@ export async function createImportUpload(
   const { config } = entry
 
   if (!resolveImportFileFormat(config, input)) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Unsupported file type for a ${input.type} import: ${input.fileName} (${input.mimeType})`,
       "importUnsupportedFileType",
     )
   }
   if (input.fileSize > config.maxFileSizeMB * BYTES_PER_MB) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `File exceeds the ${config.maxFileSizeMB} MB limit for ${input.type} imports`,
       "importFileTooLarge",
     )

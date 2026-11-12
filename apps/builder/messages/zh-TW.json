@@ -128,7 +128,13 @@
       "anyConditions": "以下任何條件。",
       "label": "聯絡人過濾器",
       "onlyContactsMatch": "僅匹配的聯絡人",
-      "moreOptions": "更多選項"
+      "moreOptions": "更多選項",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "聯絡人備註"
@@ -583,7 +589,9 @@
         "documentReader": "文檔閱讀器",
         "imageReader": "影像讀取器",
         "urlContext": "網址閱讀器",
-        "webSearch": "Web 搜尋"
+        "webSearch": "Web 搜尋",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -1531,6 +1539,9 @@
     "disconnectSuccess": "{feature} 已中斷連線",
     "reply": "回覆",
     "privateReply": "私訊回覆",
+    "replyingTo": "回覆給",
+    "replyPreview": "{sender} 回覆了 {recipient}",
+    "you": "你",
     "viewMessage": "檢視訊息",
     "changeLikeState": "更改類似狀態",
     "changeHideState": "更改隱藏狀態",
@@ -2915,7 +2926,7 @@
     "title": "常規"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "這只會從 ChatbotX 移除該廣告活動。Meta 訊息廣告活動仍在投放——請於廣告管理員中暫停或刪除。",
+    "deleteWarning": "這只會從 salesmanChatbot 移除該廣告活動。Meta 訊息廣告活動仍在投放——請於廣告管理員中暫停或刪除。",
     "title": "Facebook 行銷訊息",
     "description": "透過 Messenger 上的個人化推廣訊息提升互動與銷售。",
     "create": "新增",
@@ -3763,6 +3774,10 @@
       "description": "允許此提供者用於自動 AI 回覆。",
       "label": "人工智慧自動回覆"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "連接 OpenAI AI Agent 後備模型的相容提供者。",
       "label": "OpenAI相容供應商"
@@ -3771,6 +3786,7 @@
     "fields": {
       "baseURL": "基礎URL",
       "defaultModel": "預設模型",
+      "embeddingModel": "嵌入模型",
       "enabled": "已啟用"
     },
     "provider": "人工智慧供應商",
@@ -3778,6 +3794,23 @@
     "validation": {
       "invalidBaseURL": "基礎URL 無效或不允許。",
       "presetAlreadyConnected": "此預設已為此工作區連線。"
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4247,7 +4280,7 @@
         "title": "通話資格",
         "appSubscriptionMissing": "請先在 Meta 應用程式儀表板中為此應用程式設定 WhatsApp webhook，然後再試一次。",
         "appSubscriptionFailed": "無法驗證應用程式的「calls」webhook 訂閱狀態，請稍後再試。",
-        "callsNotSubscribed": "此應用程式未訂閱「calls」webhook 欄位，因此通話事件無法傳送至 ChatbotX（Meta 錯誤 138018：未滿足技術先決條件 — 請確保訂閱 WABA 的至少一個應用程式也具有通話 webhook 欄位）。",
+        "callsNotSubscribed": "此應用程式未訂閱「calls」webhook 欄位，因此通話事件無法傳送至 salesmanChatbot（Meta 錯誤 138018：未滿足技術先決條件 — 請確保訂閱 WABA 的至少一個應用程式也具有通話 webhook 欄位）。",
         "fixButton": "修復",
         "fixSuccess": "此應用程式現已訂閱 WhatsApp 通話 webhook。",
         "manualIntegrationNotice": "此號碼是手動連接的，此處沒有應用程式憑證。請在 Meta 應用程式儀表板中為您的應用程式訂閱「calls」webhook 欄位。",
@@ -5720,7 +5753,109 @@
     "unknown": "未知"
   },
   "orders": {
-    "title": "訂單"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "產品",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "動作來源",

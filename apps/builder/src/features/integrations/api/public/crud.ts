@@ -1,5 +1,5 @@
-import { integrationService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
+import { integrationService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
 import {
   possibleErrorsOnFindingResource,
   possibleErrorsOnListingResource,

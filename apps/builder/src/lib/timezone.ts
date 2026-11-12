@@ -1,6 +1,6 @@
 import "server-only"
 
-import { resolveFilterTimezone } from "@chatbotx.io/utils/datetime"
+import { resolveFilterTimezone } from "@salesmanchatbot.io/utils/datetime"
 import { cookies } from "next/headers"
 import { cache } from "react"
 import { TIMEZONE_COOKIE_NAME } from "./timezone-cookie"

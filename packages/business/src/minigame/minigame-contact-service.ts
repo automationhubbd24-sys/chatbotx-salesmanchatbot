@@ -9,43 +9,43 @@ import {
   ilike,
   lt,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   MINIGAME_PRIZE_NAME_TOKEN,
   type MinigameOutcomeMessage,
   type MinigamePlayerSettings,
   type MinigamePrizeSettings,
-} from "@chatbotx.io/database/partials"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   contactModel,
   conversationModel,
   minigameContactModel,
   minigameModel,
   minigamePlayModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   MinigameContactModel,
   MinigameModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { applySpintax } from "@chatbotx.io/utils/spintax"
+} from "@salesmanchatbot.io/database/utils"
+import { applySpintax } from "@salesmanchatbot.io/utils/spintax"
 import {
   ChatJobAction,
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { BaseService } from "../base.service"
 import { contactCustomFieldService } from "../contact-custom-field/service"
 import { contactInboxService } from "../contact-inbox/service"
 import { conversationService } from "../conversation/service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { logger } from "../logger"
 import { tagService } from "../tag/service"
 import { isMinigameWithinPlayWindow } from "./play-window"
@@ -58,7 +58,7 @@ const MAX_PLAY_RECORDS = 200
 /**
  * Resolves `{{first_name}}`-style contact variables in an outcome message.
  *
- * Injected by the app layer rather than imported: `@chatbotx.io/variables`
+ * Injected by the app layer rather than imported: `@salesmanchatbot.io/variables`
  * depends on this package, so importing it here would close a cycle. The one
  * caller is `playMinigameAction`. Omitting it leaves the placeholders literal
  * — the behaviour this package had before the resolver existed.
@@ -406,7 +406,7 @@ class MinigameContactService extends BaseService {
     const { minigameId, contactId, contactInboxId, minigame } = props
 
     if (!isMinigameWithinPlayWindow(minigame)) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "This minigame is not currently active",
         "minigameNotActive",
         403,
@@ -424,7 +424,7 @@ class MinigameContactService extends BaseService {
       })
 
       if (state.remaining <= 0) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "No draws remaining for this contact",
           "minigameNoDrawsLeft",
           403,

@@ -1,10 +1,10 @@
-import { whatsappFlowResponseService } from "@chatbotx.io/business"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
+import { whatsappFlowResponseService } from "@salesmanchatbot.io/business"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
 import {
   type FlowNode,
   stepTypes,
   type WhatsappFlowStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { logger } from "../../lib/logger"
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>

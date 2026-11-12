@@ -1,6 +1,6 @@
 "use server"
 
-import { questionnaireService } from "@chatbotx.io/business"
+import { questionnaireService } from "@salesmanchatbot.io/business"
 import { workspaceIdAndIdRequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { renameQuestionnaireRequest } from "../schema/action"

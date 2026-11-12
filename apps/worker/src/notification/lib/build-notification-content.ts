@@ -1,5 +1,5 @@
-import type { ContentType } from "@chatbotx.io/database/partials"
-import type { NotificationJobData } from "@chatbotx.io/worker-config"
+import type { ContentType } from "@salesmanchatbot.io/database/partials"
+import type { NotificationJobData } from "@salesmanchatbot.io/worker-config"
 import { t } from "./strings"
 
 const resolveIncomingMessageBody = (

@@ -15,7 +15,7 @@ const mocks = vi.hoisted(() => ({
   upsertCredential: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: {
     findAllForTokenRefresh: mocks.findAllForTokenRefresh,
     findByIdForWorkspace: mocks.findByIdForWorkspace,
@@ -27,16 +27,16 @@ vi.mock("@chatbotx.io/business", () => ({
     upsertCredential: mocks.upsertCredential,
   },
 }))
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mocks.auditRecord },
 }))
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: mocks.logProviderError,
 }))
-vi.mock("@chatbotx.io/integration-whatsapp", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp", () => ({
   integration: { refreshAuth: mocks.refreshAuth },
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
 }))
 vi.mock("../src/lib/logger", () => ({

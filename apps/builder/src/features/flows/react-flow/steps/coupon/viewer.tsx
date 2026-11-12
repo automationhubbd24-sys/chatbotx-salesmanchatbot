@@ -1,7 +1,7 @@
 "use client"
 
-import { type CouponStepSchema, stepTypes } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { type CouponStepSchema, stepTypes } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { TicketPercentIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCouponTopicOptions } from "@/features/coupons/provider/use-coupon-topic-options"

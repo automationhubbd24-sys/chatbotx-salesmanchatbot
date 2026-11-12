@@ -54,7 +54,7 @@ const mocks = vi.hoisted(() => ({
   listMessages: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { resolveIdByIdentifier: mocks.resolveIdByIdentifier },
   conversationService: {
     resolveContactInboxForSend: mocks.resolveContactInboxForSend,
@@ -69,7 +69,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))

@@ -1,21 +1,21 @@
-import { aiTimeouts } from "@chatbotx.io/ai"
-import { automatedResponseService } from "@chatbotx.io/automated-response"
+import { aiTimeouts } from "@salesmanchatbot.io/ai"
+import { automatedResponseService } from "@salesmanchatbot.io/automated-response"
 import {
   aiAgentService,
   conversationService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   type AIAgentProviderModels,
   aiAgentActionRulesSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { emit } from "@chatbotx.io/event-bus"
-import { distributedLock } from "@chatbotx.io/redis"
-import type { AIJobProcessHandoffReentry } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/repositories"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import type { AIJobProcessHandoffReentry } from "@salesmanchatbot.io/worker-config"
 import { stepCountIs, streamText } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { createReplyModel, getProviderName } from "../../../lib/ai/reply-model"

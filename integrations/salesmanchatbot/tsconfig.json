@@ -1,0 +1,7 @@
+{
+  "extends": "@salesmanchatbot.io/typescript-config/base.json",
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}

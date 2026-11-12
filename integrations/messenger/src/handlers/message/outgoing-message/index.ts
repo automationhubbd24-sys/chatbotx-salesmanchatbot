@@ -11,7 +11,7 @@ import {
   type SendVideoStepSchema,
   type StepType,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   assertCommentPrivateReplyFollowUpDeliverable,
   ChannelError,
@@ -27,9 +27,12 @@ import {
   type OutgoingContact,
   type OutgoingMessage,
   type SendFlowStepProps,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { sendPrivateReplyMessage } from "../../../apis/comment"
-import { sendMessage as sendMessageApi } from "../../../apis/message"
+import {
+  sendMessage as sendMessageApi,
+  sendMessageWithUploadedAttachment,
+} from "../../../apis/message"
 import { ensureMessengerWhitelistedDomain } from "../../../apis/page"
 import { mapToChannelError } from "../../../lib/error-mapper"
 import { logger } from "../../../lib/logger"
@@ -128,6 +131,34 @@ const sendPageMessageWithMessengerExtensionWhitelistRetry = async (
   }
 }
 
+const sendPageMessageWithBinaryImageFallback = async (
+  ctx: SendFlowStepProps<MessengerAuthValue>["ctx"],
+  payload: FacebookSendMessageRequest,
+) => {
+  const attachment = payload.message?.attachment
+  const attachmentUrl = attachment?.payload.url
+  if (attachment?.type !== "image" || !attachmentUrl || !payload.message) {
+    return await sendPageMessageWithMessengerExtensionWhitelistRetry(ctx, payload)
+  }
+
+  try {
+    return await sendMessageWithUploadedAttachment(
+      ctx.auth,
+      { ...payload, message: payload.message },
+      {
+        type: "image",
+        url: attachmentUrl,
+      },
+    )
+  } catch (error) {
+    logger.warn(
+      { err: error },
+      "Messenger binary image upload failed, retrying by URL",
+    )
+    return await sendPageMessageWithMessengerExtensionWhitelistRetry(ctx, payload)
+  }
+}
+
 export const handledFlowStepTypes = [
   stepTypes.enum.sendText,
   stepTypes.enum.sendImage,
@@ -184,21 +215,23 @@ export const sendMessage: MessageHandlers<MessengerAuthValue>["sendMessage"] =
         lastMessage.quick_replies =
           convertCanonicalQuickReplies(nativeQuickReplies)
       }
-      for (const facebookMessage of facebookMessages) {
+      for (const [index, facebookMessage] of facebookMessages.entries()) {
         const payload = buildMessagePayload({
           contact,
           message: facebookMessage,
           ...policy,
+          ...(index === 0 && message.parentSourceId
+            ? { replyToMid: message.parentSourceId }
+            : {}),
           personaId: resolveMessengerPersonaId(
             ctx.integrationDetail as MessengerIntegrationDetail,
             contact,
           ),
         })
-        const response =
-          await sendPageMessageWithMessengerExtensionWhitelistRetry(
-            ctx,
-            payload,
-          )
+        const response = await sendPageMessageWithBinaryImageFallback(
+          ctx,
+          payload,
+        )
         sentCount += 1
         if (response.message_id) {
           messageIds.push(response.message_id)
@@ -206,7 +239,10 @@ export const sendMessage: MessageHandlers<MessengerAuthValue>["sendMessage"] =
         logger.info(`Message sent for PSID: ${contact.sourceId}`)
       }
     } catch (error) {
-      logger.error(error, "An error occurred while sending the message")
+      logger.error(
+        { err: error },
+        "An error occurred while sending the message",
+      )
       throw mapToChannelError(error)
     }
 
@@ -298,7 +334,7 @@ export const sendFlowStep: MessageHandlers<MessengerAuthValue>["sendFlowStep"] =
               facebookMessage,
               personaId,
             )
-          : await sendPageMessageWithMessengerExtensionWhitelistRetry(
+          : await sendPageMessageWithBinaryImageFallback(
               ctx,
               buildMessagePayload({
                 contact,
@@ -315,7 +351,10 @@ export const sendFlowStep: MessageHandlers<MessengerAuthValue>["sendFlowStep"] =
         logger.info(`Message sent for PSID: ${contact.sourceId}`)
       }
     } catch (error) {
-      logger.error(error, "An error occurred while sending the message")
+      logger.error(
+        { err: error },
+        "An error occurred while sending the message",
+      )
       throw mapToChannelError(error)
     }
 
@@ -494,8 +533,16 @@ export const buildMessagePayload = (props: {
   messagingType?: "MESSAGE_TAG" | "RESPONSE"
   tag?: FacebookSendMessageRequest["tag"]
   personaId?: string
+  replyToMid?: string
 }): FacebookSendMessageRequest => {
-  const { contact, message, messagingType = "RESPONSE", personaId, tag } = props
+  const {
+    contact,
+    message,
+    messagingType = "RESPONSE",
+    personaId,
+    replyToMid,
+    tag,
+  } = props
 
   return {
     recipient: { id: contact.sourceId },
@@ -506,6 +553,7 @@ export const buildMessagePayload = (props: {
     messaging_type: messagingType,
     tag,
     persona_id: personaId,
+    ...(replyToMid ? { reply_to: { mid: replyToMid } } : {}),
   }
 }
 

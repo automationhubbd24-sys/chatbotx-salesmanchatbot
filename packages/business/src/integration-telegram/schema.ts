@@ -1,8 +1,8 @@
 import {
   createSelectSchema,
   integrationTelegramModel,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import type { z } from "zod"
 
 export const integrationTelegramResource = createSelectSchema(

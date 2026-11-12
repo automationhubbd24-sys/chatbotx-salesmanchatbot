@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   assertWorkspaceSuperAdmin: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: {
     updateHandoverResumeFlow: mocks.updateHandoverResumeFlow,
   },
@@ -71,7 +71,7 @@ describe("updateHandoverResumeFlowAction", () => {
 
   test("refuses a non super admin before any write", async () => {
     mocks.assertWorkspaceSuperAdmin.mockRejectedValue(
-      new ChatbotXException("errors.superAdminRequired"),
+      new salesmanChatbotException("errors.superAdminRequired"),
     )
 
     await expect(run("flow-1")).rejects.toThrow("errors.superAdminRequired")
@@ -80,7 +80,7 @@ describe("updateHandoverResumeFlowAction", () => {
 
   test("maps a missing or inactive flow to a translated error", async () => {
     mocks.updateHandoverResumeFlow.mockRejectedValue(
-      new ChatbotXException("Handover flow not found", "notFound", 404),
+      new salesmanChatbotException("Handover flow not found", "notFound", 404),
     )
 
     await expect(run("flow-x")).rejects.toThrow(
@@ -90,7 +90,7 @@ describe("updateHandoverResumeFlowAction", () => {
 
   test("maps a missing number on clear to a translated error", async () => {
     mocks.updateHandoverResumeFlow.mockRejectedValue(
-      new ChatbotXException("WhatsApp integration not found", "notFound", 404),
+      new salesmanChatbotException("WhatsApp integration not found", "notFound", 404),
     )
 
     await expect(run(null)).rejects.toThrow(

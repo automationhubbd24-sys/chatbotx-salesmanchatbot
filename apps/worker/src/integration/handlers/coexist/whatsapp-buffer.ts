@@ -2,14 +2,14 @@ import { createHash } from "node:crypto"
 import {
   integrationWhatsappRepository,
   whatsappCoexistStagingRepository,
-} from "@chatbotx.io/database/repositories"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   buildCoexistFlushJobId,
   IntegrationJobAction,
   type IntegrationJobCoexistWhatsappBuffer,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 
 const hashPayload = (payload: unknown): string =>

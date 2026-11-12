@@ -9,7 +9,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // ContactCustomField id path. This file focuses on the bot-field paths; the
 // pure-ContactCustomField path is covered indirectly by existing behavior and
 // asserted once here as a regression check.
-// We mock ONLY the boundaries; `@chatbotx.io/flow-config`'s
+// We mock ONLY the boundaries; `@salesmanchatbot.io/flow-config`'s
 // `parseFieldReference` is left real. Field existence/value reads go through
 // the business layer (`customFieldService`/`contactCustomFieldService`/
 // `botFieldService`) — no direct `db` access (see `.agents/rules/data-access.md`).
@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customFieldService: { findBy: mocks.customFieldFindBy },
   contactCustomFieldService: {
     setValues: mocks.setValues,
@@ -39,11 +39,11 @@ vi.mock("@chatbotx.io/business", () => ({
   externalRequestService: {},
 }))
 
-vi.mock("@chatbotx.io/business/contact-custom-field", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-custom-field", () => ({
   createSourceTimezoneResolver: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       customFieldModel: { findFirst: vi.fn(), findMany: vi.fn() },
@@ -51,7 +51,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: vi.fn() },
   extractVariables: vi.fn(() => []),
   getSystemFieldValue: vi.fn(async () => null),

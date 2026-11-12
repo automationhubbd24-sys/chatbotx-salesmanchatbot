@@ -1,6 +1,6 @@
-import { db, eq, inArray } from "@chatbotx.io/database/client"
-import { userModel } from "@chatbotx.io/database/schema"
-import type { UserModel } from "@chatbotx.io/database/types"
+import { db, eq, inArray } from "@salesmanchatbot.io/database/client"
+import { userModel } from "@salesmanchatbot.io/database/schema"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 

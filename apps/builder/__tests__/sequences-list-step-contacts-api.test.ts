@@ -56,13 +56,13 @@ const { authorizedAPI, mocks, workspaceAuthorizedMidddleware } = vi.hoisted(
 vi.mock("@/orpc", () => ({ authorizedAPI }))
 vi.mock("@/middlewares/auth", () => ({ workspaceAuthorizedMidddleware }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   sequenceAnalyticsService: {
     getStepStats: mocks.getStepStats,
   },
 }))
 
-vi.mock("@chatbotx.io/business/sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({
   sequenceService: { listStepContactsPage: mocks.listStepContactsPage },
 }))
 

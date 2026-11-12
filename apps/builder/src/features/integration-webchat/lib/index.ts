@@ -2,14 +2,14 @@ import {
   BRANDING_TITLE,
   buildBrandingUrl,
   ensureBrandingMenuEntry,
-} from "@chatbotx.io/business/branding"
+} from "@salesmanchatbot.io/business/branding"
 import type {
   ChannelType,
   WebchatPersistentMenu,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { isCommunity } from "@/env"
 
-export { BRANDING_TITLE } from "@chatbotx.io/business/branding"
+export { BRANDING_TITLE } from "@salesmanchatbot.io/business/branding"
 
 export function getBrandingUrl(channel: ChannelType, appUrl: string) {
   return buildBrandingUrl(appUrl, channel, isCommunity())

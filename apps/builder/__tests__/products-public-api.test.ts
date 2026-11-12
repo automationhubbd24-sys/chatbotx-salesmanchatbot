@@ -53,7 +53,7 @@ const productService = {
   updateFull: vi.fn(),
   delete: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ productService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ productService }))
 
 await import("@/features/products/api/public")
 

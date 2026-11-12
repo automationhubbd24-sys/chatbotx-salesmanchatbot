@@ -10,22 +10,22 @@ const SRC_ROOT = join(APP_ROOT, "src")
 const TS_LIKE_EXTENSION_PATTERN = /\.(ts|tsx)$/
 const USE_CLIENT_DIRECTIVE_PATTERN = /^["']use client["']\s*;?\s*$/
 const USE_SERVER_DIRECTIVE_PATTERN = /^["']use server["']\s*;?\s*$/
-// The bare package barrel (`@chatbotx.io/business/src/index.ts`) is a
+// The bare package barrel (`@salesmanchatbot.io/business/src/index.ts`) is a
 // 100+ line `export *` that reaches every service in the product, including
 // the Postgres pool and Redis client (see media-library-file/service.ts ->
-// base.service.ts -> @chatbotx.io/redis, and platform/settings.ts ->
-// @chatbotx.io/database/client, which opens a `pg` Pool at module scope).
-// A subpath export (`@chatbotx.io/business/inbox/schema`, etc.) points at a
+// base.service.ts -> @salesmanchatbot.io/redis, and platform/settings.ts ->
+// @salesmanchatbot.io/database/client, which opens a `pg` Pool at module scope).
+// A subpath export (`@salesmanchatbot.io/business/inbox/schema`, etc.) points at a
 // single leaf file and is allowed — see package.json `exports` for the
 // package's own allowlist of client-safe leaves.
-const BACKEND_PACKAGE_BARREL_SPECIFIER = "@chatbotx.io/business"
+const BACKEND_PACKAGE_BARREL_SPECIFIER = "@salesmanchatbot.io/business"
 
 /**
- * Not every `@chatbotx.io/*` package is backend-only, and not every backend
+ * Not every `@salesmanchatbot.io/*` package is backend-only, and not every backend
  * package's main barrel is unsafe — this guard only encodes the one
  * confirmed-unsafe barrel exercised by this bug (media-library/schema.ts).
  * Extend this set only after confirming a barrel actually reaches DB/queue
- * clients, the way `@chatbotx.io/business`'s does.
+ * clients, the way `@salesmanchatbot.io/business`'s does.
  */
 const DENYLISTED_BARREL_SPECIFIERS = new Set([BACKEND_PACKAGE_BARREL_SPECIFIER])
 

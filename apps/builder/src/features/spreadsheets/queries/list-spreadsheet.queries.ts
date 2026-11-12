@@ -1,4 +1,4 @@
-import { spreadsheetService } from "@chatbotx.io/business"
+import { spreadsheetService } from "@salesmanchatbot.io/business"
 import type { PaginatedResponse } from "@/features/common/schema/pagination"
 import type { ListSpreadsheetsRequest } from "../schema/query"
 import type { SpreadsheetResource } from "../schema/resource"

@@ -1,7 +1,7 @@
 "use client"
 
-import { AI_HANDOVER_BULK_LIVE_STATUSES } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { AI_HANDOVER_BULK_LIVE_STATUSES } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import {
   Table,
   TableBody,
@@ -18,8 +18,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/table"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useQuery } from "@tanstack/react-query"
 import { ChevronLeftIcon, ChevronRightIcon, HistoryIcon } from "lucide-react"
 import { useFormatter, useTranslations } from "next-intl"

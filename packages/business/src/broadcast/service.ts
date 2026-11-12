@@ -1,5 +1,5 @@
-import { broadcastAnalyticsService } from "@chatbotx.io/analytics"
-import type { BroadcastEventType } from "@chatbotx.io/analytics/schemas"
+import { broadcastAnalyticsService } from "@salesmanchatbot.io/analytics"
+import type { BroadcastEventType } from "@salesmanchatbot.io/analytics/schemas"
 import {
   and,
   asc,
@@ -17,7 +17,7 @@ import {
   ne,
   type SQL,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   BROADCAST_DISPATCH_WINDOW_MS,
   type BroadcastScheduleType,
@@ -47,17 +47,17 @@ import {
   resolveSubmittedSendRatePatch,
   usesBroadcastTargets,
   withBroadcastTargets,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   buildContactInboxContactFilterSQL,
   type ContactFilterCriteriaInput,
   contactInboxInteractedWithin24hSQL,
   pruneEmailPhoneFilterConditions,
-} from "@chatbotx.io/database/queries"
+} from "@salesmanchatbot.io/database/queries"
 import {
   type BroadcastListInput,
   broadcastRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   broadcastModel,
   broadcastTargetModel,
@@ -69,7 +69,7 @@ import {
   integrationWhatsappModel,
   messengerMessageTemplateModel,
   whatsappMessageTemplateModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   BroadcastModel,
   BroadcastTargetModel,
@@ -78,20 +78,20 @@ import type {
   InboxModel,
   IntegrationMessengerModel,
   IntegrationWhatsappModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   chunkById,
   escapeLikePattern,
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
+} from "@salesmanchatbot.io/database/utils"
 import {
   findTemplateStartStep,
   stepTypes,
   type WaTemplateParams,
-} from "@chatbotx.io/flow-config"
-import { casStore } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { casStore } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { startOfMinute } from "date-fns"
 import { BaseService } from "../base.service"
 import {
@@ -99,7 +99,7 @@ import {
   type StatsContactRow,
 } from "../contact-inbox/map-stats-contact-row"
 import { contactInboxService } from "../contact-inbox/service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { inboxService } from "../inbox/service"
 import { logger } from "../logger"
 import { type IdLabel, selectLabelsByIds } from "../select-labels-by-ids"
@@ -309,7 +309,7 @@ export type BroadcastValidationField =
  * (`apps/builder/src/lib/errors/validation-exception.ts`) narrows on that
  * exact code before trusting `.field`.
  */
-export class BroadcastValidationException extends ChatbotXException {
+export class BroadcastValidationException extends salesmanChatbotException {
   readonly field: BroadcastValidationField
 
   constructor(message: string, field: BroadcastValidationField) {
@@ -380,7 +380,7 @@ export const resolveBroadcastTargetsToPersist = (
  * resend to a *different* audience than the one the filter describes.
  *
  * Every condition's `field` is checked against `contactFilterFields`
- * (`@chatbotx.io/database/partials`) — the same enum the SQL builder's
+ * (`@salesmanchatbot.io/database/partials`) — the same enum the SQL builder's
  * `buildConditionWhere` switch is written against. This is NOT optional:
  * `buildConditionWhere`'s `default` case returns `{}` for an unrecognised
  * field, `applyContactFilter` then filters out every empty where, and an
@@ -882,7 +882,7 @@ class BroadcastService extends BaseService {
           })
 
         if (!row) {
-          throw new ChatbotXException("Broadcast is not a draft")
+          throw new salesmanChatbotException("Broadcast is not a draft")
         }
 
         return row
@@ -916,7 +916,7 @@ class BroadcastService extends BaseService {
         .limit(1)
 
       if (!draft) {
-        throw new ChatbotXException("Broadcast is not a draft")
+        throw new salesmanChatbotException("Broadcast is not a draft")
       }
 
       const restriction = broadcastPlanPolicyService.restrictionFor(
@@ -1025,7 +1025,7 @@ class BroadcastService extends BaseService {
       .returning({ id: broadcastModel.id })
 
     if (!row) {
-      throw new ChatbotXException("Broadcast is no longer scheduled")
+      throw new salesmanChatbotException("Broadcast is no longer scheduled")
     }
 
     await this.audit(
@@ -1050,7 +1050,7 @@ class BroadcastService extends BaseService {
       .returning({ id: broadcastModel.id })
 
     if (!row) {
-      throw new ChatbotXException("Broadcast is not in progress")
+      throw new salesmanChatbotException("Broadcast is not in progress")
     }
 
     await this.audit("broadcast_stopped", `stopped a broadcast (#${row.id})`)
@@ -1101,7 +1101,7 @@ class BroadcastService extends BaseService {
         .returning({ id: broadcastModel.id })
 
       if (!row) {
-        throw new ChatbotXException("Broadcast is not stopped")
+        throw new salesmanChatbotException("Broadcast is not stopped")
       }
       return row
     }
@@ -1122,7 +1122,7 @@ class BroadcastService extends BaseService {
         .limit(1)
 
       if (!stopped) {
-        throw new ChatbotXException("Broadcast is not stopped")
+        throw new salesmanChatbotException("Broadcast is not stopped")
       }
 
       const restriction = broadcastPlanPolicyService.restrictionFor(
@@ -1654,7 +1654,7 @@ class BroadcastService extends BaseService {
         .limit(1)
 
       if (!draft) {
-        throw new ChatbotXException("Broadcast is not a draft")
+        throw new salesmanChatbotException("Broadcast is not a draft")
       }
 
       return await this.activateWithinPlan(
@@ -1671,7 +1671,7 @@ class BroadcastService extends BaseService {
     })
 
     if (!row) {
-      throw new ChatbotXException("Broadcast is not a draft")
+      throw new salesmanChatbotException("Broadcast is not a draft")
     }
 
     // Mirrors `createBroadcastAction`: only an immediate send is audited as a
@@ -2463,7 +2463,7 @@ class BroadcastService extends BaseService {
       },
     })
     if (broadcast.status !== "sent" && broadcast.status !== "failed") {
-      throw new ChatbotXException("Broadcast is not sent")
+      throw new salesmanChatbotException("Broadcast is not sent")
     }
     return broadcast
   }

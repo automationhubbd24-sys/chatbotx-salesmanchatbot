@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   $count: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       reflinkModel: {
@@ -21,7 +21,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn((_model: unknown, where: unknown) => where),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   reflinkModel: { id: "id-col", workspaceId: "workspaceId-col" },
 }))
 

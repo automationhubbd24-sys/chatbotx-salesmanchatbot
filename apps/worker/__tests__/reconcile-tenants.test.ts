@@ -15,7 +15,7 @@ const state = {
   throwFor: null as string | null,
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   userQuotaService: {
     listWhiteLabelOwnerIds: vi.fn(() =>
       Promise.resolve(state.whiteLabelOwnerIds),
@@ -36,7 +36,7 @@ vi.mock("@chatbotx.io/business", () => ({
 // Real AsyncLocalStorage context, isolated from the audit dispatcher's
 // Snowflake id generator — this test only needs the wrapped calls to
 // succeed, not a real enqueue.
-vi.mock("@chatbotx.io/business/audit", async () => {
+vi.mock("@salesmanchatbot.io/business/audit", async () => {
   const { AsyncLocalStorage } = await import("node:async_hooks")
   const storage = new AsyncLocalStorage<Record<string, unknown>>()
   return {

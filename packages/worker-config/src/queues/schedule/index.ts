@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import { Queue } from "bullmq"
 import { z } from "zod"
 import {

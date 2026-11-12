@@ -1,10 +1,10 @@
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
   ConversationModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // These fields all delegate to a helper. The helper has its own tests, so what
@@ -60,17 +60,17 @@ vi.mock("../src/helpers/storage-url", () => ({
   toPublicStorageUrl: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: { findBy: vi.fn() },
   conversationService: { findDMByContact: vi.fn() },
   messageService: { findById: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business/system-field", () => ({
+vi.mock("@salesmanchatbot.io/business/system-field", () => ({
   resolveGenderLabel: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/encryption/keys", () => ({
+vi.mock("@salesmanchatbot.io/encryption/keys", () => ({
   env: {
     ENCRYPTION_KEY:
       "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",

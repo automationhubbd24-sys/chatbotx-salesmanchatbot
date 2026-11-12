@@ -26,7 +26,7 @@ const channelProviders = channelTypes.options.filter(
  * - `system` — internal job failures are not third-party failures and do not
  *   belong in this table.
  * - `facebook-lead-ads` — not an integration; Lead Ads rides `facebook-ads`.
- * - `chatbotx` — `integrations/chatbotx` is an inert stub.
+ * - `salesmanchatbot` — `integrations/salesmanchatbot` is an inert stub.
  * - `instagram-facebook` — the Facebook-linked Instagram variant is an
  *   auth/endpoint distinction, not a separate destination. Message sends
  *   through it already log as `instagram` (the `ChannelType`), so a second

@@ -12,5 +12,5 @@ export * as TriggerEventEmitter from "./trigger/emitter"
 export * from "./webhook/cache"
 export * as WebhookEventEmitter from "./webhook/emitter"
 
-// NOTE: Context functions are exported from @chatbotx.io/events/context
+// NOTE: Context functions are exported from @salesmanchatbot.io/events/context
 // to avoid Edge Runtime issues with AsyncLocalStorage

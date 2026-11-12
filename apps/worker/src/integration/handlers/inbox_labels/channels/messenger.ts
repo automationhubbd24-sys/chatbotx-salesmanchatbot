@@ -1,6 +1,6 @@
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { messengerWebhookEventSchema } from "@chatbotx.io/integration-messenger/schema"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { messengerWebhookEventSchema } from "@salesmanchatbot.io/integration-messenger/schema"
 import type { Channel } from "../types"
 
 /**

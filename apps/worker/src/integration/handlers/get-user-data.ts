@@ -5,19 +5,19 @@ import {
   normalizeLanguage,
   resolveTenantSettings,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   type ReplyValidationResult,
   validateReplyInput,
-} from "@chatbotx.io/business/get-user-data"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
-import type { ConversationAttributes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business/get-user-data"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
+import type { ConversationAttributes } from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { signUserDataWebviewToken } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/database/repositories"
+import { signUserDataWebviewToken } from "@salesmanchatbot.io/encryption"
 import {
   GET_USER_DATA_WEBVIEW_SELECTION_PAYLOAD_TYPE,
   type GetUserDataStepSchema,
@@ -27,16 +27,16 @@ import {
   ReplyFormat,
   type SendTextStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   IntegrationException,
   NATIVE_LOCATION_REQUEST_CHANNELS,
   URL_QUICK_REPLY_CAPABLE_CHANNELS,
   type Variable,
   WHATSAPP_NATIVE_LOCATION_REQUEST,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { ChatJobAction, chatQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { ChatJobAction, chatQueue } from "@salesmanchatbot.io/worker-config"
 import { add, isBefore } from "date-fns"
 import { logger } from "../../lib/logger"
 import { waitForChatJobCompletion } from "../utils/message"

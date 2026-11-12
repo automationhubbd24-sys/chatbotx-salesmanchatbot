@@ -1,31 +1,31 @@
 "use client"
 
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import {
   FolderUpIcon,

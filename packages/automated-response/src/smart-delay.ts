@@ -1,5 +1,5 @@
-import { isSmartResponseDelayOption } from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
+import { isSmartResponseDelayOption } from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import { env } from "./keys"
 
 type AutomatedResponseTiming = {

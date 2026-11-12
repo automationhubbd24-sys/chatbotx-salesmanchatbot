@@ -1,4 +1,4 @@
-import { contentTypes } from "@chatbotx.io/database/partials"
+import { contentTypes } from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -11,7 +11,7 @@ const {
   mockResolveTenantSettings: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findLatestByContact: mockFindLatestByContact,
   },
@@ -24,7 +24,7 @@ vi.mock("@chatbotx.io/business", () => ({
 
 const ABSOLUTE_URL_RE = /^https?:\/\//i
 
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getPublicFileUrl: (path: string, baseUrl: string) =>
     new URL(path, baseUrl).toString(),
   toPublicStorageUrl: (path: string, baseUrl: string) =>

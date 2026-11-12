@@ -1,8 +1,8 @@
-import { buildContext } from "@chatbotx.io/business"
-import type { CommentHideComments } from "@chatbotx.io/database/partials"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
-import type { ThreadsAuthValue } from "@chatbotx.io/integration-threads"
-import type { AuthValue } from "@chatbotx.io/sdk"
+import { buildContext } from "@salesmanchatbot.io/business"
+import type { CommentHideComments } from "@salesmanchatbot.io/database/partials"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
+import type { ThreadsAuthValue } from "@salesmanchatbot.io/integration-threads"
+import type { AuthValue } from "@salesmanchatbot.io/sdk"
 import { allIntegrations } from "../../../services/integrations"
 import type { CommentAutomationChannelType } from "./channel-type"
 

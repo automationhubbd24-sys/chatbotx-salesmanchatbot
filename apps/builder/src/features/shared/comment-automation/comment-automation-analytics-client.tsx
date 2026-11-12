@@ -1,6 +1,6 @@
 "use client"
 
-import { CommentAutomationAnalytics } from "@chatbotx.io/analytics-nextjs/components/comment-automation-analytics"
+import { CommentAutomationAnalytics } from "@salesmanchatbot.io/analytics-nextjs/components/comment-automation-analytics"
 
 /**
  * Client shell for the per-automation analytics dashboard, shared by the

@@ -1,6 +1,6 @@
-import { db } from "@chatbotx.io/database/client"
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
-import { getRedisConnection } from "@chatbotx.io/worker-config"
+import { db } from "@salesmanchatbot.io/database/client"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
+import { getRedisConnection } from "@salesmanchatbot.io/worker-config"
 import { LRUCache } from "lru-cache"
 
 type CacheEntry = {

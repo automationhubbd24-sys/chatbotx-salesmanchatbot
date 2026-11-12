@@ -88,7 +88,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...conditions: unknown[]) => ({ conditions })),
   count: mockCount,
   db: {

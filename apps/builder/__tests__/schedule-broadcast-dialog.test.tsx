@@ -1,4 +1,4 @@
-import type { BroadcastModel } from "@chatbotx.io/database/types"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
 import { act, useCallback, useState } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { useForm, useFormContext } from "react-hook-form"
@@ -22,7 +22,7 @@ vi.mock("@/enterprise/features/billing/upgrade-plan-dialog", () => ({
 
 // The dialog only `.bind()`s this before handing it to the (mocked) hook
 // below — it is never invoked in this test — so a bare stub is enough and
-// keeps the test from pulling in `@chatbotx.io/business` / DB wiring.
+// keeps the test from pulling in `@salesmanchatbot.io/business` / DB wiring.
 vi.mock("@/features/broadcasts/actions/schedule-broadcast.action", () => ({
   scheduleBroadcastAction: vi.fn(),
 }))
@@ -66,7 +66,7 @@ const numberFieldProps = vi.hoisted(() => ({
   current: null as Record<string, unknown> | null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/input-number-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-number-field", () => ({
   InputNumberField: (props: { name: string; placeholder?: string }) => {
     numberFieldProps.current = props
     const { name } = props
@@ -97,7 +97,7 @@ vi.mock("@chatbotx.io/ui/components/form/input-number-field", () => ({
 // Swap the heavy form widgets for buttons that mutate the real RHF state
 // via `useFormContext` — avoids simulating native `<select>`/date-picker
 // interaction, which is irrelevant to the reset bug this test covers.
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({ name }: { name: string }) => {
     const { setValue, watch } = useFormContext()
     const value = watch(name)
@@ -120,7 +120,7 @@ const pickerProps = vi.hoisted(() => ({
   current: null as Record<string, unknown> | null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/date-picker-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/date-picker-field", () => ({
   DateTimePickerField: (props: { name: string }) => {
     pickerProps.current = props
     const { name } = props
@@ -143,7 +143,7 @@ vi.mock("@chatbotx.io/ui/components/form/date-picker-field", () => ({
 
 // Simple conditional shell — no portal/animation machinery, which is
 // unrelated to the reset-on-open bug and would only add flakiness in jsdom.
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ open, children }: { open: boolean; children: React.ReactNode }) =>
     open ? <div data-testid="dialog">{children}</div> : null,
   DialogClose: ({ render }: { render: React.ReactElement }) => render,
@@ -164,7 +164,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

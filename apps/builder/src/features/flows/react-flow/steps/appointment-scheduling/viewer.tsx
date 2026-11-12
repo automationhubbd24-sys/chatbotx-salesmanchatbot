@@ -1,7 +1,7 @@
 "use client"
 
-import type { AppointmentSchedulingStepSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { AppointmentSchedulingStepSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { CalendarClockIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAppointmentCalendarStore } from "@/features/appointment-calendars/provider/appointment-calendar-store-context"

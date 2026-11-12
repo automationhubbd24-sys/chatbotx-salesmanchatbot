@@ -12,7 +12,7 @@ const db = {
   },
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({ db }))
+vi.mock("@salesmanchatbot.io/database/client", () => ({ db }))
 
 // ── repository mock ───────────────────────────────────────────────────────────
 

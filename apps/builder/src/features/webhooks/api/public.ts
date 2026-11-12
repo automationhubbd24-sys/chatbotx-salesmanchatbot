@@ -1,6 +1,6 @@
-import { webhookService } from "@chatbotx.io/business"
-import { createSelectSchema, webhookModel } from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { webhookService } from "@salesmanchatbot.io/business"
+import { createSelectSchema, webhookModel } from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import {
   possibleErrorsOnCreatingResource,

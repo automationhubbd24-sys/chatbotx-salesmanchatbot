@@ -1,7 +1,7 @@
 import type {
   AIConversationSourceModel,
   AttachmentModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 
 export type ConversationContextSourceType =
   | "document"
@@ -24,6 +24,8 @@ export type ResolvedConversationSource = {
 export interface ResolveConversationSourceInput {
   conversationId: string
   messageId?: string
+  triggerMessageIds?: string[]
+  parentMessageId?: string | null
   query: string
   sourceHint?: string
   workspaceId: string

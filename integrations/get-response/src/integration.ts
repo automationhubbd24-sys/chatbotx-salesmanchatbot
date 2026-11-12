@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   isUnauthorizedStatusError,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { getResponseRequest } from "./client"
 import {
   GET_RESPONSE_ACCOUNTS_PATH,

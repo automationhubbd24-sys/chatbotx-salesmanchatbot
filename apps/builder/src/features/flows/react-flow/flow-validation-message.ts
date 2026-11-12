@@ -1,7 +1,7 @@
 import {
   type FlowValidationCode,
   isFlowValidationCode,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { ZodError } from "zod"
 
 /**

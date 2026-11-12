@@ -1,4 +1,4 @@
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { format, parse } from "date-fns"
 import { ClockIcon } from "lucide-react"
 import { useRef } from "react"

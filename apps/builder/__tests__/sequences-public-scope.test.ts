@@ -16,14 +16,14 @@ const {
   assertApiNotRateLimited: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
   quotaEnforcementService: { isAtLimit },
 }))
 
-vi.mock("@chatbotx.io/business/sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({
   sequenceService: {
     list: vi.fn(),
     findWithSteps: vi.fn(),
@@ -94,7 +94,7 @@ describe("real router: sequences public API scope wiring", () => {
 
   test("null scopes (unrestricted) passes the real GET /v1/sequences route", async () => {
     findWorkspaceByTokenHash.mockResolvedValue(authResult(null))
-    const { sequenceService } = await import("@chatbotx.io/business/sequence")
+    const { sequenceService } = await import("@salesmanchatbot.io/business/sequence")
     vi.mocked(sequenceService.list).mockResolvedValue({
       data: [],
       pageCount: 1,
@@ -145,7 +145,7 @@ describe("real router: sequences public API scope wiring", () => {
       invoke(sequencesPublicRouter.create, { name: "My sequence" }),
     ).rejects.toMatchObject({ code: "FORBIDDEN" })
 
-    const { sequenceService } = await import("@chatbotx.io/business/sequence")
+    const { sequenceService } = await import("@salesmanchatbot.io/business/sequence")
     expect(sequenceService.create).not.toHaveBeenCalled()
   })
 
@@ -164,7 +164,7 @@ describe("real router: sequences public API scope wiring", () => {
     })
 
     test("upsertStep scopes both assertOwned and upsertStep to the token's workspace, not any workspace implied by the id", async () => {
-      const { sequenceService } = await import("@chatbotx.io/business/sequence")
+      const { sequenceService } = await import("@salesmanchatbot.io/business/sequence")
       vi.mocked(sequenceService.assertOwned).mockResolvedValue(
         undefined as never,
       )
@@ -192,7 +192,7 @@ describe("real router: sequences public API scope wiring", () => {
     })
 
     test("deleteStep scopes both assertOwned and deleteStep to the token's workspace, not any workspace implied by the id", async () => {
-      const { sequenceService } = await import("@chatbotx.io/business/sequence")
+      const { sequenceService } = await import("@salesmanchatbot.io/business/sequence")
       vi.mocked(sequenceService.assertOwned).mockResolvedValue(
         undefined as never,
       )

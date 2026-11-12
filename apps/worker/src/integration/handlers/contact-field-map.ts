@@ -1,8 +1,8 @@
 import {
   contactCustomFieldService,
   contactService,
-} from "@chatbotx.io/business"
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
 
 export const getContactFieldMap = async (props: {
   workspaceId: string

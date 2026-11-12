@@ -2,17 +2,17 @@ import { createHash } from "node:crypto"
 import {
   buildContext,
   integrationGetResponseService,
-} from "@chatbotx.io/business"
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { GetResponseAddContactSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { GetResponseAddContactSchema } from "@salesmanchatbot.io/flow-config"
 import {
   GET_RESPONSE_HTTP_TIMEOUT_MS,
   GetResponseApiError,
   getResponseAuthSchema,
   integration as getResponseIntegration,
-} from "@chatbotx.io/integration-get-response"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-get-response"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 import { getContactFieldMap } from "./contact-field-map"

@@ -3,7 +3,7 @@
 import type {
   BroadcastSubaction,
   ChannelType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { useMemo } from "react"
 import { useFormContext, useWatch } from "react-hook-form"
 import { useInboxList } from "@/features/inboxes/provider/inbox-hook"

@@ -1,8 +1,8 @@
 "use server"
 
-import { assertEnterpriseFeatures, tenantService } from "@chatbotx.io/business"
-import { ROOT_TENANT_ID } from "@chatbotx.io/database/schema"
-import type { UserModel } from "@chatbotx.io/database/types"
+import { assertEnterpriseFeatures, tenantService } from "@salesmanchatbot.io/business"
+import { ROOT_TENANT_ID } from "@salesmanchatbot.io/database/schema"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import {
   platformAdminActionClient,
   superAdminActionClient,

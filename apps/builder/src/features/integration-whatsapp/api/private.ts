@@ -1,9 +1,9 @@
 import {
   listIntegrationWhatsappsResponse,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import { listPhoneNumbers as whatsappListPhoneNumbers } from "@chatbotx.io/integration-whatsapp/api/phone-number"
-import { DEFAULT_API_VERSION } from "@chatbotx.io/integration-whatsapp/constants"
+} from "@salesmanchatbot.io/business"
+import { listPhoneNumbers as whatsappListPhoneNumbers } from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
+import { DEFAULT_API_VERSION } from "@salesmanchatbot.io/integration-whatsapp/constants"
 import z from "zod"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { resolvePlatformOwnerId } from "@/lib/platform-credential-owner"

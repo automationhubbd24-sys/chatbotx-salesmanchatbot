@@ -9,17 +9,17 @@ const mocks = vi.hoisted(() => ({
   logInfo: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   whatsappCallRepository: {
     sweepStaleRinging: mocks.sweepStaleRinging,
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappVoipCallService: { finalizeEndedCall: mocks.finalizeById },
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     info: mocks.logInfo,
     warn: mocks.logWarn,

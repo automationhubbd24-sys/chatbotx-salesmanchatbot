@@ -1,4 +1,4 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import { describe, expect, test, vi } from "vitest"
 import {
   createSourceTimezoneResolver,

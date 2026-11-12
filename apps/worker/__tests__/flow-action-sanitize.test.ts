@@ -1,4 +1,4 @@
-import { encodeButtonPayload } from "@chatbotx.io/flow-config"
+import { encodeButtonPayload } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import {
   type FlowActionContext,

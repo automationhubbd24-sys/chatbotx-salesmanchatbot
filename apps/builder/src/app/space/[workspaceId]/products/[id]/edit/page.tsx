@@ -1,7 +1,7 @@
 import {
   metaCatalogSyncRunService,
   productService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { EditProduct } from "@/features/products/components/edit-product"
 
 export default async function EditProductPage({

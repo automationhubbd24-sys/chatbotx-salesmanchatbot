@@ -1,7 +1,7 @@
 import {
   type BroadcastStatus,
   broadcastStatuses,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 /** Order of the left-panel filters (design). */
 export const BROADCAST_FILTER_STATUSES = [

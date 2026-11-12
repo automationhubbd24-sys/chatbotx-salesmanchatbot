@@ -1,9 +1,9 @@
 import {
   uploader as defaultUploader,
   getStoragePrefix,
-} from "@chatbotx.io/filesystem"
-import { buildBroadcastAuthHeader } from "@chatbotx.io/partysocket-config"
-import type { AuthStore, AuthValue, Context } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/filesystem"
+import { buildBroadcastAuthHeader } from "@salesmanchatbot.io/partysocket-config"
+import type { AuthStore, AuthValue, Context } from "@salesmanchatbot.io/sdk"
 import { resolveRealtimeBroadcastTarget } from "../platform/realtime-broadcast"
 import { resolveTenantSettings } from "../platform/settings"
 import { type AuthStoreIntegrationRow, makeAuthStore } from "./auth-store"

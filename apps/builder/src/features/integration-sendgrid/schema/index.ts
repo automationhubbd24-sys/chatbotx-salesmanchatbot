@@ -1,3 +1,3 @@
-import { sendGridCredentialSchema } from "@chatbotx.io/integration-sendgrid"
+import { sendGridCredentialSchema } from "@salesmanchatbot.io/integration-sendgrid"
 
 export const connectSendGridSchema = sendGridCredentialSchema

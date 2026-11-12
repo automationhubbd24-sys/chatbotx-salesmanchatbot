@@ -1,4 +1,4 @@
-import type { BroadcastModel } from "@chatbotx.io/database/types"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, describe, expect, test, vi } from "vitest"
@@ -38,7 +38,7 @@ vi.mock("@/features/broadcasts/actions/stop-broadcast.action", () => ({
   stopBroadcastAction: { bind },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ open, children }: { open: boolean; children: React.ReactNode }) =>
     open ? <div data-testid="dialog">{children}</div> : null,
   DialogClose: ({ render }: { render: React.ReactElement }) => render,
@@ -59,7 +59,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

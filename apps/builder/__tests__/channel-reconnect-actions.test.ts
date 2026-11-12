@@ -53,7 +53,7 @@ vi.mock("@/lib/safe-action", () => ({
   workspaceActionClient: mockActionChain,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findByIdForWorkspace: mockFindMessengerIntegration,
   },
@@ -83,27 +83,27 @@ vi.mock("@/lib/platform-credential-owner", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   generateAuthUrl: mockGenerateMessengerAuthUrl,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   generateAuthUrl: mockGenerateInstagramAuthUrl,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   generateAuthUrl: mockGenerateInstagramFacebookAuthUrl,
 }))
 
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   generateAuthUrl: mockGenerateZaloAuthUrl,
 }))
 
-vi.mock("@chatbotx.io/integration-threads", () => ({
+vi.mock("@salesmanchatbot.io/integration-threads", () => ({
   generateAuthUrl: mockGenerateThreadsAuthUrl,
 }))
 

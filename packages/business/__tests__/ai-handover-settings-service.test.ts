@@ -1,4 +1,4 @@
-import type { AiHandoverSettingsModel } from "@chatbotx.io/database/types"
+import type { AiHandoverSettingsModel } from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   withCache: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   aiHandoverSettingsRepository: {
     findByInbox: mocks.findByInbox,
     upsert: mocks.upsert,
@@ -26,7 +26,7 @@ vi.mock("../src/inbox/service", () => ({
 vi.mock("../src/workspace/service", () => ({
   workspaceService: { find: mocks.findWorkspace },
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mocks.invalidateCacheByTags,
   withCache: mocks.withCache,
 }))

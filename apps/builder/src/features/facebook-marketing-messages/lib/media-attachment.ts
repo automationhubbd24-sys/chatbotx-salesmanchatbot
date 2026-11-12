@@ -1,8 +1,8 @@
 import "server-only"
 
-import { messengerIntegrationService } from "@chatbotx.io/business"
-import { uploadAttachment } from "@chatbotx.io/integration-messenger/apis/attachment"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
+import { messengerIntegrationService } from "@salesmanchatbot.io/business"
+import { uploadAttachment } from "@salesmanchatbot.io/integration-messenger/apis/attachment"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
 import type { MmContent } from "../schema/content"
 
 /**

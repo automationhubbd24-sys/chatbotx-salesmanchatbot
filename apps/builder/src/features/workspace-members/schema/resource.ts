@@ -1,8 +1,8 @@
-import { workspaceMemberPermissionsSchema } from "@chatbotx.io/database/partials"
+import { workspaceMemberPermissionsSchema } from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   workspaceMemberModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const workspaceMemberResource = createSelectSchema(

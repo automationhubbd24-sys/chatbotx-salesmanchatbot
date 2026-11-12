@@ -21,7 +21,7 @@ vi.mock("next/navigation", () => ({
   redirect: mockRedirect,
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   getInstagramAccount: mockGetInstagramAccount,
 }))
 

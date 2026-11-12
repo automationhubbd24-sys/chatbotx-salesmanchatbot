@@ -1,6 +1,6 @@
-import { contactInboxService } from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { shouldAddressBySourceUserId } from "@chatbotx.io/sdk"
+import { contactInboxService } from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { shouldAddressBySourceUserId } from "@salesmanchatbot.io/sdk"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 
 const digitsOf = (phoneNumber: string): string => phoneNumber.replace(/\D/g, "")

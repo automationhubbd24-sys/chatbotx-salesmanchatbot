@@ -1020,7 +1020,13 @@
       "anyConditions": "أي من الشروط التالية.",
       "label": "تصفية جهات الاتصال",
       "onlyContactsMatch": "جهات الاتصال المطابقة فقط",
-      "moreOptions": "خيارات إضافية"
+      "moreOptions": "خيارات إضافية",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "ملاحظة جهة الاتصال"
@@ -1494,7 +1500,9 @@
         "documentReader": "قارئ المستندات",
         "imageReader": "قارئ الصور",
         "urlContext": "قارئ الرابط",
-        "webSearch": "بحث الويب"
+        "webSearch": "بحث الويب",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2731,7 +2739,7 @@
     "title": "عام"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "يؤدي هذا إلى إزالة الحملة من ChatbotX فقط. تستمر حملة رسائل ميتا في العمل — أوقفها مؤقتًا أو احذفها من مدير الإعلانات.",
+    "deleteWarning": "يؤدي هذا إلى إزالة الحملة من salesmanChatbot فقط. تستمر حملة رسائل ميتا في العمل — أوقفها مؤقتًا أو احذفها من مدير الإعلانات.",
     "title": "الرسائل التسويقية على فيسبوك",
     "description": "عزّز التفاعل والمبيعات برسائل ترويجية مخصصة على ماسنجر.",
     "create": "إنشاء جديد",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "تم قطع اتصال {feature} بنجاح",
     "reply": "رد",
     "privateReply": "رد خاص",
+    "replyingTo": "الرد على",
+    "replyPreview": "{sender} رد على {recipient}",
+    "you": "أنت",
     "viewMessage": "عرض الرسالة",
     "changeLikeState": "تغيير حالة الإعجاب",
     "changeHideState": "تغيير حالة الإخفاء",
@@ -3568,8 +3579,8 @@
   },
   "coexist": {
     "title": "هل تريد مزامنة جهات الاتصال وسجل الدردشة الحاليين؟",
-    "descriptionWhatsapp": "عند التفعيل، سيستورد ChatbotX جهات الاتصال وما يصل إلى 6 أشهر من سجل الدردشة من رقم WhatsApp هذا.",
-    "descriptionMessenger": "عند التفعيل، سيستورد ChatbotX جهات اتصال Messenger الحالية وما يصل إلى 3 أشهر من سجل المحادثات من هذه الصفحة.",
+    "descriptionWhatsapp": "عند التفعيل، سيستورد salesmanChatbot جهات الاتصال وما يصل إلى 6 أشهر من سجل الدردشة من رقم WhatsApp هذا.",
+    "descriptionMessenger": "عند التفعيل، سيستورد salesmanChatbot جهات اتصال Messenger الحالية وما يصل إلى 3 أشهر من سجل المحادثات من هذه الصفحة.",
     "descriptionInstagram": "When enabled, existing Instagram contacts and up to 3 months of conversation history will be imported from this Instagram account.",
     "enable": "تفعيل المزامنة",
     "decline": "عدم المزامنة",
@@ -3730,6 +3741,10 @@
       "description": "السماح باستخدام هذا المزوّد للردود التلقائية بالذكاء الاصطناعي.",
       "label": "الرد التلقائي بالذكاء الاصطناعي"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "ربط مزوّدين متوافقين مع OpenAI لاستخدامهم كنماذج احتياطية لوكيل الذكاء الاصطناعي.",
       "label": "مزوّدو الخدمات المتوافقون مع OpenAI"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "عنوان URL الأساسي",
       "defaultModel": "النموذج الافتراضي",
+      "embeddingModel": "نموذج التضمين",
       "enabled": "مفعّل"
     },
     "provider": "مزوّد الذكاء الاصطناعي",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "عنوان URL الأساسي غير صالح أو غير مسموح به.",
       "presetAlreadyConnected": "هذا الإعداد المسبق مرتبط بالفعل بمساحة العمل هذه."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "أهلية المكالمات",
         "appSubscriptionMissing": "قم بتكوين webhook الخاص بـ WhatsApp لهذا التطبيق في لوحة تحكم تطبيق Meta أولاً، ثم حاول مرة أخرى.",
         "appSubscriptionFailed": "تعذّر التحقق من اشتراك التطبيق في webhook الخاص بـ 'calls'. حاول مرة أخرى بعد قليل.",
-        "callsNotSubscribed": "هذا التطبيق غير مشترك في حقل webhook الخاص بـ 'calls'، لذا لا يمكن لأحداث المكالمات الوصول إلى ChatbotX (خطأ Meta 138018: المتطلبات التقنية غير مستوفاة — تأكد من أن تطبيقًا واحدًا على الأقل مشتركًا في WABA يحتوي أيضًا على حقل webhook الخاص بالمكالمات).",
+        "callsNotSubscribed": "هذا التطبيق غير مشترك في حقل webhook الخاص بـ 'calls'، لذا لا يمكن لأحداث المكالمات الوصول إلى salesmanChatbot (خطأ Meta 138018: المتطلبات التقنية غير مستوفاة — تأكد من أن تطبيقًا واحدًا على الأقل مشتركًا في WABA يحتوي أيضًا على حقل webhook الخاص بالمكالمات).",
         "fixButton": "إصلاح",
         "fixSuccess": "التطبيق مشترك الآن في webhooks مكالمات WhatsApp.",
         "manualIntegrationNotice": "تم توصيل هذا الرقم يدويًا وليس لديه بيانات اعتماد تطبيق هنا. اشترك في حقل webhook الخاص بـ 'calls' لتطبيقك في لوحة تحكم تطبيق Meta.",
@@ -4582,8 +4615,8 @@
     "unknownContact": "جهة اتصال غير معروفة"
   },
   "developerAccessToken": {
-    "title": "رمز الوصول إلى ChatbotX API",
-    "description": "أنشئ رمزًا للسماح لمساحة عملك بالوصول إلى واجهات ChatbotX API. احتفظ بسرية هذا الرمز ولا تشاركه مع أي شخص.",
+    "title": "رمز الوصول إلى salesmanChatbot API",
+    "description": "أنشئ رمزًا للسماح لمساحة عملك بالوصول إلى واجهات salesmanChatbot API. احتفظ بسرية هذا الرمز ولا تشاركه مع أي شخص.",
     "createDialogTitle": "إنشاء رمز API",
     "namePlaceholder": "مثال: تكامل Zapier",
     "empty": "لا توجد رموز API حتى الآن.",
@@ -5304,7 +5337,109 @@
     "unknown": "غير معروف"
   },
   "orders": {
-    "title": "الطلبات"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "المنتجات",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "مصدر الإجراء",

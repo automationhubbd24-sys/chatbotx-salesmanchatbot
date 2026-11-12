@@ -1,4 +1,4 @@
-import type { ListIntegrationWhatsappResponse } from "@chatbotx.io/business"
+import type { ListIntegrationWhatsappResponse } from "@salesmanchatbot.io/business"
 import { createStore } from "zustand/vanilla"
 import { getClientErrorMessage } from "@/lib/orpc/client-error"
 import { client } from "@/lib/orpc/orpc"

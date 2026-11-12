@@ -1,7 +1,7 @@
 "use server"
 
-import { aiFileService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { aiFileService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { getTranslations } from "next-intl/server"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -17,11 +17,11 @@ export const createAIFileAction = workspaceActionClient
       await aiFileService.create(workspaceId, parsedInput)
     } catch (error) {
       if (
-        error instanceof ChatbotXException &&
+        error instanceof salesmanChatbotException &&
         error.code === "noEmbeddingProvider"
       ) {
         const t = await getTranslations("aiFiles")
-        throw new ChatbotXException(t("noEmbeddingProvider"))
+        throw new salesmanChatbotException(t("noEmbeddingProvider"))
       }
       throw error
     }

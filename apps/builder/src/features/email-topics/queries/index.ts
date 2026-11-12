@@ -1,4 +1,4 @@
-import { emailTopicService } from "@chatbotx.io/business"
+import { emailTopicService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListEmailTopicsRequest } from "../schema/query"
 

@@ -1,9 +1,9 @@
 import z from "zod"
 
 /**
- * `customFieldTypes` is defined in `@chatbotx.io/utils/custom-field` so
+ * `customFieldTypes` is defined in `@salesmanchatbot.io/utils/custom-field` so
  * packages that cannot depend on the database layer (notably
- * `@chatbotx.io/flow-config`) can still use the enum. Re-exported here
+ * `@salesmanchatbot.io/flow-config`) can still use the enum. Re-exported here
  * because this has long been the import site for the rest of the repo; both
  * paths resolve to the same enum. Mirrors the `channelTypes` precedent.
  */
@@ -12,7 +12,7 @@ export {
   customFieldTypes,
   type OperatorType,
   operatorTypes,
-} from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/utils/custom-field"
 
 export const formFieldTypes = z.enum([
   "multiSelect",

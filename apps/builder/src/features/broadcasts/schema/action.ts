@@ -12,14 +12,14 @@ import {
   isTargetsFlowSendWithoutFlow,
   isTargetsTemplateSendWithoutTemplate,
   isTemplateSendWithoutPage,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   messengerTemplateParamsSchema,
   validateWaTemplateSendParams,
   type WaTemplateParams,
   waTemplateParamsSchema,
-} from "@chatbotx.io/flow-config"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { startOfMinute } from "date-fns"
 import { z } from "zod"
 import { contactFilterRequest } from "@/features/contact-filter/schema"

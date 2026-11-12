@@ -50,7 +50,7 @@ const resolveContactId = vi.fn()
 
 const listContactInboxesForAPI = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { resolveIdByIdentifier: resolveContactId },
   contactInboxService: { listByContactIdUncached: listContactInboxesForAPI },
 }))

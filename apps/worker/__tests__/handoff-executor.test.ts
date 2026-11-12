@@ -19,16 +19,16 @@ const { cancelSpy, emitSpy, returningSpy, setSpy, transferredSpy, warnSpy } =
     }
   })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   BOT_DISABLE_DURATION_MS: 24 * 60 * 60 * 1000,
   sqlDropQuickReplyChallenge: () => ({ __dropQuickReplyChallenge: true }),
 }))
 
-vi.mock("@chatbotx.io/business/smart-delay", () => ({
+vi.mock("@salesmanchatbot.io/business/smart-delay", () => ({
   smartDelayService: { cancelQuickReplyFollowUps: cancelSpy },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: (...args: unknown[]) => ({ __and: args }),
   db: {
     update: vi.fn(() => ({ set: setSpy })),
@@ -36,7 +36,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   eq: (column: unknown, value: unknown) => ({ __eq: [column, value] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   conversationModel: {
     botEnabled: { __column: "botEnabled" },
     botResumeAt: { __column: "botResumeAt" },
@@ -44,15 +44,15 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: emitSpy,
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitConversationTransferredToHuman: transferredSpy,
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   default: {
     error: vi.fn(),
     warn: warnSpy,

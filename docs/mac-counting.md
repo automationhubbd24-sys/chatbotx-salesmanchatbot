@@ -276,12 +276,12 @@ contact-creation time (Path A) is what makes the subsequent `message:received` e
 ## Dependencies
 
 - **External:** PostgreSQL (native `RANGE` partitioning), Redis (Bloom filter via
-  `@chatbotx.io/redis` `bloomFilter`, distributed cache/lock, live counters), BullMQ
+  `@salesmanchatbot.io/redis` `bloomFilter`, distributed cache/lock, live counters), BullMQ
   (scheduled jobs), `date-fns-tz` (timezone-aware hour truncation).
-- **Internal:** `@chatbotx.io/database/client|schema|partials`, `@chatbotx.io/redis`
+- **Internal:** `@salesmanchatbot.io/database/client|schema|partials`, `@salesmanchatbot.io/redis`
   (`distributedStore`, `bloomFilter`, `cacheConnections`, `distributedLock`),
-  `@chatbotx.io/business` (`userQuotaService`, `quotaEnforcementService`,
-  `tenantService`), `@chatbotx.io/event-bus` (`emit`), `@chatbotx.io/flow-config`
+  `@salesmanchatbot.io/business` (`userQuotaService`, `quotaEnforcementService`,
+  `tenantService`), `@salesmanchatbot.io/event-bus` (`emit`), `@salesmanchatbot.io/flow-config`
   (`messageEventTypeSchema`).
 
 ## Things worth flagging

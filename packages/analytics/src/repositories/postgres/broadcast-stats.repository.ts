@@ -9,11 +9,11 @@ import {
   notInArray,
   or,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   broadcastModel,
   contactsOnBroadcastsModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   BroadcastBulkUpdateItem,
   BroadcastEventType,

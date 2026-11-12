@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationMailerLiteService } from "@chatbotx.io/business"
+import { integrationMailerLiteService } from "@salesmanchatbot.io/business"
 import {
   MailerLiteApiError,
   integration as mailerLiteIntegration,
-} from "@chatbotx.io/integration-mailer-lite"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-mailer-lite"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

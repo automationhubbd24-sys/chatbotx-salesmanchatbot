@@ -1,6 +1,6 @@
 // biome-ignore-all lint/suspicious/noBitwiseOperators: bit-packing assertions
 // biome-ignore-all lint/performance/useTopLevelRegex: scoped error-message matchers
-import { createId, resolveId } from "@chatbotx.io/utils"
+import { createId, resolveId } from "@salesmanchatbot.io/utils"
 import { describe, expect, it } from "vitest"
 import {
   createHistoricalIdFactory,

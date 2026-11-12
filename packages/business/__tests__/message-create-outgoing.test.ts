@@ -9,28 +9,28 @@ const mockChatQueueAdd = vi.fn()
 const mockResolveTenantSettings = vi.fn()
 const mockBroadcastToWorkspaceParty = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
   mediaLibraryFileRepository: { findByPath: vi.fn(), findById: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   guessFileTypeFromMimeType: vi.fn(() => "image"),
   pathJoin: (...parts: string[]) => parts.join("/"),
   uploader: { copyObject: vi.fn(), getPresignedDownload: vi.fn() },
   uploadMultipleFiles: vi.fn(async () => []),
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: () => "generated-id" }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: {
     broadcastEvent: "broadcastEvent",
     sendChannelMessage: "sendChannelMessage",
@@ -98,6 +98,7 @@ describe("messageService.createOutgoing", () => {
     mockCreateMessageRepository.mockResolvedValue({
       create: mockRepositoryCreate,
       createWithAttachments: vi.fn(),
+      findById: vi.fn().mockResolvedValue({ id: "parent-1", type: "comment" }),
     })
     mockChatQueueAdd.mockResolvedValue(undefined)
     mockBroadcastToWorkspaceParty.mockResolvedValue(undefined)
@@ -155,6 +156,29 @@ describe("messageService.createOutgoing", () => {
         eventType: "messageCreated",
         data: expect.objectContaining({ clientId: "client-1", id: "msg-1" }),
       }),
+    )
+  })
+
+  test("keeps normal reply rows as messages after validating a normal parent", async () => {
+    mockCreateMessageRepository.mockResolvedValue({
+      create: mockRepositoryCreate,
+      createWithAttachments: vi.fn(),
+      findById: vi.fn().mockResolvedValue({ id: "parent-1", type: "message" }),
+    })
+
+    await createOutgoing({
+      conversation: conversation as never,
+      contactInbox: { ...contactInbox, channel: "messenger" } as never,
+      input: {
+        text: "hello",
+        replyToMessageId: "parent-1",
+        replyToMessageCreatedAt: new Date("2026-08-12T00:00:00Z"),
+      },
+      user: { id: "user-1" } as never,
+    })
+
+    expect(mockRepositoryCreate).toHaveBeenCalledWith(
+      expect.objectContaining({ parentId: "parent-1", type: "message" }),
     )
   })
 

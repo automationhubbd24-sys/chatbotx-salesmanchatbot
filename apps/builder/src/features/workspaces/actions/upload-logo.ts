@@ -1,19 +1,19 @@
-import { auditService } from "@chatbotx.io/business/audit"
+import { auditService } from "@salesmanchatbot.io/business/audit"
 import {
   and,
   type DatabaseClient,
   db,
   eq,
   isNull,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   workspaceMemberModel,
   workspaceModel,
-} from "@chatbotx.io/database/schema"
-import { uploadFileFromUrl } from "@chatbotx.io/filesystem"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import type { AuthValue, Context } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { uploadFileFromUrl } from "@salesmanchatbot.io/filesystem"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import type { AuthValue, Context } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 
 type ProfilePicProvider<A extends AuthValue> = {
   runChannelHandler(

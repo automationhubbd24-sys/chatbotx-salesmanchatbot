@@ -4,7 +4,7 @@ import {
   type IntegrationDefinition,
   probeVerify,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { exchangeLongLivedToken } from "./api/auth"
 import { getCallingSettings, updateCallingSettings } from "./api/calling"
 import { getFlowAssets } from "./api/flow"

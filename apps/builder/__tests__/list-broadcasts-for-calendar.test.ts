@@ -6,7 +6,7 @@ const { mockListForCalendar, mockAssertAccess } = vi.hoisted(() => ({
   mockAssertAccess: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastService: { listForCalendar: mockListForCalendar },
 }))
 

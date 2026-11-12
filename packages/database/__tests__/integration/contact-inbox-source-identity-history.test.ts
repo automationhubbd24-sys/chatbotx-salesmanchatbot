@@ -6,7 +6,7 @@
  * must append the identity values Postgres sees after the first commit.
  *
  * Skipped unless `DATABASE_URL` points at a reachable database; run it with
- * `pnpm --filter @chatbotx.io/database test:db` after applying migrations.
+ * `pnpm --filter @salesmanchatbot.io/database test:db` after applying migrations.
  */
 
 import { eq } from "drizzle-orm"

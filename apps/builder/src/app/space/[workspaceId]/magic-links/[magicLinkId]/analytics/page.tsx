@@ -1,5 +1,5 @@
-import { magicLinkService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { magicLinkService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { notFound, redirect } from "next/navigation"
 import { z } from "zod"
 import { getCurrentUserAndTargetWorkspace } from "@/lib/auth/utils"

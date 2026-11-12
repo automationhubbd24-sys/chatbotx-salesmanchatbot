@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   findActiveById: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     updateHandoverResumeFlow: mocks.updateHandoverResumeFlow,
   },

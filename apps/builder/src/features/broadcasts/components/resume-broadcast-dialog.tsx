@@ -3,10 +3,10 @@
 import {
   BROADCAST_DEFAULT_SEND_RATE_PER_MINUTE,
   BROADCAST_MAX_SEND_RATE_PER_MINUTE,
-} from "@chatbotx.io/database/partials"
-import type { BroadcastModel } from "@chatbotx.io/database/types"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -15,8 +15,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

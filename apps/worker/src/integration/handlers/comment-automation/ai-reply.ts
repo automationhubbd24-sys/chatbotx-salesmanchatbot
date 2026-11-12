@@ -1,13 +1,13 @@
-import { commentAutomationAnalyticsService } from "@chatbotx.io/analytics"
+import { commentAutomationAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   aiAgentService,
   contactInboxService,
   conversationService,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
-import type { AIJobCommentAIReply } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/business"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
+import type { AIJobCommentAIReply } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { integrationService } from "../../../services/integrations"
 import { IntegrationNotFoundError } from "../../../services/orphaned-integration-cleanup"

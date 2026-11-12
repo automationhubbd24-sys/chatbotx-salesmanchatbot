@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationKlaviyoService } from "@chatbotx.io/business"
+import { integrationKlaviyoService } from "@salesmanchatbot.io/business"
 import {
   KlaviyoApiError,
   integration as klaviyoIntegration,
-} from "@chatbotx.io/integration-klaviyo"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-klaviyo"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

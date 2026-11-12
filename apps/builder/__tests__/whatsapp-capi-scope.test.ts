@@ -4,7 +4,7 @@ const { debugTokenOrThrowMock } = vi.hoisted(() => ({
   debugTokenOrThrowMock: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp/api/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/auth", () => ({
   debugTokenOrThrow: debugTokenOrThrowMock,
 }))
 

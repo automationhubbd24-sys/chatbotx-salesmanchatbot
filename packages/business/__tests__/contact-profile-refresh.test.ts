@@ -17,7 +17,7 @@ vi.mock("../src/logger", () => ({
 
 const existsMock = vi.fn(async () => false)
 const setNumberMock = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedStore: { exists: existsMock, setNumber: setNumberMock },
 }))
 
@@ -45,7 +45,7 @@ vi.mock("../src/error-log/service", () => ({
 }))
 
 const deleteObjectMock = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { deleteObject: deleteObjectMock },
 }))
 
@@ -66,7 +66,7 @@ const {
   startContactProfileRefreshCooldown,
 } = await import("../src/contact/profile-refresh")
 
-const { channelTypes } = await import("@chatbotx.io/database/partials")
+const { channelTypes } = await import("@salesmanchatbot.io/database/partials")
 
 const NAMELESS_CONTACT = { firstName: null, lastName: null }
 const CONTACT_INBOX = {

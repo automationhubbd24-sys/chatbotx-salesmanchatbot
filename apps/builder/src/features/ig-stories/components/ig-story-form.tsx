@@ -1,24 +1,24 @@
 "use client"
 
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
-import { TagsInputField } from "@chatbotx.io/ui/components/ui/muhammada86/tags-input-field"
+} from "@salesmanchatbot.io/ui/components/ui/form"
+import { TagsInputField } from "@salesmanchatbot.io/ui/components/ui/muhammada86/tags-input-field"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import type { UseFormReturn } from "react-hook-form"

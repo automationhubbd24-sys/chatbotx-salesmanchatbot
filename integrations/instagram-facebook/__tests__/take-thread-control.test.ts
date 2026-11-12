@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test, vi } from "vitest"
 import { takeThreadControl } from "../src/apis/page"
 import { API_URL, DEFAULT_API_VERSION } from "../src/constants"

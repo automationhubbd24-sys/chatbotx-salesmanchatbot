@@ -14,7 +14,7 @@ vi.mock("@/lib/auth/utils", () => ({
   getCurrentUser: mocks.getCurrentUser,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isSuperAdmin: mocks.isSuperAdmin,
   workspaceSupportAccessService: { listWorkspaces: mocks.listWorkspaces },
 }))

@@ -2,13 +2,13 @@ import { createHash } from "node:crypto"
 import {
   appointmentExternalCalendarService,
   buildContext,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   type GoogleCalendarAuthValue,
   type GoogleCalendarEventAttendee,
   googleCalendarAuthSchema,
   integration as integrationGoogleCalendar,
-} from "@chatbotx.io/integration-google-calendar"
+} from "@salesmanchatbot.io/integration-google-calendar"
 
 export const createDeterministicGoogleEventId = (appointmentId: string) =>
   `abe${createHash("sha256").update(appointmentId).digest("hex")}`

@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { threadControlStepDefaultFn } from "@chatbotx.io/flow-config"
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { threadControlStepDefaultFn } from "@salesmanchatbot.io/flow-config"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -9,11 +9,11 @@ const mocks = vi.hoisted(() => ({
   loggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   requestThreadControlAction: mocks.requestThreadControlAction,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {},
   contactService: {},
   conversationService: {},
@@ -21,9 +21,9 @@ vi.mock("@chatbotx.io/business", () => ({
   workspaceMemberService: {},
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({ gte: vi.fn() }))
+vi.mock("@salesmanchatbot.io/database/client", () => ({ gte: vi.fn() }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({ conversationModel: {} }))
+vi.mock("@salesmanchatbot.io/database/schema", () => ({ conversationModel: {} }))
 
 vi.mock("../src/chat/handlers/send-message", () => ({
   resolveWhatsappMessageSourceId: vi.fn(),
@@ -90,7 +90,7 @@ describe("stepThreadControl", () => {
 
   test("an unsupported channel follows the error path", async () => {
     mocks.requestThreadControlAction.mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "Conversation routing is not supported on the messenger channel",
         "threadControlUnsupported",
         400,

@@ -27,7 +27,7 @@ vi.mock("@/features/common/schema", () => ({
   workspaceIdrequestParams: [],
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationOpenaiCompatibleService: {
     connect: mocks.connect,
     findByWorkspaceIdAndId: mocks.findByWorkspaceIdAndId,
@@ -37,14 +37,14 @@ vi.mock("@chatbotx.io/business", () => ({
   validateOpenaiCompatibleBaseUrlForEnvironment: mocks.validateBaseUrl,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code = "systemError"
     httpStatusCode = 400
 
     constructor(message: string, code?: string, httpStatusCode?: number) {
       super(message)
-      this.name = "ChatbotXException"
+      this.name = "salesmanChatbotException"
       if (code) {
         this.code = code
       }
@@ -67,7 +67,7 @@ vi.mock("@/features/integration-openai-compatible/lib", () => ({
   verifyOpenaiCompatibleProvider: mocks.verifyProvider,
 }))
 
-const { ChatbotXException } = await import("@chatbotx.io/business/errors")
+const { salesmanChatbotException } = await import("@salesmanchatbot.io/business/errors")
 const { connectOpenaiCompatibleAction } = await import(
   "@/features/integration-openai-compatible/actions/connect.action"
 )
@@ -104,7 +104,7 @@ describe("OpenAI-compatible actions", () => {
 
   test("connect maps unsafe base URL errors before provider verification", async () => {
     mocks.validateBaseUrl.mockRejectedValue(
-      new ChatbotXException("blocked", "ssrfBlocked", 400),
+      new salesmanChatbotException("blocked", "ssrfBlocked", 400),
     )
 
     const result = await (
@@ -130,7 +130,7 @@ describe("OpenAI-compatible actions", () => {
 
   test("update validates existing base URL before verifying an API key change", async () => {
     mocks.validateBaseUrl.mockRejectedValue(
-      new ChatbotXException("blocked", "ssrfBlocked", 400),
+      new salesmanChatbotException("blocked", "ssrfBlocked", 400),
     )
 
     const result = await (

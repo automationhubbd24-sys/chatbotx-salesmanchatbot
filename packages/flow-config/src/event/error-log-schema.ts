@@ -1,4 +1,4 @@
-import { errorLogProviders } from "@chatbotx.io/utils/error-log"
+import { errorLogProviders } from "@salesmanchatbot.io/utils/error-log"
 import { z } from "zod"
 import type { InferEventMap } from "./type"
 
@@ -42,7 +42,7 @@ export const errorLogRecordedPayloadSchema = z.object({
   error: z.object({
     /**
      * The provider's message only — never a stack, which travels separately in
-     * `stackTrace` below. See `logProviderError` in `@chatbotx.io/business`.
+     * `stackTrace` below. See `logProviderError` in `@salesmanchatbot.io/business`.
      */
     message: z.string(),
     /**
@@ -53,7 +53,7 @@ export const errorLogRecordedPayloadSchema = z.object({
     /**
      * Frame lines of the thrown value's stack, message prefix stripped and
      * capped at 2048 chars. Absent when no real stack existed — see
-     * `resolveStackFrames` in `@chatbotx.io/utils/error-log`, which the
+     * `resolveStackFrames` in `@salesmanchatbot.io/utils/error-log`, which the
      * producer applies to the thrown value unless the caller already captured
      * the frames itself (`LogProviderErrorInput.stackTrace`).
      *

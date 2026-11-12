@@ -1,9 +1,9 @@
-import { tiktokIntegrationService } from "@chatbotx.io/business"
-import type { IntegrationTiktokModel } from "@chatbotx.io/database/types"
+import { tiktokIntegrationService } from "@salesmanchatbot.io/business"
+import type { IntegrationTiktokModel } from "@salesmanchatbot.io/database/types"
 import {
   type TiktokAuthValue,
   tiktokNeedsReauthorization,
-} from "@chatbotx.io/integration-tiktok"
+} from "@salesmanchatbot.io/integration-tiktok"
 import type { IntegrationTiktokResource } from "../schema/resource"
 
 /**

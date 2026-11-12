@@ -1,6 +1,6 @@
-import { buildContext, integrationDripService } from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import { dripAuthSchema } from "@chatbotx.io/integration-drip"
+import { buildContext, integrationDripService } from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import { dripAuthSchema } from "@salesmanchatbot.io/integration-drip"
 
 const getDripAuth = async (workspaceId: string) => {
   const row = await integrationDripService.findByWorkspaceIdOrFail(workspaceId)

@@ -1,4 +1,4 @@
-import { jsonResponse } from "@chatbotx.io/vitest-config/test-utils"
+import { jsonResponse } from "@salesmanchatbot.io/vitest-config/test-utils"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import { integration } from "../src/integration"
 

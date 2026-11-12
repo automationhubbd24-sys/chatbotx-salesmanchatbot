@@ -1,8 +1,8 @@
 "use client"
 
-import type { SendWaTemplateMessageStepSchema } from "@chatbotx.io/flow-config"
-import { splitWaTemplateStepButtons } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { SendWaTemplateMessageStepSchema } from "@salesmanchatbot.io/flow-config"
+import { splitWaTemplateStepButtons } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { MessageSquareIcon } from "lucide-react"
 import { StateHandle } from "../base/step-state-handles"
 import { ButtonStepViewer } from "../button/viewer"

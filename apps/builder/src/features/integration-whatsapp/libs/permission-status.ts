@@ -1,4 +1,4 @@
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
 
 export type PermissionStatus = "ready" | "missingPermission" | "unverified"
 

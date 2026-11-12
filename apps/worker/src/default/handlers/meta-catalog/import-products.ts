@@ -2,16 +2,16 @@ import {
   integrationMetaCatalogService,
   metaCatalogImportService,
   metaCatalogSyncRunService,
-} from "@chatbotx.io/business"
-import { logProviderError } from "@chatbotx.io/business/error-log"
+} from "@salesmanchatbot.io/business"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import {
   getCatalogProductsPage,
   isInvalidMetaTokenError,
   MAX_META_CATALOG_PRODUCT_PAGES,
   type MetaCatalogProductPage,
   toImportedMetaProduct,
-} from "@chatbotx.io/integration-meta-catalog"
-import type { JobImportMetaCatalogProducts } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/integration-meta-catalog"
+import type { JobImportMetaCatalogProducts } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { safeMetaCatalogErrorLog } from "./safe-error-log"
 

@@ -1,5 +1,5 @@
-import type { ReflinkModel } from "@chatbotx.io/database/types"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
+import type { ReflinkModel } from "@salesmanchatbot.io/database/types"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
 import {
   createSearchParamsCache,
   parseAsInteger,

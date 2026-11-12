@@ -5,7 +5,7 @@ export {
   type ConnectSessionNextAction,
   connectionConfigFieldSchema,
   connectSessionNextActionSchema,
-} from "@chatbotx.io/utils/connection"
+} from "@salesmanchatbot.io/utils/connection"
 
 /** One selectable target surfaced during `awaiting_selection` — no tokens. */
 export const connectSessionTargetSchema = z.object({

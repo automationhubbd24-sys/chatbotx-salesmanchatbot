@@ -1,6 +1,6 @@
 "use client"
 
-import type { ConnectSessionErrorCode } from "@chatbotx.io/business/inbox/connect-outcome-types"
+import type { ConnectSessionErrorCode } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import { useTranslations } from "next-intl"
 import { useCallback, useRef, useState } from "react"
 import type { ConnectTarget } from "../lib/picker-items"

@@ -3,8 +3,8 @@
 import {
   type TriggerN8nStepSchema,
   triggerN8nStepSchema,
-} from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -14,9 +14,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { TagsInputField } from "@chatbotx.io/ui/components/ui/muhammada86/tags-input-field"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { TagsInputField } from "@salesmanchatbot.io/ui/components/ui/muhammada86/tags-input-field"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { WebhookIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

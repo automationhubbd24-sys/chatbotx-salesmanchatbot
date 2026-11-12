@@ -67,7 +67,7 @@ const questionnaireSubmissionService = {
   dashboard: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   questionnaireService,
   questionnaireSubmissionService,
 }))

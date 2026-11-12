@@ -4,12 +4,12 @@ import {
   revokeWorkspaceMemberConnections,
   workspaceMemberCacheTag,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { findOrFail } from "@chatbotx.io/database/client"
-import { workspaceMemberModel } from "@chatbotx.io/database/schema"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { workspaceMemberModel } from "@salesmanchatbot.io/database/schema"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { hasWorkspacePermission } from "@/lib/auth/permission-routes"
 import { getCurrentUserAndTargetWorkspace } from "@/lib/auth/utils"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
@@ -28,7 +28,7 @@ export const deleteWorkspaceMemberAction = workspaceActionClientAllowExpired
     })
 
     if (workspaceMember.role === "owner") {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You cannot delete the owner of the workspace",
       )
     }
@@ -36,7 +36,7 @@ export const deleteWorkspaceMemberAction = workspaceActionClientAllowExpired
     const currentUserAndTargetChatbot =
       await getCurrentUserAndTargetWorkspace(workspaceId)
     if (!currentUserAndTargetChatbot) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to delete this workspace member",
       )
     }
@@ -44,7 +44,7 @@ export const deleteWorkspaceMemberAction = workspaceActionClientAllowExpired
     const permissions =
       currentUserAndTargetChatbot.targetWorkspaceMember.permissions
     if (!hasWorkspacePermission(permissions, "superAdmin")) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "You are not authorized to delete this workspace member. You need to be a super admin to do this.",
       )
     }

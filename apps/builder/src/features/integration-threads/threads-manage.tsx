@@ -1,6 +1,6 @@
 "use client"
 
-import type { ThreadsCredentialPublic } from "@chatbotx.io/database/partials"
+import type { ThreadsCredentialPublic } from "@salesmanchatbot.io/database/partials"
 import {
   Table,
   TableBody,
@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import { useTranslations } from "next-intl"
 import { use } from "react"
 import { TokenRefreshErrorIcon } from "@/components/token-refresh-error-icon"

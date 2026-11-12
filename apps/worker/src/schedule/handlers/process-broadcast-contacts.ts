@@ -2,7 +2,7 @@ import {
   type BroadcastForSend,
   type BroadcastRecipientForSend,
   broadcastService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   broadcastSendsFlow,
   broadcastSendsTemplate,
@@ -12,24 +12,24 @@ import {
   resolveBroadcastSendRatePerMinute,
   resolveBroadcastTemplateSend,
   usesBroadcastTargets,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   BROADCAST_PAYLOAD_TYPE,
   type MessengerTemplateParams,
   type WaTemplateParams,
-} from "@chatbotx.io/flow-config"
-import { mapWithConcurrency } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { mapWithConcurrency } from "@salesmanchatbot.io/utils"
 import {
   BROADCAST_SEND_PRIORITY,
   ChatJobAction,
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { isBlockedWorkspace } from "../../lib/is-blocked-workspace"
 import { logger } from "../../lib/logger"
 

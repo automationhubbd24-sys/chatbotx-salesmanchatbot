@@ -1,4 +1,4 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 
 export const tagApplied = z.object({

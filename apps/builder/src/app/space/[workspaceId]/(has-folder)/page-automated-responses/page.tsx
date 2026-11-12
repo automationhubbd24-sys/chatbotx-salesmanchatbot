@@ -1,5 +1,5 @@
-import { rootFolderId } from "@chatbotx.io/database/partials"
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { rootFolderId } from "@salesmanchatbot.io/database/partials"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"
 import { Suspense } from "react"

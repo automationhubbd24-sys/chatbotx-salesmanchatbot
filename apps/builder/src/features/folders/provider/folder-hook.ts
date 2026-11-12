@@ -1,5 +1,5 @@
-import { rootFolderId } from "@chatbotx.io/database/partials"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import { rootFolderId } from "@salesmanchatbot.io/database/partials"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useMemo } from "react"
 import { useFolderStore } from "./folder-store-context"
 

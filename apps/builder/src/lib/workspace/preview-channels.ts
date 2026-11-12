@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import { cache } from "react"
 import { getCurrentUser } from "@/lib/auth/utils"
 

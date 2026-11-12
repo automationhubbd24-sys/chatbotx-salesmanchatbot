@@ -1,7 +1,7 @@
 import type {
   ConnectionConfigField,
   ConnectionKind,
-} from "@chatbotx.io/utils/connection"
+} from "@salesmanchatbot.io/utils/connection"
 import type { AuthValue } from "./auth"
 import type { Handler } from "./shared"
 
@@ -22,7 +22,7 @@ export type {
   ConnectionConfigField,
   ConnectionKind,
   ConnectSessionNextAction,
-} from "@chatbotx.io/utils/connection"
+} from "@salesmanchatbot.io/utils/connection"
 
 export type ConnectionHealth =
   | { ok: true; authExpiresAt?: string }

@@ -23,7 +23,7 @@ vi.mock("ky", () => ({
   HTTPError: MockHTTPError,
 }))
 
-const { aiProviders } = await import("@chatbotx.io/ai")
+const { aiProviders } = await import("@salesmanchatbot.io/ai")
 const { verifyAiProviderApiKey } = await import(
   "@/features/integration-ai/lib/verify-api-key"
 )

@@ -1,7 +1,7 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFieldArray, useFormContext } from "react-hook-form"

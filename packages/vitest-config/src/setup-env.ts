@@ -17,7 +17,7 @@ const TEST_DEFAULTS: Readonly<Record<string, string>> = {
 
   // Database — non-routable host so accidental real connections fail fast
   DATABASE_URL:
-    "postgresql://test:test@127.0.0.1:1/chatbotx_test?schema=public",
+    "postgresql://test:test@127.0.0.1:1/salesmanchatbot_test?schema=public",
 
   // Redis — same fail-fast idea
   REDIS_URL: "redis://127.0.0.1:1",

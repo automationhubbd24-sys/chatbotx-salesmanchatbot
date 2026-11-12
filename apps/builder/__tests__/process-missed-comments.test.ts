@@ -26,7 +26,7 @@ const {
   mockSettleEnqueue: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   commentAutomationService: {
     resolveMissedCommentsTarget: mockResolveTarget,
     claimMissedCommentsRun: mockClaimRun,
@@ -42,7 +42,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   LowJobAction: { replayMissedComment: "replayMissedComment" },
   lowQueue: { addBulk: mockQueueAddBulk },
 }))

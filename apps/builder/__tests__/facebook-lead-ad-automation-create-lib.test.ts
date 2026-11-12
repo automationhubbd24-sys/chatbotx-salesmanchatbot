@@ -7,12 +7,12 @@ vi.mock("@/features/facebook-lead-ad-automation/lib/pages", () => ({
 }))
 
 const mockCreate = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   facebookLeadAdsAutomationService: { create: mockCreate },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code = "systemError"
     httpStatusCode = 400
   },

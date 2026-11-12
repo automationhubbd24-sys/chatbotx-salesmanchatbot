@@ -21,7 +21,7 @@ const runAction = vi.fn(async () => undefined)
 const runExclusive = vi.fn(async (props: LockProps) => await props.fn())
 const errorLog = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async ({ integration }: { integration: unknown }) => ({
     auth: state.auth,
     integration,
@@ -31,14 +31,14 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: vi.fn((value: unknown) => value) },
   encryptUtils: {
     decryptObject: vi.fn(async () => state.auth),
   },
 }))
 
-vi.mock("@chatbotx.io/integration-get-response", () => {
+vi.mock("@salesmanchatbot.io/integration-get-response", () => {
   class GetResponseApiError extends Error {
     statusCode: number
     retryAfterSeconds?: number
@@ -62,7 +62,7 @@ vi.mock("@chatbotx.io/integration-get-response", () => {
   }
 })
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive },
 }))
 

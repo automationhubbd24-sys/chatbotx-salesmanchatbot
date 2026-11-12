@@ -7,13 +7,13 @@ const { mockListThreadsIntegrations, mockListThreadsPosts, mockLoggerError } =
     mockLoggerError: vi.fn(),
   }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationThreadsService: {
     listByWorkspaceId: mockListThreadsIntegrations,
   },
 }))
 
-vi.mock("@chatbotx.io/integration-threads", () => ({
+vi.mock("@salesmanchatbot.io/integration-threads", () => ({
   listThreadsPosts: mockListThreadsPosts,
 }))
 

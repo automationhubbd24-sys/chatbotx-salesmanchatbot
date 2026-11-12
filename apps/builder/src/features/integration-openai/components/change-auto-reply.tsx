@@ -1,5 +1,5 @@
-import type { IntegrationOpenAIModel } from "@chatbotx.io/database/types"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import type { IntegrationOpenAIModel } from "@salesmanchatbot.io/database/types"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"

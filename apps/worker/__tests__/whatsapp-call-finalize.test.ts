@@ -22,7 +22,7 @@ const mocks = vi.hoisted(() => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: mocks.broadcastToWorkspaceParty,
   sendToWorkspaceMember: mocks.sendToWorkspaceMember,
   contactInboxService: {
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     findByInboxIdForWorkspace: mocks.findByInboxIdForWorkspace,
   },
@@ -56,12 +56,12 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   })),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCallEnded: mocks.emitCallEnded,
   emitMissedAudioCall: mocks.emitMissedAudioCall,
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: {
     messageCreated: "messageCreated",
     whatsappCallTransportEnded: "whatsappCallTransportEnded",

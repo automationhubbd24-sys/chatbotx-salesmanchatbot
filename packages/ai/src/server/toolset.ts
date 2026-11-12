@@ -1,5 +1,6 @@
 import type { ToolSet } from "ai"
 import { normalizeError } from "universal-error-normalizer"
+import { orderSystemFunctionIds, systemFunctionGroupIds } from "../constants"
 import { logger } from "../logger"
 import type { JsonValue } from "../schemas"
 import {
@@ -28,6 +29,7 @@ export interface ToolsetOptions {
     normalizeMcpContent: (content: JsonValue) => JsonValue
     resolveToken?: (token: string) => Promise<McpTokenResolution>
   }
+  orderCustomFieldCatalog?: SystemFunctionContext["orderCustomFieldCatalog"]
   systemFunctionContextGetter?: () => Promise<SystemFunctionContext | null>
   systemToolExecutors?: SystemToolExecutors
   toolPrefixes: {
@@ -47,6 +49,14 @@ export function parseToolIds(allTools: string[], prefix: string): string[] {
     .filter((id) => Boolean(id))
 }
 
+export function expandSystemToolIds(selectedSystemIds: string[]): string[] {
+  const expandedIds = selectedSystemIds.flatMap((id) =>
+    id === systemFunctionGroupIds.orderTools ? orderSystemFunctionIds : [id],
+  )
+
+  return [...new Set(expandedIds)]
+}
+
 export async function getAIToolset(
   options: ToolsetOptions,
 ): Promise<{ tools: ToolSet; cleanup: () => Promise<void> }> {
@@ -55,7 +65,7 @@ export async function getAIToolset(
     const fileIds = parseToolIds(tools, toolPrefixes.file)
     const functionIds = parseToolIds(tools, toolPrefixes.fn)
     const mcpIds = parseToolIds(tools, toolPrefixes.mcp)
-    const systemIds = parseToolIds(tools, toolPrefixes.sys)
+    const systemIds = expandSystemToolIds(parseToolIds(tools, toolPrefixes.sys))
 
     const [fileTools, functionTools, systemTools, mcpResult] =
       await Promise.all([
@@ -71,6 +81,7 @@ export async function getAIToolset(
           getAISystemTools({
             selectedSystemIds: systemIds,
             systemFunctionContextGetter: options.systemFunctionContextGetter,
+            orderCustomFieldCatalog: options.orderCustomFieldCatalog,
             systemToolExecutors: options.systemToolExecutors,
           }),
         ),

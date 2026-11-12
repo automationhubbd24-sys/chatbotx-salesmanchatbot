@@ -1,6 +1,6 @@
 /**
  * The channels a comment automation can run on.
- * Narrower than the workspace-wide `ChannelType` (`@chatbotx.io/utils/channel`)
+ * Narrower than the workspace-wide `ChannelType` (`@salesmanchatbot.io/utils/channel`)
  * on purpose: `instagramFacebook` distinguishes Instagram-via-Facebook-Login
  * from Instagram Login for auth/send-endpoint dispatch here, while both
  * collapse to the single `"instagram"` `ChannelType` everywhere else (flow

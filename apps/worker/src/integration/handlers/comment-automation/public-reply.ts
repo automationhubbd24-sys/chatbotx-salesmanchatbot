@@ -1,19 +1,19 @@
-import { publishToWorkspaceParty } from "@chatbotx.io/business"
+import { publishToWorkspaceParty } from "@salesmanchatbot.io/business"
 import {
   type CommentReply,
   resolveReplyTexts,
-} from "@chatbotx.io/database/partials"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
-import { COMMENT_AUTOMATION_PAYLOAD_TYPE } from "@chatbotx.io/flow-config"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { applySpintax } from "@chatbotx.io/utils/spintax"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
+import { COMMENT_AUTOMATION_PAYLOAD_TYPE } from "@salesmanchatbot.io/flow-config"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { applySpintax } from "@salesmanchatbot.io/utils/spintax"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import {
   AIJobAction,
   aiAgentQueue,
@@ -21,7 +21,7 @@ import {
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import type { CommentAutomationChannelType } from "./channel-type"
 import type { CommentAutomationDedup } from "./dedup"

@@ -1,11 +1,11 @@
 import "server-only"
-import { inboxService, resolveTenantSettings } from "@chatbotx.io/business"
-import { buildInboxLink, canShareMinigame } from "@chatbotx.io/business/utils"
-import type { ChannelType } from "@chatbotx.io/database/partials"
+import { inboxService, resolveTenantSettings } from "@salesmanchatbot.io/business"
+import { buildInboxLink, canShareMinigame } from "@salesmanchatbot.io/business/utils"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   MinigameModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 
 /**
  * The URL the play screen's Share button copies: a ref link for the very

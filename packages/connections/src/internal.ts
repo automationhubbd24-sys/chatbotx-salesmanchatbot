@@ -1,27 +1,27 @@
-import { inboxService, workspaceMemberService } from "@chatbotx.io/business"
+import { inboxService, workspaceMemberService } from "@salesmanchatbot.io/business"
 import {
   type ConnectionAdapter,
   type ConnectionQuotaConsumption,
   connectionStateService,
-} from "@chatbotx.io/business/connection"
+} from "@salesmanchatbot.io/business/connection"
 import {
   connectionAlreadyConnectedException,
   connectionNotConfiguredException,
   notFoundException,
   validationException,
-} from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business/errors"
 import {
   type DatabaseClient,
   db,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type ChannelType,
   channelTypes,
   type IntegrationType,
-} from "@chatbotx.io/database/partials"
-import { connectionRepository } from "@chatbotx.io/database/repositories"
-import type { ConnectionModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import { connectionRepository } from "@salesmanchatbot.io/database/repositories"
+import type { ConnectionModel } from "@salesmanchatbot.io/database/types"
 import type {
   AuthValue,
   ConnectionCandidate,
@@ -29,11 +29,11 @@ import type {
   ConnectionDescriptor,
   ConnectionKind,
   ConnectionStrategy,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   authValueSchema,
   ConnectionProviderRejectedError,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import { logger } from "./logger"
 import { CONNECTION_REGISTRY } from "./registry"
@@ -201,7 +201,7 @@ export const withQuotaCompensation = async <T>(
 /**
  * The FK a `Connection` row actually carries to its satellite row —
  * `inboxId` for channels, `integrationId` for workspace integrations. `null`
- * only for `chatbotx` (no satellite table at all).
+ * only for `salesmanchatbot` (no satellite table at all).
  */
 export const resolveForeignKey = (connection: ConnectionModel): string | null =>
   connection.inboxId ?? connection.integrationId ?? null

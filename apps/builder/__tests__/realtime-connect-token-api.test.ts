@@ -51,10 +51,10 @@ const { authorizedAPI, mocks, workspaceAuthorizedMidddleware } = vi.hoisted(
 
 vi.mock("@/orpc", () => ({ authorizedAPI }))
 vi.mock("@/middlewares/auth", () => ({ workspaceAuthorizedMidddleware }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   resolveBroadcastSecret: mocks.resolveBroadcastSecret,
 }))
-vi.mock("@chatbotx.io/partysocket-config/auth", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config/auth", () => ({
   signMemberConnectToken: mocks.signMemberConnectToken,
 }))
 

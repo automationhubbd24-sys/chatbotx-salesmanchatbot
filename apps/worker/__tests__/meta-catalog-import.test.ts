@@ -1,4 +1,4 @@
-import { MetaCatalogException } from "@chatbotx.io/integration-meta-catalog"
+import { MetaCatalogException } from "@salesmanchatbot.io/integration-meta-catalog"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationMetaCatalogService: {
     claimImport: (...args: unknown[]) => mocks.claimImport(...args),
     resolveAuth: (...args: unknown[]) => mocks.resolveAuth(...args),
@@ -51,10 +51,10 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-meta-catalog", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/integration-meta-catalog", async (importOriginal) => {
   const actual =
     await importOriginal<
-      typeof import("@chatbotx.io/integration-meta-catalog")
+      typeof import("@salesmanchatbot.io/integration-meta-catalog")
     >()
   return {
     ...actual,

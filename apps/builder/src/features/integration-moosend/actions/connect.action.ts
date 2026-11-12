@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationMoosendService } from "@chatbotx.io/business"
+import { integrationMoosendService } from "@salesmanchatbot.io/business"
 import {
   MoosendApiError,
   integration as moosendIntegration,
-} from "@chatbotx.io/integration-moosend"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-moosend"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

@@ -1,4 +1,4 @@
-import { botFieldService } from "@chatbotx.io/business"
+import { botFieldService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListBotFieldsRequest,

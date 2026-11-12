@@ -25,9 +25,19 @@ export const helpTexts = {
   ].join("\n"),
   knowledgeBaseGuard: [
     "KNOWLEDGE BASE RULES (REQUIRED):",
-    "- You MUST call search_knowledge_base BEFORE answering any question about products, services, prices, images, or company-specific details.",
+    "- You MUST call search_knowledge_base BEFORE answering questions about static product details, services, images, or company-specific details.",
+    "- For live catalog availability, inventory/stock, current price, purchasability, or which products are currently available, use search_products when it is available; knowledge-base results are not authoritative.",
     "- Do NOT use search_knowledge_base for greetings, small talk, or simple clarification.",
     "- If search_knowledge_base returns no results or insufficient information, tell the user you could not find matching information.",
+  ].join("\n"),
+  catalogFreshnessGuard: [
+    "CATALOG FRESHNESS RULES (REQUIRED):",
+    "- When the search_products tool is available, you MUST call it before answering a customer question that lists all/currently available products or asks about catalog availability, inventory/stock, current price, or purchasability.",
+    "- For those live catalog facts, use ONLY the most recent search_products result for product names, prices, and availability. Do not repeat, offer, or describe a product that is not returned by that result.",
+    "- Conversation summaries, earlier messages, prior assistant responses, and knowledge-base/RAG results are not authoritative sources for these live catalog facts.",
+    "- If the most recent search_products result is empty, say that no matching available products were found. Do not offer products from conversation history or RAG results.",
+    "- The tool's available status is authoritative; do not assume that every returned product is in stock.",
+    "- After a search, use get_product_details when additional product-specific information is needed.",
   ].join("\n"),
   richResponseFormat: [
     "Output:",
@@ -101,9 +111,34 @@ export const systemFunctionNames = {
   connectUserToHuman: "connect_user_to_human",
   documentReader: "document_reader",
   imageReader: "image_reader",
+  searchProducts: "search_products",
+  getProductDetails: "get_product_details",
+  startOrderIntake: "start_order_intake",
+  updateOrderIntake: "update_order_intake",
+  getOrderIntake: "get_order_intake",
+  updateOrderDraft: "update_order_draft",
+  requestOrderConfirmation: "request_order_confirmation",
+  confirmOrder: "confirm_order",
+  cancelOrderDraft: "cancel_order_draft",
+  getOrderDetails: "get_order_details",
   urlContext: "url_context",
   webSearch: "web_search",
 } as const
+
+export const systemFunctionGroupIds = {
+  orderTools: "order_tools",
+} as const
+
+export const orderSystemFunctionIds = [
+  systemFunctionNames.startOrderIntake,
+  systemFunctionNames.updateOrderIntake,
+  systemFunctionNames.getOrderIntake,
+  systemFunctionNames.updateOrderDraft,
+  systemFunctionNames.requestOrderConfirmation,
+  systemFunctionNames.confirmOrder,
+  systemFunctionNames.cancelOrderDraft,
+  systemFunctionNames.getOrderDetails,
+] as const
 
 export const systemFunctionCatalog = {
   [systemFunctionNames.connectUserToHuman]: {
@@ -123,6 +158,64 @@ export const systemFunctionCatalog = {
     capability: "image_context",
     description:
       "Analyze user-uploaded images in the current conversation and return visual context relevant to the query.",
+  },
+  [systemFunctionNames.searchProducts]: {
+    id: systemFunctionNames.searchProducts,
+    capability: "catalog_search",
+    description:
+      "Search the workspace's authoritative, current catalog for active, searchable products, including availability and purchasability.",
+  },
+  [systemFunctionNames.getProductDetails]: {
+    id: systemFunctionNames.getProductDetails,
+    capability: "catalog_details",
+    description:
+      "Retrieve customer-safe details for one active, searchable catalog product by its id.",
+  },
+  [systemFunctionNames.startOrderIntake]: {
+    id: systemFunctionNames.startOrderIntake,
+    capability: "order_intake",
+    description:
+      "Start a new customer order-intake session for the supplied customer intent message. This does not create an order.",
+  },
+  [systemFunctionNames.updateOrderIntake]: {
+    id: systemFunctionNames.updateOrderIntake,
+    capability: "order_intake",
+    description:
+      "Update an explicit order-intake session with collected customer details. A draft order is created only after the server validates a phone number.",
+  },
+  [systemFunctionNames.getOrderIntake]: {
+    id: systemFunctionNames.getOrderIntake,
+    capability: "order_intake",
+    description:
+      "Get an explicit order-intake session by session id. It never infers an order from this conversation.",
+  },
+  [systemFunctionNames.updateOrderDraft]: {
+    id: systemFunctionNames.updateOrderDraft,
+    capability: "order_draft",
+    description:
+      "Update the explicit order draft identified by order id with customer-approved values.",
+  },
+  [systemFunctionNames.requestOrderConfirmation]: {
+    id: systemFunctionNames.requestOrderConfirmation,
+    capability: "order_confirmation",
+    description:
+      "Request customer confirmation for the explicit order identified by order id.",
+  },
+  [systemFunctionNames.confirmOrder]: {
+    id: systemFunctionNames.confirmOrder,
+    capability: "order_confirmation",
+    description:
+      "Confirm the explicit order identified by order id using its confirmation token and version.",
+  },
+  [systemFunctionNames.cancelOrderDraft]: {
+    id: systemFunctionNames.cancelOrderDraft,
+    capability: "order_draft",
+    description: "Cancel the explicit order draft identified by order id.",
+  },
+  [systemFunctionNames.getOrderDetails]: {
+    id: systemFunctionNames.getOrderDetails,
+    capability: "order_details",
+    description: "Retrieve order details by order id.",
   },
   [systemFunctionNames.urlContext]: {
     id: systemFunctionNames.urlContext,

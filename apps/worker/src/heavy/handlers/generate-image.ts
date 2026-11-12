@@ -1,10 +1,10 @@
-import { aiProviders, aiTimeouts } from "@chatbotx.io/ai"
+import { aiProviders, aiTimeouts } from "@salesmanchatbot.io/ai"
 import {
   aiIntegrationService,
   createAIImageModelInstance,
-} from "@chatbotx.io/ai/server"
-import { resolveTenantSettings } from "@chatbotx.io/business"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
+} from "@salesmanchatbot.io/ai/server"
+import { resolveTenantSettings } from "@salesmanchatbot.io/business"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
 import {
   type AIGenerateImageSchema,
   getAIGeneratedImagePath,
@@ -12,7 +12,7 @@ import {
   IMAGE_BASE64_ENCODING,
   IMAGE_DEFAULT_EXTENSION,
   IMAGE_DEFAULT_MIME_TYPE,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { generateImage } from "ai"
 import { env } from "../../env"
 import type { HeavyStepComputeProps } from "../../integration/handlers/flow-utils"

@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { conversationUnreadWhere } from "@chatbotx.io/database/queries"
+import { conversationUnreadWhere } from "@salesmanchatbot.io/database/queries"
 import { describe, expect, test } from "vitest"
 import { buildConversationWhere } from "@/features/conversations/queries/build-conversation-where"
 

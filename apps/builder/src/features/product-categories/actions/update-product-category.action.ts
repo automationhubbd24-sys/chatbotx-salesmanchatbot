@@ -1,7 +1,7 @@
 "use server"
 
-import { productCategoryService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { productCategoryService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { productCategoryFormSchema } from "../schema/action"
 

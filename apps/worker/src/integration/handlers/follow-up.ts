@@ -1,17 +1,17 @@
-import { contactInboxService } from "@chatbotx.io/business/contact-inbox"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
+import { contactInboxService } from "@salesmanchatbot.io/business/contact-inbox"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
 import {
   smartDelayStatuses,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   computeFollowUpTriggerAt,
   type FollowUpStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   type IntegrationJobResumeFollowUp,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { type ExecuteStepProps, seekConnectedNode } from "./flow-utils"
 import { buildSendFlowResumeJob, scheduleSmartDelayResume } from "./smart-delay"

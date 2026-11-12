@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { sendWaTemplateMessageStepSchema } from "../steps/send-wa-message-template"
 import { refineWaTemplateSendStep } from "../steps/wa-template-send-rules"
 import type { ChannelValidatorMap } from "./channel-validator"

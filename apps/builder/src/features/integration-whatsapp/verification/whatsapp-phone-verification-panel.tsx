@@ -1,20 +1,20 @@
 "use client"
 
-import type { IntegrationWhatsappRegistrationError } from "@chatbotx.io/database/schema"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
+import type { IntegrationWhatsappRegistrationError } from "@salesmanchatbot.io/database/schema"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import {

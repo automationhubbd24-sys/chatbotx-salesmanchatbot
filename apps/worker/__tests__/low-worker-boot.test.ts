@@ -49,7 +49,7 @@ vi.mock("bullmq", () => {
   return { Worker: WorkerMock }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   LowJobAction: {
     coexistAttachmentDownload: "coexistAttachmentDownload",
     updateContactAvatar: "updateContactAvatar",
@@ -61,7 +61,7 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   getQueueConnection: vi.fn(() => ({})),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   commentAutomationService: {
     finishMissedCommentReplay: workerState.finishMissedCommentReplay,
   },

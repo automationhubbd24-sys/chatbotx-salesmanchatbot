@@ -1,15 +1,15 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { DateTimePicker } from "@chatbotx.io/ui/components/ui/date-picker"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { DateTimePicker } from "@salesmanchatbot.io/ui/components/ui/date-picker"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { type FormEvent, useMemo, useState } from "react"

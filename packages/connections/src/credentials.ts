@@ -1,4 +1,4 @@
-import { isActiveConnectionStatus } from "@chatbotx.io/business/connection"
+import { isActiveConnectionStatus } from "@salesmanchatbot.io/business/connection"
 import {
   connectionAlreadyConnectedException,
   connectionCredentialsRejectedException,
@@ -7,17 +7,17 @@ import {
   connectionWrongStrategyException,
   toPublicErrorMessage,
   validationException,
-} from "@chatbotx.io/business/errors"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
-import { connectionRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/business/errors"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
+import { connectionRepository } from "@salesmanchatbot.io/database/repositories"
 import type {
   ConnectionModel,
   ConnectSessionModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type {
   ConnectionCredential,
   ConnectSessionNextAction,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { startSession } from "./connect-session-flow"
 import {
   connectAndPersist,

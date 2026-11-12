@@ -1,7 +1,7 @@
 import {
   type QuickReplyNextStep,
   quickReplyNextStepFollowsEdge,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
 export type QuickReplySettingsSectionName =
   | "quickReplySettings.followUp"

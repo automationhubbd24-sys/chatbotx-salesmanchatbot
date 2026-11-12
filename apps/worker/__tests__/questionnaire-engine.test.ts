@@ -17,7 +17,7 @@ const mocks = vi.hoisted(() => ({
   getSafeSinceTime: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     updateChallenge: mocks.updateChallenge,
   },
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn(async () => ({
     findById: mocks.findById,
     findLastByConversation: mocks.findLastByConversation,
@@ -38,11 +38,11 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   getSafeSinceTime: mocks.getSafeSinceTime,
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: () => "channel",
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   IntegrationJobAction: { sendFlow: "sendFlow" },
   chatQueue: { add: mocks.chatQueueAdd },

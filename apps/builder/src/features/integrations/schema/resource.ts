@@ -1,7 +1,7 @@
 import {
   createSelectSchema,
   integrationModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import z from "zod"
 
 // Explicit `.pick()` so a future column added to `Integration` never

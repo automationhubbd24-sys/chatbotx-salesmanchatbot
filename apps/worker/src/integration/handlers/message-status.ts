@@ -1,24 +1,24 @@
-import { buildContext, conversationService } from "@chatbotx.io/business"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
+import { buildContext, conversationService } from "@salesmanchatbot.io/business"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
 import {
   contactInboxRepository,
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/repositories"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   type MetadataPayload,
   messageEventTypeSchema,
   UPDATE_STATUS_PAYLOAD_TYPE,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   resolveSourceScopedIdentityMatch,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   IntegrationJobAction,
   type IntegrationJobMessageStatus,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import type { Job } from "bullmq"
 import { logger } from "../../lib/logger"
 import {

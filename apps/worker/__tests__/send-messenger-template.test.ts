@@ -1,4 +1,4 @@
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import {
   beforeEach,
   describe,
@@ -24,13 +24,13 @@ function makeEmptySelectChain(): Promise<never[]> & Record<string, unknown> {
 
 // updateSourceId routes shards via getShardsForRange, which wraps the lookup
 // in withCache(); without this stub it hits a real (non-routable) Redis.
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, factory: () => unknown) => factory()),
   invalidateCacheByTags: vi.fn().mockResolvedValue(undefined),
   distributedLock: { runExclusive: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: (() => {
     const update = vi.fn().mockReturnValue({
       set: vi.fn().mockReturnValue({
@@ -91,11 +91,11 @@ vi.mock("../src/integration/handlers/messenger-template-handler", () => ({
   replaceMessengerTemplateVariables: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: vi.fn().mockResolvedValue({}) },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: vi.fn(),
   publishToWorkspaceParty: vi.fn(),
   contactInboxService: {
@@ -114,11 +114,11 @@ vi.mock("../src/lib/logger", () => ({
   logger: { error: vi.fn(), warn: vi.fn(), info: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     evaluateTemplateSent: "evaluateTemplateSent",
   },
@@ -133,9 +133,9 @@ const { sendFlowStepToChannel } = await import(
 )
 const { validateMessengerTemplate, replaceMessengerTemplateVariables } =
   await import("../src/integration/handlers/messenger-template-handler")
-const { db } = await import("@chatbotx.io/database/client")
-const { emit } = await import("@chatbotx.io/event-bus")
-const { enqueueIntegrationJob } = await import("@chatbotx.io/worker-config")
+const { db } = await import("@salesmanchatbot.io/database/client")
+const { emit } = await import("@salesmanchatbot.io/event-bus")
+const { enqueueIntegrationJob } = await import("@salesmanchatbot.io/worker-config")
 
 const mockSendFlowStep = sendFlowStepToChannel as MockInstance
 const mockValidate = validateMessengerTemplate as MockInstance

@@ -16,11 +16,11 @@ const mocks = vi.hoisted(() => ({
   claimMetadataRetry: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   isDatabaseError: mocks.isDatabaseError,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   channelPostRepository: {
     claimMetadataRetry: mocks.claimMetadataRetry,
     findByExternalId: mocks.findByExternalId,
@@ -32,11 +32,11 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploadFileFromUrl: mocks.uploadFileFromUrl,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 

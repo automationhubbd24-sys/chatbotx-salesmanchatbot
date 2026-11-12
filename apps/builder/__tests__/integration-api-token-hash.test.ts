@@ -1,7 +1,7 @@
 import {
   generateApiChannelToken,
   hashToken,
-} from "@chatbotx.io/business/workspace-api-token/credentials"
+} from "@salesmanchatbot.io/business/workspace-api-token/credentials"
 import { describe, expect, test } from "vitest"
 
 const TOKEN_PREFIX = "cbx_api_"

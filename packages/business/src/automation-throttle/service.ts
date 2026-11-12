@@ -1,9 +1,9 @@
-import type { AutomationThrottleType } from "@chatbotx.io/database/partials"
+import type { AutomationThrottleType } from "@salesmanchatbot.io/database/partials"
 import {
   claimAutomationThrottle,
   releaseAutomationThrottle,
-} from "@chatbotx.io/database/repositories"
-import { distributedStore } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/repositories"
+import { distributedStore } from "@salesmanchatbot.io/redis"
 import { BaseService } from "../base.service"
 import { logger } from "../logger"
 

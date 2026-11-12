@@ -5,32 +5,32 @@ import {
   eq,
   gte,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type AppointmentScheduleWindowConfig,
   appointmentScheduleWindowConfigSchema,
   defaultAppointmentExternalEventAttendeesTemplate,
   defaultAppointmentExternalEventTitleTemplate,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   appointmentCalendarRepository,
   appointmentReminderDispatchRepository,
-} from "@chatbotx.io/database/repositories"
-import { appointmentModel } from "@chatbotx.io/database/schema"
-import type { AppointmentCalendarModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/repositories"
+import { appointmentModel } from "@salesmanchatbot.io/database/schema"
+import type { AppointmentCalendarModel } from "@salesmanchatbot.io/database/types"
 import {
   chooseChannelStepDefaultFn,
   openWebsiteStepDefaultFn,
   type SendMessageNodeSchema,
   sendTextStepDefaultFn,
-} from "@chatbotx.io/flow-config"
-import { createId, resolveFilterTimezone } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId, resolveFilterTimezone } from "@salesmanchatbot.io/utils"
 import { formatInTimeZone, fromZonedTime } from "date-fns-tz"
 import { normalizeError } from "universal-error-normalizer"
 import { appointmentExternalCalendarService } from "../appointment-external-calendar"
 import { appointmentReminderService } from "../appointment-reminder"
 import { BaseService } from "../base.service"
-import { ChatbotXException, notFoundException } from "../errors"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { flowService } from "../flow/service"
 import { flowVersionService } from "../flow-version"
 import { logger } from "../logger"
@@ -685,7 +685,7 @@ export class AppointmentCalendarService extends BaseService {
           )
         } catch (error) {
           if (isUniqueViolationError(error)) {
-            throw new ChatbotXException(
+            throw new salesmanChatbotException(
               "Duplicate reminder: same flow and timing already exists",
               "duplicateReminder",
               409,
@@ -1033,7 +1033,7 @@ export class AppointmentCalendarService extends BaseService {
 
   private throwMappedUniqueError(error: unknown): never | undefined {
     if (isUniqueViolationError(error)) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "Calendar name already exists",
         "nameAlreadyExists",
         409,

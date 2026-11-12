@@ -2,17 +2,17 @@ import type {
   CommentReply,
   ConversationQuickReplyChallenge,
   ConversationStepChallenge,
-} from "@chatbotx.io/database/partials"
-import type { AdsConversionChannel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import type { AdsConversionChannel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type {
   FlowActionTargetType,
   MetadataPayload,
-} from "@chatbotx.io/flow-config"
-import type { CommentAnchor, OutgoingMessage } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { CommentAnchor, OutgoingMessage } from "@salesmanchatbot.io/sdk"
 import { type JobsOptions, Queue } from "bullmq"
 import {
   defaultJobOptions,
@@ -734,7 +734,7 @@ export type IntegrationJobAdsAutomaticEvent = {
 
 // Ads-conversion job-data variants (merged from the retired `adsConversion`
 // queue).
-// Kept as `AdsConversionJob*` type names since `@chatbotx.io/business` and the
+// Kept as `AdsConversionJob*` type names since `@salesmanchatbot.io/business` and the
 // handlers under `apps/worker/src/integration/handlers/ads-conversion/` import
 // them by these names.
 

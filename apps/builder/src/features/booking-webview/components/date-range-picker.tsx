@@ -1,9 +1,9 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import { CalendarDaysIcon, Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

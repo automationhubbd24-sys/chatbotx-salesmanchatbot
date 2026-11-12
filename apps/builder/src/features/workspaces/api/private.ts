@@ -1,4 +1,4 @@
-import { workspaceMemberService } from "@chatbotx.io/business"
+import { workspaceMemberService } from "@salesmanchatbot.io/business"
 import z from "zod"
 import { authorizedAPI } from "@/orpc"
 import { workspaceResource } from "../schema/resource"

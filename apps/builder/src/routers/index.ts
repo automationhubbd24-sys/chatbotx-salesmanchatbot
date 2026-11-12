@@ -1,4 +1,4 @@
-import { analyticsRoutes } from "@chatbotx.io/analytics-nextjs/routes"
+import { analyticsRoutes } from "@salesmanchatbot.io/analytics-nextjs/routes"
 import { lazy } from "@orpc/server"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

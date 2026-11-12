@@ -1,7 +1,7 @@
 "use server"
 
-import { broadcastService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClientAllowExpired } from "@/lib/safe-action"
 
 export const deleteBroadcastAction = workspaceActionClientAllowExpired

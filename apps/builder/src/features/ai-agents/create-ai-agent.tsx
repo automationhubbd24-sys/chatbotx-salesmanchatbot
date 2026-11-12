@@ -1,12 +1,12 @@
 "use client"
 
-import { aiChatProviders, openaiCompatiblePresetConfigs } from "@chatbotx.io/ai"
-import { aiMessageRoles } from "@chatbotx.io/database/partials"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { SliderField } from "@chatbotx.io/ui/components/form/slider-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { aiChatProviders, openaiCompatiblePresetConfigs } from "@salesmanchatbot.io/ai"
+import { aiMessageRoles } from "@salesmanchatbot.io/database/partials"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SliderField } from "@salesmanchatbot.io/ui/components/form/slider-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -15,14 +15,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import {

@@ -5,8 +5,8 @@ import {
 } from "@tanstack/react-table"
 import type * as React from "react"
 
-import { DataTablePagination } from "@chatbotx.io/ui/components/data-table/data-table-pagination"
-import type { DataTablePaginationLabels } from "@chatbotx.io/ui/components/data-table/data-table-pagination"
+import { DataTablePagination } from "@salesmanchatbot.io/ui/components/data-table/data-table-pagination"
+import type { DataTablePaginationLabels } from "@salesmanchatbot.io/ui/components/data-table/data-table-pagination"
 import {
   Table,
   TableBody,
@@ -14,9 +14,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
-import { getCommonPinningStyles } from "@chatbotx.io/ui/lib/data-table"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/table"
+import { getCommonPinningStyles } from "@salesmanchatbot.io/ui/lib/data-table"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>

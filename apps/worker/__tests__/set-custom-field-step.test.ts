@@ -6,13 +6,13 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // timezone, lenient parsing, and the empty->now flag into the business service.
 // The worker has no browser context, so this threading is what lets a naive
 // date/datetime value be anchored (and a blank one stamped "now") at runtime.
-// We mock ONLY the boundaries; `@chatbotx.io/utils/datetime` is left real so
+// We mock ONLY the boundaries; `@salesmanchatbot.io/utils/datetime` is left real so
 // the asserted `TemporalInputParsing.Lenient` is the genuine enum value.
 // ---------------------------------------------------------------------------
 
 const setValueByKey = vi.fn(async () => undefined)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: { setValueByKey },
   contactService: { delete: vi.fn() },
   tagSyncService: { enqueueAttach: vi.fn(), enqueueDetach: vi.fn() },
@@ -25,15 +25,15 @@ vi.mock("@chatbotx.io/business", () => ({
 const getAllVariables = vi.fn(async () => ({}) as unknown)
 const replaceAll = vi.fn(async ({ text }: { text: string }) => text)
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: getAllVariables, replaceAll },
 }))
 
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: { removeContactSequencesForContact: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {},
   and: (...args: unknown[]) => ({ and: args }),
   eq: (col: unknown, val: unknown) => ({ eq: [col, val] }),
@@ -41,28 +41,28 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isNull: (col: unknown) => ({ isNull: col }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactModel: {},
   contactNoteModel: {},
   contactsToTagsModel: {},
   tagModel: {},
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({ emit: vi.fn() }))
+vi.mock("@salesmanchatbot.io/event-bus", () => ({ emit: vi.fn() }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactUnsubscribed: vi.fn(),
   emitSequenceSubscribed: vi.fn(),
   emitTagApplied: vi.fn(),
   emitTagRemoved: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/sequence-scheduler", () => ({
+vi.mock("@salesmanchatbot.io/sequence-scheduler", () => ({
   enrollContactInSequence: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "generated-id") }
 })
 

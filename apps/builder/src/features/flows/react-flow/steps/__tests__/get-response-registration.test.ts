@@ -3,7 +3,7 @@ import {
   getResponseAddContactDefaultFn,
   getResponseAddContactSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 describe("getResponseAddContact step registration", () => {

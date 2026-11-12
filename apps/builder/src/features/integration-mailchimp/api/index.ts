@@ -1,11 +1,11 @@
-import { buildContext } from "@chatbotx.io/business"
+import { buildContext } from "@salesmanchatbot.io/business"
 import {
   mailchimpAudienceSchema,
   integration as mailchimpIntegration,
   mailchimpMergeFieldSchema,
   mailchimpTagSchema,
-} from "@chatbotx.io/integration-mailchimp"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-mailchimp"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

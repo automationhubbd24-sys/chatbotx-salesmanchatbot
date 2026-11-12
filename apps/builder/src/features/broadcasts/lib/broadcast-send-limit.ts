@@ -5,7 +5,7 @@ import {
   broadcastSendLimitIssues,
   clampAudienceCountToRange,
   resolveBroadcastAudienceRange,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export type BroadcastSendLimitIssue = keyof typeof broadcastSendLimitIssues
 

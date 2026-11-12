@@ -21,7 +21,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customFieldService: {
     findBy: vi.fn(),
     findManyByIds: mocks.customFieldFindMany,
@@ -38,11 +38,11 @@ vi.mock("@chatbotx.io/business", () => ({
   externalRequestService: {},
 }))
 
-vi.mock("@chatbotx.io/business/contact-custom-field", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-custom-field", () => ({
   createSourceTimezoneResolver: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: vi.fn() },
   extractVariables: vi.fn(() => []),
   getSystemFieldValue: vi.fn(async () => null),

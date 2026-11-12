@@ -1,4 +1,4 @@
-import type { ThreadControlChannel } from "@chatbotx.io/utils/channel"
+import type { ThreadControlChannel } from "@salesmanchatbot.io/utils/channel"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

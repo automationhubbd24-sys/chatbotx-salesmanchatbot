@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 type RequestCodeActionHandler = (args: {
@@ -53,7 +53,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: {
     claimVerificationCodeSlot: claimVerificationCodeSlotMock,
     findByIdForWorkspace: findByIdForWorkspaceMock,
@@ -62,11 +62,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {},
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/integration-whatsapp", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp", () => ({
   mapToChannelError: (error: unknown) => error,
   readWhatsappOriginErrorDetail: (originError: unknown) => {
     const asRecord = (value: unknown): Record<string, unknown> | undefined =>

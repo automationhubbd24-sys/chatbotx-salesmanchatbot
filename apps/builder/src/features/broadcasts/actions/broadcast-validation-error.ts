@@ -1,4 +1,4 @@
-import { BroadcastValidationException } from "@chatbotx.io/business"
+import { BroadcastValidationException } from "@salesmanchatbot.io/business"
 import { returnValidationErrors } from "next-safe-action"
 import { createBroadcastRequest } from "../schema/action"
 

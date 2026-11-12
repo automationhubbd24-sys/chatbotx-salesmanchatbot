@@ -1,10 +1,10 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import {
   integrationWhatsappRepository,
   whatsappSignupSessionRepository,
-} from "@chatbotx.io/database/repositories"
-import type { IntegrationWhatsappModel } from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import type { IntegrationWhatsappModel } from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
 import { dispatchAuditRecordSafely } from "../audit/dispatcher"
 import { connectSessionExpiredException } from "../errors"
 import {

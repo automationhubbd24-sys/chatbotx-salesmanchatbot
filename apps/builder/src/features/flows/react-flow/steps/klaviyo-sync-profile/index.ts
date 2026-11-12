@@ -2,7 +2,7 @@ import {
   type KlaviyoSyncProfileSchema,
   klaviyoSyncProfileDefaultFn,
   klaviyoSyncProfileSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import KlaviyoSyncProfileEditor from "./editor"
 import KlaviyoSyncProfileViewer from "./viewer"

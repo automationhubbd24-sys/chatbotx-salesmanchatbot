@@ -1,6 +1,6 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { smtpHostMap } from "@chatbotx.io/integration-smtp"
-import { createSmtpTransporter } from "@chatbotx.io/mail/transport"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { smtpHostMap } from "@salesmanchatbot.io/integration-smtp"
+import { createSmtpTransporter } from "@salesmanchatbot.io/mail/transport"
 import { getTranslations } from "next-intl/server"
 import type { CreateSmtpRequest } from "../schema/mutation"
 
@@ -22,7 +22,7 @@ export async function verifySmtpConnection(input: CreateSmtpRequest) {
   try {
     await transporter.verify()
   } catch {
-    throw new ChatbotXException(t("smtp.errors.connectionFailed"))
+    throw new salesmanChatbotException(t("smtp.errors.connectionFailed"))
   } finally {
     transporter.close()
   }

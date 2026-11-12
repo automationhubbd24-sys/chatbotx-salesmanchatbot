@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { TRIAL_BROADCAST_PLAN_POLICY } from "@chatbotx.io/database/partials"
+import { TRIAL_BROADCAST_PLAN_POLICY } from "@salesmanchatbot.io/database/partials"
 import type React from "react"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
@@ -80,7 +80,7 @@ vi.mock("@/features/broadcasts/actions/update-draft-broadcast.action", () => ({
 }))
 
 const debouncedCount = vi.hoisted(() => vi.fn(() => Promise.resolve()))
-vi.mock("@chatbotx.io/ui/hooks/use-debounced-callback", () => ({
+vi.mock("@salesmanchatbot.io/ui/hooks/use-debounced-callback", () => ({
   useDebouncedCallback: () => debouncedCount,
 }))
 
@@ -148,19 +148,19 @@ vi.mock("@/enterprise/features/billing/upgrade-plan-dialog", () => ({
     open ? <div data-testid="pricing-dialog">pricing</div> : null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: () => null,
 }))
-vi.mock("@chatbotx.io/ui/components/form/date-picker-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/date-picker-field", () => ({
   DateTimePickerField: () => null,
 }))
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: () => null,
 }))
-vi.mock("@chatbotx.io/ui/components/ui/form", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", () => ({
   Form: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }))
-vi.mock("@chatbotx.io/ui/components/ui/card", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/card", () => ({
   Card: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
   CardContent: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -172,10 +172,10 @@ vi.mock("@chatbotx.io/ui/components/ui/card", () => ({
     <div>{children}</div>
   ),
 }))
-vi.mock("@chatbotx.io/ui/components/ui/separator", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/separator", () => ({
   Separator: () => null,
 }))
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...props
@@ -183,7 +183,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
     <button {...props}>{children}</button>
   ),
 }))
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ open, children }: { open: boolean; children: React.ReactNode }) =>
     open ? <div data-testid="plan-limit-dialog">{children}</div> : null,
   DialogContent: ({ children }: { children: React.ReactNode }) => (

@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { db } from "../client"
 import {
   accountModel,
@@ -19,7 +19,7 @@ async function main() {
     .insert(userModel)
     .values({
       email: "demo@example.com",
-      name: "Demo ChatbotX",
+      name: "Demo salesmanChatbot",
       emailVerified: true,
     })
     .returning()

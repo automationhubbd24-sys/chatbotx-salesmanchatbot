@@ -56,7 +56,7 @@ const integrationWebchatService = {
   delete: vi.fn(),
 }
 const resolveTenantSettings = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWebchatService,
   resolveTenantSettings,
 }))
@@ -64,7 +64,7 @@ vi.mock("@chatbotx.io/business", () => ({
 const isCommunity = vi.fn(() => false)
 vi.mock("@/env", () => ({ isCommunity: () => isCommunity() }))
 
-vi.mock("@chatbotx.io/database/partials", async () => {
+vi.mock("@salesmanchatbot.io/database/partials", async () => {
   const { z } = await import("zod")
   return {
     broadcastPlanLimitDataSchema: z.object({}),
@@ -85,7 +85,7 @@ const { webchatSelectSchema } = vi.hoisted(() => {
   }
   return { webchatSelectSchema }
 })
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   createSelectSchema: vi.fn(() => webchatSelectSchema),
   integrationWebchatModel: {},
 }))
@@ -162,7 +162,7 @@ describe("POST /v1/webchats", () => {
         data: expect.objectContaining({
           persistentMenus: [
             expect.objectContaining({
-              label: "⚡ Built with chatbotx.io",
+              label: "⚡ Built with salesmanchatbot.io",
               type: "url",
             }),
           ],
@@ -242,7 +242,7 @@ describe("PATCH /v1/webchats/{id}", () => {
       id: "wc-1",
       data: expect.objectContaining({
         persistentMenus: [
-          expect.objectContaining({ label: "⚡ Built with chatbotx.io" }),
+          expect.objectContaining({ label: "⚡ Built with salesmanchatbot.io" }),
         ],
       }),
     })

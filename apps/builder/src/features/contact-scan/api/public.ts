@@ -1,4 +1,4 @@
-import { contactScanService } from "@chatbotx.io/business"
+import { contactScanService } from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnListingResource,
   possibleErrorsOnSchedulingContactScan,

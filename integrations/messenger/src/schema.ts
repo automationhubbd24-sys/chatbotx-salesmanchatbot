@@ -4,7 +4,7 @@ import type {
   IncomingAttachment,
   Oauth2AuthValue,
   Oauth2Config,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import type {
   CloneMessengerTemplateProps,
@@ -14,7 +14,7 @@ import type {
 } from "./apis/message-templates"
 import type { FacebookPostDetails } from "./apis/post"
 
-export const MESSENGER_MESSAGE_METADATA = "SENT_FROM_CHATBOTX"
+export const MESSENGER_MESSAGE_METADATA = "SENT_FROM_SALESMANCHATBOT"
 /**
  * `message.app_id` values Meta stamps on a `message_echoes` event when the
  * message was sent from a Meta first-party surface rather than a third-party
@@ -217,6 +217,12 @@ export const messengerMessageSchema = z.object({
   // a previously-sent DM.
   is_deleted: z.boolean().optional(),
   attachments: z.array(messengerAttachmentSchema).optional(),
+  // Messenger's reply/swipe webhook payload nests the parent native MID here.
+  // Keep it tolerant so a malformed optional reply target never drops the DM.
+  reply_to: z
+    .object({ mid: z.string().optional().catch(undefined) })
+    .optional()
+    .catch(undefined),
   metadata: z.string().optional(),
   quick_reply: z
     .object({
@@ -553,6 +559,7 @@ export const facebookSendMessageRequestSchema = z.object({
     .optional(),
   notification_type: z.enum(["REGULAR", "SILENT_PUSH", "NO_PUSH"]).optional(),
   persona_id: z.string().optional(),
+  reply_to: z.object({ mid: z.string() }).optional(),
 })
 export type FacebookSendMessageRequest = z.infer<
   typeof facebookSendMessageRequestSchema

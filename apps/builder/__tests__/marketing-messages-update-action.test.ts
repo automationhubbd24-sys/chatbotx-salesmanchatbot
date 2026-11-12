@@ -14,10 +14,10 @@ const resolveContentAttachments = vi.fn(({ content }: { content: unknown }) =>
   Promise.resolve(content),
 )
 
-vi.mock("@chatbotx.io/integration-facebook-ads", () => ({
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", () => ({
   updateMessageCampaign,
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   facebookMarketingMessagesService: { find, update },
 }))
 vi.mock("@/features/facebook-marketing-messages/lib/media-attachment", () => ({

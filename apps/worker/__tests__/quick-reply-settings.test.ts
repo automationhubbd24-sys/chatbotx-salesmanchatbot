@@ -1,4 +1,4 @@
-import { quickReplySettingsDefaultFn } from "@chatbotx.io/flow-config"
+import { quickReplySettingsDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -14,10 +14,10 @@ const mocks = vi.hoisted(() => ({
   logger: { warn: vi.fn(), info: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: mocks.conversationService,
 }))
-vi.mock("@chatbotx.io/business/smart-delay", () => ({
+vi.mock("@salesmanchatbot.io/business/smart-delay", () => ({
   smartDelayService: mocks.smartDelayService,
 }))
 vi.mock("../src/integration/handlers/smart-delay", () => ({

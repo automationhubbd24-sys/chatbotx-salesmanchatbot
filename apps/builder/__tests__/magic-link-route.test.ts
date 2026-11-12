@@ -5,7 +5,7 @@ import {
   type SendMessageNodeSchema,
   sendMessageNodeDefaultFn,
   sendTextStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { NextRequest } from "next/server"
 import { beforeEach, expect, test, vi } from "vitest"
 
@@ -20,16 +20,16 @@ const findForButtonPayload = vi.fn()
 const emit = vi.fn()
 const loadServableWorkspace = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: { findByIdWithConversation: findContactInbox },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowVersionService: { findForButtonPayload },
   magicLinkService: { findByName: findMagicLink },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({ emit }))
+vi.mock("@salesmanchatbot.io/event-bus", () => ({ emit }))
 
 vi.mock("@/lib/workspace/load-servable-workspace", () => ({
   loadServableWorkspace,

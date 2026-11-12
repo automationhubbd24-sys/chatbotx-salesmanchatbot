@@ -1,9 +1,9 @@
 {
-  "extends": "@chatbotx.io/typescript-config/nextjs.json",
+  "extends": "@salesmanchatbot.io/typescript-config/nextjs.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@chatbotx.io/ui/*": ["../../packages/ui/src/*"]
+      "@salesmanchatbot.io/ui/*": ["../../packages/ui/src/*"]
     },
     "plugins": [
       {

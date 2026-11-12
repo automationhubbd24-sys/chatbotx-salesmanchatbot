@@ -1,12 +1,12 @@
 "use client"
 
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@chatbotx.io/ui/components/ui/toggle-group"
-import { useDebouncedCallback } from "@chatbotx.io/ui/hooks/use-debounced-callback"
+} from "@salesmanchatbot.io/ui/components/ui/toggle-group"
+import { useDebouncedCallback } from "@salesmanchatbot.io/ui/hooks/use-debounced-callback"
 import {
   CalendarIcon,
   ListIcon,

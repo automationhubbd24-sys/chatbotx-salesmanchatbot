@@ -4,12 +4,12 @@ import {
   db,
   eq,
   inArray,
-} from "@chatbotx.io/database/client"
-import { broadcastStatuses } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { broadcastStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   broadcastModel,
   contactsOnSequenceModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 
 export async function cancelInFlightBroadcastsForWorkspace(props: {
   tx?: DatabaseClient

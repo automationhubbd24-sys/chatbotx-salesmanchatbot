@@ -1,19 +1,19 @@
 "use client"
 
-import type { ImportStatus } from "@chatbotx.io/database/partials"
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { ImportStatus } from "@salesmanchatbot.io/database/partials"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import { format } from "date-fns"
 import { useTranslations } from "next-intl"

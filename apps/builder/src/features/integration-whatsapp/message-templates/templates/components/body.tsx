@@ -1,5 +1,5 @@
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
 import { useTranslations } from "next-intl"
 import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { useFormContext } from "react-hook-form"

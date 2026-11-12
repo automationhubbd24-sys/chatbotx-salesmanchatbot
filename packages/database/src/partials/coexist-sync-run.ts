@@ -5,9 +5,9 @@ import { z } from "zod"
  * WhatsApp/Messenger/Instagram coexistence history import (`coexist`) or an
  * Automatic Customer Scan (`contact_scan`). Backs the `coexistRunType`
  * pgEnum in `schema/coexist-sync-run.ts` — same pattern as `channelTypes` /
- * `coexistChannels` in `@chatbotx.io/utils/channel`, kept here (rather than
+ * `coexistChannels` in `@salesmanchatbot.io/utils/channel`, kept here (rather than
  * in `packages/utils`) since only `packages/database` and
- * `@chatbotx.io/business` need it.
+ * `@salesmanchatbot.io/business` need it.
  */
 export const coexistRunTypes = z.enum(["coexist", "contact_scan"])
 

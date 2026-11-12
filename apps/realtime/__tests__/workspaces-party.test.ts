@@ -1,10 +1,10 @@
-import { serializeRealtimeSubscriptionMessage } from "@chatbotx.io/partysocket-config"
+import { serializeRealtimeSubscriptionMessage } from "@salesmanchatbot.io/partysocket-config"
 import {
   REALTIME_TOKEN_PURPOSE,
   signMemberConnectToken,
   signRealtimeToken,
-} from "@chatbotx.io/partysocket-config/auth"
-import { serializePresencePingMessage } from "@chatbotx.io/partysocket-config/presence"
+} from "@salesmanchatbot.io/partysocket-config/auth"
+import { serializePresencePingMessage } from "@salesmanchatbot.io/partysocket-config/presence"
 import type * as Party from "partykit/server"
 import { beforeEach, describe, expect, it, vi } from "vitest"
 

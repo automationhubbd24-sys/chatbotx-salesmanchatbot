@@ -1,5 +1,5 @@
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
-import { klaviyoSyncProfileDefaultFn } from "@chatbotx.io/flow-config"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
+import { klaviyoSyncProfileDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { buildKlaviyoProfileProps } from "../src/integration/handlers/klaviyo-handler"
 
@@ -24,7 +24,7 @@ const mocks = vi.hoisted(() => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async ({ integration }: { integration: unknown }) => ({
     auth: mocks.state.auth,
     integration,
@@ -34,19 +34,19 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: vi.fn((value: unknown) => value) },
   encryptUtils: { decryptObject: vi.fn(async () => mocks.state.auth) },
 }))
 
-vi.mock("@chatbotx.io/integration-klaviyo", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/integration-klaviyo", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@chatbotx.io/integration-klaviyo")
+    typeof import("@salesmanchatbot.io/integration-klaviyo")
   >()),
   integration: { runAction: mocks.runAction },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
 }))
 

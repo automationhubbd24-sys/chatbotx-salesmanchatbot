@@ -6,7 +6,7 @@ const { mockDisable, mockEnable } = vi.hoisted(() => ({
   mockEnable: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   coexistService: {
     disable: mockDisable,
     enable: mockEnable,
@@ -42,7 +42,7 @@ vi.mock("@/lib/auth/auth", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       workspaceMemberModel: {
@@ -56,7 +56,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({
     error: vi.fn(),
     info: vi.fn(),

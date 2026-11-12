@@ -1,4 +1,4 @@
-import { ChannelError, ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelError, ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
 
 class ThreadControlUnsupportedError extends Error {}
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   AI_HANDOVER_BULK_CHUNK_BUDGET_MS: 45_000,
   AI_HANDOVER_BULK_MAX_PAUSE_MS: 6 * 60 * 60 * 1000,
   AI_HANDOVER_BULK_SETTLE_CONCURRENCY: 10,
@@ -57,7 +57,7 @@ vi.mock("@chatbotx.io/business", () => ({
   recordDeliveredDirectMessage: mocks.recordDelivered,
   threadControlService: { recordEvent: mocks.recordEvent },
 }))
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   createBulkThreadControl: mocks.createRunner,
   syncThreadOwner: mocks.syncThreadOwner,
 }))

@@ -7,16 +7,16 @@ import { runStdioServer } from "./server/stdio-server"
 
 async function main() {
   // Manual verification only: this intentionally mutates Node's global TLS policy.
-  if (env.CHATBOTX_ALLOW_SELF_SIGNED_CERT === "true") {
+  if (env.SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT === "true") {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
     console.error(
-      "CHATBOTX_ALLOW_SELF_SIGNED_CERT=true disables TLS certificate verification.",
+      "SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT=true disables TLS certificate verification.",
     )
   }
 
   await loadOpenApiSpec()
 
-  if (env.CHATBOTX_MCP_TRANSPORT === "both") {
+  if (env.SALESMANCHATBOT_MCP_TRANSPORT === "both") {
     await Promise.all([
       runStdioServer(createMcpServer),
       runSseServer(createMcpServer),
@@ -24,7 +24,7 @@ async function main() {
     return
   }
 
-  if (env.CHATBOTX_MCP_TRANSPORT === "sse") {
+  if (env.SALESMANCHATBOT_MCP_TRANSPORT === "sse") {
     await runSseServer(createMcpServer)
     return
   }

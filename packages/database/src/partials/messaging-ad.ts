@@ -2,9 +2,9 @@ import { z } from "zod"
 
 /**
  * Channels the in-app messaging-ads manager (CTM/CTID/CTWA) supports. Same
- * value set as `adsEligibleChannelTypes` (`@chatbotx.io/utils/channel`), kept
+ * value set as `adsEligibleChannelTypes` (`@salesmanchatbot.io/utils/channel`), kept
  * as its own enum here (rather than importing it) because this package
- * cannot depend on `@chatbotx.io/utils` for a DB-level Postgres enum — see
+ * cannot depend on `@salesmanchatbot.io/utils` for a DB-level Postgres enum — see
  * `channelTypes`'s own doc comment for why the reverse direction (utils ->
  * database re-export) is the one that exists.
  */
@@ -103,7 +103,7 @@ export type LegacyImageMediaInput = {
  * informational only — never trusted for any security or Meta-upload
  * decision. The authoritative MIME + a server-generated safe filename are
  * derived from the bytes themselves at create time (see
- * `resolveStoredImageBytes` in `@chatbotx.io/business`).
+ * `resolveStoredImageBytes` in `@salesmanchatbot.io/business`).
  */
 export type StoredImageMediaInput = {
   kind: "image"

@@ -3,7 +3,7 @@ import type {
   DynamicImageImageElement,
   DynamicImageQrCodeElement,
   DynamicImageTextElement,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 
 export type DynamicImageElementType = DynamicImageElement["type"]
 

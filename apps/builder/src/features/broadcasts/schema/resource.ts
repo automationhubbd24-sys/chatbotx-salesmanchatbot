@@ -1,7 +1,7 @@
 import {
   broadcastModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   BroadcastModel,
   BroadcastTargetModel,
@@ -9,7 +9,7 @@ import type {
   InboxModel,
   IntegrationMessengerModel,
   IntegrationWhatsappModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { z } from "zod"
 
 export const broadcastResource = createSelectSchema(broadcastModel)

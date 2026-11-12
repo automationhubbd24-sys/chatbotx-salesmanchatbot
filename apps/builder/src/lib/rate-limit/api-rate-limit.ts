@@ -1,5 +1,5 @@
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { distributedStore } from "@chatbotx.io/redis"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { distributedStore } from "@salesmanchatbot.io/redis"
 import { logger } from "@/lib/log"
 
 const WINDOW_SECONDS = 10
@@ -141,7 +141,7 @@ export const assertApiNotRateLimited = async (
   const { limited, retryAfter } = await checkApiRateLimit(props)
   if (limited) {
     props.resHeaders?.set("Retry-After", String(retryAfter))
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       `Too many requests. Retry after ${retryAfter}s.`,
       "tooManyRequests",
       TOO_MANY_REQUESTS_STATUS,

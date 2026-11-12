@@ -1,4 +1,4 @@
-import type { MarketingMessagesAdAccount } from "@chatbotx.io/integration-facebook-ads"
+import type { MarketingMessagesAdAccount } from "@salesmanchatbot.io/integration-facebook-ads"
 import { customAudienceTosUrl, isCustomAudienceTosAccepted } from "./tos"
 
 export type MarketingMessagesAdAccountOption = {

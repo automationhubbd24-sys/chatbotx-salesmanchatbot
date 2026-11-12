@@ -1,7 +1,7 @@
 // @vitest-environment node
 
-import { broadcastPlanLimitException } from "@chatbotx.io/business/errors"
-import { TRIAL_BROADCAST_PLAN_POLICY } from "@chatbotx.io/database/partials"
+import { broadcastPlanLimitException } from "@salesmanchatbot.io/business/errors"
+import { TRIAL_BROADCAST_PLAN_POLICY } from "@salesmanchatbot.io/database/partials"
 import { call, onError } from "@orpc/server"
 import { describe, expect, test, vi } from "vitest"
 

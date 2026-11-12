@@ -45,14 +45,14 @@ const { workspaceTokenAuthAPIForScope, capturedProcedures } = vi.hoisted(() => {
 
 vi.mock("@/orpc", () => ({ workspaceTokenAuthAPIForScope }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   quotaEnforcementService: {},
   userQuotaService: {},
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
-  ChatbotXException: class extends Error {},
+  salesmanChatbotException: class extends Error {},
 }))
 
 await import("@/features/token/api/public")

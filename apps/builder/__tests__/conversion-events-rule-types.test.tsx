@@ -29,7 +29,7 @@ vi.mock("@/features/ads/actions/conversion-rule", () => ({
   toggleAdsConversionRuleAction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/sersavan/multi-select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/sersavan/multi-select", () => ({
   MultiSelect: ({
     onValueChange,
     placeholder,
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/ui/components/ui/sersavan/multi-select", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/checkbox", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/checkbox", () => ({
   Checkbox: ({
     checked,
     onCheckedChange,
@@ -63,7 +63,7 @@ vi.mock("@chatbotx.io/ui/components/ui/checkbox", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tabs", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tabs", () => ({
   Tabs: ({ children }: { children: ReactNode }) => children,
   TabsContent: ({ children }: { children: ReactNode }) => children,
   TabsList: ({ children }: { children: ReactNode }) => children,
@@ -74,7 +74,7 @@ vi.mock("@/features/ads/components/ads-account-control", () => ({
   AdsAccountControl: () => null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({
     children,
     items,

@@ -7,7 +7,7 @@ const mockSetStatus = vi.fn()
 const mockDeleteMany = vi.fn()
 const mockReturnValidationErrors = vi.fn((_schema, errors) => errors)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   automatedResponseService: {
     update: (...args: unknown[]) => mockUpdate(...args),
     findOrFail: (...args: unknown[]) => mockFindOrFail(...args),
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   automatedResponseTypes: {},
 }))
 

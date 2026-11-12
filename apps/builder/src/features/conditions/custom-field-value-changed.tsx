@@ -2,17 +2,17 @@ import {
   type CustomFieldType,
   customFieldTypes,
   operatorTypes,
-} from "@chatbotx.io/database/partials"
-import { DateTimePicker } from "@chatbotx.io/ui/components/ui/date-picker"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/database/partials"
+import { DateTimePicker } from "@salesmanchatbot.io/ui/components/ui/date-picker"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { Controller, useFormContext } from "react-hook-form"

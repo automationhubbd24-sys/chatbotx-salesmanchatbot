@@ -1,4 +1,4 @@
-import { assertPublicUrl } from "@chatbotx.io/business"
+import { assertPublicUrl } from "@salesmanchatbot.io/business"
 import { logger } from "../../lib/logger"
 import type { WebhookPayload, WebhookWithConditions } from "../types"
 

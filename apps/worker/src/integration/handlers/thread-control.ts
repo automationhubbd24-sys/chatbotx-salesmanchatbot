@@ -2,29 +2,29 @@ import {
   buildContext,
   conversationService,
   threadControlService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   requestThreadControlAction,
   syncThreadOwner,
-} from "@chatbotx.io/channel-registry/thread-control"
+} from "@salesmanchatbot.io/channel-registry/thread-control"
 import {
   contactSources,
   type IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ConversationModel,
   InboxModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   SdkException,
   type ThreadControlWebhookEvent,
   type ThreadControlWebhookResult,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import type {
   IntegrationJobThreadControlAction,
   IntegrationJobThreadControlEvent,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import {
   allIntegrations,

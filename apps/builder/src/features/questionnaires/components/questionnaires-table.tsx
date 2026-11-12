@@ -1,15 +1,15 @@
 "use client"
 
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import { useTranslations } from "next-intl"
 import { use, useMemo, useState } from "react"
 import type { listQuestionnaires } from "../queries"

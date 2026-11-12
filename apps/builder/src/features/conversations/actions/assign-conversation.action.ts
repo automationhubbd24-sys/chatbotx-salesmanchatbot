@@ -1,7 +1,7 @@
 "use server"
 
-import { conversationService } from "@chatbotx.io/business"
-import type { UserModel } from "@chatbotx.io/database/types"
+import { conversationService } from "@salesmanchatbot.io/business"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

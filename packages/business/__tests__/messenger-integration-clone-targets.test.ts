@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   findMany: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { query: { integrationMessengerModel: { findMany: mocks.findMany } } },
   and: vi.fn(),
   eq: vi.fn(),
@@ -15,17 +15,17 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationMessengerRepository: {},
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationMessengerModel: {},
   tagChannelModel: {},
 }))
 
-vi.mock("@chatbotx.io/database/partials", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/database/partials")>()),
+vi.mock("@salesmanchatbot.io/database/partials", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/database/partials")>()),
 }))
 
 // flow-version/service imports these for quick reply cleanup on publish.

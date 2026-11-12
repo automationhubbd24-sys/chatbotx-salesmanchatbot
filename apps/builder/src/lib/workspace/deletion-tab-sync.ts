@@ -1,4 +1,4 @@
-const WORKSPACE_DELETION_SYNC_KEY = "chatbotx:workspace-deletion-scheduled"
+const WORKSPACE_DELETION_SYNC_KEY = "salesmanchatbot:workspace-deletion-scheduled"
 
 export type WorkspaceDeletionSyncPayload = {
   workspaceId: string

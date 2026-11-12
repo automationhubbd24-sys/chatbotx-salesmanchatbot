@@ -1,6 +1,6 @@
 "use server"
-import { aiIntegrationService } from "@chatbotx.io/ai/server"
-import { integrationGeminiService } from "@chatbotx.io/business"
+import { aiIntegrationService } from "@salesmanchatbot.io/ai/server"
+import { integrationGeminiService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

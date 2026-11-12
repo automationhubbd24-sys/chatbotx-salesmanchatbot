@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 type ActionHandler = (args: {
@@ -35,7 +35,7 @@ vi.mock("@/lib/safe-action", () => {
   return { callingActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   canCallConversation: canCallConversationMock,
   conversationService: { findByOrFail: findByOrFailMock },
   contactInboxService: { findBy: findInboxMock },
@@ -43,11 +43,11 @@ vi.mock("@chatbotx.io/business", () => ({
 }))
 
 const actualErrors = await vi.importActual<
-  typeof import("@chatbotx.io/business/errors")
->("@chatbotx.io/business/errors")
+  typeof import("@salesmanchatbot.io/business/errors")
+>("@salesmanchatbot.io/business/errors")
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code = "systemError", httpStatusCode = 400) {
@@ -62,11 +62,11 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   toPublicErrorMessage: actualErrors.toPublicErrorMessage,
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { whatsapp: "whatsapp" } },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     findByInboxIdForWorkspace: findIntegrationMock,
   },
@@ -81,7 +81,7 @@ vi.mock(
   }),
 )
 
-vi.mock("@chatbotx.io/redis", () => ({ invalidateCacheKeys: vi.fn() }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ invalidateCacheKeys: vi.fn() }))
 
 vi.mock("next-intl/server", () => ({
   getTranslations: async () => (key: string) => key,

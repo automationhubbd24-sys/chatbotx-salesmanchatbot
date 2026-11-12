@@ -1,7 +1,7 @@
 import {
   flowEventTypeSchema,
   messageEventTypeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { z } from "zod"
 
 export const flowStatsRequest = z.object({

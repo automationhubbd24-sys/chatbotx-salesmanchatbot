@@ -57,9 +57,9 @@ const mocks = vi.hoisted(() => {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/database/client", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/database/client")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/database/client")>()
   return {
     ...actual,
     db: {
@@ -78,7 +78,7 @@ vi.mock("@chatbotx.io/database/client", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((callback) => callback),
   invalidateCacheByTags: vi.fn(async () => undefined),
   createRedisConnection: vi.fn(() => ({ on: vi.fn() })),

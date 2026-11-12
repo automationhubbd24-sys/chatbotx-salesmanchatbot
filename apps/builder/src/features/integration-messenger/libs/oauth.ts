@@ -1,5 +1,5 @@
-import type { MessengerCredentialPublic } from "@chatbotx.io/database/partials"
-import { generateAuthUrl } from "@chatbotx.io/integration-messenger"
+import type { MessengerCredentialPublic } from "@salesmanchatbot.io/database/partials"
+import { generateAuthUrl } from "@salesmanchatbot.io/integration-messenger"
 import { getOriginFromHeader } from "@/lib/domain"
 import { buildProviderCallbackUrl } from "@/lib/provider-origin"
 

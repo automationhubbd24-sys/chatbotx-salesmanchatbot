@@ -5,23 +5,23 @@ const findManySpy =
 const updateWhereSpy = vi.fn<(arg: unknown) => Promise<unknown>>()
 const removeFromScheduleSpy = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {},
   and: (...args: unknown[]) => ({ __and: args }),
   eq: (c: unknown, v: unknown) => ({ __eq: [c, v] }),
   inArray: (c: unknown, v: unknown) => ({ __inArray: [c, v] }),
 }))
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   sequenceDispatchModel: {
     id: { __column: "id" },
     workspaceId: { __column: "workspaceId" },
     status: { __column: "status" },
   },
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   sequenceConnections: { useExisting: () => Promise.resolve({}) },
 }))
-vi.mock("@chatbotx.io/scheduler", () => ({
+vi.mock("@salesmanchatbot.io/scheduler", () => ({
   SchedulerClient: class {
     removeFromSchedule = removeFromScheduleSpy
   },

@@ -1,14 +1,14 @@
 import {
   integrationWhatsappService,
   whatsappBusinessAccountService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { logProviderError } from "@chatbotx.io/business/error-log"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import {
   integration as integrationWhatsapp,
   type WhatsappAuthValue,
-} from "@chatbotx.io/integration-whatsapp"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-whatsapp"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { logger } from "../../lib/logger"
 import { runJobWithAuditContext } from "../../lib/run-job-with-audit-context"
 

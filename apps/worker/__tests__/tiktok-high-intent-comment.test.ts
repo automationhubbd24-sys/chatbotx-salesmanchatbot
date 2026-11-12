@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const mockMergeContentAttributesBySourceId = vi.fn()
 const mockIdentifyInbox = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn().mockResolvedValue({
     mergeContentAttributesBySourceId: mockMergeContentAttributesBySourceId,
   }),

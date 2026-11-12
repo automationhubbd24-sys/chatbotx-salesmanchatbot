@@ -4,7 +4,7 @@ import {
   stepTypes,
   triggerN8nStepDefaultFn,
   triggerN8nStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 
 describe("trigger n8n step registration", () => {

@@ -6,7 +6,7 @@ const { mockConversationFindBy, mockFindMemberWithUserByWorkspaceIdAndUserId } =
     mockFindMemberWithUserByWorkspaceIdAndUserId: vi.fn(),
   }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: {
     findBy: mockConversationFindBy,
   },
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       inboxTeamModel: {

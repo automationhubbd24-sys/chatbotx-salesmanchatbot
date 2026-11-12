@@ -1,4 +1,4 @@
-import type { ContactInfoType } from "@chatbotx.io/database/partials"
+import type { ContactInfoType } from "@salesmanchatbot.io/database/partials"
 import type {
   BaseEventEmitter,
   CallEndedMetadata,

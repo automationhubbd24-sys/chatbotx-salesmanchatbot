@@ -1,4 +1,4 @@
-import type { ChannelType } from "@chatbotx.io/utils/channel"
+import type { ChannelType } from "@salesmanchatbot.io/utils/channel"
 import {
   type AnyPgColumn,
   jsonb,
@@ -10,7 +10,7 @@ import { bigintAsString, sharedColumns } from "../../partials/shared"
 import { userModel } from "../auth-user"
 
 // Re-exported from its definition site (`partials/shared`) so the documented
-// public location stays `@chatbotx.io/database/schema`, while the eager const
+// public location stays `@salesmanchatbot.io/database/schema`, while the eager const
 // itself lives outside the tenant↔user circular import. See `shared.ts`.
 export { ROOT_TENANT_ID } from "../../partials/shared"
 

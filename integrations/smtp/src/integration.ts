@@ -5,7 +5,7 @@ import {
   Integration,
   type IntegrationDefinition,
   selfServeConnection,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { sendMail } from "./actions"
 import type { SmtpActions, SmtpAuthValue } from "./schema"
 

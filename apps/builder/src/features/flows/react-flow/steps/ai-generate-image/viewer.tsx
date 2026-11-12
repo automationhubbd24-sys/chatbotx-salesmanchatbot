@@ -1,6 +1,6 @@
 "use client"
 
-import type { AIGenerateImageSchema } from "@chatbotx.io/flow-config"
+import type { AIGenerateImageSchema } from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 import { getAiProviderLabelKey } from "@/features/ai-agents/lib/ai-provider-label"
 import { AIIcon } from "../ai-generate-text/components/ai-icon"

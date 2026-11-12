@@ -38,7 +38,7 @@ const deleteByTokens = vi.fn().mockResolvedValue(undefined)
 const contactFindById = vi.fn().mockResolvedValue({ fullName: "Jane Doe" })
 const workspaceFind = vi.fn().mockResolvedValue({ language: "en" })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: { findByOrFail },
   workspaceMemberService: { listUserIdsByWorkspaceId },
   deviceTokenService: { findByUserIds, deleteByTokens },

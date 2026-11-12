@@ -6,9 +6,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"
 import { useState } from "react"

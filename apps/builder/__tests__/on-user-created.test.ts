@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import type { AuthCreatedUser } from "@chatbotx.io/auth/server"
+import type { AuthCreatedUser } from "@salesmanchatbot.io/auth/server"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { ensureBootstrapPlan, isCloud, loggerWarn, quotaQueueAdd } = vi.hoisted(
@@ -12,11 +12,11 @@ const { ensureBootstrapPlan, isCloud, loggerWarn, quotaQueueAdd } = vi.hoisted(
   }),
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   userQuotaService: { ensureBootstrapPlan },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   QuotaJobAction: { publishEntitlements: "publishEntitlements" },
   quotaQueue: { add: quotaQueueAdd },
 }))

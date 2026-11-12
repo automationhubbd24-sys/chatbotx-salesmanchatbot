@@ -6,29 +6,29 @@ import {
   userService,
   whatsappVoipCallService,
   whatsappVoipSignalingService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   resolveWhatsappCallTerminalOutcomePair,
   type WhatsappCallTerminalStatusOutcomePair,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   integrationWhatsappRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
-import { emitCallEnded, emitMissedAudioCall } from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
+import { emitCallEnded, emitMissedAudioCall } from "@salesmanchatbot.io/events"
 import {
   RealtimeEventType,
   type RealtimeEventWhatsappCallTransportEnded,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import {
   getWhatsappCallEntity,
   type MessageWhatsappCallEntity,
   resolveWhatsappCallActivityLabelKey,
   type WhatsappCallActivityLabelKey,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { transcribesCalls } from "@chatbotx.io/utils/whatsapp-call"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { transcribesCalls } from "@salesmanchatbot.io/utils/whatsapp-call"
 import { logger } from "../../../lib/logger"
 
 /**

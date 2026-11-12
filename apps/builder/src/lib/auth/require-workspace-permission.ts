@@ -1,6 +1,6 @@
 "use server"
 
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import {
   buildContactPermissionScope,

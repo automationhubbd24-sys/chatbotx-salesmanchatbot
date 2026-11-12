@@ -6,7 +6,7 @@ import {
   isGoogleRevokedError,
   probeVerify,
   SdkException,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { generateAuthUrl, getClient, getSheetsClient } from "./client"
 import { addGoogleSheetsIdentity } from "./connection-auth"
 import { GOOGLE_SHEETS_SCOPES } from "./constants"

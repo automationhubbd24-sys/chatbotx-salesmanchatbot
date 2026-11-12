@@ -15,7 +15,7 @@ const mocks = vi.hoisted(() => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mocks.insert,
     query: {
@@ -30,11 +30,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: mocks.relationsFilterToSQL,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   magicLinkModel: { name: "magicLink.name" },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   getPaginationWithDefaults: (input: { page: number; perPage: number }) => ({
     limit: input.perPage,
     offset: (input.page - 1) * input.perPage,
@@ -44,7 +44,7 @@ vi.mock("@chatbotx.io/database/utils", () => ({
 }))
 
 let nextId = 0
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => `id-${nextId++}`,
 }))
 

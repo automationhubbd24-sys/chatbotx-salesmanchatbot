@@ -17,7 +17,7 @@ import { Pool } from "pg"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const migrationsFolder = join(__dirname, "..", "drizzle")
-const migrationLockName = "chatbotx:database:migrations"
+const migrationLockName = "salesmanchatbot:database:migrations"
 
 // Drizzle's default migrator runs all pending migrations in one transaction.
 // PostgreSQL does not allow a newly created enum to be used before that
@@ -44,7 +44,7 @@ const driftProbeFolders = readdirSync(migrationsFolder, {
 if (driftProbeFolders.length > 0) {
   console.error(
     `Refusing to migrate: ${driftProbeFolders.join(", ")} is a leftover schema-drift probe, not a real migration.\n` +
-      "Delete the folder(s) and re-run `pnpm --filter @chatbotx.io/database db:check-drift`.",
+      "Delete the folder(s) and re-run `pnpm --filter @salesmanchatbot.io/database db:check-drift`.",
   )
   process.exit(1)
 }

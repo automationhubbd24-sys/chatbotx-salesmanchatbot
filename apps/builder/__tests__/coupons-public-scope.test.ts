@@ -19,7 +19,7 @@ const {
 const couponService = { listTopics: vi.fn() }
 const contactService = { findByIdOrFail: vi.fn() }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },

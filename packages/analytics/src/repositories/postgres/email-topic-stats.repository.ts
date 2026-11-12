@@ -1,10 +1,10 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { and, db, eq, isNull, sql } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { and, db, eq, isNull, sql } from "@salesmanchatbot.io/database/client"
 import {
   analyticsEmailTopicModel,
   emailTopicModel,
-} from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type CreateEmailRecipientInput = {
   topicId: string

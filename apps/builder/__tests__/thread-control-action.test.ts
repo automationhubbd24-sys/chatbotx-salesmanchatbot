@@ -1,10 +1,10 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import {
   ChannelError,
   ChannelErrorCategory,
   ThreadControlTakeRefusedError,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -13,9 +13,9 @@ const mocks = vi.hoisted(() => ({
   requireContactAccessForMember: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", async () => {
-  const { ChatbotXException: BaseException } = await import(
-    "@chatbotx.io/business/errors"
+vi.mock("@salesmanchatbot.io/business", async () => {
+  const { salesmanChatbotException: BaseException } = await import(
+    "@salesmanchatbot.io/business/errors"
   )
   class ThreadControlUnsupportedError extends BaseException {
     constructor(channel: string) {
@@ -28,7 +28,7 @@ vi.mock("@chatbotx.io/business", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/channel-registry/thread-control", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/thread-control", () => ({
   requestConversationThreadControl: mocks.requestConversationThreadControl,
 }))
 
@@ -51,7 +51,7 @@ vi.mock("@/lib/safe-action", () => ({
 const { threadControlAction: untypedAction } = await import(
   "../src/features/conversations/actions/thread-control.action"
 )
-const { ThreadControlUnsupportedError } = await import("@chatbotx.io/business")
+const { ThreadControlUnsupportedError } = await import("@salesmanchatbot.io/business")
 const threadControlAction = untypedAction as unknown as (props: {
   bindArgsParsedInputs: [string, string]
   parsedInput: { contactInboxId: string; action: "take" | "release" | "pass" }
@@ -104,7 +104,7 @@ describe("threadControlAction", () => {
 
   test("refuses a caller outside the contact's scope without touching the channel", async () => {
     mocks.requireContactAccessForMember.mockRejectedValue(
-      new ChatbotXException("Contact not found", "notFound", 404),
+      new salesmanChatbotException("Contact not found", "notFound", 404),
     )
 
     await expect(run("release")).rejects.toThrow("Contact not found")
@@ -113,7 +113,7 @@ describe("threadControlAction", () => {
 
   test("shows a translated not-found for a contact inbox of another contact", async () => {
     mocks.requestConversationThreadControl.mockRejectedValue(
-      new ChatbotXException("Contact inbox not found", "notFound", 404),
+      new salesmanChatbotException("Contact inbox not found", "notFound", 404),
     )
 
     await expect(run("release", "ci-foreign")).rejects.toThrow(

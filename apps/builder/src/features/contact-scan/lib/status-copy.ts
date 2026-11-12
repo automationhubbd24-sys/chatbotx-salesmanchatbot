@@ -1,4 +1,4 @@
-import type { ContactScanViewStatus } from "@chatbotx.io/database/partials"
+import type { ContactScanViewStatus } from "@salesmanchatbot.io/database/partials"
 
 export type ContactScanStatusTone =
   | "muted"
@@ -17,7 +17,7 @@ export type ContactScanStatusCopy = {
  * One entry per `ContactScanViewStatus` — drives `contact-scan-form.tsx`'s
  * status panel (copy + tone) and its polling. `satisfies Record<...>` makes
  * a status added to `contactScanViewStatuses`
- * (`@chatbotx.io/database/partials`) a compile error here instead of a
+ * (`@salesmanchatbot.io/database/partials`) a compile error here instead of a
  * silent fallthrough, per the "tables, not if/else" requirement.
  */
 export const contactScanStatusCopy = {

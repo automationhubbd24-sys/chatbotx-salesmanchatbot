@@ -1,13 +1,14 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   integrationGeminiModel,
   integrationModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { BaseService } from "../base.service"
 import {
   type ConnectAiProviderInput,
   connectAiProviderIntegration,
 } from "../integration-ai-provider/connect"
+import { productService } from "../product"
 
 export type UpdateGeminiInput = { autoReply?: boolean }
 
@@ -32,6 +33,11 @@ class IntegrationGeminiService extends BaseService {
         ? "updated the Gemini integration configuration"
         : "connected a new Gemini integration",
     )
+    if (!existing) {
+      await productService.scheduleEmbeddingRefreshPage({
+        workspaceId: input.workspaceId,
+      })
+    }
   }
 
   async update(props: { workspaceId: string }, data: UpdateGeminiInput) {

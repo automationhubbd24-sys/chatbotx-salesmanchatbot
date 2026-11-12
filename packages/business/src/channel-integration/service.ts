@@ -1,5 +1,5 @@
-import { db } from "@chatbotx.io/database/client"
-import { adsEligibleChannelTypes } from "@chatbotx.io/utils/channel"
+import { db } from "@salesmanchatbot.io/database/client"
+import { adsEligibleChannelTypes } from "@salesmanchatbot.io/utils/channel"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 import type { ChannelIntegrationChannel } from "./schema"

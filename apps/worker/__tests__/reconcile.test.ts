@@ -16,7 +16,7 @@ const {
   removeFromAllSpy: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     execute: executeSpy,
     query: {
@@ -34,13 +34,13 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   sequenceConnections: {
     useExisting: vi.fn().mockResolvedValue({}),
   },
 }))
 
-vi.mock("@chatbotx.io/scheduler", () => ({
+vi.mock("@salesmanchatbot.io/scheduler", () => ({
   SchedulerClient: class {
     addToSchedule = addToScheduleSpy
     getZSetMembers = getZSetMembersSpy

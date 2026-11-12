@@ -8,29 +8,29 @@ import {
   relationsFilterToSQL,
   type SQL,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type CustomFieldType,
   rootFolderId,
-} from "@chatbotx.io/database/partials"
-import { botFieldModel } from "@chatbotx.io/database/schema"
-import type { BotFieldModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import { botFieldModel } from "@salesmanchatbot.io/database/schema"
+import type { BotFieldModel } from "@salesmanchatbot.io/database/types"
 import {
   likeContains,
   parseOrderByAsObject,
   parsePagination,
-} from "@chatbotx.io/database/utils"
-import { FieldOperationType } from "@chatbotx.io/flow-config"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { FieldOperationType } from "@salesmanchatbot.io/flow-config"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   canonicalNumberLiteral,
   customFieldResolutionKey,
-} from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/utils/custom-field"
 import {
   SourceTimezoneStrategy,
   type TemporalInputParsing,
-} from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/utils/datetime"
 import { BaseService } from "../base.service"
 import {
   createSourceTimezoneResolver,
@@ -38,7 +38,7 @@ import {
   type SourceTimezoneResolver,
 } from "../contact-custom-field/normalize"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
   validationException,
 } from "../errors"
@@ -432,7 +432,7 @@ class BotFieldService extends BaseService {
     })
 
     if (normalizedValue === null) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         `Invalid ${type} value for bot field`,
         "invalidFieldOperation",
       )
@@ -578,7 +578,7 @@ class BotFieldService extends BaseService {
     const existing = await this.findByKeyOrFail({ workspaceId, key })
 
     if (!isOperationAllowedForType(operation, existing.type)) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         `Operation "${operation}" is not supported for field type "${existing.type}"`,
         "invalidFieldOperation",
       )
@@ -598,7 +598,7 @@ class BotFieldService extends BaseService {
       })
 
       if (normalizedValue === null) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           `Invalid ${existing.type} value for bot field`,
           "invalidFieldOperation",
         )
@@ -648,7 +648,7 @@ class BotFieldService extends BaseService {
     if (isNumericOperation) {
       const canonicalOperand = canonicalNumberLiteral(value)
       if (canonicalOperand === null) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           `"${value}" is not a valid number value for this field.`,
           "invalidFieldOperation",
         )
@@ -670,7 +670,7 @@ class BotFieldService extends BaseService {
         .returning()
     } catch (error: unknown) {
       if (isNumericOperation) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Bot field value is not numeric and cannot be increased or decreased",
           "invalidFieldOperation",
         )

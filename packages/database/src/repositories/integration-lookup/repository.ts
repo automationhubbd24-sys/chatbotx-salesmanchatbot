@@ -3,7 +3,7 @@ import { type DatabaseClient, db, sql } from "../../client"
 /**
  * Raw row shape for a dynamic per-channel integration table lookup. Callers
  * (worker `IntegrationRow`) narrow `auth` to their own `AuthValue` type —
- * this repository stays free of the `@chatbotx.io/sdk` dependency that
+ * this repository stays free of the `@salesmanchatbot.io/sdk` dependency that
  * `packages/database` does not carry.
  */
 export type IntegrationLookupRow = {

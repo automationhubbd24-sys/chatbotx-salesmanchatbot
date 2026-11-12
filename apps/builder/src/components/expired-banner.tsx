@@ -2,8 +2,8 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@chatbotx.io/ui/components/ui/alert"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/alert"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import { AlertTriangleIcon } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"

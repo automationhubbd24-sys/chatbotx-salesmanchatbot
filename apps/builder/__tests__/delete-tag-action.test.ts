@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockSoftDelete = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: { softDelete: (...args: unknown[]) => mockSoftDelete(...args) },
 }))
 

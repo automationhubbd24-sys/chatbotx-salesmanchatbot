@@ -1,11 +1,11 @@
 "use client"
 
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
-import { FieldOperationType } from "@chatbotx.io/flow-config"
-import { DateTimePickerField } from "@chatbotx.io/ui/components/form/date-picker-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
+import { FieldOperationType } from "@salesmanchatbot.io/flow-config"
+import { DateTimePickerField } from "@salesmanchatbot.io/ui/components/form/date-picker-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -15,10 +15,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { resolveTemporalCustomFieldSaveFormat } from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { resolveTemporalCustomFieldSaveFormat } from "@salesmanchatbot.io/utils/datetime"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

@@ -11,22 +11,22 @@ import {
   isUniqueViolationError,
   sql,
   sum,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import type {
   QuestionnaireAnswerValue,
   QuestionnaireChoiceOption,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   contactModel,
   questionnaireAnswerModel,
   type questionnaireQuestionModel,
   questionnaireSubmissionModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import {
   getPaginationWithDefaults,
   likeContains,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { contactService, isRichSystemContactField } from "../contact/service"
 import { contactCustomFieldService } from "../contact-custom-field/service"

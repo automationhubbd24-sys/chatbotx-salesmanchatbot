@@ -12,7 +12,7 @@ vi.mock("next-intl", () => ({
 // (hover/focus), which a unit test shouldn't have to drive. Mock the
 // primitives down to plain markup so this test stays about
 // AddChannelButton's own branching, not Base UI's open/portal behavior.
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   TooltipTrigger: ({ render }: { render: React.ReactNode }) => render,
   TooltipContent: ({ children }: { children: React.ReactNode }) => (

@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useTenantSettings } from "@/features/tenant"

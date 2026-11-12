@@ -2,14 +2,14 @@ import { DelayedError } from "bullmq"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const warn = vi.fn()
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ warn }),
 }))
 
 class LockAcquisitionError extends Error {
   override name = "LockAcquisitionError"
 }
-vi.mock("@chatbotx.io/redis", () => ({ LockAcquisitionError }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ LockAcquisitionError }))
 
 const {
   LOCK_CONTENTION_POLICY,

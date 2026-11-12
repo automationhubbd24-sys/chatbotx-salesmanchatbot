@@ -17,7 +17,7 @@ vi.mock("@/lib/log", () => ({
   },
 }))
 
-// Pin LOG_DEBUG before loading the module: `@chatbotx.io/logger` resolves its
+// Pin LOG_DEBUG before loading the module: `@salesmanchatbot.io/logger` resolves its
 // diagnostic level once at import time, so a shell-exported LOG_DEBUG=true would
 // otherwise make `logDiagnostic` emit at info and flip this suite's assertions.
 vi.stubEnv("LOG_DEBUG", "")

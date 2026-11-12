@@ -1,7 +1,7 @@
 "use client"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import type { AdsEligibleChannelType } from "@chatbotx.io/utils/channel"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import type { AdsEligibleChannelType } from "@salesmanchatbot.io/utils/channel"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTranslations } from "next-intl"

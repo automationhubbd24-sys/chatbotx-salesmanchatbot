@@ -1,6 +1,6 @@
 "use client"
 
-import type { SplitTrafficStepSchema } from "@chatbotx.io/flow-config"
+import type { SplitTrafficStepSchema } from "@salesmanchatbot.io/flow-config"
 import { Position } from "@xyflow/react"
 import { BaseHandle } from "@/components/base-handle"
 

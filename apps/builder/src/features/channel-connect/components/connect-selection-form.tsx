@@ -1,8 +1,8 @@
 "use client"
 
-import { CheckboxGroupField } from "@chatbotx.io/ui/components/form/checkbox-group-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { CheckboxGroupField } from "@salesmanchatbot.io/ui/components/form/checkbox-group-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"

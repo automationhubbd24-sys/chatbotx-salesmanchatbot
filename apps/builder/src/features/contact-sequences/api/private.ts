@@ -1,5 +1,5 @@
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { requireContactPermissionScopeForMember } from "@/features/contacts/permissions"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

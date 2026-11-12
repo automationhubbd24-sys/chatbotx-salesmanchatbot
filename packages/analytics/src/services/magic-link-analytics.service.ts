@@ -1,10 +1,10 @@
-import type { MagicLinkStatModel } from "@chatbotx.io/database/types"
+import type { MagicLinkStatModel } from "@salesmanchatbot.io/database/types"
 import {
   type ClickedPayload,
   clickTypeSchema,
   type FlowClickedPayload,
   type MessagePayload,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { startOfSecond } from "date-fns"
 import { toDate } from "../lib/date"
 import {

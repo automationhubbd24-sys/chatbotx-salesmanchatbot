@@ -3,14 +3,14 @@
 import {
   resolveWhatsappCallActivityLabelKey,
   type WhatsappCallActivityLabelKey,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Table,
   TableBody,
@@ -18,8 +18,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/table"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { ExternalLinkIcon, InfoIcon } from "lucide-react"
 import Link from "next/link"
 import { useFormatter, useTranslations } from "next-intl"

@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs"
-import { IntegrationJobAction } from "@chatbotx.io/worker-config"
+import { IntegrationJobAction } from "@salesmanchatbot.io/worker-config"
 import { describe, expect, test } from "vitest"
 import { isChannelOriginatedJob } from "../src/integration/channel-origin"
 

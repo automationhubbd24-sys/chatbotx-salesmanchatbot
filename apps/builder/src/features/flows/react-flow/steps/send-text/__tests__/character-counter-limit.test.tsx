@@ -3,7 +3,7 @@ import {
   buttonStepDefaultFn,
   resolveSendTextLengthLimits,
   TIKTOK_CARD_TITLE_MAX,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { act, type ComponentProps, type ReactElement } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { FormProvider, type UseFormReturn, useForm } from "react-hook-form"
@@ -23,7 +23,7 @@ vi.mock("../../button/editor", () => ({
   ButtonGroupEditor: () => <div data-testid="button-group-editor" />,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ComponentProps<"button">) => (
     <button {...props}>{children}</button>
   ),

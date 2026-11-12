@@ -1,4 +1,4 @@
-import { qrCodeService } from "@chatbotx.io/business"
+import { qrCodeService } from "@salesmanchatbot.io/business"
 import {
   possibleErrorsOnCreatingResource,
   possibleErrorsOnDeletingResource,

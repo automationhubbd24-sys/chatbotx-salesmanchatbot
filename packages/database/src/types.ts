@@ -70,6 +70,8 @@ export type IntegrationOpenrouterModel =
   typeof schema.integrationOpenrouterModel.$inferSelect
 export type IntegrationOpenaiCompatibleModel =
   typeof schema.integrationOpenaiCompatibleModel.$inferSelect
+export type IntegrationOpenaiCompatibleEmbeddingModel =
+  typeof schema.integrationOpenaiCompatibleEmbeddingModel.$inferSelect
 export type IntegrationGetResponseModel =
   typeof schema.integrationGetResponseModel.$inferSelect
 export type IntegrationModel = typeof schema.integrationModel.$inferSelect
@@ -247,6 +249,8 @@ export type AnalyticsSequenceEventModel =
 export type AnalyticsFlowNodeEventModel =
   typeof schema.analyticsFlowNodeEventModel.$inferSelect
 export type ProductModel = typeof schema.productModel.$inferSelect
+export type ProductEmbeddingModel =
+  typeof schema.productEmbeddingModel.$inferSelect
 export type ProductCategoryModel =
   typeof schema.productCategoryModel.$inferSelect
 export type IntegrationMetaCatalogModel =
@@ -260,6 +264,18 @@ export type ProductVariantOptionModel =
 export type ProductVariantModel = typeof schema.productVariantModel.$inferSelect
 export type ProductAddonModel = typeof schema.productAddonModel.$inferSelect
 export type QuestionnaireModel = typeof schema.questionnaireModel.$inferSelect
+export type OrderModel = typeof schema.orderModel.$inferSelect
+export type OrderConversationSessionModel =
+  typeof schema.orderConversationSessionModel.$inferSelect
+export type OrderItemModel = typeof schema.orderItemModel.$inferSelect
+export type OrderCustomFieldDefinitionModel =
+  typeof schema.orderCustomFieldDefinitionModel.$inferSelect
+export type OrderCustomFieldValueModel =
+  typeof schema.orderCustomFieldValueModel.$inferSelect
+export type OrderStatusHistoryModel =
+  typeof schema.orderStatusHistoryModel.$inferSelect
+export type ExternalOrderMappingModel =
+  typeof schema.externalOrderMappingModel.$inferSelect
 export type QuestionnaireQuestionModel =
   typeof schema.questionnaireQuestionModel.$inferSelect
 export type QuestionnaireSubmissionModel =

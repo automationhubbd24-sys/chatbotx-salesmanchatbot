@@ -19,7 +19,7 @@ const {
   mockRotateScopedUserId: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     changePrimaryPhone: mockChangePrimaryPhone,
     rotateScopedUserId: mockRotateScopedUserId,

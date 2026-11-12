@@ -7,7 +7,7 @@ const { customFieldList, botFieldList, tagListActive } = vi.hoisted(() => ({
   tagListActive: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customFieldService: { list: customFieldList },
   botFieldService: { list: botFieldList },
   tagService: { listActive: tagListActive },
@@ -16,7 +16,7 @@ vi.mock("@chatbotx.io/business", () => ({
 // Dynamic import (not a runtime-selected specifier): `vi.mock` above must
 // register before the module under test is evaluated, so the import is
 // deferred past the mock-setup statements — a static top-level import would
-// load the real `@chatbotx.io/business` before the mock replaces it.
+// load the real `@salesmanchatbot.io/business` before the mock replaces it.
 const { listContactFilterFieldsForAPI } = await import(
   "../list-contact-filter-fields"
 )

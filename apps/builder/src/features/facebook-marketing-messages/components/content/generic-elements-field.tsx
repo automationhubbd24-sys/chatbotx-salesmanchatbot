@@ -3,10 +3,10 @@
 import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
-} from "@chatbotx.io/ui/components/carousel-snap"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ui/components/carousel-snap"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Carousel,
   type CarouselApi,
@@ -14,7 +14,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@chatbotx.io/ui/components/ui/carousel"
+} from "@salesmanchatbot.io/ui/components/ui/carousel"
 import { PlusIcon, TrashIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"

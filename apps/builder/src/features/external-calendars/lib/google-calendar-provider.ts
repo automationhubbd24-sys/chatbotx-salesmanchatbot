@@ -1,13 +1,13 @@
 import {
   appointmentExternalCalendarService,
   buildContext,
-} from "@chatbotx.io/business"
-import type { GoogleCredential } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { GoogleCredential } from "@salesmanchatbot.io/database/partials"
 import {
   type GoogleCalendarAuthValue,
   googleCalendarAuthSchema,
   integration as integrationGoogleCalendar,
-} from "@chatbotx.io/integration-google-calendar"
+} from "@salesmanchatbot.io/integration-google-calendar"
 import type { NextRequest } from "next/server"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "@/lib/log"

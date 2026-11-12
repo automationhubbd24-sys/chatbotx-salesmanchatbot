@@ -51,9 +51,9 @@ const webhookService = {
   register: vi.fn(),
   unregister: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ webhookService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ webhookService }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),

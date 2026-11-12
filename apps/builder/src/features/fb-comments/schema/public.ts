@@ -1,4 +1,4 @@
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { publicListRequest, publicListResponse } from "@/lib/public-api/list"
 import { createFbCommentRequest, updateFbCommentRequest } from "./action"

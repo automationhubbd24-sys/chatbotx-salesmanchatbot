@@ -2,8 +2,8 @@ import type {
   ChannelType,
   ConversationBotCategory,
   ConversationStatus,
-} from "@chatbotx.io/database/partials"
-import { resolveMessagingWindowOpenedAt } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import { resolveMessagingWindowOpenedAt } from "@salesmanchatbot.io/sdk"
 import { createStore } from "zustand/vanilla"
 import type { ContactFilterRequest } from "@/features/contact-filter/schema"
 import type { GetContactResponse } from "@/features/contacts/schema/query"

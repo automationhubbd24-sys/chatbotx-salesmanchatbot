@@ -1,6 +1,6 @@
 "use client"
 
-import { listQuickReplySettingsHandles } from "@chatbotx.io/flow-config"
+import { listQuickReplySettingsHandles } from "@salesmanchatbot.io/flow-config"
 import { Position } from "@xyflow/react"
 import { useTranslations } from "next-intl"
 import { BaseHandle } from "@/components/base-handle"

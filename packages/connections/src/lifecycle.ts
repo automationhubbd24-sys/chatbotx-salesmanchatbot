@@ -3,19 +3,19 @@ import {
   connectionStateService,
   InvalidConnectionTransitionException,
   isActiveConnectionStatus,
-} from "@chatbotx.io/business/connection"
+} from "@salesmanchatbot.io/business/connection"
 import {
   connectionInactiveException,
   connectionNotConfiguredException,
   connectionNotRefreshableException,
   notFoundException,
   toPublicErrorMessage,
-} from "@chatbotx.io/business/errors"
-import { db } from "@chatbotx.io/database/client"
-import { connectionRepository } from "@chatbotx.io/database/repositories"
-import type { ConnectionModel } from "@chatbotx.io/database/types"
-import { distributedLock } from "@chatbotx.io/redis"
-import type { AuthStore, AuthValue } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business/errors"
+import { db } from "@salesmanchatbot.io/database/client"
+import { connectionRepository } from "@salesmanchatbot.io/database/repositories"
+import type { ConnectionModel } from "@salesmanchatbot.io/database/types"
+import { distributedLock } from "@salesmanchatbot.io/redis"
+import type { AuthStore, AuthValue } from "@salesmanchatbot.io/sdk"
 import {
   findOrThrow,
   resolveAdapter,
@@ -250,7 +250,7 @@ export const refresh = async (input: {
 
   // `refreshAuth`/`ensureFreshAuth` only ever read `ctx.auth`/`ctx.authStore`
   // (never `ctx.platform`/`ctx.storagePrefix`/`ctx.integrationDetail`) —
-  // see `Integration.refreshAndPersist` in `@chatbotx.io/sdk`. The
+  // see `Integration.refreshAndPersist` in `@salesmanchatbot.io/sdk`. The
   // `platform` stub below is structurally required but never invoked on
   // this path.
   await adapter.integration.ensureFreshAuth(

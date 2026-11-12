@@ -1,13 +1,13 @@
-import type { TenantModel } from "@chatbotx.io/database/types"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import type { TenantModel } from "@salesmanchatbot.io/database/types"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { PencilIcon } from "lucide-react"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"

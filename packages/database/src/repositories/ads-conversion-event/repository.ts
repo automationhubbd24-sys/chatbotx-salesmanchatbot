@@ -2,7 +2,7 @@ import {
   type AdReferralChannelType,
   channelTypes,
   DEFAULT_ADS_CONVERSION_CHANNEL,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 import type { IndexColumn } from "drizzle-orm/pg-core"
 import {
   and,
@@ -234,7 +234,7 @@ type ExportSegmentInput = DateRangeInput & {
 // Map of FACTORY functions (not a module-scope object of pre-built
 // ConflictTarget values): building the `sql` where-clauses eagerly at import
 // time would run `sql` before test suites that mock
-// `@chatbotx.io/database/client` without a `sql` export have a chance to —
+// `@salesmanchatbot.io/database/client` without a `sql` export have a chance to —
 // keeping each entry a function preserves that lazy, call-time-only
 // evaluation.
 type ConflictTarget = { target: IndexColumn[]; where: SQL }
@@ -296,7 +296,7 @@ type AdReferralChannel = Extract<AdEligibleInboxChannel, AdReferralChannelType>
 // functions (not a module-scope object of table references), same reasoning
 // as `conflictTargetFactoryByChannel` above: dereferencing
 // `integrationMessengerModel`/`integrationInstagramModel` eagerly at import
-// time crashes test suites whose `@chatbotx.io/database/schema` mock
+// time crashes test suites whose `@salesmanchatbot.io/database/schema` mock
 // doesn't export them — keeping each entry a function defers that
 // dereference to call time, when only the branch actually taken resolves.
 const adReferralIntegrationModelFactoryByChannel = {

@@ -58,6 +58,7 @@ const aiJobProcessAutomatedResponseSchema = z.object({
     conversationId: z.string().min(1),
     contactInboxId: z.string().min(1),
     messageId: z.string().min(1),
+    triggerMessageIds: z.array(z.string().min(1)).min(1).optional(),
   }),
 })
 

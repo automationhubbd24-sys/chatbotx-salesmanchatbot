@@ -1,6 +1,6 @@
 "use server"
 
-import { automatedResponseService } from "@chatbotx.io/automated-response"
+import { automatedResponseService } from "@salesmanchatbot.io/automated-response"
 import {
   broadcastToWorkspaceParty,
   contactInboxService,
@@ -11,37 +11,37 @@ import {
   quotaEnforcementService,
   resolveTenantSettings,
   workspaceService,
-} from "@chatbotx.io/business"
-import { resolveLastUserInputTracking } from "@chatbotx.io/business/contact-inbox"
-import { finalizeContactProfile } from "@chatbotx.io/business/contact-locale"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
-import { db, eq, findOrFail } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { resolveLastUserInputTracking } from "@salesmanchatbot.io/business/contact-inbox"
+import { finalizeContactProfile } from "@salesmanchatbot.io/business/contact-locale"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
+import { db, eq, findOrFail } from "@salesmanchatbot.io/database/client"
 import {
   type ConversationAttributes,
   channelTypes,
   contactSources,
-} from "@chatbotx.io/database/partials"
-import type { MessageWithAttachments } from "@chatbotx.io/database/repositories"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import type { MessageWithAttachments } from "@salesmanchatbot.io/database/repositories"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   contactInboxModel,
   contactModel,
   conversationModel,
   integrationWebchatModel,
-} from "@chatbotx.io/database/schema"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
-import { emitContactCreated } from "@chatbotx.io/events"
-import { setWebhookExecutionContext } from "@chatbotx.io/events/context"
-import { type UploadedFile, uploadMultipleFiles } from "@chatbotx.io/filesystem"
-import { messageEventTypeSchema } from "@chatbotx.io/flow-config"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { emitContactCreated } from "@salesmanchatbot.io/events"
+import { setWebhookExecutionContext } from "@salesmanchatbot.io/events/context"
+import { type UploadedFile, uploadMultipleFiles } from "@salesmanchatbot.io/filesystem"
+import { messageEventTypeSchema } from "@salesmanchatbot.io/flow-config"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { headers } from "next/headers"
 import { getTranslations } from "next-intl/server"
 import { randomString } from "remeda"
@@ -86,7 +86,7 @@ export async function handleCreateWebchatMessage({
   })
   if (workspace && isWorkspaceScheduledForDeletion(workspace)) {
     const t = await getTranslations("webchat")
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("workspaceUnavailable"),
       "workspaceScheduledDeletion",
       403,
@@ -116,7 +116,7 @@ export async function handleCreateWebchatMessage({
 
   if (!authorized) {
     const t = await getTranslations("webchat.unauthorizedDomain")
-    throw new ChatbotXException(t("description"), "forbidden", 403)
+    throw new salesmanChatbotException(t("description"), "forbidden", 403)
   }
 
   const requestHeaders = await getRequestHeaders()
@@ -132,7 +132,7 @@ export async function handleCreateWebchatMessage({
     )
   ) {
     const t = await getTranslations("webchat.unauthorizedDomain")
-    throw new ChatbotXException(t("description"), "forbidden", 403)
+    throw new salesmanChatbotException(t("description"), "forbidden", 403)
   }
 
   const rateLimit = await checkGuestRateLimit({
@@ -142,7 +142,7 @@ export async function handleCreateWebchatMessage({
   })
   if (rateLimit.limited) {
     const t = await getTranslations("webchat")
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("rateLimitExceeded"),
       "rateLimitExceeded",
       429,
@@ -182,7 +182,7 @@ export async function handleCreateWebchatMessage({
       (menu) => menu.type === "flow" && menu.flowId === parsedInput.flowId,
     )
     if (!isConfiguredFlow) {
-      throw new ChatbotXException("Flow not found", "notFound", 404)
+      throw new salesmanChatbotException("Flow not found", "notFound", 404)
     }
 
     await integrationQueue.add(IntegrationJobAction.sendFlow, {
@@ -437,10 +437,10 @@ async function getConversationFromInput(
       id: existingContactInbox.contactId,
     })
     if (!conversation) {
-      throw new ChatbotXException("Conversation not found")
+      throw new salesmanChatbotException("Conversation not found")
     }
     if (!contact) {
-      throw new ChatbotXException("Contact not found")
+      throw new salesmanChatbotException("Contact not found")
     }
 
     return {
@@ -463,7 +463,7 @@ async function getConversationFromInput(
   // The info-only `contacts` metric is recorded inside `createNewContactWithMac`.
   const ws = workspace
   if (!ws) {
-    throw new ChatbotXException("Workspace not found", "notFound", 404)
+    throw new salesmanChatbotException("Workspace not found", "notFound", 404)
   }
 
   const result = await quotaEnforcementService.createNewContactWithMac({
@@ -489,7 +489,7 @@ async function getConversationFromInput(
         .returning()
         .then((rows) => rows[0])
       if (!contact) {
-        throw new ChatbotXException("Contact not found")
+        throw new salesmanChatbotException("Contact not found")
       }
 
       const contactInbox = await tx
@@ -508,7 +508,7 @@ async function getConversationFromInput(
         .returning()
         .then((rows) => rows[0])
       if (!contactInbox) {
-        throw new ChatbotXException("Contact inbox not found")
+        throw new salesmanChatbotException("Contact inbox not found")
       }
 
       // A re-created contact keeps its history: cancel any pending message
@@ -529,7 +529,7 @@ async function getConversationFromInput(
         .returning()
         .then((rows) => rows[0])
       if (!conversation) {
-        throw new ChatbotXException("Conversation not found")
+        throw new salesmanChatbotException("Conversation not found")
       }
 
       return {
@@ -542,7 +542,7 @@ async function getConversationFromInput(
   })
 
   if (!result.ok) {
-    throw new ChatbotXException("Contact limit reached", "quotaExceeded", 422)
+    throw new salesmanChatbotException("Contact limit reached", "quotaExceeded", 422)
   }
 
   await emitContactCreated(

@@ -1,7 +1,7 @@
 import type {
   AIAgentModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { type ModelMessage, streamText } from "ai"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
@@ -21,7 +21,7 @@ const findAIIntegrationMock = vi.hoisted(() =>
 )
 const findOpenaiCompatibleMock = vi.hoisted(() => vi.fn())
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiTimeouts: { aiTotal: 30_000, aiStep: 10_000, aiChunk: 5000 },
   helpTexts: {
     fallbackLookup: "I found something, but cannot summarize it yet.",
@@ -34,7 +34,7 @@ vi.mock("@chatbotx.io/ai", () => ({
   toolPrefixes: { enum: { file: "file", fn: "fn", mcp: "mcp", sys: "sys" } },
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: { appendHistory: appendHistoryMock },
   aiIntegrationService: { findBy: findAIIntegrationMock },
   appendFabricationGuard: (prompt: string) => prompt,
@@ -47,13 +47,13 @@ vi.mock("@chatbotx.io/ai/server", () => ({
   normalizeMcpContent: vi.fn((content: unknown) => content),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationOpenaiCompatibleService: {
     findByWorkspaceIdAndId: findOpenaiCompatibleMock,
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn(async () => []),
     replaceAll: vi.fn(async ({ text }: { text: string }) => text),

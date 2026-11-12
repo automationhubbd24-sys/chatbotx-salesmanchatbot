@@ -6,11 +6,11 @@ import {
   findOrFail,
   inArray,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
-import { spreadsheetModel } from "@chatbotx.io/database/schema"
-import type { SpreadsheetModel } from "@chatbotx.io/database/types"
-import { likeContains, parsePagination } from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { spreadsheetModel } from "@salesmanchatbot.io/database/schema"
+import type { SpreadsheetModel } from "@salesmanchatbot.io/database/types"
+import { likeContains, parsePagination } from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 type CreateSpreadsheetData = Omit<

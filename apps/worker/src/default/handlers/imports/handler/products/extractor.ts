@@ -1,5 +1,5 @@
-import type { ProductImportColumnMap } from "@chatbotx.io/database/partials"
-import { cleanText } from "@chatbotx.io/imports/parsers"
+import type { ProductImportColumnMap } from "@salesmanchatbot.io/database/partials"
+import { cleanText } from "@salesmanchatbot.io/imports/parsers"
 
 export type ProductImportDraft = {
   sourceRow: number

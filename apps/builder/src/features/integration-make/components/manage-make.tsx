@@ -1,6 +1,6 @@
 "use client"
 
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import { useTranslations } from "next-intl"
 import { SettingRow } from "@/components/setting-row"
 

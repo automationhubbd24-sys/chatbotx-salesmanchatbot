@@ -1,21 +1,21 @@
-import { db, eq } from "@chatbotx.io/database/client"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import type {
   TemplateCategory,
   TemplatePermissions,
   TemplateSelection,
-} from "@chatbotx.io/database/partials"
-import { templateSelectableResourceRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/partials"
+import { templateSelectableResourceRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   templateInstallationModel,
   templateModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   TemplateInstallationModel,
   TemplateModel,
-} from "@chatbotx.io/database/types"
-import { parseTemplateExport } from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
-import { ChatbotXException, notFoundException } from "../errors"
+} from "@salesmanchatbot.io/database/types"
+import { parseTemplateExport } from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
+import { salesmanChatbotException, notFoundException } from "../errors"
 import { workspaceService } from "../workspace"
 import { generateShareToken } from "./share-token"
 import { buildTemplateSnapshot } from "./snapshot.service"
@@ -37,13 +37,13 @@ export type ListSelectableResourcesResult = {
 }
 
 export const templateShareDisabledException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This share link is no longer available",
     "templateShareDisabled",
   )
 
 export const templateCrossTenantInstallException = () =>
-  new ChatbotXException(
+  new salesmanChatbotException(
     "This template is not available for your workspace",
     "templateCrossTenantInstall",
   )
@@ -302,7 +302,7 @@ class TemplateService {
 
     const parsed = parseTemplateExport(template.payload)
     if (!parsed.ok) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         `This template's saved data is no longer compatible: ${parsed.reason}`,
         "templatePayloadIncompatible",
       )
@@ -385,7 +385,7 @@ class TemplateService {
       throw notFoundException("Template installation not found")
     }
     if (!installation.templateId) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "The source template for this installation is no longer available",
         "templateInstallationSourceMissing",
       )
@@ -395,7 +395,7 @@ class TemplateService {
       columns: { payload: true, name: true, createInstallFolder: true },
     })
     if (!template) {
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         "The source template for this installation is no longer available",
         "templateInstallationSourceMissing",
       )

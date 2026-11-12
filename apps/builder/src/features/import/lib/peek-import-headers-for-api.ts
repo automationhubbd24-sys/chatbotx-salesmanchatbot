@@ -1,5 +1,5 @@
-import { peekImportHeaders } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { peekImportHeaders } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 
 type PeekImportHeadersInput = Parameters<typeof peekImportHeaders>[0]
 
@@ -15,8 +15,8 @@ export async function peekImportHeadersForApi(
   try {
     return await peekImportHeaders(input)
   } catch (error) {
-    if (error instanceof ChatbotXException && error.data) {
-      throw new ChatbotXException(
+    if (error instanceof salesmanChatbotException && error.data) {
+      throw new salesmanChatbotException(
         error.message,
         error.code,
         error.httpStatusCode,

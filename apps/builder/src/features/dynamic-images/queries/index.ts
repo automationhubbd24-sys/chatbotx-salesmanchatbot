@@ -1,5 +1,5 @@
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListDynamicImagesRequest,
@@ -27,7 +27,7 @@ export async function findDynamicImage(where: {
   try {
     return await dynamicImageService.find(where)
   } catch (error) {
-    if (error instanceof ChatbotXException && error.code === "notFound") {
+    if (error instanceof salesmanChatbotException && error.code === "notFound") {
       return
     }
     throw error

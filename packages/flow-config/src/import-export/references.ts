@@ -1,4 +1,4 @@
-import { isNumericId } from "@chatbotx.io/utils/id"
+import { isNumericId } from "@salesmanchatbot.io/utils/id"
 import { FieldReferenceKind, parseFieldReference } from "../field-reference"
 import {
   isPlainObject,

@@ -35,7 +35,7 @@ const { connectActionResultSchemaDefault } = await import(
   "@/features/channel-connect/schema"
 )
 const { MAX_CONNECT_DETAIL_LENGTH } = await import(
-  "@chatbotx.io/business/inbox/connect-outcome-types"
+  "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 )
 
 const item = { id: "page-1", name: "Page One" }

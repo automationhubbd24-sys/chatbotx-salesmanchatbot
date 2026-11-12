@@ -8,24 +8,24 @@ import {
   isNotNull,
   lt,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import type {
   MetaCatalogBatchHandle,
   MetaCatalogItemDirection,
   MetaCatalogItemError,
   MetaCatalogSkippedItem,
   MetaCatalogSyncScope,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   metaCatalogItemRepository,
   productCategoryRepository,
   productRepository,
-} from "@chatbotx.io/database/repositories"
-import { metaCatalogSyncRunModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import { metaCatalogSyncRunModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
   toPublicErrorMessage,
 } from "../errors"
@@ -38,7 +38,7 @@ const MAX_DIAGNOSTIC_ITEMS = 50
 
 const toPublicMetaCatalogMessage = (message: string) =>
   toPublicErrorMessage(
-    new ChatbotXException(message, "metaCatalogPublicError"),
+    new salesmanChatbotException(message, "metaCatalogPublicError"),
     GENERIC_SYNC_FAILURE,
   )
 
@@ -120,7 +120,7 @@ class MetaCatalogSyncRunService extends BaseService {
       return run
     } catch (error) {
       if (isActiveRunViolation(error)) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "A Meta Catalog sync is already running",
           "metaCatalogSyncAlreadyRunning",
         )

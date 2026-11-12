@@ -599,7 +599,7 @@
     "title": "כללי"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "פעולה זו מסירה את הקמפיין מ-ChatbotX בלבד. קמפיין ההודעות של Meta ממשיך לפעול — השהה או מחק אותו במנהל המודעות.",
+    "deleteWarning": "פעולה זו מסירה את הקמפיין מ-salesmanChatbot בלבד. קמפיין ההודעות של Meta ממשיך לפעול — השהה או מחק אותו במנהל המודעות.",
     "title": "Facebook Marketing Messages",
     "description": "הגדל מעורבות ומכירות בעזרת הודעות קידום מותאמות אישית ב-Messenger.",
     "create": "צור חדש",
@@ -1436,6 +1436,9 @@
     "disconnectSuccess": "{feature} נותק בהצלחה",
     "reply": "תשובה",
     "privateReply": "תגובה פרטית",
+    "replyingTo": "משיב ל",
+    "replyPreview": "{sender} השיב ל{recipient}",
+    "you": "אתה",
     "viewMessage": "הצגת הודעה",
     "changeLikeState": "שינוי מצב לייק",
     "changeHideState": "שינוי מצב הסתרה",
@@ -1743,6 +1746,10 @@
       "description": "אפשרו שימוש בספק זה לתשובות AI אוטומטיות.",
       "label": "מענה אוטומטי באמצעות AI"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "חברו ספקים תואמי OpenAI כמודלי חלופה לסוכן AI.",
       "label": "ספקים תואמי OpenAI"
@@ -1751,6 +1758,7 @@
     "fields": {
       "baseURL": "כתובת URL בסיסית",
       "defaultModel": "מודל ברירת מחדל",
+      "embeddingModel": "מודל הטמעה",
       "enabled": "מופעל"
     },
     "provider": "ספק AI",
@@ -1758,6 +1766,23 @@
     "validation": {
       "invalidBaseURL": "כתובת ה-URL הבסיסית אינה תקינה או אינה מורשית.",
       "presetAlreadyConnected": "הגדרה מוכנה זו כבר מחוברת לסביבת עבודה זו."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -2227,7 +2252,7 @@
         "title": "זכאות לשיחות",
         "appSubscriptionMissing": "הגדר תחילה את ה-webhook של WhatsApp לאפליקציה זו בלוח הבקרה של אפליקציות Meta, ולאחר מכן נסה שוב.",
         "appSubscriptionFailed": "לא ניתן היה לאמת את הרשמת ה-webhook של 'calls' עבור האפליקציה. נסה שוב בקרוב.",
-        "callsNotSubscribed": "אפליקציה זו לא רשומה לשדה ה-webhook 'calls', כך שאירועי שיחה לא יכולים להגיע ל-ChatbotX (שגיאת Meta 138018: הדרישות המקדימות הטכניות לא מתקיימות — יש לוודא שלפחות אפליקציה אחת הרשומה ל-WABA כוללת גם את שדה ה-webhook של שיחות).",
+        "callsNotSubscribed": "אפליקציה זו לא רשומה לשדה ה-webhook 'calls', כך שאירועי שיחה לא יכולים להגיע ל-salesmanChatbot (שגיאת Meta 138018: הדרישות המקדימות הטכניות לא מתקיימות — יש לוודא שלפחות אפליקציה אחת הרשומה ל-WABA כוללת גם את שדה ה-webhook של שיחות).",
         "fixButton": "תיקון",
         "fixSuccess": "האפליקציה רשומה כעת ל-webhooks של שיחות WhatsApp.",
         "manualIntegrationNotice": "מספר זה חובר באופן ידני ואין לו כאן פרטי אפליקציה. יש להירשם לשדה ה-webhook 'calls' עבור האפליקציה שלך בלוח הבקרה של אפליקציות Meta.",
@@ -3700,7 +3725,109 @@
     "unknown": "לא ידוע"
   },
   "orders": {
-    "title": "הזמנות"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "מוצרים",
@@ -3717,7 +3844,13 @@
       "variants": "וריאציות",
       "addons": "תוספות",
       "tags": "תגיות",
-      "moreOptions": "אפשרויות נוספות"
+      "moreOptions": "אפשרויות נוספות",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "fields": {
       "shortDescription": {
@@ -4227,7 +4360,13 @@
       "anyConditions": "אחד מהתנאים שלהלן.",
       "label": "מסנן אנשי קשר",
       "onlyContactsMatch": "רק אנשי קשר שתואמים ל-",
-      "moreOptions": "אפשרויות נוספות"
+      "moreOptions": "אפשרויות נוספות",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "הערה על איש קשר"
@@ -4701,7 +4840,9 @@
         "documentReader": "קורא מסמכים",
         "imageReader": "קורא תמונות",
         "urlContext": "קורא כתובות URL",
-        "webSearch": "חיפוש באינטרנט"
+        "webSearch": "חיפוש באינטרנט",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -6537,7 +6678,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "מקור הפעולה",

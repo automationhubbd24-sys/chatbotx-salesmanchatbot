@@ -1,16 +1,16 @@
-import { triggerEventTypes } from "@chatbotx.io/database/partials"
+import { triggerEventTypes } from "@salesmanchatbot.io/database/partials"
 import {
   cleanupOldWebhookExecutions,
   markWebhookExecuted as insertWebhookExecution,
   listActiveDateTimeWebhooks,
   listContactCustomFieldsForDateTimeSweep,
   listExecutedWebhookPairs,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   getRedisConnection,
   WebhookJobAction,
   webhookQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import {
   buildContactCustomFieldMap,

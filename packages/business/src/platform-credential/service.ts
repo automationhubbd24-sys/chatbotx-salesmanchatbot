@@ -6,7 +6,7 @@ import {
   eq,
   isNull,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type CredentialByType,
   type CredentialPublicByType,
@@ -14,11 +14,11 @@ import {
   credentialEncryptedSchema,
   credentialPublicSchemas,
   credentialSchemas,
-} from "@chatbotx.io/database/partials"
-import { platformCredentialModel } from "@chatbotx.io/database/schema"
-import type { PlatformCredentialModel } from "@chatbotx.io/database/types"
-import { encryptUtils } from "@chatbotx.io/encryption"
-import { withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/partials"
+import { platformCredentialModel } from "@salesmanchatbot.io/database/schema"
+import type { PlatformCredentialModel } from "@salesmanchatbot.io/database/types"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
+import { withCache } from "@salesmanchatbot.io/redis"
 import type { z } from "zod"
 import { BaseService } from "../base.service"
 import { tenantService } from "../enterprise/tenant/service"

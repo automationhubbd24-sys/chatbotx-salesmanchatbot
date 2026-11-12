@@ -25,8 +25,8 @@ import {
   timeRangeQueryWithGranularityDMSchema,
   timeRangeQueryWithGranularityMHDSchema,
   uniqueConversationsByAdminStatsSchema,
-} from "@chatbotx.io/analytics/schemas"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/analytics/schemas"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { ianaTimezoneSchema } from "@/lib/public-api/iana-timezone"
 import { publicListRequest, withPublicPaging } from "@/lib/public-api/list"
@@ -324,4 +324,4 @@ export const commentAutomationReplyStatsPublicResponse = z.object({
 export {
   listCommentAutomationErrorsResponse as commentAutomationErrorsPublicResponse,
   listCommentAutomationTextTotalsResponse as commentAutomationTextTotalsPublicResponse,
-} from "@chatbotx.io/analytics/schemas"
+} from "@salesmanchatbot.io/analytics/schemas"

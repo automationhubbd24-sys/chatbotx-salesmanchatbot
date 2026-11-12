@@ -1,19 +1,19 @@
 import type {
   CredentialType,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ConnectionProvider,
   Integration,
   IntegrationDefinition,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import type { ConnectionStoreBinding } from "./store-bindings"
 
 /**
  * Everything the Connection domain needs for one `IntegrationType`: the
  * runtime `Integration` wrapper (refresh/disconnect), the provider's
  * connect/verify/webhook adapter, and its DB store binding.
- * `@chatbotx.io/connections` assembles `Record<IntegrationType, ConnectionAdapter | null>`
+ * `@salesmanchatbot.io/connections` assembles `Record<IntegrationType, ConnectionAdapter | null>`
  * from each `integrations/<provider>`'s `connection` export plus
  * `CONNECTION_STORE_BINDINGS` — `null` for types with no connect lifecycle
  * yet (for example `metaCatalog`, `outlookCalendar`, and `threads`).
@@ -40,7 +40,7 @@ export type ConnectionAdapter = {
   // biome-ignore lint/suspicious/noExplicitAny: heterogeneous registry, see comment above
   provider: ConnectionProvider<any, any>
   /**
-   * Absent only for `chatbotx` — the internal built-in channel has no
+   * Absent only for `salesmanchatbot` — the internal built-in channel has no
    * `Integration<Chatbotx>` satellite table; the `Inbox` row itself is the
    * whole connection, so there is nothing for a store binding to load/insert.
    */

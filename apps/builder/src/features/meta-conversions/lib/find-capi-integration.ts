@@ -4,7 +4,7 @@ import {
   type MetaConversionsChannel,
   type MetaConversionsIntegrationByChannel,
   messengerIntegrationService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 type WorkspaceIntegrationRef = { id: string; workspaceId: string }
 

@@ -1,16 +1,16 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { CalendarClockIcon, Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

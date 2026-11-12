@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Popover, PopoverContent } from "@chatbotx.io/ui/components/ui/popover"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Popover, PopoverContent } from "@salesmanchatbot.io/ui/components/ui/popover"
 import { useTranslations } from "next-intl"
 import {
   type ReactElement,

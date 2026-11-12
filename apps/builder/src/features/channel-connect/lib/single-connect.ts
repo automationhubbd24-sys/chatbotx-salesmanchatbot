@@ -1,6 +1,6 @@
 "use client"
 
-import type { ConnectSessionErrorCode } from "@chatbotx.io/business/inbox/connect-outcome-types"
+import type { ConnectSessionErrorCode } from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import type { ConnectActionResultWire, ConnectOutcome } from "../schema"
 import { coexistUnavailable, setCoexist } from "./coexist-client"
 import type { MessageKey } from "./message-key"

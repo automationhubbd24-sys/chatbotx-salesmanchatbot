@@ -8,7 +8,7 @@ Date: 2026-09-23
 
 ## Context
 
-ChatbotX removed its unused Kafka package in ADR 0001 and today runs every queue,
+salesmanChatbot removed its unused Kafka package in ADR 0001 and today runs every queue,
 event stream, cache, lock, and scheduler zset on a single Redis-compatible server. As
 chat and background-job volume grows, that single instance becomes a scaling and
 durability bottleneck. This ADR records the substrate that replaces it and the

@@ -1,9 +1,9 @@
-import { tiktokIntegrationService } from "@chatbotx.io/business"
+import { tiktokIntegrationService } from "@salesmanchatbot.io/business"
 import type {
   TiktokAuthValue,
   TiktokComment,
-} from "@chatbotx.io/integration-tiktok"
-import { listTiktokComments } from "@chatbotx.io/integration-tiktok/apis/comment"
+} from "@salesmanchatbot.io/integration-tiktok"
+import { listTiktokComments } from "@salesmanchatbot.io/integration-tiktok/apis/comment"
 import { collectCommentsSince, toEpochSeconds } from "./paging"
 import {
   MissedCommentsIntegrationNotFoundError,

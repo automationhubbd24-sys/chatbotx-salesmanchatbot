@@ -2,11 +2,11 @@ import {
   buildContext,
   integrationWhatsappService,
   whatsappFlowService,
-} from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { ModelNotfoundException } from "@chatbotx.io/database/errors"
-import type { IntegrationWhatsappModel } from "@chatbotx.io/database/types"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { ModelNotfoundException } from "@salesmanchatbot.io/database/errors"
+import type { IntegrationWhatsappModel } from "@salesmanchatbot.io/database/types"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import { integrations } from "@/integration"
 
 // The WhatsApp Flows operations behind both the builder and the public API.

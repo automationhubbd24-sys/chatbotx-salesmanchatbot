@@ -10,7 +10,7 @@ const markUnhealthyByIdentifier = vi.fn()
 const markLegacyInboxUnhealthy = vi.fn()
 const findOwnerUserIdByWorkspaceId = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   connectionStateService: {
     markUnhealthyByIdentifier,
     markLegacyInboxUnhealthy,
@@ -24,7 +24,7 @@ vi.mock("@chatbotx.io/business", () => ({
   tenantService: { findById: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   integrationQueue: {},
 }))
 

@@ -19,7 +19,7 @@ const updateChain = {
 
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord: vi.fn() }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       integrationActiveCampaignModel: { findFirst: mocks.findFirst },
@@ -31,7 +31,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isDatabaseError: vi.fn().mockReturnValue(false),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationActiveCampaignModel: {
     id: "active-campaign-id",
     workspaceId: "workspace-id",
@@ -39,11 +39,11 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   integrationModel: { id: "integration-id" },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptUtils: { encryptObject: mocks.encryptObject },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
@@ -136,7 +136,7 @@ describe("IntegrationActiveCampaignService", () => {
 
   test("recovers only from the workspace unique race", async () => {
     const error = uniqueError("IntegrationActiveCampaign_workspaceId_key")
-    const { isDatabaseError } = await import("@chatbotx.io/database/client")
+    const { isDatabaseError } = await import("@salesmanchatbot.io/database/client")
     vi.mocked(isDatabaseError).mockImplementation(
       (caught: unknown) => caught === error,
     )
@@ -162,7 +162,7 @@ describe("IntegrationActiveCampaignService", () => {
     const winnerMissing = uniqueError(
       "IntegrationActiveCampaign_workspaceId_key",
     )
-    const { isDatabaseError } = await import("@chatbotx.io/database/client")
+    const { isDatabaseError } = await import("@salesmanchatbot.io/database/client")
     vi.mocked(isDatabaseError).mockImplementation(
       (caught: unknown) => caught === unrelated || caught === winnerMissing,
     )

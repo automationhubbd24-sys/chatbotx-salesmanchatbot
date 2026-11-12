@@ -1,8 +1,8 @@
-import { db } from "@chatbotx.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   type AIMcpServerAuth,
   aiMcpServerAuth,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { jsonSchema, type ToolSet, tool } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"

@@ -1,7 +1,7 @@
 "use client"
 
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
 import { useTranslations } from "next-intl"
 import { useWatch } from "react-hook-form"
 import { messagingAdCountryOptions } from "../../lib/country-options"

@@ -5,15 +5,15 @@ import { CalendarIcon, XCircle } from "lucide-react"
 import * as React from "react"
 import type { DateRange } from "react-day-picker"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { formatDate } from "@chatbotx.io/ui/lib/format"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { formatDate } from "@salesmanchatbot.io/ui/lib/format"
 
 type DateSelection = Date[] | DateRange
 

@@ -3,7 +3,7 @@
 import type {
   ThreadControlRole,
   ThreadControlState,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import {

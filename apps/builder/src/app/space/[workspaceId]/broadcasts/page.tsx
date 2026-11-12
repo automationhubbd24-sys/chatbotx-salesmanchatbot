@@ -1,4 +1,4 @@
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { cookies } from "next/headers"
 import { notFound } from "next/navigation"
 import type { SearchParams } from "nuqs/server"

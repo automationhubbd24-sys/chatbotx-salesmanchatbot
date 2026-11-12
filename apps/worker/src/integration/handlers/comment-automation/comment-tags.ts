@@ -1,7 +1,7 @@
-import { buildContext, contactInboxService } from "@chatbotx.io/business"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
-import type { AuthValue } from "@chatbotx.io/sdk"
-import type { CommentTag } from "@chatbotx.io/worker-config"
+import { buildContext, contactInboxService } from "@salesmanchatbot.io/business"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
+import type { AuthValue } from "@salesmanchatbot.io/sdk"
+import type { CommentTag } from "@salesmanchatbot.io/worker-config"
 import { allIntegrations } from "../../../services/integrations"
 import type { CommentAutomationChannelType } from "./channel-type"
 

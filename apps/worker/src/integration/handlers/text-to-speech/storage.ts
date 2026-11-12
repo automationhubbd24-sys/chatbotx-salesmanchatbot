@@ -1,12 +1,12 @@
-import { resolveTenantSettings } from "@chatbotx.io/business"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
-import { uploader } from "@chatbotx.io/filesystem"
+import { resolveTenantSettings } from "@salesmanchatbot.io/business"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import {
   AI_TEXT_TO_SPEECH_BASE64_ENCODING,
   AI_TEXT_TO_SPEECH_DEFAULT_EXTENSION,
   AI_TEXT_TO_SPEECH_DEFAULT_MIME_TYPE,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type TTSAudioOutput = {
   publicUrl: string

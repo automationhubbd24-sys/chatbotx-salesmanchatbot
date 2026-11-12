@@ -6,7 +6,7 @@
  * statement that outlives the cap and that the cap dies with the transaction.
  *
  * Skipped unless `DATABASE_URL` points at a reachable database; run it with
- * `pnpm --filter @chatbotx.io/database test:db`.
+ * `pnpm --filter @salesmanchatbot.io/database test:db`.
  */
 
 import { sql } from "drizzle-orm"

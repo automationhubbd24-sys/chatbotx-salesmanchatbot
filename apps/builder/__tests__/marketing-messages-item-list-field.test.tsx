@@ -27,7 +27,7 @@ vi.mock("next-intl", () => ({
  * the two contracts under test: the content renders while open, and `DialogClose`
  * reports the close back through `onOpenChange`.
  */
-vi.mock("@chatbotx.io/ui/components/ui/dialog", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", async () => {
   const react = await import("react")
   const CloseCtx = react.createContext<(open: boolean) => void>(() => undefined)
   const Pass = ({ children }: { children?: ReactNode }) => <>{children}</>
@@ -61,7 +61,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", async () => {
 })
 
 /** Portal-backed options cannot be opened from jsdom; expose one button each. */
-vi.mock("@chatbotx.io/ui/components/form/select-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", () => ({
   SelectField: ({
     name,
     options,

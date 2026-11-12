@@ -1,6 +1,6 @@
-import { tagService, tagSyncService } from "@chatbotx.io/business"
-import { contactInboxRepository } from "@chatbotx.io/database/repositories"
-import { emitTagApplied, emitTagRemoved } from "@chatbotx.io/events"
+import { tagService, tagSyncService } from "@salesmanchatbot.io/business"
+import { contactInboxRepository } from "@salesmanchatbot.io/database/repositories"
+import { emitTagApplied, emitTagRemoved } from "@salesmanchatbot.io/events"
 import { logger } from "../../../lib/logger"
 import type { LabelContext, LabelEvent } from "./types"
 

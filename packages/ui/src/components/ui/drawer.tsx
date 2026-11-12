@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 type DrawerContextProps = {
   hasSnapPoints: boolean

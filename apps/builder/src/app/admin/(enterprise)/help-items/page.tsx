@@ -1,5 +1,5 @@
-import { tenantHelpItemService } from "@chatbotx.io/business"
-import { ROOT_TENANT_ID } from "@chatbotx.io/database/schema"
+import { tenantHelpItemService } from "@salesmanchatbot.io/business"
+import { ROOT_TENANT_ID } from "@salesmanchatbot.io/database/schema"
 import { getTranslations } from "next-intl/server"
 import { Suspense } from "react"
 import { ManageHelpItems } from "@/features/help-items/manage-help-items"

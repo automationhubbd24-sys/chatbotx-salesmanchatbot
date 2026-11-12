@@ -2,13 +2,13 @@ import {
   commentAutomationService,
   type MissedCommentsIneligibleReason,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { CommentAutomationType } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { CommentAutomationType } from "@salesmanchatbot.io/database/partials"
 import {
   LowJobAction,
   type LowJobReplayMissedComment,
   lowQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { subDays } from "date-fns"
 import { logger } from "@/lib/log"
 import { scanPostComments } from "./index"

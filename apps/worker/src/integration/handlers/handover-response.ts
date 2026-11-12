@@ -1,17 +1,17 @@
-import { aiHandoverSettingsService, flowService } from "@chatbotx.io/business"
-import { parseAiHandoverChannel } from "@chatbotx.io/database/partials"
+import { aiHandoverSettingsService, flowService } from "@salesmanchatbot.io/business"
+import { parseAiHandoverChannel } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import type { ThreadControlWebhookEvent } from "@chatbotx.io/sdk"
-import { resolveContactVariablesDeep } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/database/types"
+import type { ThreadControlWebhookEvent } from "@salesmanchatbot.io/sdk"
+import { resolveContactVariablesDeep } from "@salesmanchatbot.io/variables"
 import {
   ChatJobAction,
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { handoffExecutorService } from "../../trigger/services/handoff-executor.service"
 

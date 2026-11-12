@@ -12,12 +12,12 @@ vi.mock("@/features/meta-conversions/lib/find-capi-integration", () => ({
 vi.mock("@/features/meta-conversions/lib/provision-capi-dataset", () => ({
   capiDatasetProvisioner: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-meta-conversions", () => ({
+vi.mock("@salesmanchatbot.io/integration-meta-conversions", () => ({
   getDataset: vi.fn(),
   sendConversionEvent: vi.fn(),
   MetaConversionsException: class extends Error {},
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   CapiTestEventError: class extends Error {},
   metaConversionsService: {
     saveCapiTestEventCode: mocks.saveCapiTestEventCode,

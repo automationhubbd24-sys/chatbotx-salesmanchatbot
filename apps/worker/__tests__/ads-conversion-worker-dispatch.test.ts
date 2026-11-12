@@ -1,4 +1,4 @@
-import type { AdsConversionJobData } from "@chatbotx.io/worker-config"
+import type { AdsConversionJobData } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const workerState = vi.hoisted(() => ({

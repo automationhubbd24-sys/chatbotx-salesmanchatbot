@@ -1,7 +1,7 @@
-import { coexistService } from "@chatbotx.io/business"
-import type { PickedCoexistRun } from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
-import { buildCoexistReviveJobSuffix } from "@chatbotx.io/worker-config"
+import { coexistService } from "@salesmanchatbot.io/business"
+import type { PickedCoexistRun } from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
+import { buildCoexistReviveJobSuffix } from "@salesmanchatbot.io/worker-config"
 import type { CoexistRunEnqueuer } from "./recovery-strategies"
 
 const log = getChildLogger("coexist-whatsapp-recovery")

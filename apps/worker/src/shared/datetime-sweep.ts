@@ -1,4 +1,4 @@
-import type { DateTimeSweepCursor } from "@chatbotx.io/database/repositories"
+import type { DateTimeSweepCursor } from "@salesmanchatbot.io/database/repositories"
 import type { DateTimeCondition } from "../trigger/utils/datetime-calculator"
 import {
   matchesDateTimeCondition,

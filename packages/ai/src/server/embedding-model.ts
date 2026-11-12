@@ -1,11 +1,15 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import { createOpenAI } from "@ai-sdk/openai"
-import { db } from "@chatbotx.io/database/client"
-import { secretTextAuthSchema } from "@chatbotx.io/sdk"
+import { db } from "@salesmanchatbot.io/database/client"
+import { secretTextAuthSchema } from "@salesmanchatbot.io/sdk"
 import type { EmbeddingModel } from "ai"
 import { geminiEmbeddingModels, openaiEmbeddingModels } from "../models"
+import { createOpenaiCompatibleTextEmbeddingModelInstance } from "./openai-compatible"
 
-export type EmbeddingProvider = "openai" | "gemini"
+export type EmbeddingProvider =
+  | "openai"
+  | "openaiCompatibleEmbedding"
+  | "gemini"
 
 export type ResolvedEmbeddingModel = {
   model: EmbeddingModel
@@ -15,6 +19,20 @@ export type ResolvedEmbeddingModel = {
 export async function resolveEmbeddingModel(
   workspaceId: string,
 ): Promise<ResolvedEmbeddingModel> {
+  const integrationOpenaiCompatibleEmbedding =
+    await db.query.integrationOpenaiCompatibleEmbeddingModel.findFirst({
+      where: { workspaceId, enabled: true },
+    })
+
+  if (integrationOpenaiCompatibleEmbedding) {
+    return {
+      model: createOpenaiCompatibleTextEmbeddingModelInstance({
+        integration: integrationOpenaiCompatibleEmbedding,
+      }),
+      provider: "openaiCompatibleEmbedding",
+    }
+  }
+
   const integrationOpenai = await db.query.integrationOpenaiModel.findFirst({
     where: { workspaceId },
   })
@@ -52,6 +70,6 @@ export async function resolveEmbeddingModel(
   }
 
   throw new Error(
-    "No embedding provider configured. AI file embeddings require OpenAI or Gemini integration. DeepSeek and Claude do not support embedding models.",
+    "No embedding provider configured. AI file embeddings require an OpenAI-compatible text embedding, OpenAI, or Gemini integration. DeepSeek and Claude do not support embedding models.",
   )
 }

@@ -1,4 +1,4 @@
-import { getAuditActor } from "@chatbotx.io/business/audit"
+import { getAuditActor } from "@salesmanchatbot.io/business/audit"
 import { beforeAll, beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -8,9 +8,9 @@ const mocks = vi.hoisted(() => ({
   processJob: undefined as undefined | ((job: unknown) => Promise<void>),
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     WebhookJobAction: { evaluateWebhooks: "evaluateWebhooks" },

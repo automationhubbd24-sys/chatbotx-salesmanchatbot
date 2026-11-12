@@ -1,4 +1,4 @@
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import Link from "next/link"
 
 export default function WhatsappEcommerce({

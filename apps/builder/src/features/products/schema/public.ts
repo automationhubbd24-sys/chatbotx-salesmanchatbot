@@ -1,14 +1,14 @@
 import {
   inventoryPolicyTypes,
   metaCatalogSyncScopes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   integrationMetaCatalogModel,
   metaCatalogSyncRunModel,
   productModel,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { isMetaCatalogSyncScopeComplete } from "../lib/meta-catalog-operations"
 import { productFormRequest } from "./action"

@@ -3,8 +3,8 @@ import type {
   ConnectItemStatus,
   ConnectSessionErrorCode,
   ConnectWarning,
-} from "@chatbotx.io/business/inbox/connect-outcome-types"
-import type { badgeVariants } from "@chatbotx.io/ui/components/ui/badge"
+} from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
+import type { badgeVariants } from "@salesmanchatbot.io/ui/components/ui/badge"
 import type { VariantProps } from "class-variance-authority"
 import {
   CheckCircle2Icon,
@@ -27,7 +27,7 @@ import { CONNECT_CHANNEL_REGISTRY, type ConnectPickerChannel } from "./registry"
  * `RowState["phase"]` plus the two terminal outcome statuses
  * ("connected"/"connectedWarning") that need their own row look.
  * `duplicated`/`limitReached`/`failed` come straight from
- * `ConnectItemStatus` (`@chatbotx.io/business`).
+ * `ConnectItemStatus` (`@salesmanchatbot.io/business`).
  */
 export const ROW_VISUAL_STATES = [
   "waiting",

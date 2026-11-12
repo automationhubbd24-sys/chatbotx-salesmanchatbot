@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 const MAX_SIGNED_BIGINT = 9_223_372_036_854_775_807n

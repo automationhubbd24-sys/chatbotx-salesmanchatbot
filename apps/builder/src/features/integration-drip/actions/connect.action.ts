@@ -1,11 +1,11 @@
 "use server"
 
-import { integrationDripService } from "@chatbotx.io/business"
+import { integrationDripService } from "@salesmanchatbot.io/business"
 import {
   DripNoAccountError,
   integration as dripIntegration,
-} from "@chatbotx.io/integration-drip"
-import { SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-drip"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"

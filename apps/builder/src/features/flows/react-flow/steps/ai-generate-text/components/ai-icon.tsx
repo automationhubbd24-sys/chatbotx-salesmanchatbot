@@ -1,5 +1,5 @@
-import type { AIProvider } from "@chatbotx.io/ai"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import type { AIProvider } from "@salesmanchatbot.io/ai"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   SiClaude,
   SiClaudeHex,

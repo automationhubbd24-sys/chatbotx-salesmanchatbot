@@ -1,7 +1,7 @@
-import { db } from "@chatbotx.io/database/client"
-import { aiAgentModel } from "@chatbotx.io/database/schema"
-import { remapReferences } from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+import { db } from "@salesmanchatbot.io/database/client"
+import { aiAgentModel } from "@salesmanchatbot.io/database/schema"
+import { remapReferences } from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import type {
   PatchTask,
   ResourceAdapter,

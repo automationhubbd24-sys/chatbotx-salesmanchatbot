@@ -1,4 +1,4 @@
-import { connectSessionService } from "@chatbotx.io/business/connect-session"
+import { connectSessionService } from "@salesmanchatbot.io/business/connect-session"
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { ConnectSessionAutoRefresh } from "./auto-refresh"

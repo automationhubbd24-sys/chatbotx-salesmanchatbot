@@ -15,12 +15,12 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const existsMock = vi.fn(async () => false)
 const setNumberMock = vi.fn(async () => undefined)
-// `importOriginal`, not a full replacement: the real `@chatbotx.io/business`
-// barrel (imported below) reaches other `@chatbotx.io/redis` exports (e.g.
+// `importOriginal`, not a full replacement: the real `@salesmanchatbot.io/business`
+// barrel (imported below) reaches other `@salesmanchatbot.io/redis` exports (e.g.
 // `bloomFilter`, via packages/analytics) that a plain-object mock would leave
 // undefined.
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/redis")>()
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/redis")>()
   return {
     ...actual,
     distributedStore: { exists: existsMock, setNumber: setNumberMock },
@@ -28,16 +28,16 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
 })
 
 const deleteObjectMock = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { deleteObject: deleteObjectMock },
 }))
 
-// Mocked by their resolved file path, not the `@chatbotx.io/business`
+// Mocked by their resolved file path, not the `@salesmanchatbot.io/business`
 // package specifier: `contactProfileRefreshService.refresh` imports these
 // two via relative paths internal to the business package
 // (`../service` / `../../error-log/service` from
 // `packages/business/src/contact/profile-refresh/service.ts`), so a mock
-// keyed on the `@chatbotx.io/business` barrel specifier would never
+// keyed on the `@salesmanchatbot.io/business` barrel specifier would never
 // intercept them.
 const findByIdOrFailMock = vi.fn()
 const findByIdMock = vi.fn()
@@ -83,7 +83,7 @@ const { refreshExistingContactProfile } = await import(
   "../src/integration/handlers/contact-profile-refresh"
 )
 const { PROFILE_REFRESH_COOLDOWN_SECONDS } = await import(
-  "@chatbotx.io/business"
+  "@salesmanchatbot.io/business"
 )
 
 // ---------------------------------------------------------------------------
@@ -96,7 +96,7 @@ const fakeInbox = {
   id: "inbox-1",
   workspaceId: "ws-1",
   channel: "messenger",
-} as unknown as import("@chatbotx.io/database/types").InboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").InboxModel
 
 const fakeContactInbox = {
   id: "ci-1",
@@ -105,7 +105,7 @@ const fakeContactInbox = {
   sourceId: "psid-123",
   channel: "messenger",
   language: null,
-} as unknown as import("@chatbotx.io/database/types").ContactInboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactInboxModel
 
 const fakeIncomingContact = { sourceId: "psid-123", firstName: "Jane" }
 

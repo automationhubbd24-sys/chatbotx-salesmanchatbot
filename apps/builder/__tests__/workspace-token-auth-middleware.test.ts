@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -19,7 +19,7 @@ const {
   assertApiNotRateLimited: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
@@ -44,7 +44,7 @@ const { workspaceTokenAuthMidddleware } = await import(
   "@/middlewares/workspace-token-auth"
 )
 const { hashToken } = await import(
-  "@chatbotx.io/business/workspace-api-token/credentials"
+  "@salesmanchatbot.io/business/workspace-api-token/credentials"
 )
 
 const next = vi.fn(async (opts?: { context: Record<string, unknown> }) => ({
@@ -112,7 +112,7 @@ describe("workspaceTokenAuthMidddleware", () => {
 
   test("stale cached token pointing at a purged workspace → INVALID_CHATBOT_TOKEN, not a raw notFound", async () => {
     findWorkspaceByTokenHash.mockRejectedValue(
-      new ChatbotXException("Workspace not found", "notFound"),
+      new salesmanChatbotException("Workspace not found", "notFound"),
     )
 
     const headers = new Headers({ Authorization: "Bearer ws1_abc" })

@@ -1,6 +1,6 @@
 /**
- * `channelTypes` is defined in `@chatbotx.io/utils/channel` so packages that
- * cannot depend on the database layer (notably `@chatbotx.io/flow-config`, which
+ * `channelTypes` is defined in `@salesmanchatbot.io/utils/channel` so packages that
+ * cannot depend on the database layer (notably `@salesmanchatbot.io/flow-config`, which
  * holds the per-channel step rules) can still key their tables by channel.
  *
  * Re-exported here because this has long been the import site for the rest of
@@ -17,7 +17,7 @@ export {
   coexistChannels,
   isCoexistChannel,
   MANAGEABLE_CHANNELS,
-} from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/utils/channel"
 
 /**
  * A contact's DM conversation is stored with a null `sourceId` on every

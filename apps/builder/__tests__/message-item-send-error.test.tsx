@@ -1,4 +1,4 @@
-import type { TenantSettings } from "@chatbotx.io/business"
+import type { TenantSettings } from "@salesmanchatbot.io/business"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, describe, expect, test, vi } from "vitest"

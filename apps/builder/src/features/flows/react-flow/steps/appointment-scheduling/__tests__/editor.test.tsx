@@ -2,7 +2,7 @@
 import {
   type AppointmentSchedulingStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { act, type ButtonHTMLAttributes, type ReactNode } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import {
@@ -50,7 +50,7 @@ vi.mock("@/features/custom-fields/custom-field-select", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/dialog", () => ({
   Dialog: ({ children }: { children: ReactNode }) => <>{children}</>,
   DialogContent: ({ children }: { children: ReactNode }) => <>{children}</>,
   DialogDescription: ({ children }: { children?: ReactNode }) => (
@@ -61,7 +61,7 @@ vi.mock("@chatbotx.io/ui/components/ui/dialog", () => ({
   DialogTrigger: ({ render }: { render: ReactNode }) => <>{render}</>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <button type="button" {...props}>
       {children}
@@ -69,7 +69,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/form", async () => {
   const { FormProvider: Provider, Controller: ControllerImpl } = await import(
     "react-hook-form"
   )
@@ -79,7 +79,7 @@ vi.mock("@chatbotx.io/ui/components/ui/form", async () => {
 // Base UI's real Select needs pointer capture/portal support jsdom doesn't
 // provide; swap it for a plain native <select> wired the same way (items via
 // onValueChange) so the mode field stays a real, driveable RHF Controller.
-vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/select", () => ({
   Select: ({
     children,
     value,
@@ -105,7 +105,7 @@ vi.mock("@chatbotx.io/ui/components/ui/select", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", () => ({
   ComboboxField: ({ name }: { name: string }) => {
     const form = useFormContext()
     return (
@@ -124,7 +124,7 @@ vi.mock("@chatbotx.io/ui/components/form/combobox-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/switch-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/switch-field", () => ({
   SwitchField: () => null,
 }))
 

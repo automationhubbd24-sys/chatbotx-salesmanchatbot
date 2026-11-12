@@ -1,6 +1,6 @@
-import { db } from "@chatbotx.io/database/client"
-import { savedReplyModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+import { db } from "@salesmanchatbot.io/database/client"
+import { savedReplyModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 import { botFieldService } from "../../bot-field/service"
 import type {
   PatchTask,

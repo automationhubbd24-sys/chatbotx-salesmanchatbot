@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { coexistService } from "../coexist/service"
 import { logger } from "../logger"
 import { whatsappAuthForCapiScopeSchema } from "./auth-schema"
@@ -31,7 +31,7 @@ export type SetCoexistInput = {
   integrationId: string
   enabled: boolean
   aiReadsSyncedHistory?: boolean
-  /** Primitives-only provider call — business does not depend on `@chatbotx.io/integration-whatsapp`. */
+  /** Primitives-only provider call — business does not depend on `@salesmanchatbot.io/integration-whatsapp`. */
   triggerSync: SetCoexistTriggerSync
 }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { ChevronDownIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"

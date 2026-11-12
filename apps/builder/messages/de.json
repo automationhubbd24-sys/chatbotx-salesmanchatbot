@@ -875,7 +875,13 @@
       "anyConditions": "Eine der folgenden Bedingungen.",
       "label": "Kontaktfilter",
       "onlyContactsMatch": "Nur Kontakte, die übereinstimmen mit",
-      "moreOptions": "Weitere Optionen"
+      "moreOptions": "Weitere Optionen",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kontaktnotiz"
@@ -1349,7 +1355,9 @@
         "documentReader": "Dokumentenleser",
         "imageReader": "Bildleser",
         "urlContext": "URL-Leser",
-        "webSearch": "Websuche"
+        "webSearch": "Websuche",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2586,7 +2594,7 @@
     "title": "Allgemein"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Dies entfernt die Kampagne nur aus ChatbotX. Die Meta-Nachrichtenkampagne läuft weiter — pausieren oder löschen Sie sie im Werbeanzeigenmanager.",
+    "deleteWarning": "Dies entfernt die Kampagne nur aus salesmanChatbot. Die Meta-Nachrichtenkampagne läuft weiter — pausieren oder löschen Sie sie im Werbeanzeigenmanager.",
     "title": "Facebook Marketing Messages",
     "description": "Steigern Sie Engagement und Umsatz mit personalisierten Werbenachrichten auf Messenger.",
     "create": "Neu erstellen",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "Verbindung mit {feature} erfolgreich getrennt",
     "reply": "Antworten",
     "privateReply": "Private Antwort",
+    "replyingTo": "Antwort auf",
+    "replyPreview": "{sender} antwortete {recipient}",
+    "you": "Sie",
     "viewMessage": "Nachricht anzeigen",
     "changeLikeState": "Gefällt-mir-Status ändern",
     "changeHideState": "Sichtbarkeitsstatus ändern",
@@ -3730,6 +3741,10 @@
       "description": "Diesen Anbieter für automatische KI-Antworten zulassen.",
       "label": "Automatische KI-Antwort"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "OpenAI-kompatible Anbieter als Fallback-Modelle für KI-Agenten verbinden.",
       "label": "OpenAI-kompatible Anbieter"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standardmodell",
+      "embeddingModel": "Einbettungsmodell",
       "enabled": "Aktiviert"
     },
     "provider": "KI-Anbieter",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "Die Basis-URL ist ungültig oder nicht zulässig.",
       "presetAlreadyConnected": "Diese Voreinstellung ist für diesen Arbeitsbereich bereits verbunden."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "Anrufberechtigung",
         "appSubscriptionMissing": "Zuerst den WhatsApp-Webhook für diese App im Meta App Dashboard konfigurieren und es dann erneut versuchen.",
         "appSubscriptionFailed": "Das 'calls'-Webhook-Abonnement der App konnte nicht überprüft werden. In Kürze erneut versuchen.",
-        "callsNotSubscribed": "Diese App ist nicht für das 'calls'-Webhook-Feld abonniert, daher können Anrufereignisse ChatbotX nicht erreichen (Meta-Fehler 138018: technische Voraussetzungen sind nicht erfüllt — mindestens eine für die WABA abonnierte App muss auch das Anruf-Webhook-Feld haben).",
+        "callsNotSubscribed": "Diese App ist nicht für das 'calls'-Webhook-Feld abonniert, daher können Anrufereignisse salesmanChatbot nicht erreichen (Meta-Fehler 138018: technische Voraussetzungen sind nicht erfüllt — mindestens eine für die WABA abonnierte App muss auch das Anruf-Webhook-Feld haben).",
         "fixButton": "Beheben",
         "fixSuccess": "Die App ist jetzt für WhatsApp-Anruf-Webhooks abonniert.",
         "manualIntegrationNotice": "Diese Nummer wurde manuell verbunden und hat hier keine App-Anmeldedaten. Das 'calls'-Webhook-Feld für die App im Meta App Dashboard abonnieren.",
@@ -5687,7 +5720,109 @@
     "unknown": "Unbekannt"
   },
   "orders": {
-    "title": "Bestellungen"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Produkte",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Aktionsquelle",

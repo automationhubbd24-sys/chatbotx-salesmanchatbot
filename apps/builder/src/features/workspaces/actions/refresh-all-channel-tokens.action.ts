@@ -7,31 +7,31 @@ import {
   messengerIntegrationService,
   tiktokIntegrationService,
   zaloIntegrationService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
 import {
   type InstagramAuthValue,
   integration as integrationInstagram,
-} from "@chatbotx.io/integration-instagram"
-import { integration as integrationInstagramFacebook } from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram"
+import { integration as integrationInstagramFacebook } from "@salesmanchatbot.io/integration-instagram-facebook"
 import {
   integration as integrationMessenger,
   logMessengerWelcomeProfile,
   type MessengerAuthValue,
-} from "@chatbotx.io/integration-messenger"
-import type { TiktokAuthValue } from "@chatbotx.io/integration-tiktok"
-import { refreshAccessToken as refreshTiktokAccessToken } from "@chatbotx.io/integration-tiktok/apis/auth"
-import { buildTokenTimestamps } from "@chatbotx.io/integration-tiktok/lib/token-utils"
+} from "@salesmanchatbot.io/integration-messenger"
+import type { TiktokAuthValue } from "@salesmanchatbot.io/integration-tiktok"
+import { refreshAccessToken as refreshTiktokAccessToken } from "@salesmanchatbot.io/integration-tiktok/apis/auth"
+import { buildTokenTimestamps } from "@salesmanchatbot.io/integration-tiktok/lib/token-utils"
 import {
   integration as integrationWhatsapp,
   type WhatsappAuthValue,
-} from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/integration-whatsapp"
 import {
   calculateExpiresAt,
   refreshAccessToken as refreshZaloAccessToken,
   type ZaloAuthValue,
-} from "@chatbotx.io/integration-zalo"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-zalo"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { isCloud } from "@/env"
 import { getAllWorkspaceMembers } from "@/features/workspace-members/queries"
 import { authActionClient } from "@/lib/safe-action"

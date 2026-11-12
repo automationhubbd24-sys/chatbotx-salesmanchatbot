@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { countMessageCharacters } from "../channel-rules/characters"
 import { SEND_TEXT_MAX } from "../channel-rules/send-text-length-rules"

@@ -1,12 +1,12 @@
 import {
   broadcastToWorkspaceParty,
   whatsappCallPermissionService,
-} from "@chatbotx.io/business"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/business"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
 import {
   ChannelError,
   getWhatsappCallPermissionRequest,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { logger } from "../../lib/logger"
 import type { ChannelSendErrorContext } from "./channel-send-error-types"
 

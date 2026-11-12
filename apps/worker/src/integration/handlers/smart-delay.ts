@@ -1,24 +1,24 @@
 import {
   type SmartDelayRow,
   smartDelayService,
-} from "@chatbotx.io/business/smart-delay"
+} from "@salesmanchatbot.io/business/smart-delay"
 import {
   type SmartDelayType,
   smartDelayStatuses,
   smartDelayTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   buildJobId,
   ENQUEUE_DELAY_MS,
   type MetadataPayload,
   metadataSchema,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   IntegrationJobAction,
   type IntegrationJobData,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 

@@ -1,9 +1,9 @@
 <p align="center">
-  <a href="https://github.com/ChatbotXIO/ChatbotX" target="_blank" rel="noopener">
+  <a href="https://github.com/salesmanChatbotIO/salesmanChatbot" target="_blank" rel="noopener">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/chatbotx-logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset=".github/assets/readme/chatbotx-logo-light.svg">
-      <img alt="ChatbotX Logo" src=".github/assets/readme/chatbotx-logo-light.svg" width="280">
+      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/readme/salesmanchatbot-logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset=".github/assets/readme/salesmanchatbot-logo-light.svg">
+      <img alt="salesmanChatbot Logo" src=".github/assets/readme/salesmanchatbot-logo-light.svg" width="280">
     </picture>
   </a>
 </p>
@@ -14,8 +14,8 @@
   </a>
 </p>
 
-<h3 align="center"><strong><a href="https://chatbotx.io/lifetime/?ref=github">NEW: Get a Lifetime Deal on ChatbotX Cloud</a></strong></h3>
-<h3 align="center"><strong><a href="https://github.com/ChatbotXIO/chatbotx-agent">NEW: get 500+ MCP and CLI Tools for Your AI Agents</a></strong></h3>
+<h3 align="center"><strong><a href="https://salesmanchatbot.io/lifetime/?ref=github">NEW: Get a Lifetime Deal on salesmanChatbot Cloud</a></strong></h3>
+<h3 align="center"><strong><a href="https://github.com/salesmanChatbotIO/salesmanchatbot-agent">NEW: get 500+ MCP and CLI Tools for Your AI Agents</a></strong></h3>
 
 <p align="center">
   <strong>Agentic chat marketing platform built for OpenClaw, Hermes, and Claude</strong>
@@ -24,13 +24,13 @@
 </p>
 
 <p align="center">
-  <a href="https://chatbotx.io/">Website</a>
+  <a href="https://salesmanchatbot.io/">Website</a>
   |
-  <a href="https://chatbotx.canny.io/">Roadmap</a>
+  <a href="https://salesmanchatbot.canny.io/">Roadmap</a>
   |
-  <a href="https://chatbotx.io/docs" rel="dofollow">Docs</a>
+  <a href="https://salesmanchatbot.io/docs" rel="dofollow">Docs</a>
   |
-  <a href="https://discord.chatbotx.io/">Discord</a>
+  <a href="https://discord.salesmanchatbot.io/">Discord</a>
 </p>
 
 <p align="center">
@@ -65,29 +65,29 @@
 </p>
 
 <p align="center">
-  <a href="https://youtube.com/@chatbotxofficial" rel="dofollow"><strong>Watch the YouTube Tutorials»</strong></a>
+  <a href="https://youtube.com/@salesmanchatbotofficial" rel="dofollow"><strong>Watch the YouTube Tutorials»</strong></a>
   <br />
 </p>
 
 <p align="center">
-  <a href="https://app.chatbotx.io">Register</a>
+  <a href="https://app.salesmanchatbot.io">Register</a>
   ·
-  <a href="https://chatbotx.io/docs/cli/introduction">CLI</a>
+  <a href="https://salesmanchatbot.io/docs/cli/introduction">CLI</a>
   ·
-  <a href="https://chatbotx.io/docs/mcp/introduction">MCP</a>
+  <a href="https://salesmanchatbot.io/docs/mcp/introduction">MCP</a>
   ·
-  <a href="https://chatbotx.io/docs/api-reference/api-overview">Public API</a><br />
+  <a href="https://salesmanchatbot.io/docs/api-reference/api-overview">Public API</a><br />
 </p>
 
 <p align="center">
-  <a href="https://chatbotx.io/docs/integrations/n8n">N8N custom node</a>
+  <a href="https://salesmanchatbot.io/docs/integrations/n8n">N8N custom node</a>
   ·
-  <a href="https://chatbotx.io/docs/integrations/make">Make.com integration</a>
+  <a href="https://salesmanchatbot.io/docs/integrations/make">Make.com integration</a>
 </p>
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=b1NUlA-fIzw" target="_blank">
-    <img alt="ChatbotX Omnichannel" src=".github/assets/readme/chatbotx-hero.png?v=1786238500653">
+    <img alt="salesmanChatbot Omnichannel" src=".github/assets/readme/salesmanchatbot-hero.png?v=1786238500653">
   </a>
 </p>
 
@@ -116,9 +116,9 @@
 | ![Broadcast and Sequence](.github/assets/readme/3-broadcast-and-sequence.webp) | ![Growth Tools](.github/assets/readme/4-growth-tools.webp) |
 | ![Import Contacts](.github/assets/readme/5-import-contacts.webp) | ![OpenClaw and Hermes](.github/assets/readme/6-openclaw-hermes.webp) |
 
-## Why ChatbotX?
+## Why salesmanChatbot?
 
-| Feature | ManyChat | ChatbotX |
+| Feature | ManyChat | salesmanChatbot |
 |---|---:|---:|
 | Self-Hosted | ❌ | ✅ |
 | White Label | ❌ | ✅ |
@@ -144,9 +144,9 @@
 
 ## Quick Start
 
-To have the project up and running, please follow the [Quick Start Guide](https://chatbotx.io/docs/quickstart).
+To have the project up and running, please follow the [Quick Start Guide](https://salesmanchatbot.io/docs/quickstart).
 
-**Self-hosting ChatbotX without developing on it?** Use **[chatbotx-docker-compose](https://github.com/ChatbotXIO/chatbotx-docker-compose)** — a standalone repo that runs the pre-built `ghcr.io` images with `docker compose up`, no local checkout of this monorepo required. The compose files in this repository (`docker-compose.yml`, `docker-compose.dev.yml`) provision local infrastructure only and expect the apps to run from source via `pnpm dev`.
+**Self-hosting salesmanChatbot without developing on it?** Use **[salesmanchatbot-docker-compose](https://github.com/salesmanChatbotIO/salesmanchatbot-docker-compose)** — a standalone repo that runs the pre-built `ghcr.io` images with `docker compose up`, no local checkout of this monorepo required. The compose files in this repository (`docker-compose.yml`, `docker-compose.dev.yml`) provision local infrastructure only and expect the apps to run from source via `pnpm dev`.
 
 ## Project Structure
 
@@ -156,7 +156,7 @@ To have the project up and running, please follow the [Quick Start Guide](https:
 |   |-- builder/       # Next.js web app and product builder
 |   |-- worker/        # background workers for chat, AI, triggers, webhooks, analytics, sequences
 |   |-- realtime/      # realtime server
-|   |-- cli/           # ChatbotX command line client
+|   |-- cli/           # salesmanChatbot command line client
 |   `-- mcp-server/    # MCP server backed by public APIs
 |-- integrations/
 |   |-- whatsapp/
@@ -210,9 +210,9 @@ Useful package-level commands:
 pnpm --filter builder dev
 pnpm --filter worker dev
 pnpm --filter realtime dev
-pnpm --filter chatbotx dev:cli
-pnpm --filter chatbotx-mcp dev:mcp
-pnpm --filter @chatbotx.io/database db:studio
+pnpm --filter salesmanchatbot dev:cli
+pnpm --filter salesmanchatbot-mcp dev:mcp
+pnpm --filter @salesmanchatbot.io/database db:studio
 ```
 
 ## Services
@@ -228,9 +228,9 @@ The default Docker Compose stack includes:
 
 ## Support
 
-If ChatbotX helps you avoid expensive chatbot automation tools, please give us a ⭐ on GitHub.
+If salesmanChatbot helps you avoid expensive chatbot automation tools, please give us a ⭐ on GitHub.
 We're also working hard to bring open-source mobile apps to **iOS and Android** this year
 
 ## License
 
-ChatbotX' Community Edition is released as open source under the [MIT License](https://github.com/ChatbotXIO/ChatbotX/blob/main/LICENSE) and enterprise features are released under [Commercial License](https://github.com/ChatbotXIO/ChatbotX/blob/main/apps/builder/src/enterprise/LICENSE)
+salesmanChatbot' Community Edition is released as open source under the [MIT License](https://github.com/salesmanChatbotIO/salesmanChatbot/blob/main/LICENSE) and enterprise features are released under [Commercial License](https://github.com/salesmanChatbotIO/salesmanChatbot/blob/main/apps/builder/src/enterprise/LICENSE)

@@ -2,8 +2,8 @@ import {
   type ContactImportColumnMap,
   type ContactImportFieldMapping,
   channelTypes,
-} from "@chatbotx.io/database/partials"
-import { cleanEmail, cleanPhone, cleanText } from "@chatbotx.io/imports/parsers"
+} from "@salesmanchatbot.io/database/partials"
+import { cleanEmail, cleanPhone, cleanText } from "@salesmanchatbot.io/imports/parsers"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 
 const MAX_FIELD_LENGTH = 1000

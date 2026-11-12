@@ -1,4 +1,4 @@
-import { facebookLeadAdsAutomationService } from "@chatbotx.io/business"
+import { facebookLeadAdsAutomationService } from "@salesmanchatbot.io/business"
 import { notFound } from "next/navigation"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {

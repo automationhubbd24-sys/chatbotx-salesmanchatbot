@@ -1,4 +1,4 @@
-import type { AIGenerateTextSchema } from "@chatbotx.io/flow-config"
+import type { AIGenerateTextSchema } from "@salesmanchatbot.io/flow-config"
 
 type AIProvider = AIGenerateTextSchema["provider"]
 

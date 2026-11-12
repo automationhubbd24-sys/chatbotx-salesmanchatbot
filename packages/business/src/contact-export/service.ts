@@ -2,13 +2,13 @@ import {
   exportSubTypes,
   fileContextTypes,
   fileStatuses,
-} from "@chatbotx.io/database/partials"
-import type { ContactFilterCriteriaInput } from "@chatbotx.io/database/queries"
-import { fileRepository } from "@chatbotx.io/database/repositories"
-import { uploader } from "@chatbotx.io/filesystem"
-import { createId } from "@chatbotx.io/utils"
-import { DefaultJobAction, defaultQueue } from "@chatbotx.io/worker-config"
-import { stripContactPIIFields } from "@chatbotx.io/worker-config/contact-pii"
+} from "@salesmanchatbot.io/database/partials"
+import type { ContactFilterCriteriaInput } from "@salesmanchatbot.io/database/queries"
+import { fileRepository } from "@salesmanchatbot.io/database/repositories"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { createId } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
+import { stripContactPIIFields } from "@salesmanchatbot.io/worker-config/contact-pii"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
 

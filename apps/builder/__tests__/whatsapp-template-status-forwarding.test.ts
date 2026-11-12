@@ -43,11 +43,11 @@ const { whatsappMessageTemplateService, noRows } = vi.hoisted(() => ({
 }))
 // Resource schemas come from the real barrel (same approach as
 // contacts-crud-public-api.test.ts); only the services are replaced.
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },
@@ -57,7 +57,7 @@ vi.mock("@chatbotx.io/database/repositories", () => {
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },
   ) as Record<string, unknown>
 })
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   whatsappMessageTemplateService,
   adsConversionService: { list: noRows },

@@ -1,6 +1,6 @@
 "use server"
 
-import { integrationWebchatService } from "@chatbotx.io/business"
+import { integrationWebchatService } from "@salesmanchatbot.io/business"
 import {
   type WorkspaceIdAndIdRequestParams,
   workspaceIdAndIdRequestParams,

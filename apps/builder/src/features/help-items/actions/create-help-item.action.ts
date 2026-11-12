@@ -1,6 +1,6 @@
 "use server"
 
-import { tenantHelpItemService } from "@chatbotx.io/business"
+import { tenantHelpItemService } from "@salesmanchatbot.io/business"
 import { revalidatePath } from "next/cache"
 import { authActionClient } from "@/lib/safe-action"
 import { helpItemSchema } from "../schema"

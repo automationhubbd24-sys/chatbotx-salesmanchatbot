@@ -1,8 +1,8 @@
 import {
   quotaEnforcementService,
   userQuotaService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import type { HTTPMethod } from "@orpc/server"
 import { ORPCError } from "@orpc/server"
 import { isCloud } from "@/env"
@@ -150,7 +150,7 @@ export async function checkWorkspaceOwnerAccess(props: {
 /** next-safe-action flavour: thrown by `workspaceActionClient` middlewares. */
 export const workspaceAccessDenialException = (
   reason: WorkspaceAccessDenialReason,
-) => new ChatbotXException(DENIAL_MESSAGES[reason], reason, DENIAL_HTTP_STATUS)
+) => new salesmanChatbotException(DENIAL_MESSAGES[reason], reason, DENIAL_HTTP_STATUS)
 
 /** oRPC flavour: thrown by the session and workspace-token middlewares. */
 export const workspaceAccessDenialOrpcError = (

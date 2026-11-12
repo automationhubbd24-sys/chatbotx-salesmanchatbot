@@ -265,7 +265,7 @@ export type RealtimeEventNotifyExportResult = {
 
 export type RealtimeEventConversationCreated = {
   eventType: typeof RealtimeEventType.conversationCreated
-  // Full conversation row — shape owned by @chatbotx.io/business's
+  // Full conversation row — shape owned by @salesmanchatbot.io/business's
   // ConversationModel; kept as `unknown` here to avoid a dependency from this
   // package (imported client-side) on the database schema package.
   data: unknown

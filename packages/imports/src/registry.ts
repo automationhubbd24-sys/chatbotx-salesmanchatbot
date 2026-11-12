@@ -1,4 +1,4 @@
-import { type ImportType, importTypes } from "@chatbotx.io/database/partials"
+import { type ImportType, importTypes } from "@salesmanchatbot.io/database/partials"
 import { handler as contactsHandler } from "./modules/contacts"
 import { handler as couponsHandler } from "./modules/coupons"
 import { handler as flowHandler } from "./modules/flow"

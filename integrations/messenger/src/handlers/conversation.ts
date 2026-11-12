@@ -10,7 +10,7 @@ import {
   type ThreadControlWebhookResult,
   type ThreadOwnerResult,
   threadControlRoles,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import { sendMessage } from "../apis/message"
 import {

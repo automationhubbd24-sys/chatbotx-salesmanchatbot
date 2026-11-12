@@ -1,8 +1,8 @@
 "use client"
 
-import { AutoAssignConversationRule } from "@chatbotx.io/flow-config"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+import { AutoAssignConversationRule } from "@salesmanchatbot.io/flow-config"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { MessageCirclePlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useContactAssigneeMultiSelectOptions } from "@/features/users/provider/user-hook"

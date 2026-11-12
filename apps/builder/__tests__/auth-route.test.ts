@@ -23,11 +23,11 @@ const {
   socialHandler: vi.fn(() => new Response("social")),
 }))
 
-vi.mock("@chatbotx.io/auth/server", () => ({
+vi.mock("@salesmanchatbot.io/auth/server", () => ({
   SOCIAL_PROVIDERS: ["google", "facebook"] as const,
 }))
 
-vi.mock("@chatbotx.io/auth/tenant", () => ({
+vi.mock("@salesmanchatbot.io/auth/tenant", () => ({
   resolveTenantByDomain: mockResolveTenantByDomain,
   resolveTenantFromOAuthState: mockResolveTenantFromOAuthState,
   resolveOAuthStateCallbackURL: mockResolveOAuthStateCallbackURL,
@@ -35,8 +35,8 @@ vi.mock("@chatbotx.io/auth/tenant", () => ({
   withTenant: (_tenantId: string, fn: () => unknown) => fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     // The route uses the public URL for host comparison; in tests the request

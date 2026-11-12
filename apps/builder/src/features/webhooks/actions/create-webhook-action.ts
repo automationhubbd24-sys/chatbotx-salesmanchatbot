@@ -1,8 +1,8 @@
 "use server"
 
-import { webhookService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { folderTypes } from "@chatbotx.io/database/partials"
+import { webhookService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { folderTypes } from "@salesmanchatbot.io/database/partials"
 import { getTranslations } from "next-intl/server"
 import {
   type WorkspaceIdRequestParams,
@@ -33,12 +33,12 @@ export const createWebhookAction = workspaceActionClient
         })
       } catch (error) {
         if (
-          error instanceof ChatbotXException &&
+          error instanceof salesmanChatbotException &&
           error.code === "validation" &&
           error.data
         ) {
           const t = await getTranslations()
-          throw new ChatbotXException(t(error.message, error.data))
+          throw new salesmanChatbotException(t(error.message, error.data))
         }
         throw error
       }

@@ -35,11 +35,11 @@ const getMarketingMessagesAdAccounts = vi.fn(
     ]),
 )
 
-vi.mock("@chatbotx.io/integration-facebook-ads", () => ({
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", () => ({
   createMessageCampaign,
   getMarketingMessagesAdAccounts,
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   facebookMarketingMessagesService: { create },
 }))
 vi.mock("@/features/facebook-marketing-messages/lib/media-attachment", () => ({

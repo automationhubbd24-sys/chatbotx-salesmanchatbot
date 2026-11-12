@@ -1,4 +1,4 @@
-import type { BaseEventListener } from "@chatbotx.io/flow-config"
+import type { BaseEventListener } from "@salesmanchatbot.io/flow-config"
 import { afterEach, describe, expect, test, vi } from "vitest"
 import type { EventModule } from "../src/event-bus"
 import { startWorker, stopWorker } from "../src/worker"

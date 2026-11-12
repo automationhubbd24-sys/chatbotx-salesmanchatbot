@@ -3,23 +3,23 @@ import {
   db,
   eq,
   inArray,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type CustomFieldType,
   rootFolderId,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   type FlowListInput,
   flowRepository,
   whatsappMessageTemplateRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   flowAnalyticsSessionModel,
   flowModel,
   flowVersionModel,
-} from "@chatbotx.io/database/schema"
-import type { FlowModel, FlowVersionModel } from "@chatbotx.io/database/types"
-import { parsePagination } from "@chatbotx.io/database/utils"
+} from "@salesmanchatbot.io/database/schema"
+import type { FlowModel, FlowVersionModel } from "@salesmanchatbot.io/database/types"
+import { parsePagination } from "@salesmanchatbot.io/database/utils"
 import {
   type EdgeSchema,
   type FlowExportBotField,
@@ -28,9 +28,9 @@ import {
   remapFlowGraphReferences,
   sendMessageNodeDefaultFn,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
-import { customFieldResolutionKey } from "@chatbotx.io/utils/custom-field"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
+import { customFieldResolutionKey } from "@salesmanchatbot.io/utils/custom-field"
 import { BaseService } from "../base.service"
 import { botFieldService } from "../bot-field/service"
 import { customFieldService } from "../custom-field/service"

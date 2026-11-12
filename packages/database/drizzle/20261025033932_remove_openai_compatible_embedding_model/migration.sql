@@ -1,0 +1,1 @@
+ALTER TABLE "IntegrationOpenaiCompatible" DROP COLUMN "embeddingModel";

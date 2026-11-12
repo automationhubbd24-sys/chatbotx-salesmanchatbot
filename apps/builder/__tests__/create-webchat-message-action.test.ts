@@ -111,7 +111,7 @@ vi.mock("@/lib/safe-action", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: {
     enqueue: mockAutomatedResponseEnqueue,
     enqueueFlowAction: mockAutomatedResponseEnqueueFlowAction,
@@ -119,7 +119,7 @@ vi.mock("@chatbotx.io/automated-response", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   broadcastToWorkspaceParty: mockBroadcastToWorkspaceParty,
   isWorkspaceScheduledForDeletion: (
     workspace:
@@ -216,8 +216,8 @@ vi.mock("next-intl/server", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code = "systemError", httpStatusCode = 400) {
@@ -228,11 +228,11 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getPublicFileUrl: vi.fn((path: string, base: string) => `${base}/${path}`),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockDbUpdate,
   },
@@ -244,11 +244,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   })),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactInboxModel: {
     id: "contactInboxId",
     firstInteractionAt: "firstInteractionAt",
@@ -258,21 +258,21 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   integrationWebchatModel: { id: "integrationWebchatId" },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mockEmit,
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: mockEmitContactCreated,
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploadMultipleFiles: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/flow-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/flow-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/flow-config")>()
   return {
     ...actual,
     messageEventTypeSchema: {
@@ -281,16 +281,16 @@ vi.mock("@chatbotx.io/flow-config", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   RealtimeEventType: { messageCreated: "messageCreated" },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "generated-id") }
 })
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { broadcastEvent: "broadcastEvent" },
   chatQueue: { add: mockChatQueueAdd },
   IntegrationJobAction: {
@@ -582,7 +582,7 @@ describe("handleCreateWebchatMessage", () => {
       authorizedDomains: ["example.com"],
     })
     mockHeaders.mockResolvedValueOnce(
-      new Headers({ "x-domain": "app.chatbotx.test" }),
+      new Headers({ "x-domain": "app.salesmanchatbot.test" }),
     )
 
     await handleCreateWebchatMessage({
@@ -591,7 +591,7 @@ describe("handleCreateWebchatMessage", () => {
         workspaceId: "ws-1",
         webchatId: "webchat-1",
         guestConversationId: "guest-1",
-        parentOrigin: "https://app.chatbotx.test",
+        parentOrigin: "https://app.salesmanchatbot.test",
       },
     }).catch(() => undefined)
 
@@ -604,7 +604,7 @@ describe("handleCreateWebchatMessage", () => {
       authorizedDomains: ["example.com"],
     })
     mockHeaders.mockResolvedValueOnce(
-      new Headers({ "x-domain": "app.chatbotx.test" }),
+      new Headers({ "x-domain": "app.salesmanchatbot.test" }),
     )
 
     await expect(

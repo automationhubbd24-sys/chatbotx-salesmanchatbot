@@ -6,14 +6,14 @@ const createRecipient = vi.fn().mockResolvedValue({ token: "test-token-xyz" })
 const markDelivered = vi.fn().mockResolvedValue(undefined)
 const markFailed = vi.fn().mockResolvedValue(undefined)
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   emailTopicAnalyticsService: { createRecipient, markDelivered, markFailed },
 }))
 
 // ── business services ───────────────────────────────────────────────────────
 const runAction = vi.fn().mockResolvedValue(undefined)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn().mockResolvedValue({ ctx: true }),
   buildUnsubscribeUrl: vi
     .fn()
@@ -43,7 +43,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-smtp", () => ({
+vi.mock("@salesmanchatbot.io/integration-smtp", () => ({
   integration: { runAction },
   smtpAuthSchema: {
     parse: vi.fn((v) => v),
@@ -52,11 +52,11 @@ vi.mock("@chatbotx.io/integration-smtp", () => ({
 
 const renderDynamicEmailHtmlMock = vi.fn().mockReturnValue("<html/>")
 
-vi.mock("@chatbotx.io/mail/dynamic", () => ({
+vi.mock("@salesmanchatbot.io/mail/dynamic", () => ({
   renderDynamicEmailHtml: renderDynamicEmailHtmlMock,
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn().mockResolvedValue([]),
     replaceAll: vi.fn(({ text }: { text: string }) => Promise.resolve(text)),

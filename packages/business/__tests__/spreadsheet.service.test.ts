@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   findOrFail: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mocks.insert,
     query: { spreadsheetModel: { findMany: mocks.findMany } },
@@ -18,11 +18,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   relationsFilterToSQL: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   spreadsheetModel: { name: "spreadsheet.name" },
 }))
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   parsePagination: (input: { page?: number; perPage?: number }) =>
     input.perPage
       ? {
@@ -33,7 +33,7 @@ vi.mock("@chatbotx.io/database/utils", () => ({
 }))
 
 let nextId = 0
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => `id-${nextId++}`,
 }))
 

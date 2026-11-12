@@ -1,10 +1,10 @@
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
   ConversationModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // Every helper is stubbed: this suite is about the resolver's own switch, not
@@ -42,7 +42,7 @@ vi.mock("../src/logger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: {
     findBy: vi.fn().mockResolvedValue({
       id: "appointment-1",
@@ -92,11 +92,11 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/system-field", () => ({
+vi.mock("@salesmanchatbot.io/business/system-field", () => ({
   resolveGenderLabel: vi.fn().mockReturnValue("Anh"),
 }))
 
-vi.mock("@chatbotx.io/encryption/keys", () => ({
+vi.mock("@salesmanchatbot.io/encryption/keys", () => ({
   env: { ENCRYPTION_KEY: testEncryptionKey },
 }))
 

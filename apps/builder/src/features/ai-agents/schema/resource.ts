@@ -1,4 +1,4 @@
-import { aiAgentModel, createSelectSchema } from "@chatbotx.io/database/schema"
+import { aiAgentModel, createSelectSchema } from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const aiAgentResourceSchema = createSelectSchema(aiAgentModel, {

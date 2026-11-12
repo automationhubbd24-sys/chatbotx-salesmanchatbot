@@ -5,7 +5,7 @@ const mockAttach = vi.fn()
 const mockDetach = vi.fn()
 const mockReplace = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: {
     attachByNamesToContacts: (...args: unknown[]) => mockAttach(...args),
     detachByNamesFromContacts: (...args: unknown[]) => mockDetach(...args),

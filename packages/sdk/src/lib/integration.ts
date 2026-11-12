@@ -1,4 +1,4 @@
-import type { MetadataPayload } from "@chatbotx.io/flow-config"
+import type { MetadataPayload } from "@salesmanchatbot.io/flow-config"
 import type { AuthValue, Oauth2AuthValue } from "./auth"
 import type { ConnectionProvider } from "./connection"
 import {

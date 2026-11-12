@@ -1,5 +1,5 @@
-import { SMART_RESPONSE_DELAY_OPTIONS } from "@chatbotx.io/database/partials"
-import { getPublicFileUrl } from "@chatbotx.io/utils"
+import { SMART_RESPONSE_DELAY_OPTIONS } from "@salesmanchatbot.io/database/partials"
+import { getPublicFileUrl } from "@salesmanchatbot.io/utils"
 import type { useTranslations } from "next-intl"
 import { useTenantSettings } from "@/features/tenant"
 import type { WorkspaceResource } from "./schema/resource"

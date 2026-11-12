@@ -28,6 +28,7 @@ export const integrationOpenaiCompatibleModel = pgTable(
       }),
     name: text().notNull(),
     preset: text().notNull(),
+    streaming: boolean().default(true).notNull(),
     workspaceId: bigintAsString()
       .notNull()
       .references(() => workspaceModel.id, {

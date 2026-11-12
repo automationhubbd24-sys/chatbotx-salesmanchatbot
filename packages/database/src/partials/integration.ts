@@ -3,7 +3,7 @@ import { z } from "zod"
 export const integrationTypes = z.enum([
   "activeCampaign",
   "api",
-  "chatbotx",
+  "salesmanchatbot",
   "claude",
   "deepseek",
   "drip",
@@ -23,6 +23,7 @@ export const integrationTypes = z.enum([
   "moosend",
   "openai",
   "openaiCompatible",
+  "openaiCompatibleEmbedding",
   "openrouter",
   "outlookCalendar",
   "sendGrid",

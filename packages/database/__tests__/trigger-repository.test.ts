@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   $count: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...conditions: unknown[]) => ({ and: conditions })),
   db: {
     query: {
@@ -20,7 +20,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isNull: vi.fn((field: unknown) => ({ isNull: field })),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   triggerModel: { workspaceId: "workspaceId-col", folderId: "folderId-col" },
 }))
 

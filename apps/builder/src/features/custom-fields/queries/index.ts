@@ -1,4 +1,4 @@
-import { customFieldService } from "@chatbotx.io/business"
+import { customFieldService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   FindCustomFieldByKeyRequest,

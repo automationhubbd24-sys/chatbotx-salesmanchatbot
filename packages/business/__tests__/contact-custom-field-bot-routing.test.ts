@@ -1,4 +1,4 @@
-import { TemporalInputParsing } from "@chatbotx.io/utils/datetime"
+import { TemporalInputParsing } from "@salesmanchatbot.io/utils/datetime"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------
@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => ({
   emitCustomFieldChanged: vi.fn(async () => undefined),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       customFieldModel: { findFirst: mocks.customFieldFindFirst },
@@ -30,11 +30,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitCustomFieldChanged: mocks.emitCustomFieldChanged,
 }))
 
-vi.mock("@chatbotx.io/redis", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   invalidateCacheByTags: mocks.invalidateCacheByTags,
 }))

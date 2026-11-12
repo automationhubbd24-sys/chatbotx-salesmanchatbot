@@ -1,4 +1,4 @@
-import { THREAD_IDLE_AFTER_MS } from "@chatbotx.io/database/partials"
+import { THREAD_IDLE_AFTER_MS } from "@salesmanchatbot.io/database/partials"
 import { createTranslator } from "next-intl"
 import { describe, expect, test, vi } from "vitest"
 import {

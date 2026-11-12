@@ -1,5 +1,5 @@
-import { facebookMarketingMessagesService } from "@chatbotx.io/business"
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { facebookMarketingMessagesService } from "@salesmanchatbot.io/business"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound, redirect } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { Suspense } from "react"

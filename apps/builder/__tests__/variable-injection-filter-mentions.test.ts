@@ -1,4 +1,4 @@
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { describe, expect, it } from "vitest"
 import { getFilteredMentions } from "@/components/tiptap/extensions/variable-injection/filter-mentions"
 

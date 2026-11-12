@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   resolveTenantSettings: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/partysocket-config", () => ({
+vi.mock("@salesmanchatbot.io/partysocket-config", () => ({
   buildBroadcastAuthHeader: mocks.buildBroadcastAuthHeader,
 }))
 

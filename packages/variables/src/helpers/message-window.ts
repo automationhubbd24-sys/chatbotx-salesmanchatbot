@@ -1,6 +1,6 @@
-import { conversationService } from "@chatbotx.io/business"
-import { getSafeSinceTime } from "@chatbotx.io/database/repositories"
-import type { ConversationModel } from "@chatbotx.io/database/types"
+import { conversationService } from "@salesmanchatbot.io/business"
+import { getSafeSinceTime } from "@salesmanchatbot.io/database/repositories"
+import type { ConversationModel } from "@salesmanchatbot.io/database/types"
 
 const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000
 

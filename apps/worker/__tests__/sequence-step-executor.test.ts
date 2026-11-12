@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // ---------- db spies ----------
 const findFirstSpy = vi.fn()
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       sequenceStepModel: {

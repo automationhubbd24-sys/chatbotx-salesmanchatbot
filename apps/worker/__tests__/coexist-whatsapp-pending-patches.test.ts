@@ -18,7 +18,7 @@ const {
   mockFindManyBySourceIds: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     findByInboxAndSourceIds: mockFindByInboxAndSourceIds,
   },
@@ -32,8 +32,8 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
     time ? new Date(time) : undefined,
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: () => "attachment-1" }
 })
 

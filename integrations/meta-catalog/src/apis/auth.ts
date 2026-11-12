@@ -28,4 +28,4 @@ export function generateCatalogAuthUrl(input: {
 export {
   exchangeCodeForToken,
   exchangeLongLivedToken,
-} from "@chatbotx.io/integration-facebook-ads/apis/auth"
+} from "@salesmanchatbot.io/integration-facebook-ads/apis/auth"

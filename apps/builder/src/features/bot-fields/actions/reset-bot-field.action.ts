@@ -1,6 +1,6 @@
 "use server"
 
-import { botFieldService } from "@chatbotx.io/business"
+import { botFieldService } from "@salesmanchatbot.io/business"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

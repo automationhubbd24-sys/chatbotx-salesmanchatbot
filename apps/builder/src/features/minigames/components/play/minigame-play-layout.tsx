@@ -1,6 +1,6 @@
 "use client"
 
-import type { MinigameAppearance } from "@chatbotx.io/database/partials"
+import type { MinigameAppearance } from "@salesmanchatbot.io/database/partials"
 import type { ReactNode } from "react"
 import { MinigameShareButton } from "./minigame-share-button"
 

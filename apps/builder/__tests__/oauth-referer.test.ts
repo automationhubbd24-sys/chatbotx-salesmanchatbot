@@ -8,7 +8,7 @@ const { mockFindActiveByDomain } = vi.hoisted(() => ({
   mockFindActiveByDomain: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customDomainService: {
     findActiveByDomain: mockFindActiveByDomain,
   },

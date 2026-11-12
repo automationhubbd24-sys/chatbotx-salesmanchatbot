@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const mockCountExistingTaggedIdentities = vi.fn()
 const mockRunAction = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn().mockResolvedValue({}),
   contactInboxService: {
     countExistingTaggedIdentities: mockCountExistingTaggedIdentities,

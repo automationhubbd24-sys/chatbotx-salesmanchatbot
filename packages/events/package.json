@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/events",
+  "name": "@salesmanchatbot.io/events",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -7,14 +7,14 @@
     "./context": "./src/context.ts"
   },
   "dependencies": {
-    "@chatbotx.io/database": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/worker-config": "workspace:*",
+    "@salesmanchatbot.io/database": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/worker-config": "workspace:*",
     "lru-cache": "^11.3.5"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "typescript": "^5",
     "vitest": "^4.1.0"
   },

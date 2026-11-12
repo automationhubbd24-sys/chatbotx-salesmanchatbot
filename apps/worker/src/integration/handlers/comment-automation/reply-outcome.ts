@@ -1,5 +1,5 @@
-import { flowService } from "@chatbotx.io/business"
-import type { CommentReplyType } from "@chatbotx.io/database/partials"
+import { flowService } from "@salesmanchatbot.io/business"
+import type { CommentReplyType } from "@salesmanchatbot.io/database/partials"
 import { logger } from "../../../lib/logger"
 
 /**

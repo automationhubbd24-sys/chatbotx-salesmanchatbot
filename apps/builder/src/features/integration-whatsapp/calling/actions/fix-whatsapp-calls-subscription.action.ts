@@ -4,10 +4,10 @@ import {
   integrationWhatsappService,
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { ensureWhatsappCallsWebhookSubscribed } from "@/features/integration-whatsapp/libs/ensure-calls-webhook-subscribed"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
@@ -40,12 +40,12 @@ export const fixWhatsappCallsSubscriptionAction = callingAdminActionClient
         }),
       ])
       if (!(workspace && integrationWhatsapp)) {
-        throw new ChatbotXException(t("whatsapp.calls.errors.notFound"))
+        throw new salesmanChatbotException(t("whatsapp.calls.errors.notFound"))
       }
 
       const auth = integrationWhatsapp.auth as WhatsappAuthValue
       if (auth.metadata.isManual) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           t("whatsapp.calls.preflight.manualIntegrationNotice"),
         )
       }
@@ -55,7 +55,7 @@ export const fixWhatsappCallsSubscriptionAction = callingAdminActionClient
         type: "whatsapp",
       })
       if (!credential) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           t("whatsapp.connect.errors.appSettingsNotFound"),
         )
       }
@@ -67,7 +67,7 @@ export const fixWhatsappCallsSubscriptionAction = callingAdminActionClient
       })
 
       if (result.status === "no-subscription") {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           t("whatsapp.calls.preflight.appSubscriptionMissing"),
         )
       }

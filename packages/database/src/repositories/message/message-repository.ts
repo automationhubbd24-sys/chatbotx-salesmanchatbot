@@ -9,6 +9,7 @@ export interface CreateMessageInput {
   createdAt?: Date
   id?: string
   messageType: "incoming" | "outgoing" | "activity"
+  parentId?: string | null
   senderId?: string | null
   senderType: "bot" | "contact" | "system" | "user" | "api"
   sourceId?: string | null
@@ -131,6 +132,14 @@ export interface FindManyBySourceIdsParams {
   contactInboxIds: string[]
   sinceTime?: Date
   sourceIds: string[]
+  workspaceId: string
+}
+
+export interface FindReplyParentsParams {
+  conversationId: string
+  endTime: Date
+  ids: string[]
+  sinceTime: Date
   workspaceId: string
 }
 
@@ -317,6 +326,10 @@ export interface IMessageRepository {
   findManyBySourceIds(
     params: FindManyBySourceIdsParams,
   ): Promise<MessageSourceRow[]>
+
+  findReplyParents(
+    params: FindReplyParentsParams,
+  ): Promise<MessageWithAttachments[]>
 
   findRichResponseByButton(
     params: FindRichResponseByButtonParams,

@@ -1,5 +1,5 @@
-import { whatsappCallHistoryService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { whatsappCallHistoryService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import type { PermissionsInput } from "@/lib/auth/permission-routes"
 import { decodeCursor, encodeCursor } from "@/lib/pagination"
 import {
@@ -16,7 +16,7 @@ const INVALID_CURSOR_HTTP_STATUS = 400
  * client (which appends rather than replaces), so this throws only when
  * `input.cursor` was present but failed to decode.
  */
-export class InvalidWhatsappCallCursorError extends ChatbotXException {
+export class InvalidWhatsappCallCursorError extends salesmanChatbotException {
   constructor() {
     super(
       "Whatsapp calls: cursor failed to decode",

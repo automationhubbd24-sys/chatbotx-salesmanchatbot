@@ -1,4 +1,4 @@
-import { ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { describe, expect, test } from "vitest"
 import { isRevokedTokenError, mapToChannelError } from "../src/lib/error-mapper"
 import { ZaloException } from "../src/lib/exception"

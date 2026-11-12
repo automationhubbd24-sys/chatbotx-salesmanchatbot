@@ -1,9 +1,9 @@
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
 import type {
   ConditionModel,
   TriggerModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 
 export type TriggerWithConditions = TriggerModel & {
   conditions: ConditionModel[]

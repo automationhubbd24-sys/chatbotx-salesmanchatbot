@@ -1,4 +1,4 @@
-import { integrationInstagramRepository } from "@chatbotx.io/database/repositories"
+import { integrationInstagramRepository } from "@salesmanchatbot.io/database/repositories"
 import { z } from "zod"
 import { resolveCapiAccessToken } from "../token"
 import type { CapiReadinessAdapter } from "./types"

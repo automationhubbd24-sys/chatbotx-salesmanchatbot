@@ -1,14 +1,14 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { and, db, eq, findOrFail, inArray } from "@chatbotx.io/database/client"
-import { integrationTiktokModel } from "@chatbotx.io/database/schema"
-import type { IntegrationTiktokModel } from "@chatbotx.io/database/types"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { and, db, eq, findOrFail, inArray } from "@salesmanchatbot.io/database/client"
+import { integrationTiktokModel } from "@salesmanchatbot.io/database/schema"
+import type { IntegrationTiktokModel } from "@salesmanchatbot.io/database/types"
 import {
   buildTiktokVideoUrl,
   findTiktokVideo,
   type TiktokAuthValue,
   tiktokCanListVideos,
-} from "@chatbotx.io/integration-tiktok"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-tiktok"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"
 import { connectChannelIntegration } from "../inbox/connect-channel"

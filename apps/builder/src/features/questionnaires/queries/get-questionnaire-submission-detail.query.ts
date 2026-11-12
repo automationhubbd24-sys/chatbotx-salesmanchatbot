@@ -1,4 +1,4 @@
-import { questionnaireSubmissionService } from "@chatbotx.io/business"
+import { questionnaireSubmissionService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 
 export async function getQuestionnaireSubmissionDetail(input: {

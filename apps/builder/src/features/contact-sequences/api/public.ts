@@ -1,5 +1,5 @@
-import { contactService } from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
+import { contactService } from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
 import { z } from "zod"
 import {
   contactSequenceIdsPublicRequest,

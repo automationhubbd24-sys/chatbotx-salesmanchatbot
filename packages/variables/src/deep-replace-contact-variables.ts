@@ -2,8 +2,8 @@ import type {
   ContactInboxModel,
   ConversationModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
-import { applySpintax, containsSpintax } from "@chatbotx.io/utils/spintax"
+} from "@salesmanchatbot.io/database/types"
+import { applySpintax, containsSpintax } from "@salesmanchatbot.io/utils/spintax"
 import { contactVariableService } from "./contact-variable"
 import type { ReplaceVariableProps } from "./schema"
 

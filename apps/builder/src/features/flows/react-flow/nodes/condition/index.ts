@@ -1,7 +1,7 @@
 import {
   conditionNodeDefaultFn,
   nodeTypeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { FilterIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { conditionMenus } from "./menu"

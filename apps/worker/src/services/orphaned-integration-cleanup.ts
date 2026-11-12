@@ -2,14 +2,14 @@ import {
   instagramIntegrationService,
   type MetaAppCredentialType,
   platformCredentialService,
-} from "@chatbotx.io/business"
-import type { IntegrationNotFoundError } from "@chatbotx.io/channel-registry/errors"
+} from "@salesmanchatbot.io/business"
+import type { IntegrationNotFoundError } from "@salesmanchatbot.io/channel-registry/errors"
 import {
   type IntegrationType,
   integrationTypes,
-} from "@chatbotx.io/database/partials"
-import { unsubscribePageFromInstagramWebhook } from "@chatbotx.io/integration-instagram"
-import { unsubscribePageFromAppWebhook } from "@chatbotx.io/integration-messenger/apis/page"
+} from "@salesmanchatbot.io/database/partials"
+import { unsubscribePageFromInstagramWebhook } from "@salesmanchatbot.io/integration-instagram"
+import { unsubscribePageFromAppWebhook } from "@salesmanchatbot.io/integration-messenger/apis/page"
 import { logger } from "../lib/logger"
 
 /**
@@ -18,7 +18,7 @@ import { logger } from "../lib/logger"
  * subscription can be cleaned up (see `handleOrphanedIntegration`). Both fields
  * are public ids — safe to log.
  */
-export { IntegrationNotFoundError } from "@chatbotx.io/channel-registry/errors"
+export { IntegrationNotFoundError } from "@salesmanchatbot.io/channel-registry/errors"
 
 type OrphanUnsubscribe = (props: {
   identifier: string

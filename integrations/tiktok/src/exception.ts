@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import { isHTTPError } from "ky"
 import { logger } from "./lib/logger"
 

@@ -12,13 +12,13 @@ const mocks = vi.hoisted(() => ({
   getPresignedDownload: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   exportSubTypes: { enum: { contacts: "contacts" } },
   fileContextTypes: { enum: { export: "export" } },
   fileStatuses: { enum: { pending: "pending" } },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   fileRepository: {
     create: (...args: unknown[]) => mocks.fileRepositoryCreate(...args),
     findByIdForWorkspace: (...args: unknown[]) =>
@@ -26,23 +26,23 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {
     getPresignedDownload: (...args: unknown[]) =>
       mocks.getPresignedDownload(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => "export-id-1",
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: { exportContacts: "exportContacts" },
   defaultQueue: { add: (...args: unknown[]) => mocks.queueAdd(...args) },
 }))
 
-vi.mock("@chatbotx.io/worker-config/contact-pii", () => ({
+vi.mock("@salesmanchatbot.io/worker-config/contact-pii", () => ({
   stripContactPIIFields: (fields: string[], canViewPII: boolean) =>
     canViewPII
       ? [...fields]

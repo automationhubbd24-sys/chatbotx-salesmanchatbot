@@ -1,6 +1,6 @@
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
-import { SdkException } from "@chatbotx.io/sdk"
-import { integrationQueue } from "@chatbotx.io/worker-config"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
+import { SdkException } from "@salesmanchatbot.io/sdk"
+import { integrationQueue } from "@salesmanchatbot.io/worker-config"
 import type { NextRequest } from "next/server"
 import {
   findIntegrationWhatsappById,

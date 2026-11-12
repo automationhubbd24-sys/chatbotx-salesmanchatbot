@@ -1,4 +1,4 @@
-import { findTemplateStartStep } from "@chatbotx.io/flow-config"
+import { findTemplateStartStep } from "@salesmanchatbot.io/flow-config"
 import type {
   BroadcastPage,
   PageTemplateSummary,

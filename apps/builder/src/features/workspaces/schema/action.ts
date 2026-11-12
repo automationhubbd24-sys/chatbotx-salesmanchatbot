@@ -1,7 +1,7 @@
 import {
   workspaceApiTokenPermissions,
   workspaceApiTokenScopes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 
 // Forces an explicit scope choice on create: either `allScopes: true` (stores

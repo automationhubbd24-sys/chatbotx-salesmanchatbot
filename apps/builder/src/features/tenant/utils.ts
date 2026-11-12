@@ -1,7 +1,7 @@
 import {
   resolveTenantSettingsByDomain,
   type TenantSettings,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { cache } from "react"
 import { getDomainFromHeader } from "@/lib/domain"
 

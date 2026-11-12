@@ -2,7 +2,7 @@ import {
   nodeTypeSchema,
   sendMailNodeDefaultFn,
   sendMailNodeSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { MailIcon } from "lucide-react"
 import type { TranslationFn } from "../types"
 import { sendMailEditorMenus } from "./menu"

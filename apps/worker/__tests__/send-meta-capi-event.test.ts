@@ -30,13 +30,13 @@ const mocks = vi.hoisted(() => ({
   logProviderError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (...args: unknown[]) => mocks.logProviderError(...args),
 }))
 
-vi.mock("@chatbotx.io/business", async () => {
-  const actual = await vi.importActual<typeof import("@chatbotx.io/business")>(
-    "@chatbotx.io/business",
+vi.mock("@salesmanchatbot.io/business", async () => {
+  const actual = await vi.importActual<typeof import("@salesmanchatbot.io/business")>(
+    "@salesmanchatbot.io/business",
   )
   return {
     ...actual,
@@ -69,17 +69,17 @@ vi.mock("@chatbotx.io/business", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/integration-meta-conversions", () => ({
+vi.mock("@salesmanchatbot.io/integration-meta-conversions", () => ({
   ensureDataset: mocks.ensureDataset,
   buildDatasetName: (name: string) =>
     name.trim() ? `${name.trim()} Event Data` : "Event Data",
   sendConversionEvent: mocks.sendConversionEvent,
 }))
 
-vi.mock("@chatbotx.io/worker-config", async () => {
+vi.mock("@salesmanchatbot.io/worker-config", async () => {
   const actual = await vi.importActual<
-    typeof import("@chatbotx.io/worker-config")
-  >("@chatbotx.io/worker-config")
+    typeof import("@salesmanchatbot.io/worker-config")
+  >("@salesmanchatbot.io/worker-config")
   return {
     ...actual,
     defaultQueue: { add: mocks.defaultQueueAdd },

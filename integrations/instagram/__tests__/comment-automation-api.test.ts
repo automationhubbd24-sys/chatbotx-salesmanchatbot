@@ -1,4 +1,4 @@
-import { HttpResponse, http, server } from "@chatbotx.io/vitest-config/msw"
+import { HttpResponse, http, server } from "@salesmanchatbot.io/vitest-config/msw"
 import { describe, expect, test, vi } from "vitest"
 import { sendPrivateReply } from "../src/apis/comment"
 import { listInstagramMedia } from "../src/apis/post"
@@ -107,7 +107,7 @@ describe("Instagram Login comment automation APIs", () => {
             recipient: { comment_id: COMMENT_ID },
             message: {
               text: "Hello from Instagram Login",
-              metadata: "SENT_FROM_CHATBOTX",
+              metadata: "SENT_FROM_SALESMANCHATBOT",
             },
           })
           return HttpResponse.json({ recipient_id: "recipient-1" })

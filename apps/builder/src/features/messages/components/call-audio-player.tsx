@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Slider } from "@chatbotx.io/ui/components/ui/slider"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Slider } from "@salesmanchatbot.io/ui/components/ui/slider"
 import { PauseIcon, PlayIcon, Volume2Icon, VolumeXIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { formatCallDurationSeconds } from "../lib/format-call-duration"
@@ -22,7 +22,7 @@ type CallAudioPlayerProps = {
 }
 
 /**
- * Minimal, reusable audio player built on the `@chatbotx.io/ui` `Slider` — a
+ * Minimal, reusable audio player built on the `@salesmanchatbot.io/ui` `Slider` — a
  * plain progress bar, no waveform rendering. Plays against the single shared
  * `callPlaybackStore` audio element so the progressive call card and the Call
  * Information sheet never run two overlapping streams for the same call.

@@ -6,7 +6,7 @@ const { loggerErrorSpy } = vi.hoisted(() => ({
   loggerErrorSpy: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   sequenceDispatchRepository: {
     findWithRelations: (...args: unknown[]) => findWithRelationsSpy(...args),
     claim: (...args: unknown[]) => claimSpy(...args),

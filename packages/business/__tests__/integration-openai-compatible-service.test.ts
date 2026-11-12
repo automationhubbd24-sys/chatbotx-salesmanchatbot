@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const mocks = vi.hoisted(() => ({
   findFirst: vi.fn(),
   findMany: vi.fn(async () => []),
+  findAgents: vi.fn(async () => []),
   insertReturning: vi.fn(),
   insertValues: vi.fn(),
   transaction: vi.fn(),
@@ -18,7 +19,7 @@ vi.mock("../src/integration-openai-compatible/validate-base-url", () => ({
 
 vi.mock("../src/audit/dispatcher", () => ({ dispatchAuditRecord: vi.fn() }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn(),
   db: {
     query: {
@@ -26,26 +27,32 @@ vi.mock("@chatbotx.io/database/client", () => ({
         findFirst: mocks.findFirst,
         findMany: mocks.findMany,
       },
+      aiAgentModel: {
+        findMany: mocks.findAgents,
+      },
     },
     transaction: mocks.transaction,
     update: vi.fn(() => ({
       set: mocks.updateSet,
     })),
+    delete: vi.fn(() => ({ where: mocks.updateWhere })),
   },
   eq: vi.fn(),
   isDatabaseError: vi.fn(() => false),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
+  aiAgentModel: { id: "id", workspaceId: "workspaceId" },
   integrationModel: { id: "id" },
   integrationOpenaiCompatibleModel: { id: "id", workspaceId: "workspaceId" },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/utils")>()),
   createId: vi.fn(() => "generated-id"),
 }))
 
@@ -57,17 +64,27 @@ describe("IntegrationOpenaiCompatibleService", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mocks.findMany.mockResolvedValue([])
+    mocks.findAgents.mockResolvedValue([])
     mocks.validateBaseUrl.mockImplementation(async (baseURL: string) =>
       baseURL.trim(),
     )
     mocks.insertReturning.mockResolvedValue([{ id: "integration-1" }])
     mocks.transaction.mockImplementation(async (fn: (tx: unknown) => unknown) =>
       fn({
+        delete: vi.fn(() => ({ where: mocks.updateWhere })),
         insert: vi.fn(() => ({
           values: (data: unknown) => {
             mocks.insertValues(data)
             return { returning: mocks.insertReturning }
           },
+        })),
+        query: {
+          aiAgentModel: {
+            findMany: mocks.findAgents,
+          },
+        },
+        update: vi.fn(() => ({
+          set: mocks.updateSet,
         })),
       }),
     )
@@ -137,5 +154,45 @@ describe("IntegrationOpenaiCompatibleService", () => {
         baseURL: "https://example.com/v1",
       }),
     )
+  })
+
+  test("removes matching AI Agent bindings before disconnecting an integration", async () => {
+    mocks.findFirst.mockResolvedValue({
+      integrationId: "parent-integration-1",
+      id: "openai-compatible-1",
+    })
+    mocks.findAgents.mockResolvedValue([
+      {
+        id: "agent-1",
+        models: [
+          {
+            integrationId: "openai-compatible-1",
+            kind: "openaiCompatible",
+            model: "old-model",
+          },
+          { model: "gpt-4o", provider: "openai" },
+        ],
+      },
+      {
+        id: "agent-2",
+        models: [
+          {
+            integrationId: "another-integration",
+            kind: "openaiCompatible",
+            model: "other-model",
+          },
+        ],
+      },
+    ])
+
+    await integrationOpenaiCompatibleService.disconnect(
+      "workspace-1",
+      "openai-compatible-1",
+    )
+
+    expect(mocks.updateSet).toHaveBeenCalledWith({
+      models: [{ model: "gpt-4o", provider: "openai" }],
+    })
+    expect(mocks.updateWhere).toHaveBeenCalled()
   })
 })

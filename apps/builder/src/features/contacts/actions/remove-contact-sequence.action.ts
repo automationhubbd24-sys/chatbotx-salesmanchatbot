@@ -1,7 +1,7 @@
 "use server"
 
-import { contactService } from "@chatbotx.io/business"
-import { contactSequenceService } from "@chatbotx.io/business/contact-sequence"
+import { contactService } from "@salesmanchatbot.io/business"
+import { contactSequenceService } from "@salesmanchatbot.io/business/contact-sequence"
 import {
   type WorkspaceIdRequestParams,
   workspaceIdrequestParams,

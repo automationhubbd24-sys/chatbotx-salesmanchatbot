@@ -1,16 +1,16 @@
-# ChatbotX MCP Server
+# salesmanChatbot MCP Server
 
-[Model Context Protocol](https://modelcontextprotocol.io) server for ChatbotX. Gives AI agents (Claude, Cursor, ChatGPT, etc.) access to your ChatbotX workspace through tools that are **automatically generated** from the ChatbotX OpenAPI spec — no manual tool definitions needed.
+[Model Context Protocol](https://modelcontextprotocol.io) server for salesmanChatbot. Gives AI agents (Claude, Cursor, ChatGPT, etc.) access to your salesmanChatbot workspace through tools that are **automatically generated** from the salesmanChatbot OpenAPI spec — no manual tool definitions needed.
 
-Published skill/agent distribution docs live in the separate `chatbotx-agent` package; this repo owns the MCP server implementation and README.
+Published skill/agent distribution docs live in the separate `salesmanchatbot-agent` package; this repo owns the MCP server implementation and README.
 
 ## How it works
 
-On startup the server fetches `{CHATBOTX_API_URL}/public-spec.json` and registers one MCP tool per API operation the spec marks `x-mcp.visibility: "default"`. `CHATBOTX_API_URL` is the origin **including** the `/api` path prefix (e.g. `https://app.chatbotx.io/api`). Adding a new default-visible API endpoint in ChatbotX automatically makes it available as a tool — the spec is re-fetched in the background whenever it's older than `CHATBOTX_SPEC_TTL_MS` (default 5 minutes), so a new/changed operation shows up on the next `tools/list` call without a server restart.
+On startup the server fetches `{SALESMANCHATBOT_API_URL}/public-spec.json` and registers one MCP tool per API operation the spec marks `x-mcp.visibility: "default"`. `SALESMANCHATBOT_API_URL` is the origin **including** the `/api` path prefix (e.g. `https://app.salesmanchatbot.io/api`). Adding a new default-visible API endpoint in salesmanChatbot automatically makes it available as a tool — the spec is re-fetched in the background whenever it's older than `SALESMANCHATBOT_SPEC_TTL_MS` (default 5 minutes), so a new/changed operation shows up on the next `tools/list` call without a server restart.
 
 ### Default tools vs. the full API
 
-ChatbotX's public API has ~350 operations. Listing all of them as MCP tools overwhelms an agent's context and its ability to pick the right one, so `tools/list` returns only a curated default set (see below) plus two meta-tools:
+salesmanChatbot's public API has ~350 operations. Listing all of them as MCP tools overwhelms an agent's context and its ability to pick the right one, so `tools/list` returns only a curated default set (see below) plus two meta-tools:
 
 | Tool | Description |
 |---|---|
@@ -28,7 +28,7 @@ Use `search_tools` when the task needs something outside the default set (e.g. d
 
 ### Scope-based filtering
 
-`tools/list` is further narrowed to what the calling token can actually use, resolved once per token via `GET /v1/token` (`introspectToken`, cached per token value for `CHATBOTX_SPEC_TTL_MS`):
+`tools/list` is further narrowed to what the calling token can actually use, resolved once per token via `GET /v1/token` (`introspectToken`, cached per token value for `SALESMANCHATBOT_SPEC_TTL_MS`):
 
 - A token missing a scope never sees that scope's tools (they still exist for `search_tools`/`call_tool`, which always hit the real API and get a real 403 if unauthorized).
 - A `read_only` token only sees tools whose `readOnlyHint` annotation is true — every `GET` by default, plus any POST explicitly marked `x-mcp.readOnlyHint: true` for an endpoint that reads without writing (no default tool currently uses this).
@@ -150,37 +150,37 @@ Everything else — deletes, less-common resources (coupons, products, webhooks,
 ## Prerequisites
 
 - Node.js >= 18
-- A ChatbotX workspace token (`Settings → Developer → API Keys`)
+- A salesmanChatbot workspace token (`Settings → Developer → API Keys`)
 
 ## Quick start
 
 ### Option A — stdio (recommended for local use)
 
-Claude spawns the server process on demand. No server needs to be running. The workspace token is supplied via `CHATBOTX_API_KEY`.
+Claude spawns the server process on demand. No server needs to be running. The workspace token is supplied via `SALESMANCHATBOT_API_KEY`.
 
-The package is published to npm as [`chatbotx-mcp`](https://www.npmjs.com/package/chatbotx-mcp) — `npx -y chatbotx-mcp` fetches and runs it with no local checkout or build required. Use a local `node /path/to/dist/index.mjs` instead when developing against this repo.
+The package is published to npm as [`salesmanchatbot-mcp`](https://www.npmjs.com/package/salesmanchatbot-mcp) — `npx -y salesmanchatbot-mcp` fetches and runs it with no local checkout or build required. Use a local `node /path/to/dist/index.mjs` instead when developing against this repo.
 
 **Claude Code CLI:**
 ```bash
-claude mcp add chatbotx \
-  -e CHATBOTX_API_KEY=<your-token> \
-  -e CHATBOTX_API_URL=https://your-instance.com/api \
-  -e CHATBOTX_MCP_TRANSPORT=stdio \
+claude mcp add salesmanchatbot \
+  -e SALESMANCHATBOT_API_KEY=<your-token> \
+  -e SALESMANCHATBOT_API_URL=https://your-instance.com/api \
+  -e SALESMANCHATBOT_MCP_TRANSPORT=stdio \
   -s user \
-  -- npx -y chatbotx-mcp
+  -- npx -y salesmanchatbot-mcp
 ```
 
 **Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 ```json
 {
   "mcpServers": {
-    "chatbotx": {
+    "salesmanchatbot": {
       "command": "npx",
-      "args": ["-y", "chatbotx-mcp"],
+      "args": ["-y", "salesmanchatbot-mcp"],
       "env": {
-        "CHATBOTX_API_KEY": "<your-token>",
-        "CHATBOTX_API_URL": "https://your-instance.com/api",
-        "CHATBOTX_MCP_TRANSPORT": "stdio"
+        "SALESMANCHATBOT_API_KEY": "<your-token>",
+        "SALESMANCHATBOT_API_URL": "https://your-instance.com/api",
+        "SALESMANCHATBOT_MCP_TRANSPORT": "stdio"
       }
     }
   }
@@ -198,7 +198,7 @@ Run the server once and multiple clients connect via URL. Pass the workspace tok
 pnpm start
 
 # Add to Claude Code CLI
-claude mcp add chatbotx \
+claude mcp add salesmanchatbot \
   -t sse \
   -H "x-workspace-token: <your-token>" \
   -s user \
@@ -209,7 +209,7 @@ claude mcp add chatbotx \
 ```json
 {
   "mcpServers": {
-    "chatbotx": {
+    "salesmanchatbot": {
       "type": "sse",
       "url": "https://your-mcp-server.com/sse",
       "headers": {
@@ -224,23 +224,23 @@ claude mcp add chatbotx \
 
 ChatGPT.com connects via SSE. The server must be publicly reachable. Because ChatGPT does not support custom request headers, pass the workspace token directly in the URL:
 
-1. Start the server with `CHATBOTX_MCP_TRANSPORT=sse` (or `both`).
+1. Start the server with `SALESMANCHATBOT_MCP_TRANSPORT=sse` (or `both`).
 2. In ChatGPT Settings → Connectors → Add custom connector, set the URL:
    ```
    https://your-mcp-server.com/sse?workspace_token=<your-token>
    ```
    When using this URL in a shell command, always quote it to prevent `?` being interpreted as a glob:
    ```bash
-   claude mcp add chatbotx -t sse -s user "https://your-mcp-server.com/sse?workspace_token=<your-token>"
+   claude mcp add salesmanchatbot -t sse -s user "https://your-mcp-server.com/sse?workspace_token=<your-token>"
    ```
-3. Set `CHATBOTX_MCP_SERVER_INSTRUCTIONS` so ChatGPT uses tools instead of its training data (see `.env.example` for the recommended value).
+3. Set `SALESMANCHATBOT_MCP_SERVER_INSTRUCTIONS` so ChatGPT uses tools instead of its training data (see `.env.example` for the recommended value).
 
 ## Token resolution order
 
 | Transport | Priority |
 |-----------|----------|
-| SSE / Streamable HTTP | `?workspace_token=` or `?token=` query param → `x-workspace-token` / `x-chatbo-token` header → `CHATBOTX_API_KEY` env |
-| stdio | `CHATBOTX_API_KEY` env |
+| SSE / Streamable HTTP | `?workspace_token=` or `?token=` query param → `x-workspace-token` / `x-chatbo-token` header → `SALESMANCHATBOT_API_KEY` env |
+| stdio | `SALESMANCHATBOT_API_KEY` env |
 
 ## Configuration
 
@@ -252,19 +252,19 @@ cp .env.example .env
 
 | Variable | Description | Default | Required |
 |---|---|---|---|
-| `CHATBOTX_API_KEY` | Workspace token (stdio) | — | Yes (stdio) |
-| `CHATBOTX_API_URL` | ChatbotX API origin, including `/api` (e.g. `https://app.chatbotx.io/api`) | `https://app.chatbotx.io` | Yes |
-| `CHATBOTX_ALLOW_SELF_SIGNED_CERT` | Disable TLS verification (`true`/`false`) | — | No |
-| `CHATBOTX_SPEC_TTL_MS` | How long the fetched OpenAPI spec/tool list and a token's introspected scopes are trusted before a background re-fetch | `300000` | No |
-| `CHATBOTX_HTTP_TIMEOUT_MS` | Maximum duration for each OpenAPI, token introspection, or tool-call HTTP request | `30000` | No |
-| `CHATBOTX_MCP_TRANSPORT` | `stdio` \| `sse` \| `both` | `both` | No |
-| `CHATBOTX_MCP_HOST` | SSE server host | `0.0.0.0` | No |
-| `CHATBOTX_MCP_PORT` | SSE server port | `3333` | No |
-| `CHATBOTX_MCP_SSE_PATH` | SSE endpoint path | `/sse` | No |
-| `CHATBOTX_MCP_MESSAGES_PATH` | JSON-RPC messages path | `/messages` | No |
-| `CHATBOTX_MCP_CORS_ORIGIN` | CORS origin allowed to call the SSE/HTTP endpoints | `*` | No |
-| `CHATBOTX_MCP_SERVER_NAME` | Display name sent to AI clients | package name | No |
-| `CHATBOTX_MCP_SERVER_INSTRUCTIONS` | Instructions sent to AI clients on connect (helps ChatGPT know when to call tools) | built-in default | No |
+| `SALESMANCHATBOT_API_KEY` | Workspace token (stdio) | — | Yes (stdio) |
+| `SALESMANCHATBOT_API_URL` | salesmanChatbot API origin, including `/api` (e.g. `https://app.salesmanchatbot.io/api`) | `https://app.salesmanchatbot.io` | Yes |
+| `SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT` | Disable TLS verification (`true`/`false`) | — | No |
+| `SALESMANCHATBOT_SPEC_TTL_MS` | How long the fetched OpenAPI spec/tool list and a token's introspected scopes are trusted before a background re-fetch | `300000` | No |
+| `SALESMANCHATBOT_HTTP_TIMEOUT_MS` | Maximum duration for each OpenAPI, token introspection, or tool-call HTTP request | `30000` | No |
+| `SALESMANCHATBOT_MCP_TRANSPORT` | `stdio` \| `sse` \| `both` | `both` | No |
+| `SALESMANCHATBOT_MCP_HOST` | SSE server host | `0.0.0.0` | No |
+| `SALESMANCHATBOT_MCP_PORT` | SSE server port | `3333` | No |
+| `SALESMANCHATBOT_MCP_SSE_PATH` | SSE endpoint path | `/sse` | No |
+| `SALESMANCHATBOT_MCP_MESSAGES_PATH` | JSON-RPC messages path | `/messages` | No |
+| `SALESMANCHATBOT_MCP_CORS_ORIGIN` | CORS origin allowed to call the SSE/HTTP endpoints | `*` | No |
+| `SALESMANCHATBOT_MCP_SERVER_NAME` | Display name sent to AI clients | package name | No |
+| `SALESMANCHATBOT_MCP_SERVER_INSTRUCTIONS` | Instructions sent to AI clients on connect (helps ChatGPT know when to call tools) | built-in default | No |
 
 ## Scripts
 
@@ -281,7 +281,7 @@ pnpm start
 # Type check
 pnpm check-types
 
-# List loaded tools (requires CHATBOTX_API_URL and CHATBOTX_API_KEY in .env)
+# List loaded tools (requires SALESMANCHATBOT_API_URL and SALESMANCHATBOT_API_KEY in .env)
 dotenv -e .env -- tsx src/test-tools.ts
 ```
 
@@ -300,7 +300,7 @@ Scores every prompt in the eval corpus (`evals/cases.ts`) through the real `sear
    ```
 2. Run the gate against it:
    ```bash
-   pnpm --filter chatbotx-mcp eval:search --spec /absolute/path/public-spec.json [--min-top1 0.65] [--min-top3 0.85] [--verbose]
+   pnpm --filter salesmanchatbot-mcp eval:search --spec /absolute/path/public-spec.json [--min-top1 0.65] [--min-top3 0.85] [--verbose]
    ```
    Prints per-locale top-1/top-3/empty-result rates, but enforces the configured thresholds only for English. `--verbose` also lists every prompt that missed the top 3, with the ranker's actual top matches, for targeted ranking or description fixes.
 
@@ -309,7 +309,7 @@ Scores every prompt in the eval corpus (`evals/cases.ts`) through the real `sear
 Spins up a synthetic HTTP sandbox implementing the generated spec's operations, connects a real MCP client, and drives `gpt-4o-mini`/`gpt-4.1-mini` (or any `@ai-sdk/openai`-supported model) through the selected corpus. `business` contains 240 prompts (48 families × 5 locales: `vi`, `vi-unaccented`, colloquial, `en`, mixed); `multilingual` is the 80-case smoke matrix (16 families × `en`, `vi-natural`, `es`, `fr`, `zh`). Requires `OPENAI_API_KEY`.
 
 ```bash
-pnpm --filter chatbotx-mcp eval:business \
+pnpm --filter salesmanchatbot-mcp eval:business \
   --spec /absolute/path/public-spec.json \
   --out /absolute/path/out/baseline \
   --phase smoke \
@@ -328,7 +328,7 @@ pnpm --filter chatbotx-mcp eval:business \
 - The smoke sandbox includes contact, conversation reply, flow, broadcast, appointment, and analytics fixtures. No public appointment-availability operation exists, so unavailable-slot coverage exercises `appointments_book` returning 422.
 - Compare two runs (regressions fail the command):
   ```bash
-  pnpm --filter chatbotx-mcp eval:business --compare /absolute/path/out/baseline /absolute/path/out/candidate
+  pnpm --filter salesmanchatbot-mcp eval:business --compare /absolute/path/out/baseline /absolute/path/out/candidate
   ```
   Reports any case that regressed from pass to non-pass, plus the average `searchRank` and total `callToolErrorCount` delta between the two runs.
 
@@ -366,9 +366,9 @@ evals/
 ## Troubleshooting
 
 **Tools not showing up**
-- Check that `CHATBOTX_API_URL` is reachable and `{CHATBOTX_API_URL}/public-spec.json` returns a valid OpenAPI spec.
+- Check that `SALESMANCHATBOT_API_URL` is reachable and `{SALESMANCHATBOT_API_URL}/public-spec.json` returns a valid OpenAPI spec.
 - Only operations the spec marks `x-mcp.visibility: "default"` appear in `tools/list` — everything else is reachable via `search_tools`/`call_tool`. See "Default tools vs. the full API" above.
-- The spec/tool list refreshes automatically every `CHATBOTX_SPEC_TTL_MS` (default 5 minutes); a brand-new operation may take that long to appear without a restart.
+- The spec/tool list refreshes automatically every `SALESMANCHATBOT_SPEC_TTL_MS` (default 5 minutes); a brand-new operation may take that long to appear without a restart.
 - A token missing a required scope, or a `read_only` token calling a write endpoint's tool, will not see that tool — see "Scope-based filtering" above.
 - Check stderr output on startup — the server logs `Loaded N tools from OpenAPI spec`.
 
@@ -379,7 +379,7 @@ lsof -ti:3333 | xargs kill -9
 
 **Self-signed certificate errors**
 ```bash
-CHATBOTX_ALLOW_SELF_SIGNED_CERT=true
+SALESMANCHATBOT_ALLOW_SELF_SIGNED_CERT=true
 ```
 
 **SSE connection fails in Claude**
@@ -387,5 +387,5 @@ CHATBOTX_ALLOW_SELF_SIGNED_CERT=true
 - For SSE, verify the server is running and the URL/port are reachable from the client.
 
 **ChatGPT uses its training knowledge instead of calling tools**
-- Set `CHATBOTX_MCP_SERVER_INSTRUCTIONS` to explicitly instruct ChatGPT to use tools (see `.env.example`).
+- Set `SALESMANCHATBOT_MCP_SERVER_INSTRUCTIONS` to explicitly instruct ChatGPT to use tools (see `.env.example`).
 - Make sure the connector URL includes `?workspace_token=<your-token>` so authentication is handled automatically.

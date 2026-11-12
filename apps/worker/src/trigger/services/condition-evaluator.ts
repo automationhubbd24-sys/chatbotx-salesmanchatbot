@@ -1,13 +1,13 @@
 import {
   contactCustomFieldService,
   customFieldService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   type OperatorType,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { toZonedWallClock } from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/database/partials"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { toZonedWallClock } from "@salesmanchatbot.io/utils/datetime"
 import type { ConditionEvaluationContext } from "../types"
 import { parseDateTimeValue } from "../utils/datetime-calculator"
 

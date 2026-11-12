@@ -6,7 +6,7 @@ const mocks = vi.hoisted(() => ({
   kyGet: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertPublicUrl: mocks.assertPublicUrl,
 }))
 

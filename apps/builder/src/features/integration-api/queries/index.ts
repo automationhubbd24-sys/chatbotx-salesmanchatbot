@@ -1,6 +1,6 @@
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { integrationApiRepository } from "@chatbotx.io/database/repositories"
-import type { IntegrationApiModel } from "@chatbotx.io/database/types"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { integrationApiRepository } from "@salesmanchatbot.io/database/repositories"
+import type { IntegrationApiModel } from "@salesmanchatbot.io/database/types"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ApiResource } from "../schema/resource"
 

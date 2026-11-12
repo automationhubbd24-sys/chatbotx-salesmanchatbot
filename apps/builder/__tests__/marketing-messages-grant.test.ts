@@ -7,7 +7,7 @@ const service = {
 }
 const debugToken = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   facebookMarketingMessagesService: service,
   platformCredentialService: {
     resolveForOwner: vi.fn(async () => ({
@@ -15,7 +15,7 @@ vi.mock("@chatbotx.io/business", () => ({
     })),
   },
 }))
-vi.mock("@chatbotx.io/integration-messenger/apis/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/auth", () => ({
   debugToken,
   toAppAccessToken: (c: { clientId: string; clientSecret: string }) =>
     `${c.clientId}|${c.clientSecret}`,

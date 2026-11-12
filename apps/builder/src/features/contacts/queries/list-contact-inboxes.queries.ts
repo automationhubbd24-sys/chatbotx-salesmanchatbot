@@ -1,5 +1,5 @@
-import { broadcastService } from "@chatbotx.io/business"
-import { resolveBroadcastAudienceRange } from "@chatbotx.io/database/partials"
+import { broadcastService } from "@salesmanchatbot.io/business"
+import { resolveBroadcastAudienceRange } from "@salesmanchatbot.io/database/partials"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ContactPermissionScope } from "../permissions"
 import type {

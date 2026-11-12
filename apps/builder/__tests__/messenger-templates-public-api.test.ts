@@ -49,7 +49,7 @@ const mocks = vi.hoisted(() => ({
   invalidate: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   messengerMessageTemplateService: {
     list: mocks.templateList,
@@ -70,11 +70,11 @@ vi.mock(
     invalidateMessengerTemplatesCache: mocks.invalidate,
   }),
 )
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },

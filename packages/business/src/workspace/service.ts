@@ -1,4 +1,4 @@
-import { anchoredPeriod, macRepository } from "@chatbotx.io/analytics"
+import { anchoredPeriod, macRepository } from "@salesmanchatbot.io/analytics"
 import {
   and,
   type DatabaseClient,
@@ -8,15 +8,15 @@ import {
   inArray,
   isNull,
   sql,
-} from "@chatbotx.io/database/client"
-import { workspaceMemberRoles } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/client"
+import { workspaceMemberRoles } from "@salesmanchatbot.io/database/partials"
 import {
   ROOT_TENANT_ID,
   workspaceMemberModel,
   workspaceModel,
-} from "@chatbotx.io/database/schema"
-import type { WorkspaceModel } from "@chatbotx.io/database/types"
-import { distributedLock, withCache } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/schema"
+import type { WorkspaceModel } from "@salesmanchatbot.io/database/types"
+import { distributedLock, withCache } from "@salesmanchatbot.io/redis"
 import { formatInTimeZone } from "date-fns-tz"
 import { dispatchAuditRecord } from "../audit/dispatcher"
 import { BaseService } from "../base.service"

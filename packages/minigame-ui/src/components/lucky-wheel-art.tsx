@@ -34,7 +34,7 @@ export const LUCKY_WHEEL_SEGMENT_PALETTE = [
 /** Fill for the always-present "no prize" wedge. */
 export const LUCKY_WHEEL_NONWINNING_COLOR = "#94A3B8"
 
-// Intentionally not `@chatbotx.io/ui`'s `hexToRgb`, mirroring
+// Intentionally not `@salesmanchatbot.io/ui`'s `hexToRgb`, mirroring
 // `jackpot-machine-art.tsx`: this fallback tuple keeps malformed input a
 // visible color instead of silently rendering black.
 const FALLBACK_RGB: [number, number, number] = [74, 144, 217]

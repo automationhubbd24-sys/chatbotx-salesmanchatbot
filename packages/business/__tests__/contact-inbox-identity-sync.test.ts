@@ -14,7 +14,7 @@ const {
   mockTransaction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mockTransaction },
 }))
 

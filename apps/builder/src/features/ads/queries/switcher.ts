@@ -4,8 +4,8 @@ import {
   messengerIntegrationService,
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { WhatsappCredentialPublic } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { WhatsappCredentialPublic } from "@salesmanchatbot.io/database/partials"
 import { WHATSAPP_OAUTH_CALLBACK_PATH } from "@/features/integration-whatsapp/libs/embedded-signup"
 import { resolveProviderOriginForCredential } from "@/lib/provider-origin"
 

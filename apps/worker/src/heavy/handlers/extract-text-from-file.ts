@@ -1,4 +1,4 @@
-import { uploader } from "@chatbotx.io/filesystem"
+import { uploader } from "@salesmanchatbot.io/filesystem"
 import {
   CSV_MIME_TYPES,
   DOCX_MIME_TYPES,
@@ -14,8 +14,8 @@ import {
   SPREADSHEET_MIME_TYPES,
   VTT_MIME_TYPES,
   XML_MIME_TYPES,
-} from "@chatbotx.io/sdk"
-import type { HeavyJobExtractTextFromFile } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import type { HeavyJobExtractTextFromFile } from "@salesmanchatbot.io/worker-config"
 import { UnrecoverableError } from "bullmq"
 import { normalizeError } from "universal-error-normalizer"
 import { extractTextFromFile } from "../../ai-agent/lib/text-extractor"

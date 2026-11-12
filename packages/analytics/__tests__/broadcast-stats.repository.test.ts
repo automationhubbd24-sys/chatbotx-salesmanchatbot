@@ -51,7 +51,7 @@ const notInArray = vi.fn((...args: unknown[]) => ({
 }))
 const or = vi.fn((...args: unknown[]) => ({ op: "or", args }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     select: dbSelect,
     execute: vi.fn(),
@@ -67,7 +67,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   or,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactsOnBroadcastsModel: {
     broadcastId: "cob.broadcastId",
     contactId: "cob.contactId",

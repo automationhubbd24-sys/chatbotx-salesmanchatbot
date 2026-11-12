@@ -3,16 +3,16 @@
 import {
   type WebchatPersistentMenu,
   webchatPersistentMenuType,
-} from "@chatbotx.io/database/partials"
-import { messageTypes } from "@chatbotx.io/sdk"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { messageTypes } from "@salesmanchatbot.io/sdk"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { createId } from "@salesmanchatbot.io/utils"
 import { MenuIcon } from "lucide-react"
 import Link from "next/link"
 import { useAction } from "next-safe-action/hooks"

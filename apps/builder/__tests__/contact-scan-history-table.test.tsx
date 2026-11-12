@@ -4,7 +4,7 @@ import { afterEach, describe, expect, test, vi } from "vitest"
 import type { ListContactScanHistoryItem } from "@/features/contact-scan/schema/query"
 
 /**
- * `useDataTable` and `DataTable` are generic `@chatbotx.io/ui` infra with no
+ * `useDataTable` and `DataTable` are generic `@salesmanchatbot.io/ui` infra with no
  * production test coverage in this repo (no `NuqsAdapter` is wired up for
  * builder tests) — stubbed here so this test exercises what
  * `ContactScanHistoryTable` actually owns: its column cell renderers
@@ -25,7 +25,7 @@ vi.mock("next-intl", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/ui/hooks/use-data-table", () => ({
+vi.mock("@salesmanchatbot.io/ui/hooks/use-data-table", () => ({
   useDataTable: (props: { columns: unknown[]; data: unknown[] }) => {
     captured.columns = props.columns
     captured.data = props.data
@@ -33,7 +33,7 @@ vi.mock("@chatbotx.io/ui/hooks/use-data-table", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/data-table/data-table", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/data-table/data-table", () => ({
   DataTable: ({ children }: { children?: React.ReactNode }) => (
     <div data-testid="data-table">
       {captured.data.map((row) => (
@@ -58,12 +58,12 @@ vi.mock("@chatbotx.io/ui/components/data-table/data-table", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/data-table/data-table-toolbar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/data-table/data-table-toolbar", () => ({
   DataTableToolbar: () => <div data-testid="toolbar" />,
 }))
 
 vi.mock(
-  "@chatbotx.io/ui/components/data-table/data-table-column-header",
+  "@salesmanchatbot.io/ui/components/data-table/data-table-column-header",
   () => ({
     DataTableColumnHeader: ({ title }: { title: string }) => (
       <span>{title}</span>

@@ -2,12 +2,12 @@
  * Tags legacy Google Sheets write steps with version "v1".
  *
  * Usage:
- *   pnpm --filter @chatbotx.io/database backfill:spreadsheet-step-version -- --dry-run
- *   pnpm --filter @chatbotx.io/database backfill:spreadsheet-step-version
+ *   pnpm --filter @salesmanchatbot.io/database backfill:spreadsheet-step-version -- --dry-run
+ *   pnpm --filter @salesmanchatbot.io/database backfill:spreadsheet-step-version
  *
  * This script never converts customFieldId mappings to variable templates.
  */
-import { tagNodeSpreadsheetWriteStepVersions } from "@chatbotx.io/flow-config"
+import { tagNodeSpreadsheetWriteStepVersions } from "@salesmanchatbot.io/flow-config"
 import { asc, eq, gt } from "drizzle-orm"
 import { db } from "../src/client"
 import { flowVersionModel } from "../src/schema/flow-version"

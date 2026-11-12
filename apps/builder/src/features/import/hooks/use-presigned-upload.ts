@@ -1,6 +1,6 @@
 "use client"
 
-import type { ImportType, UploadTypes } from "@chatbotx.io/database/partials"
+import type { ImportType, UploadTypes } from "@salesmanchatbot.io/database/partials"
 import { useCallback } from "react"
 
 export type UploadResult = {

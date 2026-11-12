@@ -1,5 +1,5 @@
-import { validateOpenaiCompatibleBaseUrlForEnvironment } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { validateOpenaiCompatibleBaseUrlForEnvironment } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import ky, { HTTPError } from "ky"
 
 const VERIFY_TIMEOUT_MS = 10_000
@@ -33,7 +33,7 @@ export async function verifyOpenaiCompatibleProvider(props: {
     )
   } catch (error) {
     if (
-      error instanceof ChatbotXException &&
+      error instanceof salesmanChatbotException &&
       (error.code === "invalidBaseUrl" || error.code === "ssrfBlocked")
     ) {
       return { ok: false, reason: "unsafe_base_url" }

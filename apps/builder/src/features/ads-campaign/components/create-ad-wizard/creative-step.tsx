@@ -6,12 +6,12 @@ import {
   MESSAGING_AD_CREATIVE_UPLOAD_KIND,
   MESSAGING_AD_IMAGE_MIME_ALLOWLIST,
   messagingAdConfigByChannel,
-} from "@chatbotx.io/integration-facebook-ads"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { DirectUploadButton } from "@chatbotx.io/ui/components/uploader/direct-upload-button"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { DirectUploadButton } from "@salesmanchatbot.io/ui/components/uploader/direct-upload-button"
 import { Loader2Icon, UploadIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import {
@@ -79,7 +79,7 @@ export function CreativeStep({ workspaceId, channel, integrationId }: Props) {
   // the builder server, and no Meta call happens at wizard time. Only the S3
   // key + the minted `File` row id are stored in form state; the Meta
   // `image_hash` is derived transiently at create time from the stored
-  // object (see `resolveStoredImageBytes` in `@chatbotx.io/business`).
+  // object (see `resolveStoredImageBytes` in `@salesmanchatbot.io/business`).
   const handleImageUploadSuccess = useCallback(
     (
       path: string,

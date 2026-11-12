@@ -1,5 +1,5 @@
-import type { ContactInboxWorkspaceRow } from "@chatbotx.io/database/repositories"
-import { contactInboxRepository } from "@chatbotx.io/database/repositories"
+import type { ContactInboxWorkspaceRow } from "@salesmanchatbot.io/database/repositories"
+import { contactInboxRepository } from "@salesmanchatbot.io/database/repositories"
 
 export type ResolveActionContactInboxInput = {
   workspaceId: string

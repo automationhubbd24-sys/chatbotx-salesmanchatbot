@@ -16,7 +16,7 @@ vi.mock("@/lib/safe-action", () => {
   return { authActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   platformCredentialService: {
     remove: removeSpy,
     upsert: upsertSpy,
@@ -29,7 +29,7 @@ vi.mock("../src/features/platform-credentials/scope", () => ({
 }))
 
 const { googleCredentialUpdateSchema } = await import(
-  "@chatbotx.io/database/partials"
+  "@salesmanchatbot.io/database/partials"
 )
 const { deleteGoogleSettingsAction } = await import(
   "../src/features/platform-credentials/google/delete-google-settings.action"

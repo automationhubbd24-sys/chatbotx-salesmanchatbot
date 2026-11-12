@@ -12,7 +12,7 @@ vi.mock("next-intl", () => ({
 // MessageItem -> MessageActions -> MediaLibraryTrigger, which imports its
 // `"use server"` query modules at module scope. Next.js rewrites those to RPC
 // stubs, but vitest evaluates them for real, dragging in the
-// `@chatbotx.io/business` barrel and a live pg Pool — which throws on
+// `@salesmanchatbot.io/business` barrel and a live pg Pool — which throws on
 // `env.DATABASE_URL` under the browser-conditions preset. Stubbing the
 // trigger cuts that chain and keeps this test about avatar gating.
 vi.mock("@/features/media-library/components/media-library-trigger", () => ({
@@ -33,7 +33,7 @@ vi.mock("@/features/messages/components/whatsapp-call-card", () => ({
 // markup so this test stays about MessageItem's own avatar-gating logic
 // (variant + avatarUrl), not Base UI's async image-loading state machine —
 // same approach as add-channel-button.test.tsx for the Tooltip primitives.
-vi.mock("@chatbotx.io/ui/components/ui/avatar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/avatar", () => ({
   Avatar: ({ children }: { children: React.ReactNode }) => (
     <span data-slot="avatar">{children}</span>
   ),

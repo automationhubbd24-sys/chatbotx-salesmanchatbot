@@ -5,10 +5,10 @@ import {
   markCouponUsedStepSchema,
   setUpCouponStepSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -16,8 +16,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TicketPercentIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

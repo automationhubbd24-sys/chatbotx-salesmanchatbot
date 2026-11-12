@@ -1,6 +1,6 @@
-import type { ListInboxesResponse } from "@chatbotx.io/business"
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { channelTypes } from "@chatbotx.io/database/partials"
+import type { ListInboxesResponse } from "@salesmanchatbot.io/business"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import {
   GlobeIcon,
   LoaderIcon,

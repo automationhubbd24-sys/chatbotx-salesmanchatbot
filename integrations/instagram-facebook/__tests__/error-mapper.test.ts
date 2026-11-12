@@ -1,4 +1,4 @@
-import { ChannelErrorCategory } from "@chatbotx.io/sdk"
+import { ChannelErrorCategory } from "@salesmanchatbot.io/sdk"
 import { describe, expect, test } from "vitest"
 import { InstagramException } from "../src/exception"
 import {

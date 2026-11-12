@@ -1,4 +1,4 @@
-import type { MessagingAdOperationModel } from "@chatbotx.io/database/types"
+import type { MessagingAdOperationModel } from "@salesmanchatbot.io/database/types"
 import type { MessagingAdOperationResource } from "../schema/resource"
 
 export function toMessagingAdOperationResource(

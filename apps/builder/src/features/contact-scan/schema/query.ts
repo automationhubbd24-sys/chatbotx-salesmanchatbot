@@ -1,10 +1,10 @@
 import {
   coexistScanRunStatuses,
   contactScanViewStatuses,
-} from "@chatbotx.io/database/partials"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import type { ContactScanChannel } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/database/partials"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import type { ContactScanChannel } from "@salesmanchatbot.io/utils/channel"
 import { createSearchParamsCache, parseAsInteger } from "nuqs/server"
 import { z } from "zod"
 import { basePaginationRequest } from "@/lib/pagination"

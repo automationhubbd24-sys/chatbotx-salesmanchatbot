@@ -1,6 +1,6 @@
-import type { AuthCreatedUser } from "@chatbotx.io/auth/server"
-import { userQuotaService } from "@chatbotx.io/business"
-import { QuotaJobAction, quotaQueue } from "@chatbotx.io/worker-config"
+import type { AuthCreatedUser } from "@salesmanchatbot.io/auth/server"
+import { userQuotaService } from "@salesmanchatbot.io/business"
+import { QuotaJobAction, quotaQueue } from "@salesmanchatbot.io/worker-config"
 import { isCloud } from "@/env"
 import { logger } from "@/lib/log"
 

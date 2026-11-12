@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { waitNodeDefaultFn } from "@chatbotx.io/flow-config"
+import { waitNodeDefaultFn } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { GET } from "../src/app/(no-sidebar)/space/[workspaceId]/flows/[id]/export/route"
 
@@ -18,7 +18,7 @@ const {
   mockGetCurrentUserAndTargetWorkspace: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowService: { findBy: mockFindBy },
   flowVersionService: { findPublished: mockFindPublished },
   customFieldService: { findManyByIds: mockFindManyByIds },

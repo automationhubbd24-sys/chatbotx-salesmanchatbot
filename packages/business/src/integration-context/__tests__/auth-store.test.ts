@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => ({
   findOwnerUserIdByWorkspaceId: vi.fn(async () => "owner-1"),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     execute: mocks.execute,
     update: mocks.inboxUpdate,
@@ -34,18 +34,18 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   connectionRepository: {
     findByInboxId: mocks.findByInboxId,
     findByIntegrationId: mocks.findByIntegrationId,
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   inboxModel: { id: "id" },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
 }))
 

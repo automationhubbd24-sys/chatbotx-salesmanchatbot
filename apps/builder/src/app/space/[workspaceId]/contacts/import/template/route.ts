@@ -1,4 +1,4 @@
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import {
   buildContactsImportTemplateCsv,
   CONTACTS_IMPORT_TEMPLATE_FILENAME,

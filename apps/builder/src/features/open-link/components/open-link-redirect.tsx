@@ -26,7 +26,7 @@ export function OpenLinkRedirect({ destination }: { destination: string }) {
         // only the most recent one, so after a second `/go` link the first one's
         // back-gesture guard would no longer match and it would bounce the
         // contact straight back out.
-        __html: `(function(){var d=${encoded};try{var k="chatbotx.openLink.autoNavigated:"+d;if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,"1")}catch(e){}location.replace(d)})()`,
+        __html: `(function(){var d=${encoded};try{var k="salesmanchatbot.openLink.autoNavigated:"+d;if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,"1")}catch(e){}location.replace(d)})()`,
       }}
     />
   )

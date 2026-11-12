@@ -1,4 +1,4 @@
-import { channelTypes } from "@chatbotx.io/utils/channel"
+import { channelTypes } from "@salesmanchatbot.io/utils/channel"
 import type { ZodTypeAny } from "zod"
 import type { ButtonStepProps } from "../steps/button"
 import { sendAudioStepSchema } from "../steps/send-audio"

@@ -1,11 +1,11 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { logProviderError } from "@chatbotx.io/business/error-log"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import {
   type InstagramAuthValue,
   integration as integrationInstagramFacebook,
-} from "@chatbotx.io/integration-instagram-facebook"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { logger } from "../../lib/logger"
 import { runJobWithAuditContext } from "../../lib/run-job-with-audit-context"
 

@@ -1,5 +1,5 @@
-import type { MetaCapiEventFieldsSchema } from "@chatbotx.io/flow-config"
-import { defaultMetaCapiActionSource } from "@chatbotx.io/utils/meta-capi"
+import type { MetaCapiEventFieldsSchema } from "@salesmanchatbot.io/flow-config"
+import { defaultMetaCapiActionSource } from "@salesmanchatbot.io/utils/meta-capi"
 import type { useTranslations } from "next-intl"
 import {
   getMetaCapiActionSourceLabel,

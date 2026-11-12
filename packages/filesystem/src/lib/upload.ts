@@ -1,6 +1,6 @@
 import type { ObjectCannedACL } from "@aws-sdk/client-s3"
-import { getChildLogger } from "@chatbotx.io/logger"
-import { createId } from "@chatbotx.io/utils"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
+import { createId } from "@salesmanchatbot.io/utils"
 import { fetchFollowingSafeRedirects, readBodyWithLimit } from "./bounded-fetch"
 import { getImageDimensions, pathJoin } from "./helper"
 import { DEFAULT_MIME_TYPE, type UploadedFile } from "./schema"

@@ -3,20 +3,20 @@
 import {
   DateRangePresetFilter,
   resolvePresetOption,
-} from "@chatbotx.io/analytics-nextjs/components/date-range-preset-filter"
+} from "@salesmanchatbot.io/analytics-nextjs/components/date-range-preset-filter"
 import type {
   AdsAnalyticsData,
   AdsAnalyticsTimeseriesRow,
   CapiDeliverySummary,
-} from "@chatbotx.io/business"
-// Narrow subpath import (not the `@chatbotx.io/business` barrel) — this is a
+} from "@salesmanchatbot.io/business"
+// Narrow subpath import (not the `@salesmanchatbot.io/business` barrel) — this is a
 // "use client" component; see the comment atop `channel-fields.ts` for why.
 import {
   ADS_INTEGRATION_FK_BY_CHANNEL,
   perChannelIntegrationIds,
-} from "@chatbotx.io/business/ads-conversion/channel-fields"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/business/ads-conversion/channel-fields"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -24,7 +24,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,16 +34,16 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import {
   Table,
   TableBody,
@@ -51,13 +51,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import type { AdsEligibleChannelType } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import type { AdsEligibleChannelType } from "@salesmanchatbot.io/utils/channel"
 import { useQuery } from "@tanstack/react-query"
 import {
   ChevronDownIcon,

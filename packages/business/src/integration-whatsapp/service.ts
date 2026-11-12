@@ -3,29 +3,29 @@ import {
   type DatabaseClient,
   eq,
   inArray,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import type {
   WhatsappCallHoursSnapshot,
   WhatsappRegistrationStatus,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   integrationWhatsappRepository,
   LIVE_RUN_STATUSES,
   metaCapiEventRepository,
   whatsappSignupSessionRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   coexistSyncRunModel,
   type IntegrationWhatsappRegistrationError,
   integrationWhatsappModel,
   whatsappCoexistStagingModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   IntegrationWhatsappModel,
   WhatsappSignupSessionModel,
-} from "@chatbotx.io/database/types"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { ChannelError } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/types"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { ChannelError } from "@salesmanchatbot.io/sdk"
 import { z } from "zod"
 import { BaseService } from "../base.service"
 import { connectionStateService } from "../connection/state-service"

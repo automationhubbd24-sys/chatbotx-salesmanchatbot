@@ -34,7 +34,7 @@ const cacheClient = {
 const cacheConnections = {
   useExisting: vi.fn(async () => cacheClient),
 }
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedStore,
   bloomFilter,
   cacheConnections,
@@ -56,7 +56,7 @@ const db = {
   },
   transaction: vi.fn(async (cb: (tx: unknown) => unknown) => cb({})),
 }
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db,
   and: (...args: unknown[]) => args,
   eq: (...args: unknown[]) => args,
@@ -71,11 +71,11 @@ vi.mock("@chatbotx.io/database/client", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   MAC_EVENT_TYPE: { MESSAGE_IN: 1, MESSAGE_OUT: 2, REACTION: 3 },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   workspaceModel: { id: "id" },
   workspaceMemberModel: {
     workspaceId: "workspaceId",

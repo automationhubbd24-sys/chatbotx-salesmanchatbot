@@ -1,7 +1,7 @@
-import type { InboxModel } from "@chatbotx.io/database/types"
-import type { IncomingContact } from "@chatbotx.io/sdk"
-import type { ContactScanChannel } from "@chatbotx.io/utils/channel"
-import type { ErrorLogProvider } from "@chatbotx.io/utils/error-log"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
+import type { ContactScanChannel } from "@salesmanchatbot.io/utils/channel"
+import type { ErrorLogProvider } from "@salesmanchatbot.io/utils/error-log"
 import { instagramContactScanAdapter } from "./adapters/instagram"
 import { messengerContactScanAdapter } from "./adapters/messenger"
 
@@ -73,7 +73,7 @@ export type ContactScanAdapter<Ctx extends { inbox: InboxModel }> = {
 /**
  * Channel → adapter registry, explicitly typed (not `satisfies`) as
  * `Record<ContactScanChannel, ContactScanAdapter<{ inbox: InboxModel }>>` —
- * adding a value to `contactScanChannels` (`@chatbotx.io/utils/channel`)
+ * adding a value to `contactScanChannels` (`@salesmanchatbot.io/utils/channel`)
  * without registering its adapter here is still a compile error, instead of
  * an `if (channel === "messenger")` the engine would otherwise need. The
  * explicit annotation (rather than `satisfies`, which would keep each

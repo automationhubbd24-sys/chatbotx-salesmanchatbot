@@ -2,7 +2,7 @@ import {
   type WaitStepSchema,
   waitStepDefaultFn,
   waitStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import WaitStepEditor from "./editor"
 import WaitStepViewer from "./viewer"

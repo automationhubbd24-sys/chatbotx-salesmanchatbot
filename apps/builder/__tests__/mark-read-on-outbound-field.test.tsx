@@ -1,4 +1,4 @@
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { useForm, useWatch } from "react-hook-form"
@@ -12,7 +12,7 @@ vi.mock("next-intl", () => ({
     })[key] ?? key,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/switch", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/switch", () => ({
   Switch: ({
     checked,
     onCheckedChange,

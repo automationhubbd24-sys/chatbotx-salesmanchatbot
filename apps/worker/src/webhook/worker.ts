@@ -4,7 +4,7 @@ import {
   queueNames,
   WebhookJobAction,
   type WebhookJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { env } from "../env"
 import { ensureBootstrapped } from "../lib/bootstrap"

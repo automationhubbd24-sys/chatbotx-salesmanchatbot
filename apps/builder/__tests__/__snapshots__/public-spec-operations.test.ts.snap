@@ -1868,6 +1868,21 @@ exports[`public API spec — operation naming guard > operation list (operationI
     "path": "/v1/minigames/{id}",
   },
   {
+    "method": "GET",
+    "operationId": "orders.get",
+    "path": "/v1/orders/{id}",
+  },
+  {
+    "method": "POST",
+    "operationId": "orders.import",
+    "path": "/v1/orders/import",
+  },
+  {
+    "method": "GET",
+    "operationId": "orders.list",
+    "path": "/v1/orders",
+  },
+  {
     "method": "POST",
     "operationId": "productCategories.create",
     "path": "/v1/product-categories",

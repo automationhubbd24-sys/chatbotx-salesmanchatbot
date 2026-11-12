@@ -11,7 +11,7 @@ vi.mock("@/middlewares/auth", () => ({
   workspaceAuthorizedMidddleware: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -25,7 +25,7 @@ const SHA1_ETAG_PATTERN = /^"[0-9a-f]{40}"$/
 
 beforeEach(() => {
   vi.clearAllMocks()
-  getTenantSettings.mockResolvedValue({ name: "ChatbotX" })
+  getTenantSettings.mockResolvedValue({ name: "salesmanChatbot" })
 })
 
 // The route caches by (tenant name, origin, filter) in a module-level Map

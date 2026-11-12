@@ -53,7 +53,7 @@ const {
   ),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   adsConversionService: {
     listExportRows: mockListExportRows,
     listAllChannelExportRows: mockListAllChannelExportRows,

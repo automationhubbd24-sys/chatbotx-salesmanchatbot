@@ -1,7 +1,7 @@
 "use client"
 
-import { Dialog, DialogContent } from "@chatbotx.io/ui/components/ui/dialog"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Dialog, DialogContent } from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import type { RefObject } from "react"
 import {

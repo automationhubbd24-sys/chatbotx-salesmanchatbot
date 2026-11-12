@@ -4,8 +4,8 @@ import {
   adsConversionEventTypeSchema,
   adsConversionRuleModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 const nonEmptyStringArray = z.array(z.string().trim().min(1)).min(1)
@@ -203,7 +203,7 @@ export type EvaluateTemplateSentInput = z.infer<
  * The runtime "something happened" fact for every conversion trigger type
  * beyond `templateSent` (which keeps its own dedicated pipeline). Mirrors
  * `AdsConversionJobEvaluateConversionTrigger["data"]["occurrence"]` in
- * `@chatbotx.io/worker-config` — keep both in sync.
+ * `@salesmanchatbot.io/worker-config` — keep both in sync.
  */
 export const evaluateConversionTriggerOccurrenceSchema = z.discriminatedUnion(
   "type",

@@ -1,8 +1,8 @@
 import {
   deviceTokenService,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { successResponse } from "@/features/common/schema"
 import { authorizedAPI } from "@/orpc"
 import {
@@ -27,7 +27,7 @@ export const deviceTokensAuthenticatedAPI = {
           userId: context.user.id,
         })
         if (!isMember) {
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             "Not a member of this workspace",
             "forbidden",
             403,

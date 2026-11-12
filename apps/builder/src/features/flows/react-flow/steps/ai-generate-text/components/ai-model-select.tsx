@@ -1,18 +1,18 @@
 "use client"
 
-import type { AIProvider } from "@chatbotx.io/ai"
+import type { AIProvider } from "@salesmanchatbot.io/ai"
 import {
   claudeModelOptions,
   deepseekModelOptions,
   geminiModelOptions,
   openaiModelOptions,
   openrouterModelOptions,
-} from "@chatbotx.io/ai"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
+} from "@salesmanchatbot.io/ai"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
 import type {
   SelectFieldProps,
   SelectOption,
-} from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useTranslations } from "next-intl"
 import { useMemo } from "react"
 import type { FieldValues } from "react-hook-form"

@@ -2,18 +2,18 @@ import {
   type CoexistJobStrategy,
   coexistJobStrategies,
   coexistService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import type {
   CoexistChannel,
   PickedCoexistRun,
-} from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 import {
   buildCoexistRunJobId,
   IntegrationJobAction,
   type IntegrationJobData,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   type CoexistRunEnqueuer,
   coexistRecoveryPasses,

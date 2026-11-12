@@ -1,9 +1,9 @@
-import { integrationWhatsappService } from "@chatbotx.io/business"
+import { integrationWhatsappService } from "@salesmanchatbot.io/business"
 import {
-  ChatbotXException,
+  salesmanChatbotException,
   notFoundException,
-} from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import {
   possibleErrorsOnFindingResource,
@@ -189,7 +189,7 @@ export const whatsappCallingPublicRouter = {
       // Re-validated with the builder's schema (ranges, overlaps, open hours).
       const parsed = callHoursFormSchema.safeParse(hours)
       if (!parsed.success) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           callHoursIssueMessage(parsed.error.issues[0]),
           "validation",
           422,

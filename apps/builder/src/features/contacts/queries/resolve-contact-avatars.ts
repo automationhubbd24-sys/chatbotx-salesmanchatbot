@@ -2,8 +2,8 @@ import {
   contactInboxService,
   resolveContactAvatarUrl,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
-import { toPublicStorageUrl } from "@chatbotx.io/business/utils"
+} from "@salesmanchatbot.io/business"
+import { toPublicStorageUrl } from "@salesmanchatbot.io/business/utils"
 
 type ContactWithAvatar = {
   id: string

@@ -1,7 +1,7 @@
 "use client"
 
-import { openaiCompatiblePresetConfigs } from "@chatbotx.io/ai"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+import { openaiCompatiblePresetConfigs } from "@salesmanchatbot.io/ai"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { Loader2Icon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
@@ -105,6 +105,24 @@ function OpenaiCompatibleProviderRow({
             checked={integration.enabled}
             disabled={isPending}
             onCheckedChange={(enabled) => execute({ enabled })}
+          />
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <span>{t("openaiCompatible.streaming.label")}</span>
+          <Switch
+            aria-label={t("openaiCompatible.streaming.label")}
+            checked={integration.streaming}
+            disabled={isPending}
+            onCheckedChange={(streaming) => execute({ streaming })}
+          />
+        </div>
+        <div className="flex items-center gap-2 text-sm">
+          <span>{t("openaiCompatible.autoReply.label")}</span>
+          <Switch
+            aria-label={t("openaiCompatible.autoReply.label")}
+            checked={integration.autoReply}
+            disabled={isPending}
+            onCheckedChange={(autoReply) => execute({ autoReply })}
           />
         </div>
         <div className="flex size-4 shrink-0 items-center justify-center">

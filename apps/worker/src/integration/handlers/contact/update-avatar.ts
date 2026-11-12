@@ -1,5 +1,5 @@
-import { ensureContactAvatarMirrored } from "@chatbotx.io/channel-registry/media-hydration"
-import type { LowJobUpdateContactAvatar } from "@chatbotx.io/worker-config"
+import { ensureContactAvatarMirrored } from "@salesmanchatbot.io/channel-registry/media-hydration"
+import type { LowJobUpdateContactAvatar } from "@salesmanchatbot.io/worker-config"
 export const updateContactAvatar = async (
   data: LowJobUpdateContactAvatar["data"],
 ): Promise<void> => {

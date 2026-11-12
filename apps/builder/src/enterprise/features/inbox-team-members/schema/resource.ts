@@ -1,7 +1,7 @@
 import {
   createSelectSchema,
   inboxTeamMemberModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const inboxTeamMemberResource = createSelectSchema(

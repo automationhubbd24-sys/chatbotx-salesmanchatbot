@@ -6,10 +6,10 @@ import {
   type ProductImportColumnMap,
   productImportFields,
   uploadTypes,
-} from "@chatbotx.io/database/partials"
-import { matchProductImportHeaders } from "@chatbotx.io/imports"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+} from "@salesmanchatbot.io/database/partials"
+import { matchProductImportHeaders } from "@salesmanchatbot.io/imports"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   Dialog,
   DialogContent,
@@ -17,17 +17,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
+} from "@salesmanchatbot.io/ui/components/ui/select"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
 import { FileDownIcon, Loader2Icon, UploadIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"

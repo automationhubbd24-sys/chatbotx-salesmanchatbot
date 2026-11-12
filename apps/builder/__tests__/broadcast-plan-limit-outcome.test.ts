@@ -3,8 +3,8 @@
 import {
   BROADCAST_PLAN_LIMIT_CODE,
   broadcastPlanLimitException,
-} from "@chatbotx.io/business/errors"
-import { TRIAL_BROADCAST_PLAN_POLICY } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business/errors"
+import { TRIAL_BROADCAST_PLAN_POLICY } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import { withBroadcastPlanLimitOutcome } from "@/features/broadcasts/actions/broadcast-plan-limit-outcome"
 import { isBroadcastPlanLimitOutcome } from "@/features/broadcasts/lib/broadcast-plan-limit"

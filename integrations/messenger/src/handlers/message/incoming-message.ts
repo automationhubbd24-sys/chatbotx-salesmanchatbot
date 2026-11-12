@@ -1,4 +1,4 @@
-import { normalizeMetaAdReferral } from "@chatbotx.io/business/referral"
+import { normalizeMetaAdReferral } from "@salesmanchatbot.io/business/referral"
 import {
   type Context,
   contentTypes,
@@ -12,11 +12,11 @@ import {
   type ReceivedMessageResult,
   type ThreadControlReceiveInfo,
   threadControlRoles,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   metaReferralTypes,
   PAID_AD_REFERRAL_SOURCE,
-} from "@chatbotx.io/utils/referral"
+} from "@salesmanchatbot.io/utils/referral"
 import { z } from "zod"
 import { getMessageAttachmentEntity } from "../../apis/attachment"
 import { MessengerException } from "../../exception"
@@ -288,6 +288,7 @@ const getMessageEntity = async (
     const location = getMessageLocation(messaging.message)
     message = {
       sourceId: messaging.message.mid,
+      parentSourceId: messaging.message.reply_to?.mid ?? null,
       messageType:
         messaging.sender.id === ctx.auth.metadata.pageId
           ? messageTypes.enum.outgoing

@@ -3,19 +3,19 @@ import { getPublicFileUrl } from "../src/storage"
 
 // The base of interest carries a bucket path segment (e.g. RustFS/S3 proxy),
 // which is exactly the shape `new URL` silently drops when misused.
-const BUCKET_BASE = "https://filesystem.example.com/chatbotx/"
+const BUCKET_BASE = "https://filesystem.example.com/salesmanchatbot/"
 
 describe("getPublicFileUrl", () => {
   test("joins a bare object key under the bucket base", () => {
     expect(getPublicFileUrl("public/space/1/avatar/abc", BUCKET_BASE)).toBe(
-      "https://filesystem.example.com/chatbotx/public/space/1/avatar/abc",
+      "https://filesystem.example.com/salesmanchatbot/public/space/1/avatar/abc",
     )
   })
 
   test("keeps the bucket even when the key has a leading slash", () => {
-    // Naive `new URL("/public/...", base)` would drop "/chatbotx".
+    // Naive `new URL("/public/...", base)` would drop "/salesmanchatbot".
     expect(getPublicFileUrl("/public/space/1/avatar/abc", BUCKET_BASE)).toBe(
-      "https://filesystem.example.com/chatbotx/public/space/1/avatar/abc",
+      "https://filesystem.example.com/salesmanchatbot/public/space/1/avatar/abc",
     )
   })
 
@@ -23,9 +23,9 @@ describe("getPublicFileUrl", () => {
     expect(
       getPublicFileUrl(
         "public/space/1/avatar/abc",
-        "https://filesystem.example.com/chatbotx",
+        "https://filesystem.example.com/salesmanchatbot",
       ),
-    ).toBe("https://filesystem.example.com/chatbotx/public/space/1/avatar/abc")
+    ).toBe("https://filesystem.example.com/salesmanchatbot/public/space/1/avatar/abc")
   })
 
   test("works with a bucket-less CDN base", () => {

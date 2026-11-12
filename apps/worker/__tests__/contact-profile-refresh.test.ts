@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 // .superpowers/sdd/2026-08-31-messenger-ctm-profile-backfill).
 //
 // The business rules (capability table, cooldown, apply+avatar compensation)
-// live in `@chatbotx.io/business/contact/profile-refresh` and are already
+// live in `@salesmanchatbot.io/business/contact/profile-refresh` and are already
 // unit-tested in `packages/business/__tests__/contact-profile-refresh.test.ts`
 // (Task 1). This file only tests the WORKER's own wiring: rule composition,
 // fetcher selection per source, and the never-throws contract around
@@ -23,8 +23,8 @@ const mockLoggerDebug = vi.fn()
 // — only `contactProfileRefreshService.refresh` (the redis/db-touching part,
 // covered on its own in packages/business/__tests__/contact-profile-refresh.test.ts)
 // is mocked here, so this file can't drift from the real capability table.
-vi.mock("@chatbotx.io/business", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/business")>()
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/business")>()
   return {
     ...actual,
     contactProfileRefreshService: { refresh: mockContactProfileRefresh },
@@ -66,7 +66,7 @@ const fakeInbox = {
   id: "inbox-1",
   workspaceId: "ws-1",
   channel: "messenger",
-} as unknown as import("@chatbotx.io/database/types").InboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").InboxModel
 
 const fakeContactInbox = {
   id: "ci-1",
@@ -74,7 +74,7 @@ const fakeContactInbox = {
   inboxId: "inbox-1",
   sourceId: "psid-123",
   channel: "messenger",
-} as unknown as import("@chatbotx.io/database/types").ContactInboxModel
+} as unknown as import("@salesmanchatbot.io/database/types").ContactInboxModel
 
 const fakeIncomingContact = { sourceId: "psid-123", firstName: "Jane" }
 
@@ -167,7 +167,7 @@ describe("getProfileRefreshSource", () => {
     ).toBeNull()
   })
 
-  // `vi.mock("@chatbotx.io/business", async (importOriginal) => ...)` above
+  // `vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ...)` above
   // is the REAL rules.ts, so this exercises the actual capability-table
   // null-safety fix, not a mirror.
   test("rule 1 (capability): unknown/legacy channel string → null, never throws", () => {

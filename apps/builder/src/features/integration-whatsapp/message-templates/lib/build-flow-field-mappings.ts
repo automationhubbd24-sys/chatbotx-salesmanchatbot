@@ -1,4 +1,4 @@
-import type { WhatsappFlowFieldMapping } from "@chatbotx.io/flow-config"
+import type { WhatsappFlowFieldMapping } from "@salesmanchatbot.io/flow-config"
 import type { WhatsappFlowScreenResource } from "@/features/integration-whatsapp/flows/schema/query"
 
 /**

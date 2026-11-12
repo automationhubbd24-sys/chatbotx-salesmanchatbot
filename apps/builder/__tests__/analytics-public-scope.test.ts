@@ -18,14 +18,14 @@ const {
 
 const contactAnalyticsService = { getContactsCount: vi.fn() }
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
   quotaEnforcementService: { isAtLimit },
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   contactAnalyticsService,
   macAnalyticsService: {},
   messageAnalyticsService: {},
@@ -38,7 +38,7 @@ vi.mock("@chatbotx.io/analytics", () => ({
   refLinkAnalyticsService: {},
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, loader: () => unknown) => loader()),
   invalidateCacheByTags: vi.fn(),
 }))

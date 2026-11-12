@@ -1,7 +1,7 @@
 "use server"
 
-import { integrationMailchimpService } from "@chatbotx.io/business"
-import { createMailchimpAuth } from "@chatbotx.io/integration-mailchimp"
+import { integrationMailchimpService } from "@salesmanchatbot.io/business"
+import { createMailchimpAuth } from "@salesmanchatbot.io/integration-mailchimp"
 import { normalizeError } from "universal-error-normalizer"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { integrations } from "@/integration"

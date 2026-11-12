@@ -26,7 +26,7 @@ vi.mock("next/navigation", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   inboxService: {
     distinctConnectedChannels: vi.fn(async () => []),
   },
@@ -58,8 +58,8 @@ vi.mock(
   }),
 )
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     getIdFromParams: (

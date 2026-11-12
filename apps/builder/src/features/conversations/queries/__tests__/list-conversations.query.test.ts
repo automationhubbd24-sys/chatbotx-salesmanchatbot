@@ -3,16 +3,16 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import type { ContactFilterCriteria } from "@/features/contact-filter/schema"
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   conversationService: { findManyQuery: vi.fn() },
 }))
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   notFoundException: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   sql: vi.fn(() => "agentLastReadAtSql"),
 }))
-vi.mock("@chatbotx.io/database/queries", () => ({
+vi.mock("@salesmanchatbot.io/database/queries", () => ({
   applyContactFilter: vi.fn(() => ({})),
   buildSmartKeywordWhere: vi.fn(
     (keyword: string, options?: { includeEmailAndPhone?: boolean }) => ({
@@ -62,7 +62,7 @@ vi.mock("@chatbotx.io/database/queries", () => ({
         },
   UNASSIGNED_ASSIGNEE_VALUE: "unassigned",
 }))
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: vi.fn(),
 }))
 vi.mock("@/lib/auth/utils", () => ({
@@ -77,10 +77,10 @@ const { appendUnreadWhere, buildConversationWhere } = await import(
   "../build-conversation-where"
 )
 const { applyContactFilter, buildSmartKeywordWhere } = await import(
-  "@chatbotx.io/database/queries"
+  "@salesmanchatbot.io/database/queries"
 )
 const { conversationUnreadWhere } = await import(
-  "@chatbotx.io/database/queries"
+  "@salesmanchatbot.io/database/queries"
 )
 
 const baseInput = {

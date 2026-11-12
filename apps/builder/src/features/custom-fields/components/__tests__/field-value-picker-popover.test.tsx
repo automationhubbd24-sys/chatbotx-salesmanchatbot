@@ -13,7 +13,7 @@ vi.mock("next-intl", () => ({
     })[key] ?? key,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     onClick,
@@ -27,7 +27,7 @@ vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/calendar", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/calendar", () => ({
   Calendar: ({ onSelect }: { onSelect: (day: Date) => void }) => (
     <button
       data-testid="calendar-pick"
@@ -39,7 +39,7 @@ vi.mock("@chatbotx.io/ui/components/ui/calendar", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/date-picker", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/date-picker", () => ({
   TimePicker: ({ onChange }: { onChange: (date: Date) => void }) => (
     <button
       data-testid="time-pick"
@@ -63,7 +63,7 @@ type PopoverContextValue = {
   onOpenChange: (open: boolean) => void
 }
 
-vi.mock("@chatbotx.io/ui/components/ui/popover", async () => {
+vi.mock("@salesmanchatbot.io/ui/components/ui/popover", async () => {
   const React = await import("react")
   const PopoverContext = React.createContext<PopoverContextValue>({
     open: false,

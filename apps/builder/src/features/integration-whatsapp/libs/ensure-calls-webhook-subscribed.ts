@@ -3,7 +3,7 @@ import {
   ensureAppWebhookFields,
   WHATSAPP_APP_SUBSCRIPTION_OBJECT,
   WHATSAPP_APP_WEBHOOK_FIELDS,
-} from "@chatbotx.io/integration-whatsapp/api/app-subscriptions"
+} from "@salesmanchatbot.io/integration-whatsapp/api/app-subscriptions"
 
 type EnsureWhatsappCallsWebhookSubscribedConfig = {
   appId: string

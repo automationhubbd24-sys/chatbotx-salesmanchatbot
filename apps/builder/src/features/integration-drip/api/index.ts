@@ -3,8 +3,8 @@ import {
   dripAccountSchema,
   dripCustomFieldSchema,
   integration as dripIntegration,
-} from "@chatbotx.io/integration-drip"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-drip"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { ORPCError } from "@orpc/server"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

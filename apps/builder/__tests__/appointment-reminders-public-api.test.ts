@@ -49,9 +49,9 @@ vi.mock("@/orpc", () => ({ workspaceTokenAuthAPIForScope }))
 const appointmentReminderService = {
   listDispatches: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ appointmentReminderService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ appointmentReminderService }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),

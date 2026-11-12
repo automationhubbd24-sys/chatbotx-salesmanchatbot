@@ -193,4 +193,4 @@ from BizAI, gated on the AI-transfer metadata text, then takeover + resume), `Me
 `pass_thread_control`+`target_app_id` / `GET /me/thread_owner`), `Models/LiveChatConversation.php`
 (`thread_owner_state` HUMAN/BUSINESS_AI/UNKNOWN + `thread_owner_app_id`), `ConversationOwnerEvent`.
 `ahachat-fe` (UI), `chatbotai-autoinbox/message-echo/nodejs` (a separate echo-ingest worker in v1 —
-folded into ChatbotX04's inline echo parsing, no separate service).
+folded into salesmanChatbot04's inline echo parsing, no separate service).

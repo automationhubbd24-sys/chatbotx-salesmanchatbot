@@ -1,5 +1,5 @@
-import { dynamicImageDocument } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { dynamicImageDocument } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 
 export const createDynamicImageRequest = z.object({

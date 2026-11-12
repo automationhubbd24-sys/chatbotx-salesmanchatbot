@@ -1,8 +1,8 @@
-import type { AdsConversionChannel } from "@chatbotx.io/database/schema"
+import type { AdsConversionChannel } from "@salesmanchatbot.io/database/schema"
 import {
   enqueueIntegrationJob,
   IntegrationJobAction,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 
 export type EnqueueTemplateSentEvaluationInput = {

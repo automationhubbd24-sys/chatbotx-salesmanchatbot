@@ -1,8 +1,8 @@
-import { dynamicImageDocument } from "@chatbotx.io/database/partials"
+import { dynamicImageDocument } from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   dynamicImageModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const dynamicImageResource = createSelectSchema(dynamicImageModel, {

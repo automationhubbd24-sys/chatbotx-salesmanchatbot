@@ -1,7 +1,7 @@
 import {
   messengerTemplateStatusSchema,
   whatsappTemplateStatusSchema,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { createStore } from "zustand/vanilla"
 import type { ListMessengerMessageTemplatesResponse } from "@/features/integration-messenger/message-templates/schema/query"
 import type { IntegrationOpenaiCompatibleResource } from "@/features/integration-openai-compatible/schema/resource"

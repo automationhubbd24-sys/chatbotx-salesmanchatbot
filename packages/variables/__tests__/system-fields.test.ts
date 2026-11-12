@@ -1,11 +1,11 @@
 import { createHmac } from "node:crypto"
-import { systemFieldTypes } from "@chatbotx.io/database/partials"
+import { systemFieldTypes } from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
   ConversationModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -95,7 +95,7 @@ const {
     "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: {
     findBy: mockAppointmentFindBy,
     findLatestForContact: mockAppointmentFindLatestForContact,
@@ -131,28 +131,28 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption/keys", () => ({
+vi.mock("@salesmanchatbot.io/encryption/keys", () => ({
   env: {
     ENCRYPTION_KEY: testEncryptionKey,
   },
 }))
 
-vi.mock("@chatbotx.io/business/system-field", () => ({
+vi.mock("@salesmanchatbot.io/business/system-field", () => ({
   systemFieldService: {
     create: mockSystemFieldCreate,
   },
   resolveGenderLabel: mockResolveGenderLabel,
 }))
 
-vi.mock("@chatbotx.io/channel-registry/registry", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/registry", () => ({
   resolveIntegrationContextFromContactInbox: mockResolveIntegrationContext,
 }))
 
-vi.mock("@chatbotx.io/channel-registry/media-hydration", () => ({
+vi.mock("@salesmanchatbot.io/channel-registry/media-hydration", () => ({
   ensureContactAvatarMirrored: mockEnsureContactAvatarMirrored,
 }))
 
-vi.mock("@chatbotx.io/encryption/link-signature", () => ({
+vi.mock("@salesmanchatbot.io/encryption/link-signature", () => ({
   signMeLink: mockSignMeLink,
 }))
 
@@ -160,7 +160,7 @@ const BOOKING_SCHEDULE_URL_RE =
   /^https:\/\/app\.example\.test\/booking\/schedule\?token=.+/
 
 const cache = new Map<string, unknown>()
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn(async (key: string, resolve: () => Promise<unknown>) => {
     if (cache.has(key)) {
       return cache.get(key)
@@ -171,16 +171,16 @@ vi.mock("@chatbotx.io/redis", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   getPostDetails: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   getUserInboxLink: mockMessengerGetUserInboxLink,
   getPostDetails: mockMessengerGetPostDetails,
 }))
 
-vi.mock("@chatbotx.io/business/utils", () => ({
+vi.mock("@salesmanchatbot.io/business/utils", () => ({
   getPublicFileUrl: (path: string, baseUrl: string) =>
     new URL(path, baseUrl).toString(),
   toPublicStorageUrl: (path: string | null | undefined, baseUrl: string) => {

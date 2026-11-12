@@ -1,23 +1,31 @@
-import { type DatabaseClient, db, eq } from "@chatbotx.io/database/client"
+import { type DatabaseClient, db, eq } from "@salesmanchatbot.io/database/client"
 import {
   productCategoryRepository,
   productRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   productAddonModel,
   productVariantModel,
   productVariantOptionModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import type {
   ProductAddonModel,
   ProductModel,
   ProductVariantModel,
   ProductVariantOptionModel,
-} from "@chatbotx.io/database/types"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { createId } from "@salesmanchatbot.io/utils"
+import { DefaultJobAction, defaultQueue } from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
 import { notFoundException } from "../errors"
+import { logger } from "../logger"
 import { assertDeletable } from "../template/installed-resource.service"
+import {
+  createProductQueryEmbedding,
+  deleteProductEmbeddings,
+  PRODUCT_VECTOR_LOW_RESULT_COUNT,
+  searchProductEmbeddings,
+} from "./embedding"
 
 export type ProductImageInput = {
   id?: string
@@ -73,11 +81,183 @@ export type ProductFullWriteData = ProductWriteData & {
   addons: ProductAddonInput[]
 }
 
+export type ProductAgentSearchInput = {
+  workspaceId: string
+  query: string
+  categoryId?: string | null
+  limit?: number
+}
+
+const PRODUCT_AGENT_CANDIDATE_LIMIT = 250
+const PRODUCT_AGENT_DEFAULT_LIMIT = 5
+const PRODUCT_EMBEDDING_BACKFILL_LIMIT = 50
+const MIN_PRODUCT_AGENT_SCORE = 8
+const TOKEN_SPLIT_PATTERN = /[^\p{L}\p{N}]+/u
+const COMPACT_ALPHANUMERIC_PATTERN = /[^\p{L}\p{N}]+/gu
+
 /** The form calls it `mode`; the column stores it as `type`. */
 const toImageRows = (images: ProductImageInput[]) =>
   images.map(({ mode, url }) => ({ type: mode, url }))
 
+function compactSearchText(value: string) {
+  return value.toLowerCase().replaceAll(COMPACT_ALPHANUMERIC_PATTERN, "")
+}
+
+function tokenizeSearchText(value: string) {
+  return value
+    .toLowerCase()
+    .split(TOKEN_SPLIT_PATTERN)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 2)
+}
+
+function pushSearchPart(parts: string[], value: unknown) {
+  if (typeof value === "string" && value.trim()) {
+    parts.push(value.trim())
+  }
+}
+
+export function buildProductEmbeddingContent(
+  product: Awaited<
+    ReturnType<typeof productRepository.listForAgentSearch>
+  >[number],
+) {
+  const parts: string[] = []
+  pushSearchPart(parts, product.name)
+  pushSearchPart(parts, product.sku)
+  pushSearchPart(parts, product.shortDescription)
+  pushSearchPart(parts, product.longDescription)
+  pushSearchPart(parts, product.vendor)
+  pushSearchPart(parts, product.category)
+  pushSearchPart(parts, product.subcategory)
+  for (const tag of product.tags) {
+    pushSearchPart(parts, tag)
+  }
+  for (const option of product.variantOptions) {
+    pushSearchPart(parts, option.name)
+    for (const value of option.values) {
+      pushSearchPart(parts, value)
+    }
+  }
+  for (const variant of product.variants) {
+    for (const [name, value] of Object.entries(variant.combination)) {
+      pushSearchPart(parts, name)
+      pushSearchPart(parts, value)
+    }
+  }
+  for (const addon of product.addons) {
+    pushSearchPart(parts, addon.name)
+  }
+  return parts.join(" ")
+}
+
+function scoreProductForAgentSearch(
+  query: string,
+  product: Awaited<
+    ReturnType<typeof productRepository.listForAgentSearch>
+  >[number],
+) {
+  const normalizedQuery = query.toLowerCase().trim()
+  const compactQuery = compactSearchText(query)
+  const queryTokens = tokenizeSearchText(query)
+  const searchText = buildProductEmbeddingContent(product).toLowerCase()
+  const compactProductName = compactSearchText(product.name)
+  const compactSku = product.sku ? compactSearchText(product.sku) : ""
+  const compactSearchTextValue = compactSearchText(searchText)
+
+  let score = 0
+  if (product.name.toLowerCase() === normalizedQuery) {
+    score += 100
+  }
+  if (compactProductName === compactQuery) {
+    score += 95
+  }
+  if (product.name.toLowerCase().includes(normalizedQuery)) {
+    score += 70
+  }
+  if (compactProductName.includes(compactQuery)) {
+    score += 65
+  }
+  if (compactSku && compactSku === compactQuery) {
+    score += 90
+  }
+  if (compactSku?.includes(compactQuery)) {
+    score += 55
+  }
+  if (compactQuery && compactSearchTextValue.includes(compactQuery)) {
+    score += 35
+  }
+
+  for (const token of queryTokens) {
+    const compactToken = compactSearchText(token)
+    if (!compactToken) {
+      continue
+    }
+    if (compactProductName === compactToken) {
+      score += 35
+    } else if (compactProductName.includes(compactToken)) {
+      score += 25
+    } else if (compactSearchTextValue.includes(compactToken)) {
+      score += 10
+    }
+  }
+
+  const rankBoost = Math.max(0, 10 - Math.min(product.rank, 10))
+  return score + rankBoost
+}
+
 class ProductService extends BaseService {
+  private async enqueueEmbeddingRefresh(input: {
+    workspaceId: string
+    productIds: string[]
+    nextAfterId?: string
+  }) {
+    const productIds = [...new Set(input.productIds)]
+    if (productIds.length === 0) {
+      return
+    }
+    await defaultQueue.add(
+      DefaultJobAction.refreshProductEmbedding,
+      {
+        type: DefaultJobAction.refreshProductEmbedding,
+        data: {
+          workspaceId: input.workspaceId,
+          productIds,
+          ...(input.nextAfterId ? { nextAfterId: input.nextAfterId } : {}),
+        },
+      },
+      { attempts: 3, removeOnComplete: true },
+    )
+  }
+
+  async refreshEmbeddingsAfterCommit(input: {
+    workspaceId: string
+    productIds: string[]
+  }) {
+    await this.enqueueEmbeddingRefresh(input)
+  }
+
+  async scheduleEmbeddingRefreshPage(input: {
+    workspaceId: string
+    afterId?: string
+  }): Promise<{ scheduled: number; nextAfterId?: string }> {
+    const products = await productRepository.listForAgentSearchPage({
+      workspaceId: input.workspaceId,
+      afterId: input.afterId,
+      limit: PRODUCT_EMBEDDING_BACKFILL_LIMIT,
+    })
+    const nextAfterId = products.at(-1)?.id
+    await this.enqueueEmbeddingRefresh({
+      workspaceId: input.workspaceId,
+      productIds: products.map((product) => product.id),
+      nextAfterId,
+    })
+    return {
+      scheduled: products.length,
+      ...(nextAfterId ? { nextAfterId } : {}),
+    }
+  }
+
   private async assertReferencesBelongToWorkspace(input: {
     workspaceId: string
     categoryId?: string | null
@@ -219,12 +399,19 @@ class ProductService extends BaseService {
       subcategoryId: data.subcategoryId,
       tx,
     })
-    return await this.insert(data, tx)
+    const product = await this.insert(data, tx)
+    if (!props.tx) {
+      await this.enqueueEmbeddingRefresh({
+        workspaceId: data.workspaceId,
+        productIds: [product.id],
+      })
+    }
+    return product
   }
 
   async createFull(data: ProductFullWriteData): Promise<ProductModel> {
     const { variantOptions, variants, addons, ...productData } = data
-    return await db.transaction(async (tx) => {
+    const product = await db.transaction(async (tx) => {
       // One guard covering categories and addons together, so the row is never
       // inserted before every reference is known to live in this workspace.
       await this.assertReferencesBelongToWorkspace({
@@ -254,6 +441,11 @@ class ProductService extends BaseService {
       ])
       return product
     })
+    await this.enqueueEmbeddingRefresh({
+      workspaceId: data.workspaceId,
+      productIds: [product.id],
+    })
+    return product
   }
 
   async update(props: {
@@ -276,6 +468,12 @@ class ProductService extends BaseService {
       tx,
     })
     await this.applyPatch({ productId, workspaceId, data, tx })
+    if (!props.tx) {
+      await this.enqueueEmbeddingRefresh({
+        workspaceId,
+        productIds: [productId],
+      })
+    }
   }
 
   async updateFull(
@@ -322,6 +520,10 @@ class ProductService extends BaseService {
         productAddonService.createBulk({ productId, addons, tx }),
       ])
     })
+    await this.enqueueEmbeddingRefresh({
+      workspaceId,
+      productIds: [productId],
+    })
   }
 
   async delete(input: {
@@ -335,11 +537,98 @@ class ProductService extends BaseService {
       resourceKind: "product",
       resourceIds: ids,
     })
+    await deleteProductEmbeddings({ workspaceId, productIds: ids }, tx)
     await productRepository.deleteByIds({ workspaceId, productIds: ids }, tx)
   }
 
   async list(input: Parameters<typeof productRepository.list>[0]) {
     return await productRepository.list(input)
+  }
+
+  async searchForAgent(input: ProductAgentSearchInput) {
+    const limit = input.limit ?? PRODUCT_AGENT_DEFAULT_LIMIT
+    const lexicalProducts = await productRepository.listForAgentSearch({
+      workspaceId: input.workspaceId,
+      categoryId: input.categoryId,
+      candidateLimit: PRODUCT_AGENT_CANDIDATE_LIMIT,
+    })
+    const lexicalResults = lexicalProducts
+      .map((product) => ({
+        product,
+        score: scoreProductForAgentSearch(input.query, product),
+      }))
+      .filter(({ score }) => score >= MIN_PRODUCT_AGENT_SCORE)
+      .sort((left, right) => right.score - left.score)
+      .map(({ product }) => product)
+
+    if (/^(all\s+)?(products?|items?|catalog|inventory|available)$/i.test(
+      input.query.trim(),
+    )) {
+      return lexicalProducts.slice(0, limit)
+    }
+
+    try {
+      const queryEmbedding = await createProductQueryEmbedding({
+        workspaceId: input.workspaceId,
+        query: input.query,
+      })
+      if (!queryEmbedding) {
+        return lexicalResults.slice(0, limit)
+      }
+      const vectorMatches = await searchProductEmbeddings({
+        workspaceId: input.workspaceId,
+        categoryId: input.categoryId,
+        embedding: queryEmbedding.embedding,
+        limit,
+      })
+      if (vectorMatches.length === 0) {
+        return lexicalResults.slice(0, limit)
+      }
+      const vectorProductIds = vectorMatches.map((match) => match.productId)
+      const vectorProducts = await productRepository.listForAgentSearchByIds({
+        workspaceId: input.workspaceId,
+        productIds: vectorProductIds,
+      })
+      const productsById = new Map(
+        vectorProducts.map((product) => [product.id, product]),
+      )
+      const orderedVectorProducts = vectorProductIds.flatMap((id) => {
+        const product = productsById.get(id)
+        return product ? [product] : []
+      })
+      if (orderedVectorProducts.length >= PRODUCT_VECTOR_LOW_RESULT_COUNT) {
+        return orderedVectorProducts.slice(0, limit)
+      }
+      const seen = new Set(orderedVectorProducts.map((product) => product.id))
+      return [
+        ...orderedVectorProducts,
+        ...lexicalResults.filter((product) => !seen.has(product.id)),
+      ].slice(0, limit)
+    } catch (err) {
+      logger.warn(
+        { err, workspaceId: input.workspaceId },
+        "[ecommerce] product semantic search failed; using lexical results",
+      )
+      return lexicalResults.slice(0, limit)
+    }
+  }
+
+  async listForEmbeddingRefresh(input: {
+    workspaceId: string
+    productIds?: string[]
+  }) {
+    const productIds = input.productIds
+    if (!productIds || productIds.length === 0) {
+      return []
+    }
+    const products = await productRepository.listForAgentSearchByIds({
+      workspaceId: input.workspaceId,
+      productIds,
+    })
+    return products.map((product) => ({
+      product,
+      content: buildProductEmbeddingContent(product),
+    }))
   }
 
   async findById(id: string, workspaceId: string) {
@@ -360,7 +649,12 @@ class ProductService extends BaseService {
       typeof productRepository.createFromImport
     >[0]["products"]
   }) {
-    return await productRepository.createFromImport(input)
+    const products = await productRepository.createFromImport(input)
+    await this.enqueueEmbeddingRefresh({
+      workspaceId: input.workspaceId,
+      productIds: products.map((product) => product.id),
+    })
+    return products
   }
 
   async listForCatalogSync(

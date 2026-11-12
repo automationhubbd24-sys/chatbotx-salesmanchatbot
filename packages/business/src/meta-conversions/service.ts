@@ -1,16 +1,16 @@
-import { metaCapiEventRepository } from "@chatbotx.io/database/repositories"
-import type { MetaCapiEventModel } from "@chatbotx.io/database/types"
-import { encryptUtils } from "@chatbotx.io/encryption"
-import { createId } from "@chatbotx.io/utils"
+import { metaCapiEventRepository } from "@salesmanchatbot.io/database/repositories"
+import type { MetaCapiEventModel } from "@salesmanchatbot.io/database/types"
+import { encryptUtils } from "@salesmanchatbot.io/encryption"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   capiTestMessagingIdSchema,
   defaultMetaCapiActionSource,
   type MetaCapiActionSource,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import {
   enqueueIntegrationJob,
   IntegrationJobAction,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { BaseService } from "../base.service"
 import { instagramIntegrationService } from "../integration-instagram/service"
 import { messengerIntegrationService } from "../integration-messenger/service"

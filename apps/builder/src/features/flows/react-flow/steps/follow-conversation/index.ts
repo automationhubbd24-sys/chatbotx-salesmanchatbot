@@ -2,7 +2,7 @@ import {
   type FollowConversationStepSchema,
   followConversationStepDefaultFn,
   followConversationStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import FollowConversationStepEditor from "./editor"
 import FollowConversationStepViewer from "./viewer"

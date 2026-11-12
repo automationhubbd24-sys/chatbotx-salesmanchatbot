@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   findForIntegration: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messagingAdsConnectionService: {
     findForIntegration: mocks.findForIntegration,
   },

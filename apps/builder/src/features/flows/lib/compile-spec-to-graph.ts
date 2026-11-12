@@ -1,4 +1,4 @@
-import { getFlowAuthoringContext } from "@chatbotx.io/business/capabilities"
+import { getFlowAuthoringContext } from "@salesmanchatbot.io/business/capabilities"
 import {
   type CompiledFlow,
   compileFlowSpec,
@@ -9,7 +9,7 @@ import {
   formatZodPathSegment,
   publishFlowSchema,
   zodErrorToFlowAuthoringErrors,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
 async function compileWithContext(
   spec: FlowSpec,

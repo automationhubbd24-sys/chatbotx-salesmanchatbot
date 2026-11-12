@@ -1,7 +1,7 @@
 "use server"
 
-import { contactScanService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { contactScanService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import {
@@ -20,7 +20,7 @@ import {
 type ContactScanFieldName = "inboxId" | "scanFromAt"
 
 /**
- * One localized message per `ChatbotXException.code` `ContactScanService.schedule`
+ * One localized message per `salesmanChatbotException.code` `ContactScanService.schedule`
  * (and `requireUnrestrictedContactsScope`) can throw, keyed as a table — not
  * an if/else ladder — so every code has exactly one home. Built from
  * `t()` calls with LITERAL keys (next-intl's generated message types reject
@@ -92,7 +92,7 @@ export const scheduleContactScanAction = workspaceActionClient
           scanFromAt: parsedInput.scanFromAt,
         })
       } catch (error) {
-        if (error instanceof ChatbotXException) {
+        if (error instanceof salesmanChatbotException) {
           const t = await getTranslations()
           const { fieldErrors, topLevelErrors } = buildContactScanErrorTables(t)
 

@@ -5,7 +5,7 @@ const mocks = vi.hoisted(() => ({
   isAtLimit: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   quotaEnforcementService: { isAtLimit: mocks.isAtLimit },
   workspaceService: { find: mocks.find },
 }))

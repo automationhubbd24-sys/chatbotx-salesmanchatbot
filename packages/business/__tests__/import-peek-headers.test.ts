@@ -13,7 +13,7 @@ vi.mock("../src/import/service", () => ({
 vi.mock("../src/logger", () => ({
   logger: { warn: vi.fn(), error: vi.fn(), info: vi.fn(), debug: vi.fn() },
 }))
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { getObjectStream: mocks.getObjectStream },
 }))
 

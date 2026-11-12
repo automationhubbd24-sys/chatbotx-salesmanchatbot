@@ -1,5 +1,5 @@
-import type { InstagramCredentialPublic } from "@chatbotx.io/database/partials"
-import { generateAuthUrl } from "@chatbotx.io/integration-instagram-facebook"
+import type { InstagramCredentialPublic } from "@salesmanchatbot.io/database/partials"
+import { generateAuthUrl } from "@salesmanchatbot.io/integration-instagram-facebook"
 import { getOriginFromHeader } from "@/lib/domain"
 import { buildProviderCallbackUrl } from "@/lib/provider-origin"
 

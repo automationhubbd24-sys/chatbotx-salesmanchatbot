@@ -1,4 +1,4 @@
-import type { ConversationAttributes } from "@chatbotx.io/database/partials"
+import type { ConversationAttributes } from "@salesmanchatbot.io/database/partials"
 
 /**
  * Webchat taps arrive as a postback on the same message, so unlike the

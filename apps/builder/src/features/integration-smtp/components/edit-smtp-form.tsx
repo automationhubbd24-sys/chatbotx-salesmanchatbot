@@ -3,12 +3,12 @@
 import {
   smtpHostMap,
   smtpProviders,
-} from "@chatbotx.io/integration-smtp/schema"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+} from "@salesmanchatbot.io/integration-smtp/schema"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

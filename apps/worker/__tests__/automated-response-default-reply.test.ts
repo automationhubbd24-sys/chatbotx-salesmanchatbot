@@ -2,12 +2,13 @@ import type {
   AIAgentModel,
   ContactInboxModel,
   ConversationModel,
-} from "@chatbotx.io/database/types"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/database/types"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import { type ModelMessage, streamText } from "ai"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { triggerDefaultReplyFlow } from "../src/integration/handlers/automated-response/default-reply"
 import {
+  appendCurrentMessagePriorityPolicy,
   buildGenerateOnlyGuardedSystemPrompt,
   createGuardedCommentInputMessage,
   generateAIReplyText,
@@ -40,7 +41,7 @@ const tryAcquireMock = vi.hoisted(() =>
 )
 const releaseMock = vi.hoisted(() => vi.fn(async () => undefined))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowService: { findBy: findByFlowMock },
   integrationOpenaiCompatibleService: {
     findByWorkspaceIdAndId: vi.fn(),
@@ -51,9 +52,9 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     integrationQueue: { add: integrationQueueAddMock },
@@ -61,7 +62,7 @@ vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
   }
 })
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: () => "webhook",
 }))
 
@@ -69,7 +70,7 @@ vi.mock("../src/lib/logger", () => ({
   logger: { warn: warnMock, error: errorMock, info: vi.fn(), debug: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   aiProviders: { openai: "openai" },
   aiTimeouts: { aiTotal: 30_000, aiStep: 10_000, aiChunk: 5000 },
   helpTexts: {
@@ -93,7 +94,7 @@ vi.mock("@chatbotx.io/ai", () => ({
   appendUnavailableWebSearchPolicy: (p: string) => p,
 }))
 
-vi.mock("@chatbotx.io/ai/server", () => ({
+vi.mock("@salesmanchatbot.io/ai/server", () => ({
   aiContextService: { appendHistory: appendHistoryMock },
   appendAIAgentActionToolProtocol: (p: string) => p,
   appendFabricationGuard: (p: string) => p,
@@ -155,7 +156,7 @@ vi.mock("../../utils/message", () => ({
   sendMessageWithRender: sendMessageWithRenderMock,
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: vi.fn(async () => []),
     replaceAll: vi.fn(async ({ text }: { text: string }) => text),
@@ -166,7 +167,7 @@ vi.mock("../src/trigger/services/handoff-executor.service", () => ({
   handoffExecutorService: { execute: vi.fn(async () => undefined) },
 }))
 
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: vi.fn(async () => undefined),
 }))
 
@@ -631,6 +632,16 @@ describe("replyByAI — default reply flow fallback", () => {
     // the activation window), unlike the `skipped` (no/invalid flow) case
     // above which still sends the canned fallback text.
     expect(sendMessageWithRenderMock).not.toHaveBeenCalled()
+  })
+})
+
+describe("current customer message priority", () => {
+  test("instructs the model to prioritize an explicitly named new product", () => {
+    const prompt = appendCurrentMessagePriorityPolicy("Base prompt")
+
+    expect(prompt).toContain("The latest customer message is the request")
+    expect(prompt).toContain("treat it as a new product request")
+    expect(prompt).toContain("do not reuse a previously discussed product")
   })
 })
 

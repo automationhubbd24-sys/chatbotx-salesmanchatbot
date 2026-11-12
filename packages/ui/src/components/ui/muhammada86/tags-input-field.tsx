@@ -10,14 +10,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form";
-import { Input } from "@chatbotx.io/ui/components/ui/input";
-import { Badge } from "@chatbotx.io/ui/components/ui/badge";
+} from "@salesmanchatbot.io/ui/components/ui/form";
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input";
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge";
 import {
   Popover,
   PopoverContent,
-} from "@chatbotx.io/ui/components/ui/popover";
-import { cn } from "@chatbotx.io/ui/lib/utils";
+} from "@salesmanchatbot.io/ui/components/ui/popover";
+import { cn } from "@salesmanchatbot.io/ui/lib/utils";
 import {
   type ReactNode,
   useState,

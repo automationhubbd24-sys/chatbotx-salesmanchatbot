@@ -3,9 +3,9 @@
 import {
   messengerIntegrationService,
   messengerMessageTemplateService,
-} from "@chatbotx.io/business"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 
 export const deleteMessengerMessageTemplateAction = workspaceActionClient

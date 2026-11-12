@@ -1,4 +1,4 @@
-import { FieldOperationType } from "@chatbotx.io/flow-config"
+import { FieldOperationType } from "@salesmanchatbot.io/flow-config"
 import { z } from "zod"
 import { publicContactIdentifier } from "@/lib/public-api/contact-identifier"
 import { ianaTimezoneSchema } from "@/lib/public-api/iana-timezone"

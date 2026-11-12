@@ -1,12 +1,12 @@
 // @vitest-environment node
-import type { UserModel } from "@chatbotx.io/database/types"
+import type { UserModel } from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { isSuperAdminSpy } = vi.hoisted(() => ({
   isSuperAdminSpy: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isSuperAdmin: isSuperAdminSpy,
 }))
 vi.mock("@/env", () => ({ isCloud: () => true }))

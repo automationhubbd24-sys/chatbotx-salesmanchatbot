@@ -1,9 +1,9 @@
 "use server"
 
-import { aiMcpServerService } from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
-import { resolveBotFieldVariableText } from "@chatbotx.io/variables"
+import { aiMcpServerService } from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
+import { resolveBotFieldVariableText } from "@salesmanchatbot.io/variables"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import { isValidationException } from "@/lib/errors/validation-exception"

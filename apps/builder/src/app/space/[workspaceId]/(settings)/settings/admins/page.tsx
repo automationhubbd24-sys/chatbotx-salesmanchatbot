@@ -1,15 +1,15 @@
 import {
   quotaEnforcementService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/business"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { getIdFromParams } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"

@@ -4,11 +4,11 @@ import {
   conversationService,
   inboxTeamService,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { requestThreadControlAction } from "@chatbotx.io/channel-registry/thread-control"
-import { gte, type SQL } from "@chatbotx.io/database/client"
-import { channelTypes } from "@chatbotx.io/database/partials"
-import { conversationModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/business"
+import { requestThreadControlAction } from "@salesmanchatbot.io/channel-registry/thread-control"
+import { gte, type SQL } from "@salesmanchatbot.io/database/client"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
+import { conversationModel } from "@salesmanchatbot.io/database/schema"
 import {
   type ArchiveConversationStepSchema,
   type AssignConversationStepSchema,
@@ -25,7 +25,7 @@ import {
   type UnarchiveConversationStepSchema,
   type UnassignConversationStepSchema,
   type UnfollowConversationStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { subHours } from "date-fns"
 import {
   resolveWhatsappMessageSourceId,

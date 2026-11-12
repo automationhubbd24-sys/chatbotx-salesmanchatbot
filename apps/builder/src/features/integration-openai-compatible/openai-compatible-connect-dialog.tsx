@@ -3,12 +3,12 @@
 import {
   type OpenaiCompatibleProviderPreset,
   openaiCompatiblePresetConfigs,
-} from "@chatbotx.io/ai"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/ai"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -18,8 +18,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon, PlusIcon } from "lucide-react"
@@ -101,6 +101,7 @@ export function OpenaiCompatibleConnectDialog({
           defaultModel: "",
           enabled: true,
           name: "",
+          streaming: true,
           preset: fallbackPreset,
         },
       },
@@ -187,6 +188,13 @@ export function OpenaiCompatibleConnectDialog({
               formItemClassName="flex flex-row items-center justify-start gap-3 space-y-0"
               label={t("openaiCompatible.autoReply.label")}
               name="autoReply"
+              required
+            />
+            <SwitchField
+              description={t("openaiCompatible.streaming.description")}
+              formItemClassName="flex flex-row items-center justify-start gap-3 space-y-0"
+              label={t("openaiCompatible.streaming.label")}
+              name="streaming"
               required
             />
             <SwitchField

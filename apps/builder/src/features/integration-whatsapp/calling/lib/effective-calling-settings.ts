@@ -1,4 +1,4 @@
-import type { WhatsappCallingSettings } from "@chatbotx.io/integration-whatsapp/api/calling"
+import type { WhatsappCallingSettings } from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 
 /**
  * Calling is on only when both Meta's number-level `status` and the

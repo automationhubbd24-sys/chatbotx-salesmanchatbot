@@ -1,8 +1,8 @@
 import {
   logProviderErrorForChannel,
   whatsappCallLifecycleService,
-} from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import { logger } from "@/lib/log"
 
 /** Stored on the call when Meta refused to record it. */

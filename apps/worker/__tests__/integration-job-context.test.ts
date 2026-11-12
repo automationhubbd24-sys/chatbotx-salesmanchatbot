@@ -11,7 +11,7 @@ const mocks = vi.hoisted(() => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   runWithWebhookExecutionContext: mocks.runWithWebhookExecutionContext,
 }))
 

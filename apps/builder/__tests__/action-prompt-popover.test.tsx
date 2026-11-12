@@ -1,4 +1,4 @@
-import { DEFAULT_AI_AGENT_ACTION_PROMPT } from "@chatbotx.io/database/partials"
+import { DEFAULT_AI_AGENT_ACTION_PROMPT } from "@salesmanchatbot.io/database/partials"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { FormProvider, useController, useForm } from "react-hook-form"
@@ -9,7 +9,7 @@ vi.mock("next-intl", () => ({
   useTranslations: () => (key: string) => key,
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/textarea-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/textarea-field", () => ({
   TextareaField: ({
     className,
     name,
@@ -23,13 +23,13 @@ vi.mock("@chatbotx.io/ui/components/form/textarea-field", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({ children, ...props }: React.ComponentProps<"button">) => (
     <button {...props}>{children}</button>
   ),
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/popover", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/popover", () => ({
   Popover: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   PopoverContent: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
@@ -37,7 +37,7 @@ vi.mock("@chatbotx.io/ui/components/ui/popover", () => ({
   PopoverTrigger: ({ render }: { render: React.ReactNode }) => <>{render}</>,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/tooltip", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/tooltip", () => ({
   Tooltip: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   TooltipContent: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>

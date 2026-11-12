@@ -7,13 +7,13 @@ const mockGetCurrentUser = vi.fn()
 const mockGetTranslations = vi.fn()
 const mockReturnValidationErrors = vi.fn((_schema, errors) => errors)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactScanService: {
     schedule: (...args: unknown[]) => mockSchedule(...args),
   },
 }))
 
-class FakeChatbotXException extends Error {
+class FakesalesmanChatbotException extends Error {
   code: string
   httpStatusCode: number
   constructor(message: string, code = "systemError", httpStatusCode = 400) {
@@ -23,8 +23,8 @@ class FakeChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: FakeChatbotXException,
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: FakesalesmanChatbotException,
 }))
 
 vi.mock("next-intl/server", () => ({
@@ -96,7 +96,7 @@ describe("scheduleContactScanAction", () => {
   test("does not call the service when the caller has no unrestricted contacts scope (generic access error)", async () => {
     mockGetCurrentUser.mockResolvedValue({ id: "user-1" })
     mockRequireUnrestrictedContactsScope.mockRejectedValue(
-      new FakeChatbotXException("User is not authorized to access contacts"),
+      new FakesalesmanChatbotException("User is not authorized to access contacts"),
     )
 
     await expect(scheduleContactScanAction(baseInput as never)).rejects.toThrow(
@@ -110,7 +110,7 @@ describe("scheduleContactScanAction", () => {
   test("maps contactScanForbidden to a top-level validation error for a restricted member, without calling the service", async () => {
     mockGetCurrentUser.mockResolvedValue({ id: "user-1" })
     mockRequireUnrestrictedContactsScope.mockRejectedValue(
-      new FakeChatbotXException(
+      new FakesalesmanChatbotException(
         "You do not have permission to run an Automatic Customer Scan.",
         "contactScanForbidden",
         403,
@@ -158,7 +158,7 @@ describe("scheduleContactScanAction", () => {
       restrictToAssignedUserId: undefined,
     })
     mockSchedule.mockRejectedValue(
-      new FakeChatbotXException(`${code} message`, code),
+      new FakesalesmanChatbotException(`${code} message`, code),
     )
 
     await expect(scheduleContactScanAction(baseInput as never)).rejects.toThrow(
@@ -180,7 +180,7 @@ describe("scheduleContactScanAction", () => {
       restrictToAssignedUserId: undefined,
     })
     mockSchedule.mockRejectedValue(
-      new FakeChatbotXException(`${code} message`, code, 409),
+      new FakesalesmanChatbotException(`${code} message`, code, 409),
     )
 
     await expect(scheduleContactScanAction(baseInput as never)).rejects.toThrow(
@@ -192,7 +192,7 @@ describe("scheduleContactScanAction", () => {
     })
   })
 
-  test("re-throws a non-ChatbotXException error without mapping", async () => {
+  test("re-throws a non-salesmanChatbotException error without mapping", async () => {
     mockGetCurrentUser.mockResolvedValue({ id: "user-1" })
     mockRequireUnrestrictedContactsScope.mockResolvedValue({
       canViewEmailAndPhone: true,

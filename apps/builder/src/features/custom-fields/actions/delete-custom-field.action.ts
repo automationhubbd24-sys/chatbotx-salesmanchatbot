@@ -1,6 +1,6 @@
 "use server"
-import { customFieldService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { customFieldService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { bulkUpdateIdsRequest } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 export const deleteFieldsAction = workspaceActionClient

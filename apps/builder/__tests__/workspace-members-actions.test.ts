@@ -61,7 +61,7 @@ vi.mock("@/lib/auth/utils", () => ({
   getCurrentUserAndTargetWorkspace: mockGetCurrentUserAndTargetWorkspace,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceMemberCacheTag: (userId: string) =>
     `users:${userId}:workspace-members`,
   quotaEnforcementService: {
@@ -81,7 +81,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mockDbInsert,
   },
@@ -89,23 +89,23 @@ vi.mock("@chatbotx.io/database/client", () => ({
   findOrFail: mockFindOrFail,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mockInvalidateCacheByTags,
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mockAuditRecord },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   invitationModel: { _: "invitationModel" },
   workspaceMemberModel: {
     id: "workspaceMember.id",
   },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: () => "invitation-id",

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
-const { resolveIncomingTextRouting } = await import(
+const { resolveIncomingMessageRouting } = await import(
   "../src/integration/routing"
 )
 
@@ -17,7 +17,7 @@ const challengeConversation = {
   },
 }
 
-describe("resolveIncomingTextRouting", () => {
+describe("resolveIncomingMessageRouting", () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
@@ -26,9 +26,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => false)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: challengeConversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: true,
         hasText: true,
         isConversationActive,
       }),
@@ -41,9 +42,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => true)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: challengeConversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: true,
         hasText: true,
         isConversationActive,
       }),
@@ -58,10 +60,11 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => true)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: challengeConversation as never,
-        // An uploaded image/file/voice carries actionable input but no text.
+        // Any uploaded attachment carries actionable input for a challenge.
         hasActionableInput: true,
+        hasAutomatedResponseInput: false,
         hasText: false,
         isConversationActive,
       }),
@@ -76,9 +79,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => true)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: conversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: true,
         hasText: true,
         isConversationActive,
       }),
@@ -88,15 +92,32 @@ describe("resolveIncomingTextRouting", () => {
     })
   })
 
-  test("does not route attachment-only messages to automated response without a challenge", async () => {
+  test("routes supported attachment-only messages to automated response", async () => {
     const isConversationActive = vi.fn(async () => true)
 
-    // No challenge is pending, so an attachment with no text has nothing to
-    // drive: automated (AI) replies stay text-only.
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
+        conversation: conversation as never,
+        // Represents a supported image or PDF/DOCX attachment.
+        hasActionableInput: true,
+        hasAutomatedResponseInput: true,
+        hasText: false,
+        isConversationActive,
+      }),
+    ).resolves.toEqual({
+      type: "automatedResponse",
+      conversation,
+    })
+  })
+
+  test("does not route non-readable attachment-only messages to automated response", async () => {
+    const isConversationActive = vi.fn(async () => true)
+
+    await expect(
+      resolveIncomingMessageRouting({
         conversation: conversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: false,
         hasText: false,
         isConversationActive,
       }),
@@ -107,9 +128,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => false)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: conversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: true,
         hasText: true,
         isConversationActive,
       }),
@@ -120,9 +142,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => false)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: conversation as never,
         hasActionableInput: true,
+        hasAutomatedResponseInput: true,
         hasText: false,
         isConversationActive,
       }),
@@ -133,9 +156,10 @@ describe("resolveIncomingTextRouting", () => {
     const isConversationActive = vi.fn(async () => true)
 
     await expect(
-      resolveIncomingTextRouting({
+      resolveIncomingMessageRouting({
         conversation: conversation as never,
         hasActionableInput: false,
+        hasAutomatedResponseInput: false,
         hasText: false,
         isConversationActive,
       }),

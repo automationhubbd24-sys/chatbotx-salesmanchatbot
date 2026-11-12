@@ -42,7 +42,7 @@ vi.mock("next-intl/server", () => ({
   getTranslations: vi.fn(async () => (key: string) => key),
 }))
 
-vi.mock("@chatbotx.io/analytics-nextjs/components/contacts-dashboard", () => ({
+vi.mock("@salesmanchatbot.io/analytics-nextjs/components/contacts-dashboard", () => ({
   ContactsDashboard: () => null,
 }))
 
@@ -50,7 +50,7 @@ vi.mock("@/features/analytics/components/analytics-nav", () => ({
   AnalyticsNav: () => null,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   isWorkspaceScheduledForDeletion: (
     workspace:
       | { scheduledDeletionAt?: Date | string | null }
@@ -204,8 +204,8 @@ vi.mock(
   }),
 )
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
 
   return {
     ...actual,

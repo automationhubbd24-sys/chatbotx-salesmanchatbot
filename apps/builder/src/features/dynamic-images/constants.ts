@@ -1,4 +1,4 @@
-import type { DynamicImageDocument } from "@chatbotx.io/database/partials"
+import type { DynamicImageDocument } from "@salesmanchatbot.io/database/partials"
 
 export const DEFAULT_DYNAMIC_IMAGE_WIDTH = 500
 export const DEFAULT_DYNAMIC_IMAGE_HEIGHT = 320

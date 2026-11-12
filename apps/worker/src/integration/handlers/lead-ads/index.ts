@@ -4,22 +4,22 @@ import {
   facebookLeadAdsAutomationService,
   facebookLeadAdsLeadService,
   isRichSystemContactField,
-} from "@chatbotx.io/business"
-import { logProviderError } from "@chatbotx.io/business/error-log"
+} from "@salesmanchatbot.io/business"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
 import {
   contactSources,
   type FacebookLeadFieldMapping,
   FB_LEAD_STANDARD_FIELD_TARGET,
   genderTypes,
   type IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   getLead,
   type LeadFieldDatum,
-} from "@chatbotx.io/integration-messenger/apis/leadgen"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger/schema"
-import type { IncomingContact } from "@chatbotx.io/sdk"
-import type { IntegrationJobProcessLeadgen } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/integration-messenger/apis/leadgen"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger/schema"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
+import type { IntegrationJobProcessLeadgen } from "@salesmanchatbot.io/worker-config"
 import type { Job } from "bullmq"
 import { isFinalAttempt } from "../../../lib/job-attempts"
 import { logger } from "../../../lib/logger"

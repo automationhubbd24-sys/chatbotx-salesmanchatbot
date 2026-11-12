@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockCreate = vi.fn()
@@ -8,7 +8,7 @@ const mockReturnValidationErrors = vi.fn(
   (_schema: unknown, errors: unknown) => ({ validationErrors: errors }),
 )
 
-vi.mock("@chatbotx.io/business/minigame", () => ({
+vi.mock("@salesmanchatbot.io/business/minigame", () => ({
   minigameService: {
     create: (...args: unknown[]) => mockCreate(...args),
     update: (...args: unknown[]) => mockUpdate(...args),
@@ -69,9 +69,9 @@ beforeEach(() => {
 })
 
 describe("createMinigameAction — name conflict mapping", () => {
-  test("maps a nameAlreadyExists ChatbotXException to an inline form validation error, not a thrown 500", async () => {
+  test("maps a nameAlreadyExists salesmanChatbotException to an inline form validation error, not a thrown 500", async () => {
     mockCreate.mockRejectedValueOnce(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "Minigame name already exists",
         "nameAlreadyExists",
         409,
@@ -115,9 +115,9 @@ describe("createMinigameAction — name conflict mapping", () => {
 })
 
 describe("updateMinigameAction — name conflict mapping", () => {
-  test("maps a nameAlreadyExists ChatbotXException to an inline form validation error, not a thrown 500", async () => {
+  test("maps a nameAlreadyExists salesmanChatbotException to an inline form validation error, not a thrown 500", async () => {
     mockUpdate.mockRejectedValueOnce(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "Minigame name already exists",
         "nameAlreadyExists",
         409,

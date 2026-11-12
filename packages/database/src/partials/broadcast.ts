@@ -1,10 +1,10 @@
-import type { BroadcastSubaction } from "@chatbotx.io/utils/broadcast"
+import type { BroadcastSubaction } from "@salesmanchatbot.io/utils/broadcast"
 import { z } from "zod"
 import type { ChannelType } from "./channel"
 
 /**
  * `broadcastFlowTypes`/`broadcastSubactions`/`isTemplateBroadcastSubaction` are
- * defined in `@chatbotx.io/utils/broadcast` so a "use client" component can use
+ * defined in `@salesmanchatbot.io/utils/broadcast` so a "use client" component can use
  * them without depending on the database layer. Re-exported here because this
  * has long been the import site for the rest of the repo; both paths resolve
  * to the same values. Mirrors the `channelTypes` precedent.
@@ -16,7 +16,7 @@ export {
   broadcastSubactions,
   isTemplateBroadcastSubaction,
   templateBroadcastSubactions,
-} from "@chatbotx.io/utils/broadcast"
+} from "@salesmanchatbot.io/utils/broadcast"
 
 export const broadcastScheduleTypes = z.enum(["now", "future"])
 export type BroadcastScheduleType = z.infer<typeof broadcastScheduleTypes>

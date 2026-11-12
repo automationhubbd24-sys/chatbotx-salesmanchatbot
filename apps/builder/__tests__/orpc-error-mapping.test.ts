@@ -3,7 +3,7 @@
 import {
   broadcastPlanLimitDataSchema,
   TRIAL_BROADCAST_PLAN_POLICY,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const { mockLoggerError, mockLoggerWarn } = vi.hoisted(() => ({
@@ -23,11 +23,11 @@ vi.mock("@/middlewares/workspace-token-auth", () => ({
   workspaceTokenAuthMidddleware: {},
 }))
 
-vi.mock("@chatbotx.io/database/errors", () => ({
+vi.mock("@salesmanchatbot.io/database/errors", () => ({
   ModelNotfoundException: class ModelNotfoundException extends Error {},
 }))
 
-vi.mock("@chatbotx.io/sdk", () => ({
+vi.mock("@salesmanchatbot.io/sdk", () => ({
   SdkException: class SdkException extends Error {
     httpStatusCode?: number
     constructor(message: string, httpStatusCode?: number) {
@@ -44,8 +44,8 @@ vi.mock("@chatbotx.io/sdk", () => ({
 
 // `@/orpc` now attaches `commonApiErrors` (from orpc-error-helper.ts) to the
 // public stacks, which reuses `DENIAL_MESSAGES` from this module — stub it so
-// importing `@/orpc` doesn't pull in the real `@chatbotx.io/business` barrel
-// (and transitively the google-calendar integration's `@chatbotx.io/sdk`
+// importing `@/orpc` doesn't pull in the real `@salesmanchatbot.io/business` barrel
+// (and transitively the google-calendar integration's `@salesmanchatbot.io/sdk`
 // `Integration` export, which the mock above doesn't provide).
 vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   DENIAL_MESSAGES: {
@@ -54,11 +54,11 @@ vi.mock("@/lib/workspace/authorize-workspace-access", () => ({
   },
 }))
 
-const { broadcastPlanLimitException, ChatbotXException, validationException } =
-  await import("@chatbotx.io/business/errors")
-const { ModelNotfoundException } = await import("@chatbotx.io/database/errors")
-const { FlowAuthoringException } = await import("@chatbotx.io/flow-config")
-const { SdkException } = await import("@chatbotx.io/sdk")
+const { broadcastPlanLimitException, salesmanChatbotException, validationException } =
+  await import("@salesmanchatbot.io/business/errors")
+const { ModelNotfoundException } = await import("@salesmanchatbot.io/database/errors")
+const { FlowAuthoringException } = await import("@salesmanchatbot.io/flow-config")
+const { SdkException } = await import("@salesmanchatbot.io/sdk")
 const { ActionValidationError } = await import("next-safe-action")
 const { ORPCError } = await import("@orpc/server")
 const { z } = await import("zod")
@@ -70,8 +70,8 @@ beforeEach(() => {
 })
 
 describe("mapKnownOrpcErrors", () => {
-  test("maps a ChatbotXException subclass via instanceof, not error.name", () => {
-    class SlotUnavailableException extends ChatbotXException {
+  test("maps a salesmanChatbotException subclass via instanceof, not error.name", () => {
+    class SlotUnavailableException extends salesmanChatbotException {
       constructor() {
         super("Slot unavailable", "slotUnavailable", 409)
         this.name = "SlotUnavailableException"
@@ -114,8 +114,8 @@ describe("mapKnownOrpcErrors", () => {
     expect(mockLoggerWarn).toHaveBeenCalledTimes(1)
   })
 
-  test("maps a validationException-shaped ChatbotXException to a 422 validation error", () => {
-    const error = new ChatbotXException("Name already taken", "validation", 422)
+  test("maps a validationException-shaped salesmanChatbotException to a 422 validation error", () => {
+    const error = new salesmanChatbotException("Name already taken", "validation", 422)
 
     expect(() => mapKnownOrpcErrors(error)).toThrow(
       expect.objectContaining({ code: "validation", status: 422 }),
@@ -163,8 +163,8 @@ describe("mapKnownOrpcErrors", () => {
     )
   })
 
-  test("maps a tooManyRequests ChatbotXException to a 429 error", () => {
-    const error = new ChatbotXException(
+  test("maps a tooManyRequests salesmanChatbotException to a 429 error", () => {
+    const error = new salesmanChatbotException(
       "Too many requests. Retry after 5s.",
       "tooManyRequests",
       429,
@@ -176,8 +176,8 @@ describe("mapKnownOrpcErrors", () => {
     expect(mockLoggerWarn).toHaveBeenCalledTimes(1)
   })
 
-  test("maps a 5xx ChatbotXException without warn-logging — the route callback logs it once", () => {
-    const error = new ChatbotXException("boom", "upstream", 502)
+  test("maps a 5xx salesmanChatbotException without warn-logging — the route callback logs it once", () => {
+    const error = new salesmanChatbotException("boom", "upstream", 502)
 
     expect(() => mapKnownOrpcErrors(error)).toThrow(
       expect.objectContaining({ code: "upstream", status: 502 }),

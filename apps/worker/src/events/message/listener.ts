@@ -1,7 +1,7 @@
 import type {
   MacMessageInPayload,
   MacMessageOutPayload,
-} from "@chatbotx.io/analytics"
+} from "@salesmanchatbot.io/analytics"
 import {
   broadcastAnalyticsService,
   commentAutomationAnalyticsService,
@@ -9,28 +9,28 @@ import {
   flowAnalyticsService,
   macTrackingService,
   sequenceAnalyticsService,
-} from "@chatbotx.io/analytics"
+} from "@salesmanchatbot.io/analytics"
 import {
   type AdsEligibleChannel,
   adsConversionService,
   contactInboxService,
   workspaceUsageService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   integrationInstagramRepository,
   integrationMessengerRepository,
   integrationWhatsappRepository,
-} from "@chatbotx.io/database/repositories"
-import type { AdsConversionChannel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import type { AdsConversionChannel } from "@salesmanchatbot.io/database/schema"
 import type {
   EventBusMessageMetadata,
   MessageEvenTypeMap,
   MessageFailedPayload,
   MessagePayload,
   MessageReceivedPayload,
-} from "@chatbotx.io/event-bus"
-import { EVENT_BUS_MESSAGE_ID } from "@chatbotx.io/event-bus"
-import { messageEventTypeSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/event-bus"
+import { EVENT_BUS_MESSAGE_ID } from "@salesmanchatbot.io/event-bus"
+import { messageEventTypeSchema } from "@salesmanchatbot.io/flow-config"
 import { logger } from "../../lib/logger"
 import { recordProviderErrorLog } from "./handlers/record-provider-error-log"
 

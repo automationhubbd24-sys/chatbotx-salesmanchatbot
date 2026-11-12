@@ -1,5 +1,5 @@
-import { FormatTimezone } from "@chatbotx.io/flow-config"
-import { SourceTimezoneStrategy } from "@chatbotx.io/utils/datetime"
+import { FormatTimezone } from "@salesmanchatbot.io/flow-config"
+import { SourceTimezoneStrategy } from "@salesmanchatbot.io/utils/datetime"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 // ---------------------------------------------------------------------------
@@ -11,7 +11,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 //   1. It must skip when the output field is itself temporal (date/datetime) —
 //      writing a display string there would be re-parsed and corrupt the value.
 //   2. The step's `timezone` choice must map to the correct resolver strategy.
-// We mock ONLY the boundaries; `@chatbotx.io/utils/datetime` (the temporal-type
+// We mock ONLY the boundaries; `@salesmanchatbot.io/utils/datetime` (the temporal-type
 // guard) and `date-fns-tz` (the format-in-zone math) stay real.
 // ---------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   customFieldService: { findBy: mocks.customFieldFindFirst },
   contactCustomFieldService: {
     setValues: mocks.setValues,
@@ -40,11 +40,11 @@ vi.mock("@chatbotx.io/business", () => ({
   externalRequestService: {},
 }))
 
-vi.mock("@chatbotx.io/business/contact-custom-field", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-custom-field", () => ({
   createSourceTimezoneResolver: mocks.createSourceTimezoneResolver,
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       customFieldModel: { findFirst: vi.fn(), findMany: vi.fn() },
@@ -52,7 +52,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: { getAll: vi.fn() },
   extractVariables: vi.fn(() => []),
   getSystemFieldValue: vi.fn(async () => null),

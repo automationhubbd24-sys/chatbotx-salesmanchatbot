@@ -3,9 +3,9 @@ import {
   contactService,
   conversationService,
   messageService,
-} from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { listMessages } from "@/features/messages/queries"
 import { createMessageRequest } from "@/features/messages/schema/mutation"

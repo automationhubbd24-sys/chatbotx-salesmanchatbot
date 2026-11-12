@@ -1,4 +1,4 @@
-import { connectSessionOutcomeSchema } from "@chatbotx.io/database/partials"
+import { connectSessionOutcomeSchema } from "@salesmanchatbot.io/database/partials"
 import { describe, expect, test } from "vitest"
 import {
   CONNECT_FAILURE_REASONS,

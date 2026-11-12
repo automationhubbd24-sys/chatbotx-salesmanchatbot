@@ -1,9 +1,9 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
 import type {
   TemplateCategory,
   TemplateResourceCategory,
-} from "@chatbotx.io/database/partials"
-import type { ReferenceIdMaps } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/partials"
+import type { ReferenceIdMaps } from "@salesmanchatbot.io/flow-config"
 
 /**
  * A reference an adapter could not resolve at insert time. Surfaced to the

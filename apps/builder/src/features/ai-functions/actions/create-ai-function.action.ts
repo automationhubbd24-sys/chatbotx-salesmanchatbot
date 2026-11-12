@@ -1,6 +1,6 @@
 "use server"
 
-import { aiFunctionService } from "@chatbotx.io/business"
+import { aiFunctionService } from "@salesmanchatbot.io/business"
 import { getTranslations } from "next-intl/server"
 import { returnValidationErrors } from "next-safe-action"
 import { workspaceIdrequestParams } from "@/features/common/schema"

@@ -1,5 +1,5 @@
-import type { AutomatedResponseType } from "@chatbotx.io/database/partials"
-import type { AutomatedResponseModel } from "@chatbotx.io/database/types"
+import type { AutomatedResponseType } from "@salesmanchatbot.io/database/partials"
+import type { AutomatedResponseModel } from "@salesmanchatbot.io/database/types"
 
 export type KeywordMatchMode = "contains" | "exact"
 

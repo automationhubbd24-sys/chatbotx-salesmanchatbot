@@ -1,4 +1,4 @@
-import type { MePrivacyParams } from "@chatbotx.io/business/system-field"
+import type { MePrivacyParams } from "@salesmanchatbot.io/business/system-field"
 import { z } from "zod"
 
 export const meLinkInputSchema = z.object({

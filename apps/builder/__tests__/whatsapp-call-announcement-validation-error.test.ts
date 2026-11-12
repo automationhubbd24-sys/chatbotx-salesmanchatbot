@@ -1,4 +1,4 @@
-import { WhatsappException } from "@chatbotx.io/integration-whatsapp/exception"
+import { WhatsappException } from "@salesmanchatbot.io/integration-whatsapp/exception"
 import { describe, expect, test } from "vitest"
 import { isCallAnnouncementValidationError } from "@/features/integration-whatsapp/calling/actions/call-announcement-options"
 

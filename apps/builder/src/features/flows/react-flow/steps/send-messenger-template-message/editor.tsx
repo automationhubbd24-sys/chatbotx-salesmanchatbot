@@ -8,9 +8,9 @@ import {
   type MessengerTemplateComponent,
   mergeMessengerFlowButtonsWithExisting,
   type ParameterInfo,
-} from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
+} from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
 import { useTranslations } from "next-intl"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useFormContext } from "react-hook-form"

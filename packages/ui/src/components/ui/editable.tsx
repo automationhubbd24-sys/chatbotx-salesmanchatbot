@@ -1,8 +1,8 @@
 "use client"
 
-import { useComposedRefs } from "@chatbotx.io/ui/lib/compose-refs"
-import { cn } from "@chatbotx.io/ui/lib/utils"
-import { VisuallyHiddenInput } from "@chatbotx.io/ui/components/visually-hidden-input"
+import { useComposedRefs } from "@salesmanchatbot.io/ui/lib/compose-refs"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
+import { VisuallyHiddenInput } from "@salesmanchatbot.io/ui/components/visually-hidden-input"
 import { mergeProps } from "@base-ui/react/merge-props"
 import { useRender } from "@base-ui/react/use-render"
 import * as React from "react"

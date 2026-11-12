@@ -13,7 +13,7 @@ const findZaloIntegrationUnscoped = vi.fn()
 const messengerRemoveLabel = vi.fn()
 const zaloRemoveFollower = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   tagChannelRepository: {
     listContactTagChannelRows: (...args: unknown[]) =>
       listContactTagChannelRows(...args),
@@ -23,7 +23,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn().mockResolvedValue({ auth: {}, workspaceId: "ws-1" }),
   tagSyncService: {
     unlinkContactInbox: (...args: unknown[]) => unlinkContactInbox(...args),
@@ -34,7 +34,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: {
     runChannelHandler: (_group: unknown, name: unknown, ...args: unknown[]) => {
       if (name === "removeLabel") {
@@ -45,7 +45,7 @@ vi.mock("@chatbotx.io/integration-messenger", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   integration: {
     runAction: (name: unknown, ...args: unknown[]) => {
       if (name === "removeFollowerFromTag") {
@@ -56,13 +56,13 @@ vi.mock("@chatbotx.io/integration-zalo", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: vi.fn(({ fn }: { fn: () => Promise<unknown> }) => fn()),
   },
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: vi.fn(),
   logProviderErrorForChannel: vi.fn(),
 }))

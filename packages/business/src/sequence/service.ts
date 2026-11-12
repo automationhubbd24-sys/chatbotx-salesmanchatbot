@@ -1,23 +1,23 @@
-import { sequenceAnalyticsService } from "@chatbotx.io/analytics"
-import type { SequenceStepEventType } from "@chatbotx.io/analytics/schemas"
+import { sequenceAnalyticsService } from "@salesmanchatbot.io/analytics"
+import type { SequenceStepEventType } from "@salesmanchatbot.io/analytics/schemas"
 import {
   and,
   db,
   eq,
   findOrFail,
   isUniqueViolationError,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type SequenceListInput,
   sequenceRepository,
-} from "@chatbotx.io/database/repositories"
-import { sequenceModel, sequenceStepModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import { sequenceModel, sequenceStepModel } from "@salesmanchatbot.io/database/schema"
 import type {
   SequenceModel,
   SequenceStepModel,
-} from "@chatbotx.io/database/types"
-import { getPaginationWithDefaults } from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/types"
+import { getPaginationWithDefaults } from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import {
   mapStatsContactRow,

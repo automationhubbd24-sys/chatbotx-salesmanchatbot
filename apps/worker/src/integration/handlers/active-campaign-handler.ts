@@ -2,16 +2,16 @@ import { createHash } from "node:crypto"
 import {
   buildContext,
   integrationActiveCampaignService,
-} from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import type { ActiveCampaignSyncContactSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import type { ActiveCampaignSyncContactSchema } from "@salesmanchatbot.io/flow-config"
 import {
   ACTIVE_CAMPAIGN_HTTP_TIMEOUT_MS,
   type ActiveCampaignAuthValue,
   activeCampaignAuthSchema,
   integration as integrationActiveCampaign,
-} from "@chatbotx.io/integration-active-campaign"
-import { distributedLock } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/integration-active-campaign"
+import { distributedLock } from "@salesmanchatbot.io/redis"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../lib/logger"
 import { getContactFieldMap } from "./contact-field-map"

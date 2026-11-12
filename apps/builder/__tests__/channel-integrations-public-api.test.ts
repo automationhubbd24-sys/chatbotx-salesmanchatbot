@@ -63,7 +63,7 @@ const service = vi.hoisted(() => ({
   list: vi.fn(async () => []),
   get: vi.fn(async () => ({ id: "1" })),
 }))
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   channelIntegrationService: service,
   coexistService: {
@@ -80,11 +80,11 @@ vi.mock("@chatbotx.io/business", async (importOriginal) => ({
     updateHandoverResumeFlow: handoverServices.messenger,
   },
 }))
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
-vi.mock("@chatbotx.io/database/repositories", () => {
+vi.mock("@salesmanchatbot.io/database/repositories", () => {
   const nested: unknown = new Proxy(
     {},
     { get: (_o, prop) => (prop === "then" ? undefined : nested) },
@@ -390,7 +390,7 @@ describe("CAPI routes", () => {
   })
 
   test("a refused test event is a 422 with a readable reason", async () => {
-    const { CapiTestEventError } = await import("@chatbotx.io/business")
+    const { CapiTestEventError } = await import("@salesmanchatbot.io/business")
     capiOps.sendCapiTestEventFor.mockRejectedValueOnce(
       new CapiTestEventError("testEventCodeRequired"),
     )

@@ -11,12 +11,12 @@ import { z } from "zod"
 // narrow `ContactInboxWorkspaceRow`, not a full model), then delegates to
 // `metaConversionsService.enqueueEvent`.
 //
-// `@chatbotx.io/variables` is mocked directly (unlike
+// `@salesmanchatbot.io/variables` is mocked directly (unlike
 // send-meta-capi-event-step-handler.test.ts, which exercises the real
 // resolver against `contactVariableService.getAll`): this suite otherwise
-// hard-mocks `@chatbotx.io/business`/`@chatbotx.io/database/*` the same way
+// hard-mocks `@salesmanchatbot.io/business`/`@salesmanchatbot.io/database/*` the same way
 // every other `trigger-action-executor-*` suite does, and the real resolver
-// chain reaches several `@chatbotx.io/business` subpath modules
+// chain reaches several `@salesmanchatbot.io/business` subpath modules
 // (`/contact-locale`, `/system-field`, `/workspace-lifecycle/predicates`)
 // that would need a real (not hard-mocked) database schema to load. The
 // template-substitution behavior itself is already covered end-to-end by
@@ -38,7 +38,7 @@ const mocks = vi.hoisted(() => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   metaCapiEventChannelSchema: {
     safeParse: (value: unknown) =>
       value === "messenger" || value === "instagram" || value === "whatsapp"
@@ -47,7 +47,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     findByIdForContact: (...args: unknown[]) =>
       mocks.findByIdForContact(...args),
@@ -56,7 +56,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactCustomFieldService: {},
   conversationService: {
     findLatestCreatedByContact: (...args: unknown[]) =>
@@ -74,15 +74,15 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (...args: unknown[]) => mocks.logProviderError(...args),
 }))
 
-vi.mock("@chatbotx.io/events/context", () => ({
+vi.mock("@salesmanchatbot.io/events/context", () => ({
   webhookChannelOrigin: vi.fn(() => "webhook"),
 }))
 
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   default: { warn: vi.fn(), error: vi.fn(), info: vi.fn() },
   getChildLogger: () => ({
     warn: vi.fn(),
@@ -92,12 +92,12 @@ vi.mock("@chatbotx.io/logger", () => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   resolveContactVariablesDeep: (...args: [string, unknown, unknown]) =>
     mocks.resolveContactVariablesDeep(...args),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { sendFlow: "sendFlow" },
   integrationQueue: { add: vi.fn() },
 }))
@@ -113,7 +113,7 @@ vi.mock("../src/integration/handlers/spreadsheet-handler", () => ({
 const { ActionExecutor } = await import(
   "../src/trigger/services/action-executor"
 )
-const baseLogger = (await import("@chatbotx.io/logger")).default
+const baseLogger = (await import("@salesmanchatbot.io/logger")).default
 
 describe("ActionExecutor sendMetaCapiEvent", () => {
   beforeEach(() => {

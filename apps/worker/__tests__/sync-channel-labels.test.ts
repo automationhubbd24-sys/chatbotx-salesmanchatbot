@@ -35,13 +35,13 @@ const state = {
 }
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/database/repositories
+// Mock: @salesmanchatbot.io/database/repositories
 // ---------------------------------------------------------------------------
 const listByInboxPageSpy = vi.fn()
 const upsertLabelMappingSpy = vi.fn(async () => undefined)
 const findMessengerByIdSpy = vi.fn(async () => state.messengerIntegration)
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     listByInboxPage: (...args: unknown[]) => listByInboxPageSpy(...args),
   },
@@ -51,10 +51,10 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/business — buildContext + zaloIntegrationService
+// Mock: @salesmanchatbot.io/business — buildContext + zaloIntegrationService
 // ---------------------------------------------------------------------------
 const findZaloUnscopedSpy = vi.fn(async () => state.zaloIntegration)
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async () => ({ ctx: "mocked-context" })),
   tagSyncService: {
     upsertLabelMapping: (...args: unknown[]) => upsertLabelMappingSpy(...args),
@@ -65,7 +65,7 @@ vi.mock("@chatbotx.io/business", () => ({
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/database/utils — chunkById
+// Mock: @salesmanchatbot.io/database/utils — chunkById
 //
 // Default behaviour: call queryBuilder(null) once, invoke callback with the
 // result, then stop. This is equivalent to a single-chunk run.
@@ -88,7 +88,7 @@ function singleChunkImpl(
   })
 }
 
-vi.mock("@chatbotx.io/database/utils", () => ({
+vi.mock("@salesmanchatbot.io/database/utils", () => ({
   chunkById: vi.fn(
     (
       queryBuilder: (lastId: string | null) => Promise<unknown[]>,
@@ -98,26 +98,26 @@ vi.mock("@chatbotx.io/database/utils", () => ({
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/integration-messenger
+// Mock: @salesmanchatbot.io/integration-messenger
 // ---------------------------------------------------------------------------
 const runChannelHandlerMock = vi.fn()
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   integration: { runChannelHandler: runChannelHandlerMock },
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/integration-zalo
+// Mock: @salesmanchatbot.io/integration-zalo
 // ---------------------------------------------------------------------------
 const runActionMock = vi.fn()
-vi.mock("@chatbotx.io/integration-zalo", () => ({
+vi.mock("@salesmanchatbot.io/integration-zalo", () => ({
   integration: { runAction: runActionMock },
 }))
 
 // ---------------------------------------------------------------------------
-// Mock: @chatbotx.io/business/error-log
+// Mock: @salesmanchatbot.io/business/error-log
 // ---------------------------------------------------------------------------
 const logProviderError = vi.fn(async () => undefined)
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderError: (...args: unknown[]) => logProviderError(...args),
 }))
 
@@ -707,7 +707,7 @@ describe("runZaloScan — per-user error isolation", () => {
 describe("buildContext — integration type forwarding", () => {
   test("messenger scan calls buildContext with integrationType: 'messenger'", async () => {
     state.messengerIntegration = makeMessengerIntegration()
-    const { buildContext } = await import("@chatbotx.io/business")
+    const { buildContext } = await import("@salesmanchatbot.io/business")
 
     await handleSyncChannelLabels(messengerJob())
 
@@ -721,7 +721,7 @@ describe("buildContext — integration type forwarding", () => {
 
   test("zalo scan calls buildContext with integrationType: 'zalo'", async () => {
     state.zaloIntegration = makeZaloIntegration()
-    const { buildContext } = await import("@chatbotx.io/business")
+    const { buildContext } = await import("@salesmanchatbot.io/business")
 
     await handleSyncChannelLabels(zaloJob())
 

@@ -5,7 +5,7 @@ const { mockMessengerRunAction, mockThreadsRunAction } = vi.hoisted(() => ({
   mockThreadsRunAction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn().mockResolvedValue({}),
 }))
 

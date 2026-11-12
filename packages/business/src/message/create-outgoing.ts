@@ -1,30 +1,30 @@
 import {
   createMessageRepository,
   mediaLibraryFileRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   ContactInboxModel,
   ConversationModel,
   UserModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   guessFileTypeFromMimeType,
   pathJoin,
   type UploadedFile,
   uploader,
   uploadMultipleFiles,
-} from "@chatbotx.io/filesystem"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/filesystem"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   ChatJobAction,
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { contactInboxService } from "../contact-inbox/service"
 import { conversationService } from "../conversation/service"
-import { ChatbotXException } from "../errors"
+import { salesmanChatbotException } from "../errors"
 import { logger } from "../logger"
 import { publishToWorkspaceParty } from "../platform/realtime-broadcast"
 import { resolveTenantSettings } from "../platform/settings"
@@ -173,7 +173,7 @@ export const createOutgoing = async (props: {
       path: parsedInput.mediaFile.path,
     })
     if (!mediaLibraryFile) {
-      throw new ChatbotXException("Media library file not found")
+      throw new salesmanChatbotException("Media library file not found")
     }
 
     uploadedFiles = [
@@ -189,7 +189,7 @@ export const createOutgoing = async (props: {
       id: parsedInput.mediaFileId,
     })
     if (!mediaLibraryFile) {
-      throw new ChatbotXException("Media library file not found")
+      throw new salesmanChatbotException("Media library file not found")
     }
 
     uploadedFiles = [
@@ -207,7 +207,7 @@ export const createOutgoing = async (props: {
           id: mediaFileId,
         })
         if (!mediaLibraryFile) {
-          throw new ChatbotXException("Media library file not found")
+          throw new salesmanChatbotException("Media library file not found")
         }
 
         return copyMediaLibraryFileToConversationAttachment({
@@ -221,7 +221,20 @@ export const createOutgoing = async (props: {
 
   const repository = await createMessageRepository()
 
-  const parentId = parsedInput.replyToMessageId ?? null
+  const parentMessage =
+    parsedInput.replyToMessageId && parsedInput.replyToMessageCreatedAt
+      ? await repository.findById({
+          id: parsedInput.replyToMessageId,
+          createdAt: parsedInput.replyToMessageCreatedAt,
+          conversationId: targetConversation.id,
+          workspaceId: conversation.workspaceId,
+        })
+      : null
+  if (parsedInput.replyToMessageId && !parentMessage) {
+    throw new salesmanChatbotException("Reply target message was not found")
+  }
+
+  const parentId = parentMessage?.id ?? null
 
   const now = new Date()
   const messageInput = {
@@ -234,9 +247,7 @@ export const createOutgoing = async (props: {
     contactInboxId: contactInbox.id,
     contentType: "text" as const,
     createdAt: now,
-    type: parsedInput.replyToMessageId
-      ? ("comment" as const)
-      : ("message" as const),
+    type: parentMessage?.type === "comment" ? ("comment" as const) : ("message" as const),
     parentId,
     contentAttributes: withBypassThreadControlLock(
       parsedInput.contentAttributes ??

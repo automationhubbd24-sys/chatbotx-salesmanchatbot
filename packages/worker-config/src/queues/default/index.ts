@@ -2,14 +2,14 @@ import type {
   BroadcastEventType,
   CommentAutomationEventType,
   SequenceStepEventType,
-} from "@chatbotx.io/analytics/schemas"
+} from "@salesmanchatbot.io/analytics/schemas"
 import type {
   ChannelType,
   CouponIssueStatus,
   CouponUsageStatus,
-} from "@chatbotx.io/database/partials"
-import { appointmentExternalSyncOperations } from "@chatbotx.io/database/partials"
-import type { ContactFilterCriteriaInput } from "@chatbotx.io/database/queries"
+} from "@salesmanchatbot.io/database/partials"
+import { appointmentExternalSyncOperations } from "@salesmanchatbot.io/database/partials"
+import type { ContactFilterCriteriaInput } from "@salesmanchatbot.io/database/queries"
 import { Queue } from "bullmq"
 import { z } from "zod"
 import {
@@ -41,6 +41,7 @@ export const DefaultJobAction = {
   syncExternalCalendarEvent: "syncExternalCalendarEvent",
   sendAppointmentReminder: "sendAppointmentReminder",
   installTemplate: "installTemplate",
+  refreshProductEmbedding: "refreshProductEmbedding",
 } as const
 
 export const syncExternalCalendarEventJobId = (
@@ -265,6 +266,15 @@ export type JobInstallTemplate = {
   }
 }
 
+export type JobRefreshProductEmbedding = {
+  type: typeof DefaultJobAction.refreshProductEmbedding
+  data: {
+    workspaceId: string
+    productIds: string[]
+    nextAfterId?: string
+  }
+}
+
 export type DefaultJobData =
   | JobExportContacts
   | JobExportCoupons
@@ -279,3 +289,4 @@ export type DefaultJobData =
   | JobSyncExternalCalendarEvent
   | JobSendAppointmentReminder
   | JobInstallTemplate
+  | JobRefreshProductEmbedding

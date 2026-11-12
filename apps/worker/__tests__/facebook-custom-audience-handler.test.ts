@@ -22,7 +22,7 @@ const findByInboxId = vi.fn(async () => ({
 }))
 const errorLog = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   buildContext: vi.fn(async ({ integration }: { integration: unknown }) => ({
     auth: state.auth,
     integration,
@@ -40,14 +40,14 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptedDataSchema: { parse: vi.fn((value: unknown) => value) },
   encryptUtils: {
     decryptObject: vi.fn(async () => state.auth),
   },
 }))
 
-vi.mock("@chatbotx.io/integration-facebook-ads", () => ({
+vi.mock("@salesmanchatbot.io/integration-facebook-ads", () => ({
   GRAPH_ERROR_CODE_INVALID_TOKEN: 190,
   facebookAdsAuthSchema: {},
   getGraphErrorCode: (error: unknown) =>

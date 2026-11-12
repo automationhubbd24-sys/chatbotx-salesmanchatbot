@@ -1,4 +1,4 @@
-import { contactExportService } from "@chatbotx.io/business"
+import { contactExportService } from "@salesmanchatbot.io/business"
 import { ORPCError } from "@orpc/server"
 import {
   assertCurrentUserCanAccessChatbot,

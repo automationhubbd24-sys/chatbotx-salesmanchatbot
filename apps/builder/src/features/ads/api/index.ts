@@ -1,8 +1,8 @@
 import {
   adsConversionService,
   resolveChannelAdAccountSources,
-} from "@chatbotx.io/business"
-import { facebookAdAccountSchema } from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/business"
+import { facebookAdAccountSchema } from "@salesmanchatbot.io/integration-facebook-ads"
 import { z } from "zod"
 import { assertWorkspaceSuperAdmin } from "@/lib/auth/assert-workspace-super-admin"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

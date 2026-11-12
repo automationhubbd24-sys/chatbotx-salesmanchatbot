@@ -13,22 +13,22 @@ import {
   resolveContactMessagingId,
   withBlockedOwnerGuard,
   workspaceService,
-} from "@chatbotx.io/business"
-import { logProviderError } from "@chatbotx.io/business/error-log"
-import type { MetaCapiEventModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { logProviderError } from "@salesmanchatbot.io/business/error-log"
+import type { MetaCapiEventModel } from "@salesmanchatbot.io/database/types"
 import {
   buildDatasetName,
   ensureDataset,
   type MetaCapiEventName,
   sendConversionEvent,
-} from "@chatbotx.io/integration-meta-conversions"
+} from "@salesmanchatbot.io/integration-meta-conversions"
 import {
   type HashedCapiUserData,
   type MetaCapiActionSource,
   type MetaCapiContentType,
   metaCapiActionSourcePolicy,
-} from "@chatbotx.io/utils/meta-capi"
-import type { IntegrationJobSendMetaCapiEvent } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/utils/meta-capi"
+import type { IntegrationJobSendMetaCapiEvent } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../../lib/logger"
 import { findEventIntegration, refreshScopeCache } from "./capi-scope-checkers"
 

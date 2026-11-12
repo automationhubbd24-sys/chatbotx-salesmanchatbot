@@ -684,7 +684,13 @@
       "anyConditions": "Een of meer van de onderstaande voorwaarden.",
       "label": "Contactfilter",
       "onlyContactsMatch": "Alleen contacten die voldoen aan",
-      "moreOptions": "Meer opties"
+      "moreOptions": "Meer opties",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Contactnotitie"
@@ -1158,7 +1164,9 @@
         "documentReader": "Documentlezer",
         "imageReader": "Afbeeldingslezer",
         "urlContext": "URL-lezer",
-        "webSearch": "Zoeken op internet"
+        "webSearch": "Zoeken op internet",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2586,7 +2594,7 @@
     "title": "Algemeen"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Hiermee verwijder je de campagne alleen uit ChatbotX. De Meta-berichtcampagne blijft lopen — pauzeer of verwijder deze in Advertentiebeheer.",
+    "deleteWarning": "Hiermee verwijder je de campagne alleen uit salesmanChatbot. De Meta-berichtcampagne blijft lopen — pauzeer of verwijder deze in Advertentiebeheer.",
     "title": "Facebook Marketing Messages",
     "description": "Verhoog betrokkenheid en verkoop met gepersonaliseerde promotieberichten op Messenger.",
     "create": "Nieuw maken",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "{feature} losgekoppeld",
     "reply": "Beantwoorden",
     "privateReply": "Privé antwoord",
+    "replyingTo": "Reageren op",
+    "replyPreview": "{sender} heeft geantwoord op {recipient}",
+    "you": "Jij",
     "viewMessage": "Bericht bekijken",
     "changeLikeState": "Vind-ik-leukstatus wijzigen",
     "changeHideState": "Verbergstatus wijzigen",
@@ -3730,6 +3741,10 @@
       "description": "Sta toe dat deze provider wordt gebruikt voor automatische AI-antwoorden.",
       "label": "Automatisch AI-antwoord"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Koppel OpenAI-compatibele providers voor terugvalmodellen van AI-agents.",
       "label": "OpenAI-compatibele providers"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "Basis-URL",
       "defaultModel": "Standaardmodel",
+      "embeddingModel": "Embeddingsmodel",
       "enabled": "Ingeschakeld"
     },
     "provider": "AI-provider",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "De basis-URL is ongeldig of niet toegestaan.",
       "presetAlreadyConnected": "Deze voorinstelling is al gekoppeld voor deze workspace."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "Belgeschiktheid",
         "appSubscriptionMissing": "Configureer eerst de WhatsApp-webhook voor deze app in het Meta App Dashboard en probeer het daarna opnieuw.",
         "appSubscriptionFailed": "Kan het 'calls'-webhookabonnement van de app niet verifiëren. Probeer het straks opnieuw.",
-        "callsNotSubscribed": "Deze app is niet geabonneerd op het 'calls'-webhookveld, waardoor oproepgebeurtenissen ChatbotX niet kunnen bereiken (Meta-fout 138018: technische vereisten zijn niet vervuld — zorg dat minstens één app die op de WABA is geabonneerd ook het webhookveld voor oproepen heeft).",
+        "callsNotSubscribed": "Deze app is niet geabonneerd op het 'calls'-webhookveld, waardoor oproepgebeurtenissen salesmanChatbot niet kunnen bereiken (Meta-fout 138018: technische vereisten zijn niet vervuld — zorg dat minstens één app die op de WABA is geabonneerd ook het webhookveld voor oproepen heeft).",
         "fixButton": "Oplossen",
         "fixSuccess": "De app is nu geabonneerd op WhatsApp-oproepwebhooks.",
         "manualIntegrationNotice": "Dit nummer is handmatig verbonden en heeft hier geen app-gegevens. Abonneer het 'calls'-webhookveld van je app in het Meta App Dashboard.",
@@ -5687,7 +5720,109 @@
     "unknown": "Onbekend"
   },
   "orders": {
-    "title": "Bestellingen"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Producten",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Actiebron",

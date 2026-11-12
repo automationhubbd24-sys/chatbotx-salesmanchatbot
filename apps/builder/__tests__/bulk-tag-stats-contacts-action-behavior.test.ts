@@ -32,13 +32,13 @@ vi.mock("@/lib/safe-action", () => ({
   workspaceActionClient: mockActionChain,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   tagService: {
     upsertByNames: (...args: unknown[]) => mockUpsertByNames(...args),
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: {
     bulkTagContacts: "bulkTagContacts",
   },

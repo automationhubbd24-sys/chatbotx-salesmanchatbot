@@ -875,7 +875,13 @@
       "anyConditions": "以下のいずれかの条件",
       "label": "連絡先フィルター",
       "onlyContactsMatch": "次の条件に一致する連絡先のみ",
-      "moreOptions": "その他のオプション"
+      "moreOptions": "その他のオプション",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "連絡先メモ"
@@ -1349,7 +1355,9 @@
         "documentReader": "ドキュメントリーダー",
         "imageReader": "画像リーダー",
         "urlContext": "URLリーダー",
-        "webSearch": "Web検索"
+        "webSearch": "Web検索",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2586,7 +2594,7 @@
     "title": "一般"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "これはChatbotXからキャンペーンを削除するだけです。Metaのメッセージキャンペーンは実行され続けます — 広告マネージャで一時停止または削除してください。",
+    "deleteWarning": "これはsalesmanChatbotからキャンペーンを削除するだけです。Metaのメッセージキャンペーンは実行され続けます — 広告マネージャで一時停止または削除してください。",
     "title": "Facebookマーケティングメッセージ",
     "description": "Messengerでパーソナライズされたプロモーションメッセージを送り、エンゲージメントと売上を高めます。",
     "create": "新規作成",
@@ -3402,6 +3410,9 @@
     "disconnectSuccess": "{feature}を切断しました",
     "reply": "返信",
     "privateReply": "プライベート返信",
+    "replyingTo": "返信先",
+    "replyPreview": "{sender} が {recipient} に返信しました",
+    "you": "あなた",
     "viewMessage": "メッセージを表示",
     "changeLikeState": "「いいね！」の状態を変更",
     "changeHideState": "非表示状態を変更",
@@ -3709,6 +3720,10 @@
       "description": "このプロバイダーをAI自動返信に使用できるようにします。",
       "label": "AI自動返信"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AIエージェントのフォールバックモデルとして、OpenAI互換プロバイダーを接続します。",
       "label": "OpenAI互換プロバイダー"
@@ -3717,6 +3732,7 @@
     "fields": {
       "baseURL": "ベースURL",
       "defaultModel": "デフォルトモデル",
+      "embeddingModel": "埋め込みモデル",
       "enabled": "有効"
     },
     "provider": "AIプロバイダー",
@@ -3724,6 +3740,23 @@
     "validation": {
       "invalidBaseURL": "ベースURLが無効か、許可されていません。",
       "presetAlreadyConnected": "このプリセットはすでにこのワークスペースに接続されています。"
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4193,7 +4226,7 @@
         "title": "通話の利用資格",
         "appSubscriptionMissing": "まずMetaアプリダッシュボードでこのアプリのWhatsApp Webhookを設定してから、再度お試しください。",
         "appSubscriptionFailed": "アプリの「calls」Webhookのサブスクリプションを確認できませんでした。しばらくしてから再度お試しください。",
-        "callsNotSubscribed": "このアプリは「calls」Webhookフィールドをサブスクライブしていないため、通話イベントがChatbotXに届きません（Metaエラー138018：技術的な前提条件が満たされていません。WABAにサブスクライブしているアプリのうち、少なくとも1つが通話Webhookフィールドを持つようにしてください）。",
+        "callsNotSubscribed": "このアプリは「calls」Webhookフィールドをサブスクライブしていないため、通話イベントがsalesmanChatbotに届きません（Metaエラー138018：技術的な前提条件が満たされていません。WABAにサブスクライブしているアプリのうち、少なくとも1つが通話Webhookフィールドを持つようにしてください）。",
         "fixButton": "修正",
         "fixSuccess": "アプリはWhatsApp通話Webhookに正常にサブスクライブされました。",
         "manualIntegrationNotice": "この番号は手動で接続されており、ここにはアプリの認証情報がありません。Metaアプリダッシュボードでアプリの「calls」Webhookフィールドをサブスクライブしてください。",
@@ -5687,7 +5720,109 @@
     "unknown": "不明"
   },
   "orders": {
-    "title": "注文"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "商品",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "アクションのソース",

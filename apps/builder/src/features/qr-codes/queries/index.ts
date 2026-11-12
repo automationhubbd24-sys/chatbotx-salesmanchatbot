@@ -1,5 +1,5 @@
-import { qrCodeService, qrCodeWorkspaceCacheTag } from "@chatbotx.io/business"
-import { withCache } from "@chatbotx.io/redis"
+import { qrCodeService, qrCodeWorkspaceCacheTag } from "@salesmanchatbot.io/business"
+import { withCache } from "@salesmanchatbot.io/redis"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListQrCodesRequest, ListQrCodesResponse } from "../schema/query"
 import type { QrCodeResource } from "../schema/resource"

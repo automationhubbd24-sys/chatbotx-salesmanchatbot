@@ -1,5 +1,5 @@
-import { integrationTypes } from "@chatbotx.io/database/partials"
-import { CHANNEL_CAPABILITIES, channelTypes } from "@chatbotx.io/utils/channel"
+import { integrationTypes } from "@salesmanchatbot.io/database/partials"
+import { CHANNEL_CAPABILITIES, channelTypes } from "@salesmanchatbot.io/utils/channel"
 import { describe, expect, it } from "vitest"
 import { CONNECTION_REGISTRY } from "../src/registry"
 
@@ -10,13 +10,13 @@ describe("CONNECTION_REGISTRY", () => {
     }
   })
 
-  it("every non-null adapter's provider is populated, and store is populated except chatbotx's documented no-satellite-table exception", () => {
+  it("every non-null adapter's provider is populated, and store is populated except salesmanchatbot's documented no-satellite-table exception", () => {
     for (const [type, adapter] of Object.entries(CONNECTION_REGISTRY)) {
       if (!adapter) {
         continue
       }
       expect(adapter.provider, `${type}.provider`).toBeDefined()
-      if (type === "chatbotx") {
+      if (type === "salesmanchatbot") {
         // Internal built-in channel: no `Integration<Chatbotx>` satellite
         // table exists — the `Inbox` row itself is the whole connection.
         expect(adapter.store, `${type}.store`).toBeUndefined()
@@ -26,13 +26,13 @@ describe("CONNECTION_REGISTRY", () => {
     }
   })
 
-  it("kind=channel adapters map onto a real ChannelType (directly, via instagramFacebook -> instagram, or chatbotx's documented exception)", () => {
+  it("kind=channel adapters map onto a real ChannelType (directly, via instagramFacebook -> instagram, or salesmanchatbot's documented exception)", () => {
     const channelSet = new Set<string>(channelTypes.options)
     for (const [type, adapter] of Object.entries(CONNECTION_REGISTRY)) {
-      if (adapter?.provider.kind !== "channel" || type === "chatbotx") {
-        // `chatbotx` is a channel-shaped internal integration (it has
+      if (adapter?.provider.kind !== "channel" || type === "salesmanchatbot") {
+        // `salesmanchatbot` is a channel-shaped internal integration (it has
         // `channels` handlers) with no formal `ChannelType` membership and
-        // no `Inbox.channel = "chatbotx"` value — it is never offered
+        // no `Inbox.channel = "salesmanchatbot"` value — it is never offered
         // through the normal channel-connect surface.
         continue
       }
@@ -64,14 +64,14 @@ describe("CONNECTION_REGISTRY", () => {
     //   - `api`/`smtp`/`webchat`: self_serve with no external account to
     //     validate AND no stable per-instance identity to derive
     //     `Connection.sourceId` from before their satellite row exists (I1).
-    //   - `chatbotx`: the internal built-in channel is auto-provisioned per
+    //   - `salesmanchatbot`: the internal built-in channel is auto-provisioned per
     //     workspace, never connected through a user-supplied credential.
     //   - `whatsapp`: the provider-owned signup flow supplies auth; this
     //     generic credential route must not synthesize an alternate flow.
     // A new credential-strategy provider added here without `fromCredentials`
     // silently becomes unreachable via `POST /v1/connections` — this pins
     // the exception list so that is a conscious choice, not a silent gap.
-    const knownGaps = ["api", "chatbotx", "smtp", "webchat", "whatsapp"]
+    const knownGaps = ["api", "salesmanchatbot", "smtp", "webchat", "whatsapp"]
     const credentialStrategies: Record<string, true> = {
       token: true,
       api_key: true,

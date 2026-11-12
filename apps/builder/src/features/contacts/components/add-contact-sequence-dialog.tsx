@@ -1,7 +1,7 @@
 "use client"
 
-import { SelectTagsInputField } from "@chatbotx.io/ui/components/form/select-tags-input-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { SelectTagsInputField } from "@salesmanchatbot.io/ui/components/form/select-tags-input-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -11,8 +11,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon } from "lucide-react"

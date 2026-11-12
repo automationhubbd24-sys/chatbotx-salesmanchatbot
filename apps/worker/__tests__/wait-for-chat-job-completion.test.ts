@@ -1,5 +1,5 @@
-import { findOrFail } from "@chatbotx.io/database/client"
-import { chatQueue } from "@chatbotx.io/worker-config"
+import { findOrFail } from "@salesmanchatbot.io/database/client"
+import { chatQueue } from "@salesmanchatbot.io/worker-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -10,16 +10,16 @@ const mocks = vi.hoisted(() => ({
   }),
 }))
 
-vi.mock("@chatbotx.io/ai", () => ({
+vi.mock("@salesmanchatbot.io/ai", () => ({
   isImageUrl: vi.fn(() => false),
 }))
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   findOrFail: vi.fn(),
 }))
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   conversationModel: {},
 }))
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   chatQueue: { add: vi.fn() },
   getQueueConnection: () => ({ duplicate: () => ({}) }),

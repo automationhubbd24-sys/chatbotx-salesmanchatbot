@@ -1,6 +1,6 @@
 "use client"
 
-import { FormOptionalLabelProvider } from "@chatbotx.io/ui/components/form/optional-label-context"
+import { FormOptionalLabelProvider } from "@salesmanchatbot.io/ui/components/form/optional-label-context"
 import { useTranslations } from "next-intl"
 import type { ReactNode } from "react"
 

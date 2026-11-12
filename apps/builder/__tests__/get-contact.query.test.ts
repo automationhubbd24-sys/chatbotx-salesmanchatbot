@@ -10,7 +10,7 @@ const { mockFindDetailOrFail, mockMaskContactEmailAndPhone } = vi.hoisted(
   }),
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { findDetailOrFail: mockFindDetailOrFail },
 }))
 

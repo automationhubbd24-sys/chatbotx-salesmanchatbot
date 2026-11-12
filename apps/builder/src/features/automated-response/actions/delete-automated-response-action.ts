@@ -1,7 +1,7 @@
 "use server"
 
-import { automatedResponseService } from "@chatbotx.io/business"
-import { automatedResponseTypes } from "@chatbotx.io/database/partials"
+import { automatedResponseService } from "@salesmanchatbot.io/business"
+import { automatedResponseTypes } from "@salesmanchatbot.io/database/partials"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

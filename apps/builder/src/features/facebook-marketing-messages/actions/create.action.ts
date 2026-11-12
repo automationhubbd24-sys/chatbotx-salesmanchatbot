@@ -1,12 +1,12 @@
 "use server"
 
-import { facebookMarketingMessagesService } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { UserModel, WorkspaceModel } from "@chatbotx.io/database/types"
+import { facebookMarketingMessagesService } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { UserModel, WorkspaceModel } from "@salesmanchatbot.io/database/types"
 import {
   createMessageCampaign,
   getMarketingMessagesAdAccounts,
-} from "@chatbotx.io/integration-facebook-ads"
+} from "@salesmanchatbot.io/integration-facebook-ads"
 import { getTranslations } from "next-intl/server"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -48,12 +48,12 @@ export async function createMarketingMessage({
   const account = accounts.find((row) => row.id === input.adAccountId)
   const t = await getTranslations()
   if (!account) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("facebookMarketingMessages.errors.notGranted"),
     )
   }
   if (!isCustomAudienceTosAccepted(account.tosAccepted)) {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       t("facebookMarketingMessages.errors.tosNotAccepted", {
         url: customAudienceTosUrl(account.accountId),
       }),

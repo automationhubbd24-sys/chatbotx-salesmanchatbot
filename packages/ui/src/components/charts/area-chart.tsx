@@ -1,11 +1,11 @@
 "use client"
 
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@chatbotx.io/ui/components/ui/chart"
+} from "@salesmanchatbot.io/ui/components/ui/chart"
 import { AreaChart as AC, Area, XAxis, YAxis } from "recharts"
 import { useChartCardProvider } from "./chart-card-context"
 import ChartHeader from "./chart-header"

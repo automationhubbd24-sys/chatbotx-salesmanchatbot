@@ -1,4 +1,4 @@
-import { formatBotFieldReference } from "@chatbotx.io/flow-config"
+import { formatBotFieldReference } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import type { BotFieldResource } from "@/features/bot-fields/schema/resource"
 import type { CustomFieldResource } from "../../schema/resource"

@@ -1,6 +1,6 @@
 "use client"
 
-import { getWhatsappCallPermissionReply } from "@chatbotx.io/sdk"
+import { getWhatsappCallPermissionReply } from "@salesmanchatbot.io/sdk"
 import { useQueryClient } from "@tanstack/react-query"
 import { useEffect, useRef } from "react"
 import { useShallow } from "zustand/react/shallow"

@@ -1,4 +1,4 @@
-import { runWithWebhookExecutionContext } from "@chatbotx.io/events/context"
+import { runWithWebhookExecutionContext } from "@salesmanchatbot.io/events/context"
 import {
   AIJobAction,
   type AIJobData,
@@ -12,7 +12,7 @@ import {
   HeavyJobAction,
   heavyQueue,
   queueNames,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { type Job, Worker } from "bullmq"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"

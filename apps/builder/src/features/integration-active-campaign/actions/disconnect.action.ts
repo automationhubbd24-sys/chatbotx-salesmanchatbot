@@ -1,6 +1,6 @@
 "use server"
 
-import { integrationActiveCampaignService } from "@chatbotx.io/business"
+import { integrationActiveCampaignService } from "@salesmanchatbot.io/business"
 import { createDisconnectAction } from "@/lib/integration-actions"
 
 export const disconnectActiveCampaignAction = createDisconnectAction(

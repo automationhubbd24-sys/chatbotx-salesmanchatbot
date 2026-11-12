@@ -9,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@chatbotx.io/ui/components/ui/alert-dialog"
+} from "@salesmanchatbot.io/ui/components/ui/alert-dialog"
 import { useTranslations } from "next-intl"
 import {
   createContext,

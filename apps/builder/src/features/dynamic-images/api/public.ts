@@ -1,6 +1,6 @@
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
-import type { DynamicImageModel } from "@chatbotx.io/database/types"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
+import type { DynamicImageModel } from "@salesmanchatbot.io/database/types"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { getBrokerOrigin } from "@/lib/oauth-broker"
 import {

@@ -4,11 +4,11 @@ import {
   db,
   eq,
   findOrFail,
-} from "@chatbotx.io/database/client"
-import { contactNoteModel } from "@chatbotx.io/database/schema"
-import type { ContactNoteModel } from "@chatbotx.io/database/types"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { contactNoteModel } from "@salesmanchatbot.io/database/schema"
+import type { ContactNoteModel } from "@salesmanchatbot.io/database/types"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { type ContactAccessScope, contactService } from "../contact/service"
 import { notFoundException } from "../errors"

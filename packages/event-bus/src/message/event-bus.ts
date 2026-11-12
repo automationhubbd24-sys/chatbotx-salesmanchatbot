@@ -4,8 +4,8 @@ import {
   type MessageEventType,
   messageEventSchemas,
   messageEventTypeSchema,
-} from "@chatbotx.io/flow-config"
-import { getRedisConnection } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/flow-config"
+import { getRedisConnection } from "@salesmanchatbot.io/worker-config"
 import { BaseEventBus } from "../event-bus"
 
 const MAX_MESSAGE_EVENTS = 100_000

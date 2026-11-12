@@ -1,4 +1,4 @@
-import type { AuditLogModel } from "@chatbotx.io/database/types"
+import type { AuditLogModel } from "@salesmanchatbot.io/database/types"
 import type { UserResource } from "@/features/users/schema/resource"
 
 export type AuditLogResource = AuditLogModel & {

@@ -1,3 +1,3 @@
-import type { ExternalCalendarListItem } from "@chatbotx.io/business"
+import type { ExternalCalendarListItem } from "@salesmanchatbot.io/business"
 
 export type ExternalCalendarResource = ExternalCalendarListItem

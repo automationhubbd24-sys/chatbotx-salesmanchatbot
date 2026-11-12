@@ -2,13 +2,13 @@
 
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
-// `@chatbotx.io/analytics`'s barrel re-exports its services, which import
-// repositories that open a real `pg.Pool` via `@chatbotx.io/database/client`
+// `@salesmanchatbot.io/analytics`'s barrel re-exports its services, which import
+// repositories that open a real `pg.Pool` via `@salesmanchatbot.io/database/client`
 // at module load. The service mock below replaces the service objects, but
-// importing the real `@chatbotx.io/analytics` module (transitively, via any
+// importing the real `@salesmanchatbot.io/analytics` module (transitively, via any
 // path not covered by the mock) still runs that side effect — stub the
 // client the same way `public-spec-operations.test.ts` does.
-vi.mock("@chatbotx.io/database/client", () => {
+vi.mock("@salesmanchatbot.io/database/client", () => {
   const proxy: unknown = new Proxy(() => proxy, { get: () => proxy })
   return { db: proxy }
 })
@@ -128,7 +128,7 @@ const commentAutomationAnalyticsService = {
   listErrors: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   commentAutomationAnalyticsService,
   contactAnalyticsService,
   macAnalyticsService,
@@ -144,7 +144,7 @@ vi.mock("@chatbotx.io/analytics", () => ({
 
 const flowServiceMock = { findById: vi.fn() }
 const smartDelayServiceMock = { countByFlowStep: vi.fn() }
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowService: flowServiceMock,
   smartDelayService: smartDelayServiceMock,
 }))
@@ -152,7 +152,7 @@ vi.mock("@chatbotx.io/business", () => ({
 const withCache = vi.fn((_key: string, loader: () => unknown) => loader())
 const invalidateCacheByTags = vi.fn()
 
-vi.mock("@chatbotx.io/redis", () => ({ withCache, invalidateCacheByTags }))
+vi.mock("@salesmanchatbot.io/redis", () => ({ withCache, invalidateCacheByTags }))
 
 await import("@/features/analytics/api/public")
 

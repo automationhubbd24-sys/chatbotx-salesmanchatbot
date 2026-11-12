@@ -3,10 +3,10 @@
 import {
   type FacebookLeadFieldMapping,
   FB_LEAD_STANDARD_FIELD_TARGET,
-} from "@chatbotx.io/database/partials"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { ArrowRightIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { CreateCustomFieldDialog } from "@/features/custom-fields/create-custom-field"

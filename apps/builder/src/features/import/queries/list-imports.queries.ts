@@ -1,4 +1,4 @@
-import { importService } from "@chatbotx.io/business"
+import { importService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListImportsRequest, ListImportsResponse } from "../schema/query"
 

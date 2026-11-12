@@ -1,9 +1,9 @@
 import {
   applyContactProfile,
   buildContactProfileUpdate,
-} from "@chatbotx.io/business"
-import type { UpdateMessengerContactDataStepSchema } from "@chatbotx.io/flow-config"
-import type { IncomingContact } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/business"
+import type { UpdateMessengerContactDataStepSchema } from "@salesmanchatbot.io/flow-config"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow-utils"
 import { resolveMessengerUserContext } from "./messenger-context"

@@ -1,4 +1,4 @@
-import { aiMcpServerService } from "@chatbotx.io/business"
+import { aiMcpServerService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type {
   ListAIMcpServersRequest,

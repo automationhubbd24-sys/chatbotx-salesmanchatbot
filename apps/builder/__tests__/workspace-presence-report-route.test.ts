@@ -3,8 +3,8 @@
 import {
   REALTIME_TOKEN_PURPOSE,
   signRealtimeToken,
-} from "@chatbotx.io/partysocket-config/auth"
-import { hashPresenceUserIds } from "@chatbotx.io/partysocket-config/presence"
+} from "@salesmanchatbot.io/partysocket-config/auth"
+import { hashPresenceUserIds } from "@salesmanchatbot.io/partysocket-config/presence"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const SECRET = "a".repeat(32)
@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspacePresenceService: { heartbeatMany: mocks.heartbeatMany },
 }))
 
@@ -244,7 +244,7 @@ describe("POST /api/workspace-presence/report", () => {
 
   test("truncates an over-cap userIds batch instead of rejecting it, and matches the token hashed over the same truncated set (LOW-7)", async () => {
     const { MAX_PRESENCE_USER_IDS_PER_REPORT } = await import(
-      "@chatbotx.io/partysocket-config/presence"
+      "@salesmanchatbot.io/partysocket-config/presence"
     )
     const overCapUserIds = Array.from(
       { length: MAX_PRESENCE_USER_IDS_PER_REPORT + 5 },

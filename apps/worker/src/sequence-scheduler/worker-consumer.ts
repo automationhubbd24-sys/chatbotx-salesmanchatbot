@@ -1,14 +1,14 @@
-import { auditService } from "@chatbotx.io/business/audit"
-import { SEQUENCE_SCHEDULE_PAYLOAD_TYPE } from "@chatbotx.io/flow-config"
-import { isLockAcquisitionError, sequenceConnections } from "@chatbotx.io/redis"
-import { SchedulerClient } from "@chatbotx.io/scheduler"
-import { advanceEnrollment } from "@chatbotx.io/sequence-scheduler"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { SEQUENCE_SCHEDULE_PAYLOAD_TYPE } from "@salesmanchatbot.io/flow-config"
+import { isLockAcquisitionError, sequenceConnections } from "@salesmanchatbot.io/redis"
+import { SchedulerClient } from "@salesmanchatbot.io/scheduler"
+import { advanceEnrollment } from "@salesmanchatbot.io/sequence-scheduler"
 import {
   IntegrationJobAction,
   integrationQueue,
   queueNames,
   type SequenceSchedulerJobData,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { Worker } from "bullmq"
 import { ensureBootstrapped } from "../lib/bootstrap"
 import { isBlockedWorkspace } from "../lib/is-blocked-workspace"

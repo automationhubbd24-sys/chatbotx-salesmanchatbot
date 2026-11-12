@@ -1,5 +1,5 @@
-import type { FileWithPreview } from "@chatbotx.io/filesystem"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { FileWithPreview } from "@salesmanchatbot.io/filesystem"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { XCircleIcon } from "lucide-react"
 import Image from "next/image"
 import { useImperativeHandle } from "react"

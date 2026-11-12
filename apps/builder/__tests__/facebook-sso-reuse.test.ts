@@ -16,11 +16,11 @@ const {
   mockToAppAccessToken: vi.fn(() => "client-id|client-secret"),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   authAccountRepository: { findByUserAndProvider: mockFindByUserAndProvider },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   debugToken: mockDebugToken,
   getFacebookUser: mockGetFacebookUser,
   MESSENGER_REUSE_REQUIRED_SCOPES: REQUIRED_SCOPES,

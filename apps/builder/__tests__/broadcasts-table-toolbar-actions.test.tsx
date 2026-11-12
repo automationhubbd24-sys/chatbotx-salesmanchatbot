@@ -38,7 +38,7 @@ vi.mock("@/features/broadcasts/components/delete-broadcast-dialog", () => ({
     ) : null,
 }))
 
-vi.mock("@chatbotx.io/ui/components/ui/button", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/ui/button", () => ({
   Button: ({
     children,
     ...rest

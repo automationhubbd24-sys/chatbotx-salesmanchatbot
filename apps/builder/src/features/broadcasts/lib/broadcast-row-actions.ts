@@ -1,4 +1,4 @@
-import type { BroadcastStatus } from "@chatbotx.io/database/partials"
+import type { BroadcastStatus } from "@salesmanchatbot.io/database/partials"
 import {
   CalendarClockIcon,
   CircleStopIcon,

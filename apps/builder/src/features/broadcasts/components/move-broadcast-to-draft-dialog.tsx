@@ -1,6 +1,6 @@
 "use client"
 
-import type { BroadcastModel } from "@chatbotx.io/database/types"
+import type { BroadcastModel } from "@salesmanchatbot.io/database/types"
 import { useAction } from "next-safe-action/hooks"
 import { moveBroadcastToDraftAction } from "../actions/move-broadcast-to-draft.action"
 import {

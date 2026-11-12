@@ -2,7 +2,7 @@ import {
   type TriggerN8nStepSchema,
   triggerN8nStepDefaultFn,
   triggerN8nStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import TriggerN8nStepEditor from "./editor"
 import TriggerN8nStepViewer from "./viewer"

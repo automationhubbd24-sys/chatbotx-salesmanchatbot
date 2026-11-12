@@ -1,4 +1,4 @@
-import { appointmentService } from "@chatbotx.io/business"
+import { appointmentService } from "@salesmanchatbot.io/business"
 import { requireContactPermissionScopeForMember } from "@/features/contacts/permissions"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

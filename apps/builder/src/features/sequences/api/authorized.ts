@@ -1,4 +1,4 @@
-import { sequenceService } from "@chatbotx.io/business/sequence"
+import { sequenceService } from "@salesmanchatbot.io/business/sequence"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import { listSequencesRequest, listSequencesResponse } from "../schema/action"

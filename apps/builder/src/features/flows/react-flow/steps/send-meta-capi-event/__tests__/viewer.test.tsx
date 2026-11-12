@@ -2,7 +2,7 @@
 import {
   type SendMetaCapiEventSchema,
   sendMetaCapiEventDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"

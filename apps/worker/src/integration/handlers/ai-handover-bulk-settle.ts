@@ -3,14 +3,14 @@ import {
   type BulkRunInbox,
   recordDeliveredDirectMessage,
   threadControlService,
-} from "@chatbotx.io/business"
-import { syncThreadOwner } from "@chatbotx.io/channel-registry/thread-control"
-import type { BulkAiContactInboxRow } from "@chatbotx.io/database/repositories"
-import type { AiHandoverBulkRunModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { syncThreadOwner } from "@salesmanchatbot.io/channel-registry/thread-control"
+import type { BulkAiContactInboxRow } from "@salesmanchatbot.io/database/repositories"
+import type { AiHandoverBulkRunModel } from "@salesmanchatbot.io/database/types"
 import type {
   BulkThreadControlItemResult,
   BulkThreadControlResult,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import pLimit from "p-limit"
 import { logger } from "../../lib/logger"
 import { withUnrecordedAsUnknown } from "./ai-handover-bulk-batch-accounting"

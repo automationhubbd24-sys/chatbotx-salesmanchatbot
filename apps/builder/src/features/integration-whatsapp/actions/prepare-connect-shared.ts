@@ -1,8 +1,8 @@
-import { integrationWhatsappService } from "@chatbotx.io/business"
+import { integrationWhatsappService } from "@salesmanchatbot.io/business"
 import {
   type WhatsappPhoneNumber,
   listPhoneNumbers as whatsappListPhoneNumbers,
-} from "@chatbotx.io/integration-whatsapp/api/phone-number"
+} from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
 import {
   duplicatedOutcome,
   notSelectableOutcome,

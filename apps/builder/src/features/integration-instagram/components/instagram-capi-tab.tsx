@@ -1,16 +1,16 @@
 "use client"
 
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@chatbotx.io/ui/components/ui/card"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/card"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { CapiConnectedCard } from "@/features/meta-conversions/components/capi-connected-card"

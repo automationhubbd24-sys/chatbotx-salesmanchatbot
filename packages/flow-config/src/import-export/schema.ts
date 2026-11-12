@@ -1,4 +1,4 @@
-import { customFieldTypes } from "@chatbotx.io/utils/custom-field"
+import { customFieldTypes } from "@salesmanchatbot.io/utils/custom-field"
 import { z } from "zod"
 import {
   type FlowAuthoringError,

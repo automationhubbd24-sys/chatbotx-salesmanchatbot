@@ -1,4 +1,4 @@
-import { sequenceDispatchRepository } from "@chatbotx.io/database/repositories"
+import { sequenceDispatchRepository } from "@salesmanchatbot.io/database/repositories"
 import { logger } from "../../lib/logger"
 import type { DispatchWithRelations } from "./types"
 

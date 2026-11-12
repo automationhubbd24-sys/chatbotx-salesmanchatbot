@@ -3,10 +3,10 @@ import {
   db,
   eq,
   inArray,
-} from "@chatbotx.io/database/client"
-import type { WhatsappTemplateStatus } from "@chatbotx.io/database/partials"
-import { whatsappMessageTemplateModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import type { WhatsappTemplateStatus } from "@salesmanchatbot.io/database/partials"
+import { whatsappMessageTemplateModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 /** WhatsApp's message-template shape, as returned by `listMessageTemplates`. */

@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   saveAuthByForeignKey: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business/connection", () => ({
+vi.mock("@salesmanchatbot.io/business/connection", () => ({
   authExpiresAtOf: vi.fn(() => null),
   connectionStateService: {
     markUnhealthy: vi.fn(),
@@ -24,7 +24,7 @@ vi.mock("@chatbotx.io/business/connection", () => ({
   isActiveConnectionStatus: vi.fn(() => true),
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   connectionInactiveException: vi.fn(() => new Error("inactive")),
   connectionNotConfiguredException: vi.fn(() => new Error("not configured")),
   connectionNotRefreshableException: vi.fn(() => new Error("not refreshable")),
@@ -32,15 +32,15 @@ vi.mock("@chatbotx.io/business/errors", () => ({
   toPublicErrorMessage: vi.fn(() => "error"),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   connectionRepository: { findById: mocks.findById },
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: { runExclusive: mocks.runExclusive },
 }))
 

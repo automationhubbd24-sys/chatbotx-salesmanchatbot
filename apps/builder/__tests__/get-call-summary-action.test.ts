@@ -25,7 +25,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClientAllowExpired: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   whatsappCallSummaryService: { getSummaryForCall: getSummaryForCallMock },
 }))
 

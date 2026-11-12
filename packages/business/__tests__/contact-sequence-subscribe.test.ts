@@ -19,7 +19,7 @@ const mocks = vi.hoisted(() => ({
   emitSequenceSubscribed: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       sequenceModel: {
@@ -43,18 +43,18 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: (col: unknown, vals: unknown) => ({ inArray: [col, vals] }),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   contactsOnSequenceModel: { id: "contactsOnSequenceModel.id" },
   sequenceModel: { id: "sequenceModel.id", name: "sequenceModel.name" },
 }))
 
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitSequenceUnsubscribed: vi.fn(),
   emitSequenceSubscribed: (...args: unknown[]) =>
     mocks.emitSequenceSubscribed(...args),
 }))
 
-vi.mock("@chatbotx.io/sequence-scheduler", () => ({
+vi.mock("@salesmanchatbot.io/sequence-scheduler", () => ({
   calculateNextRunAtFromStep: vi.fn(() => new Date("2026-01-01T00:00:00Z")),
   cancelPendingDispatches: vi.fn(),
   enrollContactInSequence: (...args: unknown[]) =>

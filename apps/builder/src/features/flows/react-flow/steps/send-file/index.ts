@@ -2,7 +2,7 @@ import {
   type SendFileStepSchema,
   sendFileStepDefaultFn,
   sendFileStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import SendFileStepEditor from "./editor"
 import SendFileStepViewer from "./viewer"

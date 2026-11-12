@@ -8,20 +8,20 @@ import {
   tagService,
   workspaceService,
   workspaceUsageService,
-} from "@chatbotx.io/business"
-import { validateCustomFieldValue } from "@chatbotx.io/business/javascript-execution"
+} from "@salesmanchatbot.io/business"
+import { validateCustomFieldValue } from "@salesmanchatbot.io/business/javascript-execution"
 import type {
   ContactImportFieldMapping,
   ContactImportMeta,
   CustomFieldType,
-} from "@chatbotx.io/database/partials"
-import { contactImportMetaSchema } from "@chatbotx.io/database/partials"
-import type { inboxModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import { contactImportMetaSchema } from "@salesmanchatbot.io/database/partials"
+import type { inboxModel } from "@salesmanchatbot.io/database/schema"
 import {
   FieldReferenceKind,
   parseFieldReference,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import { logger } from "../../../../../lib/logger"
 import type {
   BatchResult,

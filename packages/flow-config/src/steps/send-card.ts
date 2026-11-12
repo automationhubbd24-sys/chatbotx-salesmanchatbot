@@ -1,4 +1,4 @@
-import { createId, zodUrlWithVariables } from "@chatbotx.io/utils"
+import { createId, zodUrlWithVariables } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { countMessageCharacters } from "../channel-rules/characters"
 import { baseStepSchema } from "./base"

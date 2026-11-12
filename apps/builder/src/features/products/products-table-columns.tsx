@@ -1,16 +1,16 @@
 "use client"
 
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import { EllipsisVerticalIcon, PencilIcon, Trash } from "lucide-react"
 import Link from "next/link"

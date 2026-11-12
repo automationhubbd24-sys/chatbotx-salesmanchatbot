@@ -1,6 +1,6 @@
-import { type ChannelType, genderTypes } from "@chatbotx.io/database/partials"
-import type { ContactModel } from "@chatbotx.io/database/types"
-import type { IncomingContact } from "@chatbotx.io/sdk"
+import { type ChannelType, genderTypes } from "@salesmanchatbot.io/database/partials"
+import type { ContactModel } from "@salesmanchatbot.io/database/types"
+import type { IncomingContact } from "@salesmanchatbot.io/sdk"
 
 /**
  * Where a contact's profile name can come from, per channel. Exhaustive over

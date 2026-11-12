@@ -2,7 +2,7 @@ import {
   LowJobAction,
   type LowJobCoexistAttachmentDownload,
   lowQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 
 type AttachmentDownloadChannel =
   LowJobCoexistAttachmentDownload["data"]["channel"]

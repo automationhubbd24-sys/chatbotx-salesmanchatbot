@@ -1,8 +1,8 @@
-import type { MinigameType } from "@chatbotx.io/database/partials"
+import type { MinigameType } from "@salesmanchatbot.io/database/partials"
 import type {
   MinigameContactModel,
   MinigameModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type { ComponentType } from "react"
 import { DrawLotsPlayScreen } from "./draw-lots-play-screen"
 import { GashaponPlayScreen } from "./gashapon-play-screen"

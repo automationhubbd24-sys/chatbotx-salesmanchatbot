@@ -1,8 +1,8 @@
 import {
   aiFunctionModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import { zodBigintAsString } from "@chatbotx.io/utils/zod"
+} from "@salesmanchatbot.io/database/schema"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils/zod"
 
 export const aiFunctionResource = createSelectSchema(aiFunctionModel, {
   id: zodBigintAsString(),

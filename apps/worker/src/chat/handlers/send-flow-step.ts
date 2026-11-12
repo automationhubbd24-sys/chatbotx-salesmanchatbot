@@ -3,7 +3,7 @@ import {
   botMessageResults,
   botMessageRouteTypes,
   trackingResponseTypes,
-} from "@chatbotx.io/analytics"
+} from "@salesmanchatbot.io/analytics"
 import {
   appointmentCalendarService,
   broadcastToGuestParty,
@@ -12,25 +12,25 @@ import {
   publishToWorkspaceParty,
   resolveMediaUrl,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
-import { wrapOpenLinkUrl } from "@chatbotx.io/business/open-link"
-import { getPublicFileUrl } from "@chatbotx.io/business/utils"
+} from "@salesmanchatbot.io/business"
+import { wrapOpenLinkUrl } from "@salesmanchatbot.io/business/open-link"
+import { getPublicFileUrl } from "@salesmanchatbot.io/business/utils"
 import {
   channelTypes,
   contentTypes,
   messageTypes,
   senderTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   type MessageWithAttachments,
-} from "@chatbotx.io/database/repositories"
-import type { messageModel } from "@chatbotx.io/database/schema"
-import type { AttachmentModel, MessageModel } from "@chatbotx.io/database/types"
-import { signAppointmentWebviewToken } from "@chatbotx.io/encryption"
-import { emit } from "@chatbotx.io/event-bus"
-import { uploadFileFromUrl } from "@chatbotx.io/filesystem"
-import type { MetadataPayload } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/repositories"
+import type { messageModel } from "@salesmanchatbot.io/database/schema"
+import type { AttachmentModel, MessageModel } from "@salesmanchatbot.io/database/types"
+import { signAppointmentWebviewToken } from "@salesmanchatbot.io/encryption"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { uploadFileFromUrl } from "@salesmanchatbot.io/filesystem"
+import type { MetadataPayload } from "@salesmanchatbot.io/flow-config"
 import {
   appendCodeToMagicLink,
   type ButtonStepProps,
@@ -44,23 +44,23 @@ import {
   type SendCardStepSchema,
   stepSupport,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { logDiagnostic } from "@chatbotx.io/logger"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/flow-config"
+import { logDiagnostic } from "@salesmanchatbot.io/logger"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
 import {
   IntegrationException,
   type MessageButtonTemplate,
   type MessageCardTemplate,
   parseSdkError,
   type SendFlowStepData,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
-import { resolveStackFrames } from "@chatbotx.io/utils/error-log"
-import { resolveContactVariablesDeep } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
+import { resolveStackFrames } from "@salesmanchatbot.io/utils/error-log"
+import { resolveContactVariablesDeep } from "@salesmanchatbot.io/variables"
 import type {
   ChatJobSendChatMessage,
   ChatJobSendFlowStep,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import {
   settleCommentAutomationDelivered,

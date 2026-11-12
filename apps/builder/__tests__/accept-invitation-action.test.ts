@@ -15,7 +15,7 @@ const workspaceMemberFindFirst = vi.fn()
 const hasReachedLimit = vi.fn()
 const workspaceServiceFind = vi.fn()
 const workspaceMemberServiceCreate = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   invitationService: {
     findByCodeOrFail: (...args: unknown[]) => findByCodeOrFail(...args),
   },
@@ -38,8 +38,8 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: class ChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: class salesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code = "systemError", httpStatusCode = 400) {
@@ -57,13 +57,13 @@ vi.mock("next-intl/server", () => ({
 }))
 
 const invalidateCacheByTags = vi.fn()
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: (...args: unknown[]) => invalidateCacheByTags(...args),
 }))
 
 const createId = vi.fn(() => "member-id")
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId,

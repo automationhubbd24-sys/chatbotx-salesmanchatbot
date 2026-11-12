@@ -1,4 +1,4 @@
-import type { CoexistChannel } from "@chatbotx.io/utils/channel"
+import type { CoexistChannel } from "@salesmanchatbot.io/utils/channel"
 import {
   and,
   type DatabaseClient,
@@ -22,10 +22,10 @@ import {
   integrationUpdates,
 } from "./integration-access"
 
-// Re-exported from `@chatbotx.io/utils/channel` (the `coexistChannel` pgEnum
+// Re-exported from `@salesmanchatbot.io/utils/channel` (the `coexistChannel` pgEnum
 // itself is now derived from the same `COEXIST_CHANNELS` constant, so this
 // stays structurally identical to `CoexistSyncRunModel["channel"]`).
-export type { CoexistChannel } from "@chatbotx.io/utils/channel"
+export type { CoexistChannel } from "@salesmanchatbot.io/utils/channel"
 export type PullCoexistChannel = Extract<
   CoexistChannel,
   "messenger" | "instagram"

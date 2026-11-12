@@ -1,19 +1,19 @@
-import { workspaceService } from "@chatbotx.io/business"
-import { db } from "@chatbotx.io/database/client"
+import { workspaceService } from "@salesmanchatbot.io/business"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   type SystemFieldType,
   systemFieldTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   ContactInboxModel,
   ContactModel,
   ConversationModel,
   WorkspaceModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   FieldReferenceKind,
   parseFieldReference,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { loadBotFields } from "./bot-field-variable-resolver"
 import { isCouponVariable, resolveCouponVariable } from "./coupon-variable"
 import { logger } from "./logger"
@@ -63,7 +63,7 @@ const customFieldResolver: VariableResolver = {
 }
 
 // Bot fields (Account Fields) are workspace-level, referenced by the
-// `bot_field:<id>` token (see `@chatbotx.io/flow-config`'s
+// `bot_field:<id>` token (see `@salesmanchatbot.io/flow-config`'s
 // `parseFieldReference`/`formatBotFieldReference`) rather than by name, so
 // they never collide with a contact custom field of the same name. `matches`
 // requires the id to actually be present in `botFieldsMap` — mirroring

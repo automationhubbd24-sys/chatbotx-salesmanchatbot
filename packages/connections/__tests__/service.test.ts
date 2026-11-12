@@ -1,5 +1,5 @@
-import { channelLimitReachedException } from "@chatbotx.io/business/errors"
-import { ConnectionProviderRejectedError, SdkException } from "@chatbotx.io/sdk"
+import { channelLimitReachedException } from "@salesmanchatbot.io/business/errors"
+import { ConnectionProviderRejectedError, SdkException } from "@salesmanchatbot.io/sdk"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 const SESSION_STATE_PATTERN = /^[^.]+\.nonce-abc$/
@@ -78,7 +78,7 @@ const mocks = vi.hoisted(() => ({
   loggerError: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   connectionRepository: {
     findByIdForWorkspace: mocks.findByIdForWorkspace,
     findById: mocks.findById,
@@ -92,26 +92,26 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: { transaction: mocks.transaction },
   isUniqueViolationError: mocks.isUniqueViolationError,
 }))
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   encryptUtils: {
     encryptObject: mocks.encryptObject,
     decryptObject: mocks.decryptObject,
   },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceMemberService: {
     findOwnerUserIdByWorkspaceId: mocks.findOwnerUserIdByWorkspaceId,
   },
   inboxService: { create: mocks.inboxCreate },
 }))
 
-vi.mock("@chatbotx.io/business/connection", () => ({
+vi.mock("@salesmanchatbot.io/business/connection", () => ({
   authExpiresAtOf: (auth: {
     authType: string
     tokens?: { expiresAt?: string }
@@ -130,7 +130,7 @@ vi.mock("@chatbotx.io/business/connection", () => ({
     status === "connected" || status === "degraded",
 }))
 
-vi.mock("@chatbotx.io/business/connect-session", () => ({
+vi.mock("@salesmanchatbot.io/business/connect-session", () => ({
   connectSessionService: {
     create: mocks.createSession,
     findByNonce: mocks.findByNonce,
@@ -148,8 +148,8 @@ vi.mock("@chatbotx.io/business/connect-session", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => {
-  class TestChatbotXException extends Error {
+vi.mock("@salesmanchatbot.io/business/errors", () => {
+  class TestsalesmanChatbotException extends Error {
     code: string
     httpStatusCode: number
     constructor(message: string, code: string, httpStatusCode = 400) {
@@ -159,85 +159,85 @@ vi.mock("@chatbotx.io/business/errors", () => {
     }
   }
   return {
-    ChatbotXException: TestChatbotXException,
+    salesmanChatbotException: TestsalesmanChatbotException,
     channelLimitReachedException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "Channel limit reached for this plan",
         "channelLimitReached",
         409,
       ),
     connectionInactiveException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "This connection is not active.",
         "connectionInactive",
         409,
       ),
     connectionNotConfiguredException: (provider: string) =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         `Connection provider "${provider}" is not configured.`,
         "connectionNotConfigured",
         400,
       ),
     connectionNotRefreshableException: (provider: string) =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         `Connection provider "${provider}" does not support refresh.`,
         "connectionNotRefreshable",
         400,
       ),
     connectionAlreadyConnectedException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "This provider is already connected in this workspace.",
         "connectionAlreadyConnected",
         409,
       ),
     connectionWrongStrategyException: (provider: string) =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         `Connection provider "${provider}" does not accept direct credentials.`,
         "connectionWrongStrategy",
         400,
       ),
     connectionCredentialsRejectedException: (message: string) =>
-      new TestChatbotXException(message, "connectionCredentialsRejected", 400),
+      new TestsalesmanChatbotException(message, "connectionCredentialsRejected", 400),
     connectionProviderUnavailableException: (httpStatusCode: 502 | 503) =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "The provider is temporarily unavailable. Please try again.",
         "connectionProviderUnavailable",
         httpStatusCode,
       ),
     connectionNotOAuthException: (provider: string) =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         `Connection provider "${provider}" does not support an OAuth connect flow.`,
         "connectionNotOAuth",
         400,
       ),
     connectionStateMismatchException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "This connect session could not be verified.",
         "connectionStateMismatch",
         400,
       ),
     connectionNoCandidatesException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "No connectable accounts were found for this authorization.",
         "connectionNoCandidates",
         400,
       ),
     connectionIdentityMismatchException: () =>
-      new TestChatbotXException(
+      new TestsalesmanChatbotException(
         "The reauthorized account does not match the connection being reconnected.",
         "connectionIdentityMismatch",
         400,
       ),
     connectSessionExpiredException: (message: string) =>
-      new TestChatbotXException(message, "connectSessionExpired", 400),
+      new TestsalesmanChatbotException(message, "connectSessionExpired", 400),
     validationException: (field: string, message: string) => {
-      const error = new TestChatbotXException(message, "validation", 422)
+      const error = new TestsalesmanChatbotException(message, "validation", 422)
       return Object.assign(error, { field })
     },
     toPublicErrorMessage: (error: unknown, fallback: string) =>
       error instanceof Error ? error.message : fallback,
     notFoundException: (message: string) =>
-      new TestChatbotXException(message, "notFound", 404),
+      new TestsalesmanChatbotException(message, "notFound", 404),
   }
 })
 
@@ -284,7 +284,7 @@ vi.mock("../src/registry", () => ({
         if (provider === "unregistered") {
           return null
         }
-        return provider === "chatbotx"
+        return provider === "salesmanchatbot"
           ? { ...mockAdapter, store: undefined }
           : mockAdapter
       },
@@ -750,7 +750,7 @@ describe("ConnectionService.verify", () => {
 
   it("returns a client error when a built-in connection has no auth store", async () => {
     mocks.findByIdForWorkspace.mockResolvedValue(
-      baseConnection({ provider: "chatbotx" }),
+      baseConnection({ provider: "salesmanchatbot" }),
     )
 
     await expect(

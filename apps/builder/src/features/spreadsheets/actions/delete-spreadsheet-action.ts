@@ -1,6 +1,6 @@
 "use server"
 
-import { spreadsheetService } from "@chatbotx.io/business"
+import { spreadsheetService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

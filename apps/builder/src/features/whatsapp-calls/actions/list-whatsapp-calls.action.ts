@@ -1,6 +1,6 @@
 "use server"
 
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { callHistoryActionClient } from "@/lib/safe-action"
 import { listWhatsappCalls } from "../queries/list-whatsapp-calls.query"

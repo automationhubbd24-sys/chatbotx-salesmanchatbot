@@ -1,14 +1,14 @@
-import { workspacePresenceService } from "@chatbotx.io/business"
+import { workspacePresenceService } from "@salesmanchatbot.io/business"
 import {
   extractBearerToken,
   REALTIME_TOKEN_PURPOSE,
   verifyRealtimeToken,
-} from "@chatbotx.io/partysocket-config/auth"
+} from "@salesmanchatbot.io/partysocket-config/auth"
 import {
   hashPresenceUserIds,
   truncatePresenceUserIds,
-} from "@chatbotx.io/partysocket-config/presence"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/partysocket-config/presence"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { type NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { env } from "@/env"

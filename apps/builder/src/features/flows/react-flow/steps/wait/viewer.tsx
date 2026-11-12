@@ -5,7 +5,7 @@ import {
   waitStepDateTypes,
   waitStepDelayTypes,
   waitStepOffsetOperators,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 import { useCustomFields } from "@/features/custom-fields/provider/custom-field-hook"
 import { useWorkspaceId } from "@/hooks/routing"

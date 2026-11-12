@@ -3,10 +3,10 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const uploadAttachment = vi.fn()
 const findByPageId = vi.fn()
 
-vi.mock("@chatbotx.io/integration-messenger/apis/attachment", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/attachment", () => ({
   uploadAttachment,
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: { findByPageId },
 }))
 

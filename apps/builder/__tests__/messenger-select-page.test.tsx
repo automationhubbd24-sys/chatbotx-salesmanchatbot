@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import type { ConnectableFacebookPage } from "@chatbotx.io/integration-messenger/schema"
+import type { ConnectableFacebookPage } from "@salesmanchatbot.io/integration-messenger/schema"
 import { isValidElement } from "react"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
@@ -33,13 +33,13 @@ vi.mock("next-intl/server", () => ({
   getTranslations: async () => (key: string) => key,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findConnectedPageIds: mockFindConnectedMessengerPageIds,
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   getUserPages: mockGetUserPages,
   mapToChannelError: mockMapToChannelError,
 }))

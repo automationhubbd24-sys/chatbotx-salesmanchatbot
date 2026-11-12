@@ -1,7 +1,7 @@
 "use server"
 
-import { facebookLeadAdsAutomationService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { facebookLeadAdsAutomationService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { workspaceActionClient } from "@/lib/safe-action"
 import {
   type UpdateFacebookLeadAdAutomationRequest,

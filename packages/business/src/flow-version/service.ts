@@ -4,11 +4,11 @@ import {
   db,
   desc,
   eq,
-} from "@chatbotx.io/database/client"
-import { flowModel, flowVersionModel } from "@chatbotx.io/database/schema"
-import type { FlowVersionModel } from "@chatbotx.io/database/types"
-import { withCache } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/client"
+import { flowModel, flowVersionModel } from "@salesmanchatbot.io/database/schema"
+import type { FlowVersionModel } from "@salesmanchatbot.io/database/types"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { conversationService } from "../conversation/service"
 import { notFoundException } from "../errors"

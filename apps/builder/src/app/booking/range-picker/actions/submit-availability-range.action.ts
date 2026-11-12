@@ -1,14 +1,14 @@
 "use server"
 
-import { verifyAppointmentWebviewToken } from "@chatbotx.io/encryption"
+import { verifyAppointmentWebviewToken } from "@salesmanchatbot.io/encryption"
 import {
   APPOINTMENT_AVAILABILITY_RANGE_SELECTION_PAYLOAD_TYPE,
   APPOINTMENT_AVAILABILITY_RANGE_SKIPPED_PAYLOAD_TYPE,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import {
   type SubmitAvailabilityRangeInput,

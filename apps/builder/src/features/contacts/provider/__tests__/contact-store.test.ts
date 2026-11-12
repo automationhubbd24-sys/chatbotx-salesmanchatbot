@@ -1,7 +1,7 @@
 import {
   broadcastSubactions,
   channelTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { ORPCError } from "@orpc/client"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import { createContactStore } from "../contact-store"

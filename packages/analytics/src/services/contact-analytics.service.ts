@@ -1,7 +1,7 @@
-import { contactRepository } from "@chatbotx.io/database/repositories"
-import type { MessageFailedPayload } from "@chatbotx.io/flow-config"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import { parsedErrorSchema } from "@chatbotx.io/sdk"
+import { contactRepository } from "@salesmanchatbot.io/database/repositories"
+import type { MessageFailedPayload } from "@salesmanchatbot.io/flow-config"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import { parsedErrorSchema } from "@salesmanchatbot.io/sdk"
 import { toDate } from "../lib/date"
 import {
   contactStatsRepository,

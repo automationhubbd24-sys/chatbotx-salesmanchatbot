@@ -1,9 +1,9 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import type { InboxModel } from "@chatbotx.io/database/types"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card } from "@chatbotx.io/ui/components/ui/card"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card } from "@salesmanchatbot.io/ui/components/ui/card"
 import { useTranslations } from "next-intl"
 import { InboxIcon } from "@/features/inboxes/components/inbox-icon"
 

@@ -1,7 +1,7 @@
 import {
   CREATABLE_CHANNELS,
   channelTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 
 /**

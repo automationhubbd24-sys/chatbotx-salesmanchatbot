@@ -1,10 +1,10 @@
-import { canCallConversation, canReadCall } from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { canCallConversation, canReadCall } from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { getTranslations } from "next-intl/server"
 import type { PermissionsInput } from "@/lib/auth/permission-routes"
 
 /**
- * The ChatbotXException.code every call-access denial carries, regardless of
+ * The salesmanChatbotException.code every call-access denial carries, regardless of
  * which action threw it - a caller must not be able to distinguish "no such
  * call/conversation" from "not your call" by probing the code.
  */
@@ -12,7 +12,7 @@ export const CALL_ACCESS_DENIED_CODE = "callAccessDenied"
 const CALL_ACCESS_DENIED_HTTP_STATUS = 403
 
 /**
- * The ChatbotXException.code every artifact-scope read denial carries
+ * The salesmanChatbotException.code every artifact-scope read denial carries
  * (recording URL, transcript, summary, generate-summary) - kept distinct from
  * CALL_ACCESS_DENIED_CODE since this guards a read of an already-terminated
  * call, not starting/joining one.
@@ -35,7 +35,7 @@ export async function assertCallAccessOrThrow(input: {
     return
   }
   const t = await getTranslations()
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     t("whatsapp.calls.errors.voipCallAccessDenied"),
     CALL_ACCESS_DENIED_CODE,
     CALL_ACCESS_DENIED_HTTP_STATUS,
@@ -57,7 +57,7 @@ export async function assertCanReadCallArtifactOrThrow(input: {
     return
   }
   const t = await getTranslations()
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     t("whatsapp.calls.errors.callArtifactAccessDenied"),
     CALL_ARTIFACT_ACCESS_DENIED_CODE,
     CALL_ACCESS_DENIED_HTTP_STATUS,

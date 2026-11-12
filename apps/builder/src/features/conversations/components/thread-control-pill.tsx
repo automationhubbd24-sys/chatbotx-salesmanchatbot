@@ -1,12 +1,12 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import {
   type ThreadControlView,

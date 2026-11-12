@@ -2,8 +2,8 @@ import {
   type ButtonStepProps,
   buttonTypes,
   encodeButtonPayload,
-} from "@chatbotx.io/flow-config"
-import type { MessageButtonTemplate } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { MessageButtonTemplate } from "@salesmanchatbot.io/sdk"
 import { chunk } from "remeda"
 import type {
   TelegramInlineKeyboardButton,

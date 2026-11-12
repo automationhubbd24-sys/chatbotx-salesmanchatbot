@@ -1,5 +1,5 @@
-import { ContactsDashboard } from "@chatbotx.io/analytics-nextjs/components/contacts-dashboard"
-import { getIdFromParams } from "@chatbotx.io/utils"
+import { ContactsDashboard } from "@salesmanchatbot.io/analytics-nextjs/components/contacts-dashboard"
+import { getIdFromParams } from "@salesmanchatbot.io/utils"
 import { notFound } from "next/navigation"
 import { AnalyticsNav } from "@/features/analytics/components/analytics-nav"
 import { resolveAdsDashboardChannels } from "@/features/analytics/lib/ads-dashboard-channels"

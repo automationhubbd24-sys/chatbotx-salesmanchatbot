@@ -1,7 +1,7 @@
 "use server"
 
-import { integrationWebchatService } from "@chatbotx.io/business"
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
+import { integrationWebchatService } from "@salesmanchatbot.io/business"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListIntegrationWebchatsRequest } from "../schema/query"
 

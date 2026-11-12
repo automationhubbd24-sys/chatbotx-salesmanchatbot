@@ -1,5 +1,5 @@
-import type { TriggerEventType } from "@chatbotx.io/database/partials"
-import { webhookQueue } from "@chatbotx.io/worker-config"
+import type { TriggerEventType } from "@salesmanchatbot.io/database/partials"
+import { webhookQueue } from "@salesmanchatbot.io/worker-config"
 import { BaseEventEmitter } from "../base-emitter"
 import { EMITTED_EVENT_TYPE_SET } from "../event-type-registry"
 import { logger } from "../logger"

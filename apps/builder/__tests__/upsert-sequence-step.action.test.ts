@@ -15,7 +15,7 @@ vi.mock("@/lib/safe-action", () => {
   return { workspaceActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business/sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/sequence", () => ({
   sequenceService: {
     assertOwned: mockAssertOwned,
     upsertStep: mockUpsertStep,

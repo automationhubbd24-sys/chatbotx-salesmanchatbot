@@ -1,11 +1,11 @@
-import type { MessageSeenPayload } from "@chatbotx.io/flow-config"
+import type { MessageSeenPayload } from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const getUnreadBroadcastsWithWorkspace = vi.fn()
 const getUnreadBroadcastsForContactInboxes = vi.fn()
 const updateOccurredAtBulk = vi.fn()
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   channelTypes: { enum: { whatsapp: "whatsapp" } },
 }))
 

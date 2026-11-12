@@ -1,6 +1,6 @@
-import { withheldErrorLogColumns } from "@chatbotx.io/business/error-log-columns"
-import type { ErrorLogModel } from "@chatbotx.io/database/types"
-import { getSortingStateParser } from "@chatbotx.io/ui/lib/parsers"
+import { withheldErrorLogColumns } from "@salesmanchatbot.io/business/error-log-columns"
+import type { ErrorLogModel } from "@salesmanchatbot.io/database/types"
+import { getSortingStateParser } from "@salesmanchatbot.io/ui/lib/parsers"
 import {
   createSearchParamsCache,
   parseAsInteger,

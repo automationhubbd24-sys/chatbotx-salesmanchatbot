@@ -8,10 +8,10 @@ import {
   notInArray,
   or,
   sql,
-} from "@chatbotx.io/database/client"
-import { resolvedTimezone } from "@chatbotx.io/database/queries/date-bucket"
-import { commentAutomationEventModel } from "@chatbotx.io/database/schema"
-import type { CommentAutomationEventInsert } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/client"
+import { resolvedTimezone } from "@salesmanchatbot.io/database/queries/date-bucket"
+import { commentAutomationEventModel } from "@salesmanchatbot.io/database/schema"
+import type { CommentAutomationEventInsert } from "@salesmanchatbot.io/database/types"
 import type { RangeGranularity } from "../../lib/time-series"
 import type { CommentAutomationCounterDeltas } from "../../schemas/comment-automation"
 import type { ContactEventData } from "../../schemas/common"

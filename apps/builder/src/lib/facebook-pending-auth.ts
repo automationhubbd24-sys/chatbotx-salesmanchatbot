@@ -1,4 +1,4 @@
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import { cookies } from "next/headers"
 import { z } from "zod"
 

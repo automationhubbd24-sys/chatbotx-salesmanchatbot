@@ -1,4 +1,4 @@
-import type { Oauth2Config } from "@chatbotx.io/sdk"
+import type { Oauth2Config } from "@salesmanchatbot.io/sdk"
 import ky from "ky"
 import { API_URL, DEFAULT_API_VERSION } from "../constants"
 import { rescue } from "../exception"

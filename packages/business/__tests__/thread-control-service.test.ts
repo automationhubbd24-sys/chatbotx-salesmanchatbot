@@ -4,8 +4,8 @@ import {
   THREAD_CONTROL_SEEN_REFRESH_MS,
   THREAD_CONTROL_TRANSITIONS,
   type ThreadControlEvent,
-} from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mocks = vi.hoisted(() => ({
@@ -29,7 +29,7 @@ vi.mock("../src/contact-inbox/service", () => ({
   contactInboxService: { bulkUpdateTracking: mocks.bulkUpdateTracking },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactInboxRepository: {
     applyThreadControlTransition: mocks.applyThreadControlTransition,
     findModelByIdForWorkspace: mocks.findModelByIdForWorkspace,
@@ -41,11 +41,11 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   createMessageRepository: mocks.createMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: mocks.invalidateCacheByTags,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: {
     threadControlAction: "threadControlAction",
   },
@@ -62,7 +62,7 @@ vi.mock("../src/logger", () => ({
 
 const { threadControlService } = await import("../src/thread-control/service")
 const { toThreadControlTimestamp } = await import(
-  "@chatbotx.io/database/partials"
+  "@salesmanchatbot.io/database/partials"
 )
 
 const NOW = new Date("2026-09-29T12:00:00.000Z")

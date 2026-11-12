@@ -1,16 +1,16 @@
 "use client"
 
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@chatbotx.io/ui/components/ui/avatar"
+} from "@salesmanchatbot.io/ui/components/ui/avatar"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
 import type { ColumnDef } from "@tanstack/react-table"
 import { format } from "date-fns"
 import type { useTranslations } from "next-intl"

@@ -1,5 +1,5 @@
-import { triggerActions } from "@chatbotx.io/database/partials"
-import { FieldOperationType, zodFieldReference } from "@chatbotx.io/flow-config"
+import { triggerActions } from "@salesmanchatbot.io/database/partials"
+import { FieldOperationType, zodFieldReference } from "@salesmanchatbot.io/flow-config"
 import z from "zod"
 
 export const setCustomField = z.object({

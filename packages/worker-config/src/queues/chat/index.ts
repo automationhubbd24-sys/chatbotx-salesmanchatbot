@@ -1,9 +1,9 @@
-import type { RichButtonPayloadEntry as DatabaseRichButtonPayloadEntry } from "@chatbotx.io/database/schema"
+import type { RichButtonPayloadEntry as DatabaseRichButtonPayloadEntry } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
   MessageModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import type {
   ButtonStepProps,
   MessengerTemplateParams,
@@ -22,8 +22,8 @@ import type {
   SendWaTemplateMessageStepSchema,
   WaTemplateParams,
   WhatsappCallButtonStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { CommentAnchor, MessageButtonTemplate } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { CommentAnchor, MessageButtonTemplate } from "@salesmanchatbot.io/sdk"
 import { Queue } from "bullmq"
 import {
   defaultJobOptions,
@@ -34,7 +34,7 @@ import {
 import { queueNames } from "../../lib/types"
 import type { BotResponseTrackingContext } from "../types"
 
-export type { RichButtonPayloadEntry } from "@chatbotx.io/database/schema"
+export type { RichButtonPayloadEntry } from "@salesmanchatbot.io/database/schema"
 
 export const ChatJobAction = {
   sendChannelMessage: "sendChannelMessage",

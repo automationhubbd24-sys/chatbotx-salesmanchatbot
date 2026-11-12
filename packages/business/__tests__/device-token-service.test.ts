@@ -43,7 +43,7 @@ const {
   }
 })
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     insert: mockDbInsert,
     delete: mockDbDelete,
@@ -54,7 +54,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   inArray: mockInArray,
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   userDeviceTokenModel: {
     token: "userDeviceToken.token",
     userId: "userDeviceToken.userId",

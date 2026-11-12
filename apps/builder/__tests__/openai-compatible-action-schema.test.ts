@@ -21,6 +21,10 @@ describe("OpenAI-compatible action schema", () => {
     )
   })
 
+  test("defaults streaming to true", () => {
+    expect(connectOpenaiCompatibleSchema.parse(validInput).streaming).toBe(true)
+  })
+
   test("rejects empty, non-http, and oversized base URLs", () => {
     expect(
       connectOpenaiCompatibleSchema.safeParse({

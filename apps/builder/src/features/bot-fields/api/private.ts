@@ -1,4 +1,4 @@
-import { botFieldService } from "@chatbotx.io/business"
+import { botFieldService } from "@salesmanchatbot.io/business"
 import { withWorkspaceIdSchema } from "@/features/workspaces/schema/resource"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

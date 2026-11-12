@@ -1,8 +1,8 @@
-import { assertPublicUrl } from "@chatbotx.io/business"
+import { assertPublicUrl } from "@salesmanchatbot.io/business"
 import {
   fetchFollowingSafeRedirects,
   readBodyWithLimit,
-} from "@chatbotx.io/filesystem"
+} from "@salesmanchatbot.io/filesystem"
 import ky from "ky"
 import { ExpectedHeavyStepError } from "./errors"
 

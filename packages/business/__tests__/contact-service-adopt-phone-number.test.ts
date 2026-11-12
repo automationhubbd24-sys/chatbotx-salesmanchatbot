@@ -5,7 +5,7 @@ const { mockDbUpdate, mockEmitContactInfoUpdated } = vi.hoisted(() => ({
   mockEmitContactInfoUpdated: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: vi.fn((...args: unknown[]) => ({ __and: args })),
   db: { update: mockDbUpdate },
   eq: vi.fn((left: unknown, right: unknown) => ({ __eq: [left, right] })),
@@ -17,22 +17,22 @@ vi.mock("@chatbotx.io/database/client", () => ({
 }))
 
 vi.mock(
-  "@chatbotx.io/database/schema",
+  "@salesmanchatbot.io/database/schema",
   async (importOriginal) =>
-    await importOriginal<typeof import("@chatbotx.io/database/schema")>(),
+    await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>(),
 )
 
-vi.mock("@chatbotx.io/event-bus", () => ({ emit: vi.fn() }))
-vi.mock("@chatbotx.io/events", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({ emit: vi.fn() }))
+vi.mock("@salesmanchatbot.io/events", () => ({
   emitContactCreated: vi.fn(),
   emitContactInfoUpdated: mockEmitContactInfoUpdated,
 }))
-vi.mock("@chatbotx.io/filesystem", () => ({ uploadFileFromUrl: vi.fn() }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({ uploadFileFromUrl: vi.fn() }))
+vi.mock("@salesmanchatbot.io/redis", () => ({
   invalidateCacheByTags: vi.fn(),
   withCache: vi.fn(),
 }))
-vi.mock("@chatbotx.io/analytics", () => ({ macAnalyticsService: {} }))
+vi.mock("@salesmanchatbot.io/analytics", () => ({ macAnalyticsService: {} }))
 vi.mock("../src/quota-enforcement/service", () => ({
   quotaEnforcementService: {},
 }))
@@ -45,7 +45,7 @@ const {
   eq: eqMock,
   isNull: isNullMock,
   or: orMock,
-} = await import("@chatbotx.io/database/client")
+} = await import("@salesmanchatbot.io/database/client")
 
 const buildUpdateClient = (returningResult: unknown[]) => {
   const returning = vi.fn().mockResolvedValue(returningResult)

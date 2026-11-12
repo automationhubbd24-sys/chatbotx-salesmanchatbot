@@ -1,4 +1,4 @@
-import type { AIGenerateImageQualityType } from "@chatbotx.io/flow-config"
+import type { AIGenerateImageQualityType } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import {
   getOpenAIEditImageQuality,

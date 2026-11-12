@@ -1,5 +1,5 @@
-import { zaloIntegrationService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { zaloIntegrationService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { createChannelReadRoutes } from "@/features/channel-integrations/api/public"
 import { possibleErrorsOnMutatingResource } from "@/lib/orpc/orpc-error-helper"

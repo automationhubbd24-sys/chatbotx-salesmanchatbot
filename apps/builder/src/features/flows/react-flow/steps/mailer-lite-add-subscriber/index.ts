@@ -2,7 +2,7 @@ import {
   type MailerLiteAddSubscriberSchema,
   mailerLiteAddSubscriberDefaultFn,
   mailerLiteAddSubscriberSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import MailerLiteAddSubscriberEditor from "./editor"
 import MailerLiteAddSubscriberViewer from "./viewer"

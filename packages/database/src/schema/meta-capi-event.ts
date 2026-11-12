@@ -2,7 +2,7 @@ import type {
   MetaCapiActionSource,
   MetaCapiContentType,
   MetaCapiEventName,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import { sql } from "drizzle-orm"
 import {
   check,
@@ -32,7 +32,7 @@ export {
   metaCapiContentTypeSchema,
   metaCapiContentTypeValues,
   metaCapiEventNameSchema,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 
 export const metaCapiEventChannelValues = [
   "messenger",
@@ -95,7 +95,7 @@ export const metaCapiEventModel = pgTable(
     contentName: text(),
     value: numeric(),
     // Meta CAPI `action_source` — see `metaCapiActionSourcePolicy` in
-    // `@chatbotx.io/utils/meta-capi` for how each value drives identity and
+    // `@salesmanchatbot.io/utils/meta-capi` for how each value drives identity and
     // event-catalog selection. Defaulted so existing rows (and existing
     // steps/actions parsing through zod `.default()`) stay `business_messaging`.
     actionSource: text()

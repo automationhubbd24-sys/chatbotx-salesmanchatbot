@@ -1,5 +1,5 @@
-import { messengerPersistentMenuSchema } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { messengerPersistentMenuSchema } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { z } from "zod"
 import { userPersistentMenuResource } from "./resource"
 

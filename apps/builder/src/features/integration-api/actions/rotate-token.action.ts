@@ -1,8 +1,8 @@
 "use server"
 
-import { auditService } from "@chatbotx.io/business/audit"
-import { generateApiChannelToken } from "@chatbotx.io/business/workspace-api-token/credentials"
-import { integrationApiRepository } from "@chatbotx.io/database/repositories"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { generateApiChannelToken } from "@salesmanchatbot.io/business/workspace-api-token/credentials"
+import { integrationApiRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   type WorkspaceIdAndIdRequestParams,
   workspaceIdAndIdRequestParams,

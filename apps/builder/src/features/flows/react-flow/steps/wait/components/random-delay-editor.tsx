@@ -1,7 +1,7 @@
 "use client"
 
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import { useTranslations } from "next-intl"
 import { useEffect } from "react"
 import { useFormContext, useWatch } from "react-hook-form"

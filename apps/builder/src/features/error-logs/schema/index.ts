@@ -1,5 +1,5 @@
-import type { WithheldErrorLogColumn } from "@chatbotx.io/business/error-log-columns"
-import type { ErrorLogModel } from "@chatbotx.io/database/types"
+import type { WithheldErrorLogColumn } from "@salesmanchatbot.io/business/error-log-columns"
+import type { ErrorLogModel } from "@salesmanchatbot.io/database/types"
 import type { ContactResource } from "@/features/contacts/schema/resource"
 
 /**

@@ -1,4 +1,4 @@
-import { SdkException } from "@chatbotx.io/sdk"
+import { SdkException } from "@salesmanchatbot.io/sdk"
 import type { Common as GoogleApisCommon } from "googleapis"
 import { normalizeError } from "universal-error-normalizer"
 import { googleCalendarLogger } from "./logger"

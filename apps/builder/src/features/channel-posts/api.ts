@@ -1,4 +1,4 @@
-import { channelPostService } from "@chatbotx.io/business"
+import { channelPostService } from "@salesmanchatbot.io/business"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

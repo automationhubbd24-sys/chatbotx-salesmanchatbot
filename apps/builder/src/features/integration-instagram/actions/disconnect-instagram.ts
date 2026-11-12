@@ -3,16 +3,16 @@ import {
   instagramIntegrationService,
   messengerIntegrationService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { connectionStateService } from "@chatbotx.io/business/connection"
-import { db } from "@chatbotx.io/database/client"
-import { metaCapiEventRepository } from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { connectionStateService } from "@salesmanchatbot.io/business/connection"
+import { db } from "@salesmanchatbot.io/database/client"
+import { metaCapiEventRepository } from "@salesmanchatbot.io/database/repositories"
 import {
   type InstagramAuthValue,
   isRevokedTokenError,
-} from "@chatbotx.io/integration-instagram"
-import { isRevokedTokenError as isRevokedTokenErrorFacebook } from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram"
+import { isRevokedTokenError as isRevokedTokenErrorFacebook } from "@salesmanchatbot.io/integration-instagram-facebook"
 import { integrations } from "@/integration"
 import { logger } from "@/lib/log"
 

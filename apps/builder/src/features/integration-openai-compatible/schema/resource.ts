@@ -1,5 +1,5 @@
-import type { OpenaiCompatibleProviderPreset } from "@chatbotx.io/ai"
-import type { IntegrationOpenaiCompatibleModel } from "@chatbotx.io/database/types"
+import type { OpenaiCompatibleProviderPreset } from "@salesmanchatbot.io/ai"
+import type { IntegrationOpenaiCompatibleModel } from "@salesmanchatbot.io/database/types"
 
 export type IntegrationOpenaiCompatibleResource = Pick<
   IntegrationOpenaiCompatibleModel,
@@ -10,6 +10,7 @@ export type IntegrationOpenaiCompatibleResource = Pick<
   | "defaultModel"
   | "enabled"
   | "autoReply"
+  | "streaming"
   | "createdAt"
   | "updatedAt"
 > & {
@@ -28,6 +29,7 @@ export function mapIntegrationOpenaiCompatibleResource(
     defaultModel: integration.defaultModel,
     enabled: integration.enabled,
     autoReply: integration.autoReply,
+    streaming: integration.streaming,
     createdAt: integration.createdAt,
     updatedAt: integration.updatedAt,
   }

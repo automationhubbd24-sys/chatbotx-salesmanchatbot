@@ -1,4 +1,4 @@
-import { stepTypes } from "@chatbotx.io/flow-config"
+import { stepTypes } from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { MESSAGE_PRODUCING_STEP_TYPES } from "../src/integration/handlers/flow-utils"
 import { flowStepHandlers } from "../src/integration/handlers/step"

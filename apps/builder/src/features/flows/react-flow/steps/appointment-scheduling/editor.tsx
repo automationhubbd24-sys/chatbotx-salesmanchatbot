@@ -1,15 +1,15 @@
 "use client"
 
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
 import {
   type AppointmentSchedulingMode,
   type AppointmentSchedulingStepSchema,
   appointmentSchedulingModes,
   appointmentSchedulingStepSchema,
-} from "@chatbotx.io/flow-config"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/flow-config"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -17,15 +17,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form, FormField } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form, FormField } from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@chatbotx.io/ui/components/ui/select"
+} from "@salesmanchatbot.io/ui/components/ui/select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CalendarClockIcon } from "lucide-react"
 import { useTranslations } from "next-intl"

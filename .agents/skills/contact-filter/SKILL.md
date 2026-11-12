@@ -1,7 +1,7 @@
 ---
 name: contact-filter
 description: >-
-  Work with the ChatbotX contact filter system — the shared filter model behind
+  Work with the salesmanChatbot contact filter system — the shared filter model behind
   the contacts list, conversations, and broadcast audiences. Use when adding a
   filter field or operator, changing the filter UI, editing the SQL query
   builder, or enforcing an audience constraint. Covers the definitions
@@ -18,7 +18,7 @@ Lives in two packages:
 - **Frontend feature** — `apps/builder/src/features/contact-filter/` (Zod schemas,
   UI config, React components). Barrel: `index.ts`.
 - **Backend query builder** — `packages/database/src/queries/contact-filter/`
-  (`@chatbotx.io/database/queries`). Shared by the builder app **and** the worker
+  (`@salesmanchatbot.io/database/queries`). Shared by the builder app **and** the worker
   so both resolve the same contacts. **`queries/contact-filter.ts` is now a one-line
   re-export barrel** (`export * from "./contact-filter/index"`) — the real code is the
   14-file directory beside it:
@@ -177,4 +177,4 @@ source for `lastIncomingMessageAt >= NOW() - INTERVAL '24 hours'`, used by:
 - [ ] If the option source's values are workspace entity ids, register it in `FILTER_VALUE_LABEL_SOURCES` (`lib/filter-value-labels.ts`) and the id lookup (`resolveContactFilterValueLabels`) so read-only labels show names / "Unknown" instead of raw ids
 - [ ] Tests: `apps/builder/__tests__/contact-filter-*.test.ts` and
       `packages/database/__tests__/contact-filter.test.ts`
-- [ ] `pnpm lint` + `check-types` for `builder` and `@chatbotx.io/database`
+- [ ] `pnpm lint` + `check-types` for `builder` and `@salesmanchatbot.io/database`

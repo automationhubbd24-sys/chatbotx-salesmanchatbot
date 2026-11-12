@@ -6,16 +6,16 @@ import {
   conversationService,
   whatsappCallPermissionService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { integrationWhatsappRepository } from "@chatbotx.io/database/repositories"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { integrationWhatsappRepository } from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   getCallingSettings,
   type WhatsappCallingSettings,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
-import { withCache } from "@chatbotx.io/redis"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
+import { withCache } from "@salesmanchatbot.io/redis"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { parsePhoneNumberFromString } from "libphonenumber-js"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
@@ -135,7 +135,7 @@ export type NoneCallModeReason =
   | "callingNotEnabled"
   /**
    * The owning app is not subscribed to the calls webhook field, so call events
-   * can never reach ChatbotX (Meta error 138018).
+   * can never reach salesmanChatbot (Meta error 138018).
    */
   | "webhookNotSubscribed"
   /**
@@ -163,7 +163,7 @@ export type ResolveOutboundCallModeResult =
       unsignedWebhookWarning: boolean
       /**
        * True for every manually-connected integration regardless of app secret,
-       * since neither ChatbotX nor this action can confirm the customer's own
+       * since neither salesmanChatbot nor this action can confirm the customer's own
        * Meta app is subscribed to the calls webhook field. Always false for a
        * platform-credential integration.
        */
@@ -199,7 +199,7 @@ export const resolveOutboundCallModeAction = callingActionClient
         where: { id: parsedInput.conversationId, workspaceId },
       })
       if (!conversation) {
-        throw new ChatbotXException(t("whatsapp.calls.errors.callNotFound"))
+        throw new salesmanChatbotException(t("whatsapp.calls.errors.callNotFound"))
       }
 
       // Mirrors the outbound-dial gate: an assigned-only agent must not even

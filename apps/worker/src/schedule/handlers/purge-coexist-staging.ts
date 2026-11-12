@@ -1,5 +1,5 @@
-import { whatsappCoexistStagingRepository } from "@chatbotx.io/database/repositories"
-import { getChildLogger } from "@chatbotx.io/logger"
+import { whatsappCoexistStagingRepository } from "@salesmanchatbot.io/database/repositories"
+import { getChildLogger } from "@salesmanchatbot.io/logger"
 
 const log = getChildLogger("purge-coexist-staging")
 

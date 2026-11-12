@@ -1,4 +1,4 @@
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

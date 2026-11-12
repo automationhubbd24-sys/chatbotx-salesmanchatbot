@@ -1062,7 +1062,13 @@
       "anyConditions": "Aşağıdakı şərtlərdən hər hansı biri.",
       "label": "Kontakt süzgəci",
       "onlyContactsMatch": "Yalnız uyğun gələn kontaktlar",
-      "moreOptions": "Əlavə seçimlər"
+      "moreOptions": "Əlavə seçimlər",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Kontakt qeydi"
@@ -1545,7 +1551,9 @@
         "documentReader": "Sənəd oxuyucusu",
         "imageReader": "Şəkil oxuyucusu",
         "urlContext": "URL oxuyucusu",
-        "webSearch": "Veb axtarış"
+        "webSearch": "Veb axtarış",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2621,7 +2629,7 @@
     },
     "limitedDataUse": {
       "label": "Məlumatların məhdud istifadəsi (ABŞ-da məxfilik)",
-      "description": "ABŞ-ın müvafiq ştatlarındakı istifadəçilər üçün Meta-nın hadisə məlumatlarından istifadəsini məhdudlaşdırın. Meta istifadəçinin məkanını bu hadisədən avtomatik müəyyən edir; ChatbotX məkan məlumatı göndərmir."
+      "description": "ABŞ-ın müvafiq ştatlarındakı istifadəçilər üçün Meta-nın hadisə məlumatlarından istifadəsini məhdudlaşdırın. Meta istifadəçinin məkanını bu hadisədən avtomatik müəyyən edir; salesmanChatbot məkan məlumatı göndərmir."
     },
     "actionSource": {
       "label": "Əməliyyat mənbəyi",
@@ -2973,7 +2981,7 @@
     "title": "Ümumi"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Bu, kampaniyanı yalnız ChatbotX-dən çıxarır. Meta mesaj kampaniyası işləməyə davam edir, ona Ads Manager-də fasilə verin və ya onu silin.",
+    "deleteWarning": "Bu, kampaniyanı yalnız salesmanChatbot-dən çıxarır. Meta mesaj kampaniyası işləməyə davam edir, ona Ads Manager-də fasilə verin və ya onu silin.",
     "title": "Facebook Marketing Messages",
     "description": "Messenger-də fərdiləşdirilmiş reklam mesajları ilə qarşılıqlı əlaqəni və satışları artırın.",
     "create": "Yenisini yarat",
@@ -3665,6 +3673,9 @@
     "disconnectSuccess": "{feature} uğurla ayrıldı",
     "reply": "Cavabla",
     "privateReply": "Şəxsi cavab",
+    "replyingTo": "Cavab verilir",
+    "replyPreview": "{sender}, {recipient} üçün cavab verdi",
+    "you": "Siz",
     "viewMessage": "Mesaja bax",
     "changeLikeState": "Bəyənmə vəziyyətini dəyiş",
     "changeHideState": "Gizlədilmə vəziyyətini dəyiş",
@@ -3972,6 +3983,10 @@
       "description": "Bu provayderin avtomatik AI cavabları üçün istifadəsinə icazə verin.",
       "label": "AI avtomatik cavabı"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "AI agentinin ehtiyat modelləri üçün OpenAI-yə uyğun provayderləri qoşun.",
       "label": "OpenAI-yə uyğun provayderlər"
@@ -3980,6 +3995,7 @@
     "fields": {
       "baseURL": "Əsas URL",
       "defaultModel": "Standart model",
+      "embeddingModel": "Yerləşdirmə modeli",
       "enabled": "Aktivdir"
     },
     "provider": "AI provayderi",
@@ -3987,6 +4003,23 @@
     "validation": {
       "invalidBaseURL": "Əsas URL etibarsızdır və ya ona icazə verilmir.",
       "presetAlreadyConnected": "Bu hazır konfiqurasiya artıq bu iş sahəsinə qoşulub."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4486,7 +4519,7 @@
         "title": "Zəng üçün uyğunluq",
         "appSubscriptionMissing": "Əvvəlcə Meta tətbiqinin idarə panelində bu tətbiq üçün WhatsApp Webhook-unu konfiqurasiya edin, sonra yenidən cəhd edin.",
         "appSubscriptionFailed": "Tətbiqin 'calls' Webhook abunəliyini doğrulamaq mümkün olmadı. Bir az sonra yenidən cəhd edin.",
-        "callsNotSubscribed": "Bu tətbiq 'calls' Webhook sahəsinə abunə deyil, buna görə zəng hadisələri ChatbotX-ə çata bilmir (Meta xətası 138018: texniki ilkin şərtlər ödənmir, WABA-ya abunə olan ən azı bir tətbiqin calls Webhook sahəsinə də abunə olduğuna əmin olun).",
+        "callsNotSubscribed": "Bu tətbiq 'calls' Webhook sahəsinə abunə deyil, buna görə zəng hadisələri salesmanChatbot-ə çata bilmir (Meta xətası 138018: texniki ilkin şərtlər ödənmir, WABA-ya abunə olan ən azı bir tətbiqin calls Webhook sahəsinə də abunə olduğuna əmin olun).",
         "fixButton": "Düzəlt",
         "fixSuccess": "Tətbiq artıq WhatsApp zəng Webhook-larına abunədir.",
         "manualIntegrationNotice": "Bu nömrə əl ilə qoşulub və burada onun tətbiq giriş məlumatları yoxdur. Meta tətbiqinin idarə panelində tətbiqiniz üçün 'calls' Webhook sahəsinə abunə olun.",
@@ -6216,7 +6249,109 @@
     "unknown": "Naməlum"
   },
   "orders": {
-    "title": "Sifarişlər"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Məhsullar",

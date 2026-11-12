@@ -108,12 +108,12 @@ const applyContactProfile = vi.fn(
   },
 )
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   applyContactProfile,
   buildContactProfileUpdate,
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { deleteObject },
 }))
 

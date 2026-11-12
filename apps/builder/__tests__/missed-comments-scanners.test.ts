@@ -22,7 +22,7 @@ const {
   mockListTiktokComments: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findByWorkspaceId: mockMessengerFindByWorkspaceId,
   },
@@ -35,19 +35,19 @@ vi.mock("@chatbotx.io/business", () => ({
   tiktokIntegrationService: { listByWorkspace: mockTiktokListByWorkspace },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/comment", () => ({
   listPostComments: mockListPostComments,
 }))
-vi.mock("@chatbotx.io/integration-instagram/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram/apis/comment", () => ({
   listMediaComments: mockListInstagramLoginMediaComments,
 }))
-vi.mock("@chatbotx.io/integration-instagram-facebook/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook/apis/comment", () => ({
   listMediaComments: mockListInstagramFacebookMediaComments,
 }))
-vi.mock("@chatbotx.io/integration-threads/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-threads/apis/comment", () => ({
   listPostConversation: mockListPostConversation,
 }))
-vi.mock("@chatbotx.io/integration-tiktok/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok/apis/comment", () => ({
   listTiktokComments: mockListTiktokComments,
 }))
 

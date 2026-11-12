@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 import {
   getParentOriginFromUrl,
@@ -26,8 +26,8 @@ vi.mock("@/features/messages/actions/create-webchat-message.action", () => ({
   createWebchatMessageAction: {},
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return { ...actual, createId: vi.fn(() => "generated-id") }
 })
 

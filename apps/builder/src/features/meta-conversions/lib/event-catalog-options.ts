@@ -1,5 +1,5 @@
-import { requireEventNameAllowedForActionSource } from "@chatbotx.io/flow-config"
-import type { SelectOption } from "@chatbotx.io/ui/components/form/select-field"
+import { requireEventNameAllowedForActionSource } from "@salesmanchatbot.io/flow-config"
+import type { SelectOption } from "@salesmanchatbot.io/ui/components/form/select-field"
 import {
   eventNamesByCatalog,
   type MetaCapiActionSource,
@@ -8,7 +8,7 @@ import {
   metaCapiActionSourceSchema,
   type metaCapiBusinessMessagingEventNames,
   type metaPixelStandardEventNames,
-} from "@chatbotx.io/utils/meta-capi"
+} from "@salesmanchatbot.io/utils/meta-capi"
 import type { useTranslations } from "next-intl"
 import { z } from "zod"
 import { getMetaCapiEventLabel } from "./event-label"

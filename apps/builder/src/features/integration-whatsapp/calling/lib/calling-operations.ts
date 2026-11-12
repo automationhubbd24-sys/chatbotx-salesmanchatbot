@@ -2,13 +2,13 @@ import {
   buildContext,
   integrationWhatsappService,
   WhatsappCallTranscriptionRequiresRecordingError,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import type { WhatsappAuthValue } from "@chatbotx.io/integration-whatsapp"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import type { WhatsappAuthValue } from "@salesmanchatbot.io/integration-whatsapp"
 import {
   getCallingSettings,
   type WhatsappCallingSettings,
-} from "@chatbotx.io/integration-whatsapp/api/calling"
+} from "@salesmanchatbot.io/integration-whatsapp/api/calling"
 import { integrations } from "@/integration"
 import { logger } from "@/lib/log"
 import { throwWhatsappApiActionError } from "../../libs/whatsapp-api-action-error"
@@ -56,7 +56,7 @@ const findIntegration = async (
       workspaceId,
     })
   if (!integrationWhatsapp) {
-    throw new ChatbotXException(messages.notFound, "notFound", 404)
+    throw new salesmanChatbotException(messages.notFound, "notFound", 404)
   }
   return integrationWhatsapp
 }
@@ -139,7 +139,7 @@ export async function updateWhatsappCallingSettings(props: {
       })
     } catch (error) {
       if (error instanceof WhatsappCallTranscriptionRequiresRecordingError) {
-        throw new ChatbotXException(messages.transcriptionRequiresRecording)
+        throw new salesmanChatbotException(messages.transcriptionRequiresRecording)
       }
       throw error
     }
@@ -170,14 +170,14 @@ export async function updateWhatsappCallingSettings(props: {
         : localValues,
     )
   } catch (error) {
-    if (error instanceof ChatbotXException) {
+    if (error instanceof salesmanChatbotException) {
       throw error
     }
     logger.error(
       { err: error, workspaceId, integrationWhatsappId },
       "Whatsapp calling: Meta accepted the settings but the local mirror write failed",
     )
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       messages.savedOnMetaOnly,
       WHATSAPP_CALLING_UPSTREAM_CODE,
       502,
@@ -216,7 +216,7 @@ export async function updateWhatsappCallHours(props: {
   try {
     current = await getCallingSettings(auth)
   } catch {
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       messages.updateFailed,
       WHATSAPP_CALLING_UPSTREAM_CODE,
       502,
@@ -251,7 +251,7 @@ export async function updateWhatsappCallHours(props: {
       { err: error, workspaceId, integrationWhatsappId },
       "Whatsapp calling: Meta accepted the call hours but the local mirror write failed",
     )
-    throw new ChatbotXException(
+    throw new salesmanChatbotException(
       messages.savedOnMetaOnly,
       WHATSAPP_CALLING_UPSTREAM_CODE,
       502,

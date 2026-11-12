@@ -3,7 +3,7 @@ import {
   listAllConnectedInboxesResponse,
   listInboxesRequest,
   listInboxesResponse,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import { listAllConnectedInboxes, listInboxes } from "../queries"

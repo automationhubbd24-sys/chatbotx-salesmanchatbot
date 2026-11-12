@@ -1,7 +1,7 @@
 import {
   type ImportFormat,
   importFormats,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type { ImportConfig } from "./types"
 
 const getFileExtension = (fileName: string): string => {

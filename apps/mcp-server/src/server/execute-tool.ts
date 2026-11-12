@@ -226,7 +226,7 @@ export async function executeTool(
         },
         method: tool.method,
       },
-      env.CHATBOTX_HTTP_TIMEOUT_MS,
+      env.SALESMANCHATBOT_HTTP_TIMEOUT_MS,
     )
 
     let result: unknown

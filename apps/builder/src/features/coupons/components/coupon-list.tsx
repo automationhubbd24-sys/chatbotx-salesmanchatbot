@@ -3,10 +3,10 @@
 import {
   couponIssueStatuses,
   couponUsageStatuses,
-} from "@chatbotx.io/database/partials"
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
+} from "@salesmanchatbot.io/database/partials"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
 import {
   Table,
   TableBody,
@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@chatbotx.io/ui/components/ui/table"
+} from "@salesmanchatbot.io/ui/components/ui/table"
 import { ChevronLeftIcon, ChevronRightIcon, XIcon } from "lucide-react"
 import { useFormatter, useTranslations } from "next-intl"
 import { useCallback, useEffect, useMemo, useState } from "react"

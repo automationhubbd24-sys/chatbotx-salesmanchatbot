@@ -5,14 +5,14 @@ const markChannelsTornDown = vi.fn()
 const recordAuditLog = vi.fn()
 const error = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   userQuotaService: { markChannelsTornDown },
   workspaceLifecycleService: { deactivateOwnerWorkspaces },
 }))
 // Real AsyncLocalStorage context, isolated from `./service`'s Snowflake id
 // generator dependency — this test only needs `record` to be observable, not
 // a real enqueue.
-vi.mock("@chatbotx.io/business/audit", async () => {
+vi.mock("@salesmanchatbot.io/business/audit", async () => {
   const { AsyncLocalStorage } = await import("node:async_hooks")
   const storage = new AsyncLocalStorage<Record<string, unknown>>()
   return {
@@ -23,7 +23,7 @@ vi.mock("@chatbotx.io/business/audit", async () => {
     auditService: { record: recordAuditLog },
   }
 })
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ error }),
 }))
 vi.mock("../src/services/integrations", () => ({

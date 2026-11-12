@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto"
-import type { systemFunctionNames } from "@chatbotx.io/ai"
+import type { systemFunctionNames } from "@salesmanchatbot.io/ai"
 import type {
   DocumentReaderInput,
   SystemToolExecutors,
-} from "@chatbotx.io/ai/server"
+} from "@salesmanchatbot.io/ai/server"
 import {
   getHeavyJobCompletionWaitTimeoutMs,
   getHeavyJobOptions,
@@ -12,7 +12,7 @@ import {
   heavyExtractTextFromFileResultSchema,
   heavyQueue,
   waitForJobCompletionWithRetries,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { normalizeError } from "universal-error-normalizer"
 import { env } from "../../../../env"
 import { logger } from "../../../../lib/logger"

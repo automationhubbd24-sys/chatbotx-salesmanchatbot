@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
 const logProviderErrors = vi.fn()
-vi.mock("@chatbotx.io/business/error-log", () => ({
+vi.mock("@salesmanchatbot.io/business/error-log", () => ({
   logProviderErrors: (...args: unknown[]) => logProviderErrors(...args),
 }))
 
@@ -39,7 +39,7 @@ describe("recordProviderErrorLog", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     // No `vi.resetModules()`: the handler is stateless, and re-importing it
-    // re-runs `@chatbotx.io/utils`'s module-level `new Snowflake(...)`, which
+    // re-runs `@salesmanchatbot.io/utils`'s module-level `new Snowflake(...)`, which
     // throws "Place ID 0 already in use" on the second load.
     logProviderErrors.mockReset()
     logProviderErrors.mockResolvedValue({ failedIndexes: [] })

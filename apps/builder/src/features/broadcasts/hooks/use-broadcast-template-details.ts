@@ -1,6 +1,6 @@
 "use client"
 
-import type { BroadcastTemplateDetail } from "@chatbotx.io/business"
+import type { BroadcastTemplateDetail } from "@salesmanchatbot.io/business"
 import { useEffect, useState } from "react"
 import { client } from "@/lib/orpc/orpc"
 

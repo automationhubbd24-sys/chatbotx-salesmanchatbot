@@ -19,7 +19,7 @@ export async function startWorker(
 
   const name =
     consumerName ??
-    `worker-${process.env.HOSTNAME || "chatbotx"}-${process.pid}`
+    `worker-${process.env.HOSTNAME || "salesmanchatbot"}-${process.pid}`
 
   for (const mod of modules) {
     activeModules.push(mod)

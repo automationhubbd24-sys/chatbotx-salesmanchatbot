@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallbackRef } from "@chatbotx.io/ui/hooks/use-callback-ref"
+import { useCallbackRef } from "@salesmanchatbot.io/ui/hooks/use-callback-ref"
 import { useEffect } from "react"
 import { useFormContext, useWatch } from "react-hook-form"
 import {

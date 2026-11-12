@@ -3,15 +3,15 @@ import {
   db,
   isUniqueViolationError,
   relationsFilterToSQL,
-} from "@chatbotx.io/database/client"
-import { magicLinkModel } from "@chatbotx.io/database/schema"
-import type { MagicLinkModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/client"
+import { magicLinkModel } from "@salesmanchatbot.io/database/schema"
+import type { MagicLinkModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 import { validationException } from "../errors"
 

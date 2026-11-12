@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLockFactory: vi.fn(() => ({ runExclusive: vi.fn() })),
 }))
 

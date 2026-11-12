@@ -1,4 +1,4 @@
-import { normalizeMetaAdReferral } from "@chatbotx.io/business/referral"
+import { normalizeMetaAdReferral } from "@salesmanchatbot.io/business/referral"
 import {
   type Context,
   contentTypes,
@@ -9,7 +9,7 @@ import {
   type MessageReferral,
   messageTypes,
   type ReceivedMessageResult,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 
 import { getMessageAttachmentEntity } from "../../apis/attachment"
 import { InstagramException } from "../../exception"

@@ -79,7 +79,7 @@ vi.mock("@/features/contacts/permissions", () => ({
     mocks.requireContactPermissionScopeForMember,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   appointmentService: {
     listContactAppointments: mocks.listContactAppointments,
   },

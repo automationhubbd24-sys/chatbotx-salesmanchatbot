@@ -1,18 +1,18 @@
 "use client"
 
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableSkeleton } from "@chatbotx.io/ui/components/data-table/data-table-skeleton"
-import { DataTableToolbar } from "@chatbotx.io/ui/components/data-table/data-table-toolbar"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableSkeleton } from "@salesmanchatbot.io/ui/components/data-table/data-table-skeleton"
+import { DataTableToolbar } from "@salesmanchatbot.io/ui/components/data-table/data-table-toolbar"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
 import type { ColumnDef, Row } from "@tanstack/react-table"
 import { format, formatDistanceToNow } from "date-fns"
 import { useSearchParams } from "next/navigation"

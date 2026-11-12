@@ -4,6 +4,8 @@ import { enqueueMessage } from "./enqueue-message"
 import { processPendingMessages } from "./process-messages"
 import { automatedResponseService as utils } from "./utils"
 
+export { getKey as getAutomatedResponseKey } from "./constants"
+
 export const automatedResponseService = {
   ...utils,
   enqueue: enqueueMessage,

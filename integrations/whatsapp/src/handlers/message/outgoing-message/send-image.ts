@@ -1,8 +1,8 @@
 import type {
   SendImageStepSchema,
   SendMultipleImagesStepSchema,
-} from "@chatbotx.io/flow-config"
-import type { MessageHandlers } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/flow-config"
+import type { MessageHandlers } from "@salesmanchatbot.io/sdk"
 import { Image } from "whatsapp-api-js/messages"
 import type { WhatsappAuthValue } from "../../../schema"
 import { buildWhatsappButtonMessages } from "./shared"

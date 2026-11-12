@@ -26,7 +26,7 @@ const {
   mockLoggerInfo: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   commentAutomationService: {
     incrementRepliesCount: mockIncrementRepliesCount,
   },
@@ -39,38 +39,38 @@ vi.mock("@chatbotx.io/business", () => ({
   recordDeliveredPrivateReply: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   commentAutomationAnalyticsService: {
     recordEvent: mockRecordEvent,
     settleEvent: vi.fn(),
   },
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: mockCreateMessageRepository,
 }))
 
-vi.mock("@chatbotx.io/integration-messenger", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger", () => ({
   sendPrivateReply: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   sendPrivateReply: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-instagram-facebook", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook", () => ({
   sendPrivateReply: vi.fn(),
 }))
-vi.mock("@chatbotx.io/integration-tiktok", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok", () => ({
   sendPrivateReply: mockSendTiktokPrivateReply,
 }))
 
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   contactVariableService: {
     getAll: mockContactVariableGetAll,
     replaceAll: mockContactVariableReplaceAll,
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   AIJobAction: { commentAIReply: "commentAIReply" },
   aiAgentQueue: { add: vi.fn() },
   IntegrationJobAction: {
@@ -305,7 +305,7 @@ describe("runDeferredCommentPrivateReply", () => {
       }),
     )
 
-    const { aiAgentQueue } = await import("@chatbotx.io/worker-config")
+    const { aiAgentQueue } = await import("@salesmanchatbot.io/worker-config")
     expect(aiAgentQueue.add).toHaveBeenCalledWith(
       expect.anything(),
       expect.anything(),
@@ -321,7 +321,7 @@ describe("runDeferredCommentPrivateReply", () => {
       buildData({ privateReply: { type: "AIAgent", value: "agent-1" } }),
     )
 
-    const { aiAgentQueue } = await import("@chatbotx.io/worker-config")
+    const { aiAgentQueue } = await import("@salesmanchatbot.io/worker-config")
     expect(aiAgentQueue.add).toHaveBeenCalledWith(
       expect.anything(),
       expect.anything(),

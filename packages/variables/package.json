@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/variables",
+  "name": "@salesmanchatbot.io/variables",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,23 +10,23 @@
     "./bot-field-variable-resolver": "./src/bot-field-variable-resolver.ts"
   },
   "dependencies": {
-    "@chatbotx.io/business": "workspace:*",
-    "@chatbotx.io/channel-registry": "workspace:*",
-    "@chatbotx.io/database": "workspace:*",
-    "@chatbotx.io/encryption": "workspace:*",
-    "@chatbotx.io/flow-config": "workspace:*",
-    "@chatbotx.io/integration-instagram": "workspace:*",
-    "@chatbotx.io/integration-messenger": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/redis": "workspace:*",
-    "@chatbotx.io/sdk": "workspace:*",
-    "@chatbotx.io/utils": "workspace:*",
+    "@salesmanchatbot.io/business": "workspace:*",
+    "@salesmanchatbot.io/channel-registry": "workspace:*",
+    "@salesmanchatbot.io/database": "workspace:*",
+    "@salesmanchatbot.io/encryption": "workspace:*",
+    "@salesmanchatbot.io/flow-config": "workspace:*",
+    "@salesmanchatbot.io/integration-instagram": "workspace:*",
+    "@salesmanchatbot.io/integration-messenger": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/redis": "workspace:*",
+    "@salesmanchatbot.io/sdk": "workspace:*",
+    "@salesmanchatbot.io/utils": "workspace:*",
     "date-fns-tz": "^3.2.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "~24.12.2",
     "typescript": "^5",
     "vitest": "^4.1.0"

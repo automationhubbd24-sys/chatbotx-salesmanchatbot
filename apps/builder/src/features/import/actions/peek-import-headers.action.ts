@@ -3,9 +3,9 @@
 import {
   importHeaderPeekErrorCodes,
   peekImportHeaders,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { workspaceActionClient } from "@/lib/safe-action"
@@ -23,17 +23,17 @@ export const peekImportHeadersAction = workspaceActionClient
       })
     } catch (error) {
       // The shared service speaks English + codes; the UI shows its own copy.
-      if (!(error instanceof ChatbotXException)) {
+      if (!(error instanceof salesmanChatbotException)) {
         throw error
       }
       const t = await getTranslations("fields.import")
       switch (error.code) {
         case importHeaderPeekErrorCodes.unableToReadHeaders:
-          throw new ChatbotXException(t("unableToReadHeaders"))
+          throw new salesmanChatbotException(t("unableToReadHeaders"))
         case importHeaderPeekErrorCodes.unsupportedFileType:
-          throw new ChatbotXException(t("unsupportedFileType"))
+          throw new salesmanChatbotException(t("unsupportedFileType"))
         case importHeaderPeekErrorCodes.fileTooLarge:
-          throw new ChatbotXException(
+          throw new salesmanChatbotException(
             t("fileTooLarge", { size: error.data?.size ?? 0 }),
           )
         default:

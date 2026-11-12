@@ -7,7 +7,7 @@ import {
   ne,
   relationsFilterToSQL,
   sql,
-} from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/database/client"
 import {
   type CommentAutomationType,
   type CommentExcludeKeywordsType,
@@ -22,22 +22,22 @@ import {
   isLiveCommentAutomation,
   liveCommentCapabilities,
   normalizeReplyTexts,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   commentAutomationEventModel,
   commentAutomationMissModel,
   commentAutomationModel,
   commentAutomationReplyModel,
   contactInboxModel,
-} from "@chatbotx.io/database/schema"
-import type { CommentAutomationModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { CommentAutomationModel } from "@salesmanchatbot.io/database/types"
 import {
   getPaginationWithDefaults,
   likeContains,
   parseOrderByAsObject,
-} from "@chatbotx.io/database/utils"
-import { distributedStore } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { distributedStore } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { formatInTimeZone } from "date-fns-tz"
 import { BaseService } from "../base.service"
 import { notFoundException, validationException } from "../errors"

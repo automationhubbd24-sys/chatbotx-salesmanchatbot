@@ -1,6 +1,6 @@
 "use server"
 
-import { aiFileService } from "@chatbotx.io/business"
+import { aiFileService } from "@salesmanchatbot.io/business"
 import { assertCurrentUserCanAccessChatbot } from "@/lib/auth/utils"
 import type { ListAIFilesRequest, ListAIFilesResponse } from "../schema"
 

@@ -1,5 +1,5 @@
-import { messengerTemplateStatusSchema } from "@chatbotx.io/database/partials"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { messengerTemplateStatusSchema } from "@salesmanchatbot.io/database/partials"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import {
   createSearchParamsCache,
   parseAsInteger,

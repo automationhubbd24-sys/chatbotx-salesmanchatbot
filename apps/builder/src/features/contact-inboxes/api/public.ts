@@ -1,4 +1,4 @@
-import { contactInboxService, contactService } from "@chatbotx.io/business"
+import { contactInboxService, contactService } from "@salesmanchatbot.io/business"
 import { z } from "zod"
 import { listContactInboxesPublicResponse } from "@/features/contact-inboxes/schema/public"
 import { possibleErrorsOnFindingResource } from "@/lib/orpc/orpc-error-helper"

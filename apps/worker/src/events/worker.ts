@@ -1,4 +1,4 @@
-import { startWorker, stopWorker } from "@chatbotx.io/event-bus/worker"
+import { startWorker, stopWorker } from "@salesmanchatbot.io/event-bus/worker"
 import { ensureBootstrapped } from "../lib/bootstrap"
 import { analyticsDashboardEvents } from "./analytics"
 import errorLogEventListener from "./error-log"

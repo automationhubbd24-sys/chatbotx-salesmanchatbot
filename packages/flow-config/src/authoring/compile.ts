@@ -1,4 +1,4 @@
-import { createId } from "@chatbotx.io/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 import { addNotesNodeDefaultFn } from "../nodes/add-notes"
 import { conditionNodeDefaultFn } from "../nodes/condition"
 import type { EdgeSchema, FlowVersionSchema } from "../nodes/index"

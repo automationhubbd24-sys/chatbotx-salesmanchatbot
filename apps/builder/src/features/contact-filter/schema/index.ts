@@ -2,7 +2,7 @@ import {
   type FormFieldType,
   formFieldTypes,
   type OperatorType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { z } from "zod"
 import { booleanOperators } from "./boolean-filter"
 import {

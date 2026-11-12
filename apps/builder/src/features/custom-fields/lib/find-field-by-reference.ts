@@ -1,8 +1,8 @@
-import type { CustomFieldType } from "@chatbotx.io/database/partials"
+import type { CustomFieldType } from "@salesmanchatbot.io/database/partials"
 import {
   FieldReferenceKind,
   parseFieldReference,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { BotFieldResource } from "@/features/bot-fields/schema/resource"
 import type { CustomFieldResource } from "../schema/resource"
 

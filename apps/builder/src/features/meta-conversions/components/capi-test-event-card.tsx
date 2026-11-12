@@ -1,9 +1,9 @@
 "use client"
 
-import type { MetaConversionsChannel } from "@chatbotx.io/business"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
+import type { MetaConversionsChannel } from "@salesmanchatbot.io/business"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
 import {
   ExternalLinkIcon,
   FlaskConicalIcon,

@@ -7,7 +7,7 @@ const mocks = vi.hoisted(() => ({
   resolveTenantSettings: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { getPresignedUpload: mocks.getPresignedUpload },
 }))
 vi.mock("../src/file/service", () => ({

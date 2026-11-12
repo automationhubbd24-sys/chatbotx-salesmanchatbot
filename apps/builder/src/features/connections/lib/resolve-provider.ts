@@ -1,24 +1,24 @@
 import {
   connectionStateService,
   platformCredentialService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   CONNECTION_REGISTRY,
   isCredentialStrategy,
   toChannelType,
-} from "@chatbotx.io/connections"
+} from "@salesmanchatbot.io/connections"
 import type {
   ChannelType,
   ConnectionKind,
   IntegrationType,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   ACTIVE_CONNECTION_STATUSES,
   INACTIVE_CONNECTION_STATUSES,
   integrationTypes,
-} from "@chatbotx.io/database/partials"
-import type { ConnectionModel } from "@chatbotx.io/database/types"
-import type { ConnectionConfigField } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/partials"
+import type { ConnectionModel } from "@salesmanchatbot.io/database/types"
+import type { ConnectionConfigField } from "@salesmanchatbot.io/sdk"
 import { getTranslations } from "next-intl/server"
 import { resolveChannelPolicy } from "@/lib/workspace/resolve-visible-channels"
 import type {

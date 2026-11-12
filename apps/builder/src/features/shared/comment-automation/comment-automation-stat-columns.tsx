@@ -1,6 +1,6 @@
 "use client"
 
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
 import type { ColumnDef } from "@tanstack/react-table"
 import {
   type CommentAutomationStatField,

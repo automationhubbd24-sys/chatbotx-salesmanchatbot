@@ -1,4 +1,4 @@
-import { nodeTypeSchema } from "@chatbotx.io/flow-config"
+import { nodeTypeSchema } from "@salesmanchatbot.io/flow-config"
 import conditionNodeConfig from "./condition"
 import followUpNodeConfig from "./follow-up"
 import performActionNodeConfig from "./perform-action"

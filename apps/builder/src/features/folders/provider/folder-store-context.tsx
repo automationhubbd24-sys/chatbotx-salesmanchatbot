@@ -1,6 +1,6 @@
 "use client"
 
-import type { FolderType } from "@chatbotx.io/database/partials"
+import type { FolderType } from "@salesmanchatbot.io/database/partials"
 import {
   createContext,
   type ReactNode,

@@ -1,5 +1,5 @@
-import type { ChannelType } from "@chatbotx.io/database/partials"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import type { ChannelType } from "@salesmanchatbot.io/database/partials"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   SiInstagram,
   SiInstagramHex,

@@ -1,7 +1,7 @@
 import {
   FlowAuthoringException,
   sendMessageNodeDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const SPEC_STEP_PATH_PATTERN = /^steps\[/
@@ -69,13 +69,13 @@ const flowVersionService = {
 const importService = {
   startFlowImport: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   flowService,
   flowVersionService,
   importService,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   validationException: (field: string, message: string) =>
     new Error(`${field}: ${message}`),
@@ -86,16 +86,16 @@ const getFlowAuthoringContext = vi.fn(async () => ({
   customFieldsByName: new Map(),
   flowsByName: new Map(),
 }))
-vi.mock("@chatbotx.io/business/capabilities", () => ({
+vi.mock("@salesmanchatbot.io/business/capabilities", () => ({
   getFlowAuthoringContext,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: { runImport: "runImport" },
   defaultQueue: { add: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),
@@ -110,7 +110,7 @@ vi.mock("@chatbotx.io/database/schema", () => {
 })
 
 await import("@/features/flows/api/public")
-const { defaultQueue } = await import("@chatbotx.io/worker-config")
+const { defaultQueue } = await import("@salesmanchatbot.io/worker-config")
 
 const findProcedure = (method: string, path: string) => {
   const found = capturedProcedures.find(

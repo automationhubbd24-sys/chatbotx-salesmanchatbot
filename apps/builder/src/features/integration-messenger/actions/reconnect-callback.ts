@@ -1,22 +1,22 @@
 import {
   messengerIntegrationService,
   resolveTenantSettings,
-} from "@chatbotx.io/business"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/business"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
 import {
   debugToken,
   exchangeCodeForToken,
   getFacebookUser,
   getUserPages,
   toAppAccessToken,
-} from "@chatbotx.io/integration-messenger"
+} from "@salesmanchatbot.io/integration-messenger"
 import {
   ensureMessengerWhitelistedDomain,
   exchangeLongLivedToken,
   scopesToPageSubscribeFields,
   subscribePageToAppWebhook,
-} from "@chatbotx.io/integration-messenger/apis/page"
-import { AuthType } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/integration-messenger/apis/page"
+import { AuthType } from "@salesmanchatbot.io/sdk"
 import { normalizeError } from "universal-error-normalizer"
 import type { ReconnectResult } from "@/lib/channel-reconnect"
 import { lookupIntegrationUserInfo } from "@/lib/integration-user-info"

@@ -1,6 +1,6 @@
 "use client"
 
-import { buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import { buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import { PlusIcon } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"

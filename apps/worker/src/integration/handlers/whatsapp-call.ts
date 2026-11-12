@@ -2,26 +2,26 @@ import {
   sendToWorkspaceMember,
   whatsappCallLifecycleService,
   whatsappVoipCallService,
-} from "@chatbotx.io/business"
-import { contactSources } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import { contactSources } from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
 import {
   emitIncomingCall,
   setWebhookExecutionContext,
-} from "@chatbotx.io/events"
+} from "@salesmanchatbot.io/events"
 import {
   RealtimeEventType,
   type RealtimeEventWhatsappCallOutboundStatus,
-} from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/partysocket-config"
 import {
   CALL_CANCELED_BY_BUSINESS_LAST_ERROR,
   type MessageWhatsappCallEntity,
-} from "@chatbotx.io/sdk"
-import type { IntegrationJobWhatsappCallEvent } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/sdk"
+import type { IntegrationJobWhatsappCallEvent } from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { integrationService } from "../../services/integrations"
 import { detectContactAndConversation } from "./received-message"

@@ -1,8 +1,8 @@
 import {
   type BaseEventListener,
   EVENT_BUS_MESSAGE_ID,
-} from "@chatbotx.io/flow-config"
-import type { Redis } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/flow-config"
+import type { Redis } from "@salesmanchatbot.io/redis"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import { z } from "zod"
 import { BaseEventBus, type EventBusConfig } from "../src/event-bus"

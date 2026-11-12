@@ -1,4 +1,4 @@
-import { automatedResponseService } from "@chatbotx.io/automated-response"
+import { automatedResponseService } from "@salesmanchatbot.io/automated-response"
 import {
   appointmentService,
   buildContext,
@@ -25,12 +25,12 @@ import {
   threadControlService,
   updateContactFromMessage,
   workspaceService,
-} from "@chatbotx.io/business"
-import { resolveLastUserInputTracking } from "@chatbotx.io/business/contact-inbox"
+} from "@salesmanchatbot.io/business"
+import { resolveLastUserInputTracking } from "@salesmanchatbot.io/business/contact-inbox"
 import {
   finalizeContactProfile,
   normalizeLanguage,
-} from "@chatbotx.io/business/contact-locale"
+} from "@salesmanchatbot.io/business/contact-locale"
 import {
   type ChannelType,
   type CommentAutomationType,
@@ -39,15 +39,15 @@ import {
   type IntegrationType,
   supportsPostTracking,
   supportsProfileSnapshot,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   type CreateMessageInput,
   contactInboxRepository,
   createMessageRepository,
   type IMessageRepository,
   type MessageWithAttachments,
-} from "@chatbotx.io/database/repositories"
-import { contactInboxModel, contactModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/repositories"
+import { contactInboxModel, contactModel } from "@salesmanchatbot.io/database/schema"
 import type {
   AttachmentModel,
   ContactInboxModel,
@@ -55,25 +55,25 @@ import type {
   ConversationModel,
   InboxModel,
   MessageModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import {
   parseAppointmentCancelPostback,
   verifyAppointmentCancelPostback,
-} from "@chatbotx.io/encryption"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/encryption"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   emitContactCreated,
   setWebhookExecutionContext,
-} from "@chatbotx.io/events"
-import { uploader } from "@chatbotx.io/filesystem"
-import { messageEventTypeSchema } from "@chatbotx.io/flow-config"
-import type { MessengerAuthValue } from "@chatbotx.io/integration-messenger"
-import type { ThreadsAuthValue } from "@chatbotx.io/integration-threads"
-import type { TiktokAuthValue } from "@chatbotx.io/integration-tiktok"
-import { toLogSafeError } from "@chatbotx.io/logger"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
-import { distributedLock, isLockAcquisitionError } from "@chatbotx.io/redis"
-import type { ChannelPostDetails, IncomingAttachment } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/events"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { messageEventTypeSchema } from "@salesmanchatbot.io/flow-config"
+import type { MessengerAuthValue } from "@salesmanchatbot.io/integration-messenger"
+import type { ThreadsAuthValue } from "@salesmanchatbot.io/integration-threads"
+import type { TiktokAuthValue } from "@salesmanchatbot.io/integration-tiktok"
+import { toLogSafeError } from "@salesmanchatbot.io/logger"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
+import { distributedLock, isLockAcquisitionError } from "@salesmanchatbot.io/redis"
+import type { ChannelPostDetails, IncomingAttachment } from "@salesmanchatbot.io/sdk"
 import {
   type AuthValue,
   contentTypes,
@@ -91,8 +91,8 @@ import {
   SdkException,
   type SourceScopedIdentityMatch,
   type SourceScopedIdentityMatchedBy,
-} from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   ChatJobAction,
   chatQueue,
@@ -107,7 +107,7 @@ import {
   integrationQueue,
   NotificationJobAction,
   notificationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { UnrecoverableError } from "bullmq"
 import { normalizeError } from "universal-error-normalizer"
 import { LOCK_CONTENTION_POLICY } from "../../lib/lock-contention-deferral"
@@ -384,12 +384,46 @@ export const receiveMessage = async (
     rawIncomingMessage,
     isNewContact,
   )
-  const incomingMessage = markStandbyDelivery(
+  let incomingMessage = markStandbyDelivery(
     postbackButtonLabel && directedIncomingMessage
       ? { ...directedIncomingMessage, text: postbackButtonLabel }
       : directedIncomingMessage,
     suppressAutomation,
   )
+  if (incomingMessage?.parentSourceId) {
+    const { parentSourceId } = incomingMessage
+    let parentId: string | null = null
+    try {
+      const parentMessage = await (await createMessageRepository()).findBySourceId(
+        parentSourceId,
+        conversation.id,
+        inbox.workspaceId,
+        new Date(Date.now() - 90 * 24 * 60 * 60 * 1000),
+      )
+      parentId = parentMessage?.id ?? null
+      if (!parentMessage) {
+        logger.debug(
+          {
+            parentSourceId,
+            conversationId: conversation.id,
+            workspaceId: inbox.workspaceId,
+          },
+          "Inbound message parent was not found",
+        )
+      }
+    } catch (err) {
+      logger.warn(
+        {
+          err,
+          parentSourceId,
+          conversationId: conversation.id,
+          workspaceId: inbox.workspaceId,
+        },
+        "Unable to resolve inbound message parent",
+      )
+    }
+    incomingMessage = { ...incomingMessage, parentId }
+  }
   const systemFieldUpdates = getReceivedMessageSystemFieldUpdates({
     buttonTitle: parsedMessage.buttonTitle || postbackButtonLabel,
     message: incomingMessage,
@@ -653,7 +687,7 @@ export const receiveMessage = async (
       }
 
       // Message echoes (agent replying from the channel's own native UI,
-      // e.g. Meta Business Suite, rather than the ChatbotX inbox) never go
+      // e.g. Meta Business Suite, rather than the salesmanChatbot inbox) never go
       // through `create-message.action.ts`, so "Page" keyword automation
       // must be checked here too — mirrors the enqueue in that action,
       // including its `user &&` gate (see isEchoOfOwnSend).
@@ -837,7 +871,7 @@ async function sendAppointmentCancelFeedback(input: {
 }
 
 /**
- * How far back to look for the ChatbotX-side row an echo may be duplicating.
+ * How far back to look for the salesmanChatbot-side row an echo may be duplicating.
  * The race it covers is sub-second — `updateSourceId` runs right after the
  * channel send returns — so this only needs to be generous, not wide: a
  * longer window would start suppressing genuine agent replies that happen to
@@ -863,7 +897,7 @@ const SELF_SENT_ECHO_LOOKBACK = 10
  * because an outbound rule replies through the same channel, that reply echoes
  * back and can match itself in a loop.
  *
- * Every ChatbotX send persists its Message row *before* hitting the channel,
+ * Every salesmanChatbot send persists its Message row *before* hitting the channel,
  * so a recent outgoing row carrying the same text is our own send, not an
  * agent's.
  *

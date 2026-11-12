@@ -1,6 +1,6 @@
 "use client"
 
-import { DropdownMenuItem } from "@chatbotx.io/ui/components/ui/dropdown-menu"
+import { DropdownMenuItem } from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import { ArrowRightLeftIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"

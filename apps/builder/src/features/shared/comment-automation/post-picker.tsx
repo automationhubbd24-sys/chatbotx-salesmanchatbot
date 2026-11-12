@@ -1,9 +1,9 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
-import { Input } from "@chatbotx.io/ui/components/ui/input"
-import { Skeleton } from "@chatbotx.io/ui/components/ui/skeleton"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
+import { Input } from "@salesmanchatbot.io/ui/components/ui/input"
+import { Skeleton } from "@salesmanchatbot.io/ui/components/ui/skeleton"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { CheckIcon, X } from "lucide-react"
 import Image from "next/image"
 import { type KeyboardEvent, useRef, useState } from "react"

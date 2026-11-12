@@ -1,4 +1,4 @@
-import { flowEventBus } from "@chatbotx.io/event-bus"
+import { flowEventBus } from "@salesmanchatbot.io/event-bus"
 import { flowListeners } from "./listener"
 
 export default {

@@ -10,7 +10,7 @@ const mocks = vi.hoisted(() => ({
   listContactInboxes: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/business", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   conversationService: {
     findByOrFail: mocks.findConversation,
@@ -20,7 +20,7 @@ vi.mock("@chatbotx.io/business", async (importOriginal) => ({
   whatsappFlowService: { findByIdUnscoped: mocks.findFlow },
   integrationWhatsappService: { findByIdForWorkspace: mocks.findIntegration },
 }))
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => ({
   ...(await importOriginal<Record<string, unknown>>()),
   ChatJobAction: { sendWhatsappTemplateToConversation: "send-template" },
   chatQueue: { add: mocks.queueAdd },
@@ -34,7 +34,7 @@ const { getWhatsappFlowScreens } = await import(
   "@/features/integration-whatsapp/flows/lib/whatsapp-flow-operations"
 )
 
-const { ModelNotfoundException } = await import("@chatbotx.io/database/errors")
+const { ModelNotfoundException } = await import("@salesmanchatbot.io/database/errors")
 
 const request = { templateId: "9", inboxId: undefined, templateData: undefined }
 

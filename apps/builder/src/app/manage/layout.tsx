@@ -2,10 +2,10 @@ import {
   customDomainService,
   tenantService,
   userQuotaService,
-} from "@chatbotx.io/business"
-import type { PortalPricingState } from "@chatbotx.io/ui/components/portal/pricing-nav-item"
-import type { PortalSaasFlags } from "@chatbotx.io/ui/config/portal-nav"
-import { buildResellerPricingUrl } from "@chatbotx.io/ui/lib/portal-pricing-url"
+} from "@salesmanchatbot.io/business"
+import type { PortalPricingState } from "@salesmanchatbot.io/ui/components/portal/pricing-nav-item"
+import type { PortalSaasFlags } from "@salesmanchatbot.io/ui/config/portal-nav"
+import { buildResellerPricingUrl } from "@salesmanchatbot.io/ui/lib/portal-pricing-url"
 import { notFound } from "next/navigation"
 import { PortalManageSidebar } from "@/enterprise/features/manage/components/portal-manage-sidebar"
 import { isCloud } from "@/env"

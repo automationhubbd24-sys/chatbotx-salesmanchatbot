@@ -1,13 +1,13 @@
 "use client"
 
-import type { PortalNavItem } from "@chatbotx.io/ui/components/portal/nav-main"
-import { PortalSideNav } from "@chatbotx.io/ui/components/portal/portal-side-nav"
-import type { PortalPricingState } from "@chatbotx.io/ui/components/portal/pricing-nav-item"
+import type { PortalNavItem } from "@salesmanchatbot.io/ui/components/portal/nav-main"
+import { PortalSideNav } from "@salesmanchatbot.io/ui/components/portal/portal-side-nav"
+import type { PortalPricingState } from "@salesmanchatbot.io/ui/components/portal/pricing-nav-item"
 import {
   type PortalSaasFlags,
   type PortalSaasNavKey,
   portalSaasNavConfigs,
-} from "@chatbotx.io/ui/config/portal-nav"
+} from "@salesmanchatbot.io/ui/config/portal-nav"
 import {
   CircleHelpIcon,
   Grid2x2PlusIcon,

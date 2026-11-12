@@ -1,7 +1,7 @@
 import {
   messengerIntegrationService,
   messengerMessageTemplateService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { MessengerMessageTemplatesTable } from "@/features/integration-messenger/message-templates/message-templates-table"

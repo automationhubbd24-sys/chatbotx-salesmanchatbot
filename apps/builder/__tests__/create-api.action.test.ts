@@ -23,7 +23,7 @@ vi.mock("@/lib/safe-action", () => {
   return { authActionClient: chain }
 })
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   assertPublicUrl: mocks.assertPublicUrl,
   hasWorkspaceAccess: mocks.hasWorkspaceAccess,
   integrationApiService: { connect: mocks.connect },
@@ -33,7 +33,7 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/workspace-api-token/credentials", () => ({
+vi.mock("@salesmanchatbot.io/business/workspace-api-token/credentials", () => ({
   generateApiChannelToken: mocks.generateApiChannelToken,
   generateSigningSecret: mocks.generateSigningSecret,
 }))

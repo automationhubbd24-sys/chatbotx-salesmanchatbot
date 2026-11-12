@@ -23,18 +23,18 @@ vi.mock("@/lib/log", () => ({
   logger: { error: mocks.loggerError },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationGoogleSheetService: {
     disconnect: mocks.disconnect,
     findByWorkspaceIdOrFail: mocks.findByWorkspaceIdOrFail,
   },
 }))
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   auditService: { record: mocks.auditRecord },
 }))
 
-vi.mock("@chatbotx.io/integration-google-sheets", () => ({
+vi.mock("@salesmanchatbot.io/integration-google-sheets", () => ({
   integration: { disconnect: mocks.vendorDisconnect },
 }))
 

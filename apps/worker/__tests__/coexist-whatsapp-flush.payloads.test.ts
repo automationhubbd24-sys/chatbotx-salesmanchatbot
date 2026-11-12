@@ -76,7 +76,7 @@ type RunWriteGuard = { status: string; claimToken?: string | null }
  * service seam rather than on drizzle internals. `db` stays mocked for the
  * staging/integration repositories the handler still reads through.
  */
-vi.mock("@chatbotx.io/business/coexist", () => {
+vi.mock("@salesmanchatbot.io/business/coexist", () => {
   const write = (fields: Record<string, unknown>, guard?: RunWriteGuard) =>
     mockRunWrite(fields, guard)
   return {
@@ -136,14 +136,14 @@ vi.mock("@chatbotx.io/business/coexist", () => {
   }
 })
 
-vi.mock("@chatbotx.io/database/repositories", async (importOriginal) => ({
+vi.mock("@salesmanchatbot.io/database/repositories", async (importOriginal) => ({
   ...(await importOriginal<
-    typeof import("@chatbotx.io/database/repositories")
+    typeof import("@salesmanchatbot.io/database/repositories")
   >()),
   inboxRepository: { findById: mockFindInboxById },
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     update: mockUpdate,
     select: mockSelect,
@@ -167,7 +167,7 @@ vi.mock("@chatbotx.io/database/client", () => ({
   ),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   // `logProviderError` short-circuits on this, as `defaultQueue` does.
   isNoRedisEnv: () => true,
   buildCoexistPageJobId: ({
@@ -190,8 +190,8 @@ vi.mock("@chatbotx.io/worker-config", () => ({
 // Carries the real schema forward and overrides only the models these tests
 // inspect: the repositories barrel now reaches `queries/contact-filter`,
 // which imports tables no stub here would list.
-vi.mock("@chatbotx.io/database/schema", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@chatbotx.io/database/schema")>()),
+vi.mock("@salesmanchatbot.io/database/schema", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@salesmanchatbot.io/database/schema")>()),
   whatsappCoexistStagingModel: {
     id: "id",
     phoneNumberId: "phoneNumberId",

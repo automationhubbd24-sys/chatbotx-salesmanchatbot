@@ -1,8 +1,8 @@
-import type { ListInboxesResponse } from "@chatbotx.io/business"
+import type { ListInboxesResponse } from "@salesmanchatbot.io/business"
 import type {
   ChooseChannelStepSchema,
   StepType,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { QueryStatus } from "@tanstack/react-query"
 import type { LucideIcon } from "lucide-react"
 import type { useTranslations } from "next-intl"

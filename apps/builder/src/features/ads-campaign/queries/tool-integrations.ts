@@ -2,8 +2,8 @@ import {
   instagramIntegrationService,
   integrationWhatsappService,
   messengerIntegrationService,
-} from "@chatbotx.io/business"
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 import { formatWhatsappIntegrationLabel } from "@/features/integration-whatsapp/libs/integration-label"
 
 /**

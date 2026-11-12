@@ -1,13 +1,13 @@
-import { aiTimeouts } from "@chatbotx.io/ai"
-import { aiContextService } from "@chatbotx.io/ai/server"
-import { aiAgentService } from "@chatbotx.io/business"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
+import { aiTimeouts } from "@salesmanchatbot.io/ai"
+import { aiContextService } from "@salesmanchatbot.io/ai/server"
+import { aiAgentService } from "@salesmanchatbot.io/business"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
 import {
   type AIAgentModelConfig,
   aiAgentProviderModels,
   aiAgentProviders,
-} from "@chatbotx.io/database/partials"
-import type { AIGenerateTextAgentSchema } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/database/partials"
+import type { AIGenerateTextAgentSchema } from "@salesmanchatbot.io/flow-config"
 import { normalizeError } from "universal-error-normalizer"
 import { logger } from "../../../lib/logger"
 import { saveResultToCustomField } from "../../utils/contact"

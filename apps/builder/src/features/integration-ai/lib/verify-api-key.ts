@@ -1,4 +1,4 @@
-import { type AIProvider, aiProviders } from "@chatbotx.io/ai"
+import { type AIProvider, aiProviders } from "@salesmanchatbot.io/ai"
 import ky, { HTTPError } from "ky"
 
 const VERIFY_TIMEOUT_MS = 10_000

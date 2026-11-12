@@ -1,9 +1,9 @@
-import { integrationThreadsService } from "@chatbotx.io/business"
-import type { ThreadsAuthValue } from "@chatbotx.io/integration-threads"
+import { integrationThreadsService } from "@salesmanchatbot.io/business"
+import type { ThreadsAuthValue } from "@salesmanchatbot.io/integration-threads"
 import {
   listPostConversation,
   type ThreadsConversationReply,
-} from "@chatbotx.io/integration-threads/apis/comment"
+} from "@salesmanchatbot.io/integration-threads/apis/comment"
 import { collectCommentsSince, parseGraphTime, toEpochSeconds } from "./paging"
 import {
   MissedCommentsIntegrationNotFoundError,

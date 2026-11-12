@@ -5,11 +5,11 @@ const recordOpen = vi.fn().mockResolvedValue(undefined)
 const findAnalyticsWorkspaceIdByToken = vi.fn()
 const loadServableWorkspace = vi.fn()
 
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   emailTopicAnalyticsService: { recordOpen },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   emailTopicService: { findAnalyticsWorkspaceIdByToken },
 }))
 

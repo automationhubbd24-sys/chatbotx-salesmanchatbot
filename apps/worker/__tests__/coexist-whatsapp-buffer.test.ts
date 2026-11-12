@@ -17,11 +17,11 @@ const { mockFindByPhoneNumberId, mockStagePayload, mockQueueAdd } = vi.hoisted(
 // Mocks
 // ---------------------------------------------------------------------------
 
-// Plain object stubs — never importOriginal @chatbotx.io/database/schema (it
+// Plain object stubs — never importOriginal @salesmanchatbot.io/database/schema (it
 // opens a real DB connection). This module has no direct model dependency
 // left after the refactor, but keep the mock present in case a sibling import
 // still resolves through it transitively.
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationWhatsappRepository: {
     findByPhoneNumberId: mockFindByPhoneNumberId,
   },
@@ -30,7 +30,7 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   // Mirrors `buildCoexistFlushJobId`; the real builder is pinned by
   // `packages/worker-config/__tests__/coexist-job-ids.test.ts`.
   buildCoexistFlushJobId: (phoneNumberId: string) =>
@@ -43,8 +43,8 @@ vi.mock("@chatbotx.io/worker-config", () => ({
   integrationQueue: { add: mockQueueAdd },
 }))
 
-vi.mock("@chatbotx.io/utils", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/utils")>()
+vi.mock("@salesmanchatbot.io/utils", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/utils")>()
   return {
     ...actual,
     createId: () => "test-id-123",

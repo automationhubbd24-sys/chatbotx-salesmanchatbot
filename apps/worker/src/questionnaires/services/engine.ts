@@ -1,29 +1,29 @@
 import {
   conversationService,
   questionnaireSubmissionService,
-} from "@chatbotx.io/business"
-import type { ConversationAttributes } from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/business"
+import type { ConversationAttributes } from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import type { QuestionnaireQuestionModel } from "@chatbotx.io/database/types"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/database/repositories"
+import type { QuestionnaireQuestionModel } from "@salesmanchatbot.io/database/types"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   BUTTON_LABEL_MAX,
   MAX_QUICK_REPLIES,
   type QuestionnairesStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import {
   MESSENGER_NATIVE_QUICK_REPLY,
   type MessageButtonTemplate,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   ChatJobAction,
   chatQueue,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import type { ExecuteStepProps } from "../../integration/handlers/flow-utils"
 import type { ExecuteStepResult } from "../../integration/handlers/step"
 import { waitForChatJobCompletion } from "../../integration/utils/message"

@@ -1,4 +1,4 @@
-import { assertPublicUrl } from "@chatbotx.io/business"
+import { assertPublicUrl } from "@salesmanchatbot.io/business"
 import ky from "ky"
 import { signApiPayload } from "./signature"
 
@@ -28,9 +28,9 @@ export const postSignedEnvelope = async (args: {
     body: rawBody,
     headers: {
       "Content-Type": "application/json",
-      "X-ChatbotX-Signature": `sha256=${signature}`,
-      "X-ChatbotX-Timestamp": timestamp,
-      "X-ChatbotX-Delivery": crypto.randomUUID(),
+      "X-salesmanChatbot-Signature": `sha256=${signature}`,
+      "X-salesmanChatbot-Timestamp": timestamp,
+      "X-salesmanChatbot-Delivery": crypto.randomUUID(),
     },
     timeout: DELIVERY_TIMEOUT_MS,
   })

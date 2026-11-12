@@ -3,7 +3,7 @@ import {
   conversationService,
   isWorkspaceScheduledForDeletion,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import { type NextRequest, NextResponse } from "next/server"
 import { getTranslations } from "next-intl/server"
 import {

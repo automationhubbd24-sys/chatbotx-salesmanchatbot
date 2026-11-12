@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/ai",
+  "name": "@salesmanchatbot.io/ai",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -15,13 +15,13 @@
     "@ai-sdk/google": "^3.0.65",
     "@ai-sdk/openai": "^3.0.54",
     "@ai-sdk/openai-compatible": "^2.0.56",
-    "@chatbotx.io/business": "workspace:*",
-    "@chatbotx.io/database": "workspace:*",
-    "@chatbotx.io/flow-config": "workspace:*",
-    "@chatbotx.io/logger": "workspace:*",
-    "@chatbotx.io/redis": "workspace:*",
-    "@chatbotx.io/sdk": "workspace:*",
-    "@chatbotx.io/worker-config": "workspace:*",
+    "@salesmanchatbot.io/business": "workspace:*",
+    "@salesmanchatbot.io/database": "workspace:*",
+    "@salesmanchatbot.io/flow-config": "workspace:*",
+    "@salesmanchatbot.io/logger": "workspace:*",
+    "@salesmanchatbot.io/redis": "workspace:*",
+    "@salesmanchatbot.io/sdk": "workspace:*",
+    "@salesmanchatbot.io/worker-config": "workspace:*",
     "@openrouter/ai-sdk-provider": "^2.9.1",
     "@t3-oss/env-core": "^0.13.11",
     "ai": "^6.0.170",
@@ -31,8 +31,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/mime-types": "^3.0.1",
     "typescript": "^5",
     "vitest": "^4.1.0"

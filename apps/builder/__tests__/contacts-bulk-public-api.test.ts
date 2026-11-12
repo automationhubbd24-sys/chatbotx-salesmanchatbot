@@ -52,11 +52,11 @@ const deleteContact = vi.fn()
 
 const subscribeContactsToSequences = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: { deleteAndRecord: deleteContact },
   tagService: { attachByNamesToContacts: addContactTags },
 }))
-vi.mock("@chatbotx.io/business/contact-sequence", () => ({
+vi.mock("@salesmanchatbot.io/business/contact-sequence", () => ({
   contactSequenceService: { subscribeContacts: subscribeContactsToSequences },
 }))
 

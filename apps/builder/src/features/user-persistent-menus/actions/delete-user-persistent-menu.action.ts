@@ -1,6 +1,6 @@
 "use server"
 
-import { userPersistentMenuService } from "@chatbotx.io/business"
+import { userPersistentMenuService } from "@salesmanchatbot.io/business"
 import {
   bulkUpdateIdsRequest,
   workspaceIdrequestParams,

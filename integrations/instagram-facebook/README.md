@@ -1,4 +1,4 @@
-# @chatbotx.io/integration-instagram-facebook
+# @salesmanchatbot.io/integration-instagram-facebook
 
 Instagram DM and post-comment integration via the Facebook Graph API.
 
@@ -8,7 +8,7 @@ Integration name in code: **`instagramFacebook`**
 
 ## Overview
 
-This integration connects Instagram Business or Creator accounts to ChatbotX through the Facebook Graph API (Meta). It supports two channels:
+This integration connects Instagram Business or Creator accounts to salesmanChatbot through the Facebook Graph API (Meta). It supports two channels:
 
 - **DMs** — real-time private messaging with Instagram users
 - **Post comments** — receive new comments on Instagram posts, and reply/hide/like/delete them
@@ -30,7 +30,7 @@ Personal Instagram accounts are not supported (filtered during the OAuth account
   - `pages_read_engagement`
   - `business_management`
 - The Instagram account must be a **Business** or **Creator** account linked to a Facebook Page.
-- Platform credentials (App ID + App Secret) stored in ChatbotX settings.
+- Platform credentials (App ID + App Secret) stored in salesmanChatbot settings.
 
 ---
 
@@ -75,7 +75,7 @@ Returns `hub.challenge` when `hub.verify_token` matches `config.verifyToken`.
 | Incoming message / postback | `incomingMessage` |
 | Message read receipt | `contactMarkAsRead` |
 
-Echo messages sent by the bot itself (identified by `is_echo === true` + `metadata === "SENT_FROM_CHATBOTX"`) are silently dropped.
+Echo messages sent by the bot itself (identified by `is_echo === true` + `metadata === "SENT_FROM_SALESMANCHATBOT"`) are silently dropped.
 
 ### Post comment events (POST — `changes[].field === "comments"`)
 
@@ -106,7 +106,7 @@ All outgoing messages are sent to `POST /<version>/me/messages`.
 | Generic carousel (up to 3 buttons/element) | ✅ |
 | GIF | ✅ |
 
-Each message is stamped with `metadata: "SENT_FROM_CHATBOTX"` so echo events can be filtered.
+Each message is stamped with `metadata: "SENT_FROM_SALESMANCHATBOT"` so echo events can be filtered.
 
 ---
 

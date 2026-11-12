@@ -4,13 +4,13 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 const mockCreateWithInbox = vi.fn()
 const mockReturnValidationErrors = vi.fn((_schema, errors) => errors)
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactService: {
     createWithInbox: (...args: unknown[]) => mockCreateWithInbox(...args),
   },
 }))
 
-class FakeChatbotXException extends Error {
+class FakesalesmanChatbotException extends Error {
   code: string
   field?: string
   constructor(message: string, code = "validation", field?: string) {
@@ -20,8 +20,8 @@ class FakeChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
-  ChatbotXException: FakeChatbotXException,
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
+  salesmanChatbotException: FakesalesmanChatbotException,
 }))
 
 vi.mock("next-safe-action", () => ({
@@ -76,7 +76,7 @@ describe("createContactAction", () => {
 
   test("maps a field-scoped validation exception to a form field error", async () => {
     mockCreateWithInbox.mockRejectedValue(
-      new FakeChatbotXException(
+      new FakesalesmanChatbotException(
         "Please include the country code (e.g. +84)",
         "validation",
         "phoneNumber",

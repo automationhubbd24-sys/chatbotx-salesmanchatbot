@@ -875,7 +875,13 @@
       "anyConditions": "Mikä tahansa seuraavista ehdoista.",
       "label": "Yhteystietosuodatin",
       "onlyContactsMatch": "Vain yhteystiedot, jotka täsmäävät",
-      "moreOptions": "Lisää vaihtoehtoja"
+      "moreOptions": "Lisää vaihtoehtoja",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactNote": {
       "label": "Yhteystiedon muistiinpano"
@@ -1349,7 +1355,9 @@
         "documentReader": "Asiakirjanlukija",
         "imageReader": "Kuvanlukija",
         "urlContext": "URL-lukija",
-        "webSearch": "Verkkohaku"
+        "webSearch": "Verkkohaku",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "min": {
@@ -2586,7 +2594,7 @@
     "title": "Yleiset"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "Tämä poistaa kampanjan vain ChatbotX:stä. Metan viestikampanja jatkuu — keskeytä tai poista se Ads Managerissa.",
+    "deleteWarning": "Tämä poistaa kampanjan vain salesmanChatbot:stä. Metan viestikampanja jatkuu — keskeytä tai poista se Ads Managerissa.",
     "title": "Facebook Marketing Messages",
     "description": "Kasvata sitoutumista ja myyntiä personoiduilla mainosviesteillä Messengerissä.",
     "create": "Luo uusi",
@@ -3423,6 +3431,9 @@
     "disconnectSuccess": "Kohteen {feature} yhteys katkaistiin",
     "reply": "Vastaa",
     "privateReply": "Yksityinen vastaus",
+    "replyingTo": "Vastaat henkilölle",
+    "replyPreview": "{sender} vastasi henkilölle {recipient}",
+    "you": "Sinä",
     "viewMessage": "Näytä viesti",
     "changeLikeState": "Vaihda tykkäystilaa",
     "changeHideState": "Vaihda piilotustilaa",
@@ -3730,6 +3741,10 @@
       "description": "Salli tämän palveluntarjoajan käyttö automaattisissa AI-vastauksissa.",
       "label": "Automaattinen AI-vastaus"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "Yhdistä OpenAI-yhteensopivia palveluntarjoajia AI-agentin varamalleiksi.",
       "label": "OpenAI-yhteensopivat palveluntarjoajat"
@@ -3738,6 +3753,7 @@
     "fields": {
       "baseURL": "Perus-URL",
       "defaultModel": "Oletusmalli",
+      "embeddingModel": "Upotusmalli",
       "enabled": "Käytössä"
     },
     "provider": "AI-palveluntarjoaja",
@@ -3745,6 +3761,23 @@
     "validation": {
       "invalidBaseURL": "Perus-URL on virheellinen tai sitä ei sallita.",
       "presetAlreadyConnected": "Tämä esiasetus on jo yhdistetty tähän työtilaan."
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "settings": {
@@ -4214,7 +4247,7 @@
         "title": "Puheluoikeus",
         "appSubscriptionMissing": "Määritä ensin WhatsApp-webhook tälle sovellukselle Meta-sovelluspaneelissa ja yritä sitten uudelleen.",
         "appSubscriptionFailed": "Sovelluksen 'calls'-webhook-tilausta ei voitu vahvistaa. Yritä pian uudelleen.",
-        "callsNotSubscribed": "Tämä sovellus ei ole tilannut 'calls'-webhook-kenttää, joten puhelutapahtumat eivät voi tavoittaa ChatbotX:ää (Meta-virhe 138018: tekniset edellytykset eivät täyty — varmista, että ainakin yhdellä WABA:an tilatulla sovelluksella on myös puhelujen webhook-kenttä).",
+        "callsNotSubscribed": "Tämä sovellus ei ole tilannut 'calls'-webhook-kenttää, joten puhelutapahtumat eivät voi tavoittaa salesmanChatbot:ää (Meta-virhe 138018: tekniset edellytykset eivät täyty — varmista, että ainakin yhdellä WABA:an tilatulla sovelluksella on myös puhelujen webhook-kenttä).",
         "fixButton": "Korjaa",
         "fixSuccess": "Sovellus on nyt tilannut WhatsApp-puheluwebhookit.",
         "manualIntegrationNotice": "Tämä numero yhdistettiin manuaalisesti, ja sillä ei ole sovellustunnuksia tässä. Tilaa 'calls'-webhook-kenttä sovellukselle Meta-sovelluspaneelissa.",
@@ -5687,7 +5720,109 @@
     "unknown": "Tuntematon"
   },
   "orders": {
-    "title": "Tilaukset"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "products": {
     "title": "Tuotteet",
@@ -6537,7 +6672,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "Toiminnon lähde",

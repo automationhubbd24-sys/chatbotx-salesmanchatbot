@@ -1,9 +1,9 @@
 "use client"
 
-import type { ContactFilterField } from "@chatbotx.io/database/partials"
-import { conditionCaseDefaultFn } from "@chatbotx.io/flow-config"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { ContactFilterField } from "@salesmanchatbot.io/database/partials"
+import { conditionCaseDefaultFn } from "@salesmanchatbot.io/flow-config"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { PlusIcon, XIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFieldArray, useFormContext } from "react-hook-form"

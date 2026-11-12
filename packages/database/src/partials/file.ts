@@ -5,7 +5,7 @@ import { z } from "zod"
  * to an ads-specific handler (super-admin only, `ads-campaign/creatives`
  * path prefix) — see `apps/builder/src/lib/upload/handlers.ts`. Its literal
  * value is duplicated (not imported) as
- * `MESSAGING_AD_CREATIVE_UPLOAD_KIND` in `@chatbotx.io/integration-facebook-ads`
+ * `MESSAGING_AD_CREATIVE_UPLOAD_KIND` in `@salesmanchatbot.io/integration-facebook-ads`
  * because `database` cannot depend on that package — the same reason
  * `messagingAdChannelTypes` duplicates `adsEligibleChannelTypes`.
  */

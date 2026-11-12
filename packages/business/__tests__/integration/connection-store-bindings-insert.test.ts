@@ -32,11 +32,11 @@
  * needs the real column constraints.
  *
  * Skipped unless `DATABASE_URL` points at a reachable database; run it with
- * `pnpm --filter @chatbotx.io/business test:db`.
+ * `pnpm --filter @salesmanchatbot.io/business test:db`.
  */
 
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { db } from "@chatbotx.io/database/client"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { db } from "@salesmanchatbot.io/database/client"
 import {
   integrationClaudeModel,
   integrationDeepseekModel,
@@ -46,9 +46,9 @@ import {
   integrationOpenrouterModel,
   userModel,
   workspaceModel,
-} from "@chatbotx.io/database/schema"
-import { AuthType, type SecretTextAuthValue } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/schema"
+import { AuthType, type SecretTextAuthValue } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import { eq } from "drizzle-orm"
 import type { PgTable } from "drizzle-orm/pg-core"
 import { describe, expect, test } from "vitest"

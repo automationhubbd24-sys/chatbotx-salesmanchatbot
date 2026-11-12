@@ -1,7 +1,7 @@
 "use client"
 
-import { botMessageResults } from "@chatbotx.io/analytics/schemas"
-import BarChart from "@chatbotx.io/ui/components/charts/bar-chart"
+import { botMessageResults } from "@salesmanchatbot.io/analytics/schemas"
+import BarChart from "@salesmanchatbot.io/ui/components/charts/bar-chart"
 import { useLocale, useTranslations } from "next-intl"
 import { useMemo } from "react"
 import { useAnalysisStore } from "../../provider/analysis-store-context"

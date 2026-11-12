@@ -64,6 +64,7 @@ import { messagesPublicRouter } from "@/features/messages/api/public"
 import { minigamesPublicRouter } from "@/features/minigames/api/public"
 import { messengerPersonasPublicRouter } from "@/features/personas/api/public"
 import { productCategoriesPublicRouter } from "@/features/product-categories/api/public"
+import { ordersPublicRouter } from "@/features/orders/api/public"
 import { productsPublicRouter } from "@/features/products/api/public"
 import { qrCodesPublicRouter } from "@/features/qr-codes/api/public"
 import { questionnairesPublicRouter } from "@/features/questionnaires/api/public"
@@ -131,6 +132,7 @@ export const publicRouter = {
   messengerPersonas: messengerPersonasPublicRouter,
   messengerTemplates: messengerTemplatesPublicRouter,
   minigames: minigamesPublicRouter,
+  orders: ordersPublicRouter,
   productCategories: productCategoriesPublicRouter,
   products: productsPublicRouter,
   qrCodes: qrCodesPublicRouter,

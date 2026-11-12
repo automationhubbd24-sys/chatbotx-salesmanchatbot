@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from "node:async_hooks"
-import { getAuditActor } from "@chatbotx.io/business/audit"
+import { getAuditActor } from "@salesmanchatbot.io/business/audit"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const {
@@ -38,7 +38,7 @@ const {
 
 const auditStorage = new AsyncLocalStorage<Record<string, unknown>>()
 
-vi.mock("@chatbotx.io/business/audit", () => ({
+vi.mock("@salesmanchatbot.io/business/audit", () => ({
   SYSTEM_ACTOR: "system",
   auditService: { record: vi.fn() },
   getAuditActor: () => auditStorage.getStore(),
@@ -46,16 +46,16 @@ vi.mock("@chatbotx.io/business/audit", () => ({
     auditStorage.run(actor, fn),
 }))
 
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   SEQUENCE_SCHEDULE_PAYLOAD_TYPE: "sequenceSchedule",
 }))
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   isLockAcquisitionError: isLockAcquisitionErrorSpy,
   sequenceConnections: { useExisting: useExistingSpy },
 }))
 
-vi.mock("@chatbotx.io/scheduler", () => ({
+vi.mock("@salesmanchatbot.io/scheduler", () => ({
   SchedulerClient: class {
     addToSchedule = vi.fn()
     getLockKey = (bucket: number, dispatchId: string) =>
@@ -65,11 +65,11 @@ vi.mock("@chatbotx.io/scheduler", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/sequence-scheduler", () => ({
+vi.mock("@salesmanchatbot.io/sequence-scheduler", () => ({
   advanceEnrollment: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { sendSequenceFlow: "sendSequenceFlow" },
   integrationQueue: { add: integrationQueueAddSpy },
   queueNames: { enum: { sequenceScheduler: "sequence-scheduler" } },

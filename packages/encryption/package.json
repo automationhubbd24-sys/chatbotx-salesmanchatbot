@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/encryption",
+  "name": "@salesmanchatbot.io/encryption",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
@@ -8,8 +8,8 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "@types/node": "^24.10.4",
     "typescript": "6.0.2",
     "vitest": "^4.1.0"

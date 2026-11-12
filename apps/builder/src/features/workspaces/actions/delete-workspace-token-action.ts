@@ -1,6 +1,6 @@
 "use server"
 
-import { workspaceApiTokenService } from "@chatbotx.io/business"
+import { workspaceApiTokenService } from "@salesmanchatbot.io/business"
 import { returnValidationErrors } from "next-safe-action"
 import {
   type WorkspaceIdRequestParams,

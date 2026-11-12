@@ -1,6 +1,6 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import { authActionClient } from "@/lib/safe-action"
 import { credentialScopeSchema, resolveCredentialScopedUserId } from "../scope"
 

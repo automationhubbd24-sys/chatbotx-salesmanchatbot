@@ -7,7 +7,7 @@ const assertWorkspaceSuperAdmin = vi.fn()
 const getPresignedUpload = vi.fn()
 const createFile = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   fileService: { createPending: createFile },
   isPlatformAdmin: vi.fn(),
   resolveTenantSettings: vi.fn(async () => ({
@@ -18,7 +18,7 @@ vi.mock("@chatbotx.io/business", () => ({
   })),
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   fileContextTypes: { enum: { generic: "generic", import: "import" } },
   fileStatuses: { enum: { pending: "pending" } },
   importTypes: { options: ["contact"] },
@@ -32,13 +32,13 @@ vi.mock("@chatbotx.io/database/partials", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({ fileModel: {} }))
+vi.mock("@salesmanchatbot.io/database/schema", () => ({ fileModel: {} }))
 
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: { getPresignedUpload },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({ createId: () => "file-1" }))
+vi.mock("@salesmanchatbot.io/utils", () => ({ createId: () => "file-1" }))
 
 vi.mock("@/features/import/schema/presign", () => ({
   presignImportUploadRequest: {

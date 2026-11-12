@@ -1482,7 +1482,7 @@
     "unknown": "未知"
   },
   "facebookMarketingMessages": {
-    "deleteWarning": "这只会从 ChatbotX 中移除该广告系列。Meta 消息广告系列仍在投放——请在广告管理工具中暂停或删除。",
+    "deleteWarning": "这只会从 salesmanChatbot 中移除该广告系列。Meta 消息广告系列仍在投放——请在广告管理工具中暂停或删除。",
     "title": "Facebook 营销消息",
     "description": "通过 Messenger 上的个性化推广消息提升互动与销售。",
     "create": "新建",
@@ -1872,7 +1872,13 @@
       "anyConditions": "以下任何条件。",
       "label": "联系人过滤器",
       "moreOptions": "更多选项",
-      "onlyContactsMatch": "仅匹配的联系人"
+      "onlyContactsMatch": "仅匹配的联系人",
+      "datePresets": {
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "custom": "Custom date range",
+        "selectRange": "Select a start and end date"
+      }
     },
     "contactId": {
       "label": "联系人 ID"
@@ -2864,7 +2870,9 @@
         "documentReader": "文档阅读器",
         "imageReader": "影像读取器",
         "urlContext": "网址阅读器",
-        "webSearch": "Web 搜索"
+        "webSearch": "Web 搜索",
+        "searchProducts": "Search products",
+        "getProductDetails": "Get product details"
       }
     },
     "systemUserId": {
@@ -4328,6 +4336,9 @@
     "poweredBy": "由 {name} 提供技术支持",
     "publishVersionSuccess": "新版本已发布",
     "privateReply": "私信回复",
+    "replyingTo": "回复给",
+    "replyPreview": "{sender} 回复了 {recipient}",
+    "you": "你",
     "redoHistoryCleared": "重做历史记录已清除",
     "refreshTokenSuccessfully": "{feature} 权杖更新成功",
     "repliedToStory": "回复了你的故事",
@@ -4631,6 +4642,10 @@
       "description": "允许此提供者用于自动 AI 回复。",
       "label": "人工智能自动回复"
     },
+    "streaming": {
+      "description": "Stream responses as they are generated.",
+      "label": "Streaming"
+    },
     "connect": {
       "description": "连接 OpenAI AI Agent 后备模型的兼容提供者。",
       "label": "OpenAI兼容供应商"
@@ -4639,6 +4654,7 @@
     "fields": {
       "baseURL": "基础URL",
       "defaultModel": "缺省模型",
+      "embeddingModel": "嵌入模型",
       "enabled": "已激活"
     },
     "provider": "人工智能供应商",
@@ -4646,6 +4662,23 @@
     "validation": {
       "invalidBaseURL": "基础URL 无效或不允许。",
       "presetAlreadyConnected": "此缺省已为此工作区连接。"
+    }
+  },
+  "openaiCompatibleTextEmbedding": {
+    "apiKeyKeepExisting": "Leave blank to keep the existing API key.",
+    "connect": {
+      "description": "Configure an independent OpenAI-compatible provider for text embeddings.",
+      "label": "Connect"
+    },
+    "edit": "Edit",
+    "fields": {
+      "baseURL": "Base URL",
+      "embeddingModel": "Embedding model",
+      "enabled": "Enabled"
+    },
+    "title": "OpenAI-compatible Text Embedding",
+    "validation": {
+      "invalidBaseURL": "Base URL is invalid or not allowed."
     }
   },
   "openrouter": {
@@ -4660,7 +4693,109 @@
     "title": "开放路由器"
   },
   "orders": {
-    "title": "订单"
+    "dateFilters": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear",
+      "custom": "Custom date range",
+      "filter": "Filter dates",
+      "apply": "Apply"
+    },
+    "types": {
+      "product": "Product",
+      "appointment": "Appointment",
+      "quote": "Quote",
+      "digitalService": "Digital service"
+    },
+    "title": "Orders",
+    "search": "Search orders",
+    "empty": "No orders found.",
+    "fields": {
+      "order": "Order",
+      "customerName": "Customer name",
+      "phone": "Phone",
+      "deliveryAddress": "Delivery address",
+      "productName": "Product name",
+      "quantity": "Quantity",
+      "type": "Order type",
+      "status": "Status",
+      "source": "Source",
+      "total": "Total",
+      "createdAt": "Created",
+      "confirmedAt": "Confirmed",
+      "expiresAt": "Expires",
+      "fulfillmentStatus": "Fulfillment status",
+      "orderId": "Order ID",
+      "contactId": "Contact ID",
+      "conversationId": "Conversation ID"
+    },
+    "customFields": "Custom fields",
+    "customFieldsEmpty": "No order custom fields yet.",
+    "customFieldValues": {
+      "empty": "—",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "customFieldTypes": {
+      "text": "Text",
+      "phone": "Phone",
+      "email": "Email",
+      "number": "Number",
+      "currency": "Currency",
+      "date": "Date",
+      "datetime": "Date and time",
+      "select": "Select",
+      "multiselect": "Multi-select",
+      "boolean": "Boolean",
+      "textarea": "Long text"
+    },
+    "customFieldLabel": "Label",
+    "customFieldKey": "Key",
+    "customFieldOrderType": "Order type",
+    "customFieldType": "Field type",
+    "customFieldDisplayOrder": "Display order",
+    "customFieldRequired": "Required",
+    "customFieldCustomerEditable": "Customer editable",
+    "customFieldAiVisible": "Visible to AI",
+    "customFieldOptions": "Options (one per line)",
+    "confirmationMetadata": "Confirmation metadata",
+    "customerInformation": "Customer information",
+    "lifecycle": {
+      "awaitingConfirmation": "Awaiting confirmation",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "returned": "Returned",
+      "refunded": "Refunded",
+      "failed": "Failed",
+      "expired": "Expired"
+    },
+    "tabs": {
+      "all": "All",
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "status": {
+      "draft": "Draft",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "sources": {
+      "ai": "AI",
+      "website": "Website",
+      "landingPage": "Landing page",
+      "messenger": "Messenger",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
+      "manual": "Manual",
+      "api": "API"
+    }
   },
   "placesNearMe": {
     "description": "寻找您的联系人附近的地点。",
@@ -5845,7 +5980,7 @@
         "title": "Calling eligibility",
         "appSubscriptionMissing": "Configure the WhatsApp webhook for this app in the Meta App Dashboard first, then try again.",
         "appSubscriptionFailed": "Could not verify the app's 'calls' webhook subscription. Try again shortly.",
-        "callsNotSubscribed": "This app is not subscribed to the 'calls' webhook field, so call events cannot reach ChatbotX (Meta error 138018: technical pre-requisites are not met — ensure at least one app subscribed to the WABA also has the calls webhook field).",
+        "callsNotSubscribed": "This app is not subscribed to the 'calls' webhook field, so call events cannot reach salesmanChatbot (Meta error 138018: technical pre-requisites are not met — ensure at least one app subscribed to the WABA also has the calls webhook field).",
         "fixButton": "Fix",
         "fixSuccess": "The app is now subscribed to WhatsApp call webhooks.",
         "manualIntegrationNotice": "This number was connected manually and has no app credentials here. Subscribe the 'calls' webhook field for your app in the Meta App Dashboard.",
@@ -6250,7 +6385,7 @@
     },
     "limitedDataUse": {
       "label": "Limited Data Use (US privacy)",
-      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by ChatbotX."
+      "description": "Restrict Meta's use of event data for users in applicable US states. Meta auto-detects the user's location from this event; no location data is sent by salesmanChatbot."
     },
     "actionSource": {
       "label": "操作来源",

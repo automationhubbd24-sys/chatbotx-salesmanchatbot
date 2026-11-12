@@ -1,4 +1,4 @@
-import { stepTypes } from "@chatbotx.io/flow-config"
+import { stepTypes } from "@salesmanchatbot.io/flow-config"
 import {
   SiClaude,
   SiGooglegemini,

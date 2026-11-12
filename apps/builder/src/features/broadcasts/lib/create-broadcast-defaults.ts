@@ -8,11 +8,11 @@ import {
   broadcastSubactions,
   type ChannelType,
   channelTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import type {
   BroadcastModel,
   BroadcastTargetModel,
-} from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/types"
 import { z } from "zod"
 import {
   type ContactFilterCriteria,

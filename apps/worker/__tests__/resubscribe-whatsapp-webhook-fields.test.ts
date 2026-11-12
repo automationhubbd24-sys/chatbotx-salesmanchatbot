@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   integrationWhatsappService: { findAllForTokenRefresh: vi.fn() },
 }))
-vi.mock("@chatbotx.io/integration-whatsapp/api/webhook", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/webhook", () => ({
   subscribeWebhook: vi.fn(),
 }))
 vi.mock("../src/lib/logger", () => ({

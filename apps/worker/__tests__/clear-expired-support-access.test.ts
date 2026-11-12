@@ -8,10 +8,10 @@ const lockExists = vi.fn()
 const info = vi.fn()
 const warn = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceSupportAccessService: { clearExpired },
 }))
-vi.mock("@chatbotx.io/redis", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/redis", async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
@@ -19,7 +19,7 @@ vi.mock("@chatbotx.io/redis", async (importOriginal) => {
     distributedStore: { exists: lockExists },
   }
 })
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info, warn }),
 }))
 

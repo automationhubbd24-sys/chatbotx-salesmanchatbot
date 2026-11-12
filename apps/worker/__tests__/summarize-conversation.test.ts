@@ -11,8 +11,8 @@ const mocks = vi.hoisted(() => ({
   update: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/ai/server", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@chatbotx.io/ai/server")>()
+vi.mock("@salesmanchatbot.io/ai/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@salesmanchatbot.io/ai/server")>()
   return {
     ...actual,
     aiContextStore: {
@@ -23,7 +23,7 @@ vi.mock("@chatbotx.io/ai/server", async (importOriginal) => {
     summarizeConversation: mocks.summarizeConversation,
   }
 })
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     query: {
       conversationModel: {
@@ -32,9 +32,9 @@ vi.mock("@chatbotx.io/database/client", () => ({
     },
   },
 }))
-vi.mock("@chatbotx.io/worker-config", async (importOriginal) => {
+vi.mock("@salesmanchatbot.io/worker-config", async (importOriginal) => {
   const actual =
-    await importOriginal<typeof import("@chatbotx.io/worker-config")>()
+    await importOriginal<typeof import("@salesmanchatbot.io/worker-config")>()
   return {
     ...actual,
     AIJobAction: { summarizeConversation: "summarizeConversation" },
@@ -207,6 +207,51 @@ describe("handleSummarizeConversation", () => {
     expect(mocks.loggerWarn).toHaveBeenCalledWith(
       expect.objectContaining({ conversationId: "conv-1" }),
       expect.stringContaining("stale"),
+    )
+    expect(mocks.summarizeConversation).toHaveBeenCalled()
+    expect(mocks.update).toHaveBeenCalledWith(
+      "conv-1",
+      expect.objectContaining({ summary: "recovered summary" }),
+    )
+  })
+
+  test("self-heals a 'summarizing' flag with a missing start timestamp", async () => {
+    mocks.get
+      .mockResolvedValueOnce({
+        summarizing: true,
+        summarizingStartedAt: null,
+        needsResummarize: false,
+        summary: "old",
+        history: Array.from({ length: 25 }, (_, i) => ({
+          role: "user",
+          content: `msg-${i}`,
+          messageId: `msg-${i}`,
+        })),
+      })
+      .mockResolvedValueOnce({
+        summarizing: true,
+        needsResummarize: false,
+        summary: "old",
+        history: Array.from({ length: 25 }, (_, i) => ({
+          role: "user",
+          content: `msg-${i}`,
+          messageId: `msg-${i}`,
+        })),
+      })
+    mocks.findFirstConversation.mockResolvedValue({
+      id: "conv-1",
+      workspaceId: "ws-1",
+    })
+    mocks.summarizeConversation.mockResolvedValue("recovered summary")
+
+    await handleSummarizeConversation({ conversationId: "conv-1" })
+
+    expect(mocks.loggerWarn).toHaveBeenCalledWith(
+      expect.objectContaining({
+        conversationId: "conv-1",
+        missingSummarizingStartedAt: true,
+      }),
+      expect.stringContaining("missing its start timestamp"),
     )
     expect(mocks.summarizeConversation).toHaveBeenCalled()
     expect(mocks.update).toHaveBeenCalledWith(

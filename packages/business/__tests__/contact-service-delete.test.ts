@@ -1,5 +1,5 @@
-import { macAnalyticsService } from "@chatbotx.io/analytics"
-import { db } from "@chatbotx.io/database/client"
+import { macAnalyticsService } from "@salesmanchatbot.io/analytics"
+import { db } from "@salesmanchatbot.io/database/client"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import { contactService } from "../src/contact"
 import { contactInboxPostService } from "../src/contact-inbox-post/service"

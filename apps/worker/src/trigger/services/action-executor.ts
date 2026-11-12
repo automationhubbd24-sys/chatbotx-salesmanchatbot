@@ -7,11 +7,11 @@ import {
   metaConversionsService,
   tagService,
   tagSyncService,
-} from "@chatbotx.io/business"
-import { triggerActions } from "@chatbotx.io/database/partials"
-import type { ContactInboxWorkspaceRow } from "@chatbotx.io/database/repositories"
-import { metaCapiEventChannelSchema } from "@chatbotx.io/database/schema"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+} from "@salesmanchatbot.io/business"
+import { triggerActions } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxWorkspaceRow } from "@salesmanchatbot.io/database/repositories"
+import { metaCapiEventChannelSchema } from "@salesmanchatbot.io/database/schema"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   errorStateDefaultFn,
   FieldOperationType,
@@ -31,14 +31,14 @@ import {
   stepTypes,
   successStateDefaultFn,
   withMetaCapiEventRefinements,
-} from "@chatbotx.io/flow-config"
-import baseLogger from "@chatbotx.io/logger"
-import { createId } from "@chatbotx.io/utils"
-import { resolveContactVariablesDeep } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/flow-config"
+import baseLogger from "@salesmanchatbot.io/logger"
+import { createId } from "@salesmanchatbot.io/utils"
+import { resolveContactVariablesDeep } from "@salesmanchatbot.io/variables"
 import {
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import type { ExecuteStepProps } from "../../integration/handlers/flow"
 import {
   describeCapiInputValidationError,

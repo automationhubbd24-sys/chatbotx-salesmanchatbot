@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Switch } from "@chatbotx.io/ui/components/ui/switch"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Switch } from "@salesmanchatbot.io/ui/components/ui/switch"
 import { Loader2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import type { RefObject } from "react"

@@ -1,16 +1,16 @@
 import { createHash } from "node:crypto"
-import { isMessageStorageError } from "@chatbotx.io/database/errors"
+import { isMessageStorageError } from "@salesmanchatbot.io/database/errors"
 import {
   type AIAgentProviderModels,
   aiMessageRoles,
   senderTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createMessageRepository,
   findConversationAIContextState,
   getSafeSinceTime,
-} from "@chatbotx.io/database/repositories"
-import { AIJobAction, aiAgentQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/database/repositories"
+import { AIJobAction, aiAgentQueue } from "@salesmanchatbot.io/worker-config"
 import type { ModelMessage } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import {

@@ -1,18 +1,18 @@
-import type { FacebookMarketingMessageBudgetType } from "@chatbotx.io/database/partials"
+import type { FacebookMarketingMessageBudgetType } from "@salesmanchatbot.io/database/partials"
 import {
   facebookMarketingMessageRepository,
   facebookMarketingMessagesAuthRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import type {
   FacebookMarketingMessageModel,
   FacebookMarketingMessagesAuthModel,
-} from "@chatbotx.io/database/types"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/database/types"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
 import {
   type FacebookAdsAuthValue,
   facebookAdsAuthSchema,
-} from "@chatbotx.io/integration-facebook-ads"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-facebook-ads"
+import { createId } from "@salesmanchatbot.io/utils"
 import { BaseService } from "../base.service"
 
 export type CreateMarketingMessageInput = {

@@ -77,10 +77,10 @@ const contactService = {
   resolveIdByIdentifier: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", () => ({ couponService, contactService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ couponService, contactService }))
 
 const defaultQueue = { add: vi.fn() }
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: {
     runImport: "runImport",
     exportCoupons: "exportCoupons",
@@ -89,7 +89,7 @@ vi.mock("@chatbotx.io/worker-config", () => ({
 }))
 
 const uploader = { getPresignedDownload: vi.fn() }
-vi.mock("@chatbotx.io/filesystem", () => ({ uploader }))
+vi.mock("@salesmanchatbot.io/filesystem", () => ({ uploader }))
 
 const createPublicCouponImportUpload = vi.fn()
 vi.mock("@/features/coupons/lib/create-public-import-upload", () => ({

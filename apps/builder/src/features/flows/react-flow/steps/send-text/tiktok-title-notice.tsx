@@ -1,6 +1,6 @@
 "use client"
 
-import { isTiktokCardTitleTruncated } from "@chatbotx.io/flow-config"
+import { isTiktokCardTitleTruncated } from "@salesmanchatbot.io/flow-config"
 import { TriangleAlertIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useWatch } from "react-hook-form"

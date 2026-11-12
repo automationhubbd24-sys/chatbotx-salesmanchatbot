@@ -1,6 +1,6 @@
-import { integrationMoosendService } from "@chatbotx.io/business"
-import { encryptedDataSchema, encryptUtils } from "@chatbotx.io/encryption"
-import { moosendAuthSchema } from "@chatbotx.io/integration-moosend"
+import { integrationMoosendService } from "@salesmanchatbot.io/business"
+import { encryptedDataSchema, encryptUtils } from "@salesmanchatbot.io/encryption"
+import { moosendAuthSchema } from "@salesmanchatbot.io/integration-moosend"
 
 export const getMoosendAuth = async (workspaceId: string) => {
   const row = await integrationMoosendService.findByWorkspaceId(workspaceId)

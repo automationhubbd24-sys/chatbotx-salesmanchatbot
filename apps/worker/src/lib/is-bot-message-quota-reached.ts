@@ -1,7 +1,7 @@
 import {
   quotaEnforcementService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 
 /**
  * Checks the owner's live bot-message limits before an outbound bot send.

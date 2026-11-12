@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   findWhatsapp: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationMessengerRepository: {
     findWorkspaceIntegration: mocks.findMessenger,
   },

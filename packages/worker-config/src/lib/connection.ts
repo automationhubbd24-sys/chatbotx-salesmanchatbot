@@ -1,4 +1,4 @@
-import { createRedisConnection } from "@chatbotx.io/redis"
+import { createRedisConnection } from "@salesmanchatbot.io/redis"
 import type { default as IORedis, RedisOptions } from "ioredis"
 import { keys } from "../keys"
 import type { QueueName } from "./types"

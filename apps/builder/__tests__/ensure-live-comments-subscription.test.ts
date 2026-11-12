@@ -8,10 +8,10 @@ const { findByWorkspaceId, subscribePageToInstagramWebhook } = vi.hoisted(
 )
 
 vi.mock("server-only", () => ({}))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   instagramIntegrationService: { findByWorkspaceId },
 }))
-vi.mock("@chatbotx.io/integration-instagram", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram", () => ({
   subscribePageToInstagramWebhook,
 }))
 vi.mock("@/lib/log", () => ({ logger: { error: vi.fn() } }))

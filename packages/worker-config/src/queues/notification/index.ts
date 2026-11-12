@@ -1,4 +1,4 @@
-import type { ContentType } from "@chatbotx.io/database/partials"
+import type { ContentType } from "@salesmanchatbot.io/database/partials"
 import { Queue } from "bullmq"
 import {
   defaultJobOptions,

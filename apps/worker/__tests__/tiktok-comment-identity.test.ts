@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockListTiktokComments = vi.fn()
 
-vi.mock("@chatbotx.io/integration-tiktok/apis/comment", () => ({
+vi.mock("@salesmanchatbot.io/integration-tiktok/apis/comment", () => ({
   listTiktokComments: mockListTiktokComments,
 }))
 

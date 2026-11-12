@@ -1,8 +1,8 @@
 import {
   conversationService,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { db } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { db } from "@salesmanchatbot.io/database/client"
 
 const resolveAssigneeMember = async (props: {
   contactId: string

@@ -1,4 +1,4 @@
-import { integrationWhatsappRepository } from "@chatbotx.io/database/repositories"
+import { integrationWhatsappRepository } from "@salesmanchatbot.io/database/repositories"
 import { WHATSAPP_CAPI_SCOPE } from "../../integration-whatsapp/auth-schema"
 import { integrationWhatsappService } from "../../integration-whatsapp/service"
 import { whatsappBusinessAccountService } from "../../whatsapp-business-account/service"

@@ -1,7 +1,7 @@
 import {
   operatorTypes,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import z from "zod"
 
 export const customFieldValueChanged = z.object({

@@ -1,7 +1,7 @@
 "use server"
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { saveCapiDataset } from "@/features/meta-conversions/lib/capi-operations"
@@ -38,7 +38,7 @@ export const setMessengerCapiDatasetAction = workspaceActionClient
         })
       } catch (error) {
         if (isNotFound(error)) {
-          throw new ChatbotXException(t("messengerNotFound"))
+          throw new salesmanChatbotException(t("messengerNotFound"))
         }
         throw error
       }

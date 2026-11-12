@@ -1,6 +1,6 @@
 "use client"
 
-import type { ConditionStepSchema } from "@chatbotx.io/flow-config"
+import type { ConditionStepSchema } from "@salesmanchatbot.io/flow-config"
 import { useTranslations } from "next-intl"
 import {
   type FieldConfig,

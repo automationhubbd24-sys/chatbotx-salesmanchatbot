@@ -1,4 +1,4 @@
-import type { CommentAutomationType } from "@chatbotx.io/database/partials"
+import type { CommentAutomationType } from "@salesmanchatbot.io/database/partials"
 import { scanInstagramComments } from "./scan-instagram"
 import { scanMessengerComments } from "./scan-messenger"
 import { scanThreadsComments } from "./scan-threads"

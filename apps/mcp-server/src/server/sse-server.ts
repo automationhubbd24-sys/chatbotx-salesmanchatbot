@@ -100,7 +100,7 @@ export const getApiTokenFromRequest = (
 }
 
 export const makeApiKeyState = (req: IncomingMessage): ApiKeyState => ({
-  current: getApiTokenFromRequest(req) || env.CHATBOTX_API_KEY,
+  current: getApiTokenFromRequest(req) || env.SALESMANCHATBOT_API_KEY,
 })
 
 /**
@@ -125,7 +125,7 @@ export const updateApiKeyStateFromRequest = (
 const getApiKeyFromState = (state: ApiKeyState) => (): string => state.current
 
 const enableCors = (res: ServerResponse): void => {
-  res.setHeader("Access-Control-Allow-Origin", env.CHATBOTX_MCP_CORS_ORIGIN)
+  res.setHeader("Access-Control-Allow-Origin", env.SALESMANCHATBOT_MCP_CORS_ORIGIN)
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
   res.setHeader("Access-Control-Allow-Headers", "*")
 }
@@ -208,7 +208,7 @@ const handleSseRequest = async (
       getApiKey: getApiKeyFromState(apiKeyState),
     })
     const transport = new SSEServerTransport(
-      env.CHATBOTX_MCP_MESSAGES_PATH,
+      env.SALESMANCHATBOT_MCP_MESSAGES_PATH,
       res,
     )
     legacySseSessions.set(transport.sessionId, {
@@ -340,12 +340,12 @@ export const createRequestListener =
       enableCors(res)
 
       const url = new URL(req.url ?? "", "http://localhost")
-      if (url.pathname === env.CHATBOTX_MCP_SSE_PATH) {
+      if (url.pathname === env.SALESMANCHATBOT_MCP_SSE_PATH) {
         await handleSseRequest(req, res, createMcpServer)
         return
       }
 
-      if (url.pathname === env.CHATBOTX_MCP_MESSAGES_PATH) {
+      if (url.pathname === env.SALESMANCHATBOT_MCP_MESSAGES_PATH) {
         await handleMessagesRequest(req, res, createMcpServer)
         return
       }
@@ -376,10 +376,10 @@ export const runSseServer = async (
 ): Promise<void> => {
   const httpServer = createServer(createRequestListener(createMcpServer))
   const { promise: listening, resolve } = Promise.withResolvers<void>()
-  httpServer.listen(env.CHATBOTX_MCP_PORT, env.CHATBOTX_MCP_HOST, resolve)
+  httpServer.listen(env.SALESMANCHATBOT_MCP_PORT, env.SALESMANCHATBOT_MCP_HOST, resolve)
   await listening
 
   console.error(
-    `MCP Server running on http://${env.CHATBOTX_MCP_HOST}:${env.CHATBOTX_MCP_PORT}${env.CHATBOTX_MCP_SSE_PATH}`,
+    `MCP Server running on http://${env.SALESMANCHATBOT_MCP_HOST}:${env.SALESMANCHATBOT_MCP_PORT}${env.SALESMANCHATBOT_MCP_SSE_PATH}`,
   )
 }

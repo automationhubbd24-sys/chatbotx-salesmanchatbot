@@ -1,6 +1,6 @@
-import { contactCustomFieldValueService } from "@chatbotx.io/business/contact-custom-field-value"
-import { smartDelayTypes } from "@chatbotx.io/database/partials"
-import { webhookChannelOrigin } from "@chatbotx.io/events/context"
+import { contactCustomFieldValueService } from "@salesmanchatbot.io/business/contact-custom-field-value"
+import { smartDelayTypes } from "@salesmanchatbot.io/database/partials"
+import { webhookChannelOrigin } from "@salesmanchatbot.io/events/context"
 import {
   computeTriggerAt,
   type EdgeSchema,
@@ -11,14 +11,14 @@ import {
   type StepType,
   stepTypes,
   type WaitStepSchema,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   type ChatJobSendFlowStep,
   HeavyJobAction,
   IntegrationJobAction,
   integrationQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { logger } from "../../lib/logger"
 import { syncActiveCampaignContact } from "./active-campaign-handler"
 import { handleAIAnalyzeImage } from "./analyze-image"

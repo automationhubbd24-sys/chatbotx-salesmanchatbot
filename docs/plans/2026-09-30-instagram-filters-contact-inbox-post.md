@@ -130,7 +130,7 @@ Read first: `.agents/skills/drizzle-database/SKILL.md`. Generate the migrations 
 **Migration 1: `add_instagram_snapshot_and_purge_state`** (keep the drizzle-kit SQL)
 
 1. `src/schema/contact-inbox.ts`: add the 4 D1 columns and the D9 state/attempt/deadline columns, no `.default()`. Add the D9 pgEnum and `Workspace.purgeStartedAt` (D10). Register enum/type exports. **Do not declare the D9 partial index yet**; it is added to the schema only for Migration 3, so this migration stays fully transactional and metadata-only.
-2. `pnpm --filter @chatbotx.io/database make:migration add_instagram_snapshot_and_purge_state`.
+2. `pnpm --filter @salesmanchatbot.io/database make:migration add_instagram_snapshot_and_purge_state`.
 3. Preserve all generated D1/D9/D10 SQL and prepend the timeout. The following is the D1 excerpt only; do not replace the generated migration with this excerpt:
    ```sql
    SET LOCAL lock_timeout = '5s';
@@ -222,7 +222,7 @@ Read first: `.agents/skills/drizzle-database/SKILL.md`. Generate the migrations 
    - Create it now while the table is empty, which costs almost nothing. Adding it later means `CONCURRENTLY` on each partition + `ATTACH`.
 5. Export from `src/schema/index.ts` (+ type export).
 6. Relations (invariant #2): create `relations/contact-inbox-post.ts` with `one(contactInbox)` and `one(channelPost)` (relations do not need an FK), and `relations/channel-post.ts` with `one(workspace)` / `one(inbox)`. Then **import + spread** both in `relations/index.ts`. Defer the reverse `many(posts)` relation: all post reads go through workspace-scoped repository methods, avoiding an eager load that scans every partition.
-7. `pnpm --filter @chatbotx.io/database make:migration create_channel_post_and_contact_inbox_post`.
+7. `pnpm --filter @salesmanchatbot.io/database make:migration create_channel_post_and_contact_inbox_post`.
 8. Keep the generated `CREATE TYPE "channelPostIntegrationType"`, `CREATE TABLE "ChannelPost"`, its FKs and indexes. Prepend `SET LOCAL lock_timeout = '5s';`. Replace **only** the generated `ContactInboxPost` statements with the following (PK and index names must match the snapshot):
    ```sql
    CREATE TABLE "ContactInboxPost" (
@@ -276,7 +276,7 @@ Read first: `.agents/skills/drizzle-database/SKILL.md`. Generate the migrations 
       .on(table.profileSnapshotNextAttemptAt, table.id)
       .where(sql`${table.profileSnapshotState} = 'pending'`),
     ```
-11. `pnpm --filter @chatbotx.io/database make:migration add_contact_inbox_snapshot_pending_idx`, then replace the generated statement with:
+11. `pnpm --filter @salesmanchatbot.io/database make:migration add_contact_inbox_snapshot_pending_idx`, then replace the generated statement with:
     ```sql
     CREATE INDEX CONCURRENTLY IF NOT EXISTS "ContactInbox_profileSnapshot_pending_idx"
       ON "ContactInbox" ("profileSnapshotNextAttemptAt", "id")
@@ -508,7 +508,7 @@ Verification:
 - `pnpm lint` (includes `db:check-drift`)
 - `check-types` for builder, worker, database, business, sdk, worker-config, and both IG integrations
 - `pnpm test` for the touched workspaces
-- `pnpm --filter @chatbotx.io/database test:db` on the local DB
+- `pnpm --filter @salesmanchatbot.io/database test:db` on the local DB
 - The `invariant-guard` agent
 
 ## 9. Risks

@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useFormatter, useTranslations } from "next-intl"
 import { CONTACT_SCAN_ETA_MS, DATE_TIME_FORMAT_OPTIONS } from "../lib/constants"
 import {

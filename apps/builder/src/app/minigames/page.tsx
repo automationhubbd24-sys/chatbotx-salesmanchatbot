@@ -1,9 +1,9 @@
-import { contactInboxService, tagService } from "@chatbotx.io/business"
+import { contactInboxService, tagService } from "@salesmanchatbot.io/business"
 import {
   minigameContactService,
   minigameService,
-} from "@chatbotx.io/business/minigame"
-import { verifyMinigamePlayToken } from "@chatbotx.io/encryption/minigame-play-token"
+} from "@salesmanchatbot.io/business/minigame"
+import { verifyMinigamePlayToken } from "@salesmanchatbot.io/encryption/minigame-play-token"
 import type { Metadata } from "next"
 import type { SearchParams } from "next/dist/server/request/search-params"
 import { notFound } from "next/navigation"

@@ -1,6 +1,6 @@
 "use server"
 
-import { conversationService } from "@chatbotx.io/business"
+import { conversationService } from "@salesmanchatbot.io/business"
 import { workspaceIdrequestParams } from "@/features/common/schema"
 import { workspaceActionClient } from "@/lib/safe-action"
 import { findContactConversationRequest } from "../schema/action"

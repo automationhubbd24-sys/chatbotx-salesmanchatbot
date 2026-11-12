@@ -4,14 +4,14 @@ import {
   platformCredentialService,
   tenantService,
   workspaceMemberService,
-} from "@chatbotx.io/business"
-import { getSafeErrorDetails } from "@chatbotx.io/integration-threads"
+} from "@salesmanchatbot.io/business"
+import { getSafeErrorDetails } from "@salesmanchatbot.io/integration-threads"
 import type {
   TiktokAuthValue,
   TiktokConfig,
-} from "@chatbotx.io/integration-tiktok"
-import { SdkException } from "@chatbotx.io/sdk"
-import { integrationQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/integration-tiktok"
+import { SdkException } from "@salesmanchatbot.io/sdk"
+import { integrationQueue } from "@salesmanchatbot.io/worker-config"
 import type { NextRequest } from "next/server"
 import { isCloud } from "@/env"
 import { findIntegrationTelegramByBotId } from "@/features/integration-telegram/queries"

@@ -1,9 +1,9 @@
-import type { TemplateCategory } from "@chatbotx.io/database/partials"
-import { rootFolderId } from "@chatbotx.io/database/partials"
-import { folderModel } from "@chatbotx.io/database/schema"
-import type { FolderModel } from "@chatbotx.io/database/types"
-import type { TemplateFolderManifestEntry } from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
+import type { TemplateCategory } from "@salesmanchatbot.io/database/partials"
+import { rootFolderId } from "@salesmanchatbot.io/database/partials"
+import { folderModel } from "@salesmanchatbot.io/database/schema"
+import type { FolderModel } from "@salesmanchatbot.io/database/types"
+import type { TemplateFolderManifestEntry } from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
 import type { TemplateInstallContext } from "../types"
 
 /**

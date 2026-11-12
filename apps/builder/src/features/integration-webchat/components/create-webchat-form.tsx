@@ -4,25 +4,25 @@ import {
   channelTypes,
   type WebchatConversationStarterType,
   webchatConversationStarterType,
-} from "@chatbotx.io/database/partials"
-import { ColorPickerField } from "@chatbotx.io/ui/components/form/color-picker-field"
-import { ComboboxField } from "@chatbotx.io/ui/components/form/combobox-field"
-import { InputField } from "@chatbotx.io/ui/components/form/input-field"
-import { RadioGroupField } from "@chatbotx.io/ui/components/form/radio-group-field"
-import { SelectField } from "@chatbotx.io/ui/components/form/select-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { TextareaField } from "@chatbotx.io/ui/components/form/textarea-field"
+} from "@salesmanchatbot.io/database/partials"
+import { ColorPickerField } from "@salesmanchatbot.io/ui/components/form/color-picker-field"
+import { ComboboxField } from "@salesmanchatbot.io/ui/components/form/combobox-field"
+import { InputField } from "@salesmanchatbot.io/ui/components/form/input-field"
+import { RadioGroupField } from "@salesmanchatbot.io/ui/components/form/radio-group-field"
+import { SelectField } from "@salesmanchatbot.io/ui/components/form/select-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { TextareaField } from "@salesmanchatbot.io/ui/components/form/textarea-field"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@chatbotx.io/ui/components/ui/accordion"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
-import { DialogFooter } from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
-import { Label } from "@chatbotx.io/ui/components/ui/label"
-import { Separator } from "@chatbotx.io/ui/components/ui/separator"
+} from "@salesmanchatbot.io/ui/components/ui/accordion"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
+import { DialogFooter } from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
+import { Label } from "@salesmanchatbot.io/ui/components/ui/label"
+import { Separator } from "@salesmanchatbot.io/ui/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2Icon, PlusIcon, TrashIcon } from "lucide-react"

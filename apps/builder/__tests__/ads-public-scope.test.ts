@@ -58,7 +58,7 @@ const messagingAdsConnectionService = {
   revokeAndDisconnect: vi.fn(),
 }
 
-vi.mock("@chatbotx.io/business", async () => {
+vi.mock("@salesmanchatbot.io/business", async () => {
   const { z } = await import("zod")
   const startRetargetAudienceSyncShape = z.object({
     workspaceId: z.string(),
@@ -97,7 +97,7 @@ vi.mock("@chatbotx.io/business", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   withCache: vi.fn((_key: string, loader: () => unknown) => loader()),
   invalidateCacheByTags: vi.fn(),
 }))

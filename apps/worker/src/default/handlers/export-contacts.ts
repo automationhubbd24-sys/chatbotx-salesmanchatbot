@@ -3,31 +3,31 @@ import {
   customFieldService,
   tagService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { auditService } from "@chatbotx.io/business/audit"
-import { normalizeStoredTimezone } from "@chatbotx.io/business/contact-locale"
+} from "@salesmanchatbot.io/business"
+import { auditService } from "@salesmanchatbot.io/business/audit"
+import { normalizeStoredTimezone } from "@salesmanchatbot.io/business/contact-locale"
 import {
   type CustomFieldType,
   fileStatuses,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   applyContactFilter,
   pruneEmailPhoneFilterConditions,
-} from "@chatbotx.io/database/queries"
+} from "@salesmanchatbot.io/database/queries"
 import {
   contactRepository,
   fileRepository,
-} from "@chatbotx.io/database/repositories"
-import type { contactCustomFieldModel } from "@chatbotx.io/database/schema"
-import { chunkById } from "@chatbotx.io/database/utils"
-import { createUpload } from "@chatbotx.io/filesystem/node-upload"
-import { SOURCE_USER_ID_EXPORT_HEADER } from "@chatbotx.io/imports/modules/contacts"
-import { formatCustomFieldValueInTimeZone } from "@chatbotx.io/utils/datetime"
+} from "@salesmanchatbot.io/database/repositories"
+import type { contactCustomFieldModel } from "@salesmanchatbot.io/database/schema"
+import { chunkById } from "@salesmanchatbot.io/database/utils"
+import { createUpload } from "@salesmanchatbot.io/filesystem/node-upload"
+import { SOURCE_USER_ID_EXPORT_HEADER } from "@salesmanchatbot.io/imports/modules/contacts"
+import { formatCustomFieldValueInTimeZone } from "@salesmanchatbot.io/utils/datetime"
 import {
   type JobExportContacts,
   loopableItemsCount,
-} from "@chatbotx.io/worker-config"
-import { stripContactPIIFields } from "@chatbotx.io/worker-config/contact-pii"
+} from "@salesmanchatbot.io/worker-config"
+import { stripContactPIIFields } from "@salesmanchatbot.io/worker-config/contact-pii"
 import { runJobWithAuditContext } from "../../lib/run-job-with-audit-context"
 
 type ExportData = JobExportContacts["data"]

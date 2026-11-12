@@ -1,4 +1,4 @@
-import { integrationClaudeService } from "@chatbotx.io/business"
+import { integrationClaudeService } from "@salesmanchatbot.io/business"
 import type { IntegrationClaudeResource } from "../schema/resource"
 
 export const findIntegrationClaude = async ({

@@ -1,4 +1,4 @@
-import { emailTopicAnalyticsService } from "@chatbotx.io/analytics"
+import { emailTopicAnalyticsService } from "@salesmanchatbot.io/analytics"
 import {
   buildContext,
   buildUnsubscribeUrl,
@@ -8,23 +8,23 @@ import {
   resolveTenantSettings,
   signEmailClickUrl,
   workspaceService,
-} from "@chatbotx.io/business"
-import type { InboxWithIntegrations } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import type { InboxWithIntegrations } from "@salesmanchatbot.io/database/types"
 import type {
   EmailStepSchema,
   PageElementSchema,
-} from "@chatbotx.io/flow-config"
-import { UNSUBSCRIBE_PLACEHOLDER } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
+import { UNSUBSCRIBE_PLACEHOLDER } from "@salesmanchatbot.io/flow-config"
 import {
   integration as integrationSmtp,
   smtpAuthSchema,
-} from "@chatbotx.io/integration-smtp"
+} from "@salesmanchatbot.io/integration-smtp"
 import type {
   DynamicEmailProps,
   MailElementSchema,
-} from "@chatbotx.io/mail/dynamic"
-import { renderDynamicEmailHtml } from "@chatbotx.io/mail/dynamic"
-import { contactVariableService } from "@chatbotx.io/variables"
+} from "@salesmanchatbot.io/mail/dynamic"
+import { renderDynamicEmailHtml } from "@salesmanchatbot.io/mail/dynamic"
+import { contactVariableService } from "@salesmanchatbot.io/variables"
 import { resolveButtonUrl } from "../../lib/convert-button"
 import { logger } from "../../lib/logger"
 import type { ExecuteStepProps } from "./flow"

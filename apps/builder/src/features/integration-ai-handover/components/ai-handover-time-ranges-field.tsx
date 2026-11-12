@@ -4,10 +4,10 @@ import {
   AI_HANDOVER_DAY_END_HOUR,
   AI_HANDOVER_MAX_TIME_RANGES,
   aiHandoverTimeRangeSchema,
-} from "@chatbotx.io/database/partials"
-import { InputNumberField } from "@chatbotx.io/ui/components/form/input-number-field"
-import { SwitchField } from "@chatbotx.io/ui/components/form/switch-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+} from "@salesmanchatbot.io/database/partials"
+import { InputNumberField } from "@salesmanchatbot.io/ui/components/form/input-number-field"
+import { SwitchField } from "@salesmanchatbot.io/ui/components/form/switch-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import { PlusIcon, Trash2Icon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useFieldArray, useFormContext } from "react-hook-form"

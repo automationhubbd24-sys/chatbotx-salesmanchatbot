@@ -1,4 +1,4 @@
-import type { ConnectSessionModel } from "@chatbotx.io/database/types"
+import type { ConnectSessionModel } from "@salesmanchatbot.io/database/types"
 import type { ConnectSessionResource } from "../schema/resource"
 
 /** Turns a `ConnectSession` row into its public/private DTO — never `encryptedAuth`/`claimedTargetIds`/`stateNonceHash`. */

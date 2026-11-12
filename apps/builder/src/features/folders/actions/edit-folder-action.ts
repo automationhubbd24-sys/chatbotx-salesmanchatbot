@@ -1,7 +1,7 @@
 "use server"
 
-import { folderService } from "@chatbotx.io/business"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { folderService } from "@salesmanchatbot.io/business"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { editFolderSchema } from "@/features/folders/schema/action"
 import { workspaceActionClient } from "@/lib/safe-action"
 

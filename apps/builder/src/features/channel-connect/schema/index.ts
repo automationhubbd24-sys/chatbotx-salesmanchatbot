@@ -5,12 +5,12 @@ import {
   CONNECT_WARNINGS,
   type ConnectActionResult,
   MAX_CONNECT_DETAIL_LENGTH,
-} from "@chatbotx.io/business/inbox/connect-outcome-types"
+} from "@salesmanchatbot.io/business/inbox/connect-outcome-types"
 import { z } from "zod"
 
 /**
  * Zod schemas built over the shared outcome vocabulary defined once in
- * `@chatbotx.io/business` (`packages/business/src/inbox/connect-outcome.ts`).
+ * `@salesmanchatbot.io/business` (`packages/business/src/inbox/connect-outcome.ts`).
  * This file must never redefine those string values — it only wraps them for
  * request/response validation on the builder side.
  */

@@ -1,18 +1,18 @@
 "use client"
 
-import type { BroadcastCalendarRow } from "@chatbotx.io/business"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Calendar } from "@chatbotx.io/ui/components/ui/calendar"
+import type { BroadcastCalendarRow } from "@salesmanchatbot.io/business"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Calendar } from "@salesmanchatbot.io/ui/components/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@chatbotx.io/ui/components/ui/toggle-group"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/toggle-group"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import {
   addYears,
   format,

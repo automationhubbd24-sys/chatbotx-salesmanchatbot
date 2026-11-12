@@ -24,6 +24,10 @@ export const productRelations = defineRelationsPart(schema, (r) => ({
       from: r.productModel.id,
       to: r.productAddonModel.productId,
     }),
+    embedding: r.one.productEmbeddingModel({
+      from: r.productModel.id,
+      to: r.productEmbeddingModel.productId,
+    }),
   },
   productVariantOptionModel: {
     product: r.one.productModel({

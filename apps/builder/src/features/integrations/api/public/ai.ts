@@ -1,14 +1,14 @@
-import { aiProviders } from "@chatbotx.io/ai"
-import { aiIntegrationService } from "@chatbotx.io/ai/server"
+import { aiProviders } from "@salesmanchatbot.io/ai"
+import { aiIntegrationService } from "@salesmanchatbot.io/ai/server"
 import {
   connectionStateService,
   integrationClaudeService,
   integrationDeepSeekService,
   integrationGeminiService,
   integrationOpenAIService,
-} from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import { connectionService } from "@chatbotx.io/connections"
+} from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import { connectionService } from "@salesmanchatbot.io/connections"
 import {
   possibleErrorsOnFindingResource,
   possibleErrorsOnMutatingResource,

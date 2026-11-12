@@ -16,7 +16,7 @@ const {
   assertApiNotRateLimited: vi.fn().mockResolvedValue(undefined),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceApiTokenService: { findWorkspaceByTokenHash },
   isWorkspaceScheduledForDeletion,
   userQuotaService: { getAccessState },
@@ -91,7 +91,7 @@ describe("real router: email topics public API scope wiring", () => {
 
   test("null scopes (unrestricted) passes the real GET /v1/email-topics route", async () => {
     findWorkspaceByTokenHash.mockResolvedValue(authResult(null))
-    const { emailTopicService } = await import("@chatbotx.io/business")
+    const { emailTopicService } = await import("@salesmanchatbot.io/business")
     vi.mocked(emailTopicService.list).mockResolvedValue({
       data: [],
       pageCount: 1,
@@ -140,7 +140,7 @@ describe("real router: email topics public API scope wiring", () => {
       invoke(emailTopicsPublicRouter.create, { name: "My topic" }),
     ).rejects.toMatchObject({ code: "FORBIDDEN" })
 
-    const { emailTopicService } = await import("@chatbotx.io/business")
+    const { emailTopicService } = await import("@salesmanchatbot.io/business")
     expect(emailTopicService.create).not.toHaveBeenCalled()
   })
 
@@ -152,7 +152,7 @@ describe("real router: email topics public API scope wiring", () => {
     })
 
     test("passes workspaceId from the token, not from input", async () => {
-      const { emailTopicService } = await import("@chatbotx.io/business")
+      const { emailTopicService } = await import("@salesmanchatbot.io/business")
       vi.mocked(emailTopicService.update).mockResolvedValue({
         id: "888888",
         name: "x",
@@ -180,7 +180,7 @@ describe("real router: email topics public API scope wiring", () => {
     })
 
     test("strips workspaceId from the response even though the service returns it", async () => {
-      const { emailTopicService } = await import("@chatbotx.io/business")
+      const { emailTopicService } = await import("@salesmanchatbot.io/business")
       vi.mocked(emailTopicService.update).mockResolvedValue({
         id: "888888",
         name: "x",
@@ -212,7 +212,7 @@ describe("real router: email topics public API scope wiring", () => {
     })
 
     test("rejects with a 404 when the service reports nothing was deleted", async () => {
-      const { emailTopicService } = await import("@chatbotx.io/business")
+      const { emailTopicService } = await import("@salesmanchatbot.io/business")
       vi.mocked(emailTopicService.delete).mockResolvedValue({
         deletedCount: 0,
       })
@@ -223,7 +223,7 @@ describe("real router: email topics public API scope wiring", () => {
     })
 
     test("resolves when the service reports a deletion", async () => {
-      const { emailTopicService } = await import("@chatbotx.io/business")
+      const { emailTopicService } = await import("@salesmanchatbot.io/business")
       vi.mocked(emailTopicService.delete).mockResolvedValue({
         deletedCount: 1,
       })

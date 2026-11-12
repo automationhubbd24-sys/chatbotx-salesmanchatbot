@@ -1,13 +1,13 @@
-import { instagramIntegrationService } from "@chatbotx.io/business"
-import type { IntegrationInstagramModel } from "@chatbotx.io/database/types"
+import { instagramIntegrationService } from "@salesmanchatbot.io/business"
+import type { IntegrationInstagramModel } from "@salesmanchatbot.io/database/types"
 import {
   type InstagramAuthValue,
   listInstagramStories as listInstagramLoginStoriesApi,
-} from "@chatbotx.io/integration-instagram"
+} from "@salesmanchatbot.io/integration-instagram"
 import {
   type InstagramAuthValue as InstagramFacebookAuthValue,
   listInstagramStories as listInstagramFacebookStoriesApi,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import { collectSettled } from "@/lib/collect-settled"
 
 export type InstagramAutomationStory = {

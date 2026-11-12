@@ -9,15 +9,15 @@ import {
   or,
   relationsFilterToSQL,
   sql,
-} from "@chatbotx.io/database/client"
-import { inventoryPolicyTypes } from "@chatbotx.io/database/partials"
-import { productModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/client"
+import { inventoryPolicyTypes } from "@salesmanchatbot.io/database/partials"
+import { productModel } from "@salesmanchatbot.io/database/schema"
 import {
   likeContains,
   parseOrderByAsObject,
   parsePagination,
-} from "@chatbotx.io/database/utils"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/utils"
+import { createId } from "@salesmanchatbot.io/utils"
 
 export type ProductListInput = {
   workspaceId: string
@@ -26,6 +26,12 @@ export type ProductListInput = {
   page?: number
   perPage?: number
   sort?: { id: string; desc: boolean }[] | null
+}
+
+export type ProductAgentSearchInput = {
+  workspaceId: string
+  categoryId?: string | null
+  candidateLimit?: number
 }
 
 export type ProductImportInsert = {
@@ -66,7 +72,96 @@ export type ProductUpdateValues = Partial<
 const inCategory = (categoryId?: string | null) =>
   categoryId ? { OR: [{ categoryId }, { subcategoryId: categoryId }] } : {}
 
+function toAgentSearchResult<
+  T extends {
+    category: { name: string } | null
+    subcategory: { name: string } | null
+    inventoryPolicy: string
+  },
+>({ category, subcategory, ...product }: T) {
+  return {
+    ...product,
+    inventoryPolicy: inventoryPolicyTypes.parse(product.inventoryPolicy),
+    category: category?.name ?? null,
+    subcategory: subcategory?.name ?? null,
+  }
+}
+
 export const productRepository = {
+  async listForAgentSearch(
+    input: ProductAgentSearchInput,
+    tx: DatabaseClient = db,
+  ) {
+    const rows = await tx.query.productModel.findMany({
+      where: {
+        workspaceId: input.workspaceId,
+        isActive: true,
+        isSearchable: true,
+        ...inCategory(input.categoryId),
+      },
+      with: {
+        category: true,
+        subcategory: true,
+        variantOptions: true,
+        variants: true,
+        addons: true,
+      },
+      orderBy: { rank: "asc", id: "desc" },
+      limit: input.candidateLimit,
+    })
+
+    return rows.map(toAgentSearchResult)
+  },
+
+  async listForAgentSearchPage(
+    input: { workspaceId: string; afterId?: string; limit: number },
+    tx: DatabaseClient = db,
+  ) {
+    const rows = await tx.query.productModel.findMany({
+      where: {
+        workspaceId: input.workspaceId,
+        isActive: true,
+        isSearchable: true,
+        ...(input.afterId ? { id: { gt: input.afterId } } : {}),
+      },
+      with: {
+        category: true,
+        subcategory: true,
+        variantOptions: true,
+        variants: true,
+        addons: true,
+      },
+      orderBy: { id: "asc" },
+      limit: input.limit,
+    })
+    return rows.map(toAgentSearchResult)
+  },
+
+  async listForAgentSearchByIds(
+    input: { workspaceId: string; productIds: string[] },
+    tx: DatabaseClient = db,
+  ) {
+    if (input.productIds.length === 0) {
+      return []
+    }
+    const rows = await tx.query.productModel.findMany({
+      where: {
+        workspaceId: input.workspaceId,
+        id: { in: input.productIds },
+        isActive: true,
+        isSearchable: true,
+      },
+      with: {
+        category: true,
+        subcategory: true,
+        variantOptions: true,
+        variants: true,
+        addons: true,
+      },
+    })
+    return rows.map(toAgentSearchResult)
+  },
+
   async list(input: ProductListInput, tx: DatabaseClient = db) {
     const where = {
       workspaceId: input.workspaceId,

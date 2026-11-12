@@ -12,14 +12,14 @@ const {
   mockWorkspaceFind: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   coexistService: { findIntegrationForCoexist: mockFindIntegration },
   extractContactInfo: mockExtractContactInfo,
   inboxService: { find: mockInboxFind },
   workspaceService: { find: mockWorkspaceFind },
 }))
 
-vi.mock("@chatbotx.io/integration-instagram-facebook/apis/sync", () => ({
+vi.mock("@salesmanchatbot.io/integration-instagram-facebook/apis/sync", () => ({
   fetchInstagramFacebookConversationMessages: vi.fn(),
   listInstagramFacebookConversations: vi.fn(),
 }))

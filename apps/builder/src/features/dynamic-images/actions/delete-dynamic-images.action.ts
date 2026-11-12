@@ -1,6 +1,6 @@
 "use server"
 
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

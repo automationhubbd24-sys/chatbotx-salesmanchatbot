@@ -1,20 +1,20 @@
 "use client"
 
-import type { IntegrationWebchatModel } from "@chatbotx.io/database/types"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import type { IntegrationWebchatModel } from "@salesmanchatbot.io/database/types"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import type { DataTableRowAction } from "@chatbotx.io/ui/types/data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import type { DataTableRowAction } from "@salesmanchatbot.io/ui/types/data-table"
 import type { ColumnDef } from "@tanstack/react-table"
 import { format } from "date-fns"
 import { CodeIcon, ExternalLinkIcon, MoreHorizontalIcon } from "lucide-react"

@@ -54,17 +54,17 @@ const aiFileService = {
   create: vi.fn(),
   delete: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiFileService,
   AI_FILE_MAX_UPLOAD_BYTES: 100 * 1000 * 1000,
 }))
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
   notFoundException: (message: string) => new Error(message),
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => {
+vi.mock("@salesmanchatbot.io/database/schema", () => {
   const schema = {
     pick: vi.fn(() => schema),
     extend: vi.fn(() => schema),
@@ -78,7 +78,7 @@ vi.mock("@chatbotx.io/database/schema", () => {
 })
 
 // Deferred until after `vi.mock` calls above are hoisted, so the router
-// module picks up the mocked `@/orpc`/`@chatbotx.io/business` bindings.
+// module picks up the mocked `@/orpc`/`@salesmanchatbot.io/business` bindings.
 await import("@/features/ai-files/api/public")
 const { createAIFilePublicRequest } = await import(
   "@/features/ai-files/schema/public"

@@ -10,7 +10,7 @@ const runExclusive = vi.fn(async ({ fn }: { fn: () => Promise<unknown> }) =>
 const info = vi.fn()
 const error = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   THREADS_TOKEN_REFRESH_THRESHOLD_DAYS: 14,
   integrationThreadsService: {
     listDueForTokenRefresh,
@@ -18,11 +18,11 @@ vi.mock("@chatbotx.io/business", () => ({
     markTokenRefreshError,
   },
 }))
-vi.mock("@chatbotx.io/integration-threads", () => ({
+vi.mock("@salesmanchatbot.io/integration-threads", () => ({
   refreshAccessToken,
 }))
-vi.mock("@chatbotx.io/redis", () => ({ distributedLock: { runExclusive } }))
-vi.mock("@chatbotx.io/logger", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({ distributedLock: { runExclusive } }))
+vi.mock("@salesmanchatbot.io/logger", () => ({
   getChildLogger: () => ({ info, error }),
 }))
 

@@ -22,11 +22,11 @@ const tagChannelRepositoryMock = {
   deleteById: vi.fn(async () => undefined),
 }
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   tagChannelRepository: tagChannelRepositoryMock,
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   DefaultJobAction: {
     syncTag: "syncTag",
     syncChannelLabels: "syncChannelLabels",

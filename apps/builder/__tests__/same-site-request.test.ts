@@ -89,7 +89,7 @@ describe("isCrossSiteRequest", () => {
 
   // Item 4: the same reverse-proxy-aware host resolution as every other
   // caller of `getPublicHostFromRequest`/`getRawPublicHostFromRequest`
-  // (`@chatbotx.io/utils`), not a raw `Host` header comparison — a
+  // (`@salesmanchatbot.io/utils`), not a raw `Host` header comparison — a
   // white-label deployment behind a proxy sets `Host` to an internal
   // value, and only Forwarded/X-Forwarded-Host carry the real public host
   // the browser used.

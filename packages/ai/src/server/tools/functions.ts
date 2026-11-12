@@ -1,5 +1,5 @@
-import { contactCustomFieldService } from "@chatbotx.io/business"
-import { db } from "@chatbotx.io/database/client"
+import { contactCustomFieldService } from "@salesmanchatbot.io/business"
+import { db } from "@salesmanchatbot.io/database/client"
 import { type ToolSet, tool } from "ai"
 import { normalizeError } from "universal-error-normalizer"
 import { z } from "zod"

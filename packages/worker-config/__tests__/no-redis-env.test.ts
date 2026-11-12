@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 
-vi.mock("@chatbotx.io/database/partials", async () => {
+vi.mock("@salesmanchatbot.io/database/partials", async () => {
   const { z } = await import("zod")
   return {
     aiAgentModelConfig: z.object({
@@ -12,7 +12,7 @@ vi.mock("@chatbotx.io/database/partials", async () => {
   }
 })
 
-vi.mock("@chatbotx.io/flow-config", async () => {
+vi.mock("@salesmanchatbot.io/flow-config", async () => {
   const { z } = await import("zod")
   const stepSchema = z.object({ stepType: z.string() }).passthrough()
   return {

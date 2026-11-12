@@ -1,4 +1,4 @@
-import { appointmentCalendarService } from "@chatbotx.io/business"
+import { appointmentCalendarService } from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import {

@@ -1,9 +1,9 @@
 import {
   broadcastService,
   whatsappFlowResponseService,
-} from "@chatbotx.io/business"
-import type { FlowVersionModel } from "@chatbotx.io/database/types"
-import type { WaTemplateButtonParam } from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/business"
+import type { FlowVersionModel } from "@salesmanchatbot.io/database/types"
+import type { WaTemplateButtonParam } from "@salesmanchatbot.io/flow-config"
 import {
   type BroadcastTemplateFlowToken,
   decodeTemplateFlowToken,
@@ -12,8 +12,8 @@ import {
   TemplateFlowOrigin,
   type TemplateFlowToken,
   type WaTemplateParams,
-} from "@chatbotx.io/flow-config"
-import type { IntegrationJobCaptureTemplateFlowResponse } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/flow-config"
+import type { IntegrationJobCaptureTemplateFlowResponse } from "@salesmanchatbot.io/worker-config"
 import {
   detectConversationAndContactInbox,
   detectFlowVersion,

@@ -10,7 +10,7 @@ const findFirstWorkspace = vi.fn()
 const updateSet = vi.fn()
 const updateWhere = vi.fn()
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   contactRepository: {
     listForExportPage: (...args: unknown[]) => findManyContacts(...args),
   },
@@ -22,16 +22,16 @@ vi.mock("@chatbotx.io/database/repositories", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/database/partials", async () =>
-  vi.importActual("@chatbotx.io/database/partials"),
+vi.mock("@salesmanchatbot.io/database/partials", async () =>
+  vi.importActual("@salesmanchatbot.io/database/partials"),
 )
 
-vi.mock("@chatbotx.io/database/queries", () => ({
+vi.mock("@salesmanchatbot.io/database/queries", () => ({
   applyContactFilter: (criteria: unknown) => ({ __filter: criteria }),
   pruneEmailPhoneFilterConditions: (criteria: unknown) => criteria,
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   // The handler reads the workspace timezone to format date/datetime custom
   // fields for CSV export.
   workspaceService: {
@@ -46,7 +46,7 @@ vi.mock("@chatbotx.io/business", () => ({
 }))
 
 const recordAuditLog = vi.fn()
-vi.mock("@chatbotx.io/business/audit", async () => {
+vi.mock("@salesmanchatbot.io/business/audit", async () => {
   const { AsyncLocalStorage } = await import("node:async_hooks")
   const storage = new AsyncLocalStorage<Record<string, unknown>>()
   return {
@@ -59,7 +59,7 @@ vi.mock("@chatbotx.io/business/audit", async () => {
 })
 
 // Small page size keeps multi-page pagination tests to a few rows.
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   loopableItemsCount: 2,
 }))
 
@@ -69,7 +69,7 @@ const createUpload = vi.fn(() => {
   uploadStream = new PassThrough()
   return { stream: uploadStream, done: Promise.resolve() }
 })
-vi.mock("@chatbotx.io/filesystem", () => ({
+vi.mock("@salesmanchatbot.io/filesystem", () => ({
   uploader: {
     createUpload: (path: string, options?: unknown) =>
       createUpload(path, options),
@@ -78,7 +78,7 @@ vi.mock("@chatbotx.io/filesystem", () => ({
 
 // The handler imports createUpload from the node-upload subpath, not the
 // filesystem barrel — mock that exact specifier or it hits real S3.
-vi.mock("@chatbotx.io/filesystem/node-upload", () => ({
+vi.mock("@salesmanchatbot.io/filesystem/node-upload", () => ({
   createUpload: (path: string, options?: unknown) =>
     createUpload(path, options),
 }))

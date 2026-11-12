@@ -68,7 +68,7 @@ export type PickedAiHandoverBulkRun = Pick<
 >
 
 // Read lazily (never at module scope): a suite that mocks
-// `@chatbotx.io/database/client` narrowly must still be able to import this file.
+// `@salesmanchatbot.io/database/client` narrowly must still be able to import this file.
 
 /** A released continuation nobody re-claimed within this is a lost enqueue. */
 const releasedStaleInterval = () => sql`INTERVAL '1 minute'`

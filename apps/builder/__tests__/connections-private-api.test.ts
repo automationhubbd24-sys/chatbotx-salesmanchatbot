@@ -101,7 +101,7 @@ vi.mock("@/orpc", () => ({ authorizedAPI }))
 
 vi.mock("@/middlewares/auth", () => ({ workspaceAuthorizedMidddleware }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   connectionStateService: {
     list: mocks.list,
     getForWorkspace: mocks.getForWorkspace,
@@ -109,14 +109,14 @@ vi.mock("@chatbotx.io/business", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/business/connect-session", () => ({
+vi.mock("@salesmanchatbot.io/business/connect-session", () => ({
   connectSessionService: {
     findByIdForWorkspace: mocks.findByIdForWorkspace,
     cancel: mocks.cancel,
   },
 }))
 
-class MockChatbotXException extends Error {
+class MocksalesmanChatbotException extends Error {
   code: string
   constructor(message: string, code: string) {
     super(message)
@@ -124,22 +124,22 @@ class MockChatbotXException extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/business/errors", () => ({
+vi.mock("@salesmanchatbot.io/business/errors", () => ({
   BROADCAST_PLAN_LIMIT_CODE: "broadcastPlanLimit",
-  ChatbotXException: MockChatbotXException,
+  salesmanChatbotException: MocksalesmanChatbotException,
   channelHiddenException: (channel: string) =>
-    new MockChatbotXException(`${channel} is hidden`, "channelHidden"),
+    new MocksalesmanChatbotException(`${channel} is hidden`, "channelHidden"),
   connectionNotConfiguredException: (provider: string) =>
-    new MockChatbotXException(`${provider} not configured`, "notConfigured"),
+    new MocksalesmanChatbotException(`${provider} not configured`, "notConfigured"),
   connectSessionExpiredException: (message: string) =>
-    new MockChatbotXException(message, "connectSessionExpired"),
+    new MocksalesmanChatbotException(message, "connectSessionExpired"),
   notFoundException: (message: string) =>
-    new MockChatbotXException(message, "notFound"),
+    new MocksalesmanChatbotException(message, "notFound"),
   validationException: (_field: string, message: string) =>
-    new MockChatbotXException(message, "validation"),
+    new MocksalesmanChatbotException(message, "validation"),
 }))
 
-vi.mock("@chatbotx.io/connections", () => ({
+vi.mock("@salesmanchatbot.io/connections", () => ({
   connectionService: {
     connectFromCredentials: mocks.connectFromCredentials,
     startSession: mocks.startSession,

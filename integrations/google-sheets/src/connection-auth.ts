@@ -2,7 +2,7 @@ import {
   googleTokensToAuth,
   type Oauth2AuthValue,
   type Oauth2Config,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import { getClient } from "./client"
 import type { GoogleSheetsAuthValue } from "./schemas"
 

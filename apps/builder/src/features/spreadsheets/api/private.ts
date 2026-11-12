@@ -1,4 +1,4 @@
-import { spreadsheetService } from "@chatbotx.io/business"
+import { spreadsheetService } from "@salesmanchatbot.io/business"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"
 import { listWorksheetHeaders, listWorksheets } from "../lib/google-sheets"

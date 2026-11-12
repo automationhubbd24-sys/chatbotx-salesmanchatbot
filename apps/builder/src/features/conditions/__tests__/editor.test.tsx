@@ -2,14 +2,14 @@
 import {
   type TriggerEventType,
   triggerEventTypes,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import { act } from "react"
 import { createRoot, type Root } from "react-dom/client"
 import { FormProvider, useForm } from "react-hook-form"
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest"
 import { ConditionEditor } from "../editor"
 
-vi.mock("@chatbotx.io/ui/components/form/input-field", () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/input-field", () => ({
   InputField: (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input {...props} />
   ),
@@ -43,11 +43,11 @@ const { createFieldMock } = vi.hoisted(() => ({
   },
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/select-field", async () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/select-field", async () => ({
   SelectField: await createFieldMock("select"),
 }))
 
-vi.mock("@chatbotx.io/ui/components/form/combobox-field", async () => ({
+vi.mock("@salesmanchatbot.io/ui/components/form/combobox-field", async () => ({
   ComboboxField: await createFieldMock("combobox"),
 }))
 

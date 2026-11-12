@@ -1,5 +1,5 @@
-import { FormFieldWrapper } from "@chatbotx.io/ui/components/form/field-wrapper"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { FormFieldWrapper } from "@salesmanchatbot.io/ui/components/form/field-wrapper"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -7,13 +7,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@chatbotx.io/ui/components/ui/command"
+} from "@salesmanchatbot.io/ui/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { Check, ChevronsUpDown } from "lucide-react"
 import { useMemo, useState } from "react"
 import type { FieldPath, FieldValues } from "react-hook-form"

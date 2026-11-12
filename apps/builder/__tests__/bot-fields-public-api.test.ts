@@ -56,7 +56,7 @@ const botFieldService = {
   clearValueByKey: vi.fn(),
   bulkClearValues: vi.fn(),
 }
-vi.mock("@chatbotx.io/business", () => ({ botFieldService }))
+vi.mock("@salesmanchatbot.io/business", () => ({ botFieldService }))
 
 await import("@/features/bot-fields/api/public")
 

@@ -1,4 +1,4 @@
-import type { ImportFormat } from "@chatbotx.io/database/partials"
+import type { ImportFormat } from "@salesmanchatbot.io/database/partials"
 
 const MIME_TO_FORMAT: Record<string, ImportFormat> = {
   "text/csv": "csv",

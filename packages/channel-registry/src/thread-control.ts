@@ -6,10 +6,10 @@ import {
   type ThreadControlSnapshot,
   ThreadControlUnsupportedError,
   threadControlService,
-} from "@chatbotx.io/business"
-import { notFoundException } from "@chatbotx.io/business/errors"
-import type { ThreadControlAction } from "@chatbotx.io/database/partials"
-import type { ContactInboxModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/business"
+import { notFoundException } from "@salesmanchatbot.io/business/errors"
+import type { ThreadControlAction } from "@salesmanchatbot.io/database/partials"
+import type { ContactInboxModel } from "@salesmanchatbot.io/database/types"
 import type {
   BulkThreadControlAction,
   BulkThreadControlLimits,
@@ -17,7 +17,7 @@ import type {
   OutgoingContact,
   ThreadControlRole,
   ThreadOwnerResult,
-} from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/sdk"
 import {
   type ContactInboxRoute,
   resolveIntegrationContextFromContactInbox,

@@ -1,7 +1,7 @@
 import {
   EVENT_BUS_MESSAGE_ID,
   type EventBusMessageMetadata,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 
 export function getEventBusEventId(
   row: EventBusMessageMetadata,

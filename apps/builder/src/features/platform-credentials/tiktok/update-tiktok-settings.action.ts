@@ -1,11 +1,11 @@
 "use server"
 
-import { platformCredentialService } from "@chatbotx.io/business"
+import { platformCredentialService } from "@salesmanchatbot.io/business"
 import {
   type TiktokCredential,
   tiktokCredentialUpdateSchema,
-} from "@chatbotx.io/database/partials"
-import { subscribeTiktokWebhooks } from "@chatbotx.io/integration-tiktok"
+} from "@salesmanchatbot.io/database/partials"
+import { subscribeTiktokWebhooks } from "@salesmanchatbot.io/integration-tiktok"
 import { logger } from "@/lib/log"
 import { getBrokerOrigin } from "@/lib/oauth-broker"
 import { resolveTenantProviderOrigin } from "@/lib/provider-origin"

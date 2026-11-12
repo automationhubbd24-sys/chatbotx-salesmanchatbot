@@ -6,8 +6,8 @@ import { setupServer } from "msw/node"
  * Each integration that mocks an upstream HTTP API owns its own handler
  * module and ships it as a `./test-handlers` export. Tests opt-in:
  *
- *     import { server, http, HttpResponse } from "@chatbotx.io/vitest-config/msw"
- *     import { testHandlers } from "@chatbotx.io/integration-telegram/test-handlers"
+ *     import { server, http, HttpResponse } from "@salesmanchatbot.io/vitest-config/msw"
+ *     import { testHandlers } from "@salesmanchatbot.io/integration-telegram/test-handlers"
  *
  *     beforeAll(() => server.use(...testHandlers))
  *

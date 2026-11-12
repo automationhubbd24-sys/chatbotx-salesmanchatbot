@@ -10,20 +10,20 @@ const mocks = vi.hoisted(() => ({
   loggerWarn: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiHandoverSettingsService: { findActive: mocks.findActiveSettings },
   flowService: { findActiveById: mocks.findActiveFlow },
 }))
 vi.mock("../src/trigger/services/handoff-executor.service", () => ({
   handoffExecutorService: { execute: mocks.executeHandoff },
 }))
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   ChatJobAction: { sendChatMessage: "sendChatMessage" },
   IntegrationJobAction: { sendFlow: "sendFlow" },
   chatQueue: { add: mocks.chatQueueAdd },
   integrationQueue: { add: mocks.integrationQueueAdd },
 }))
-vi.mock("@chatbotx.io/variables", () => ({
+vi.mock("@salesmanchatbot.io/variables", () => ({
   resolveContactVariablesDeep: mocks.resolveContactVariablesDeep,
 }))
 vi.mock("../src/lib/logger", () => ({

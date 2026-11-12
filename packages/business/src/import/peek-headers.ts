@@ -3,15 +3,15 @@ import {
   type ImportType,
   importFormats,
   importTypes,
-} from "@chatbotx.io/database/partials"
-import { uploader } from "@chatbotx.io/filesystem"
-import { getImportEntry, resolveImportFileFormat } from "@chatbotx.io/imports"
+} from "@salesmanchatbot.io/database/partials"
+import { uploader } from "@salesmanchatbot.io/filesystem"
+import { getImportEntry, resolveImportFileFormat } from "@salesmanchatbot.io/imports"
 import {
   createImportRowParser,
   readXlsxHeaders,
-} from "@chatbotx.io/imports/parsers"
-import { createByteLimitedStream } from "@chatbotx.io/imports/stream-guard"
-import { ChatbotXException } from "../errors"
+} from "@salesmanchatbot.io/imports/parsers"
+import { createByteLimitedStream } from "@salesmanchatbot.io/imports/stream-guard"
+import { salesmanChatbotException } from "../errors"
 import { logger } from "../logger"
 import { importService } from "./service"
 
@@ -40,8 +40,8 @@ const isMissingObjectError = (error: unknown): boolean =>
   error instanceof Error &&
   (error.name === "NoSuchKey" || error.name === "NotFound")
 
-const fileTooLarge = (maxFileSizeMB: number): ChatbotXException => {
-  const error = new ChatbotXException(
+const fileTooLarge = (maxFileSizeMB: number): salesmanChatbotException => {
+  const error = new salesmanChatbotException(
     `File exceeds the ${maxFileSizeMB} MB import limit`,
     importHeaderPeekErrorCodes.fileTooLarge,
   )
@@ -65,12 +65,12 @@ export async function peekImportHeaders(input: {
   type?: ImportType
 }): Promise<string[]> {
   const unableToRead = () =>
-    new ChatbotXException(
+    new salesmanChatbotException(
       "Unable to read the file headers",
       importHeaderPeekErrorCodes.unableToReadHeaders,
     )
   const unsupported = () =>
-    new ChatbotXException(
+    new salesmanChatbotException(
       "Unsupported import file type",
       importHeaderPeekErrorCodes.unsupportedFileType,
     )
@@ -132,7 +132,7 @@ export async function peekImportHeaders(input: {
     if (hasErrorMessage(error, tooLargeMessage)) {
       throw fileTooLarge(config.maxFileSizeMB)
     }
-    if (error instanceof ChatbotXException) {
+    if (error instanceof salesmanChatbotException) {
       throw error
     }
     // The parser failed on the bytes themselves (corrupt or mislabeled file).
@@ -158,7 +158,7 @@ async function readHeaders(
   for await (const row of createImportRowParser(format, stream)) {
     return Object.keys(row)
   }
-  throw new ChatbotXException(
+  throw new salesmanChatbotException(
     "Unable to read the file headers",
     importHeaderPeekErrorCodes.unableToReadHeaders,
   )

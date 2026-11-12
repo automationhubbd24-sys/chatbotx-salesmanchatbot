@@ -4,7 +4,7 @@ import {
   buttonStepDefaultFn,
   buttonTypes,
   openWebsiteStepDefaultFn,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import { describe, expect, test } from "vitest"
 import { readDroppedCarouselCardLink } from "../validator"
 

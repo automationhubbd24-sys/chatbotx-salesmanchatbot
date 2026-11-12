@@ -1,6 +1,6 @@
 "use server"
 
-import { reflinkService } from "@chatbotx.io/business"
+import { reflinkService } from "@salesmanchatbot.io/business"
 import {
   type BulkUpdateIdsRequest,
   bulkUpdateIdsRequest,

@@ -1,4 +1,4 @@
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import type { ReactNode } from "react"
 
 export type AccountStatusItem = {

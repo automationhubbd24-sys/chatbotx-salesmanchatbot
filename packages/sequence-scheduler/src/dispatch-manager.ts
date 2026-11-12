@@ -1,11 +1,11 @@
-import { db, type Transaction } from "@chatbotx.io/database/client"
-import { sequenceDispatchModel } from "@chatbotx.io/database/schema"
-import { createId } from "@chatbotx.io/utils"
+import { db, type Transaction } from "@salesmanchatbot.io/database/client"
+import { sequenceDispatchModel } from "@salesmanchatbot.io/database/schema"
+import { createId } from "@salesmanchatbot.io/utils"
 
 /**
  * The dispatch *creation* path. Bucketing uses a small pure-JS string hash
  * instead of Node's `crypto`, so nothing here imports a Node built-in: the
- * builder pulls `@chatbotx.io/business` — and this module, transitively — into
+ * builder pulls `@salesmanchatbot.io/business` — and this module, transitively — into
  * the Edge Runtime, where a `crypto` import fails to compile. Creation still
  * lives apart from `./dispatch-cancel` by responsibility (creating vs.
  * cancelling a dispatch), no longer because of `crypto`.

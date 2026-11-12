@@ -1,22 +1,22 @@
 "use client"
 
-import { DataTable } from "@chatbotx.io/ui/components/data-table/data-table"
-import { DataTableColumnHeader } from "@chatbotx.io/ui/components/data-table/data-table-column-header"
-import { DataTableRowCard } from "@chatbotx.io/ui/components/data-table/data-table-row-card"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
+import { DataTable } from "@salesmanchatbot.io/ui/components/data-table/data-table"
+import { DataTableColumnHeader } from "@salesmanchatbot.io/ui/components/data-table/data-table-column-header"
+import { DataTableRowCard } from "@salesmanchatbot.io/ui/components/data-table/data-table-row-card"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@chatbotx.io/ui/components/ui/dropdown-menu"
+} from "@salesmanchatbot.io/ui/components/ui/dropdown-menu"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@chatbotx.io/ui/components/ui/tooltip"
-import { useDataTable } from "@chatbotx.io/ui/hooks/use-data-table"
+} from "@salesmanchatbot.io/ui/components/ui/tooltip"
+import { useDataTable } from "@salesmanchatbot.io/ui/hooks/use-data-table"
 import type { ColumnDef, Row } from "@tanstack/react-table"
 import { format } from "date-fns"
 import { CopyIcon, Loader2Icon, MoreHorizontalIcon } from "lucide-react"

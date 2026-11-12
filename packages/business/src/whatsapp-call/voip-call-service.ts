@@ -1,10 +1,10 @@
-import type { WhatsappCallTerminalStatusOutcomePair } from "@chatbotx.io/database/partials"
+import type { WhatsappCallTerminalStatusOutcomePair } from "@salesmanchatbot.io/database/partials"
 import {
   WHATSAPP_CALL_TERMINAL_STATUSES,
   whatsappCallRepository,
-} from "@chatbotx.io/database/repositories"
-import type { WhatsappCallModel } from "@chatbotx.io/database/types"
-import { casStore } from "@chatbotx.io/redis"
+} from "@salesmanchatbot.io/database/repositories"
+import type { WhatsappCallModel } from "@salesmanchatbot.io/database/types"
+import { casStore } from "@salesmanchatbot.io/redis"
 import { contactService } from "../contact/service"
 import { contactInboxService } from "../contact-inbox/service"
 import { conversationService } from "../conversation/service"

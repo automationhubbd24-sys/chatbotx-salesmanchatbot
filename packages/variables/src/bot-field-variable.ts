@@ -1,8 +1,8 @@
 import {
   FieldReferenceKind,
   parseFieldReference,
-} from "@chatbotx.io/flow-config/field-reference"
-import { VARIABLE_PLACEHOLDER_SOURCE } from "@chatbotx.io/utils/variables"
+} from "@salesmanchatbot.io/flow-config/field-reference"
+import { VARIABLE_PLACEHOLDER_SOURCE } from "@salesmanchatbot.io/utils/variables"
 
 const botFieldVariablePlaceholderRegex = new RegExp(
   VARIABLE_PLACEHOLDER_SOURCE,

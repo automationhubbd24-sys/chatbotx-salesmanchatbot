@@ -15,10 +15,10 @@ const mocks = vi.hoisted(() => ({
   workspaceIsActiveNow: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/automated-response", () => ({
+vi.mock("@salesmanchatbot.io/automated-response", () => ({
   automatedResponseService: { enqueue: mocks.automatedResponseEnqueue },
 }))
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   aiAgentService: { findDefault: mocks.aiAgentFindDefault },
   conversationService: { findBy: mocks.conversationFindBy },
   workspaceService: {
@@ -26,16 +26,16 @@ vi.mock("@chatbotx.io/business", () => ({
     isActiveNow: mocks.workspaceIsActiveNow,
   },
 }))
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   createMessageRepository: async () => ({
     findTriggerMessage: mocks.findTriggerMessage,
   }),
   getSafeSinceTime: mocks.getSafeSinceTime,
 }))
-vi.mock("@chatbotx.io/event-bus", () => ({
+vi.mock("@salesmanchatbot.io/event-bus", () => ({
   emit: mocks.emit,
 }))
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   distributedLock: {
     runExclusive: async ({ fn }: { fn: () => Promise<unknown> }) => await fn(),
   },

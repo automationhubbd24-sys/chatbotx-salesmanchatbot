@@ -47,7 +47,7 @@ const {
 const listFilterOptions = vi.fn()
 const findByIds = vi.fn()
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   channelPostService: { findByIds, listFilterOptions },
 }))
 vi.mock("@/middlewares/auth", () => ({ workspaceAuthorizedMidddleware }))

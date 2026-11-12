@@ -1,4 +1,4 @@
-import { integrationOpenAIService } from "@chatbotx.io/business"
+import { integrationOpenAIService } from "@salesmanchatbot.io/business"
 import type { IntegrationOpenAIResource } from "../schema/request"
 
 export const findIntegrationOpenAI = async ({

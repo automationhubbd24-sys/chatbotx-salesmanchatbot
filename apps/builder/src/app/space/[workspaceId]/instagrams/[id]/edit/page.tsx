@@ -1,4 +1,4 @@
-import { inboxService } from "@chatbotx.io/business"
+import { inboxService } from "@salesmanchatbot.io/business"
 import { UpdateInstagramForm } from "@/features/integration-instagram/components/update-instagram-form"
 import { findIntegrationInstagram } from "@/features/integration-instagram/queries"
 import { requireWorkspacePermission } from "@/lib/auth/require-workspace-permission"

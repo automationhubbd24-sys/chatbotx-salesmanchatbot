@@ -1,6 +1,6 @@
-import type { DatabaseClient } from "@chatbotx.io/database/client"
-import { and, db, eq } from "@chatbotx.io/database/client"
-import type { IntegrationType } from "@chatbotx.io/database/partials"
+import type { DatabaseClient } from "@salesmanchatbot.io/database/client"
+import { and, db, eq } from "@salesmanchatbot.io/database/client"
+import type { IntegrationType } from "@salesmanchatbot.io/database/partials"
 import {
   integrationActiveCampaignModel,
   integrationApiModel,
@@ -29,8 +29,8 @@ import {
   integrationWebchatModel,
   integrationWhatsappModel,
   integrationZaloModel,
-} from "@chatbotx.io/database/schema"
-import { type AuthValue, authValueSchema, SdkException } from "@chatbotx.io/sdk"
+} from "@salesmanchatbot.io/database/schema"
+import { type AuthValue, authValueSchema, SdkException } from "@salesmanchatbot.io/sdk"
 import type { InferInsertModel, SQL } from "drizzle-orm"
 import type { AnyPgColumn, PgTable } from "drizzle-orm/pg-core"
 
@@ -426,8 +426,8 @@ const makeWorkspaceIntegrationBinding = <
  * ids mirror `packages/ai/src/models/registry.ts`'s `aiChatProviders[...]
  * .defaultModel` (that file's own comment calls it the single source of
  * truth the AI agent model picker and legacy connect dialogs already use)
- * — duplicated as literals rather than imported because `@chatbotx.io/ai`
- * depends on `@chatbotx.io/business`, so importing it back here would be
+ * — duplicated as literals rather than imported because `@salesmanchatbot.io/ai`
+ * depends on `@salesmanchatbot.io/business`, so importing it back here would be
  * circular. `maxOutputTokens: 1024` matches the `.default(1024)` on the
  * legacy claude/deepseek/gemini/openrouter connect schemas
  * (`apps/builder/src/features/integration-{claude,deepseek,gemini,
@@ -487,7 +487,7 @@ export const CONNECTION_STORE_BINDINGS: Partial<
     identityColumn: null,
     onDisconnect: "keep_row",
   }),
-  chatbotx: null,
+  salesmanchatbot: null,
   claude: makeWorkspaceIntegrationBinding({
     table: integrationClaudeModel,
     tableName: "IntegrationClaude",
@@ -605,6 +605,7 @@ export const CONNECTION_STORE_BINDINGS: Partial<
     ],
     defaultConfigValues: () => AI_KEY_PROVIDER_DEFAULTS.openai,
   }),
+  openaiCompatibleEmbedding: null,
   openaiCompatible: makeWorkspaceIntegrationBinding({
     table: integrationOpenaiCompatibleModel,
     tableName: "IntegrationOpenaiCompatible",

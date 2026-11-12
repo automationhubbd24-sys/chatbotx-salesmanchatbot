@@ -116,7 +116,7 @@ describe("introspectToken", () => {
 
     const { introspectToken } = await import("../src/token-introspection")
     await introspectToken("token-ttl")
-    // Default CHATBOTX_SPEC_TTL_MS is 300_000ms.
+    // Default SALESMANCHATBOT_SPEC_TTL_MS is 300_000ms.
     vi.advanceTimersByTime(300_001)
     await introspectToken("token-ttl")
 
@@ -162,7 +162,7 @@ describe("introspectToken", () => {
 
     const { introspectToken } = await import("../src/token-introspection")
     await introspectToken("token-old")
-    // Default CHATBOTX_SPEC_TTL_MS is 300_000ms.
+    // Default SALESMANCHATBOT_SPEC_TTL_MS is 300_000ms.
     vi.advanceTimersByTime(300_001)
 
     const deleteSpy = vi.spyOn(Map.prototype, "delete")

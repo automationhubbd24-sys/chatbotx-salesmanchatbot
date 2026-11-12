@@ -1,7 +1,7 @@
 "use client"
 
-import type { DripSubscribeSubscriberSchema } from "@chatbotx.io/flow-config"
-import { Card, CardContent } from "@chatbotx.io/ui/components/ui/card"
+import type { DripSubscribeSubscriberSchema } from "@salesmanchatbot.io/flow-config"
+import { Card, CardContent } from "@salesmanchatbot.io/ui/components/ui/card"
 import { MailIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BaseStateViewer } from "../../states/viewer"

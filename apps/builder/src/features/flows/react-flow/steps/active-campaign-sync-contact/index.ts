@@ -2,7 +2,7 @@ import {
   type ActiveCampaignSyncContactSchema,
   activeCampaignSyncContactDefaultFn,
   activeCampaignSyncContactSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import ActiveCampaignSyncContactEditor from "./editor"
 import ActiveCampaignSyncContactViewer from "./viewer"

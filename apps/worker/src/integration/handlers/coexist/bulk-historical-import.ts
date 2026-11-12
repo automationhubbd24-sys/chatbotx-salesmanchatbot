@@ -6,20 +6,20 @@ import {
   type ChannelContactImportLink,
   contactInboxService,
   conversationService,
-} from "@chatbotx.io/business"
-import { describeDatabaseError } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { describeDatabaseError } from "@salesmanchatbot.io/database/client"
 import type {
   BulkCreateAttachmentInput,
   CreateMessageInput,
   IMessageRepository,
-} from "@chatbotx.io/database/repositories"
+} from "@salesmanchatbot.io/database/repositories"
 import {
   contactRepository,
   createMessageRepository,
-} from "@chatbotx.io/database/repositories"
-import type { InboxModel } from "@chatbotx.io/database/types"
-import type { IncomingContact, IncomingMessage } from "@chatbotx.io/sdk"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import type { InboxModel } from "@salesmanchatbot.io/database/types"
+import type { IncomingContact, IncomingMessage } from "@salesmanchatbot.io/sdk"
+import { createId } from "@salesmanchatbot.io/utils"
 import pLimit from "p-limit"
 import { logger } from "../../../lib/logger"
 
@@ -38,7 +38,7 @@ export type ContactImportLink = ChannelContactImportLink
 export type BulkImportContactsResult = BulkImportChannelContactsResult
 
 // ---------- Coexist time-derived Message IDs ----------
-// Layout mirrors `@chatbotx.io/utils` `createId()` shift so coexist IDs share
+// Layout mirrors `@salesmanchatbot.io/utils` `createId()` shift so coexist IDs share
 // the same numeric magnitude/length as live snowflakes:
 //   high → low: [ 53 bits ms since epoch ][ 14 bits disambiguator ]
 //   ts_shift = 14   (identical to uuniq layout)

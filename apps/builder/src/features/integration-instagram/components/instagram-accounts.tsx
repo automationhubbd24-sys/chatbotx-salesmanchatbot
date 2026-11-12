@@ -1,7 +1,7 @@
 "use client"
 
-import type { InstagramAccount } from "@chatbotx.io/integration-instagram"
-import { Button, buttonVariants } from "@chatbotx.io/ui/components/ui/button"
+import type { InstagramAccount } from "@salesmanchatbot.io/integration-instagram"
+import { Button, buttonVariants } from "@salesmanchatbot.io/ui/components/ui/button"
 import { Loader2Icon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"

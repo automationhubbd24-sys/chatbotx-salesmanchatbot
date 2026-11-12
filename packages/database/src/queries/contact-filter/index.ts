@@ -1,4 +1,4 @@
-import { adsEligibleChannelTypes } from "@chatbotx.io/utils/channel"
+import { adsEligibleChannelTypes } from "@salesmanchatbot.io/utils/channel"
 import {
   type AnyColumn,
   inArray,

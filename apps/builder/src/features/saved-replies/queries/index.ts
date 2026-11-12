@@ -1,4 +1,4 @@
-import { savedReplyService } from "@chatbotx.io/business"
+import { savedReplyService } from "@salesmanchatbot.io/business"
 import type { ListSavedReplyResponse } from "../schema/mutation"
 
 export async function listSavedReplies(input: {

@@ -1,7 +1,7 @@
 "use server"
 
-import { dynamicImageService } from "@chatbotx.io/business/dynamic-image"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+import { dynamicImageService } from "@salesmanchatbot.io/business/dynamic-image"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import z from "zod"
 import { workspaceActionClient } from "@/lib/safe-action"
 

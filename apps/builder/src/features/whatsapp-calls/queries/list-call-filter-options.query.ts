@@ -1,5 +1,5 @@
-import { inboxService, workspaceMemberService } from "@chatbotx.io/business"
-import { channelTypes } from "@chatbotx.io/database/partials"
+import { inboxService, workspaceMemberService } from "@salesmanchatbot.io/business"
+import { channelTypes } from "@salesmanchatbot.io/database/partials"
 import type { CallFilterOption } from "../calls-filter-bar"
 
 export type ListCallFilterOptionsResult = {

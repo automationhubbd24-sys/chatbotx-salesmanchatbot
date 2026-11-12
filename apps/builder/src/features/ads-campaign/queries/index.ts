@@ -1,5 +1,5 @@
-import { messagingAdsConnectionService } from "@chatbotx.io/business"
-import type { MessagingAdChannel } from "@chatbotx.io/database/partials"
+import { messagingAdsConnectionService } from "@salesmanchatbot.io/business"
+import type { MessagingAdChannel } from "@salesmanchatbot.io/database/partials"
 import { logger } from "@/lib/log"
 
 /**

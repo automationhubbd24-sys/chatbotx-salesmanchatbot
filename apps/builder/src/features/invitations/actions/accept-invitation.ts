@@ -6,10 +6,10 @@ import {
   quotaEnforcementService,
   workspaceMemberService,
   workspaceService,
-} from "@chatbotx.io/business"
-import { ChatbotXException } from "@chatbotx.io/business/errors"
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
+import { createId } from "@salesmanchatbot.io/utils"
 import { getTranslations } from "next-intl/server"
 import { z } from "zod"
 import { isCommunity } from "@/env"
@@ -28,11 +28,11 @@ export const acceptInvitationAction = authActionClient
     const invitation = await invitationService.findByCodeOrFail(code)
 
     if (invitation.expiresAt < new Date()) {
-      throw new ChatbotXException("Invitation expired")
+      throw new salesmanChatbotException("Invitation expired")
     }
 
     if (!invitation.workspaceId) {
-      throw new ChatbotXException("Invalid invitation: no workspace associated")
+      throw new salesmanChatbotException("Invalid invitation: no workspace associated")
     }
 
     const existingMember =
@@ -41,7 +41,7 @@ export const acceptInvitationAction = authActionClient
         userId: ctx.user.id,
       })
     if (existingMember) {
-      throw new ChatbotXException("You are already a member of this workspace")
+      throw new salesmanChatbotException("You are already a member of this workspace")
     }
 
     const workspace = await workspaceService.find({
@@ -49,7 +49,7 @@ export const acceptInvitationAction = authActionClient
     })
     if (workspace && isWorkspaceScheduledForDeletion(workspace)) {
       const t = await getTranslations("invitation")
-      throw new ChatbotXException(
+      throw new salesmanChatbotException(
         t("workspaceUnavailable"),
         "workspaceScheduledDeletion",
         403,
@@ -61,7 +61,7 @@ export const acceptInvitationAction = authActionClient
         metric: "teamMembers",
       })
       if (atLimit) {
-        throw new ChatbotXException(
+        throw new salesmanChatbotException(
           "Team member limit reached for this workspace plan",
         )
       }

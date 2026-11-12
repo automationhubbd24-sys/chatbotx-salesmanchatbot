@@ -1,8 +1,8 @@
 import {
   automatedResponseModel,
   createSelectSchema,
-} from "@chatbotx.io/database/schema"
-import type { AutomatedResponseModel } from "@chatbotx.io/database/types"
+} from "@salesmanchatbot.io/database/schema"
+import type { AutomatedResponseModel } from "@salesmanchatbot.io/database/types"
 import z from "zod"
 import type { FlowResource } from "@/features/flows/schema/resource"
 

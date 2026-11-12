@@ -1,4 +1,4 @@
-import { invalidateCacheByTags } from "@chatbotx.io/redis"
+import { invalidateCacheByTags } from "@salesmanchatbot.io/redis"
 import { dispatchAuditRecord } from "./audit/dispatcher"
 
 export class BaseService {

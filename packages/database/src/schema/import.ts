@@ -1,4 +1,4 @@
-import type { FlowCapability } from "@chatbotx.io/flow-config"
+import type { FlowCapability } from "@salesmanchatbot.io/flow-config"
 import { sql } from "drizzle-orm"
 import {
   index,

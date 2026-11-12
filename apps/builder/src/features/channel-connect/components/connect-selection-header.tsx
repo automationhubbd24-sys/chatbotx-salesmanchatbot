@@ -1,7 +1,7 @@
 "use client"
 
-import { Checkbox } from "@chatbotx.io/ui/components/ui/checkbox"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { Checkbox } from "@salesmanchatbot.io/ui/components/ui/checkbox"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 
 const SELECT_ALL_LABEL_ID = "connect-select-all-label"

@@ -1,8 +1,8 @@
 "use client"
 
-import type { FolderType } from "@chatbotx.io/database/partials"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
-import { ScrollArea } from "@chatbotx.io/ui/components/ui/scroll-area"
+import type { FolderType } from "@salesmanchatbot.io/database/partials"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
+import { ScrollArea } from "@salesmanchatbot.io/ui/components/ui/scroll-area"
 import { FolderIcon, PencilIcon, TrashIcon } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { use, useCallback, useState } from "react"

@@ -18,15 +18,15 @@ const { mockCreateId, mockInsert, mockFindFirst } = vi.hoisted(() => {
 
 const folderModel = { table: "folder" }
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   rootFolderId: "0",
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   folderModel,
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: mockCreateId,
 }))
 

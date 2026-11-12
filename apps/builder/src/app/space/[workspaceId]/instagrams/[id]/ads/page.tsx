@@ -2,12 +2,12 @@ import {
   metaConversionsService,
   platformCredentialService,
   workspaceService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   debugToken,
   hasInstagramManageEventsScope,
   toAppAccessToken,
-} from "@chatbotx.io/integration-instagram-facebook"
+} from "@salesmanchatbot.io/integration-instagram-facebook"
 import { notFound } from "next/navigation"
 import { InstagramCapiTab } from "@/features/integration-instagram/components/instagram-capi-tab"
 import { findIntegrationInstagram } from "@/features/integration-instagram/queries"

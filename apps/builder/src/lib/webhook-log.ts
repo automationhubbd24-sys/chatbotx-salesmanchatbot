@@ -1,4 +1,4 @@
-import { capText, logDiagnostic, redactSecrets } from "@chatbotx.io/logger"
+import { capText, logDiagnostic, redactSecrets } from "@salesmanchatbot.io/logger"
 import type { NextRequest } from "next/server"
 import { logger } from "@/lib/log"
 
@@ -9,7 +9,7 @@ const omittedBody = (reason: string, length: number): string =>
 
 /**
  * Turn a raw webhook body (a JSON string) into a log-safe string, reusing the
- * shared `redactSecrets` + `capText` helpers from `@chatbotx.io/logger`. Only
+ * shared `redactSecrets` + `capText` helpers from `@salesmanchatbot.io/logger`. Only
  * JSON small enough to parse is shown; anything we cannot safely redact —
  * non-JSON, oversized, or a redaction failure — is OMITTED (with its length as
  * a hint) rather than logged raw, so a secret can never leak through a fallback

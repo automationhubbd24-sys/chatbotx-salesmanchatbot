@@ -1,7 +1,7 @@
 "use client"
 
-import { useSidebar } from "@chatbotx.io/ui/components/ui/sidebar"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { useSidebar } from "@salesmanchatbot.io/ui/components/ui/sidebar"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { useTranslations } from "next-intl"
 import { UpgradePlanButton } from "@/enterprise/features/billing/upgrade-plan-dialog"
 import {

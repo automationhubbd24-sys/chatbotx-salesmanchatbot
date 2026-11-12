@@ -1,13 +1,13 @@
 import {
   BOT_DISABLE_DURATION_MS,
   sqlDropQuickReplyChallenge,
-} from "@chatbotx.io/business"
-import { smartDelayService } from "@chatbotx.io/business/smart-delay"
-import { and, db, eq } from "@chatbotx.io/database/client"
-import { conversationModel } from "@chatbotx.io/database/schema"
-import { emit } from "@chatbotx.io/event-bus"
-import { emitConversationTransferredToHuman } from "@chatbotx.io/events"
-import baseLogger from "@chatbotx.io/logger"
+} from "@salesmanchatbot.io/business"
+import { smartDelayService } from "@salesmanchatbot.io/business/smart-delay"
+import { and, db, eq } from "@salesmanchatbot.io/database/client"
+import { conversationModel } from "@salesmanchatbot.io/database/schema"
+import { emit } from "@salesmanchatbot.io/event-bus"
+import { emitConversationTransferredToHuman } from "@salesmanchatbot.io/events"
+import baseLogger from "@salesmanchatbot.io/logger"
 import { normalizeError } from "universal-error-normalizer"
 
 export interface HandoffRequest {

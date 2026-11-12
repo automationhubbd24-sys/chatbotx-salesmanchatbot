@@ -3,8 +3,8 @@ import {
   type StepType,
   stepSupport,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import type { ChannelType } from "@chatbotx.io/utils/channel"
+} from "@salesmanchatbot.io/flow-config"
+import type { ChannelType } from "@salesmanchatbot.io/utils/channel"
 import { describe, expect, test } from "vitest"
 import { handledFlowStepTypes as apiHandledFlowStepTypes } from "../../../integrations/api/src/handlers/message/outgoing-message"
 import { handledFlowStepTypes as instagramHandledFlowStepTypes } from "../../../integrations/instagram/src/handlers/message/outgoing-message"

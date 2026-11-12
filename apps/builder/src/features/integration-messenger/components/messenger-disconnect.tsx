@@ -1,6 +1,6 @@
 "use client"
 
-import type { IntegrationMessengerModel } from "@chatbotx.io/database/types"
+import type { IntegrationMessengerModel } from "@salesmanchatbot.io/database/types"
 import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
 import { useAction } from "next-safe-action/hooks"

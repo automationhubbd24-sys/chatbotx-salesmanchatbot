@@ -1,4 +1,4 @@
-import { listCommentAutomationContactsResponse } from "@chatbotx.io/analytics/schemas"
+import { listCommentAutomationContactsResponse } from "@salesmanchatbot.io/analytics/schemas"
 import { describe, expect, test, vi } from "vitest"
 
 type RouteConfig = {
@@ -58,23 +58,23 @@ vi.mock("@/lib/log", () => ({
   logger: { error: mocks.loggerError, warn: vi.fn(), info: vi.fn() },
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   messengerIntegrationService: {
     findByWorkspaceId: mocks.findMessengerIntegrationsByWorkspaceId,
   },
   contactInboxService: { findManyByIds: mocks.findContactInboxesByIds },
 }))
 
-// `@chatbotx.io/analytics`'s barrel re-exports services that construct the
+// `@salesmanchatbot.io/analytics`'s barrel re-exports services that construct the
 // database pool on import, which reads server-only env and throws under jsdom.
 // The schemas entry is safe (zod only) and stays real.
-vi.mock("@chatbotx.io/analytics", () => ({
+vi.mock("@salesmanchatbot.io/analytics", () => ({
   commentAutomationAnalyticsService: {
     getContacts: mocks.getCommentAutomationContacts,
   },
 }))
 
-vi.mock("@chatbotx.io/integration-messenger/apis/post", () => ({
+vi.mock("@salesmanchatbot.io/integration-messenger/apis/post", () => ({
   listPublishedPosts: mocks.listPublishedPosts,
   listAdsPosts: mocks.listAdsPosts,
   listReelsPosts: mocks.listReelsPosts,

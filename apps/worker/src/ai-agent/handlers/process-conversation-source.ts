@@ -1,19 +1,19 @@
 import { createHash } from "node:crypto"
-import { assertPublicUrl } from "@chatbotx.io/business"
-import { aiConversationSourceStatuses } from "@chatbotx.io/database/partials"
+import { assertPublicUrl } from "@salesmanchatbot.io/business"
+import { aiConversationSourceStatuses } from "@salesmanchatbot.io/database/partials"
 import {
   type AiConversationSourceWithAttachment,
   createConversationEmbeddingRepository,
   createConversationSourceRepository,
-} from "@chatbotx.io/database/repositories"
-import { createId } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/database/repositories"
+import { createId } from "@salesmanchatbot.io/utils"
 import {
   AI_FILES_DEFAULT_CHUNK_SIZE,
   AI_FILES_DEFAULT_OVERLAP_SIZE,
   AIJobAction,
   type AIJobProcessConversationSource,
   aiAgentQueue,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import { Readability } from "@mozilla/readability"
 import { htmlToText } from "html-to-text"
 import { parseHTML } from "linkedom"
@@ -226,7 +226,7 @@ async function fetchSafe(
     signal,
     redirect: "manual",
     headers: {
-      "User-Agent": "ChatbotX-URLContext/1.0",
+      "User-Agent": "salesmanChatbot-URLContext/1.0",
       Accept: "text/html,text/plain;q=0.9",
     },
   })

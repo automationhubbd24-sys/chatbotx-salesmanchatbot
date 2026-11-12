@@ -1,8 +1,8 @@
 "use client"
 
-import type { InboxTeamModel } from "@chatbotx.io/database/types"
-import { MultiSelectField } from "@chatbotx.io/ui/components/form/multi-select-field"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { InboxTeamModel } from "@salesmanchatbot.io/database/types"
+import { MultiSelectField } from "@salesmanchatbot.io/ui/components/form/multi-select-field"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -10,8 +10,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@chatbotx.io/ui/components/ui/dialog"
-import { Form } from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/dialog"
+import { Form } from "@salesmanchatbot.io/ui/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useHookFormAction } from "@next-safe-action/adapter-react-hook-form/hooks"
 import { Loader2 } from "lucide-react"

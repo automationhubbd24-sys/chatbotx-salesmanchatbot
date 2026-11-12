@@ -10,7 +10,7 @@ const mocks = vi.hoisted(() => ({
   error: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   contactInboxService: {
     claimProfileSnapshot: mocks.claim,
     completeProfileSnapshot: mocks.complete,
@@ -23,7 +23,7 @@ vi.mock("../src/services/integrations", () => ({
 }))
 
 const { ChannelError, ChannelErrorCategory, SdkException } = await import(
-  "@chatbotx.io/sdk"
+  "@salesmanchatbot.io/sdk"
 )
 
 vi.mock("../src/lib/logger", () => ({

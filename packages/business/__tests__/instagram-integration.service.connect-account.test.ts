@@ -14,7 +14,7 @@ const mocks = vi.hoisted(() => ({
   transaction: vi.fn(),
 }))
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   and: mocks.and,
   db: { transaction: mocks.transaction },
   eq: mocks.eq,
@@ -22,14 +22,14 @@ vi.mock("@chatbotx.io/database/client", () => ({
   sql: mocks.sql,
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   integrationInstagramRepository: {
     findConnectedIgIds: mocks.findConnectedIgIds,
     insert: mocks.insert,
   },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   INSTAGRAM_IG_ID_UNIQUE_CONSTRAINT: "IntegrationInstagram_igId_key",
   integrationInstagramModel: {
     pageId: "pageId",
@@ -37,7 +37,7 @@ vi.mock("@chatbotx.io/database/schema", () => ({
   },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: mocks.createId,
 }))
 

@@ -47,7 +47,7 @@ const { authorizedAPI, capturedProcedures } = vi.hoisted(() => {
 vi.mock("@/orpc", () => ({ authorizedAPI }))
 
 const listByUserId = vi.fn()
-vi.mock("@chatbotx.io/business", () => ({
+vi.mock("@salesmanchatbot.io/business", () => ({
   workspaceMemberService: { listByUserId },
 }))
 
@@ -57,7 +57,7 @@ vi.mock("@chatbotx.io/business", () => ({
 // {{api_key}} source) so this suite can prove `workspaceResource`'s
 // `.omit({ token: true })` actually strips it before it ever reaches this
 // public API response.
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   createSelectSchema: () =>
     z.object({
       id: z.string(),

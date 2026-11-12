@@ -1,4 +1,4 @@
-import { couponService } from "@chatbotx.io/business/coupon"
+import { couponService } from "@salesmanchatbot.io/business/coupon"
 import type { ReplaceVariableProps } from "./schema"
 
 export const COUPON_VARIABLE_PREFIX = "coupon:"

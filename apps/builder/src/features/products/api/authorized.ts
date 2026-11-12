@@ -1,4 +1,4 @@
-import { productService } from "@chatbotx.io/business"
+import { productService } from "@salesmanchatbot.io/business"
 import z from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

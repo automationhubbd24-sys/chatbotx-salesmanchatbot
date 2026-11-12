@@ -1,5 +1,5 @@
 {
-  "name": "@chatbotx.io/scheduler",
+  "name": "@salesmanchatbot.io/scheduler",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,12 +7,12 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@chatbotx.io/redis": "workspace:*",
+    "@salesmanchatbot.io/redis": "workspace:*",
     "ioredis": "5.10.1"
   },
   "devDependencies": {
-    "@chatbotx.io/typescript-config": "workspace:*",
-    "@chatbotx.io/vitest-config": "workspace:*",
+    "@salesmanchatbot.io/typescript-config": "workspace:*",
+    "@salesmanchatbot.io/vitest-config": "workspace:*",
     "typescript": "^5",
     "vitest": "^4.1.0"
   },

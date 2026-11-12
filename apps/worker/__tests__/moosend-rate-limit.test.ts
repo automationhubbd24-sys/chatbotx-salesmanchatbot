@@ -7,7 +7,7 @@ const state = vi.hoisted(() => ({
 
 const RATE_LIMIT_KEY_PATTERN = /^moosend:subscribe-quota:[a-f0-9]{64}$/u
 
-vi.mock("@chatbotx.io/redis", () => ({
+vi.mock("@salesmanchatbot.io/redis", () => ({
   cacheConnections: {
     useExisting: vi.fn(async () => ({ eval: state.eval })),
   },

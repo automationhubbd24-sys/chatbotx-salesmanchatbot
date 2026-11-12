@@ -1,12 +1,12 @@
 "use client"
 
-import type { SocialProvider } from "@chatbotx.io/auth/server"
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import type { SocialProvider } from "@salesmanchatbot.io/auth/server"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Card,
   CardContent,
   CardHeader,
-} from "@chatbotx.io/ui/components/ui/card"
+} from "@salesmanchatbot.io/ui/components/ui/card"
 import { ArrowLeftIcon, LinkIcon, MailIcon } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
@@ -115,8 +115,8 @@ export const SignInForm = ({
       </Card>
 
       <AcceptTermsAndPolicy
-        privacyPolicy={policyUrl ?? "https://chatbotx.io/privacy/"}
-        termsOfService={termsOfServiceUrl ?? "https://chatbotx.io/terms/"}
+        privacyPolicy={policyUrl ?? "https://salesmanchatbot.io/privacy/"}
+        termsOfService={termsOfServiceUrl ?? "https://salesmanchatbot.io/terms/"}
       />
     </div>
   )

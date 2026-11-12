@@ -6,33 +6,33 @@ import {
   resolveContactAvatarUrl,
   resolveTenantSettings,
   workspaceApiTokenService,
-} from "@chatbotx.io/business"
+} from "@salesmanchatbot.io/business"
 import {
   languageFromLocale,
   normalizeStoredTimezone,
   offsetFromStoredTimezone,
-} from "@chatbotx.io/business/contact-locale"
-import { resolveGenderLabel } from "@chatbotx.io/business/system-field"
-import { isWorkspaceScheduledForDeletion } from "@chatbotx.io/business/workspace-lifecycle/predicates"
-import { ensureContactAvatarMirrored } from "@chatbotx.io/channel-registry/media-hydration"
+} from "@salesmanchatbot.io/business/contact-locale"
+import { resolveGenderLabel } from "@salesmanchatbot.io/business/system-field"
+import { isWorkspaceScheduledForDeletion } from "@salesmanchatbot.io/business/workspace-lifecycle/predicates"
+import { ensureContactAvatarMirrored } from "@salesmanchatbot.io/channel-registry/media-hydration"
 import {
   type ContactSource,
   contactSources,
   type SystemFieldType,
   systemFieldTypes,
-} from "@chatbotx.io/database/partials"
-import type { MessageModel } from "@chatbotx.io/database/types"
-import { signAppointmentScheduleToken } from "@chatbotx.io/encryption"
-import { signMinigamePlayToken } from "@chatbotx.io/encryption/minigame-play-token"
-import { signUserHash } from "@chatbotx.io/encryption/user-hash"
+} from "@salesmanchatbot.io/database/partials"
+import type { MessageModel } from "@salesmanchatbot.io/database/types"
+import { signAppointmentScheduleToken } from "@salesmanchatbot.io/encryption"
+import { signMinigamePlayToken } from "@salesmanchatbot.io/encryption/minigame-play-token"
+import { signUserHash } from "@salesmanchatbot.io/encryption/user-hash"
 import {
   DATE_FORMAT,
   DATE_TIME_FORMAT,
   DEFAULT_FILTER_TIMEZONE,
   formatCustomFieldValueInTimeZone,
   formatWithFallback,
-} from "@chatbotx.io/utils/datetime"
-import { VARIABLE_PLACEHOLDER_SOURCE } from "@chatbotx.io/utils/variables"
+} from "@salesmanchatbot.io/utils/datetime"
+import { VARIABLE_PLACEHOLDER_SOURCE } from "@salesmanchatbot.io/utils/variables"
 import {
   getAssignedTeamName,
   resolveAssigneeEmail,
@@ -66,7 +66,7 @@ import type { ContactVariableContext } from "./schema"
 const LOCALE_SEPARATOR_RE = /[-_]/
 // Exported so javascript-interpolation.ts scans the same placeholder syntax as
 // the message-text path. Built (global, for `matchAll`/`replace`) from the
-// shared canonical grammar in `@chatbotx.io/utils` — the single source of truth,
+// shared canonical grammar in `@salesmanchatbot.io/utils` — the single source of truth,
 // so both resolvers and the flow-builder validators can't drift.
 export const VARIABLE_PLACEHOLDER_REGEX = new RegExp(
   VARIABLE_PLACEHOLDER_SOURCE,

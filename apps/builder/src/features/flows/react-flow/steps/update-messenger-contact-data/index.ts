@@ -2,7 +2,7 @@ import {
   type UpdateMessengerContactDataStepSchema,
   updateMessengerContactDataStepDefaultFn,
   updateMessengerContactDataStepSchema,
-} from "@chatbotx.io/flow-config"
+} from "@salesmanchatbot.io/flow-config"
 import type { StepDefinition } from "../definition"
 import UpdateMessengerContactDataStepEditor from "./editor"
 import UpdateMessengerContactDataStepViewer from "./viewer"

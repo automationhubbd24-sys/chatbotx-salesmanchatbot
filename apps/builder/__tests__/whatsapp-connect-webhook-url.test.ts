@@ -1,6 +1,6 @@
 // @vitest-environment node
-import type { WhatsappCredential } from "@chatbotx.io/database/partials"
-import type { WhatsappPhoneNumber } from "@chatbotx.io/integration-whatsapp/api/phone-number"
+import type { WhatsappCredential } from "@salesmanchatbot.io/database/partials"
+import type { WhatsappPhoneNumber } from "@salesmanchatbot.io/integration-whatsapp/api/phone-number"
 import { describe, expect, test, vi } from "vitest"
 import {
   buildAuthValue,
@@ -9,13 +9,13 @@ import {
 } from "@/features/integration-whatsapp/actions/webhook-url"
 
 // debugToken is only hit on the manual path; non-manual tests never call it.
-vi.mock("@chatbotx.io/integration-whatsapp/api/auth", () => ({
+vi.mock("@salesmanchatbot.io/integration-whatsapp/api/auth", () => ({
   appAccessToken: (settings: { clientId: string; clientSecret: string }) =>
     `${settings.clientId}|${settings.clientSecret}`,
   debugToken: vi.fn(async () => ({ app_id: "app-123", is_valid: true })),
 }))
 
-const BROKER_ORIGIN = "https://app.chatbotx.io"
+const BROKER_ORIGIN = "https://app.salesmanchatbot.io"
 const WHITE_LABEL_ORIGIN = "https://chat.reseller.com"
 
 const whatsappSettings = {

@@ -34,7 +34,7 @@ class DatabaseErrorStub extends Error {
   }
 }
 
-vi.mock("@chatbotx.io/database/client", () => ({
+vi.mock("@salesmanchatbot.io/database/client", () => ({
   db: {
     delete: mockDelete,
     transaction: mockTransaction,
@@ -45,19 +45,19 @@ vi.mock("@chatbotx.io/database/client", () => ({
   isDatabaseError: (error: unknown) => error instanceof DatabaseErrorStub,
 }))
 
-vi.mock("@chatbotx.io/database/partials", () => ({
+vi.mock("@salesmanchatbot.io/database/partials", () => ({
   integrationTypes: { enum: { telegram: "telegram" } },
 }))
 
-vi.mock("@chatbotx.io/database/schema", () => ({
+vi.mock("@salesmanchatbot.io/database/schema", () => ({
   integrationTelegramModel: { id: "id", botId: "botId" },
 }))
 
-vi.mock("@chatbotx.io/utils", () => ({
+vi.mock("@salesmanchatbot.io/utils", () => ({
   createId: () => "generated-id",
 }))
 
-vi.mock("@chatbotx.io/database/repositories", () => ({
+vi.mock("@salesmanchatbot.io/database/repositories", () => ({
   // Defaults to "no Connection row" so the existing disconnect test below
   // (written before the Connection-row integration) keeps exercising the
   // legacy `inboxService.disconnect` fallback unchanged.
@@ -162,7 +162,7 @@ describe("telegramIntegrationService.connect", () => {
     expect(result.workspaceId).toBe("ws-new")
   })
 
-  test("a 23505 database error surfaces as ChatbotXException('Bot already connected')", async () => {
+  test("a 23505 database error surfaces as salesmanChatbotException('Bot already connected')", async () => {
     mockTransaction.mockImplementation(() => {
       throw new DatabaseErrorStub("23505")
     })

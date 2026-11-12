@@ -14,15 +14,15 @@ vi.mock("@/lib/safe-action", () => {
   return { actionClient: chain }
 })
 
-vi.mock("@chatbotx.io/encryption", () => ({
+vi.mock("@salesmanchatbot.io/encryption", () => ({
   verifyUserDataWebviewToken: mocks.verifyUserDataWebviewToken,
 }))
 
-vi.mock("@chatbotx.io/flow-config", () => ({
+vi.mock("@salesmanchatbot.io/flow-config", () => ({
   GET_USER_DATA_WEBVIEW_SELECTION_PAYLOAD_TYPE: "getUserDataWebviewSelection",
 }))
 
-vi.mock("@chatbotx.io/worker-config", () => ({
+vi.mock("@salesmanchatbot.io/worker-config", () => ({
   IntegrationJobAction: { sendFlow: "sendFlow" },
   integrationQueue: { add: mocks.integrationQueueAdd },
 }))

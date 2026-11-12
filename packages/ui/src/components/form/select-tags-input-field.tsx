@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@chatbotx.io/ui/components/ui/badge"
+import { Badge } from "@salesmanchatbot.io/ui/components/ui/badge"
 import {
   Command,
   CommandEmpty,
@@ -8,7 +8,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@chatbotx.io/ui/components/ui/command"
+} from "@salesmanchatbot.io/ui/components/ui/command"
 import {
   FormControl,
   FormDescription,
@@ -16,13 +16,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@chatbotx.io/ui/components/ui/form"
+} from "@salesmanchatbot.io/ui/components/ui/form"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@chatbotx.io/ui/components/ui/popover"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/popover"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { AnimatePresence, motion } from "framer-motion"
 import { Check, ChevronDown, X } from "lucide-react"
 import { memo, type ReactNode, useRef, useState } from "react"

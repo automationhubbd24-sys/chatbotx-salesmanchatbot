@@ -41,7 +41,7 @@ vi.mock("@/lib/auth/assert-workspace-super-admin", () => ({
   assertWorkspaceSuperAdmin: mocks.assertWorkspaceSuperAdmin,
 }))
 
-vi.mock("@chatbotx.io/business", () => {
+vi.mock("@salesmanchatbot.io/business", () => {
   class CapiTestEventError extends Error {
     readonly reason: string
 
@@ -73,7 +73,7 @@ vi.mock("@chatbotx.io/business", () => {
   }
 })
 
-vi.mock("@chatbotx.io/integration-meta-conversions", () => ({
+vi.mock("@salesmanchatbot.io/integration-meta-conversions", () => ({
   buildDatasetName: (name: string) => `${name} dataset`,
   ensureDataset: vi.fn(),
   sendConversionEvent: vi.fn(),
@@ -142,7 +142,7 @@ describe("CAPI test event actions", () => {
 
   test("send posts one test event to the entered messaging id through the real sender", async () => {
     const { sendConversionEvent } = await import(
-      "@chatbotx.io/integration-meta-conversions"
+      "@salesmanchatbot.io/integration-meta-conversions"
     )
     mocks.sendTestEvent.mockResolvedValue(undefined)
 
@@ -163,7 +163,7 @@ describe("CAPI test event actions", () => {
 
   test("send provisions the channel's dataset with the resource type Meta expects", async () => {
     const { ensureDataset } = await import(
-      "@chatbotx.io/integration-meta-conversions"
+      "@salesmanchatbot.io/integration-meta-conversions"
     )
     mocks.sendTestEvent.mockImplementation(
       async ({
@@ -197,7 +197,7 @@ describe("CAPI test event actions", () => {
   })
 
   test("send translates a CapiTestEventError reason for the toast", async () => {
-    const { CapiTestEventError } = await import("@chatbotx.io/business")
+    const { CapiTestEventError } = await import("@salesmanchatbot.io/business")
     mocks.sendTestEvent.mockRejectedValue(
       new CapiTestEventError("invalidMessagingId"),
     )
@@ -212,7 +212,7 @@ describe("CAPI test event actions", () => {
 
   test("send surfaces Meta's own error message when the post is rejected", async () => {
     const { MetaConversionsException } = await import(
-      "@chatbotx.io/integration-meta-conversions"
+      "@salesmanchatbot.io/integration-meta-conversions"
     )
     // The module mock above swaps in a plain message-taking Error subclass.
     const MetaError = MetaConversionsException as unknown as new (

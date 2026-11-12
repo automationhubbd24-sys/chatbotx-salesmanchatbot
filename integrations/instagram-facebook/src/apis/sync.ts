@@ -6,7 +6,7 @@ import {
   type GraphSyncHistoryMessage,
   type GraphSyncPaginatedResult,
   type GraphSyncParticipant,
-} from "@chatbotx.io/integration-instagram/apis/graph-conversation-sync"
+} from "@salesmanchatbot.io/integration-instagram/apis/graph-conversation-sync"
 import { DEFAULT_API_VERSION } from "../constants"
 import { rescue } from "../exception"
 import {

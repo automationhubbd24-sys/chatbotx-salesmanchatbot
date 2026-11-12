@@ -1,7 +1,7 @@
 "use client"
 import { Switch as SwitchPrimitive } from "@base-ui/react/switch"
 
-import { cn } from "@chatbotx.io/ui/lib/utils"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 
 function Switch({
   className,

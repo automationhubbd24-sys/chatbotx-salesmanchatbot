@@ -1,4 +1,4 @@
-import { processStreamingText } from "@chatbotx.io/ai"
+import { processStreamingText } from "@salesmanchatbot.io/ai"
 import {
   AppointmentAlreadyScheduledException,
   AppointmentAvailabilityChangedException,
@@ -8,8 +8,8 @@ import {
   normalizeLanguage,
   resolveTenantSettings,
   SlotUnavailableException,
-} from "@chatbotx.io/business"
-import { signAppointmentWebviewToken } from "@chatbotx.io/encryption"
+} from "@salesmanchatbot.io/business"
+import { signAppointmentWebviewToken } from "@salesmanchatbot.io/encryption"
 import {
   APPOINTMENT_AVAILABILITY_RANGE_SELECTION_PAYLOAD_TYPE,
   APPOINTMENT_AVAILABILITY_RANGE_SKIPPED_PAYLOAD_TYPE,
@@ -17,9 +17,9 @@ import {
   type AppointmentSchedulingStepSchema,
   appointmentSchedulingModes,
   defaultAIModels,
-} from "@chatbotx.io/flow-config"
-import { createId } from "@chatbotx.io/utils"
-import { ChatJobAction, chatQueue } from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/flow-config"
+import { createId } from "@salesmanchatbot.io/utils"
+import { ChatJobAction, chatQueue } from "@salesmanchatbot.io/worker-config"
 import { streamText } from "ai"
 import { fromZonedTime } from "date-fns-tz"
 import { normalizeError } from "universal-error-normalizer"

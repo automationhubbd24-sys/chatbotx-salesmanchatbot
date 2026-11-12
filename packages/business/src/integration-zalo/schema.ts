@@ -1,7 +1,7 @@
 import {
   createSelectSchema,
   integrationZaloModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 
 export const integrationZaloResource = createSelectSchema(

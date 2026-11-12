@@ -1,4 +1,4 @@
-import { DEFAULT_AI_AGENT_ACTION_PROMPT } from "@chatbotx.io/database/partials"
+import { DEFAULT_AI_AGENT_ACTION_PROMPT } from "@salesmanchatbot.io/database/partials"
 
 /** Private instructions only; persisted rule routing belongs to the tool schema. */
 export function buildAIAgentActionsPrompt(input: {

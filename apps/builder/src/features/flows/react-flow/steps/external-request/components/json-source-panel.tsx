@@ -1,13 +1,13 @@
 "use client"
 
-import { Button } from "@chatbotx.io/ui/components/ui/button"
+import { Button } from "@salesmanchatbot.io/ui/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@chatbotx.io/ui/components/ui/collapsible"
-import { Textarea } from "@chatbotx.io/ui/components/ui/textarea"
-import { cn } from "@chatbotx.io/ui/lib/utils"
+} from "@salesmanchatbot.io/ui/components/ui/collapsible"
+import { Textarea } from "@salesmanchatbot.io/ui/components/ui/textarea"
+import { cn } from "@salesmanchatbot.io/ui/lib/utils"
 import { ChevronDownIcon, ChevronRightIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useMemo, useState } from "react"

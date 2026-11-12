@@ -1,4 +1,4 @@
-import { macRepository } from "@chatbotx.io/analytics"
+import { macRepository } from "@salesmanchatbot.io/analytics"
 import {
   parseLiveCount,
   tenantService,
@@ -6,10 +6,10 @@ import {
   userService,
   WORKSPACE_USAGE_LABEL,
   workspaceUsageService,
-} from "@chatbotx.io/business"
-import { isForeignKeyViolationError } from "@chatbotx.io/database/client"
-import { cacheConnections } from "@chatbotx.io/redis"
-import { liveKeyFor, USER_QUOTA_LABEL } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/business"
+import { isForeignKeyViolationError } from "@salesmanchatbot.io/database/client"
+import { cacheConnections } from "@salesmanchatbot.io/redis"
+import { liveKeyFor, USER_QUOTA_LABEL } from "@salesmanchatbot.io/utils"
 import { logger } from "../../lib/logger"
 
 // Derived from the shared key builder so the reconcile walks exactly the keys

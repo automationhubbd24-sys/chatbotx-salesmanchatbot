@@ -5,8 +5,8 @@ import {
   integration as activeCampaignIntegration,
   activeCampaignListSchema,
   activeCampaignTagSchema,
-} from "@chatbotx.io/integration-active-campaign"
-import { zodBigintAsString } from "@chatbotx.io/utils"
+} from "@salesmanchatbot.io/integration-active-campaign"
+import { zodBigintAsString } from "@salesmanchatbot.io/utils"
 import { ORPCError } from "@orpc/server"
 import { z } from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"

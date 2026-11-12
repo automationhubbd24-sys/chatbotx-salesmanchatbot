@@ -1,4 +1,4 @@
-import { reflinkService } from "@chatbotx.io/business"
+import { reflinkService } from "@salesmanchatbot.io/business"
 import z from "zod"
 import { workspaceAuthorizedMidddleware } from "@/middlewares/auth"
 import { authorizedAPI } from "@/orpc"

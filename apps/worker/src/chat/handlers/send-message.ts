@@ -4,8 +4,8 @@ import {
   conversationService,
   publishToWorkspaceParty,
   threadControlService,
-} from "@chatbotx.io/business"
-import { db, eq } from "@chatbotx.io/database/client"
+} from "@salesmanchatbot.io/business"
+import { db, eq } from "@salesmanchatbot.io/database/client"
 import {
   channelTypes,
   isServiceSendBlocked,
@@ -13,22 +13,22 @@ import {
   resolveChannelConversationId,
   resolveThreadControlState,
   toThreadControlTimestamp,
-} from "@chatbotx.io/database/partials"
-import { createMessageRepository } from "@chatbotx.io/database/repositories"
-import { whatsappFlowModel } from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/partials"
+import { createMessageRepository } from "@salesmanchatbot.io/database/repositories"
+import { whatsappFlowModel } from "@salesmanchatbot.io/database/schema"
 import type {
   ContactInboxModel,
   ConversationModel,
   MessageModel,
-} from "@chatbotx.io/database/types"
-import { emit } from "@chatbotx.io/event-bus"
+} from "@salesmanchatbot.io/database/types"
+import { emit } from "@salesmanchatbot.io/event-bus"
 import {
   isBulkOutboundMetadata,
   type MetadataPayload,
   messageEventTypeSchema,
   stepTypes,
-} from "@chatbotx.io/flow-config"
-import { RealtimeEventType } from "@chatbotx.io/partysocket-config"
+} from "@salesmanchatbot.io/flow-config"
+import { RealtimeEventType } from "@salesmanchatbot.io/partysocket-config"
 import {
   ChannelError,
   ChannelErrorCategory,
@@ -37,8 +37,8 @@ import {
   type OutgoingSendResult,
   parseSdkError,
   type SendFlowStepData,
-} from "@chatbotx.io/sdk"
-import { resolveStackFrames } from "@chatbotx.io/utils/error-log"
+} from "@salesmanchatbot.io/sdk"
+import { resolveStackFrames } from "@salesmanchatbot.io/utils/error-log"
 import type {
   ChatJobChangeChannelMessageState,
   ChatJobDeleteChannelMessage,
@@ -46,7 +46,7 @@ import type {
   ChatJobSendChannelMessage,
   ChatJobSendFlowStep,
   ChatJobSendTyping,
-} from "@chatbotx.io/worker-config"
+} from "@salesmanchatbot.io/worker-config"
 import {
   settleCommentAutomationDelivered,
   settleCommentAutomationFailure,
@@ -240,7 +240,20 @@ export async function sendMessageToChannel(
 
     const isComment = message.type === "comment"
 
-    let handlerMessage = message
+    let handlerMessage: MessageModel & { parentSourceId?: string } = message
+    if (!isComment && message.parentId && message.parentCreatedAt) {
+      const repo = await createMessageRepository()
+      const parentMsg = await repo.findById({
+        id: message.parentId,
+        createdAt: new Date(message.parentCreatedAt),
+        conversationId: conversation.id,
+        workspaceId: conversation.workspaceId,
+      })
+      handlerMessage = {
+        ...message,
+        parentSourceId: parentMsg?.sourceId ?? undefined,
+      }
+    }
     if (isComment && message.parentId && message.parentCreatedAt) {
       const repo = await createMessageRepository()
       const parentMsg = await repo.findById({

@@ -1,6 +1,6 @@
 // @vitest-environment node
 
-import { ChatbotXException } from "@chatbotx.io/business/errors"
+import { salesmanChatbotException } from "@salesmanchatbot.io/business/errors"
 import { beforeEach, describe, expect, test, vi } from "vitest"
 
 const mockNotFound = vi.fn(() => {
@@ -44,7 +44,7 @@ describe("requireContactScanPageAccess", () => {
 
   test("calls notFound (never lets the exception reach the page render) for an assigned-only member", async () => {
     vi.mocked(requireUnrestrictedContactsScope).mockRejectedValue(
-      new ChatbotXException(
+      new salesmanChatbotException(
         "You do not have permission to run an Automatic Customer Scan.",
         "contactScanForbidden",
         403,
@@ -57,7 +57,7 @@ describe("requireContactScanPageAccess", () => {
     expect(mockNotFound).toHaveBeenCalledTimes(1)
   })
 
-  test("re-throws a non-ChatbotXException error instead of masking it as notFound", async () => {
+  test("re-throws a non-salesmanChatbotException error instead of masking it as notFound", async () => {
     const unexpected = new Error("boom")
     vi.mocked(requireUnrestrictedContactsScope).mockRejectedValue(unexpected)
 

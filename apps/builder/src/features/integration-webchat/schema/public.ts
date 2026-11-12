@@ -1,11 +1,11 @@
 import {
   webchatConversationStarter,
   webchatPersistentMenu,
-} from "@chatbotx.io/database/partials"
+} from "@salesmanchatbot.io/database/partials"
 import {
   createSelectSchema,
   integrationWebchatModel,
-} from "@chatbotx.io/database/schema"
+} from "@salesmanchatbot.io/database/schema"
 import { z } from "zod"
 import { createWebchatRequest } from "./mutation"
 
