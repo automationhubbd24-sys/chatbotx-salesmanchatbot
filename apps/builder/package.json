@@ -110,7 +110,7 @@
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
     "dot-prop": "^10.1.0",
-    "emoji-picker-react": "^4.19.1",
+    "emoji-picker-react": "^5.1.0",
     "hono": "^4.13.12",
     "html-to-text": "^9.0.5",
     "ky": "^2.0.2",
